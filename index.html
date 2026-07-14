@@ -66,7 +66,8 @@
   /* nav */
   nav{position:sticky;top:0;z-index:40;background:rgba(250,251,253,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   nav .wrap{display:flex;align-items:center;gap:26px;height:64px}
-  .logo{font-family:'Barlow Condensed';font-weight:700;font-size:22px;color:var(--navy);text-decoration:none;border-left:5px solid var(--orange);padding-left:10px;line-height:1}
+  .logo{font-family:'Barlow Condensed';font-weight:800;font-size:34px;letter-spacing:.01em;color:var(--navy);text-decoration:none;border-left:6px solid var(--orange);padding-left:12px;line-height:1}
+@media(max-width:600px){.logo{font-size:27px}}
   nav a.nl{font-size:15px;font-weight:600;color:var(--ink);text-decoration:none}
   nav a.nl:hover{color:var(--blue)}
   nav .spacer{flex:1}
@@ -141,7 +142,7 @@
 
 <nav aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="#top" style="display:inline-flex;align-items:baseline;gap:3px">Build<svg viewBox="0 0 104 102" style="width:.85em;height:.85em;align-self:center" aria-hidden="true"><g><clipPath id="hclip"><rect x="0" y="0" width="104" height="86"/></clipPath><g clip-path="url(#hclip)"><ellipse cx="52" cy="96" rx="40" ry="82" fill="#f25c1f"/><ellipse cx="52" cy="94" rx="8" ry="86" fill="#fff"/></g><rect x="0" y="86" width="104" height="16" rx="8" fill="#fff"/></g></svg><span style="color:#f25c1f;display:inline-block;transform:skewX(-12deg)">Pays</span></a>
+    <a class="logo" href="#top" style="display:inline-flex;align-items:baseline;gap:3px">Build<svg viewBox="0 0 104 102" style="width:.78em;height:.78em;align-self:center;margin:0 1px" aria-hidden="true"><g><clipPath id="hclip"><rect x="0" y="0" width="104" height="86"/></clipPath><g clip-path="url(#hclip)"><ellipse cx="52" cy="96" rx="40" ry="82" fill="#f25c1f"/><ellipse cx="52" cy="94" rx="8" ry="86" fill="#fff"/></g><rect x="0" y="86" width="104" height="16" rx="8" fill="#fff"/></g></svg><span style="color:#f25c1f;display:inline-block;transform:skewX(-12deg)">Pays</span></a>
     <span class="spacer"></span>
     <a class="nl" href="#features">Features</a>
     <a class="nl" href="#compliance">EBA rules</a>
