@@ -312,8 +312,12 @@
     <h2>See your own EBA running in it.</h2>
     <p class="lede" style="margin:0 auto 26px">Bring your enterprise agreement and a recent pay run to a 30-minute demo — we'll show your rules, your rates and your MYOB file. And there's no self-serve trial: if BuildPays fits your company, we set you up with a <b>free pilot period</b> and run it alongside your current process until the MYOB file matches to the cent.</p>
 
-    <form name="demo-request" method="POST" data-static-form-name="demo-request"
+    <form id="demoForm" action="https://api.web3forms.com/submit" method="POST"
           style="max-width:520px;margin:0 auto;text-align:left;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px">
+      <input type="hidden" name="access_key" value="b2f175fe-283f-401f-b771-f5748d4c4f56">
+      <input type="hidden" name="subject" value="New BuildPays demo request">
+      <input type="hidden" name="from_name" value="BuildPays website">
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
         <label style="font-size:13px;font-weight:700;color:var(--navy)">Your name *
           <input required name="name" autocomplete="name" style="width:100%;margin-top:4px;padding:10px;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:15px">
@@ -339,8 +343,8 @@
           <textarea name="pain" rows="3" placeholder="Timesheets, dockets, the pay run, chasing signatures…" style="width:100%;margin-top:4px;padding:10px;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:15px;resize:vertical"></textarea>
         </label>
       </div>
-      <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:16px;font-size:16px;padding:13px">Book my demo</button>
+      <button type="submit" id="demoBtn" class="btn btn-primary" style="width:100%;margin-top:16px;font-size:16px;padding:13px">Book my demo</button>
+      <p id="demoMsg" style="font-size:13.5px;font-weight:700;margin:12px 0 0;text-align:center"></p>
       <p style="font-size:12px;color:var(--mute);margin:10px 0 0;text-align:center">We'll reply within one business day. Your details stay with us — no lists, no spam.</p>
     </form>
 
@@ -365,5 +369,35 @@
     <div class="legal">BuildPays is payroll software; it does not provide legal or industrial relations advice. Configure and verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.</div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var f=document.getElementById('demoForm'), b=document.getElementById('demoBtn'), m=document.getElementById('demoMsg');
+  if(!f) return;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    b.disabled=true; b.textContent='Sending…'; m.textContent=''; m.style.color='#5c7089';
+    fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify(Object.fromEntries(new FormData(f)))
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      if(d.success){
+        f.reset();
+        b.style.display='none';
+        m.style.color='#2e7d32';
+        m.textContent="✓ Thanks — we'll be in touch within one business day.";
+      } else { throw new Error(d.message||'failed'); }
+    })
+    .catch(function(){
+      b.disabled=false; b.textContent='Book my demo';
+      m.style.color='#c62828';
+      m.innerHTML="Something went wrong. Email us directly at <a href='mailto:operations@buildpays.com.au' style='color:#f25c1f'>operations@buildpays.com.au</a>.";
+    });
+  });
+})();
+</script>
 </body>
 </html>
