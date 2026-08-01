@@ -1,0 +1,23 @@
+# Cloudflare Pages redirects. PATH ONLY — this file cannot match on hostname,
+# so the buildpays.com.au -> paykicker.com.au move is NOT here. That is a
+# host-level redirect and lives as a Cloudflare rule on the zone.
+#
+# These are the URLs the PayKicker rename actually broke. All three were live,
+# indexed by Google, and started 404ing the moment the files were renamed.
+
+# The explainer. Iframed on the old homepage, listed in the old sitemap, and
+# indexed — so it is reached by real visitors, not just crawlers.
+/buildpays-explainer            /paykicker-explainer            301
+/buildpays-explainer.html       /paykicker-explainer            301
+
+# The worker training walkthrough. Linked from onboarding SMS messages ALREADY
+# SENT to workers' phones — those links cannot be edited after the fact, so this
+# redirect is the only thing keeping them alive.
+/buildpays-worker-training      /paykicker-worker-training      301
+/buildpays-worker-training.html /paykicker-worker-training      301
+
+# Old image filenames. Social platforms and search engines cached these as the
+# og:image and schema.org logo, and re-fetch them long after a rename.
+/buildpays-logo.png             /paykicker-logo.png             301
+/buildpays-logo-dark.png        /paykicker-logo-dark.png        301
+/buildpays-icon.png             /paykicker-icon-512.png         301
