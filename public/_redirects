@@ -7,17 +7,17 @@
 
 # The explainer. Iframed on the old homepage, listed in the old sitemap, and
 # indexed — so it is reached by real visitors, not just crawlers.
-/buildpays-explainer            /paykicker-explainer            301
-/buildpays-explainer.html       /paykicker-explainer            301
+/buildpays-explainer            https://paykicker.com.au/paykicker-explainer            301
+/buildpays-explainer.html       https://paykicker.com.au/paykicker-explainer            301
 
 # The worker training walkthrough. Linked from onboarding SMS messages ALREADY
 # SENT to workers' phones — those links cannot be edited after the fact, so this
 # redirect is the only thing keeping them alive.
-/buildpays-worker-training      /paykicker-worker-training      301
-/buildpays-worker-training.html /paykicker-worker-training      301
+/buildpays-worker-training      https://paykicker.com.au/paykicker-worker-training      301
+/buildpays-worker-training.html https://paykicker.com.au/paykicker-worker-training      301
 
 # Old image filenames. Social platforms and search engines cached these as the
 # og:image and schema.org logo, and re-fetch them long after a rename.
-/buildpays-logo.png             /paykicker-logo.png             301
-/buildpays-logo-dark.png        /paykicker-logo-dark.png        301
-/buildpays-icon.png             /paykicker-icon-512.png         301
+/buildpays-logo.png             https://paykicker.com.au/paykicker-logo.png             301
+/buildpays-logo-dark.png        https://paykicker.com.au/paykicker-logo-dark.png        301
+/buildpays-icon.png             https://paykicker.com.au/paykicker-icon-512.png         301
