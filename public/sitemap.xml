@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Indexable pages only. /paykicker-worker-training carries noindex (it is linked
+     from onboarding SMS, not meant for search) and 404.html likewise, so neither
+     belongs here. Listing a noindex page in a sitemap is a contradiction Search
+     Console reports as an error. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://paykicker.com.au/</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://paykicker.com.au/paykicker-explainer</loc>
-    <lastmod>2026-07-29</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
