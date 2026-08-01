@@ -3,23 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EBA Payroll &amp; Timesheet Software for Subcontractors | BuildPays</title>
+<title>EBA Payroll &amp; Timesheet Software for Subcontractors | PayKicker</title>
 <meta name="description" content="Roster crews, gate inductions and SWMS, sign dayworks dockets on site, and export CFMEU EBA-compliant payroll straight to MYOB. Built in Melbourne for subbies.">
 <meta name="keywords" content="EBA payroll software, construction timesheet app Australia, CFMEU EBA compliance, MYOB timesheet import, construction rostering software, site allowance calculator, formwork payroll Victoria, high risk work licence tracking, construction induction register, Incolink CBUS payroll, enterprise agreement payroll, construction payroll services Melbourne, dayworks docket app, construction docket software, client cost report construction, T&M timesheet countersign, RDO tracking software construction, public holiday pay automation, CFMEU RDO calendar app, dayworks docket software only, modular construction software, docket app without payroll">
-<link rel="icon" type="image/png" href="buildpays-icon.png">
-<link rel="canonical" href="https://www.buildpays.com.au/">
+<link rel="icon" type="image/svg+xml" href="paykicker-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="paykicker-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="paykicker-icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="paykicker-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#12293f">
+<link rel="canonical" href="https://paykicker.com.au/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="BuildPays — run the site, sign the docket, nail the pay run">
+<meta property="og:title" content="PayKicker — run the site, sign the docket, nail the pay run">
 <meta property="og:description" content="Roster the crew, gate the SWMS, sign the docket before knock-off, and export a perfect MYOB pay file — one platform built by a CFMEU EBA subcontractor for subcontractors.">
-<meta property="og:url" content="https://www.buildpays.com.au/">
+<meta property="og:url" content="https://paykicker.com.au/">
 <meta property="og:locale" content="en_AU">
-<meta property="og:site_name" content="BuildPays">
-<meta property="og:image" content="https://www.buildpays.com.au/buildpays-logo.png">
-<meta property="og:image:alt" content="BuildPays — site operations and EBA payroll for construction subcontractors">
+<meta property="og:site_name" content="PayKicker">
+<meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PayKicker — site operations and EBA payroll for construction subcontractors">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="BuildPays — run the site, sign the docket, nail the pay run">
+<meta name="twitter:title" content="PayKicker — run the site, sign the docket, nail the pay run">
 <meta name="twitter:description" content="Roster the crew, gate the SWMS, sign the docket before knock-off, and export a perfect MYOB pay file — one platform built by a CFMEU EBA subcontractor for subcontractors.">
-<meta name="twitter:image" content="https://www.buildpays.com.au/buildpays-logo.png">
+<meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <meta name="robots" content="index, follow">
 
 <!-- Fonts: preconnect + stylesheet link. Previously an @import inside <style>, which forced
@@ -40,15 +47,15 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "BuildPays",
-  "url": "https://www.buildpays.com.au/",
+  "name": "PayKicker",
+  "url": "https://paykicker.com.au/",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web, iOS, Android (PWA)",
   "description": "Site operations platform for Australian construction subcontractors: rostering with induction and SWMS gating, dayworks dockets with e-signatures and client cost reports, onboarding and ticket tracking, and CFMEU EBA-compliant payroll exports to MYOB. Modular by design.",
   "offers": { "@type": "Offer", "priceCurrency": "AUD", "description": "Full system priced per active employee each month with volume discounts; individual modules (dayworks dockets, rostering, onboarding) available at a flat monthly fee. Card or direct debit. Contact for pricing." },
   "areaServed": "AU-VIC",
   "audience": { "@type": "BusinessAudience", "name": "Construction subcontractors with enterprise agreements" },
-  "publisher": { "@id": "https://www.buildpays.com.au/#organization" }
+  "publisher": { "@id": "https://paykicker.com.au/#organization" }
 }
 </script>
 <script type="application/ld+json">
@@ -56,15 +63,11 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "What is EBA payroll software?", "acceptedAnswer": { "@type": "Answer", "text": "EBA payroll software applies the pay rules of your enterprise agreement — overtime rates, RDO accruals, site allowances, fares and travel, inclement weather provisions — automatically, so timesheets convert into a correct pay file without manual interpretation of the agreement." } },
-    { "@type": "Question", "name": "Does it work with MYOB?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The export is a units-only timesheet file matched to your existing MYOB payroll categories, employee card IDs and job codes. MYOB stays the source of truth for all pay rates — we send who, when, which pay item, how many units, and which job." } },
-    { "@type": "Question", "name": "Which enterprise agreements are supported?", "acceptedAnswer": { "@type": "Answer", "text": "The rules engine is built on the CFMEU Victoria construction pattern: flat double-time overtime, weekend minimum payments, 36-hour week RDO accruals, public holidays at 250%, casual loadings as percentage-point additions, per-project site allowances, daily fares and travel, and inclement weather banks. We configure it to your specific FWC-approved agreement during onboarding." } },
-    { "@type": "Question", "name": "Is there a free trial?", "acceptedAnswer": { "@type": "Answer", "text": "No self-serve trial. Payroll deserves a proper start: book a demo with your enterprise agreement and a recent pay run, and if BuildPays fits we set your company up with a free pilot period — running alongside your existing process until the MYOB export matches it to the cent. You go live when the numbers prove it, not before." } },
-    { "@type": "Question", "name": "How is it priced?", "acceptedAnswer": { "@type": "Answer", "text": "You pay per active employee on your books each month — not per seat, not per timesheet — with volume discounts as your workforce grows. Employees marked as left are never billed. Contact us for a quote and a demo." } },
-    { "@type": "Question", "name": "Can I buy just the dockets module without payroll?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The platform is modular: dayworks dockets and client cost reports are available on their own at a flat monthly fee, with rostering, onboarding and the full MYOB payroll system available as additional modules. The full system is billed per employee included in payroll exports each month, with volume discounts." } },
-    { "@type": "Question", "name": "How are public holidays and RDOs paid?", "acceptedAnswer": { "@type": "Answer", "text": "Public holidays and scheduled RDOs are identified by date lookup against the Victorian gazetted calendar and the industry RDO calendar. Hours worked on those days classify at penalty rates automatically, and unworked holidays and RDOs taken generate their entitlement pay lines at export — no timesheet required from the employee." } },
-    { "@type": "Question", "name": "Can it create client dayworks dockets and cost reports?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Workers raise dayworks dockets with hours calculated from their timesheets, client supervisors countersign on-screen or via a secure link, and businesses export Excel cost reports per project and date range against their subcontract rate schedule — supporting all-inclusive rates or base rates plus travel and site allowances." } },
-    { "@type": "Question", "name": "Can it track high risk work licences and site inductions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Workers photograph their tickets during onboarding, AI reads the licence number and dates, expiries are checked against WorkSafe Victoria validity periods, and the daily roster physically blocks allocating anyone to a site they aren't inducted for." } }
+    { "@type": "Question", "name": "Is there a free trial?", "acceptedAnswer": { "@type": "Answer", "text": "No self-serve trial. Book a demo with your enterprise agreement and a recent pay run — if PayKicker fits, we set you up with a free pilot period alongside your existing process until the MYOB export matches to the cent." } },
+    { "@type": "Question", "name": "Does it replace MYOB?", "acceptedAnswer": { "@type": "Answer", "text": "No — it feeds it. MYOB stays your system of record and holds every pay rate. We handle everything before the pay run: rostering, EBA-classified timesheets, approvals, and an import file matched to your payroll categories and job codes." } },
+    { "@type": "Question", "name": "Which enterprise agreements do you support?", "acceptedAnswer": { "@type": "Answer", "text": "The engine is built on the CFMEU Victoria construction and general pattern used across formwork, structure and civil agreements. During setup we configure it to your specific agreement." } },
+    { "@type": "Question", "name": "How do workers use it?", "acceptedAnswer": { "@type": "Answer", "text": "A web app they add to their phone's home screen — no app store, no passwords. They see their roster, submit a timesheet in under 30 seconds, and get a text when tomorrow's site is confirmed." } },
+    { "@type": "Question", "name": "Can we take just the dockets, without payroll?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — the platform is modular. Dayworks dockets and cost reports on their own at a flat monthly fee, with rostering, onboarding and full payroll available as you need them." } }
   ]
 }
 </script>
@@ -72,13 +75,22 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://www.buildpays.com.au/#organization",
-  "name": "BuildPays",
-  "url": "https://www.buildpays.com.au/",
-  "logo": "https://www.buildpays.com.au/buildpays-logo.png",
-  "description": "Site operations and EBA payroll platform for Australian construction subcontractors, built in Melbourne.",
-  "email": "operations@buildpays.com.au",
+  "@id": "https://paykicker.com.au/#organization",
+  "name": "PayKicker",
+  "legalName": "PAYKICKER PTY LTD",
+  "foundingDate": "2026",
+  "url": "https://paykicker.com.au/",
+  "logo": "https://paykicker.com.au/paykicker-logo.png",
+  "description": "Site operations and EBA payroll platform for Australian construction subcontractors, built in Melbourne. PayKicker is the trading name of PAYKICKER PTY LTD, an active Australian company.",
+  "email": "operations@paykicker.com.au",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Melbourne",
+    "addressRegion": "VIC",
+    "addressCountry": "AU"
+  },
   "areaServed": { "@type": "AdministrativeArea", "name": "Victoria, Australia" },
+  "TODO-ABN": "REPLACE THIS WHOLE LINE with:  \"identifier\": { \"@type\": \"PropertyValue\", \"propertyID\": \"ABN\", \"value\": \"NN NNN NNN NNN\" },   — deliberately not a placeholder number, because a fake ABN in structured data is worse than none.",
   "knowsAbout": [
     "CFMEU Victoria construction enterprise agreements",
     "EBA payroll",
@@ -90,7 +102,7 @@
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "sales",
-    "email": "operations@buildpays.com.au",
+    "email": "operations@paykicker.com.au",
     "areaServed": "AU",
     "availableLanguage": "en"
   }
@@ -100,11 +112,11 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://www.buildpays.com.au/#website",
-  "url": "https://www.buildpays.com.au/",
-  "name": "BuildPays",
+  "@id": "https://paykicker.com.au/#website",
+  "url": "https://paykicker.com.au/",
+  "name": "PayKicker",
   "inLanguage": "en-AU",
-  "publisher": { "@id": "https://www.buildpays.com.au/#organization" }
+  "publisher": { "@id": "https://paykicker.com.au/#organization" }
 }
 </script>
 <style>
@@ -187,11 +199,14 @@
   summary{font-family:'Barlow Condensed';font-weight:600;font-size:17px;color:var(--navy);cursor:pointer}
   details p{margin-top:8px;color:var(--mute);font-size:13.5px}
   /* footer */
-  footer{background:var(--navy);color:#8fa9c6;padding:52px 0 40px;font-size:14px}
-  footer h3{font-family:'Barlow Condensed';color:#fff;font-size:17px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
-  footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px}
+  footer{background:var(--navy);color:#8fa9c6;padding:30px 0 20px;font-size:13.5px;line-height:1.5}
+  footer h3{font-family:'Barlow Condensed';color:#fff;font-size:14px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  /* Columns sized to their content rather than 2fr/1fr/1fr — the first column is
+     one sentence now, so the old split left a wide empty gutter under it. */
+  footer .wrap{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:14px 40px;align-items:start}
+  footer p{margin:0}
   footer a{color:#c3d4e8;text-decoration:none}
-  footer .legal{grid-column:1/-1;border-top:1px solid #2b4a6e;margin-top:26px;padding-top:18px;font-size:12.5px}
+  footer .legal{grid-column:1/-1;border-top:1px solid #2b4a6e;margin-top:14px;padding-top:12px}
   @media(max-width:900px){
     .hero .wrap,.g3,.g2,.steps,.clauses,.price-card,footer .wrap{grid-template-columns:1fr}
     .hero{padding:52px 0 60px}
@@ -226,8 +241,8 @@
     #contact form{padding:16px 14px;border-radius:12px}
     #contact form > div{grid-template-columns:1fr !important}
     #contact input,#contact select,#contact textarea{font-size:16px}
-    footer{padding:34px 0}
-    footer .wrap{gap:22px}
+    footer{padding:26px 0 18px}
+    footer .wrap{gap:16px}
   }
 </style>
 </head>
@@ -235,7 +250,7 @@
 
 <nav aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="#top" style="display:inline-flex;align-items:baseline;gap:3px">Build<svg viewBox="0 0 104 102" style="width:.78em;height:.78em;align-self:center;margin:0 1px" aria-hidden="true"><g><clipPath id="hclip"><rect x="0" y="0" width="104" height="86"/></clipPath><g clip-path="url(#hclip)"><ellipse cx="52" cy="96" rx="40" ry="82" fill="#f25c1f"/><ellipse cx="52" cy="94" rx="8" ry="86" fill="#fff"/></g><rect x="0" y="86" width="104" height="16" rx="8" fill="#fff"/></g></svg><span style="color:#f25c1f;display:inline-block;transform:skewX(-12deg)">Pays</span></a>
+    <a class="logo" href="#top" style="border-left:0;padding-left:0;display:inline-flex;align-items:center"><svg viewBox="-8 -109.14 794.87 118.29" height="34" width="228" role="img" aria-label="PayKicker" style="display:block"><path fill="#12293f" d="M15 -100H85A15 15 0 0 1 100 -85V-15A15 15 0 0 1 85 0H15A15 15 0 0 1 0 -15V-85A15 15 0 0 1 15 -100Z"/><path fill="#f25c1f" d="M61.52 -81.68L32.72 -45.68L47.12 -45.68L38.48 -18.32L67.28 -54.32L52.88 -54.32Z"/><path fill="#12293f" d="M167.43 -100.14Q176 -100.14 182.64 -96.29Q189.29 -92.43 192.93 -85.43Q196.57 -78.43 196.57 -69.43L196.57 -69.43Q196.57 -60.57 192.93 -53.79Q189.29 -47 182.64 -43.29Q176 -39.57 167.43 -39.57L167.43 -39.57L152 -39.57Q151.29 -39.57 151.29 -38.86L151.29 -38.86L151.29 -1.71Q151.29 -1 150.79 -0.5Q150.29 0 149.57 0L149.57 0L132.86 0Q132.14 0 131.64 -0.5Q131.14 -1 131.14 -1.71L131.14 -1.71L131.14 -98.43Q131.14 -99.14 131.64 -99.64Q132.14 -100.14 132.86 -100.14L132.86 -100.14L167.43 -100.14M164.14 -55.57Q169.71 -55.57 173.07 -59.21Q176.43 -62.86 176.43 -69L176.43 -69Q176.43 -75.29 173.07 -79Q169.71 -82.71 164.14 -82.71L164.14 -82.71L152 -82.71Q151.29 -82.71 151.29 -82L151.29 -82L151.29 -56.29Q151.29 -55.57 152 -55.57L152 -55.57L164.14 -55.57M253.86 0Q252.29 0 251.86 -1.43L251.86 -1.43L248.57 -15.43Q248.43 -16 247.86 -16L247.86 -16L221.14 -16Q220.57 -16 220.43 -15.43L220.43 -15.43L217.14 -1.43Q216.71 0 215.29 0L215.29 0L198 0Q196.14 0 196.57 -1.86L196.57 -1.86L222.29 -98.57Q222.71 -100 224.29 -100L224.29 -100L245 -100Q246.57 -100 247 -98.57L247 -98.57L272.71 -1.86L272.86 -1.29Q272.86 0 271.29 0L271.29 0L253.86 0M224.29 -32.43Q224.14 -32 224.43 -31.79Q224.71 -31.57 225 -31.57L225 -31.57L243.86 -31.57Q244.14 -31.57 244.43 -31.79Q244.71 -32 244.57 -32.43L244.57 -32.43L234.71 -73.86Q234.57 -74.43 234.29 -74.43Q234 -74.43 233.86 -73.86L233.86 -73.86L224.29 -32.43M296.14 -0.14Q295.43 -0.14 294.93 -0.64Q294.43 -1.14 294.43 -1.86L294.43 -1.86L294.43 -38.43L294.29 -39.29L269.57 -98Q269.43 -98.29 269.43 -98.86L269.43 -98.86Q269.43 -100 270.86 -100L270.86 -100L288.86 -100Q290.43 -100 290.86 -98.57L290.86 -98.57L304.14 -62.43Q304.29 -62 304.57 -62Q304.86 -62 305 -62.43L305 -62.43L318.29 -98.57Q318.71 -100 320.29 -100L320.29 -100L338.29 -100Q339.29 -100 339.57 -99.43Q339.86 -98.86 339.57 -98L339.57 -98L314.71 -39.29L314.57 -38.43L314.57 -1.86Q314.57 -1.14 314.07 -0.64Q313.57 -0.14 312.86 -0.14L312.86 -0.14L296.14 -0.14"/><path fill="#f25c1f" d="M355.86 0Q355.14 0 354.74 -0.5Q354.34 -1 354.48 -1.71L354.48 -1.71L373.25 -98.29Q373.39 -99 373.98 -99.5Q374.58 -100 375.3 -100L375.3 -100L392.01 -100Q392.72 -100 393.13 -99.5Q393.53 -99 393.39 -98.29L393.39 -98.29L386 -60.29Q385.92 -59.86 386.25 -59.71Q386.58 -59.57 386.81 -60L386.81 -60L419.93 -98.86Q420.87 -100 422.15 -100L422.15 -100L440.58 -100Q441.58 -100 441.83 -99.43Q442.07 -98.86 441.33 -98L441.33 -98L406.94 -57Q406.71 -56.57 406.74 -56L406.74 -56L424.25 -2Q424.42 -1.43 424.37 -1.14L424.37 -1.14Q424.14 0 422.57 0L422.57 0L404.29 0Q403 0 402.54 -1.29L402.54 -1.29L389.86 -40.43Q389.8 -40.86 389.51 -40.86Q389.23 -40.86 388.86 -40.43L388.86 -40.43L380.62 -31.14Q380.23 -30.57 380.17 -30.29L380.17 -30.29L374.62 -1.71Q374.48 -1 373.88 -0.5Q373.29 0 372.57 0L372.57 0L355.86 0M435.57 0Q434.86 0 434.45 -0.5Q434.05 -1 434.19 -1.71L434.19 -1.71L452.96 -98.29Q453.1 -99 453.7 -99.5Q454.3 -100 455.01 -100L455.01 -100L471.72 -100Q472.44 -100 472.84 -99.5Q473.24 -99 473.1 -98.29L473.1 -98.29L454.33 -1.71Q454.19 -1 453.6 -0.5Q453 0 452.29 0L452.29 0L435.57 0M499.78 1.14Q490.06 1.14 483.38 -2.71Q476.71 -6.57 474.02 -13.71Q471.34 -20.86 473.17 -30.29L473.17 -30.29L480.89 -70Q482.7 -79.29 488.14 -86.36Q493.59 -93.43 501.77 -97.29Q509.95 -101.14 519.66 -101.14L519.66 -101.14Q529.37 -101.14 536.07 -97.36Q542.76 -93.57 545.5 -86.71Q548.24 -79.86 546.46 -70.71L546.46 -70.71L546.32 -70Q546.18 -69.29 545.57 -68.71Q544.96 -68.14 544.25 -68.14L544.25 -68.14L527.39 -67.43Q525.68 -67.43 525.98 -69L525.98 -69L526.34 -70.86Q527.48 -76.71 524.75 -80.29Q522.01 -83.86 516.3 -83.86L516.3 -83.86Q510.59 -83.86 506.46 -80.29Q502.34 -76.71 501.2 -70.86L501.2 -70.86L493.07 -29Q491.93 -23.14 494.68 -19.64Q497.42 -16.14 503.14 -16.14L503.14 -16.14Q508.85 -16.14 512.96 -19.64Q517.07 -23.14 518.21 -29L518.21 -29L518.57 -30.86Q518.87 -32.43 520.59 -32.43L520.59 -32.43L537.16 -31.71Q537.88 -31.71 538.28 -31.21Q538.68 -30.71 538.55 -30L538.55 -30L538.46 -29.57Q536.69 -20.43 531.25 -13.43Q525.82 -6.43 517.66 -2.64Q509.49 1.14 499.78 1.14L499.78 1.14M547.29 0Q546.57 0 546.17 -0.5Q545.77 -1 545.9 -1.71L545.9 -1.71L564.68 -98.29Q564.82 -99 565.41 -99.5Q566.01 -100 566.72 -100L566.72 -100L583.44 -100Q584.15 -100 584.56 -99.5Q584.96 -99 584.82 -98.29L584.82 -98.29L577.43 -60.29Q577.35 -59.86 577.68 -59.71Q578.01 -59.57 578.23 -60L578.23 -60L611.36 -98.86Q612.3 -100 613.58 -100L613.58 -100L632.01 -100Q633.01 -100 633.26 -99.43Q633.5 -98.86 632.76 -98L632.76 -98L598.37 -57Q598.14 -56.57 598.17 -56L598.17 -56L615.67 -2Q615.85 -1.43 615.79 -1.14L615.79 -1.14Q615.57 0 614 0L614 0L595.71 0Q594.43 0 593.96 -1.29L593.96 -1.29L581.29 -40.43Q581.23 -40.86 580.94 -40.86Q580.66 -40.86 580.29 -40.43L580.29 -40.43L572.05 -31.14Q571.66 -30.57 571.6 -30.29L571.6 -30.29L566.05 -1.71Q565.91 -1 565.31 -0.5Q564.71 0 564 0L564 0L547.29 0M702.55 -84.43Q702.42 -83.71 701.82 -83.21Q701.22 -82.71 700.51 -82.71L700.51 -82.71L662.22 -82.71Q661.51 -82.71 661.37 -82L661.37 -82L657.04 -59.71Q656.9 -59 657.61 -59L657.61 -59L681.47 -59Q682.18 -59 682.59 -58.5Q682.99 -58 682.85 -57.29L682.85 -57.29L680.16 -43.43Q680.02 -42.71 679.42 -42.21Q678.82 -41.71 678.11 -41.71L678.11 -41.71L654.25 -41.71Q653.54 -41.71 653.4 -41L653.4 -41L648.93 -18Q648.79 -17.29 649.5 -17.29L649.5 -17.29L687.79 -17.29Q688.5 -17.29 688.91 -16.79Q689.31 -16.29 689.17 -15.57L689.17 -15.57L686.48 -1.71Q686.34 -1 685.74 -0.5Q685.14 0 684.43 0L684.43 0L627 0Q626.29 0 625.88 -0.5Q625.48 -1 625.62 -1.71L625.62 -1.71L644.39 -98.29Q644.53 -99 645.13 -99.5Q645.72 -100 646.44 -100L646.44 -100L703.87 -100Q704.58 -100 704.98 -99.5Q705.39 -99 705.25 -98.29L705.25 -98.29L702.55 -84.43M745.29 0Q743.71 0 743.56 -1.43L743.56 -1.43L736.8 -40.86Q736.62 -41.43 736.2 -41.43L736.2 -41.43L727.2 -41.43Q726.48 -41.43 726.34 -40.71L726.34 -40.71L718.76 -1.71Q718.62 -1 718.03 -0.5Q717.43 0 716.71 0L716.71 0L700 0Q699.29 0 698.88 -0.5Q698.48 -1 698.62 -1.71L698.62 -1.71L717.39 -98.29Q717.53 -99 718.13 -99.5Q718.72 -100 719.44 -100L719.44 -100L754.3 -100Q762.72 -100 768.56 -96.21Q774.39 -92.43 776.63 -85.57Q778.87 -78.71 777.15 -69.86L777.15 -69.86Q775.37 -60.71 770.07 -54Q764.76 -47.29 756.84 -44L756.84 -44Q756.07 -43.71 756.22 -43L756.22 -43L764.53 -2Q764.62 -1.71 764.54 -1.29L764.54 -1.29Q764.29 0 762.71 0L762.71 0L745.29 0M735.22 -82.71Q734.51 -82.71 734.37 -82L734.37 -82L729.62 -57.57Q729.48 -56.86 730.19 -56.86L730.19 -56.86L742.62 -56.86Q747.91 -56.86 751.88 -60.36Q755.84 -63.86 756.98 -69.71L756.98 -69.71Q758.15 -75.71 755.54 -79.21Q752.94 -82.71 747.65 -82.71L747.65 -82.71L735.22 -82.71"/></svg></a>
     <span class="spacer"></span>
     <a class="nl" href="#features">Features</a>
     <a class="nl" href="#compliance">EBA rules</a>
@@ -298,7 +313,7 @@
   <div class="wrap">
     <span class="eyebrow">The payroll pillar</span>
     <h2>The agreement is 186 pages. Your payroll shouldn't need all of them open.</h2>
-    <p class="lede">A CFMEU Victoria construction EBA sets flat double-time overtime, weekend minimum payments, RDO accruals on a 36-hour week, per-project site allowances, daily fares and travel, casual loadings and inclement weather banks. Getting one of them wrong in a spreadsheet means back-pay, disputes, and audits. BuildPays encodes the rules once, so every timesheet comes out right.</p>
+    <p class="lede">A CFMEU Victoria construction EBA sets flat double-time overtime, weekend minimum payments, RDO accruals on a 36-hour week, per-project site allowances, daily fares and travel, casual loadings and inclement weather banks. Getting one of them wrong in a spreadsheet means back-pay, disputes, and audits. PayKicker encodes the rules once, so every timesheet comes out right.</p>
   </div>
 </section>
 
@@ -321,15 +336,18 @@
 </section>
 
   <!-- ============ HOW IT WORKS ============ -->
-  <section id="how" style="padding:70px 20px;background:#0f2438">
+  <section id="how" style="padding:52px 20px;background:#0f2438">
     <div style="max-width:1000px;margin:0 auto;text-align:center">
       <div class="eyebrow" style="color:#f25c1f">HOW IT WORKS</div>
       <h2 style="color:#fff">One week on site, start to finish</h2>
       <p style="color:#9cc4ee;max-width:620px;margin:10px auto 26px">Sixty seconds, seven scenes: roster to pay run — the 6am board, the rules engine, Cup Day paying itself, the docket signed before knock-off, and the one-click MYOB file.</p>
-      <div style="position:relative;width:100%;max-width:960px;margin:0 auto;aspect-ratio:3/2;border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5)">
-        <iframe src="/buildpays-explainer" title="How BuildPays works — animated overview" style="position:absolute;inset:0;width:100%;height:100%;border:0" loading="lazy"></iframe>
+      <!-- 16/9 at 840px, not 3/2 at 960 — that was 640px tall and pushed the rest
+           of the page below the fold. The explainer is fully fluid (its .stage is
+           100%/100% and its type uses clamp), so it reflows rather than crops. -->
+      <div style="position:relative;width:100%;max-width:760px;margin:0 auto;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5)">
+        <iframe src="/paykicker-explainer" title="How PayKicker works — animated overview" style="position:absolute;inset:0;width:100%;height:100%;border:0" loading="lazy"></iframe>
       </div>
-      <p style="color:#5c7089;font-size:13px;margin-top:12px"><a href="/buildpays-explainer" target="_blank" rel="noopener" style="color:#9cc4ee">Open full-screen ↗</a></p>
+      <p style="color:#5c7089;font-size:13px;margin-top:12px"><a href="/paykicker-explainer" target="_blank" rel="noopener" style="color:#9cc4ee">Open full-screen ↗</a></p>
     </div>
   </section>
 
@@ -380,36 +398,17 @@
   </div>
 </section>
 
-<section class="alt" id="faq">
-  <div class="wrap">
-    <span class="eyebrow">FAQ</span>
-    <h2>Questions subcontractors ask us.</h2>
-    <details>
-      <summary>Is there a free trial?</summary>
-      <p>No self-serve trial. Payroll deserves a proper start: book a demo with your enterprise agreement and a recent pay run. If BuildPays fits, we set your company up with a <b>free pilot period</b> — running alongside your existing process until the MYOB export matches it to the cent. You go live when the numbers prove it, not before.</p>
-    </details>
-    <details><summary>Does it replace MYOB?</summary><p>No — it feeds it. MYOB stays your payroll system of record and holds every pay rate. We handle everything before the pay run: rostering, EBA-classified timesheets, approvals, and a units-only import file matched to your payroll categories and job codes.</p></details>
-    <details><summary>Which enterprise agreements do you support?</summary><p>The engine is built on the CFMEU Victoria construction &amp; general pattern used across formwork, structure and civil subcontractor agreements approved by the Fair Work Commission. During setup we configure it to your specific agreement — classifications, allowances and site allowance tiers.</p></details>
-    <details><summary>How do workers use it?</summary><p>It's a web app they add to their phone's home screen — no app store, no passwords to forget. They see their roster, submit a timesheet in under 30 seconds, and get an SMS when tomorrow's site is confirmed.</p></details>
-    <details><summary>What about site inductions and high risk work licences?</summary><p>Both are first-class records. The roster physically blocks allocating a worker to a site they aren't inducted for, and tickets are validated against WorkSafe Victoria validity periods — high risk work licences renew every five years, first aid every three — with expiry warnings before they bite.</p></details>
-    <details><summary>Can we get just the dockets, without the payroll system?</summary><p>Yes — the platform is modular. Take dayworks dockets and cost reports on their own at a flat monthly fee, add rostering or onboarding as you need them, or run the full system billed per employee paid. Timesheets and approvals are included in every plan, and dockets built from timesheets carry verified hours — a cross-check that docket-only plans can add any time by upgrading.</p></details>
-    <details><summary>How are public holidays and RDOs handled?</summary><p>By date, not by worker choice. The app holds the gazetted Victorian public holiday calendar and your industry RDO calendar; any hours submitted on those dates classify at penalty rates automatically, and employees who correctly don't work them have their entitlement lines generated at export time — public holiday pay to the right job code, RDOs taken with fares and site allowance to the project where they accrued.</p></details>
-    <details><summary>How do dayworks dockets and client charging work?</summary><p>Each project carries its own rate schedule — all-inclusive normal-time and overtime rates, or base rates with separate travel and site allowance lines. Workers or nominated leading hands raise dockets with hours computed from times (never typed), the client supervisor countersigns on-screen or via a secure emailed link, and admins export an Excel cost report per project and date range. Optionally, a signature from a verified client email domain can auto-approve the matching timesheets on day-labour jobs.</p></details>
-    <details><summary>Is our data safe?</summary><p>Each company is an isolated tenant with role-based access: workers see only themselves, site managers see their crews, and only your admins see the company. You can export your data at any time.</p></details>
-  </div>
-</section>
-
-<section id="contact">
+<section class="alt" id="contact">
   <div class="wrap" style="text-align:center">
     <span class="eyebrow">Get started</span>
     <h2>See your own EBA running in it.</h2>
-    <p class="lede" style="margin:0 auto 26px">Bring your enterprise agreement and a recent pay run to a 30-minute demo — we'll show your rules, your rates and your MYOB file. And there's no self-serve trial: if BuildPays fits your company, we set you up with a <b>free pilot period</b> and run it alongside your current process until the MYOB file matches to the cent.</p>
+    <p class="lede" style="margin:0 auto 26px">Bring your enterprise agreement and a recent pay run to a 30-minute demo — we'll show your rules, your rates and your MYOB file. And there's no self-serve trial: if PayKicker fits your company, we set you up with a <b>free pilot period</b> and run it alongside your current process until the MYOB file matches to the cent.</p>
 
     <form id="demoForm" action="https://api.web3forms.com/submit" method="POST"
           style="max-width:520px;margin:0 auto;text-align:left;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px">
       <input type="hidden" name="access_key" value="b2f175fe-283f-401f-b771-f5748d4c4f56">
-      <input type="hidden" name="subject" value="New BuildPays demo request">
-      <input type="hidden" name="from_name" value="BuildPays website">
+      <input type="hidden" name="subject" value="New PayKicker demo request">
+      <input type="hidden" name="from_name" value="PayKicker website">
       <input type="checkbox" name="botcheck" class="hidden" style="display:none">
       <!-- Attribution — filled in by JS at submit time so the enquiry email says where the lead came from. -->
       <input type="hidden" name="lead_source" id="f_lead_source">
@@ -452,25 +451,49 @@
       <p style="font-size:12px;color:var(--mute);margin:10px 0 0;text-align:center">We'll reply within one business day. Your details stay with us — no lists, no spam.</p>
     </form>
 
-    <p style="margin-top:18px;font-size:14px;color:var(--mute)">Prefer email? <a href="mailto:operations@buildpays.com.au" style="color:var(--hiviz);font-weight:700">operations@buildpays.com.au</a></p>
+    <p style="margin-top:18px;font-size:14px;color:var(--mute)">Prefer email? <a href="mailto:operations@paykicker.com.au" style="color:var(--hiviz);font-weight:700">operations@paykicker.com.au</a></p>
   </div>
 </section>
+
+<section id="faq">
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2>Questions subcontractors ask us.</h2>
+    <details>
+      <summary>Is there a free trial?</summary>
+      <p>No self-serve trial. Book a demo with your enterprise agreement and a recent pay run — if PayKicker fits, we set you up with a <b>free pilot period</b> alongside your existing process until the MYOB export matches to the cent.</p>
+    </details>
+    <details><summary>Does it replace MYOB?</summary><p>No — it feeds it. MYOB stays your system of record and holds every pay rate. We handle everything before the pay run: rostering, EBA-classified timesheets, approvals, and an import file matched to your payroll categories and job codes.</p></details>
+    <details><summary>Which enterprise agreements do you support?</summary><p>The engine is built on the CFMEU Victoria construction &amp; general pattern used across formwork, structure and civil agreements. During setup we configure it to your specific agreement.</p></details>
+    <details><summary>How do workers use it?</summary><p>A web app they add to their phone's home screen — no app store, no passwords. They see their roster, submit a timesheet in under 30 seconds, and get a text when tomorrow's site is confirmed.</p></details>
+    <details><summary>Can we take just the dockets, without payroll?</summary><p>Yes — the platform is modular. Dayworks dockets and cost reports on their own at a flat monthly fee, with rostering, onboarding and full payroll available as you need them.</p></details>
+  </div>
+</section>
+
+
 
 <footer>
   <div class="wrap">
     <div>
-      <h3>BuildPays</h3>
-      <p>EBA payroll assistance, construction timesheet software and site rostering for Australian subcontractors on CFMEU enterprise agreements. MYOB timesheet import, site allowance automation, induction registers and high risk work licence tracking — built in Melbourne for Victorian formwork, concrete and civil crews.</p>
+      <h3>PayKicker</h3>
+      <p>Rostering, dayworks dockets and EBA payroll for Australian construction subcontractors. Built in Melbourne.</p>
     </div>
     <div>
       <h3>Product</h3>
-      <p><a href="#features">Rostering</a><br><a href="#features">Timesheets</a><br><a href="#features">Inductions &amp; tickets</a><br><a href="#features">MYOB export</a><br><a href="#how" style="color:inherit;text-decoration:none;margin-right:18px">How it works</a><a href="#pricing">Pricing</a></p>
+      <p><a href="#features">Rostering</a><br><a href="#features">Timesheets</a><br><a href="#features">Inductions &amp; tickets</a><br><a href="#features">MYOB export</a><br><a href="#pricing">Pricing</a></p>
     </div>
     <div>
       <h3>Contact</h3>
-      <p><a href="mailto:operations@buildpays.com.au">operations@buildpays.com.au</a><br>Melbourne, Victoria</p>
+      <p><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a><br>Melbourne, Victoria</p>
     </div>
-    <div class="legal">BuildPays is payroll software; it does not provide legal or industrial relations advice. Configure and verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.</div>
+    <!-- TODO-ABN: replace the placeholder below with the real number, e.g.
+         "PAYKICKER PTY LTD · ABN 12 345 678 901". The Organization schema in
+         <head> carries legalName, foundingDate and address already — that is
+         the machine-readable signal search engines actually read. -->
+    <div class="legal" style="font-size:12px;line-height:1.5;opacity:.75">
+      PAYKICKER PTY LTD · ABN to be confirmed<br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+    </div>
   </div>
 </footer>
 
@@ -589,7 +612,7 @@
     .catch(function(){
       b.disabled=false; b.textContent='Book my demo';
       m.style.color='#c62828';
-      m.innerHTML="Something went wrong. Email us directly at <a href='mailto:operations@buildpays.com.au' style='color:#f25c1f'>operations@buildpays.com.au</a>.";
+      m.innerHTML="Something went wrong. Email us directly at <a href='mailto:operations@paykicker.com.au' style='color:#f25c1f'>operations@paykicker.com.au</a>.";
     });
   });
 })();

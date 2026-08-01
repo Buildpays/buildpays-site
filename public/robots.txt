@@ -1,18 +1,51 @@
-# BuildPays — https://www.buildpays.com.au/
+# PayKicker — https://paykicker.com.au/
 #
-# Deliberately minimal. Cloudflare's managed robots.txt (AI Crawl Control, enabled on the
-# buildpays.com.au zone) is PREPENDED to this file at the edge, and it already supplies:
-#   User-agent: *  /  Content-Signal: search=yes,ai-train=no,use=reference  /  Allow: /
-#   plus Disallow rules for Amazonbot, Applebot-Extended, Bytespider, CCBot, ClaudeBot,
-#   CloudflareBrowserRenderingCrawler, Google-Extended, GPTBot and meta-externalagent.
+# SELF-SUFFICIENT ON PURPOSE. The BuildPays version carried only the Sitemap line
+# and relied on Cloudflare's managed robots.txt (AI Crawl Control) being PREPENDED
+# at the edge to supply the AI-crawler blocks. That was a per-zone setting on the
+# buildpays.com.au zone — the new paykicker.com.au zone does not have it, so the
+# blocks would have silently disappeared at the rebrand. They are written out here
+# so this file is correct whether or not the zone feature is ever switched on.
 #
-# Repeating those here just duplicates every block in the served file, so this file carries
-# only what Cloudflare does not: the sitemap location.
+# If AI Crawl Control IS enabled on this zone later, the served file becomes the
+# merge of both and some directives appear twice. A duplicated Disallow is
+# harmless; a missing one is not.
 #
-# Two things to know:
-#   - Check the served output (curl https://www.buildpays.com.au/robots.txt) after changing
-#     this, not just the repo copy — what ships is the merge of both.
-#   - /buildpays-worker-training is intentionally NOT disallowed. It carries a noindex meta
-#     tag, and a crawler must be able to fetch the page to see that tag.
+# Check the SERVED output after changing this, not just the repo copy:
+#   curl https://paykicker.com.au/robots.txt
+#
+# /paykicker-worker-training is intentionally NOT disallowed. It carries a noindex
+# meta tag, and a crawler must be able to fetch the page to see that tag.
 
-Sitemap: https://www.buildpays.com.au/sitemap.xml
+User-agent: *
+Content-Signal: search=yes,ai-train=no,use=reference
+Allow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CloudflareBrowserRenderingCrawler
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+Sitemap: https://paykicker.com.au/sitemap.xml

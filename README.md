@@ -1,11 +1,11 @@
-# buildpays-site
-Marketing site for BuildPays (buildpays.com.au). Static HTML — no build step.
+# paykicker-site
+Marketing site for PayKicker (paykicker.com.au). Static HTML — no build step.
 
 Everything served lives in `public/`.
 
 - `index.html` — marketing site
-- `buildpays-explainer.html` — animated "one week on site" (embedded via iframe on the homepage)
-- `buildpays-worker-training.html` — worker training walkthrough (link from onboarding SMS); `noindex`
+- `paykicker-explainer.html` — animated "one week on site" (embedded via iframe on the homepage)
+- `paykicker-worker-training.html` — worker training walkthrough (link from onboarding SMS); `noindex`
 - `404.html` — not-found page; `noindex`
 - `robots.txt` — allows search engines, blocks AI training crawlers, points at the sitemap
 - `sitemap.xml` — indexable pages only. **Add new pages here when you add them.**
@@ -24,11 +24,17 @@ Pushing to `main` deploys production. Pushing any other branch gets a preview UR
 - Anything added that loads an external script or calls an external API must be added to the
   CSP in `_headers`, or the browser will silently block it.
 
-## Redirects — read before adding one
-There is **no `_redirects` file**, and the bare-domain → www redirect this README used to claim
-was never implemented there. Cloudflare Pages `_redirects` matches on **path only** — it cannot
-match on hostname, so `/* https://www.buildpays.com.au/:splat 301` would also match requests
-already on www and redirect them to themselves forever.
+## Canonical hostname — changed at the PayKicker rebrand
+BuildPays was canonical on **www**. PayKicker is canonical on the **apex**, `paykicker.com.au`.
+Every `<link rel="canonical">`, Open Graph URL, JSON-LD `@id` and sitemap entry uses the apex.
+`www.paykicker.com.au` should redirect to it.
 
-Host-level redirects (apex → www) must be a Cloudflare **Single Redirect** rule on the
-`buildpays.com.au` zone, not a file in this repo.
+## Redirects — read before adding one
+There is **no `_redirects` file**. Cloudflare Pages `_redirects` matches on **path only** — it
+cannot match on hostname, so a blanket `/* https://paykicker.com.au/:splat 301` would also match
+requests already on the apex and redirect them to themselves forever.
+
+Host-level redirects must be Cloudflare **Single Redirect** rules on the zone, not a file in
+this repo. Two are wanted:
+- `www.paykicker.com.au/*` → `https://paykicker.com.au/:splat` (301)
+- `buildpays.com.au/*` and `www.buildpays.com.au/*` → `https://paykicker.com.au/:splat` (301)
