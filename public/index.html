@@ -90,7 +90,7 @@
     "addressCountry": "AU"
   },
   "areaServed": { "@type": "AdministrativeArea", "name": "Victoria, Australia" },
-  "TODO-ABN": "REPLACE THIS WHOLE LINE with:  \"identifier\": { \"@type\": \"PropertyValue\", \"propertyID\": \"ABN\", \"value\": \"NN NNN NNN NNN\" },   — deliberately not a placeholder number, because a fake ABN in structured data is worse than none.",
+  "identifier": { "@type": "PropertyValue", "propertyID": "ABN", "value": "91 700 949 944" },
   "knowsAbout": [
     "CFMEU Victoria construction enterprise agreements",
     "EBA payroll",
@@ -486,12 +486,10 @@
       <h3>Contact</h3>
       <p><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a><br>Melbourne, Victoria</p>
     </div>
-    <!-- TODO-ABN: replace the placeholder below with the real number, e.g.
-         "PAYKICKER PTY LTD · ABN 12 345 678 901". The Organization schema in
-         <head> carries legalName, foundingDate and address already — that is
-         the machine-readable signal search engines actually read. -->
+    <!-- Entity identity. The ABN also appears in the Organization schema in <head>
+         as a PropertyValue identifier — keep the two in step. -->
     <div class="legal" style="font-size:12px;line-height:1.5;opacity:.75">
-      PAYKICKER PTY LTD · ABN to be confirmed<br>
+      PAYKICKER PTY LTD · ABN 91 700 949 944<br>
       PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
     </div>
   </div>
