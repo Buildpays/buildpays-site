@@ -7,12 +7,19 @@
 # blocks would have silently disappeared at the rebrand. They are written out here
 # so this file is correct whether or not the zone feature is ever switched on.
 #
-# If AI Crawl Control IS enabled on this zone later, the served file becomes the
-# merge of both and some directives appear twice. A duplicated Disallow is
-# harmless; a missing one is not.
+# CONFIRMED 18 Aug 2026: AI Crawl Control IS enabled on this zone. The served file
+# is the merge of the managed block and this one, so most directives appear twice.
+# A duplicated Disallow is harmless; a missing one is not.
 #
-# Check the SERVED output after changing this, not just the repo copy:
 #   curl https://paykicker.com.au/robots.txt
+#
+# GOOGLE-EXTENDED IS DELIBERATELY ABSENT. It was removed so PayKicker content is
+# eligible for Google's AI Overviews and AI Mode. It has never had any bearing on
+# ordinary Search indexing — Googlebot governs that, and Googlebot is allowed below.
+# WARNING: the Cloudflare managed block STILL disallows Google-Extended, and it is
+# prepended to this file at the edge. Removing it here alone does nothing. It must
+# also be unblocked in the Cloudflare dashboard under AI Crawl Control for the zone.
+# Verify with the curl above before assuming it took effect.
 #
 # /paykicker-worker-training is intentionally NOT disallowed. It carries a noindex
 # meta tag, and a crawler must be able to fetch the page to see that tag.
@@ -37,9 +44,6 @@ User-agent: ClaudeBot
 Disallow: /
 
 User-agent: CloudflareBrowserRenderingCrawler
-Disallow: /
-
-User-agent: Google-Extended
 Disallow: /
 
 User-agent: GPTBot
