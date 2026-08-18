@@ -208,7 +208,10 @@
   footer a{color:#c3d4e8;text-decoration:none}
   footer .legal{grid-column:1/-1;border-top:1px solid #2b4a6e;margin-top:14px;padding-top:12px}
   @media(max-width:900px){
-    .hero .wrap,.g3,.g2,.steps,.clauses,.price-card,footer .wrap{grid-template-columns:1fr}
+    /* minmax(0,1fr), not 1fr: a grid item's min-width defaults to its min-content
+       size, so the hero docket's nowrap rows forced the column wider than the
+       screen and the hero's overflow:hidden clipped the headline text. */
+    .hero .wrap,.g3,.g2,.steps,.clauses,.price-card,footer .wrap{grid-template-columns:minmax(0,1fr)}
     .hero{padding:52px 0 60px}
     nav a.nl{display:none}
   }
@@ -243,6 +246,34 @@
     #contact input,#contact select,#contact textarea{font-size:16px}
     footer{padding:26px 0 18px}
     footer .wrap{gap:16px}
+    /* ---- keep the nav on one line ---- */
+    nav .logo svg{height:24px;width:auto}
+    nav .btn{white-space:nowrap}
+    /* ---- hero: docket sized to fit the screen instead of clipping ---- */
+    .hero .wrap{gap:30px}
+    .hero .wrap > *{min-width:0}
+    .docket{font-size:12px;padding:16px 14px}
+    .docket .dhead{font-size:10.5px}
+    /* ---- pillars + feature cards: swipe rows, not a 2,600px stack ----
+       Every card stays in the DOM (and in search); on a phone they sit in a
+       horizontal scroll-snap row with the next card peeking as the affordance.
+       display needs !important because the pillars wrap carries an inline
+       display:grid. */
+    #pillars .wrap{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    #pillars .wrap::-webkit-scrollbar{display:none}
+    #pillars .wrap > div{flex:0 0 78%;scroll-snap-align:start}
+    .g3{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .g3::-webkit-scrollbar{display:none}
+    .g3 .card{flex:0 0 80%;scroll-snap-align:start}
+    /* ---- pricing: tighten the tall dark card ---- */
+    .price-card{padding:24px 18px;gap:20px}
+    /* inline font sizes on the two .num blocks need the !important */
+    .price-card .num{font-size:28px!important;line-height:1.15!important}
+    .price-card ul{font-size:14.5px}
+    .price-card li{padding:6px 0}
+    .step{padding:18px 16px}
+    .step h3{font-size:19px}
+    .step p{font-size:14px}
   }
 </style>
 </head>
@@ -362,7 +393,8 @@
   </div>
 </section>
 
-<section class="alt" id="how">
+<!-- id was "how", which duplicated the explainer section above; nav links target that one. -->
+<section class="alt" id="setup">
   <div class="wrap">
     <span class="eyebrow">How it works</span>
     <h2>Live in days, not months.</h2>
