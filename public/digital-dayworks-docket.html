@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Dayworks Docket App for Subcontractors | PayKicker</title>
+<meta name="description" content="Capture dayworks dockets on site with photos and a client signature, then flow the same hours into EBA-correct payroll and a MYOB export.">
+<link rel="icon" type="image/svg+xml" href="paykicker-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="paykicker-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="paykicker-icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="paykicker-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#12293f">
+<link rel="canonical" href="https://paykicker.com.au/digital-dayworks-docket">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The digital dayworks docket that ends at the pay run">
+<meta property="og:description" content="Most docket apps stop at the client signature. PayKicker carries the same hours through to EBA-correct payroll and a MYOB-ready pay file.">
+<meta property="og:url" content="https://paykicker.com.au/digital-dayworks-docket">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="PayKicker">
+<meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The digital dayworks docket that ends at the pay run">
+<meta name="twitter:description" content="Most docket apps stop at the client signature. PayKicker carries the same hours through to EBA-correct payroll and a MYOB-ready pay file.">
+<meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<!-- Google Analytics 4 — same stream as the rest of the site. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4DGX8VDBNH');
+</script>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#16324f; --navy2:#1e4470; --blue:#2f6cb3; --paper:#fafbfd; --concrete:#dde6f0;
+    --ink:#22344a; --mute:#5c7089; --orange:#f25c1f; --white:#ffffff; --line:#d3deea;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Barlow',Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;font-size:17px}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+
+  h1,h2,h3{font-family:'Barlow Condensed',sans-serif;color:var(--navy);line-height:1.1;letter-spacing:.01em}
+  h1{font-size:clamp(38px,6vw,56px);margin-bottom:10px}
+  h2{font-size:27px;margin:44px 0 12px;padding-top:22px;border-top:2px solid var(--line)}
+  h2:first-of-type{border-top:none;padding-top:0}
+  h3{font-size:20px;margin:26px 0 8px;color:var(--navy2)}
+  p{margin-bottom:14px}
+  ul,ol{margin:0 0 16px 22px}
+  li{margin-bottom:7px}
+  a{color:var(--blue)}
+  a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+  strong,b{color:var(--navy)}
+
+  /* --- masthead --- */
+  .top{background:var(--navy);padding:18px 0}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-family:'Barlow Condensed';font-weight:800;font-size:30px;letter-spacing:.01em;color:#fff;text-decoration:none;border-left:6px solid var(--orange);padding-left:12px;line-height:1}
+  .top a.back{font-size:15px;font-weight:600;color:#a9c2dc;text-decoration:none}
+  .top a.back:hover{color:#fff}
+
+  main{padding:52px 0 70px}
+  .eyebrow{font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:8px}
+  .lede{font-size:19px;color:var(--navy2);margin-bottom:30px}
+
+  .note{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;padding:18px 20px;margin:20px 0}
+  .note p:last-child{margin-bottom:0}
+
+  .toc{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:38px}
+  .toc h3{margin:0 0 10px;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+  .toc ol{margin:0 0 0 20px;columns:2;column-gap:28px}
+  .toc li{margin-bottom:4px;font-size:15px}
+  @media(max-width:620px){.toc ol{columns:1}}
+
+  /* --- buttons, same spec as the homepage --- */
+  .btn{display:inline-block;font-family:'Barlow Condensed';font-weight:700;font-size:18px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:8px;transition:transform .12s ease}
+  .btn:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+  .btn-primary{background:var(--orange);color:#fff}
+  .btn-primary:hover{transform:translateY(-1px)}
+  .cta{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:28px;margin-top:38px;text-align:center}
+  .cta h2{border-top:none;padding-top:0;margin:0 0 10px}
+  .cta p{color:var(--mute);max-width:52ch;margin:0 auto 20px}
+
+  /* --- sample docket, same treatment as the homepage hero docket --- */
+  .docket{background:#0e2338;border:1px solid #2b4a6e;border-radius:14px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;padding:22px 24px;color:#cfe0f2;margin:22px 0}
+  .docket .dhead{display:flex;justify-content:space-between;gap:12px;color:#7fa6d1;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px dashed #2b4a6e;padding-bottom:10px;margin-bottom:12px}
+  .docket .row{display:flex;justify-content:space-between;gap:16px;padding:4px 0}
+  .docket .row span:last-child{color:#9cc4ee;text-align:right}
+  .docket .row.hot span:last-child{color:var(--orange);font-weight:600}
+  .docket .dfoot{border-top:1px dashed #2b4a6e;margin-top:12px;padding-top:10px;color:#7fa6d1;font-size:12px}
+
+  footer{background:var(--navy);color:#8fa9c6;padding:30px 0 22px;font-size:13.5px;line-height:1.55;margin-top:0}
+  footer a{color:#bcd2e8}
+  footer .legal{font-size:12px;line-height:1.5;opacity:.75;margin-top:16px;border-top:1px solid #2b4a6e;padding-top:14px}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <a class="logo" href="/">PayKicker</a>
+    <a class="back" href="/">&larr; Back to paykicker.com.au</a>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+  <span class="eyebrow">Dayworks dockets</span>
+  <h1>The digital dayworks docket that ends at the pay run</h1>
+
+  <p class="lede">Most docket apps stop the moment the head contractor signs. That is the easy
+  half. The hard half is turning that signature into hours your workers get paid correctly for,
+  and a variation your bookkeeper can actually bill. PayKicker does both from the one capture &mdash;
+  docket to pay, not just docket to invoice.</p>
+
+  <div class="toc">
+    <h3>On this page</h3>
+    <ol>
+      <li><a href="#capture">What a docket must capture</a></li>
+      <li><a href="#leak">Where paper leaks revenue</a></li>
+      <li><a href="#topay">Docket to pay, not to invoice</a></li>
+      <li><a href="#hours">How capture ties to payroll hours</a></li>
+      <li><a href="#office">What changes in the office</a></li>
+      <li><a href="#start">Getting started</a></li>
+    </ol>
+  </div>
+
+  <h2 id="capture">What a dayworks docket actually has to capture</h2>
+  <p>A dayworks docket &mdash; a day docket, a T&amp;M sheet, a variation sheet, whatever your head
+  contractor calls it &mdash; is the record of work done outside your fixed-price scope. It is also
+  the only evidence you will have when that work is queried three months later by someone who was
+  not on site. If it does not carry all of the following, it will not survive the claim:</p>
+  <ul>
+    <li><b>Date, site, and where on the site.</b> &ldquo;Level 3 core, east face&rdquo; is worth
+      something. The project name on its own is not.</li>
+    <li><b>The instruction.</b> Who directed the work, at what time, and on whose authority. A name
+      and a timestamp, not &ldquo;as instructed&rdquo;.</li>
+    <li><b>Every worker by name, with their classification and their real hours.</b> Start, finish
+      and breaks &mdash; per person, not a crew total.</li>
+    <li><b>Plant, hire and materials</b> with quantities. Pumps, scaffold, props, concrete.</li>
+    <li><b>A description a stranger can follow,</b> written on the day rather than reconstructed
+      on Friday afternoon from memory.</li>
+    <li><b>A countersignature from someone with authority,</b> captured on site before knock-off.</li>
+    <li><b>Photos.</b> The obstruction, the condition, the extra work &mdash; timestamped and attached
+      to the docket rather than sitting in someone&rsquo;s camera roll.</li>
+  </ul>
+  <p>The signature is the part everyone remembers. The <em>hours per worker per classification</em>
+  is the part that quietly decides whether you made money on the variation, because it is the only
+  field that has to be right twice &mdash; once for the client, and once for your own pay run.</p>
+
+  <h2 id="leak">How paper dockets leak revenue</h2>
+  <p>Paper rarely fails dramatically. It leaks, in four predictable places.</p>
+
+  <h3>The docket that never gets signed</h3>
+  <p>The leading hand does the work, means to get it signed, and the supervisor has gone by the
+  time he gets to the gate. Nobody chases it that night. A week later you are asking a head
+  contractor to sign for hours he cannot verify, and he is entirely within his rights to decline.
+  That work is now free.</p>
+
+  <h3>The docket that gets signed and then lost</h3>
+  <p>Signed at 3pm, folded into a hi-vis pocket, through the wash on Sunday. Or it reaches the
+  office and goes into a tray with forty others, and the one that matters surfaces after the
+  progress claim has already gone out.</p>
+
+  <h3>The docket that gets signed for the wrong hours</h3>
+  <p>Written up at the end of the day from memory, so the numbers get rounded to something tidy.
+  Rounding down is money you have already spent on wages and will never bill. Rounding up is worse:
+  it is the docket the head contractor produces the next time you claim anything at all.</p>
+
+  <h3>The docket that never reaches payroll</h3>
+  <p>This is the expensive one, and it is invisible. The docket gets signed, gets scanned, gets
+  invoiced &mdash; and the hours of overtime it represents are entered into payroll separately, by a
+  different person, from a different piece of paper. When those two records disagree, you have
+  either underpaid a worker under your enterprise agreement or billed a client for hours you never
+  paid out. Both get found later, by someone who is not pleased.</p>
+
+  <h2 id="topay">Docket to pay, not docket to invoice</h2>
+  <p>Plenty of apps will get a docket signed on a phone. That addresses the first three leaks and
+  leaves the fourth exactly where it was, because a docket-only tool has no idea what any of those
+  hours cost you. It captures ten hours. It cannot tell you that two of them were overtime at a
+  penalty rate, that the day attracted a travel allowance, or that one of the workers on it is a
+  daily hire employee whose entitlements differ from the rest of the crew.</p>
+  <p>PayKicker treats the docket as a payroll document that happens to also be a billing document.
+  The same captured hours run through your enterprise agreement rules, so the docket carries a real
+  cost as well as a claim value, and those same hours land in the pay run and in the
+  <a href="/eba-payroll-software">MYOB export</a> without anyone retyping them.</p>
+
+  <div class="note">
+    <p><b>The practical test.</b> Ask any docket tool what a signed docket cost you in wages. If it
+    cannot answer, you are still doing that reconciliation by hand every fortnight &mdash; and that
+    reconciliation is where the margin on dayworks quietly disappears.</p>
+  </div>
+
+  <h2 id="hours">How digital capture ties to payroll hours</h2>
+  <p>The capture happens once, on site, on a phone the worker already has. From there one record
+  does three jobs.</p>
+
+  <div class="docket">
+    <div class="dhead"><span>Southline Formwork Pty Ltd</span><span>Docket &middot; Dayworks</span></div>
+    <div class="row"><span>Site / location</span><span>Level 3 core, east face</span></div>
+    <div class="row"><span>Instructed by</span><span>Site supervisor, 06:50</span></div>
+    <div class="row"><span>Crew on the docket</span><span>4 workers, by name</span></div>
+    <div class="row"><span>Ordinary hours</span><span>8.00 each</span></div>
+    <div class="row hot"><span>Overtime hours</span><span>2.00 each</span></div>
+    <div class="row"><span>Photos attached</span><span>3, timestamped</span></div>
+    <div class="row"><span>Countersigned</span><span>On site, 17:34</span></div>
+    <div class="dfoot">One capture &rarr; client cost report &middot; payroll hours &middot; MYOB export</div>
+  </div>
+
+  <p><b>It becomes the claim.</b> The signature, the photos and the description are locked to the
+  docket together with the time they were captured, so the variation is evidenced rather than
+  argued.</p>
+  <p><b>It becomes the timesheet.</b> Those hours are the same hours that go to payroll. The worker
+  does not fill in a docket and then a timesheet, and the office does not key the same day twice.</p>
+  <p><b>It becomes the cost.</b> Your agreement&rsquo;s rules are applied to the hours automatically,
+  so the docket shows what the work is worth to bill and what it cost to pay, side by side, on the
+  day it happened rather than at the end of the month.</p>
+
+  <h2 id="office">What changes in the office</h2>
+  <p>The change most office managers notice first is not the app. It is that the Friday afternoon
+  spent chasing paper stops. Unsigned dockets are visible while they can still be signed, not after.
+  Hours arrive already classified against the agreement instead of as a number somebody has to
+  interpret. The progress claim gets built from records that are already reconciled to the pay run,
+  because they are the same records.</p>
+  <p>The second change is slower. Once every docket carries a cost as well as a claim, you can see
+  which sites, which head contractors and which kinds of dayworks actually make money &mdash; which is
+  not always the ones people assume.</p>
+
+  <h2 id="start">Take just the dockets, or the lot</h2>
+  <p>PayKicker is modular. Dayworks dockets and client cost reports can run on their own at a flat
+  monthly fee if that is the piece that hurts today, with rostering, onboarding and full
+  <a href="/eba-payroll-software">EBA payroll</a> available when you want them. Most subbies start
+  with dockets, because it is the fastest thing to prove.</p>
+
+  <div class="cta">
+    <h2>See it on your own dockets</h2>
+    <p>Book a demo and bring a real docket and a recent pay run. We will show you the same day going
+    through capture, cost and export &mdash; and if it does not match to the cent, we would rather you
+    knew now.</p>
+    <a class="btn btn-primary" href="/#contact">Book a demo</a>
+  </div>
+
+  <p style="margin-top:34px;font-size:14px;color:var(--mute)">Related:
+    <a href="/eba-payroll-software">EBA payroll software</a> &middot;
+    <a href="/">How PayKicker works</a></p>
+
+  <div class="note" style="border-left-color:var(--mute)">
+    <p style="font-size:14px;color:var(--mute)">PayKicker is independent software and is not
+    affiliated with or endorsed by the CFMEU or MYOB.</p>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="/">paykicker.com.au</a> &nbsp;&middot;&nbsp;
+       <a href="/eba-payroll-software">EBA payroll software</a> &nbsp;&middot;&nbsp;
+       <a href="/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
+       <a href="/terms">Terms of Service</a> &nbsp;&middot;&nbsp;
+       <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></p>
+    <div class="legal">
+      PAYKICKER PTY LTD &middot; ABN 91 700 949 944<br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
