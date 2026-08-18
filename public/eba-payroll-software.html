@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBA Payroll Software for CFMEU Agreements | PayKicker</title>
+<meta name="description" content="Why generic payroll miscalculates under the CFMEU Victorian construction EBA: 36-hour week, RDO cycle, daily hire, allowances, travel and the super floor.">
+<link rel="icon" type="image/svg+xml" href="paykicker-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="paykicker-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="paykicker-icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="paykicker-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#12293f">
+<link rel="canonical" href="https://paykicker.com.au/eba-payroll-software">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EBA payroll software that gets the agreement right">
+<meta property="og:description" content="Generic payroll assumes a 38-hour week, one rate per worker and super as a flat percentage. Under a CFMEU Victorian construction EBA, all three are wrong.">
+<meta property="og:url" content="https://paykicker.com.au/eba-payroll-software">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="PayKicker">
+<meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EBA payroll software that gets the agreement right">
+<meta name="twitter:description" content="Generic payroll assumes a 38-hour week, one rate per worker and super as a flat percentage. Under a CFMEU Victorian construction EBA, all three are wrong.">
+<meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<!-- Google Analytics 4 — same stream as the rest of the site. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4DGX8VDBNH');
+</script>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#16324f; --navy2:#1e4470; --blue:#2f6cb3; --paper:#fafbfd; --concrete:#dde6f0;
+    --ink:#22344a; --mute:#5c7089; --orange:#f25c1f; --white:#ffffff; --line:#d3deea;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Barlow',Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;font-size:17px}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+
+  h1,h2,h3{font-family:'Barlow Condensed',sans-serif;color:var(--navy);line-height:1.1;letter-spacing:.01em}
+  h1{font-size:clamp(38px,6vw,56px);margin-bottom:10px}
+  h2{font-size:27px;margin:44px 0 12px;padding-top:22px;border-top:2px solid var(--line)}
+  h2:first-of-type{border-top:none;padding-top:0}
+  h3{font-size:20px;margin:26px 0 8px;color:var(--navy2)}
+  p{margin-bottom:14px}
+  ul,ol{margin:0 0 16px 22px}
+  li{margin-bottom:7px}
+  a{color:var(--blue)}
+  a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+  strong,b{color:var(--navy)}
+
+  /* --- masthead --- */
+  .top{background:var(--navy);padding:18px 0}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-family:'Barlow Condensed';font-weight:800;font-size:30px;letter-spacing:.01em;color:#fff;text-decoration:none;border-left:6px solid var(--orange);padding-left:12px;line-height:1}
+  .top a.back{font-size:15px;font-weight:600;color:#a9c2dc;text-decoration:none}
+  .top a.back:hover{color:#fff}
+
+  main{padding:52px 0 70px}
+  .eyebrow{font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:8px}
+  .lede{font-size:19px;color:var(--navy2);margin-bottom:30px}
+
+  .note{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;padding:18px 20px;margin:20px 0}
+  .note p:last-child{margin-bottom:0}
+
+  .toc{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:38px}
+  .toc h3{margin:0 0 10px;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+  .toc ol{margin:0 0 0 20px;columns:2;column-gap:28px}
+  .toc li{margin-bottom:4px;font-size:15px}
+  @media(max-width:620px){.toc ol{columns:1}}
+
+  /* --- buttons, same spec as the homepage --- */
+  .btn{display:inline-block;font-family:'Barlow Condensed';font-weight:700;font-size:18px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:8px;transition:transform .12s ease}
+  .btn:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+  .btn-primary{background:var(--orange);color:#fff}
+  .btn-primary:hover{transform:translateY(-1px)}
+  .cta{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:28px;margin-top:38px;text-align:center}
+  .cta h2{border-top:none;padding-top:0;margin:0 0 10px}
+  .cta p{color:var(--mute);max-width:52ch;margin:0 auto 20px}
+
+  footer{background:var(--navy);color:#8fa9c6;padding:30px 0 22px;font-size:13.5px;line-height:1.55;margin-top:0}
+  footer a{color:#bcd2e8}
+  footer .legal{font-size:12px;line-height:1.5;opacity:.75;margin-top:16px;border-top:1px solid #2b4a6e;padding-top:14px}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <a class="logo" href="/">PayKicker</a>
+    <a class="back" href="/">&larr; Back to paykicker.com.au</a>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+  <span class="eyebrow">EBA payroll</span>
+  <h1>EBA payroll software that gets the agreement right</h1>
+
+  <p class="lede">Generic payroll software assumes a 38-hour week, one hourly rate per employee,
+  superannuation as a flat percentage, and allowances typed in by hand. Under a CFMEU Victorian
+  Construction and General Division enterprise agreement, every one of those assumptions is wrong
+  &mdash; and each one fails quietly, the same way, every week.</p>
+
+  <div class="toc">
+    <h3>On this page</h3>
+    <ol>
+      <li><a href="#wrong">Where generic payroll breaks</a></li>
+      <li><a href="#must">What EBA-correct software must do</a></li>
+      <li><a href="#myob">The MYOB handoff</a></li>
+      <li><a href="#ask">What to ask a vendor</a></li>
+      <li><a href="#rates">Checking current rates</a></li>
+    </ol>
+  </div>
+
+  <h2 id="wrong">Where generic payroll breaks under a construction EBA</h2>
+  <p>None of what follows is exotic. It is the ordinary weekly reality of running a crew under a
+  construction agreement, and it is the part off-the-shelf payroll was never built for.</p>
+
+  <h3>The ordinary week is 36 hours, not 38</h3>
+  <p>This is the single most consequential default in the whole system. A payroll engine that
+  treats 38 hours as the point where overtime starts will pay hours at ordinary rates that the
+  agreement says are already at penalty rates. It is a small amount per worker per week, which is
+  precisely why it survives. It is also completely systematic &mdash; the same error, for every
+  worker, every week, going back as far as the configuration does. That is the difference between
+  a payroll mistake and a back-pay claim.</p>
+
+  <h3>RDOs are a cycle, not a leave balance</h3>
+  <p>Rostered days off under a construction agreement run on a calendar, accrued through ordinary
+  hours worked and taken on set days. Generic payroll has no concept of this. In practice the RDO
+  ends up either unpaid, or paid out of an annual leave balance it should never have touched, or
+  keyed in manually every cycle by whoever remembers. The calendar is also reissued each year, so a
+  system with the dates hardcoded is wrong from the first cycle of the new one &mdash; and nobody
+  gets told, because the software has no way to know.</p>
+
+  <h3>Daily hire is a real employment type</h3>
+  <p>Most payroll systems offer full-time, part-time and casual. Daily hire is none of those, so it
+  gets mapped to whichever is closest and the differences &mdash; notice, termination, the specific
+  entitlements the agreement attaches to daily hire employment &mdash; get handled by hand, or not at
+  all. Anything handled by hand every fortnight is something that will eventually be handled wrong.</p>
+
+  <h3>Allowances are conditional, not standing lines</h3>
+  <p>Allowances under the agreement depend on facts about the particular day: which site, what work,
+  what conditions, how far the worker travelled. Entering them manually produces both failure modes at once &mdash; missed on days they
+  were owed, and applied on days they were not.</p>
+  <p>Travel is the clearest example. As at 1 March 2026, the travel allowance under the CFMEU
+  Victorian construction and general wage sheets is <b>$57.60 per day</b>, paid per day on the
+  conditions the agreement sets, not as a flat weekly line. Software that cannot evaluate a
+  per-day condition cannot get this right except by luck.</p>
+
+  <h3>Superannuation has a floor, not just a percentage</h3>
+  <p>As at 1 March 2026, superannuation is the <b>greater of $280 per week or 12% of ordinary time
+  earnings</b>. That word &ldquo;greater&rdquo; is doing an enormous amount of work. A payroll system
+  that only knows how to multiply ordinary time earnings by a percentage will silently underpay
+  every worker in every week where 12% of their ordinary time earnings comes to less than $280
+  &mdash; which is exactly the short weeks: a starter&rsquo;s first part-week, a week with unpaid
+  absence, a week broken up by weather. Those are the weeks nobody goes back and re-checks.</p>
+
+  <div class="note">
+    <p><b>The common thread.</b> Every one of these failures is silent, systematic and repeated. No
+    worker notices two hours at the wrong rate in one week. Everyone notices it across a year, and
+    by then it is a claim covering the whole crew for the whole period.</p>
+  </div>
+
+  <h2 id="must">What EBA-correct payroll software actually has to do</h2>
+  <ol>
+    <li><b>Hold the agreement as rules, not as rates.</b> Storing a rate per employee is not
+      configuring an agreement. The ordinary-hours threshold, the overtime steps, the RDO cycle and
+      the conditions attached to each allowance all have to be expressed as logic the system
+      evaluates, not numbers a person maintains.</li>
+    <li><b>Classify hours automatically from real start and finish times.</b> Workers should enter
+      when they started and when they finished. Deciding which of those hours are ordinary, which
+      are overtime and at what step is the software&rsquo;s job. A worker choosing their own pay
+      category is a system that will be wrong.</li>
+    <li><b>Run the RDO calendar as a calendar.</b> Accrual, the scheduled day, and paying it without
+      anyone submitting anything &mdash; with the ability to load a new calendar each year.</li>
+    <li><b>Apply allowances conditionally, per day.</b> Driven by the site, the work and the
+      conditions actually recorded for that day.</li>
+    <li><b>Calculate superannuation as a comparison.</b> Work out both the weekly floor and the
+      percentage of ordinary time earnings, then pay the greater. Every week, per worker, not as a
+      quarterly check.</li>
+    <li><b>Show its working.</b> When a worker or a delegate asks why a week paid what it did, you
+      need the breakdown &mdash; hours, classification, rule applied &mdash; not a single net figure.</li>
+    <li><b>Be reconfigurable when rates change.</b> Wage sheets are updated. A system that requires
+      a vendor ticket to reflect a rate change will be out of date for as long as the ticket takes.</li>
+  </ol>
+  <p>PayKicker is built around that engine, and the hours it runs on come from the same capture as
+  your <a href="/digital-dayworks-docket">dayworks dockets</a> &mdash; one set of hours doing both
+  jobs, rather than two records to reconcile.</p>
+
+  <h2 id="myob">The MYOB handoff</h2>
+  <p>PayKicker does not replace MYOB. MYOB stays your system of record and holds your pay rates;
+  PayKicker does everything that happens before the pay run &mdash; rostering, capture, EBA
+  classification, approvals &mdash; and hands over an import file already matched to your payroll
+  categories and job codes. Your bookkeeper keeps the process they know; what changes is that the
+  file arrives already classified against the agreement rather than as a list of hours somebody
+  has to interpret.</p>
+  <p>During a pilot we run that export alongside your existing process until it matches to the cent.
+  If it does not match, we would rather find that out before you switch than after.</p>
+
+  <h2 id="ask">What to ask any payroll vendor</h2>
+  <ul>
+    <li>What do you treat as the ordinary weekly hours, and where is that configured?</li>
+    <li>How do you handle the RDO cycle, and what happens when next year&rsquo;s calendar is issued?</li>
+    <li>Is daily hire a supported employment type, or is it mapped onto something else?</li>
+    <li>Can an allowance be conditional on the site and the day, or only set per employee?</li>
+    <li>Do you calculate superannuation as the greater of a weekly floor and a percentage?</li>
+    <li>Can you show me the rule that produced a given line on a given payslip?</li>
+  </ul>
+  <p>A vendor who cannot answer these is not necessarily selling bad software. They are selling
+  software built for a different kind of employer.</p>
+
+  <h2 id="rates">Rates change &mdash; check the source</h2>
+  <p>The two figures on this page are stated as at 1 March 2026 and are included to illustrate the
+  shape of the calculation, not as a rate reference. Wage sheets are updated, and your own
+  FWC-approved agreement governs your business, not a summary on a website. For current rates and
+  allowances, go to the source: <a href="https://vic.cfmeu.org/wages" rel="noopener">vic.cfmeu.org/wages</a>.</p>
+
+  <div class="cta">
+    <h2>See your own EBA running in it</h2>
+    <p>Book a demo and bring your enterprise agreement and a recent pay run. We will configure the
+    rules against your agreement and show you the same period calculated both ways.</p>
+    <a class="btn btn-primary" href="/#contact">Book a demo</a>
+  </div>
+
+  <p style="margin-top:34px;font-size:14px;color:var(--mute)">Related:
+    <a href="/digital-dayworks-docket">Digital dayworks dockets</a> &middot;
+    <a href="/">How PayKicker works</a></p>
+
+  <div class="note" style="border-left-color:var(--mute)">
+    <p style="font-size:14px;color:var(--mute)">PayKicker is independent software and is not
+    affiliated with or endorsed by the CFMEU or MYOB.</p>
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="/">paykicker.com.au</a> &nbsp;&middot;&nbsp;
+       <a href="/digital-dayworks-docket">Digital dayworks dockets</a> &nbsp;&middot;&nbsp;
+       <a href="/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
+       <a href="/terms">Terms of Service</a> &nbsp;&middot;&nbsp;
+       <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></p>
+    <div class="legal">
+      PAYKICKER PTY LTD &middot; ABN 91 700 949 944<br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
