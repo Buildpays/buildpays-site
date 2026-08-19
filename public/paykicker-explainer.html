@@ -204,6 +204,14 @@ svg.sig path{stroke:var(--ink);stroke-width:2.4;fill:none;stroke-linecap:round;s
 button.ctrl{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;
   font-family:var(--body);font-weight:700;font-size:12px;border-radius:6px;padding:6px 12px;cursor:pointer}
 button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
+@media (max-width:480px){
+  /* Phone: tighter side padding so text wraps less (shorter scenes), a touch
+     more bottom clearance for the control bar. The homepage embeds this page
+     in a 9/16 box at phone width to match. */
+  .scene{padding:22px 14px 72px}
+  .scene h2{font-size:24px}
+  .scene .sub{font-size:12.5px}
+}
 @media (prefers-reduced-motion:reduce){
   .scene,.scene *,.crane,.crane *,.sun{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}
   .gears span,.myob .cog{animation:none!important}

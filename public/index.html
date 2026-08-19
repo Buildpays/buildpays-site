@@ -237,7 +237,9 @@
     #pillars .wrap{gap:10px}
     #pillars div[style*="border-radius:12px"]{padding:13px 14px}
     #how{padding:44px 14px}
-    #how div[style*="aspect-ratio"]{aspect-ratio:9/13;border-radius:10px}
+    /* 9/16, not 9/13: the explainer scenes need the extra height at phone width
+       or their tallest scenes clip top and run under the control bar. */
+    #how div[style*="aspect-ratio"]{aspect-ratio:9/16;border-radius:10px}
     details{padding:12px 14px}
     summary{font-size:15.5px}
     details p{font-size:13px}
