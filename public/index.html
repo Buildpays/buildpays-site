@@ -212,7 +212,9 @@
        size, so the hero docket's nowrap rows forced the column wider than the
        screen and the hero's overflow:hidden clipped the headline text. */
     .hero .wrap,.g3,.g2,.steps,.clauses,.price-card,footer .wrap{grid-template-columns:minmax(0,1fr)}
-    .hero{padding:52px 0 60px}
+    /* header.hero, not .hero: the desktop rule is header.hero and outranks
+       a bare class, so a plain .hero override here silently loses. */
+    header.hero{padding:48px 0 56px}
     nav a.nl{display:none}
   }
   /* ---------- mobile polish (≤640px) — desktop untouched ---------- */
@@ -221,7 +223,7 @@
     section{padding:38px 0}
     nav .wrap{height:56px;gap:10px}
     nav .btn{padding:9px 14px;font-size:14px}
-    .hero{padding:30px 0 40px}
+    header.hero{padding:18px 0 36px}
     .hero h1{font-size:clamp(32px,9.5vw,42px);line-height:1.05}
     .hero p.sub{font-size:15.5px;line-height:1.5;margin:12px 0 20px}
     .hero .fine{font-size:12.5px}
@@ -302,7 +304,7 @@
     <div>
       <span class="eyebrow" style="color:#9cc4ee">The site operations platform for construction subcontractors</span>
       <h1>Run the site. Sign the docket. <em>Nail the pay run.</em></h1>
-      <p class="sub">One platform for the whole week on site: roster crews with induction and SWMS gates, get dayworks dockets countersigned before knock-off, keep tickets and onboarding in order — and when it's pay time, your CFMEU EBA rules export a MYOB-ready file your bookkeeper will love.</p>
+      <p class="sub">Roster the crew, sign dayworks dockets on site, and export EBA-correct payroll straight to MYOB — one platform, built for subbies.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#contact">Book a demo</a>
         <span style="align-self:center;font-size:13.5px;color:#9cc4ee">No self-serve trial — if it fits, your pilot period is on us.</span>
