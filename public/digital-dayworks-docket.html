@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Dayworks Docket App for Subcontractors | PayKicker</title>
-<meta name="description" content="Capture dayworks dockets on site with photos and a client signature, then flow the same hours into EBA-correct payroll and a MYOB export.">
+<meta name="description" content="Capture labour, plant and materials on a dayworks docket, countersign it on site, then flow the same hours into EBA-correct payroll and a MYOB export.">
 <link rel="icon" type="image/svg+xml" href="paykicker-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="paykicker-icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="paykicker-icon-16.png">
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The digital dayworks docket that ends at the pay run">
-<meta property="og:description" content="Most docket apps stop at the client signature. PayKicker carries the same hours through to EBA-correct payroll and a MYOB-ready pay file.">
+<meta property="og:description" content="Most docket apps stop at the client signature. PayKicker captures labour, plant and materials on the docket and carries the same hours through to EBA-correct payroll and a MYOB-ready pay file.">
 <meta property="og:url" content="https://paykicker.com.au/digital-dayworks-docket">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="PayKicker">
@@ -24,8 +24,37 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The digital dayworks docket that ends at the pay run">
-<meta name="twitter:description" content="Most docket apps stop at the client signature. PayKicker carries the same hours through to EBA-correct payroll and a MYOB-ready pay file.">
+<meta name="twitter:description" content="Most docket apps stop at the client signature. PayKicker captures labour, plant and materials on the docket and carries the same hours through to EBA-correct payroll and a MYOB-ready pay file.">
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://paykicker.com.au/digital-dayworks-docket#software",
+  "name": "PayKicker Dayworks Dockets",
+  "url": "https://paykicker.com.au/digital-dayworks-docket",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web, iOS, Android (PWA)",
+  "description": "Digital dayworks docket app for Australian construction subcontractors. Workers capture labour hours per worker, plant and materials by quantity, and timestamped photos on site; the head contractor countersigns on the phone or via a secure link; the same hours flow into a client cost report, EBA-correct payroll and a MYOB export.",
+  "featureList": [
+    "Dayworks dockets captured on site from a worker's phone",
+    "Labour hours per worker, with classification, start, finish and breaks",
+    "Plant and materials captured by quantity from an office-set project price list",
+    "Timestamped photos attached to the docket",
+    "On-site client countersignature, on the phone or via a secure link",
+    "Signed docket emailed to the client",
+    "Client cost report priced from the docket",
+    "Docket hours flow into EBA-correct payroll",
+    "MYOB-ready pay file export",
+    "Dayworks docket module available on its own, without payroll"
+  ],
+  "isPartOf": { "@type": "SoftwareApplication", "name": "PayKicker", "url": "https://paykicker.com.au/" },
+  "areaServed": "AU-VIC",
+  "audience": { "@type": "BusinessAudience", "name": "Construction subcontractors with enterprise agreements" },
+  "publisher": { "@id": "https://paykicker.com.au/#organization" }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,15 +148,18 @@
   <span class="eyebrow">Dayworks dockets</span>
   <h1>The digital dayworks docket that ends at the pay run</h1>
 
-  <p class="lede">Most docket apps stop the moment the head contractor signs. That is the easy
-  half. The hard half is turning that signature into hours your workers get paid correctly for,
-  and a variation your bookkeeper can actually bill. PayKicker does both from the one capture &mdash;
-  docket to pay, not just docket to invoice.</p>
+  <p class="lede">A dayworks docket has to carry three things: the labour hours per worker, the
+  plant and equipment used, and the materials consumed &mdash; and then get countersigned by the head
+  contractor on site. Most docket apps stop the moment that signature lands. That is the easy half.
+  The hard half is turning it into hours your workers get paid correctly for, and a variation your
+  bookkeeper can actually bill. PayKicker does both from the one capture &mdash; docket to pay, not
+  just docket to invoice.</p>
 
   <div class="toc">
     <h3>On this page</h3>
     <ol>
       <li><a href="#capture">What a docket must capture</a></li>
+      <li><a href="#materials">Labour, plant and materials</a></li>
       <li><a href="#leak">Where paper leaks revenue</a></li>
       <li><a href="#topay">Docket to pay, not to invoice</a></li>
       <li><a href="#hours">How capture ties to payroll hours</a></li>
@@ -158,6 +190,17 @@
   <p>The signature is the part everyone remembers. The <em>hours per worker per classification</em>
   is the part that quietly decides whether you made money on the variation, because it is the only
   field that has to be right twice &mdash; once for the client, and once for your own pay run.</p>
+
+  <h2 id="materials">Capture labour, plant and materials on every docket</h2>
+  <p>PayKicker captures all three on the one docket, on site, from the worker&rsquo;s phone. Labour
+  goes on per worker, by name and classification, with real start, finish and break times. Plant and
+  materials go on as a separate list &mdash; the pump, the scaffold, the props, the concrete &mdash;
+  picked from a price list the office maintains for that project, with the worker entering only the
+  quantity and unit. Anything not on the list goes on as a free-text line and is flagged in the cost
+  report so the office can price it, rather than being left off the docket and never billed.</p>
+  <p>The signed docket shows what was used and how much, never a rate. The rates live with the
+  office and are applied when the client cost report is built, so the crew never sees your pricing
+  and the head contractor signs for quantities they can check on the day.</p>
 
   <h2 id="leak">How paper dockets leak revenue</h2>
   <p>Paper rarely fails dramatically. It leaks, in four predictable places.</p>
@@ -213,6 +256,7 @@
     <div class="row"><span>Crew on the docket</span><span>4 workers, by name</span></div>
     <div class="row"><span>Ordinary hours</span><span>8.00 each</span></div>
     <div class="row hot"><span>Overtime hours</span><span>2.00 each</span></div>
+    <div class="row"><span>Materials &amp; plant</span><span>Concrete pump 1 day &middot; Props 24 ea</span></div>
     <div class="row"><span>Photos attached</span><span>3, timestamped</span></div>
     <div class="row"><span>Countersigned</span><span>On site, 17:34</span></div>
     <div class="dfoot">One capture &rarr; client cost report &middot; payroll hours &middot; MYOB export</div>
