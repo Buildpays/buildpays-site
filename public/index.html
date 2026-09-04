@@ -157,6 +157,10 @@
   nav a.nl{font-size:15px;font-weight:600;color:var(--ink);text-decoration:none}
   nav a.nl:hover{color:var(--blue)}
   nav .spacer{flex:1}
+  /* Log in — the app lives at app.buildpays.com.au; a customer should not have to
+     know that. Stays visible at every width (it is NOT .nl, which hides ≤900px). */
+  nav a.login{font-family:'Barlow Condensed';font-weight:700;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);text-decoration:none;border:2px solid var(--navy);border-radius:8px;padding:8px 14px;white-space:nowrap;transition:background .12s ease,color .12s ease}
+  nav a.login:hover{background:var(--navy);color:#fff}
   /* hero */
   header.hero{background:linear-gradient(170deg,var(--navy) 0%,var(--navy2) 100%);color:#e8eef6;padding:76px 0 84px;overflow:hidden}
   .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
@@ -234,8 +238,11 @@
   @media(max-width:640px){
     .wrap{padding:0 16px}
     section{padding:38px 0}
-    nav .wrap{height:56px;gap:10px}
-    nav .btn{padding:9px 14px;font-size:14px}
+    nav .wrap{height:56px;gap:8px}
+    /* !important: the nav button carries inline padding/font-size, which would
+       otherwise win over this rule (the inline-style trap) */
+    nav .btn{padding:9px 12px!important;font-size:14px!important}
+    nav a.login{padding:6px 9px;font-size:13px}
     header.hero{padding:18px 0 36px}
     .hero h1{font-size:clamp(32px,9.5vw,42px);line-height:1.05}
     .hero p.sub{font-size:15.5px;line-height:1.5;margin:12px 0 20px}
@@ -295,6 +302,14 @@
     .step h3{font-size:19px}
     .step p{font-size:14px}
   }
+  /* the narrowest phones (360px): logo a touch smaller so logo · Log in · Book a demo still fit */
+  @media(max-width:400px){
+    nav .logo svg{height:22px}
+  }
+  @media(max-width:370px){
+    nav .logo svg{height:20px}
+    nav .wrap{gap:6px}
+  }
 </style>
 </head>
 <body>
@@ -308,6 +323,7 @@
     <a class="nl" href="#how">How it works</a>
     <a class="nl" href="#pricing">Pricing</a>
     <a class="nl" href="#faq">FAQ</a>
+    <a class="login" href="https://app.buildpays.com.au/" rel="noopener">Log in</a>
     <a class="btn btn-primary" style="padding:10px 20px;font-size:15px" href="#contact">Book a demo</a>
   </div>
 </nav>
@@ -531,6 +547,7 @@
     <div>
       <h3>PayKicker</h3>
       <p>Rostering, dayworks dockets and EBA payroll for Australian construction subcontractors. Built in Melbourne.</p>
+      <p style="margin-top:10px"><a href="https://app.buildpays.com.au/" rel="noopener" style="color:#fff;font-weight:600">Log in to PayKicker &rarr;</a></p>
     </div>
     <div>
       <h3>Product</h3>

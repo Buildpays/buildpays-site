@@ -61,6 +61,11 @@
   .logo{font-family:'Barlow Condensed';font-weight:800;font-size:30px;letter-spacing:.01em;color:#fff;text-decoration:none;border-left:6px solid var(--orange);padding-left:12px;line-height:1}
   .top a.back{font-size:15px;font-weight:600;color:#a9c2dc;text-decoration:none}
   .top a.back:hover{color:#fff}
+  .top .links{display:flex;align-items:center;gap:16px;flex-shrink:0}
+  .top a.login{font-family:'Barlow Condensed';font-weight:700;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#fff;text-decoration:none;border:2px solid #fff;border-radius:8px;padding:7px 12px;white-space:nowrap}
+  .top a.login:hover{background:#fff;color:var(--navy)}
+  /* phone: the back link loses its tail so logo + Back + Log in sit on one line */
+  @media(max-width:620px){.top .wrap{gap:10px}.top .links{gap:10px}.top a.back{font-size:14px}.top a.back .tail{display:none}.top a.login{font-size:13px;padding:6px 9px}}
 
   main{padding:52px 0 70px}
   .eyebrow{font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:8px}
@@ -91,7 +96,10 @@
 <div class="top">
   <div class="wrap">
     <a class="logo" href="/">PayKicker</a>
-    <a class="back" href="/">&larr; Back to paykicker.com.au</a>
+    <div class="links">
+      <a class="back" href="/">&larr; Back<span class="tail"> to paykicker.com.au</span></a>
+      <a class="login" href="https://app.buildpays.com.au/" rel="noopener">Log in</a>
+    </div>
   </div>
 </div>
 
@@ -381,6 +389,7 @@
 <footer>
   <div class="wrap">
     <p><a href="/">paykicker.com.au</a> &nbsp;·&nbsp;
+       <a href="https://app.buildpays.com.au/" rel="noopener">Log in</a> &nbsp;·&nbsp;
        <a href="/terms">Terms of Service</a> &nbsp;·&nbsp;
        <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a> &nbsp;·&nbsp;
        Melbourne, Victoria</p>
