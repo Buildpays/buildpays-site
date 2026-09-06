@@ -1,0 +1,5 @@
+Contact: mailto:security@paykicker.com.au
+Expires: 2027-09-06T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://paykicker.com.au/.well-known/security.txt
+Canonical: https://app.paykicker.com.au/.well-known/security.txt
