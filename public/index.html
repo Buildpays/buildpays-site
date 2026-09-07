@@ -60,7 +60,7 @@
     "CFMEU EBA pay rules applied automatically",
     "MYOB-ready payroll export matched to payroll categories and job codes"
   ],
-  "offers": { "@type": "Offer", "priceCurrency": "AUD", "description": "Full system priced per active employee each month with volume discounts; individual modules (dayworks dockets, rostering, onboarding) available at a flat monthly fee. Card or direct debit. Contact for pricing." },
+  "offers": { "@type": "Offer", "priceCurrency": "AUD", "description": "Full system priced per active employee each month with volume discounts; individual modules — dayworks dockets, or rostering & inductions, or rostering with EBA payroll — at a flat monthly fee. Onboarding and ticket tracking are included with every plan. Card or direct debit. Contact for pricing." },
   "areaServed": "AU-VIC",
   "audience": { "@type": "BusinessAudience", "name": "Construction subcontractors with enterprise agreements" },
   "publisher": { "@id": "https://paykicker.com.au/#organization" }
@@ -75,7 +75,7 @@
     { "@type": "Question", "name": "Does it replace MYOB?", "acceptedAnswer": { "@type": "Answer", "text": "No — it feeds it. MYOB stays your system of record and holds every pay rate. We handle everything before the pay run: rostering, EBA-classified timesheets, approvals, and an import file matched to your payroll categories and job codes." } },
     { "@type": "Question", "name": "Which enterprise agreements do you support?", "acceptedAnswer": { "@type": "Answer", "text": "The engine is built on the CFMEU Victoria construction and general pattern used across formwork, structure and civil agreements. During setup we configure it to your specific agreement." } },
     { "@type": "Question", "name": "How do workers use it?", "acceptedAnswer": { "@type": "Answer", "text": "A web app they add to their phone's home screen — no app store, no passwords. They see their roster, submit a timesheet in under 30 seconds, and get a text when tomorrow's site is confirmed." } },
-    { "@type": "Question", "name": "Can we take just the dockets, without payroll?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — the platform is modular. Dayworks dockets and cost reports on their own at a flat monthly fee, with rostering, onboarding and full payroll available as you need them." } }
+    { "@type": "Question", "name": "Can we take just the dockets, without payroll?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. There are three modules: rostering &amp; inductions, dayworks dockets &amp; cost reports, and EBA payroll, which runs on top of rostering. Take dockets alone, rostering alone, or rostering with payroll at a flat monthly fee — or the full system per active employee. Onboarding and ticket tracking are included with every plan." } }
   ]
 }
 </script>
@@ -349,15 +349,15 @@
         <a class="btn btn-ghost" style="border-color:#9cc4ee;color:#e8eef6" href="#how">See how it works</a>
       </div>
       <p class="call">Prefer to talk? Call <a href="tel:+61340616223">03 4061 6223</a> — Melbourne.</p>
-      <p class="fine">Full system per active employee, or start with just dockets, rostering or onboarding at a flat fee. No seats, no lock-in.</p>
+      <p class="fine">Full system per active employee, or start with just dockets or rostering at a flat fee — onboarding and tickets come with every plan. No seats, no lock-in.</p>
     </div>
     <div class="docket" role="img" aria-label="Example MYOB payroll export showing pay items generated from one timesheet">
       <div class="dhead"><span>MYOB TIMESHEET EXPORT</span><span>E0012 · TUE 07 JUL</span></div>
-      <div class="row"><span>Base Hourly</span><span>8.00 units</span></div>
+      <div class="row"><span>Base Hourly — 8 hrs, 0.80 to the RDO bank</span><span>7.20 units</span></div>
       <div class="row"><span>Overtime 2.0x&nbsp;&nbsp;— &gt;8 hrs</span><span>2.00 units</span></div>
-      <div class="row hot"><span>Site Allowance 10.70 · WGT01</span><span>10.00 units</span></div>
+      <div class="row hot"><span>Site Allowance 10.70 · WGT01 — per hr, 7.20 + 2</span><span>9.20 units</span></div>
       <div class="row"><span>Fares &amp; Travel — daily</span><span>1.00 unit</span></div>
-      <div class="row"><span>Meal Allowance O/T — auto ≥1.5h</span><span>1.00 unit</span></div>
+      <div class="row"><span>Meal Allowance O/T — auto, OT ≥1.5h</span><span>1.00 unit</span></div>
       <div class="row hot"><span>Job costing</span><span>WGT01 ✓</span></div>
       <div class="dfoot">One tap from the worker. Every rule from the agreement. Zero spreadsheets.</div>
     </div>
@@ -376,14 +376,14 @@
     </div>
     <div style="border:1.5px solid rgba(156,196,238,.3);border-radius:12px;padding:16px">
       <div style="font-size:24px">🎫</div><b style="color:#fff;font-family:'Barlow Condensed';font-size:19px;text-transform:uppercase;letter-spacing:.03em">Onboarding &amp; tickets</b>
-      <p style="color:#9cc4ee;font-size:13.5px;margin:6px 0 0">New starters onboard from a text; licences AI-scanned, verified and expiry-tracked.</p>
+      <p style="color:#9cc4ee;font-size:13.5px;margin:6px 0 0">New starters onboard from a text; licences AI-scanned, verified and expiry-tracked. <b style="color:#fff">Included with every plan.</b></p>
     </div>
     <div style="border:1.5px solid rgba(156,196,238,.3);border-radius:12px;padding:16px">
       <div style="font-size:24px">💰</div><b style="color:#fff;font-family:'Barlow Condensed';font-size:19px;text-transform:uppercase;letter-spacing:.03em">EBA payroll → MYOB</b>
-      <p style="color:#9cc4ee;font-size:13.5px;margin:6px 0 0">Every clause of your agreement encoded once; leave, holidays and RDOs handled; one-click export.</p>
+      <p style="color:#9cc4ee;font-size:13.5px;margin:6px 0 0">Every clause of your agreement encoded once; leave, holidays and RDOs handled; one-click export. <b style="color:#fff">Runs on top of rostering.</b></p>
     </div>
   </div>
-  <p style="text-align:center;color:#5c7089;font-size:13px;margin:18px 0 0">Four modules. Take one, some, or the lot.</p>
+  <p style="text-align:center;color:#5c7089;font-size:13px;margin:18px 0 0">Three modules — rostering, dockets, payroll — plus onboarding &amp; tickets with every plan. Take one, some, or the lot.</p>
 </section>
 
 <section id="pain">
@@ -462,7 +462,7 @@
         <div class="num" style="font-size:38px;line-height:1.15">Full system —<br>per employee paid, per month</div>
         <p style="margin-top:12px;color:#9cc4ee">Everything below, billed per active employee on your books each month — salaried and hourly alike — with volume discounts for larger crews.</p>
         <div class="num" style="font-size:26px;line-height:1.2;margin-top:26px">Or pick your modules —<br><span style="font-size:20px">flat monthly fee</span></div>
-        <p style="margin-top:10px;color:#9cc4ee">Just want dockets and cost reports without the payroll side? Rostering and inductions only? Choose the modules you need at a simple flat rate — and switch to the full system whenever you're ready.</p>
+        <p style="margin-top:10px;color:#9cc4ee">Just want dockets and cost reports without the payroll side? Rostering and inductions only? Choose the modules you need at a simple flat rate — payroll always comes with rostering, and onboarding &amp; tickets come with everything — and switch to the full system whenever you're ready.</p>
         <p style="margin-top:14px;color:#9cc4ee;font-size:14px">Pay by card or direct debit. No lock-in.</p>
         <a class="btn btn-primary" style="margin-top:18px" href="#contact">Contact us for pricing &amp; a demo</a>
       </div>
@@ -548,7 +548,7 @@
     <details><summary>Does it replace MYOB?</summary><p>No — it feeds it. MYOB stays your system of record and holds every pay rate. We handle everything before the pay run: rostering, EBA-classified timesheets, approvals, and an import file matched to your payroll categories and job codes.</p></details>
     <details><summary>Which enterprise agreements do you support?</summary><p>The engine is built on the CFMEU Victoria construction &amp; general pattern used across formwork, structure and civil agreements. During setup we configure it to your specific agreement.</p></details>
     <details><summary>How do workers use it?</summary><p>A web app they add to their phone's home screen — no app store, no passwords. They see their roster, submit a timesheet in under 30 seconds, and get a text when tomorrow's site is confirmed.</p></details>
-    <details><summary>Can we take just the dockets, without payroll?</summary><p>Yes — the platform is modular. Dayworks dockets and cost reports on their own at a flat monthly fee, with rostering, onboarding and full payroll available as you need them.</p></details>
+    <details><summary>Can we take just the dockets, without payroll?</summary><p>Yes. There are three modules: rostering &amp; inductions, dayworks dockets &amp; cost reports, and EBA payroll, which runs on top of rostering. Take dockets alone, rostering alone, or rostering with payroll at a flat monthly fee — or the full system per active employee. Onboarding and ticket tracking are included with every plan.</p></details>
   </div>
 </section>
 
