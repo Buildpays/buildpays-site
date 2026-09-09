@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Status | PayKicker</title>
+<meta name="description" content="Live status of the PayKicker application, API and scheduled jobs, checked from your own browser. Incident contact and response times.">
+<link rel="icon" type="image/svg+xml" href="paykicker-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="paykicker-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="paykicker-icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="paykicker-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#12293f">
+<link rel="canonical" href="https://paykicker.com.au/status">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="System Status | PayKicker">
+<meta property="og:description" content="Live status of the PayKicker application, API and scheduled jobs.">
+<meta property="og:url" content="https://paykicker.com.au/status">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="PayKicker">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<!-- Google Analytics 4 — same stream as the rest of the site. Disclosed in the privacy policy. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
+<script src="/js/gtag.js"></script>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#16324f; --navy2:#1e4470; --blue:#2f6cb3; --paper:#fafbfd; --concrete:#dde6f0;
+    --ink:#22344a; --mute:#5c7089; --orange:#f25c1f; --white:#ffffff; --line:#d3deea;
+    --up:#1c7a4b; --up-bg:#e8f5ee; --down:#b3261e; --down-bg:#fdecea;
+    --warn:#a4620a; --warn-bg:#fdf3e3; --unknown:#5c7089; --unknown-bg:#eef2f7;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Barlow',Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;font-size:17px}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:'Barlow Condensed',sans-serif;color:var(--navy);line-height:1.1;letter-spacing:.01em}
+  h1{font-size:clamp(38px,6vw,56px);margin-bottom:10px}
+  h2{font-size:27px;margin:44px 0 12px;padding-top:22px;border-top:2px solid var(--line)}
+  h3{font-size:20px;margin:26px 0 8px;color:var(--navy2)}
+  p{margin-bottom:14px}
+  ul{margin:0 0 16px 22px}
+  li{margin-bottom:7px}
+  a{color:var(--blue)}
+  a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+  strong,b{color:var(--navy)}
+
+  .top{background:var(--navy);padding:18px 0}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-family:'Barlow Condensed';font-weight:800;font-size:30px;letter-spacing:.01em;color:#fff;text-decoration:none;border-left:6px solid var(--orange);padding-left:12px;line-height:1}
+  .top a.back{font-size:15px;font-weight:600;color:#a9c2dc;text-decoration:none}
+  .top a.back:hover{color:#fff}
+  .top .links{display:flex;align-items:center;gap:16px;flex-shrink:0}
+  .top a.login{font-family:'Barlow Condensed';font-weight:700;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#fff;text-decoration:none;border:2px solid #fff;border-radius:6px;padding:7px 13px}
+  .top a.login:hover{background:#fff;color:var(--navy)}
+  @media(max-width:620px){.top .wrap{gap:10px}.top .links{gap:10px}.top a.back{font-size:14px}.top a.back .tail{display:none}.top a.login{font-size:13px;padding:6px 9px}}
+
+  main{padding:52px 0 70px}
+  .eyebrow{font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:8px}
+  .lede{font-size:19px;color:var(--navy2);margin-bottom:26px}
+
+  /* --- the banner --- */
+  .banner{border-radius:12px;padding:22px 24px;margin-bottom:8px;border:2px solid var(--line);background:var(--white);display:flex;align-items:center;gap:16px}
+  .banner .dot{width:16px;height:16px;border-radius:50%;flex:none;background:var(--unknown)}
+  .banner .txt{flex:1;min-width:0}
+  .banner .head{display:block;font-family:'Barlow Condensed';font-size:28px;font-weight:700;color:var(--navy);line-height:1.1;margin-bottom:2px}
+  .banner .sub{display:block;font-size:15px;color:var(--mute);line-height:1.45}
+  .banner.up{border-color:var(--up);background:var(--up-bg)} .banner.up .dot{background:var(--up)} .banner.up .head{color:var(--up)}
+  .banner.down{border-color:var(--down);background:var(--down-bg)} .banner.down .dot{background:var(--down)} .banner.down .head{color:var(--down)}
+  .banner.warn{border-color:var(--warn);background:var(--warn-bg)} .banner.warn .dot{background:var(--warn)} .banner.warn .head{color:var(--warn)}
+  .checked{font-family:'IBM Plex Mono';font-size:13px;color:var(--mute);margin-bottom:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .checked button{font-family:'Barlow Condensed';font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);background:var(--white);border:1.5px solid var(--line);border-radius:6px;padding:5px 11px;cursor:pointer}
+  .checked button:hover{border-color:var(--blue);color:var(--blue)}
+
+  /* --- the component rows --- */
+  .rows{border:1px solid var(--line);border-radius:10px;background:var(--white);overflow:hidden}
+  .row{display:flex;align-items:center;gap:14px;padding:15px 20px;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:none}
+  .row .name{flex:1;min-width:0}
+  .row .name b{display:block;font-family:'Barlow Condensed';font-size:19px;color:var(--navy);line-height:1.2}
+  .row .name span{font-size:14px;color:var(--mute);display:block;line-height:1.45}
+  .pill{font-family:'Barlow Condensed';font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:20px;white-space:nowrap;flex:none;
+        background:var(--unknown-bg);color:var(--unknown)}
+  .pill.up{background:var(--up-bg);color:var(--up)}
+  .pill.down{background:var(--down-bg);color:var(--down)}
+  .pill.warn{background:var(--warn-bg);color:var(--warn)}
+  @media(max-width:520px){.row{flex-wrap:wrap;gap:8px}.row .name{flex:1 1 100%}}
+
+  .note{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;padding:18px 20px;margin:20px 0}
+  .note p:last-child{margin-bottom:0}
+  .contact{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin:16px 0 0}
+  .contact dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;font-size:16px}
+  .contact dt{font-family:'Barlow Condensed';font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:14px;color:var(--mute);padding-top:3px}
+  .contact dd{margin:0}
+  @media(max-width:520px){.contact dl{grid-template-columns:1fr;gap:2px 0}.contact dd{margin-bottom:12px}}
+
+  footer{background:var(--navy);color:#8fa9c6;padding:30px 0 22px;font-size:13.5px;line-height:1.55;margin-top:0}
+  footer a{color:#bcd2e8}
+  footer .legal{font-size:12px;line-height:1.5;opacity:.75;margin-top:16px;border-top:1px solid #2b4a6e;padding-top:14px}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <a class="logo" href="/">PayKicker</a>
+    <div class="links">
+      <a class="back" href="/">&larr; Back<span class="tail"> to paykicker.com.au</span></a>
+      <a class="login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
+    </div>
+  </div>
+</div>
+
+<main>
+<div class="wrap">
+
+  <span class="eyebrow">System status</span>
+  <h1>Is PayKicker working?</h1>
+  <p class="lede">This page checks PayKicker from <b>your own browser, right now</b>. It is not a report
+    we type up after the fact, so if something is down for you it will say so here.</p>
+
+  <div class="banner" id="banner">
+    <span class="dot" id="dot"></span>
+    <span class="txt">
+      <span class="head" id="headline">Checking&hellip;</span>
+      <span class="sub" id="subline">Contacting PayKicker from this device.</span>
+    </span>
+  </div>
+  <div class="checked">
+    <span id="stamp">&nbsp;</span>
+    <button type="button" id="again">Check again</button>
+    <span>Re-checks automatically every 60 seconds.</span>
+  </div>
+
+  <div class="rows">
+    <div class="row">
+      <span class="name"><b>The app</b><span>app.paykicker.com.au &mdash; where you log in and work</span></span>
+      <span class="pill" id="p-app">Checking</span>
+    </div>
+    <div class="row">
+      <span class="name"><b>Database and API</b><span>Your data, and everything the app asks for</span></span>
+      <span class="pill" id="p-db">Checking</span>
+    </div>
+    <div class="row">
+      <span class="name"><b>Scheduled jobs</b><span>Roster alerts, approval reminders, billing, nightly backups</span></span>
+      <span class="pill" id="p-cron">Checking</span>
+    </div>
+  </div>
+
+  <h2>If this page says everything is fine but it isn't for you</h2>
+  <p>Two things are worth trying before you call. <b>Pull down to refresh</b> the app &mdash; a phone
+    holds an old copy of a page for longer than you would think. Then check whether it is only
+    <b>your site's mobile signal</b>: if the page loads on wifi but not on site, that is the network,
+    not PayKicker.</p>
+  <p>If neither helps, tell us. A report from you is worth more than a monitor, because you can see
+    what the monitor cannot: which screen, which button, and what it said.</p>
+
+  <div class="note">
+    <p><b>Honest limitation.</b> This status page is hosted separately from the application, so it stays
+      up when PayKicker is down. But no status page can report an outage that takes out the page itself.
+      <b>If this page will not load either, assume there is a problem and phone us.</b></p>
+  </div>
+
+  <h2>Who to contact, and how quickly we answer</h2>
+  <div class="contact">
+    <dl>
+      <dt>Something broken</dt>
+      <dd><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a> &mdash; answered
+        <b>within one business day</b>, Melbourne time. Include the screen, what you pressed, and any message
+        you saw.</dd>
+      <dt>Urgent — pay run or a site stopped</dt>
+      <dd><a href="tel:+61340616223">03 4061 6223</a>. Phone, do not email, if a pay run or a crew is
+        blocked right now.</dd>
+      <dt>Security</dt>
+      <dd><a href="mailto:security@paykicker.com.au">security@paykicker.com.au</a> &mdash; acknowledged
+        <b>within two business days</b>. Also published at
+        <a href="/.well-known/security.txt">/.well-known/security.txt</a>.</dd>
+      <dt>Business hours</dt>
+      <dd>Monday to Friday, 7am&ndash;5pm Melbourne time. Outside those hours use the phone number for
+        anything urgent.</dd>
+    </dl>
+  </div>
+
+  <h2>What we do during an incident</h2>
+  <ul>
+    <li><b>We tell the affected customers directly.</b> You are a small number of businesses, not an
+      anonymous user base, so you get an email or a call rather than only a page to refresh.</li>
+    <li><b>We keep written incident notes</b> from the first report: what was seen, what was affected,
+      what we did, and what we changed afterwards so it does not happen twice.</li>
+    <li><b>If personal information was exposed</b>, our data breach response plan applies: assessment,
+      notification to the affected people and to the Office of the Australian Information Commissioner
+      where the law requires it, and a written review.</li>
+  </ul>
+  <p>PayKicker does not publish an uptime guarantee. We would rather state that plainly than print a
+    number we have not measured over enough time to stand behind.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="/">paykicker.com.au</a> &nbsp;&middot;&nbsp;
+       <a href="https://app.paykicker.com.au/" rel="noopener">Log in</a> &nbsp;&middot;&nbsp;
+       <a href="/status">Status</a> &nbsp;&middot;&nbsp;
+       <a href="/terms">Terms of Service</a> &nbsp;&middot;&nbsp;
+       <a href="/privacy">Privacy</a> &nbsp;&middot;&nbsp;
+       <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a> &nbsp;&middot;&nbsp;
+       <a href="tel:+61340616223">03 4061 6223</a> &nbsp;&middot;&nbsp;
+       Melbourne, Victoria</p>
+    <div class="legal">
+      PAYKICKER PTY LTD &middot; ABN 91 700 949 944<br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice.
+    </div>
+  </div>
+</footer>
+
+<script>
+/* The status page checks from the VISITOR'S browser, deliberately.
+   A status page that reports what our own server believes is a status page that can lie: the
+   classic failure is a green page served from a cache while every customer sees an error. Checking
+   from the reader's device answers the question they actually asked, which is "can I reach it".
+
+   Two probes:
+     · /functions/v1/health  — the real one. Unauthenticated by design, CORS-open, never cached, and
+       it does a genuine round trip to Postgres plus a look at whether the scheduled jobs are current.
+       Returns {status, checks:{database, scheduled}}.
+     · the app origin — a no-cors HEAD. The response is opaque (we may not read it cross-origin), but
+       a resolved promise proves the host answered and a rejection proves it did not. That is all a
+       liveness check needs.
+   Nothing here needs a key, so nothing here can leak one. */
+(function () {
+  var HEALTH = "https://oakqmoisxqzxosmhjfzz.supabase.co/functions/v1/health";
+  var APP = "https://app.paykicker.com.au/";
+  var TIMEOUT = 8000;
+
+  var el = function (id) { return document.getElementById(id); };
+  var pill = function (id, state, text) {
+    var n = el(id); n.className = "pill " + state; n.textContent = text;
+  };
+
+  function withTimeout(p, ms) {
+    return new Promise(function (resolve, reject) {
+      var done = false;
+      var t = setTimeout(function () { if (!done) { done = true; reject(new Error("timeout")); } }, ms);
+      p.then(function (v) { if (!done) { done = true; clearTimeout(t); resolve(v); } },
+             function (e) { if (!done) { done = true; clearTimeout(t); reject(e); } });
+    });
+  }
+
+  function melbourne(d) {
+    try {
+      return new Intl.DateTimeFormat("en-AU", {
+        timeZone: "Australia/Melbourne", day: "2-digit", month: "short",
+        hour: "2-digit", minute: "2-digit", hour12: false
+      }).format(d) + " Melbourne";
+    } catch (e) { return d.toISOString().slice(0, 16).replace("T", " ") + " UTC"; }
+  }
+
+  function paint(app, db, cron) {
+    pill("p-app", app ? "up" : "down", app ? "Operational" : "Unreachable");
+    pill("p-db", db === "ok" ? "up" : db === "unknown" ? "warn" : "down",
+         db === "ok" ? "Operational" : db === "unknown" ? "Unknown" : "Unavailable");
+    pill("p-cron", cron === "ok" ? "up" : cron === "stale" ? "warn" : "warn",
+         cron === "ok" ? "Running to schedule" : cron === "stale" ? "Behind schedule" : "Unknown");
+
+    var banner = el("banner"), head = el("headline"), sub = el("subline");
+    var worstDown = !app || db === "down";
+    var degraded = cron === "stale" || db === "unknown";
+    banner.className = "banner " + (worstDown ? "down" : degraded ? "warn" : "up");
+    if (worstDown) {
+      head.textContent = "We have a problem";
+      sub.textContent = !app
+        ? "This device cannot reach the app. If other sites load, it is us — please phone 03 4061 6223."
+        : "The app is reachable but the database is not answering. We are almost certainly already on it.";
+    } else if (degraded) {
+      head.textContent = "Working, with something behind";
+      sub.textContent = cron === "stale"
+        ? "You can log in and work normally. A background job (alerts, reminders or backups) is running late."
+        : "You can log in and work normally. One check could not be completed from this device.";
+    } else {
+      head.textContent = "All systems operational";
+      sub.textContent = "The app, the database and the scheduled jobs all answered from this device.";
+    }
+    el("stamp").textContent = "Checked " + melbourne(new Date());
+  }
+
+  function run() {
+    el("stamp").textContent = "Checking…";
+    var appP = withTimeout(fetch(APP, { method: "HEAD", mode: "no-cors", cache: "no-store" }), TIMEOUT)
+      .then(function () { return true; }, function () { return false; });
+    var healthP = withTimeout(fetch(HEALTH, { cache: "no-store" }), TIMEOUT)
+      .then(function (r) { return r.ok ? r.json() : { status: "error", checks: {} }; })
+      .then(function (j) {
+        var c = j && j.checks ? j.checks : {};
+        return { db: c.database === "ok" ? "ok" : (j && j.status === "ok" ? "unknown" : "down"),
+                 cron: c.scheduled || "unknown" };
+      }, function () { return { db: "down", cron: "unknown" }; });
+
+    Promise.all([appP, healthP]).then(function (r) { paint(r[0], r[1].db, r[1].cron); });
+  }
+
+  el("again").addEventListener("click", run);
+  run();
+  setInterval(run, 60000);
+})();
+</script>
+
+</body>
+</html>
