@@ -1,6 +1,11 @@
 // Lead attribution + demo-form submit — was the inline <script> at the foot of index.html.
 // Moved to a file so the CSP can drop 'unsafe-inline' for scripts (security audit A24, 7 Sep 2026).
 // Loaded with defer, so the form and its hidden fields exist when this runs.
+
+// Google Ads conversion label for the "Demo enquiry" action. Pairs with
+// window.PK_ADS_ID in js/gtag.js — see the comment block there for where both
+// values come from. Empty means no Ads conversion is reported; GA4 is unaffected.
+var ADS_LEAD_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
 /* ---------------------------------------------------------------------------
    Lead attribution.
    Records how this visitor arrived (UTM tags, Google Ads click id, or referrer)
@@ -110,6 +115,17 @@
             landing_page: attribution.landing_page,
             currency:'AUD', value:1
           });
+
+          /* Google Ads conversion — the same confirmed submission, reported to
+             Ads so bidding can optimise toward enquiries rather than clicks.
+             Inert until both PK_ADS_ID (js/gtag.js) and the label below are set;
+             see the comment block in gtag.js for where the two values come from. */
+          if(window.PK_ADS_ID && ADS_LEAD_LABEL){
+            gtag('event','conversion',{
+              send_to: window.PK_ADS_ID + '/' + ADS_LEAD_LABEL,
+              value: 1, currency: 'AUD'
+            });
+          }
         }
         f.reset();
         b.style.display='none';
