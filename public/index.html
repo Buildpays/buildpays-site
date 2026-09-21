@@ -319,6 +319,14 @@
     nav .logo svg{height:20px}
     nav .wrap{gap:6px}
   }
+  /* The explainer embed. Aspect lives here rather than inline, because an inline
+     style cannot be overridden by the phone rule below.
+     4/3 is right on a desktop, but on a phone it is only ~260px tall and every
+     scene's card then runs under the explainer's own control bar. Portrait on
+     phones gives the scenes the height they need. */
+  .how-embed{position:relative;width:100%;max-width:760px;margin:0 auto;aspect-ratio:4/3;
+    border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5)}
+  @media(max-width:600px){ .how-embed{aspect-ratio:3/4;max-width:420px} }
 </style>
 </head>
 <body>
@@ -420,11 +428,11 @@
     <div style="max-width:1000px;margin:0 auto;text-align:center">
       <div class="eyebrow" style="color:#f25c1f">HOW IT WORKS</div>
       <h2 style="color:#fff">One week on site, start to finish</h2>
-      <p style="color:#9cc4ee;max-width:620px;margin:10px auto 26px">Sixty seconds, seven scenes: roster to pay run — the 6am board, the rules engine, Cup Day paying itself, the docket signed before knock-off, and the one-click MYOB file.</p>
+      <p style="color:#9cc4ee;max-width:620px;margin:10px auto 26px">Sixty seconds, eight scenes: what a pay cycle costs by hand, then the week that replaces it — the 6am board, the rules engine, Cup Day paying itself, the docket signed before knock-off, and the one-click MYOB file.</p>
       <!-- 16/9 at 840px, not 3/2 at 960 — that was 640px tall and pushed the rest
            of the page below the fold. The explainer is fully fluid (its .stage is
            100%/100% and its type uses clamp), so it reflows rather than crops. -->
-      <div style="position:relative;width:100%;max-width:760px;margin:0 auto;aspect-ratio:4/3;border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5)">
+      <div class="how-embed">
         <iframe src="/paykicker-explainer" title="How PayKicker works — animated overview" style="position:absolute;inset:0;width:100%;height:100%;border:0" loading="lazy"></iframe>
       </div>
       <p style="color:#5c7089;font-size:13px;margin-top:12px"><a href="/paykicker-explainer" target="_blank" rel="noopener" style="color:#9cc4ee">Open full-screen ↗</a></p>
