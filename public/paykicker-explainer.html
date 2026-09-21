@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How PayKicker Works: Roster to MYOB Pay Run | PayKicker</title>
-<meta name="description" content="See PayKicker across one week on site: the 6am roster board, EBA rules on every timesheet, dockets signed before knock-off, and a one-click MYOB file.">
+<meta name="description" content="What a pay cycle costs by hand, and what PayKicker does instead: the 6am roster board, EBA rules on every timesheet, dockets signed before knock-off, and a one-click MYOB file.">
 <link rel="canonical" href="https://paykicker.com.au/paykicker-explainer">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How PayKicker works — one week on site">
-<meta property="og:description" content="Roster to pay run in seven scenes: the 6am board, the EBA rules engine, Cup Day paying itself, the docket signed before knock-off, and the one-click MYOB file.">
+<meta property="og:description" content="Two days on EBA payroll and another day and a half costing dockets. Here is the week PayKicker replaces, in eight scenes.">
 <meta property="og:url" content="https://paykicker.com.au/paykicker-explainer">
 <meta property="og:site_name" content="PayKicker">
 <meta property="og:locale" content="en_AU">
@@ -55,16 +55,47 @@ body{font-family:var(--body);background:var(--ink2);overflow:hidden}
   background:rgba(242,92,31,.12);border:1px solid rgba(242,92,31,.4);border-radius:14px;padding:3px 14px}
 .scene h2{font-family:var(--disp);font-weight:800;font-size:clamp(22px,min(4.6vw,7vh),42px);color:#fff;
   text-transform:uppercase;letter-spacing:.02em;text-align:center;line-height:1.03}
-.scene .sub{color:var(--sky);font-size:clamp(12px,min(2vw,2.6vh),16px);margin-top:8px;text-align:center;max-width:580px}
+.scene .sub{color:var(--sky);font-size:clamp(12px,min(2vw,2.6vh),16px);margin-top:8px;text-align:center;max-width:560px}
 .panel{background:var(--white);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.45);
   width:min(620px,94%);margin-top:20px;padding:16px;color:var(--ink);position:relative}
 .on .rise{animation:rise .65s var(--spring) both}
 @keyframes rise{from{transform:translateY(40px) scale(.94);opacity:0}to{transform:none;opacity:1}}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+@keyframes slam{70%{opacity:1}100%{opacity:1;transform:none}}
 
-/* ---------- 1 roster ---------- */
+/* ---------- 1 the cost of now ---------- */
+.cost{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;font-weight:600;
+  padding:11px 12px;border-bottom:1px solid var(--line);opacity:0;transform:translateX(-60px)}
+.cost:last-child{border-bottom:0}
+.cost b{font-family:var(--mono);font-size:19px;white-space:nowrap}
+.on .cost{animation:slam .45s var(--spring) forwards}
+.on .n1{animation-delay:.45s}.on .n2{animation-delay:.75s}.on .n3{animation-delay:1.15s}
+.cost.hot{background:rgba(242,92,31,.09);border-radius:10px;border-bottom:0;margin-top:6px;padding:14px 12px}
+.cost.hot b{color:var(--hiviz);font-size:27px}
+.on .cost.hot{animation:slam .45s 1.15s var(--spring) forwards,flare 1.1s 1.7s ease}
+@keyframes flare{40%{box-shadow:0 0 0 4px rgba(242,92,31,.28)}}
+.burn{position:absolute;font-size:30px;opacity:0}
+.burn.b1{right:7%;top:26%}.burn.b2{left:7%;top:60%}
+.on .burn{animation:burnup 2.2s 1.8s ease-out forwards}
+@keyframes burnup{0%{opacity:0;transform:translateY(10px) scale(.7)}25%{opacity:.95}100%{opacity:0;transform:translateY(-46px) scale(1.15)}}
+.again{margin-top:12px;font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:.06em;
+  font-size:15px;color:var(--warn);text-align:center;opacity:0}
+.on .again{animation:pop .4s 2s var(--spring) forwards}
+
+/* ---------- 2 why it exists ---------- */
+.badge{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;border-left:4px solid var(--hiviz);
+  border-radius:6px;padding:9px 15px;font-family:var(--disp);font-weight:800;letter-spacing:.05em;font-size:17px;
+  opacity:0;transform:translateY(18px)}
+.on .badge{animation:rise .5s .35s var(--spring) forwards}
+.fact{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;padding:9px 10px;border-bottom:1px solid var(--line);
+  opacity:0;transform:translateY(16px)}
+.fact:last-child{border-bottom:0}
+.fact .ic{width:24px;text-align:center;flex:none;font-size:16px}
+.on .fact{animation:rise .5s var(--spring) forwards}
+.on .f1{animation-delay:.7s}.on .f2{animation-delay:1s}.on .f3{animation-delay:1.3s}
+
+/* ---------- 3 roster ---------- */
 .cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-/* Page title for search engines and screen readers. The scenes are an animation,
-   so the H1 is present but not painted. */
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .col h3{font-family:var(--disp);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.06em;
@@ -87,9 +118,8 @@ body{font-family:var(--body);background:var(--ink2);overflow:hidden}
 .bubble{background:var(--ok);color:#fff;border-radius:12px 12px 12px 3px;padding:9px 11px;font-size:12px;font-weight:600}
 .ding{position:absolute;top:-14px;right:-6px;font-size:22px;opacity:0}
 .on .ding{animation:pop .4s 2.9s var(--spring) forwards}
-@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
 
-/* ---------- 2 engine ---------- */
+/* ---------- 4 the engine (the long one) ---------- */
 .times{display:flex;gap:12px;justify-content:center;align-items:center;font-family:var(--mono);font-weight:700;font-size:25px;color:var(--ink)}
 .times .t{background:var(--paper);border:1.5px solid var(--line);border-radius:8px;padding:8px 13px;opacity:0}
 .on .times .t{animation:pop .4s var(--spring) forwards}
@@ -103,16 +133,18 @@ body{font-family:var(--body);background:var(--ink2);overflow:hidden}
   opacity:0;transform:translateX(-60px)}
 .pl b{font-family:var(--mono)}
 .on .pl{animation:slam .45s var(--spring) forwards}
-@keyframes slam{70%{opacity:1}100%{opacity:1;transform:none}}
-.on .p1{animation-delay:1.2s}.on .p2{animation-delay:1.45s}.on .p3{animation-delay:1.7s}
-.on .p4{animation-delay:1.95s}.on .p5{animation-delay:2.2s}
+.on .p1{animation-delay:1.3s}.on .p2{animation-delay:1.75s}.on .p3{animation-delay:2.2s}
+.on .p4{animation-delay:2.65s}.on .p5{animation-delay:3.1s}
 .pl .tag{background:var(--ink);color:#fff;border-radius:4px;font-size:10px;font-weight:800;padding:2px 6px;letter-spacing:.05em}
+.nopick{margin-top:12px;text-align:center;font-family:var(--disp);font-weight:800;text-transform:uppercase;
+  letter-spacing:.05em;font-size:16px;color:var(--ok);opacity:0}
+.on .nopick{animation:pop .45s 3.7s var(--spring) forwards}
 .zap{position:absolute;font-size:20px;opacity:0}
 .on .zap{animation:zapfly 1s 2.5s ease forwards}
 .zap.z1{right:12%;top:30%}.zap.z2{left:10%;top:55%;animation-delay:2.7s!important}
 @keyframes zapfly{0%{opacity:0;transform:translateY(14px) scale(.5)}30%{opacity:1}100%{opacity:0;transform:translateY(-30px) scale(1.2)}}
 
-/* ---------- 3 cup day ---------- */
+/* ---------- 5 cup day ---------- */
 .cal{font-family:var(--disp);font-weight:800;text-align:center}
 .cal .day{font-size:66px;color:var(--ink);line-height:1}
 .cal .lbl{font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--hiviz)}
@@ -127,7 +159,7 @@ body{font-family:var(--body);background:var(--ink2);overflow:hidden}
 .on .confetti i{animation:conf 1.5s 1.25s ease-out forwards}
 @keyframes conf{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(150px) rotate(540deg)}}
 
-/* ---------- 4 docket ---------- */
+/* ---------- 6 docket ---------- */
 .dhead{display:flex;justify-content:space-between;border-bottom:3px solid var(--ink);padding-bottom:8px;margin-bottom:8px}
 .dlogo{background:var(--ink);color:#fff;font-family:var(--disp);font-weight:800;letter-spacing:.05em;
   padding:5px 10px;border-left:4px solid var(--hiviz);font-size:14px}
@@ -150,7 +182,7 @@ svg.sig path{stroke:var(--ink);stroke-width:2.4;fill:none;stroke-linecap:round;s
 .on .plane{animation:fly 1.4s 3.3s ease-in forwards}
 @keyframes fly{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(160px,-110px) rotate(-14deg)}}
 
-/* ---------- 5 export ---------- */
+/* ---------- 7 export ---------- */
 .csv{font-family:var(--mono);font-size:11.5px;color:var(--ink);background:var(--paper);
   border:1px solid var(--line);border-radius:8px;padding:10px;overflow:hidden}
 .csv div{white-space:nowrap;opacity:0;transform:translateX(70px)}
@@ -166,16 +198,7 @@ svg.sig path{stroke:var(--ink);stroke-width:2.4;fill:none;stroke-linecap:round;s
 .on .ticks span{animation:pop .3s var(--spring) forwards}
 .on .k1{animation-delay:2s}.on .k2{animation-delay:2.25s}.on .k3{animation-delay:2.5s}
 
-/* ---------- 6 compliance ---------- */
-.tick{display:flex;gap:8px;align-items:center;font-size:13.5px;padding:8px 10px;border-bottom:1px solid var(--line);opacity:0;transform:translateY(16px)}
-.on .tick{animation:rise .5s var(--spring) forwards}
-.on .t1{animation-delay:.35s}.on .t2{animation-delay:.65s}.on .t3{animation-delay:.95s}.on .t4{animation-delay:1.25s}.on .t5{animation-delay:1.55s}
-.tick .ic{width:24px;text-align:center;display:inline-block}
-.on .tick .ic{animation:wiggle .5s ease}
-.on .t1 .ic{animation-delay:.8s}.on .t2 .ic{animation-delay:1.1s}.on .t3 .ic{animation-delay:1.4s}.on .t4 .ic{animation-delay:1.7s}.on .t5 .ic{animation-delay:2s}
-@keyframes wiggle{25%{transform:rotate(-14deg)}75%{transform:rotate(14deg)}}
-
-/* ---------- 7 cta ---------- */
+/* ---------- 8 cta ---------- */
 .cta-line{font-family:var(--disp);font-weight:800;font-size:clamp(32px,5.5vw,54px);color:#fff;text-transform:uppercase;
   text-align:center;line-height:1.02}
 .cta-line em{color:var(--hiviz);font-style:normal;display:inline-block}
@@ -185,6 +208,10 @@ svg.sig path{stroke:var(--ink);stroke-width:2.4;fill:none;stroke-linecap:round;s
   padding:7px 16px;font-size:13px;font-weight:600;opacity:0;transform:translateY(24px)}
 .on .mod{animation:rise .5s var(--spring) forwards}
 .on .m1{animation-delay:.7s}.on .m2{animation-delay:.85s}.on .m3{animation-delay:1s}.on .m4{animation-delay:1.15s}
+.addr{margin-top:18px;font-family:var(--disp);font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  font-size:clamp(18px,3.2vw,26px);color:#fff;opacity:0}
+.addr span{color:var(--hiviz)}
+.on .addr{animation:pop .5s 1.5s var(--spring) forwards}
 .hat{font-size:40px;display:inline-block;opacity:0}
 .on .hat{animation:hattip 1s 1.5s var(--spring) forwards}
 @keyframes hattip{0%{opacity:0;transform:translateY(20px) rotate(0)}60%{opacity:1;transform:translateY(-6px) rotate(-18deg)}100%{opacity:1;transform:none}}
@@ -204,6 +231,14 @@ svg.sig path{stroke:var(--ink);stroke-width:2.4;fill:none;stroke-linecap:round;s
 button.ctrl{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;
   font-family:var(--body);font-weight:700;font-size:12px;border-radius:6px;padding:6px 12px;cursor:pointer}
 button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
+
+/* Capture mode (?capture=1): no player chrome, no letterbox, no looping decoration.
+   Used to render this page out as a video or a PDF carousel — see js/explainer.js. */
+.capture .bar{display:none}
+.capture .stage{max-width:none}
+.capture .crane,.capture .crane *,.capture .gears span,.capture .myob .cog{animation:none!important}
+.capture .scene{padding-bottom:30px}
+
 @media (max-width:480px){
   /* Phone: tighter side padding so text wraps less (shorter scenes), a touch
      more bottom clearance for the control bar. The homepage embeds this page
@@ -211,10 +246,17 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
   .scene{padding:22px 14px 72px}
   .scene h2{font-size:24px}
   .scene .sub{font-size:12.5px}
+  .cost{font-size:12.5px;padding:9px 8px}
+  .cost b{font-size:16px}
+  .cost.hot b{font-size:22px}
+  .fact{font-size:12.5px}
+  .badge{font-size:14px;padding:7px 12px}
+  .phone{width:180px;right:3%}
+  .bubble{font-size:11px}
 }
 @media (max-height:520px){
   /* A short frame (a 16/9 embed, a small laptop window): tighter padding and smaller
-     cards so the tallest scenes — the docket, the compliance ticks — sit between the
+     cards so the tallest scenes — the docket, the pay lines — sit between the
      clock pill and the control bar instead of running under both (7 Sep 2026). */
   .scene{padding:16px 22px 54px;zoom:.88}   /* CSS zoom: every scene 12% smaller, layout intact */
   .clock{font-size:12px;padding:2px 10px;margin-bottom:4px}
@@ -223,7 +265,8 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
   .dlogo{font-size:12px;padding:4px 8px}
   .dno{font-size:15px}
   .drow{font-size:11.5px;padding:3px 4px}
-  .tick{font-size:12px;padding:5px 8px}
+  .cost{padding:7px 10px;font-size:13px}
+  .fact{font-size:12px;padding:6px 8px}
 }
 @media (prefers-reduced-motion:reduce){
   .scene,.scene *,.crane,.crane *,.sun{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}
@@ -232,18 +275,45 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
 </style>
 </head>
 <body>
-<h1 class="visually-hidden">How PayKicker works: one week on site, from the 6am roster to the MYOB pay run</h1>
+<h1 class="visually-hidden">How PayKicker works: what a pay cycle costs by hand, and the week that replaces it — from the 6am roster to the MYOB pay run</h1>
 <div class="stage" id="stage">
   <div class="sun" id="sun"></div>
   <div class="crane"><div class="mast"></div><div class="jib"></div><div class="hook"></div><div class="load"></div></div>
   <div class="skyline" id="sky"></div>
   <div class="frame" id="frame">
 
-    <!-- 1 · ROSTER -->
+    <!-- 1 · THE COST OF NOW -->
+    <section class="scene" data-dur="7000">
+      <div class="clock">EVERY PAY CYCLE</div>
+      <h2>Two days on payroll.<br>A day and a half on dockets.</h2>
+      <p class="sub">This is what a CFMEU EBA pay cycle costs a subbie by hand.</p>
+      <span class="burn b1">🔥</span><span class="burn b2">🔥</span>
+      <div class="panel rise">
+        <div class="cost n1"><span>EBA payroll, worked out by hand</span><b>2 days</b></div>
+        <div class="cost n2"><span>Day dockets, costed in Excel</span><b>1.5 days</b></div>
+        <div class="cost n3 hot"><span>Office time burnt, every cycle</span><b>$2,000+</b></div>
+      </div>
+      <div class="again">And you do it again next week</div>
+    </section>
+
+    <!-- 2 · WHY IT EXISTS -->
+    <section class="scene" data-dur="6600">
+      <div class="clock">WHY IT EXISTS</div>
+      <h2>Built by someone who runs CFMEU EBA crews.</h2>
+      <p class="sub">Not a payroll company guessing at construction.</p>
+      <div class="badge">👷 SOUTHLINE FORMWORK · MELBOURNE</div>
+      <div class="panel rise">
+        <div class="fact f1"><span class="ic">📑</span><span><b>Every pay rule traced to a clause</b> in your own agreement — not a generic award template</span></div>
+        <div class="fact f2"><span class="ic">🏗</span><span><b>One agreement at a time</b> — formwork, steelfixing and crane hire each get their own rules</span></div>
+        <div class="fact f3"><span class="ic">🧰</span><span><b>Built on the job</b> — every feature came out of a real pay run that went wrong</span></div>
+      </div>
+    </section>
+
+    <!-- 3 · ROSTER -->
     <section class="scene" data-dur="7200">
       <div class="clock">MON · 6:00 AM</div>
       <h2>Roster the crew in minutes</h2>
-      <p class="sub">Drag workers onto sites. Anyone not inducted bounces straight off the board — and the whole crew gets a text the second you hit send.</p>
+      <p class="sub">Anyone not inducted bounces off the board. The crew gets a text on send.</p>
       <div class="panel rise">
         <div class="cols">
           <div class="col"><h3>West Gate Tunnel</h3>
@@ -261,11 +331,11 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
       </div>
     </section>
 
-    <!-- 2 · ENGINE -->
-    <section class="scene" data-dur="7600">
+    <!-- 4 · THE ENGINE — the one that matters, so it runs longest -->
+    <section class="scene" data-dur="10000">
       <div class="clock">MON · 3:30 PM</div>
       <h2>Times in. Your EBA does the rest.</h2>
-      <p class="sub">Workers punch in start and finish. The rules engine reads your enterprise agreement so nobody ever picks a rate — it just lands right.</p>
+      <p class="sub">Two times go in. Every allowance, loading and RDO hour comes out.</p>
       <span class="zap z1">⚡</span><span class="zap z2">⚡</span>
       <div class="panel rise">
         <div class="times"><span class="t ta">07:00</span><span style="color:var(--hiviz)">→</span><span class="t tb">17:30</span></div>
@@ -275,14 +345,15 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
         <div class="pl p3"><span><span class="tag">FARES</span> Fares &amp; travel</span><b>1 day</b></div>
         <div class="pl p4"><span><span class="tag">SITE</span> Site allowance — Tier 1</span><b>10.00</b></div>
         <div class="pl p5"><span><span class="tag">RDO</span> RDO bank — the 36-hour week</span><b>+0.80</b></div>
+        <div class="nopick">Nobody picked a single rate</div>
       </div>
     </section>
 
-    <!-- 3 · CUP DAY -->
+    <!-- 5 · CUP DAY — the engine knows the calendar too -->
     <section class="scene" data-dur="6800">
       <div class="clock">TUE 3 NOV · CUP DAY</div>
       <h2>Holidays pay themselves</h2>
-      <p class="sub">Public holidays and the RDO calendar are known by date. Didn't work Cup Day? The pay line writes itself. No timesheet. No phone call. No worries.</p>
+      <p class="sub">Didn't work Cup Day? The pay line writes itself. No timesheet, no phone call.</p>
       <div class="panel rise" style="text-align:center;padding:24px">
         <div class="cal"><div class="lbl">Melbourne Cup</div><div class="day">3</div></div>
         <div class="stamp">PH NOT WORKED · PAID ✓</div>
@@ -295,11 +366,11 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
       <div class="horse">🐎</div>
     </section>
 
-    <!-- 4 · DOCKET -->
-    <section class="scene" data-dur="8200">
+    <!-- 6 · DOCKET -->
+    <section class="scene" data-dur="8200" data-night="1">
       <div class="clock">WED · 4:45 PM</div>
       <h2>No signed docket, no payment.<br>So signing takes seconds.</h2>
-      <p class="sub">The docket builds itself from the day's timesheets. The client supervisor signs on your phone — or a secure emailed link — and a copy flies to their inbox before the ute leaves site.</p>
+      <p class="sub">Built from the day's timesheets. Signed on site before the ute leaves.</p>
       <div class="panel rise">
         <div class="dhead"><span class="dlogo">SOUTHLINE FORMWORK</span><span class="dno">D-0042</span></div>
         <div class="drow d1"><span>Danny Whitlock, Tomas Novak, Wiremu Katene · Form Worker</span><b>30.0 hrs</b></div>
@@ -319,11 +390,11 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
       </div>
     </section>
 
-    <!-- 5 · EXPORT -->
+    <!-- 7 · EXPORT -->
     <section class="scene" data-dur="7200">
       <div class="clock">THU · 9:00 AM</div>
       <h2>One click to MYOB</h2>
-      <p class="sub">Approved timesheets, leave, holidays and RDOs become a units-only file matched to your MYOB categories. MYOB keeps every dollar rate — CPI day means updating MYOB, not your software.</p>
+      <p class="sub">A units-only file matched to your MYOB categories. MYOB keeps every dollar rate.</p>
       <div class="panel rise">
         <div class="csv">
           <div class="r1">T0002, Whitlock, Danny, 13/07, Base Hourly, 7.20, WGT01</div>
@@ -340,33 +411,18 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
       </div>
     </section>
 
-    <!-- 6 · COMPLIANCE -->
-    <section class="scene" data-dur="7800">
-      <div class="clock">EVERY DAY</div>
-      <h2>Compliance that runs itself</h2>
-      <p class="sub">The paperwork a safety audit actually asks for — signed, dated, versioned, and already filed.</p>
-      <div class="panel rise">
-        <div class="tick t1"><span class="ic">📄</span><span><b>SWMS signed before work starts</b> — roster &amp; timesheets stay locked until every worker signs the current version</span></div>
-        <div class="tick t2"><span class="ic">🎫</span><span><b>Tickets &amp; licences</b> — AI-scanned at onboarding, expiry tracked, verified by the office</span></div>
-        <div class="tick t3"><span class="ic">🏖</span><span><b>Leave per the NES</b> — annual &amp; personal for everyone but casuals, salaried included</span></div>
-        <div class="tick t4"><span class="ic">👁</span><span><b>Roster previews</b> — site approvers tick the allocation before it goes to the crew</span></div>
-        <div class="tick t5"><span class="ic">🔒</span><span><b>Audit log</b> — every approval, export, signature and payment, timestamped</span></div>
-      </div>
-    </section>
-
-    <!-- 7 · CTA -->
+    <!-- 8 · CTA -->
     <section class="scene" data-dur="7400">
       <div class="clock">EVERY WEEK</div>
       <div class="hat">👷</div>
       <div class="cta-line rise">Run the site. Sign the docket.<br><em>Nail the pay run.</em></div>
-      <p class="sub" style="margin-top:14px">Full system per active employee — or start with just the modules you need.</p>
       <div class="mods">
         <span class="mod m1">📋 Rostering &amp; safety</span>
         <span class="mod m2">✍️ Dockets &amp; cost reports</span>
         <span class="mod m3">🎫 Onboarding &amp; tickets</span>
         <span class="mod m4">💰 EBA payroll → MYOB</span>
       </div>
-      <p class="sub" style="margin-top:16px;font-weight:700;color:#fff">PayKicker — built by someone who runs CFMEU EBA crews every week.</p>
+      <div class="addr">paykicker<span>.com.au</span></div>
       <div class="rain">
         <i style="left:8%;background:#f25c1f"></i><i style="left:19%;background:#2e7d32;animation-delay:.2s!important"></i>
         <i style="left:31%;background:#f2b31f;animation-delay:.45s!important"></i><i style="left:42%;background:#9cc4ee;animation-delay:.1s!important"></i>
