@@ -24,7 +24,7 @@
    nothing else has to change when the ids go in. Deploy, then confirm with
    Meta Pixel Helper / LinkedIn Insight Tag Checker / TikTok Pixel Helper.
 --------------------------------------------------------------------------- */
-window.PK_META_PIXEL_ID      = "";   // e.g. "1234567890123456"
+window.PK_META_PIXEL_ID      = "1607611424491096";   // e.g. "1234567890123456"
 window.PK_LINKEDIN_PARTNER_ID = "10046388";   // e.g. "1234567"
 window.PK_TIKTOK_PIXEL_ID    = "";   // e.g. "CABCDEFG1234567890AB"
 
