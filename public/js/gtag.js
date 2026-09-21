@@ -24,7 +24,7 @@ gtag("config", "G-4DGX8VDBNH");
    Leave them empty and nothing happens: no extra network call, no console error.
    The CSP already allows googletagmanager.com, so no header change is needed.
 --------------------------------------------------------------------------- */
-window.PK_ADS_ID = "";   // e.g. "AW-0000000000"
+window.PK_ADS_ID = "AW-17839145831";   // e.g. "AW-0000000000"
 
 if (window.PK_ADS_ID) {
   gtag("config", window.PK_ADS_ID);

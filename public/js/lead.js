@@ -5,7 +5,7 @@
 // Google Ads conversion label for the "Demo enquiry" action. Pairs with
 // window.PK_ADS_ID in js/gtag.js — see the comment block there for where both
 // values come from. Empty means no Ads conversion is reported; GA4 is unaffected.
-var ADS_LEAD_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
+var ADS_LEAD_LABEL = "9WSOCK_B5f8cEOeGr7pC";   // e.g. "AbC-D_efGhIjKlMnOp"
 
 // LinkedIn conversion id for the "Demo enquiry" conversion. Pairs with
 // window.PK_LINKEDIN_PARTNER_ID in js/pixels.js. Campaign Manager -> Analyze ->
