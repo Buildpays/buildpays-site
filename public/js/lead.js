@@ -12,7 +12,7 @@ var ADS_LEAD_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
 // Conversion tracking -> Create conversion -> "Insight Tag, event-specific" gives
 // a number like 12345678. Empty means no LinkedIn conversion is reported.
 // Meta and TikTok need no extra value: their pixel ids in pixels.js are enough.
-var LINKEDIN_CONVERSION_ID = "";   // e.g. "12345678"
+var LINKEDIN_CONVERSION_ID = "28874580";   // e.g. "12345678"
 /* ---------------------------------------------------------------------------
    Lead attribution.
    Records how this visitor arrived (UTM tags, Google Ads click id, or referrer)
