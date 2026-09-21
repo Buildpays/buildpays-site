@@ -83,8 +83,11 @@ body{font-family:var(--body);background:var(--ink2);overflow:hidden}
 .on .again{animation:pop .4s 2s var(--spring) forwards}
 
 /* ---------- 2 why it exists ---------- */
-.badge{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;border-left:4px solid var(--hiviz);
-  border-radius:6px;padding:9px 15px;font-family:var(--disp);font-weight:800;letter-spacing:.05em;font-size:17px;
+/* Sits on the dark stage, so it cannot use --ink for its own fill — it would
+   vanish into the background. Translucent white plus the hi-viz edge instead. */
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.1);color:#fff;
+  border:1.5px solid rgba(156,196,238,.45);border-left:4px solid var(--hiviz);
+  border-radius:6px;padding:9px 15px;margin-top:12px;font-family:var(--disp);font-weight:800;letter-spacing:.05em;font-size:17px;
   opacity:0;transform:translateY(18px)}
 .on .badge{animation:rise .5s .35s var(--spring) forwards}
 .fact{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;padding:9px 10px;border-bottom:1px solid var(--line);
@@ -301,7 +304,7 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
       <div class="clock">WHY IT EXISTS</div>
       <h2>Built by someone who runs CFMEU EBA crews.</h2>
       <p class="sub">Not a payroll company guessing at construction.</p>
-      <div class="badge">👷 SOUTHLINE FORMWORK · MELBOURNE</div>
+      <div class="badge">👷 BUILT IN MELBOURNE, ON SITE</div>
       <div class="panel rise">
         <div class="fact f1"><span class="ic">📑</span><span><b>Every pay rule traced to a clause</b> in your own agreement — not a generic award template</span></div>
         <div class="fact f2"><span class="ic">🏗</span><span><b>One agreement at a time</b> — formwork, steelfixing and crane hire each get their own rules</span></div>
