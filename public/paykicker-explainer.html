@@ -254,8 +254,11 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
   .cost.hot b{font-size:22px}
   .fact{font-size:12.5px}
   .badge{font-size:14px;padding:7px 12px}
-  .phone{width:180px;right:3%}
-  .bubble{font-size:11px}
+  /* The SMS mockup is charming but at this width it sits on top of the roster
+     board and hides the "New Starter — not inducted" chip, which is the whole
+     point of the scene. The sub-line already says the crew gets a text, so the
+     board wins the space on phones. It returns above 480px. */
+  .phone{display:none}
 }
 @media (max-height:520px){
   /* A short frame (a 16/9 embed, a small laptop window): tighter padding and smaller
