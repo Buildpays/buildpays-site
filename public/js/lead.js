@@ -6,6 +6,13 @@
 // window.PK_ADS_ID in js/gtag.js — see the comment block there for where both
 // values come from. Empty means no Ads conversion is reported; GA4 is unaffected.
 var ADS_LEAD_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
+
+// LinkedIn conversion id for the "Demo enquiry" conversion. Pairs with
+// window.PK_LINKEDIN_PARTNER_ID in js/pixels.js. Campaign Manager -> Analyze ->
+// Conversion tracking -> Create conversion -> "Insight Tag, event-specific" gives
+// a number like 12345678. Empty means no LinkedIn conversion is reported.
+// Meta and TikTok need no extra value: their pixel ids in pixels.js are enough.
+var LINKEDIN_CONVERSION_ID = "";   // e.g. "12345678"
 /* ---------------------------------------------------------------------------
    Lead attribution.
    Records how this visitor arrived (UTM tags, Google Ads click id, or referrer)
@@ -34,6 +41,9 @@ var ADS_LEAD_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
       utm_term:    q.get('utm_term')    || '',
       utm_content: q.get('utm_content') || '',
       gclid:       q.get('gclid')       || '',
+      fbclid:      q.get('fbclid')      || '',   /* Meta appends this to every ad click */
+      ttclid:      q.get('ttclid')      || '',   /* TikTok, same idea */
+      li_fat_id:   q.get('li_fat_id')   || '',   /* LinkedIn, same idea */
       referrer:    document.referrer    || '',
       landing_page: location.pathname + location.search,
       first_seen:  new Date().toISOString()
@@ -41,7 +51,8 @@ var ADS_LEAD_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
     var prior=readStored();
     /* First touch wins, unless this hit carries campaign tags — a tagged link is
        a deliberate signal and should override an earlier untagged landing. */
-    if(prior && !attr.utm_source && !attr.gclid) return prior;
+    var tagged = attr.utm_source || attr.gclid || attr.fbclid || attr.ttclid || attr.li_fat_id;
+    if(prior && !tagged) return prior;
     store(attr);
     return attr;
   }
@@ -52,6 +63,9 @@ var ADS_LEAD_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
       return a.utm_campaign ? s + ' — ' + a.utm_campaign : s;
     }
     if(a.gclid) return 'google / cpc (Google Ads)';
+    if(a.fbclid) return 'facebook / paid (Meta Ads)';
+    if(a.ttclid) return 'tiktok / paid (TikTok Ads)';
+    if(a.li_fat_id) return 'linkedin / paid (LinkedIn Ads)';
     if(a.referrer){
       var host='';
       try { host=new URL(a.referrer).hostname; } catch(e){}
@@ -74,6 +88,9 @@ var ADS_LEAD_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
       f_utm_term: attribution.utm_term,
       f_utm_content: attribution.utm_content,
       f_gclid: attribution.gclid,
+      f_fbclid: attribution.fbclid,
+      f_ttclid: attribution.ttclid,
+      f_li_fat_id: attribution.li_fat_id,
       f_referrer: attribution.referrer,
       f_landing_page: attribution.landing_page,
       f_first_seen: attribution.first_seen
@@ -126,6 +143,20 @@ var ADS_LEAD_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
               value: 1, currency: 'AUD'
             });
           }
+        }
+
+        /* Meta / LinkedIn / TikTok conversions — the same confirmed submission,
+           reported to whichever pixels are configured in js/pixels.js. Each
+           guard is the pixel id plus the SDK's global, so an unconfigured or
+           blocked pixel is skipped silently. */
+        if(window.PK_META_PIXEL_ID && typeof fbq==='function'){
+          fbq('track','Lead',{ currency:'AUD', value:1 });
+        }
+        if(window.PK_LINKEDIN_PARTNER_ID && LINKEDIN_CONVERSION_ID && typeof lintrk==='function'){
+          lintrk('track',{ conversion_id: LINKEDIN_CONVERSION_ID });
+        }
+        if(window.PK_TIKTOK_PIXEL_ID && window.ttq && typeof ttq.track==='function'){
+          ttq.track('SubmitForm',{ currency:'AUD', value:1 });
         }
         f.reset();
         b.style.display='none';
