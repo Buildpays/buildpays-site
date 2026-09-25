@@ -180,8 +180,8 @@
   .ft .fine{font-size:14px;color:var(--ink2);max-width:56ch}
 
   /* --- the demonstration: a tap at A3, a string line across to the pay lines at B4-C4 --- */
-  .ph{display:flex;align-items:flex-start;justify-content:center;padding:22px 16px 28px}
-  .ph::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:28px;background:var(--string);z-index:0}
+  .ph{display:flex;align-items:flex-start;justify-content:center;padding:22px 16px 64px}
+  .ph::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:64px;background:var(--string);z-index:0}
   .phone{position:relative;z-index:1;width:100%;max-width:232px;padding:16px 16px 16px;border-radius:14px;display:flex;flex-direction:column;gap:5px}
   .phone .k{font-family:var(--disp);font-weight:800;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
   .phone .v{font-size:17px;font-weight:500;line-height:1.2}
@@ -194,8 +194,8 @@
   .ln{padding:0;min-height:120px}
   .ln::after{content:"";position:absolute;left:0;right:50%;bottom:var(--tapY);height:1px;background:var(--string)}
   .ln .drop{position:absolute;left:50%;bottom:0;width:1px;height:var(--tapY);background:var(--string)}
-  .my{padding:22px 24px 22px;display:flex;flex-direction:column}
-  .my .stub{position:absolute;left:50%;top:0;width:1px;height:22px;background:var(--string)}
+  .my{padding:44px 24px 22px;display:flex;flex-direction:column}
+  .my .stub{position:absolute;left:50%;top:0;width:1px;height:44px;background:var(--string)}
   .file{position:relative;overflow:hidden;font-family:var(--file);font-size:12px;line-height:1.45;padding:16px 14px 12px;margin-top:0;border-radius:3px}
   .file::before{content:"";position:absolute;left:50%;top:-4px;width:7px;height:7px;margin-left:-3px;border-radius:50%;background:var(--navy);z-index:3}
   .file .dhead{display:flex;justify-content:space-between;gap:12px;font-weight:700;font-size:12px;letter-spacing:.04em;border-bottom:1px solid var(--string-soft);padding-bottom:8px;margin-bottom:8px}
@@ -210,10 +210,11 @@
 
   /* the one motion: a lit pulse from the worker's tap along the string to the pay lines */
   .dot{position:absolute;width:11px;height:11px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--orange);border:2px solid var(--chalk);z-index:2;opacity:0;pointer-events:none}
-  .ph .dot{left:50%;top:calc(100% - 28px);animation:md1 .6s linear .3s forwards}
+  .ph .dot{left:50%;top:calc(100% - 64px);animation:pulse 1.4s linear .4s forwards}
+  @keyframes pulse{0%{opacity:0}8%{opacity:1}94%{opacity:1;top:calc(100% + 44px)}100%{opacity:0;top:calc(100% + 44px)}}
   @keyframes md1{0%{opacity:0}12%{opacity:1}100%{opacity:1;top:100%}}
   .ln .dot{left:0;top:calc(100% - var(--tapY));animation:pd2 1.05s linear .8s forwards}
-  .file .row.hot::before{animation:mark .6s var(--ease) 1s forwards}
+  .file .row.hot::before{animation:mark .6s var(--ease) 1.7s forwards}
   @keyframes pd1{0%{opacity:0}12%{opacity:1}96%{opacity:1;left:100%}100%{opacity:0;left:100%}}
   @keyframes pd2{0%{opacity:1;left:0}62%{left:50%;top:calc(100% - var(--tapY))}92%{opacity:1;left:50%;top:100%}100%{opacity:0;left:50%;top:100%}}
   @keyframes mark{to{opacity:.45}}
@@ -327,7 +328,7 @@
     .ln .drop{display:none}
     .my{border-top:0;padding:0 16px 20px}
     .file{border-top:1px solid var(--string);border-radius:3px}
-    .ph .dot{top:calc(100% - 26px)}
+    .ph .dot{top:calc(100% - 26px);animation:md1 .6s linear .3s forwards}
     .ln .dot{left:50%;top:0;animation-name:md2}
     @keyframes md1{0%{opacity:0}12%{opacity:1}100%{opacity:1;top:100%}}
     @keyframes md2{0%{opacity:1;top:0}90%{opacity:1;top:100%}100%{opacity:0;top:100%}}
