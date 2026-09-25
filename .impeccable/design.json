@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T00:00:00+10:00",
+  "title": "Design System: PayKicker site",
+  "source": {
+    "branch": "redesign-setout",
+    "sharedStylesheet": "public/css/setout.css",
+    "pageStyles": ["public/index.html", "public/status.html", "public/404.html", "public/paykicker-worker-training.html", "public/digital-dayworks-docket.html"]
+  },
+  "extensions": {
+    "colorMeta": {
+      "slab": { "role": "neutral", "displayName": "Slab", "canonical": "#d8d5ce", "purpose": "Page ground and nav strip; carries the inline-SVG grain and cured radial patches.", "tonalRamp": ["#26251f", "#3f3d36", "#5b5950", "#78766c", "#96938a", "#b5b2a9", "#d8d5ce", "#ecebe6"] },
+      "cured": { "role": "neutral", "displayName": "Cured", "canonical": "#c6c3bb", "purpose": "Darker cured patches on the slab; solid ground of the footer.", "tonalRamp": ["#23221d", "#3b3a34", "#55534c", "#706e66", "#8d8b82", "#aaa79f", "#c6c3bb", "#e3e1dc"] },
+      "navy": { "role": "primary-ink", "displayName": "Logo Navy", "canonical": "#12293f", "purpose": "All type, hairlines on interactive things, nails, icons, focus ring, selection; fill of the tap button and hovered outline button.", "tonalRamp": ["#12293f", "#243c55", "#3a526c", "#546985", "#71829d", "#909db5", "#b2bacc", "#d6dbe5"] },
+      "ink2": { "role": "secondary-ink", "displayName": "Ink 2", "canonical": "#3f4f5f", "purpose": "Secondary text tinted from navy (5.74:1 on the slab): notes, fine print, answers, keys, markers, placeholders.", "tonalRamp": ["#151c22", "#28323b", "#3f4f5f", "#5a6a7a", "#788797", "#98a4b1", "#bac2cb", "#dde1e6"] },
+      "chalk": { "role": "surface", "displayName": "Chalk", "canonical": "#f4f2ec", "purpose": "The one panel colour; input backgrounds; text on navy fills; the pulse dot's ring.", "tonalRamp": ["#2a2925", "#47453f", "#66645c", "#87857c", "#a9a79e", "#cbc9c1", "#e7e5df", "#f4f2ec"] },
+      "orange": { "role": "primary", "displayName": "Fluoro Orange", "canonical": "#ff5a1f", "purpose": "The spray mark: behind the primary action, on applied-rule marks, the pulse; status warn/down state. Never a text, icon, link or heading colour.", "tonalRamp": ["#3d1104", "#6b1f07", "#9a2d0b", "#c93c0f", "#ff5a1f", "#ff8455", "#ffab8a", "#ffd3c1"] },
+      "string": { "role": "line", "displayName": "String", "canonical": "rgba(18,41,63,.55)", "resolvedOnSlab": "#6b767f", "purpose": "1px string lines: section rules, grid borders, panel borders, input borders, link underlines, footer dividers.", "tonalRamp": ["rgba(18,41,63,1)", "rgba(18,41,63,.85)", "rgba(18,41,63,.7)", "rgba(18,41,63,.55)", "rgba(18,41,63,.45)", "rgba(18,41,63,.3)", "rgba(18,41,63,.2)", "rgba(18,41,63,.1)"] },
+      "string-soft": { "role": "line", "displayName": "String Soft", "canonical": "rgba(18,41,63,.3)", "resolvedOnSlab": "#9da1a3", "purpose": "Hairlines inside a panel or list: FAQ rows, file header/footer rules, module and price dividers, TOC and table rows.", "tonalRamp": ["rgba(18,41,63,1)", "rgba(18,41,63,.85)", "rgba(18,41,63,.7)", "rgba(18,41,63,.55)", "rgba(18,41,63,.45)", "rgba(18,41,63,.3)", "rgba(18,41,63,.2)", "rgba(18,41,63,.1)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Homepage h1 only (.hd h1); three lines, each its own span. Steps to clamp(38px,10.4vw,60px) at <=860 and clamp(36px,10.2vw,48px) at <=640." },
+      "page-title": { "displayName": "Page title", "purpose": "h1 in .page-head on reading pages; clamp(36px,9.6vw,56px) at <=860." },
+      "headline": { "displayName": "Headline", "purpose": "Every h2; .prose h2 clamp(30px,3.6vw,50px); .lawtext h2 clamp(26px,3vw,36px); phone clamp(30px,8.6vw,40px)." },
+      "title": { "displayName": "Title", "purpose": "h3 at 24px; schedule 21px, stations 26px, footer heads 16px, lawtext h3 21px." },
+      "stencil-name": { "displayName": "Stencil name", "purpose": "The section name beside its bubble (.mark .name); 15px at <=640." },
+      "label": { "displayName": "Label", "purpose": "Stencil small caps 12px to 16px, 0.08em to 0.12em tracking, usually ink2: bubble letters, feature tags, phone keys, table heads, pills." },
+      "action": { "displayName": "Action", "purpose": "Button text: spray 20px (nav 17px, form 21px); outline 18px (login 15px); phone number 19px." },
+      "lede": { "displayName": "Lede", "purpose": ".lede 19px max 64ch; hero sub line 20px/1.45 max 46ch." },
+      "body": { "displayName": "Body", "purpose": "17px/1.55 on body, paragraphs max 68ch; 16px at <=640; reading-page lists and tables 15px to 15.5px." },
+      "note": { "displayName": "Note", "purpose": "15px ink2 secondary text; fine print 14px to 12.5px." },
+      "file": { "displayName": "File", "purpose": "Courier Prime only where content is a text file: MYOB export (.file 12px) and the docket (.docket 13px)." }
+    },
+    "shadows": [
+      { "name": "none", "value": "none", "purpose": "The system is flat; no box-shadow is defined in setout.css or index.html." },
+      { "name": "training-tap-drop", "value": "drop-shadow(0 3px 4px rgba(18,41,63,.35))", "purpose": "One-off on the training page's arriving hand icon (.tap .ic); not a system value." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "--ease: every shared transition (spray hover .35s, nav underline .3s, outline fill .2s, input focus .2s, FAQ plus .3s) and the mark fill." },
+      { "name": "pulse-drop", "value": "md1 .6s linear .3s forwards", "purpose": "The orange pulse dot (11px, 2px chalk ring) drops from the worker's tap to the phone cell's floor on load." },
+      { "name": "pulse-travel-phone", "value": "md2 1.05s linear .8s forwards", "purpose": "At <=860 the dot travels the vertical connector (.ln) down to the file panel." },
+      { "name": "pulse-travel-desktop", "value": "pd2 1.05s linear .8s forwards", "purpose": "Bound to .ln .dot at desktop, but .ln is display:none above 860px, so it never plays there; pd1 is defined and unused." },
+      { "name": "mark-fill", "value": "mark .6s var(--ease) 1s forwards (to opacity .45)", "purpose": "The orange applied-rule marks on the hot file rows fill after the pulse arrives." },
+      { "name": "reduced-motion", "value": ".dot{display:none} .row.hot::before{opacity:.45} transitions none; scroll-behavior auto", "purpose": "prefers-reduced-motion: marks lit instantly, no pulse, no hover transitions." },
+      { "name": "training-spring", "value": "cubic-bezier(.34,1.56,.64,1)", "purpose": "Page-local --spring on the training page for rise/slam/stampIn props; scenes cross-fade .45s on --ease; reduced motion collapses to .01s." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "1000px", "changes": "nav links hidden; file 11px; modules 2-up; schedule 2 columns; price stacked" },
+      { "name": "phone", "value": "860px", "changes": "rail 36px; sheet padding 30/16/8; footer one column; hero grid collapses to rail + one column, number bubbles and empty cells hidden, demonstration stacks under the action; stations vertical; page-head h1, prose h2, lawtext h2 step down; TOC one column" },
+      { "name": "narrow", "value": "640px", "changes": "body 16px; gutter 16px; nav 56px, logo 24px, phone number text hidden, spray 14px, login 13px; h2 clamp(30px,8.6vw,40px); lede 16.5px; mark name 15px; form one column; FAQ summary 19px; hero h1 clamp(36px,10.2vw,48px); explainer portrait 9/16; rules and modules one column; file rows two-column grid" },
+      { "name": "tiny", "value": "400px", "changes": "logo 21px; phone link hidden; spray 13px 7px 9px; login 12px 6px 7px" }
+    ],
+    "layout": {
+      "wrap": "1360px",
+      "gutter": "24px (16px at <=640)",
+      "rail": "44px (36px at <=860)",
+      "heroGridColumns": "var(--rail) 1fr .9fr .7fr 1.45fr",
+      "heroGridRows": "38px auto auto auto auto",
+      "heroGridAreas": ["cn n1 n2 n3 n4", "ra hd hd hd ph", "rb sb sb b3 my", "rc ct ct c3 my", "rd ft ft d3 d4"],
+      "heroGridAreasPhone": ["ra hd", "rb sb", "rc ct", "rc ph", "rc ln", "rc my", "rd ft"],
+      "nailSize": "7px",
+      "hairline": "1px"
+    },
+    "filters": {
+      "grain": "feTurbulence fractalNoise baseFrequency .85 numOctaves 3, feColorMatrix to navy at .16 alpha, tiled 280x280 on body",
+      "spray": "feTurbulence fractalNoise 0.045 0.09 seed 11 + feDisplacementMap scale 16 + speck layer (turbulence 1.4, alpha .9 -.25) merged; region -25%/-40% 150%/180%",
+      "spray-fine": "feTurbulence fractalNoise 0.12 0.22 seed 5 + feDisplacementMap scale 6; region -10%/-40% 120%/180%"
+    },
+    "accessibility": {
+      "contrast": [
+        { "pair": "navy on slab", "ratio": "10.13:1", "where": "all body text and headings" },
+        { "pair": "ink2 on slab", "ratio": "5.74:1", "where": "notes, fine print, feature copy" },
+        { "pair": "navy on chalk", "ratio": "13.26:1", "where": "panel text, inputs" },
+        { "pair": "ink2 on chalk", "ratio": "7.52:1", "where": "file footer, legend, FAQ answers in panels" },
+        { "pair": "chalk on navy", "ratio": "13.26:1", "where": "tap button, hovered outline button, selection" },
+        { "pair": "navy on orange", "ratio": "4.76:1", "where": "spray button text (20px 800), down pill" },
+        { "pair": "navy on cured", "ratio": "8.43:1", "where": "footer" },
+        { "pair": "ink2 on cured", "ratio": "4.78:1", "where": "footer legal line 12.5px" },
+        { "pair": "string on slab (non-text)", "ratio": "3.17:1", "where": "hairlines, input borders" },
+        { "pair": "string-soft on slab (decorative)", "ratio": "1.78:1", "where": "inner dividers only, never a control boundary" }
+      ],
+      "focusRing": "2px solid var(--navy), outline-offset 3px; form fields: border navy + box-shadow 0 0 0 1px navy",
+      "textSizeAdjust": "100% (html)",
+      "selection": "navy background, chalk text",
+      "decorativeMarkup": "bubbles, strings, rules and empty grid cells are aria-hidden; the phone and file panels carry role=img with a full aria-label"
+    }
+  },
+  "components": [
+    {
+      "name": "Spray Button",
+      "kind": "button",
+      "refersTo": "button-spray",
+      "description": "The one primary action; fluoro orange spray patch behind navy stencil text. Needs the #spray filter in the page's SVG defs.",
+      "html": "<a class=\"ds-spray\" href=\"#contact\">Book a demo</a>",
+      "css": ".ds-spray{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:20px;letter-spacing:.05em;text-transform:uppercase;color:var(--navy,#12293f);text-decoration:none;padding:12px 26px;border:0;cursor:pointer;background:transparent;white-space:nowrap}.ds-spray::before{content:\"\";position:absolute;inset:2px 2px;z-index:-1;background:var(--orange,#ff5a1f);border-radius:46% 54% 41% 59% / 58% 44% 56% 42%;filter:url(#spray);transform:rotate(-1.2deg);transition:transform .35s cubic-bezier(.16,1,.3,1)}.ds-spray:hover::before{transform:rotate(.6deg) scale(1.04)}.ds-spray:focus-visible{outline:2px solid var(--navy,#12293f);outline-offset:3px}.ds-spray:disabled{cursor:default;color:var(--ink2,#3f4f5f)}.ds-spray:disabled::before{opacity:.55}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action: navy hairline box, fills navy on hover.",
+      "html": "<a class=\"ds-outline\" href=\"#\">Log in</a>",
+      "css": ".ds-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:18px;letter-spacing:.05em;text-transform:uppercase;color:var(--navy,#12293f);text-decoration:none;padding:10px 20px;border:1px solid var(--navy,#12293f);border-radius:2px;background:transparent;white-space:nowrap;transition:background .2s cubic-bezier(.16,1,.3,1),color .2s cubic-bezier(.16,1,.3,1)}.ds-outline:hover{background:var(--navy,#12293f);color:var(--chalk,#f4f2ec)}.ds-outline:focus-visible{outline:2px solid var(--navy,#12293f);outline-offset:3px}"
+    },
+    {
+      "name": "Section Mark",
+      "kind": "custom",
+      "refersTo": "bubble",
+      "description": "Opens every sheet: lettered grid bubble, stencilled name, a string with a nail at its end.",
+      "html": "<div class=\"ds-mark\"><span class=\"ds-bub\" aria-hidden=\"true\">E</span><span class=\"ds-name\">Modules</span><span class=\"ds-string\" aria-hidden=\"true\"></span></div>",
+      "css": ".ds-mark{display:flex;align-items:center;gap:14px;min-height:30px;color:var(--navy,#12293f)}.ds-bub{display:inline-flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--navy,#12293f);font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:16px;line-height:1;background:transparent}.ds-name{font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:18px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}.ds-string{flex:1;position:relative;height:1px;background:var(--string,rgba(18,41,63,.55))}.ds-string::after{content:\"\";position:absolute;right:-3px;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--navy,#12293f)}"
+    },
+    {
+      "name": "Closing Rule",
+      "kind": "custom",
+      "refersTo": "bubble",
+      "description": "The string-line rule with two survey nails that closes every sheet.",
+      "html": "<div class=\"ds-rule\" aria-hidden=\"true\"></div>",
+      "css": ".ds-rule{position:relative;height:1px;background:var(--string,rgba(18,41,63,.55));margin:24px 3px 0}.ds-rule::before,.ds-rule::after{content:\"\";position:absolute;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--navy,#12293f)}.ds-rule::before{left:-3px}.ds-rule::after{right:-3px}"
+    },
+    {
+      "name": "Chalk Panel",
+      "kind": "card",
+      "refersTo": "chalk-panel",
+      "description": "The one panel: a chalked rectangle on the slab with a string hairline.",
+      "html": "<div class=\"ds-chalk\"><p>Every clause of your agreement encoded once; leave, holidays and RDOs handled; one-click export.</p></div>",
+      "css": ".ds-chalk{background:var(--chalk,#f4f2ec);border:1px solid var(--string,rgba(18,41,63,.55));border-radius:3px;color:var(--navy,#12293f);padding:18px 22px;font-family:var(--body,Archivo,system-ui,sans-serif);font-size:17px;line-height:1.55;max-width:72ch}"
+    },
+    {
+      "name": "File Panel",
+      "kind": "custom",
+      "refersTo": "chalk-panel",
+      "description": "The text-file voice in Courier Prime: MYOB export lines with orange applied-rule marks on the hot rows. Needs #spray-fine.",
+      "html": "<div class=\"ds-file\"><div class=\"ds-dhead\"><span>MYOB TIMESHEET EXPORT</span><span>E0012 · TUE 07 JUL</span></div><div class=\"ds-row\"><span>Base Hourly — 8 hrs, 0.80 to the RDO bank</span><span>7.20 units</span></div><div class=\"ds-row ds-hot\"><span>Overtime 2.0x — &gt;8 hrs</span><span>2.00 units</span></div><div class=\"ds-row ds-hot\"><span>Site Allowance 10.70 · WGT01 — per hr</span><span>9.20 units</span></div><div class=\"ds-dfoot\">One tap from the worker. Every rule from the agreement.</div></div>",
+      "css": ".ds-file{position:relative;background:var(--chalk,#f4f2ec);border:1px solid var(--string,rgba(18,41,63,.55));border-radius:3px;color:var(--navy,#12293f);font-family:var(--file,\"Courier Prime\",\"Courier New\",monospace);font-size:12px;line-height:1.45;padding:16px 14px 12px;font-variant-numeric:tabular-nums}.ds-file::before{content:\"\";position:absolute;left:50%;top:-4px;width:7px;height:7px;margin-left:-3px;border-radius:50%;background:var(--navy,#12293f)}.ds-dhead{display:flex;justify-content:space-between;gap:12px;font-weight:700;font-size:12px;letter-spacing:.04em;border-bottom:1px solid var(--string-soft,rgba(18,41,63,.3));padding-bottom:8px;margin-bottom:8px}.ds-row{position:relative;isolation:isolate;display:flex;justify-content:space-between;gap:12px;padding:4px 6px;margin:0 -6px}.ds-row span:last-child{white-space:nowrap;font-weight:700;flex:none}.ds-hot::before{content:\"\";position:absolute;inset:-1px -4px;z-index:-1;background:var(--orange,#ff5a1f);border-radius:38% 62% 45% 55% / 60% 40% 60% 40%;filter:url(#spray-fine);opacity:.45}.ds-dfoot{border-top:1px solid var(--string-soft,rgba(18,41,63,.3));margin-top:8px;padding-top:8px;font-size:12px;color:var(--ink2,#3f4f5f)}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "A chalk box with a navy hairline; focus thickens the line to 2px.",
+      "html": "<label class=\"ds-label\">Company<input class=\"ds-input\" type=\"text\" placeholder=\"Southline Formwork Pty Ltd\"></label>",
+      "css": ".ds-label{display:block;font-family:var(--body,Archivo,system-ui,sans-serif);font-size:13.5px;font-weight:600;letter-spacing:.01em;color:var(--navy,#12293f)}.ds-input{display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid var(--string,rgba(18,41,63,.55));border-radius:2px;background:var(--chalk,#f4f2ec);color:var(--navy,#12293f);font:inherit;font-size:16px;font-weight:400;caret-color:var(--navy,#12293f);transition:border-color .2s cubic-bezier(.16,1,.3,1),box-shadow .2s cubic-bezier(.16,1,.3,1)}.ds-input::placeholder{color:var(--ink2,#3f4f5f);opacity:1}.ds-input:focus-visible{outline:0;border-color:var(--navy,#12293f);box-shadow:0 0 0 1px var(--navy,#12293f)}"
+    },
+    {
+      "name": "Nav Strip",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "The thin title-block strip: logo, section links with a sliding underline, phone, spray action, outline login.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-logo\">PayKicker</span><span class=\"ds-nav-spacer\"></span><a class=\"ds-nl\" href=\"#\">Features</a><a class=\"ds-nl\" href=\"#\">EBA rules</a><a class=\"ds-nl\" href=\"#\">Pricing</a><a class=\"ds-nphone\" href=\"#\">03 4061 6223</a><a class=\"ds-spray ds-nav-spray\" href=\"#\">Book a demo</a><a class=\"ds-outline ds-nav-login\" href=\"#\">Log in</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:22px;height:62px;padding:0 24px;background:var(--slab,#d8d5ce);border-bottom:1px solid var(--string,rgba(18,41,63,.55));color:var(--navy,#12293f);font-family:var(--body,Archivo,system-ui,sans-serif)}.ds-nav-logo{font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:22px;letter-spacing:.04em;text-transform:uppercase}.ds-nav-spacer{flex:1}.ds-nl{font-size:15px;font-weight:500;text-decoration:none;color:var(--navy,#12293f);padding:6px 0;position:relative}.ds-nl::after{content:\"\";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--navy,#12293f);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-nl:hover::after{transform:scaleX(1)}.ds-nl:focus-visible{outline:2px solid var(--navy,#12293f);outline-offset:3px}.ds-nphone{font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:19px;letter-spacing:.04em;text-decoration:none;color:var(--navy,#12293f);white-space:nowrap}.ds-spray{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--navy,#12293f);text-decoration:none;border:0;background:transparent;white-space:nowrap}.ds-nav-spray{font-size:17px;padding:9px 18px}.ds-spray::before{content:\"\";position:absolute;inset:2px 2px;z-index:-1;background:var(--orange,#ff5a1f);border-radius:46% 54% 41% 59% / 58% 44% 56% 42%;filter:url(#spray);transform:rotate(-1.2deg)}.ds-outline{display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--navy,#12293f);text-decoration:none;border:1px solid var(--navy,#12293f);border-radius:2px;background:transparent;white-space:nowrap;transition:background .2s,color .2s}.ds-nav-login{font-size:15px;padding:8px 14px}.ds-outline:hover{background:var(--navy,#12293f);color:var(--chalk,#f4f2ec)}"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": "status-pill",
+      "description": "Service state on the status page: string at rest, navy when up, orange border when degraded, orange fill when down.",
+      "html": "<span class=\"ds-pill ds-pill-up\">Up</span> <span class=\"ds-pill ds-pill-warn\">Degraded</span> <span class=\"ds-pill ds-pill-down\">Down</span>",
+      "css": ".ds-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--string,rgba(18,41,63,.55));border-radius:2px;color:var(--ink2,#3f4f5f);white-space:nowrap;line-height:1.2}.ds-pill::before{content:\"\";width:8px;height:8px;border-radius:50%;background:var(--string,rgba(18,41,63,.55));flex:none}.ds-pill-up{border-color:var(--navy,#12293f);color:var(--navy,#12293f)}.ds-pill-up::before{background:var(--navy,#12293f)}.ds-pill-warn{border-color:var(--orange,#ff5a1f);color:var(--navy,#12293f)}.ds-pill-warn::before{background:var(--orange,#ff5a1f)}.ds-pill-down{background:var(--orange,#ff5a1f);border-color:var(--orange,#ff5a1f);color:var(--navy,#12293f)}.ds-pill-down::before{background:var(--navy,#12293f)}"
+    },
+    {
+      "name": "FAQ Row",
+      "kind": "custom",
+      "refersTo": "chalk-panel",
+      "description": "One devoted column of hairline rows; the summary is a stencil question with a drawn plus that rotates open.",
+      "html": "<div class=\"ds-faq\"><details><summary>Do we have to move off MYOB?</summary><p>No. MYOB stays the system of record and holds the rates. <b>PayKicker exports the file.</b></p></details><details><summary>Is there a free trial?</summary><p>No self-serve trial. If it fits, the pilot period is on us.</p></details></div>",
+      "css": ".ds-faq{max-width:760px;padding:8px 0;border-top:1px solid var(--string,rgba(18,41,63,.55));color:var(--navy,#12293f);font-family:var(--body,Archivo,system-ui,sans-serif)}.ds-faq details{border-bottom:1px solid var(--string-soft,rgba(18,41,63,.3))}.ds-faq details:last-child{border-bottom:0}.ds-faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 4px;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:24px;letter-spacing:.01em;line-height:1.05;text-transform:uppercase}.ds-faq summary::-webkit-details-marker{display:none}.ds-faq summary::after{content:\"\";flex:none;width:14px;height:14px;background:linear-gradient(var(--navy,#12293f),var(--navy,#12293f)) center/14px 1.5px no-repeat,linear-gradient(var(--navy,#12293f),var(--navy,#12293f)) center/1.5px 14px no-repeat;transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-faq details[open] summary::after{transform:rotate(45deg)}.ds-faq summary:focus-visible{outline:2px solid var(--navy,#12293f);outline-offset:3px}.ds-faq details p{padding:0 4px 20px;font-size:15.5px;color:var(--ink2,#3f4f5f);max-width:62ch;line-height:1.55}.ds-faq details p b{color:var(--navy,#12293f);font-weight:600}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Set-Out Marks",
+    "overview": "The rules are set out on the slab before the crew arrives. Every page is a surveyor's set-out drawing on raw concrete: a light warm grey slab with a grain and darker cured patches, string lines stretched between survey nails, grid bubbles lettered down the left and numbered across the top, section names stencilled in caps, and a single fluoro spray mark where the one action is. Type is all logo navy. Chalk white is the only panel, a chalked rectangle drawn on the slab for anything that has to read as a thing (a phone, a MYOB file, a form, a table of modules). Nothing floats, nothing casts a shadow, nothing is white and nothing is dark: the slab is the page.\n\nThe world refuses the dark SaaS hero with a screenshot beside it and the three-card feature grid. Density is drawing-sheet density: generous slab between marks, but every mark is exact. Icons are authored single-stroke SVG in navy at one stroke weight. Links are underlined with a string line. The one motion is a lit pulse that travels the string from the worker's tap to the pay line, then the applied-rule marks fill in orange. The proof is the demonstration itself: a real-shaped one-tap timesheet becomes real-shaped MYOB pay lines.",
+    "keyCharacteristics": [
+      "Raw slab ground (#d8d5ce + inline-SVG grain + cured radial patches); never white, cream or dark.",
+      "One ink: logo navy for all type, hairlines, nails, icons and bubbles.",
+      "One panel colour: chalk #f4f2ec on a hairline, radius 3px.",
+      "Fluoro orange only behind the primary action and on applied-rule marks (spray-edged via SVG filter).",
+      "Big Shoulders Stencil Display in caps for every heading, name, label and button; Archivo for reading; Courier Prime only for file-shaped content.",
+      "Every section (a \"sheet\") opens with a lettered bubble and a stencilled name on a string, and closes with the same 1px rule ending in two 7px nails.",
+      "Flat: no box-shadows, no gradients except the slab's cured patches."
+    ],
+    "rules": [
+      { "name": "The Spray Law", "body": "Orange is reserved for the primary action (\"Book a demo\" / \"Book my demo\" / the 404's \"Back to the site office\") and for marks that show a rule being applied (the hot file rows, the legend swatch, the training stamp, the pulse). Nothing else wears it: not headings, not icons, not links, not hover states. The status page is the one built exception: orange signals a degraded or down service. Nothing new may take a fourth use.", "section": "colors" },
+      { "name": "The One Ink Rule", "body": "Type is navy or ink2. There is no third text colour and no coloured text; emphasis is weight (600 in Archivo, 700/800 in the stencil face), never hue.", "section": "colors" },
+      { "name": "The One Panel Rule", "body": "Anything that must read as an object on the slab is a .chalk panel: chalk fill, 1px string border, 3px radius. There is no second surface colour, no card tint, no dark panel.", "section": "colors" },
+      { "name": "The Stencil Rule", "body": "The stencil face is always uppercase and always 700 or 800. It never sets running text, never drops below 11.5px, and never appears in mixed case.", "section": "typography" },
+      { "name": "The File Voice Rule", "body": "Courier Prime appears only where the content is a text file (the MYOB export, the docket). It is not a code font, a caption font or a label font.", "section": "typography" },
+      { "name": "The Tabular Rule", "body": "Numerals are tabular everywhere (body), so times, units and dollar amounts line up in the file, the phone panel and the tables without any extra class.", "section": "typography" },
+      { "name": "The Flat Slab Rule", "body": "Nothing casts a shadow on the slab. An object is a chalk panel; a boundary is a string; a point is a nail.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do start every new section as a .sheet: .mark (bubble letter, stencilled name, string) then .body then .rule, and let the rail carry the letter.",
+      "Do put the one action on the slab as a .spray and every secondary action as an .outline; one spray per viewport.",
+      "Do use .chalk for anything that must read as an object, and --string-soft for the dividers inside it.",
+      "Do author icons as 24px single-stroke SVG symbols in the page's .svg-defs block, stroke-width 1.6 (1.5 at 26px, 2 to 2.2 for ticks), navy via currentColor.",
+      "Do keep hairlines at 1px and nails at 7px; when a string ends, it ends in a nail.",
+      "Do load fonts only through the single Google Fonts stylesheet link (Big Shoulders Stencil Display 700/800, Archivo 400/500/600, Courier Prime 400/700); the CSP allows no other font host.",
+      "Do keep the reduced-motion branch honest: pulse hidden, marks at rest opacity .45, transitions off, scroll-behavior: auto.",
+      "Do keep the copy rules from PRODUCT.md: no pay rate, penalty or allowance figure without a source; the independence line on every page naming an agreement or MYOB; the legal footer; Southline Formwork Pty Ltd as the only example business; trade terminology (subbie, crew, docket, dayworks, RDO, EBA, SWMS, allocation board, pay run, MYOB file).",
+      "Do verify every page at 390px: number bubbles off, letter rail on, demonstration stacked under the action."
+    ],
+    "donts": [
+      "Don't put orange on a heading, icon, link, border, hover or background. The Spray Law is the world's one hard prohibition.",
+      "Don't add a second panel colour, a white surface, a cream tint or a dark section.",
+      "Don't add a box-shadow, gradient fill or blur. The slab is flat; the training page's one drop-shadow on an animated prop is not a licence.",
+      "Don't set the stencil face in mixed case, below 700, or as running text; don't use Courier Prime outside file-shaped content.",
+      "Don't add eyebrow or kicker labels above headings. The stencilled section name is the section's literal name in its bubble; no \"FEATURES\" tag above an h2 that says something else.",
+      "Don't use emoji or glyph-font icons anywhere.",
+      "Don't invent a fifth spray variant or a new bubble size; reuse 30 / 26 / 24px.",
+      "Don't raise --string or --string-soft opacity to make a line \"read\"; the hairline is the design."
+    ]
+  }
+}
