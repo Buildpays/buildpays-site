@@ -4,6 +4,8 @@ Marketing site for PayKicker (paykicker.com.au). Static HTML — no build step.
 Everything served lives in `public/`.
 
 - `index.html` — marketing site
+- `css/setout.css` — the shared design system (tokens, nav, section grammar, buttons, forms, footer, breakpoints). Every page links it; page-only CSS stays inline. Rules and tokens are documented in `DESIGN.md` (built with the impeccable plugin, Sep 2026).
+- `js/hero-pulse.js` — homepage hero: the orange pulse that walks the set-out grid from the timesheet tap to the MYOB file (desktop widths; phones use the CSS-only pulse).
 - `eba-payroll-software.html` — landing page, EBA/CFMEU payroll keyword cluster
 - `digital-dayworks-docket.html` — landing page, dayworks docket keyword cluster
 - `paykicker-explainer.html` — animated "one week on site" (embedded via iframe on the homepage)
