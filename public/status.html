@@ -22,7 +22,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/css/setout.css">
 
 <!-- Google Analytics 4 — same stream as the rest of the site. Disclosed in the privacy policy. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -30,98 +31,98 @@
 <script src="/js/pixels.js"></script>
 
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --navy:#16324f; --navy2:#1e4470; --blue:#2f6cb3; --paper:#fafbfd; --concrete:#dde6f0;
-    --ink:#22344a; --mute:#5c7089; --orange:#f25c1f; --white:#ffffff; --line:#d3deea;
-    --up:#1c7a4b; --up-bg:#e8f5ee; --down:#b3261e; --down-bg:#fdecea;
-    --warn:#a4620a; --warn-bg:#fdf3e3; --unknown:#5c7089; --unknown-bg:#eef2f7;
-  }
-  html{scroll-behavior:smooth}
-  body{font-family:'Barlow',Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;font-size:17px}
-  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
-  h1,h2,h3{font-family:'Barlow Condensed',sans-serif;color:var(--navy);line-height:1.1;letter-spacing:.01em}
-  h1{font-size:clamp(38px,6vw,56px);margin-bottom:10px}
-  h2{font-size:27px;margin:44px 0 12px;padding-top:22px;border-top:2px solid var(--line)}
-  h3{font-size:20px;margin:26px 0 8px;color:var(--navy2)}
-  p{margin-bottom:14px}
-  ul{margin:0 0 16px 22px}
-  li{margin-bottom:7px}
-  a{color:var(--blue)}
-  a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-  strong,b{color:var(--navy)}
-
-  .top{background:var(--navy);padding:18px 0}
-  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .logo{font-family:'Barlow Condensed';font-weight:800;font-size:30px;letter-spacing:.01em;color:#fff;text-decoration:none;border-left:6px solid var(--orange);padding-left:12px;line-height:1}
-  .top a.back{font-size:15px;font-weight:600;color:#a9c2dc;text-decoration:none}
-  .top a.back:hover{color:#fff}
-  .top .links{display:flex;align-items:center;gap:16px;flex-shrink:0}
-  .top a.login{font-family:'Barlow Condensed';font-weight:700;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#fff;text-decoration:none;border:2px solid #fff;border-radius:6px;padding:7px 13px}
-  .top a.login:hover{background:#fff;color:var(--navy)}
-  @media(max-width:620px){.top .wrap{gap:10px}.top .links{gap:10px}.top a.back{font-size:14px}.top a.back .tail{display:none}.top a.login{font-size:13px;padding:6px 9px}}
-
-  main{padding:52px 0 70px}
-  .eyebrow{font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:8px}
-  .lede{font-size:19px;color:var(--navy2);margin-bottom:26px}
-
-  /* --- the banner --- */
-  .banner{border-radius:12px;padding:22px 24px;margin-bottom:8px;border:2px solid var(--line);background:var(--white);display:flex;align-items:center;gap:16px}
-  .banner .dot{width:16px;height:16px;border-radius:50%;flex:none;background:var(--unknown)}
+  /* Status: navy and chalk when things are normal; orange only for a degraded or down state. */
+  .banner{background:var(--chalk);border:1px solid var(--string);border-radius:3px;display:flex;align-items:center;gap:16px;padding:20px 22px;margin-top:6px;max-width:760px}
+  .banner .dot{width:14px;height:14px;border-radius:50%;flex:none;background:var(--string);border:1px solid var(--navy)}
   .banner .txt{flex:1;min-width:0}
-  .banner .head{display:block;font-family:'Barlow Condensed';font-size:28px;font-weight:700;color:var(--navy);line-height:1.1;margin-bottom:2px}
-  .banner .sub{display:block;font-size:15px;color:var(--mute);line-height:1.45}
-  .banner.up{border-color:var(--up);background:var(--up-bg)} .banner.up .dot{background:var(--up)} .banner.up .head{color:var(--up)}
-  .banner.down{border-color:var(--down);background:var(--down-bg)} .banner.down .dot{background:var(--down)} .banner.down .head{color:var(--down)}
-  .banner.warn{border-color:var(--warn);background:var(--warn-bg)} .banner.warn .dot{background:var(--warn)} .banner.warn .head{color:var(--warn)}
-  .checked{font-family:'IBM Plex Mono';font-size:13px;color:var(--mute);margin-bottom:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .checked button{font-family:'Barlow Condensed';font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);background:var(--white);border:1.5px solid var(--line);border-radius:6px;padding:5px 11px;cursor:pointer}
-  .checked button:hover{border-color:var(--blue);color:var(--blue)}
-
-  /* --- the component rows --- */
-  .rows{border:1px solid var(--line);border-radius:10px;background:var(--white);overflow:hidden}
-  .row{display:flex;align-items:center;gap:14px;padding:15px 20px;border-bottom:1px solid var(--line)}
-  .row:last-child{border-bottom:none}
-  .row .name{flex:1;min-width:0}
-  .row .name b{display:block;font-family:'Barlow Condensed';font-size:19px;color:var(--navy);line-height:1.2}
-  .row .name span{font-size:14px;color:var(--mute);display:block;line-height:1.45}
-  .pill{font-family:'Barlow Condensed';font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:20px;white-space:nowrap;flex:none;
-        background:var(--unknown-bg);color:var(--unknown)}
-  .pill.up{background:var(--up-bg);color:var(--up)}
-  .pill.down{background:var(--down-bg);color:var(--down)}
-  .pill.warn{background:var(--warn-bg);color:var(--warn)}
-  @media(max-width:520px){.row{flex-wrap:wrap;gap:8px}.row .name{flex:1 1 100%}}
-
-  .note{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;padding:18px 20px;margin:20px 0}
-  .note p:last-child{margin-bottom:0}
-  .contact{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin:16px 0 0}
-  .contact dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;font-size:16px}
-  .contact dt{font-family:'Barlow Condensed';font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:14px;color:var(--mute);padding-top:3px}
-  .contact dd{margin:0}
-  @media(max-width:520px){.contact dl{grid-template-columns:1fr;gap:2px 0}.contact dd{margin-bottom:12px}}
-
-  footer{background:var(--navy);color:#8fa9c6;padding:30px 0 22px;font-size:13.5px;line-height:1.55;margin-top:0}
-  footer a{color:#bcd2e8}
-  footer .legal{font-size:12px;line-height:1.5;opacity:.75;margin-top:16px;border-top:1px solid #2b4a6e;padding-top:14px}
+  .banner .head{display:block;font-family:var(--disp);font-weight:800;font-size:30px;line-height:1;letter-spacing:.01em;text-transform:uppercase;margin-bottom:6px}
+  .banner .sub{display:block;font-size:15px;color:var(--ink2);line-height:1.45}
+  .banner.up .dot{background:var(--navy)}
+  .banner.warn{border-color:var(--orange)} .banner.warn .dot{background:var(--orange);border-color:var(--orange)}
+  .banner.down{border:2px solid var(--orange)} .banner.down .dot{background:var(--orange);border-color:var(--orange)}
+  .checked{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:14px;font-size:14px;color:var(--ink2);max-width:760px}
+  .checked #stamp{font-variant-numeric:tabular-nums;min-width:1ch}
+  .checked .outline{font-size:14px;padding:6px 12px;cursor:pointer}
+  .rows{margin-top:22px;max-width:760px}
+  .rows .row{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--string-soft)}
+  .rows .row:last-child{border-bottom:0}
+  .rows .name{flex:1;min-width:0}
+  .rows .name b{display:block;font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:.02em;text-transform:uppercase;line-height:1.1}
+  .rows .name span{font-size:14px;color:var(--ink2);display:block;line-height:1.45;margin-top:2px}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--string);border-radius:2px;color:var(--ink2);white-space:nowrap;flex:none;line-height:1.2}
+  .pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--string);flex:none}
+  .pill.up{border-color:var(--navy);color:var(--navy)} .pill.up::before{background:var(--navy)}
+  .pill.warn{border-color:var(--orange);color:var(--navy)} .pill.warn::before{background:var(--orange)}
+  .pill.down{background:var(--orange);border-color:var(--orange);color:var(--navy)} .pill.down::before{background:var(--navy)}
+  .contact{padding:20px 22px;margin-top:18px;max-width:72ch}
+  .contact dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 20px;font-size:16px}
+  .contact dt{font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;padding-top:3px;line-height:1.2}
+  .contact dd{margin:0;line-height:1.5}
+  @media(max-width:640px){
+    .banner{padding:16px 16px;gap:12px}
+    .banner .head{font-size:26px}
+    .rows .row{flex-wrap:wrap;gap:8px 12px;padding:12px 14px}
+    .rows .name{flex:1 1 100%}
+    .contact{padding:16px 14px}
+    .contact dl{grid-template-columns:minmax(0,1fr);gap:2px 0}
+    .contact dd{margin-bottom:12px}
+    .contact dd:last-child{margin-bottom:0}
+  }
 </style>
 </head>
 <body>
 
-<div class="top">
+<svg class="svg-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Spray-paint edge for the orange marks: turbulence displaces the patch outline. -->
+    <filter id="spray" x="-25%" y="-40%" width="150%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="3" result="s"/>
+      <feColorMatrix in="s" type="matrix" values="0 0 0 0 1  0 0 0 0 .35  0 0 0 0 .12  0 0 0 .9 -.25" result="speck"/>
+      <feComposite in="speck" in2="d" operator="in" result="edge"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="edge"/></feMerge>
+    </filter>
+    <!-- Finer spray for the applied-rule marks on the file lines. -->
+    <filter id="spray-fine" x="-10%" y="-40%" width="120%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.12 0.22" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- Icons: one stroke weight, navy, authored. -->
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1.5V19a1.5 1.5 0 0 1-1.5 1.5A15.5 15.5 0 0 1 3.5 5.5 1.5 1.5 0 0 1 5 4z"/></symbol>
+    <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V13"/><path d="M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11M15 9v11"/><path d="M5.5 13h1.5M11.5 13h1.5M17.5 13h1.5"/></symbol>
+    <symbol id="i-docket" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 11h6M9 14h6"/><path d="M8.5 18.5c1-1.5 2-1.5 2.5 0s1.5 1.5 2.5 0 2-1.5 2.5 0"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 0 0 4v2h18v-2a2 2 0 0 1 0-4v0a2 2 0 0 1 0-4V6H3z"/><path d="M9 6v14" stroke-dasharray="2 2"/><path d="M12.5 10h5M12.5 13h4"/></symbol>
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M6 3h8l4 4v6"/><path d="M14 3v4h4"/><path d="M6 3v18h7"/><path d="M15 17h6M18 14l3 3-3 3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+    <symbol id="i-tick" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-crew" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+  </defs>
+</svg>
+
+<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="/">PayKicker</a>
-    <div class="links">
-      <a class="back" href="/">&larr; Back<span class="tail"> to paykicker.com.au</span></a>
-      <a class="login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
-    </div>
+    <a class="logo" href="/"><img src="paykicker-logo.svg" alt="PayKicker" width="202" height="30"></a>
+    <span class="spacer"></span>
+    <a class="nl" href="/#features">Features</a>
+    <a class="nl" href="/#compliance">EBA rules</a>
+    <a class="nl" href="/#how">How it works</a>
+    <a class="nl" href="/#pricing">Pricing</a>
+    <a class="nl" href="/#faq">FAQ</a>
+    <a class="nphone" href="tel:+61340616223" aria-label="Call PayKicker on 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span class="num">03 4061 6223</span></a>
+    <a class="spray" href="/#contact">Book a demo</a>
+    <a class="outline login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
   </div>
-</div>
+</nav>
 
 <main>
-<div class="wrap">
-
-  <span class="eyebrow">System status</span>
-  <h1>Is PayKicker working?</h1>
+<section class="sheet prose page-head" id="top">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">A</span><span class="name">System status</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h1>Is PayKicker working?</h1>
   <p class="lede">This page checks PayKicker from <b>your own browser, right now</b>. It is not a report
     we type up after the fact, so if something is down for you it will say so here.</p>
 
@@ -134,11 +135,11 @@
   </div>
   <div class="checked">
     <span id="stamp">&nbsp;</span>
-    <button type="button" id="again">Check again</button>
+    <button type="button" class="outline" id="again">Check again</button>
     <span>Re-checks automatically every 60 seconds.</span>
   </div>
 
-  <div class="rows">
+  <div class="chalk rows">
     <div class="row">
       <span class="name"><b>The app</b><span>app.paykicker.com.au &mdash; where you log in and work</span></span>
       <span class="pill" id="p-app">Checking</span>
@@ -152,8 +153,16 @@
       <span class="pill" id="p-cron">Checking</span>
     </div>
   </div>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2>If this page says everything is fine but it isn't for you</h2>
+<section class="sheet prose">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">B</span><span class="name">Still broken</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2>If this page says everything is fine but it isn't for you</h2>
   <p>Two things are worth trying before you call. <b>Pull down to refresh</b> the app &mdash; a phone
     holds an old copy of a page for longer than you would think. Then check whether it is only
     <b>your site's mobile signal</b>: if the page loads on wifi but not on site, that is the network,
@@ -161,14 +170,22 @@
   <p>If neither helps, tell us. A report from you is worth more than a monitor, because you can see
     what the monitor cannot: which screen, which button, and what it said.</p>
 
-  <div class="note">
+  <div class="chalk aside">
     <p><b>Honest limitation.</b> This status page is hosted separately from the application, so it stays
       up when PayKicker is down. But no status page can report an outage that takes out the page itself.
       <b>If this page will not load either, assume there is a problem and phone us.</b></p>
   </div>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2>Who to contact, and how quickly we answer</h2>
-  <div class="contact">
+<section class="sheet prose">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">C</span><span class="name">Contact</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2>Who to contact, and how quickly we answer</h2>
+  <div class="chalk contact">
     <dl>
       <dt>Something broken</dt>
       <dd><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a> &mdash; answered
@@ -186,8 +203,16 @@
         anything urgent.</dd>
     </dl>
   </div>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2>What we do during an incident</h2>
+<section class="sheet prose">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">D</span><span class="name">Incidents</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2>What we do during an incident</h2>
   <ul>
     <li><b>We tell the affected customers directly.</b> You are a small number of businesses, not an
       anonymous user base, so you get an email or a call rather than only a page to refresh.</li>
@@ -199,27 +224,38 @@
   </ul>
   <p>PayKicker does not publish an uptime guarantee. We would rather state that plainly than print a
     number we have not measured over enough time to stand behind.</p>
-
-</div>
-</main>
-
-<footer>
-  <div class="wrap">
-    <p><a href="/">paykicker.com.au</a> &nbsp;&middot;&nbsp;
-       <a href="https://app.paykicker.com.au/" rel="noopener">Log in</a> &nbsp;&middot;&nbsp;
-       <a href="/status">Status</a> &nbsp;&middot;&nbsp;
-       <a href="/terms">Terms of Service</a> &nbsp;&middot;&nbsp;
-       <a href="/privacy">Privacy</a> &nbsp;&middot;&nbsp;
-       <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a> &nbsp;&middot;&nbsp;
-       <a href="tel:+61340616223">03 4061 6223</a> &nbsp;&middot;&nbsp;
-       Melbourne, Victoria</p>
-    <div class="legal">
-      PAYKICKER PTY LTD &middot; ABN 91 700 949 944<br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice.
+      <div class="rule" aria-hidden="true"></div>
     </div>
   </div>
-</footer>
+</section>
 
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>PayKicker</h3>
+        <p>The site operations platform for construction subcontractors. Rostering, dayworks dockets and EBA payroll for Australian construction subcontractors. Built in Melbourne.</p>
+        <p style="margin-top:10px"><a href="https://app.paykicker.com.au/" rel="noopener"><b>Log in to PayKicker</b><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <p class="links"><a href="/eba-payroll-software">EBA payroll software</a><a href="/digital-dayworks-docket">Dayworks dockets</a><a href="/#features">Rostering</a><a href="/#features">Inductions &amp; tickets</a><a href="/#pricing">Pricing</a></p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p class="links"><a href="tel:+61340616223">03 4061 6223</a><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a><span>Melbourne, Victoria</span><a href="/status">System status</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></p>
+      </div>
+    </div>
+    <!-- Entity identity. The ABN also appears in the Organization schema in <head>
+         as a PropertyValue identifier — keep the two in step. -->
+    <p class="legal">
+      <b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+    </p>
+  </div>
+</footer>
 <script src="/js/status.js"></script>
 
 </body>

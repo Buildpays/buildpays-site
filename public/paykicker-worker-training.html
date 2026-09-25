@@ -20,199 +20,304 @@
 <link rel="icon" type="image/png" sizes="32x32" href="paykicker-icon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;600;700&family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/css/setout.css">
 <style>
-:root{--ink:#16324f;--ink2:#0f2438;--paper:#f4f7fb;--white:#fff;--line:#d3deea;--steel:#5c7089;
---hiviz:#f25c1f;--ok:#2e7d32;--warn:#c62828;--sky:#9cc4ee;
---disp:"Barlow Condensed",sans-serif;--body:"Barlow",sans-serif;--mono:"IBM Plex Mono",monospace;
---spring:cubic-bezier(.34,1.56,.64,1)}
-*{box-sizing:border-box;margin:0}
-html,body{height:100%}
-body{font-family:var(--body);background:var(--ink2);overflow:hidden}
-.stage{position:relative;width:100%;height:100%;max-width:960px;margin:0 auto;background:var(--ink);display:flex;flex-direction:column}
-.frame{flex:1;position:relative}
-.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-padding:26px 22px 66px;opacity:0;pointer-events:none;transform:translateX(4%);transition:opacity .45s,transform .45s}
-.scene.on{opacity:1;pointer-events:auto;transform:none}
-.stepno{font-family:var(--mono);font-weight:700;font-size:14px;color:var(--hiviz);letter-spacing:.14em;
-border:1px solid rgba(242,92,31,.5);background:rgba(242,92,31,.12);border-radius:14px;padding:3px 14px;margin-bottom:8px}
-.scene h2{font-family:var(--disp);font-weight:800;font-size:clamp(26px,4.8vw,42px);color:#fff;text-transform:uppercase;text-align:center;line-height:1.03}
-.scene .sub{color:var(--sky);font-size:clamp(14px,2.2vw,17px);margin-top:8px;text-align:center;max-width:540px;font-weight:600}
-.on .rise{animation:rise .6s var(--spring) both}
-@keyframes rise{from{transform:translateY(36px) scale(.95);opacity:0}to{transform:none;opacity:1}}
-/* phone mock */
-.phone{width:min(300px,74vw);background:#0b1c2e;border:3px solid #2c5788;border-radius:26px;padding:12px 10px 16px;margin-top:18px;position:relative}
-.phone .notch{width:70px;height:6px;background:#2c5788;border-radius:3px;margin:0 auto 10px}
-.app{background:var(--white);border-radius:14px;padding:12px;color:var(--ink);min-height:220px}
-.apphead{font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.03em;border-left:4px solid var(--hiviz);padding-left:8px;margin-bottom:8px}
-.row{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:7px 8px;border-bottom:1px solid var(--line);opacity:0;transform:translateX(-30px)}
-.on .row{animation:slam .4s var(--spring) forwards}
-@keyframes slam{to{opacity:1;transform:none}}
-.on .a1{animation-delay:.5s}.on .a2{animation-delay:.75s}.on .a3{animation-delay:1s}.on .a4{animation-delay:1.25s}.on .a5{animation-delay:1.5s}
-.bigbtn{display:block;text-align:center;background:var(--hiviz);color:#fff;font-family:var(--disp);font-weight:800;font-size:16px;letter-spacing:.04em;border-radius:9px;padding:11px;margin-top:10px;opacity:0}
-.on .bigbtn{animation:rise .5s 1.7s var(--spring) forwards}
-.tag{background:var(--ink);color:#fff;border-radius:4px;font-size:9.5px;font-weight:800;padding:2px 6px;letter-spacing:.05em}
-/* animated tap finger */
-.tap{position:absolute;font-size:30px;opacity:0;pointer-events:none;filter:drop-shadow(0 3px 5px rgba(0,0,0,.4))}
-.on .tap{animation:tapgo 1.1s 2s ease forwards}
-@keyframes tapgo{0%{opacity:0;transform:translateY(24px) scale(1)}35%{opacity:1;transform:translateY(0) scale(1)}55%{transform:translateY(0) scale(.82)}75%{transform:translateY(0) scale(1)}100%{opacity:0}}
-.sms{background:var(--ok);color:#fff;border-radius:12px 12px 12px 3px;padding:10px 12px;font-size:12.5px;font-weight:600;opacity:0}
-.on .sms{animation:rise .5s .5s var(--spring) forwards}
-.check{color:var(--ok);font-weight:800}
-.lock{background:#fdecea;border:1.5px solid var(--warn);border-radius:8px;padding:8px 10px;font-size:12px;font-weight:700;color:var(--warn);margin-top:8px;opacity:0}
-.on .lock{animation:rise .45s 1.2s var(--spring) forwards}
-.clockface{display:flex;gap:10px;justify-content:center;font-family:var(--mono);font-weight:700;font-size:24px;margin:6px 0}
-.clockface span{background:var(--paper);border:1.5px solid var(--line);border-radius:8px;padding:7px 12px;opacity:0}
-.on .clockface span{animation:rise .4s var(--spring) forwards}
-.on .t1{animation-delay:.6s}.on .t2{animation-delay:.9s}
-.stamp{display:inline-block;border:3px solid var(--ok);color:var(--ok);border-radius:8px;font-family:var(--disp);font-weight:800;font-size:19px;padding:4px 14px;transform:rotate(-5deg) scale(2);opacity:0;margin-top:8px}
-.on .stamp{animation:stampIn .4s 1.9s cubic-bezier(.2,1.8,.4,1) forwards}
-@keyframes stampIn{to{opacity:1;transform:rotate(-5deg) scale(1)}}
-.dontlist{margin-top:14px;max-width:520px}
-.dont{display:flex;gap:10px;align-items:start;font-size:14.5px;color:#dbe9f8;padding:7px 0;opacity:0;transform:translateY(14px)}
-.on .dont{animation:slam .45s var(--spring) forwards}
-.on .d1{animation-delay:.5s}.on .d2{animation-delay:.85s}.on .d3{animation-delay:1.2s}.on .d4{animation-delay:1.55s}
-.bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:10px;padding:12px 16px;z-index:5;
-background:linear-gradient(transparent,rgba(15,36,56,.92))}
-.dots{flex:1;display:flex;gap:6px}
-.dot{height:5px;flex:1;background:rgba(255,255,255,.18);border-radius:3px;overflow:hidden;cursor:pointer}
-.dot i{display:block;height:100%;width:0;background:var(--hiviz)}
-.dot.done i{width:100%}
-.dot.live i{animation:fill var(--dur) linear forwards}
-@keyframes fill{to{width:100%}}
-button.ctrl{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:700;font-size:12px;border-radius:6px;padding:6px 12px;cursor:pointer;font-family:var(--body)}
-@media (prefers-reduced-motion:reduce){.scene,.scene *{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}}
-/* Page title for screen readers. The scenes are an animation, so it isn't painted. */
-.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  /* Seven scenes on the slab, phone-first: workers read this on site. The stage fills the
+     screen under the nav; each scene is a sheet with its step bubble, a chalk phone, and the
+     same string-line rule. Orange is kept for the applied-rule stamp only. */
+  :root{--spring:cubic-bezier(.34,1.56,.64,1)}
+  .stage{position:relative;height:calc(100dvh - 62px);min-height:560px;display:flex;flex-direction:column}
+  .frame{flex:1;position:relative;min-height:0;overflow:hidden}
+  .scene{position:absolute;inset:0;overflow:auto;display:flex;flex-direction:column;align-items:center;justify-content:safe center;
+    padding:22px 16px 74px;opacity:0;pointer-events:none;transform:translateX(4%);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+  .scene.on{opacity:1;pointer-events:auto;transform:none}
+  .scene .mark{gap:10px;margin-bottom:10px}
+  .scene .mark .name{font-size:14px;letter-spacing:.14em;white-space:normal;text-align:left;color:var(--ink2)}
+  .scene .mark .bub{width:26px;height:26px;font-size:14px}
+  .scene h2{font-size:clamp(28px,7vw,44px);font-weight:800;text-align:center;line-height:.95;margin:0;max-width:16ch}
+  .scene .sub{color:var(--ink2);font-size:clamp(14.5px,2.2vw,17px);margin-top:10px;text-align:center;max-width:46ch;line-height:1.45}
+  .scene .sub b{color:var(--navy);font-weight:600}
+  .on .rise{animation:rise .6s var(--spring) both}
+  @keyframes rise{from{transform:translateY(36px) scale(.95);opacity:0}to{transform:none;opacity:1}}
+
+  /* the chalk phone */
+  .phone{width:min(320px,88vw);border-radius:14px;padding:14px 14px 16px;margin-top:18px;position:relative;display:flex;flex-direction:column;gap:10px}
+  .app{display:flex;flex-direction:column;min-height:120px}
+  .apphead{font-family:var(--disp);font-weight:800;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--string);padding-bottom:8px;margin-bottom:2px}
+  .apphead .ic{width:16px;height:16px}
+  .row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px;padding:8px 2px;border-bottom:1px solid var(--string-soft);opacity:0;transform:translateX(-30px);text-align:left}
+  .row > span:first-child{display:inline-flex;align-items:center;gap:7px;min-width:0}
+  .row .ic{width:16px;height:16px;flex:none}
+  .row b{font-variant-numeric:tabular-nums}
+  .on .row{animation:slam .4s var(--spring) forwards}
+  @keyframes slam{to{opacity:1;transform:none}}
+  .on .a1{animation-delay:.5s}.on .a2{animation-delay:.75s}.on .a3{animation-delay:1s}.on .a4{animation-delay:1.25s}.on .a5{animation-delay:1.5s}
+  .bigbtn{display:flex;align-items:center;justify-content:center;gap:8px;height:42px;background:var(--navy);color:var(--chalk);border-radius:6px;font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin-top:12px;opacity:0}
+  .bigbtn .ic{width:18px;height:18px}
+  .on .bigbtn{animation:rise .5s 1.7s var(--spring) forwards}
+  .tag{display:inline-flex;align-items:center;border:1px solid var(--navy);border-radius:2px;font-family:var(--disp);font-weight:800;font-size:11.5px;padding:1px 5px;letter-spacing:.08em;line-height:1.3}
+  .check{color:var(--navy);display:inline-flex;align-items:center;gap:6px;font-weight:600;white-space:nowrap}
+  .check .ic{width:16px;height:16px;stroke-width:2.2}
+  /* the tap: the homepage's hand icon, arriving on the button */
+  .tap{position:absolute;width:34px;height:34px;opacity:0;pointer-events:none;color:var(--navy)}
+  .tap .ic{width:34px;height:34px;stroke-width:1.4;filter:drop-shadow(0 3px 4px rgba(18,41,63,.35))}
+  .on .tap{animation:tapgo 1.1s 2s ease forwards}
+  @keyframes tapgo{0%{opacity:0;transform:translateY(24px) scale(1)}35%{opacity:1;transform:translateY(0) scale(1)}55%{transform:translateY(0) scale(.82)}75%{transform:translateY(0) scale(1)}100%{opacity:0}}
+  .sms{background:var(--slab);border:1px solid var(--string);border-radius:12px 12px 12px 3px;padding:10px 12px;font-size:13px;line-height:1.45;text-align:left;opacity:0}
+  .on .sms{animation:rise .5s .5s var(--spring) forwards}
+  .lock{display:flex;align-items:center;gap:8px;border:1px solid var(--navy);border-radius:4px;padding:8px 10px;font-size:12.5px;font-weight:600;margin-top:10px;opacity:0;text-align:left}
+  .lock .ic{width:16px;height:16px;flex:none}
+  .on .lock{animation:rise .45s 1.2s var(--spring) forwards}
+  .clockface{display:flex;gap:10px;justify-content:center;align-items:center;font-family:var(--disp);font-weight:800;font-size:28px;margin:8px 0 4px}
+  .clockface span{background:var(--slab);border:1px solid var(--string);border-radius:4px;padding:6px 12px;opacity:0;line-height:1}
+  .clockface .arrow{border:0;background:none;opacity:1;padding:0;display:inline-flex}
+  .clockface .arrow .ic{width:22px;height:22px}
+  .on .clockface span{animation:rise .4s var(--spring) forwards}
+  .on .t1{animation-delay:.6s}.on .t2{animation-delay:.9s}
+  .day{font-family:var(--disp);font-weight:800;letter-spacing:.1em;font-size:13px;color:var(--ink2);text-transform:uppercase}
+  .daynum{font-family:var(--disp);font-weight:800;font-size:56px;line-height:1}
+  /* the stamp: the one applied-rule mark, so it wears the spray */
+  .stamp{position:relative;isolation:isolate;display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:.04em;text-transform:uppercase;padding:6px 14px;transform:rotate(-5deg) scale(2);opacity:0;margin:8px auto 0}
+  .stamp::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--orange);border-radius:46% 54% 41% 59% / 58% 44% 56% 42%;filter:url(#spray);opacity:.85}
+  .stamp .ic{width:18px;height:18px;stroke-width:2.2}
+  .on .stamp{animation:stampIn .4s 1.9s cubic-bezier(.2,1.8,.4,1) forwards}
+  @keyframes stampIn{to{opacity:1;transform:rotate(-5deg) scale(1)}}
+  .dontlist{margin-top:14px;max-width:520px;text-align:left}
+  .dont{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.45;padding:9px 0;border-bottom:1px solid var(--string-soft);opacity:0;transform:translateY(14px)}
+  .dont:last-child{border-bottom:0}
+  .dont .bub{width:26px;height:26px;font-size:14px;margin-top:1px}
+  .dont b{font-weight:600}
+  .on .dont{animation:slam .45s var(--spring) forwards}
+  .on .d1{animation-delay:.5s}.on .d2{animation-delay:.85s}.on .d3{animation-delay:1.2s}.on .d4{animation-delay:1.55s}
+  /* the bar: a string line with the seven segments, two outline controls */
+  .bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:12px;padding:12px 16px 14px;z-index:5;background:var(--slab);border-top:1px solid var(--string)}
+  .dots{flex:1;display:flex;gap:6px}
+  .dot{height:6px;flex:1;background:var(--chalk);border:1px solid var(--string);border-radius:1px;overflow:hidden;cursor:pointer}
+  .dot i{display:block;height:100%;width:0;background:var(--navy)}
+  .dot.done i{width:100%}
+  .dot.live i{animation:fill var(--dur) linear forwards}
+  @keyframes fill{to{width:100%}}
+  .bar .outline{font-size:13px;padding:7px 10px;cursor:pointer;letter-spacing:.06em}
+  @media(prefers-reduced-motion:reduce){.scene,.scene *{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}}
+  @media(max-width:640px){
+    .stage{height:calc(100dvh - 56px)}
+    .scene{padding:16px 14px 70px}
+    .phone{margin-top:14px}
+  }
+  /* Page title for screen readers. The scenes are an animation, so it isn't painted. */
+  .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
+
+<svg class="svg-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Spray-paint edge for the orange marks: turbulence displaces the patch outline. -->
+    <filter id="spray" x="-25%" y="-40%" width="150%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="3" result="s"/>
+      <feColorMatrix in="s" type="matrix" values="0 0 0 0 1  0 0 0 0 .35  0 0 0 0 .12  0 0 0 .9 -.25" result="speck"/>
+      <feComposite in="speck" in2="d" operator="in" result="edge"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="edge"/></feMerge>
+    </filter>
+    <!-- Finer spray for the applied-rule marks on the file lines. -->
+    <filter id="spray-fine" x="-10%" y="-40%" width="120%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.12 0.22" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- Icons: one stroke weight, navy, authored. -->
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1.5V19a1.5 1.5 0 0 1-1.5 1.5A15.5 15.5 0 0 1 3.5 5.5 1.5 1.5 0 0 1 5 4z"/></symbol>
+    <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V13"/><path d="M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11M15 9v11"/><path d="M5.5 13h1.5M11.5 13h1.5M17.5 13h1.5"/></symbol>
+    <symbol id="i-docket" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 11h6M9 14h6"/><path d="M8.5 18.5c1-1.5 2-1.5 2.5 0s1.5 1.5 2.5 0 2-1.5 2.5 0"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 0 0 4v2h18v-2a2 2 0 0 1 0-4v0a2 2 0 0 1 0-4V6H3z"/><path d="M9 6v14" stroke-dasharray="2 2"/><path d="M12.5 10h5M12.5 13h4"/></symbol>
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M6 3h8l4 4v6"/><path d="M14 3v4h4"/><path d="M6 3v18h7"/><path d="M15 17h6M18 14l3 3-3 3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+    <symbol id="i-tick" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-crew" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+  </defs>
+</svg>
+<svg class="svg-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Page icons, same single stroke as the homepage set. -->
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2.5h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></symbol>
+    <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.5"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M8 12.5l3 3 5-6"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 16l9.5-9.5a1.6 1.6 0 0 1 2.3 0l.7.7a1.6 1.6 0 0 1 0 2.3L9 19H6z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="1.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/><path d="M12 14.5v2.5"/></symbol>
+    <symbol id="i-rain" viewBox="0 0 24 24"><path d="M7 14.5A4 4 0 0 1 7.5 6.5a5.5 5.5 0 0 1 10.5 1.5 3.5 3.5 0 0 1-.5 6.5"/><path d="M9 17l-1.2 3M13 17l-1.2 3M17 17l-1.2 3"/></symbol>
+  </defs>
+</svg>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="/"><img src="paykicker-logo.svg" alt="PayKicker" width="202" height="30"></a>
+    <span class="spacer"></span>
+    <a class="nl" href="/#features">Features</a>
+    <a class="nl" href="/#compliance">EBA rules</a>
+    <a class="nl" href="/#how">How it works</a>
+    <a class="nl" href="/#pricing">Pricing</a>
+    <a class="nl" href="/#faq">FAQ</a>
+    <a class="nphone" href="tel:+61340616223" aria-label="Call PayKicker on 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span class="num">03 4061 6223</span></a>
+    <a class="spray" href="/#contact">Book a demo</a>
+    <a class="outline login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
+  </div>
+</nav>
+
 <h1 class="visually-hidden">Using PayKicker on site: a short training walkthrough for workers</h1>
-<div class="stage">
+<main class="stage" id="top">
   <div class="frame">
 
     <!-- 1 · THE TEXT -->
     <section class="scene" data-dur="8000">
-      <div class="stepno">STEP 1 · BEFORE YOUR FIRST DAY</div>
+      <div class="mark"><span class="bub" aria-hidden="true">1</span><span class="name">STEP 1 · BEFORE YOUR FIRST DAY</span></div>
       <h2>It starts with a text</h2>
       <p class="sub">No app store, no password. Tap the link, fill in your details once, snap photos of your tickets — the office checks them.</p>
-      <div class="phone rise"><div class="notch"></div>
+      <div class="chalk phone rise">
         <div class="sms">Welcome to Southline Formwork, Danny. Set up your details &amp; tickets here: onboard.paykicker.com.au/x7f2… · via PayKicker</div>
-        <div class="app" style="margin-top:10px;min-height:130px">
+        <div class="app">
           <div class="apphead">YOUR DETAILS</div>
-          <div class="row a1"><span>Name, phone, emergency contact</span><span class="check">✓</span></div>
-          <div class="row a2"><span>📷 White card — photo read automatically</span><span class="check">✓</span></div>
-          <div class="row a3"><span>Sign the company induction</span><span class="check">✓</span></div>
+          <div class="row a1"><span>Name, phone, emergency contact</span><span class="check"><svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg></span></div>
+          <div class="row a2"><span><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg>White card — photo read automatically</span><span class="check"><svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg></span></div>
+          <div class="row a3"><span>Sign the company induction</span><span class="check"><svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg></span></div>
         </div>
-        <span class="tap" style="right:18px;bottom:40px">👆</span>
+        <span class="tap" style="right:18px;bottom:40px" aria-hidden="true"><svg class="ic"><use href="#i-tap"/></svg></span>
       </div>
-      <p class="sub" style="font-size:13px;margin-top:10px">Tip: tap <b>Share → Add to Home Screen</b> and PayKicker sits on your phone like any other app.</p>
+      <p class="sub" style="font-size:13.5px;margin-top:10px">Tip: tap <b>Share → Add to Home Screen</b> and PayKicker sits on your phone like any other app.</p>
     </section>
 
     <!-- 2 · ROSTER -->
     <section class="scene" data-dur="7500">
-      <div class="stepno">STEP 2 · THE NIGHT BEFORE</div>
+      <div class="mark"><span class="bub" aria-hidden="true">2</span><span class="name">STEP 2 · THE NIGHT BEFORE</span></div>
       <h2>Know where you're working</h2>
       <p class="sub">When the roster's out you get a text — site, shift, address, gate and who to call. It's also in <b>My roster</b> any time.</p>
-      <div class="phone rise"><div class="notch"></div>
+      <div class="chalk phone rise">
         <div class="sms">Hi Danny, Tue 14/7: you're at West Gate Tunnel. Day shift 7:00–15:30. 123 Footscray Rd, Docklands. Site contact: Bob 0400 111 222. Enter via Gate B. — Southline Formwork · via PayKicker</div>
-        <div class="app" style="margin-top:10px;min-height:90px">
+        <div class="app" style="min-height:90px">
           <div class="apphead">MY ROSTER</div>
-          <div class="row a1"><span><b>Tue 14/7</b> · West Gate Tunnel</span><span>7:00–15:30</span></div>
-          <div class="row a2"><span><b>Wed 15/7</b> · West Gate Tunnel</span><span>7:00–15:30</span></div>
+          <div class="row a1"><span><b>Tue 14/7</b>&nbsp;· West Gate Tunnel</span><span>7:00–15:30</span></div>
+          <div class="row a2"><span><b>Wed 15/7</b>&nbsp;· West Gate Tunnel</span><span>7:00–15:30</span></div>
         </div>
       </div>
     </section>
 
     <!-- 3 · SWMS -->
     <section class="scene" data-dur="7500">
-      <div class="stepno">STEP 3 · FIRST TIME ON A NEW SITE</div>
+      <div class="mark"><span class="bub" aria-hidden="true">3</span><span class="name">STEP 3 · FIRST TIME ON A NEW SITE</span></div>
       <h2>Read it. Sign it. Then you work.</h2>
       <p class="sub">New site = a SWMS to read and sign on your phone. Your roster and timesheet stay locked for that site until you have.</p>
-      <div class="phone rise"><div class="notch"></div>
+      <div class="chalk phone rise">
         <div class="app">
-          <div class="apphead">⚠ SIGN THE SWMS — WEST GATE TUNNEL</div>
-          <div class="row a1"><span>📄 Open SWMS v2 — read the controls</span><span class="check">✓</span></div>
-          <div class="row a2"><span>☑ I've read and understood it</span><span class="check">✓</span></div>
-          <div class="row a3"><span>✍️ Sign with your finger</span><span class="check">✓</span></div>
-          <div class="lock">🔒 Roster hidden until the SWMS above is signed</div>
+          <div class="apphead"><svg class="ic" aria-hidden="true"><use href="#i-warn"/></svg>SIGN THE SWMS — WEST GATE TUNNEL</div>
+          <div class="row a1"><span><svg class="ic" aria-hidden="true"><use href="#i-docket"/></svg>Open SWMS v2 — read the controls</span><span class="check"><svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg></span></div>
+          <div class="row a2"><span><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>I've read and understood it</span><span class="check"><svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg></span></div>
+          <div class="row a3"><span><svg class="ic" aria-hidden="true"><use href="#i-pen"/></svg>Sign with your finger</span><span class="check"><svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg></span></div>
+          <div class="lock"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg>Roster hidden until the SWMS above is signed</div>
         </div>
-        <span class="tap" style="right:26px;bottom:96px">👆</span>
+        <span class="tap" style="right:26px;bottom:96px" aria-hidden="true"><svg class="ic"><use href="#i-tap"/></svg></span>
       </div>
-      <p class="sub" style="font-size:13px;margin-top:10px">If the SWMS changes, everyone signs the new version — that's the point.</p>
+      <p class="sub" style="font-size:13.5px;margin-top:10px">If the SWMS changes, everyone signs the new version — that's the point.</p>
     </section>
 
     <!-- 4 · TIMESHEET -->
     <section class="scene" data-dur="8500">
-      <div class="stepno">STEP 4 · END OF EVERY DAY</div>
+      <div class="mark"><span class="bub" aria-hidden="true">4</span><span class="name">STEP 4 · END OF EVERY DAY</span></div>
       <h2>30 seconds. Times in. Done.</h2>
       <p class="sub">Tap your start and finish, pick the site. <b>You never pick a rate</b> — the agreement works out overtime, allowances, travel, the lot.</p>
-      <div class="phone rise"><div class="notch"></div>
+      <div class="chalk phone rise">
         <div class="app">
           <div class="apphead">TUESDAY 14 JULY</div>
-          <div class="clockface"><span class="t1">07:00</span><span style="border:none;background:none;opacity:1;color:var(--hiviz)">→</span><span class="t2">17:30</span></div>
-          <div class="row a3"><span>Site: West Gate Tunnel</span><span class="check">✓</span></div>
+          <div class="clockface"><span class="t1">07:00</span><span class="arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="t2">17:30</span></div>
+          <div class="row a3"><span>Site: West Gate Tunnel</span><span class="check"><svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg></span></div>
           <div class="row a4"><span><span class="tag">BASE</span> Ordinary</span><b>8.00</b></div>
           <div class="row a5"><span><span class="tag">OT2</span> Overtime — double time</span><b>2.00</b></div>
-          <div class="bigbtn">SUBMIT DAY</div>
+          <div class="bigbtn"><svg class="ic" aria-hidden="true"><use href="#i-tap"/></svg>SUBMIT DAY</div>
         </div>
-        <span class="tap" style="right:30px;bottom:26px">👆</span>
+        <span class="tap" style="right:30px;bottom:26px" aria-hidden="true"><svg class="ic"><use href="#i-tap"/></svg></span>
       </div>
     </section>
 
     <!-- 5 · DAYS THAT PAY THEMSELVES -->
     <section class="scene" data-dur="7500">
-      <div class="stepno">STEP 5 · HOLIDAYS, RDOs & RAIN</div>
+      <div class="mark"><span class="bub" aria-hidden="true">5</span><span class="name">STEP 5 · HOLIDAYS, RDOs &amp; RAIN</span></div>
       <h2>Some days pay themselves</h2>
       <p class="sub">Public holiday or RDO you didn't work? <b>Don't submit anything</b> — it's paid automatically. Rained off? The office records it and your day is made up.</p>
-      <div class="phone rise"><div class="notch"></div>
-        <div class="app" style="text-align:center;padding-top:20px">
-          <div style="font-family:var(--disp);font-weight:800;color:var(--hiviz);letter-spacing:.1em;font-size:13px">TUE 3 NOV · MELBOURNE CUP</div>
-          <div style="font-family:var(--disp);font-weight:800;font-size:52px;line-height:1">3</div>
-          <div class="stamp">PAID ✓ — NO TIMESHEET</div>
-          <div class="row a4" style="text-align:left;margin-top:14px"><span>⛈ Rained off 10:20 — day made up to 8 hrs</span><span class="check">✓</span></div>
+      <div class="chalk phone rise">
+        <div class="app" style="text-align:center;padding-top:8px;align-items:center">
+          <div class="day">TUE 3 NOV · MELBOURNE CUP</div>
+          <div class="daynum">3</div>
+          <div class="stamp">PAID <svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg> — NO TIMESHEET</div>
+          <div class="row a4" style="align-self:stretch;margin-top:14px"><span><svg class="ic" aria-hidden="true"><use href="#i-rain"/></svg>Rained off 10:20 — day made up to 8 hrs</span><span class="check"><svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg></span></div>
         </div>
       </div>
-      <p class="sub" style="font-size:13px;margin-top:10px">Kept working after the wet call-off? Those hours are double time — automatically.</p>
+      <p class="sub" style="font-size:13.5px;margin-top:10px">Kept working after the wet call-off? Those hours are double time — automatically.</p>
     </section>
 
     <!-- 6 · LEAVE -->
     <section class="scene" data-dur="7000">
-      <div class="stepno">STEP 6 · NEED A DAY OFF</div>
+      <div class="mark"><span class="bub" aria-hidden="true">6</span><span class="name">STEP 6 · NEED A DAY OFF</span></div>
       <h2>Ask for leave in the app</h2>
       <p class="sub">Annual or sick leave — pick the dates in <b>My roster</b>, the office approves, your pay handles itself. No timesheet on leave days.</p>
-      <div class="phone rise"><div class="notch"></div>
+      <div class="chalk phone rise">
         <div class="app">
           <div class="apphead">REQUEST LEAVE</div>
           <div class="row a1"><span>Type</span><b>Annual leave</b></div>
           <div class="row a2"><span>From → To</span><b>Mon 3/8 → Fri 7/8</b></div>
-          <div class="row a3"><span>Status</span><span class="check">✓ APPROVED</span></div>
-          <div class="bigbtn" style="background:var(--ok)">REQUEST</div>
+          <div class="row a3"><span>Status</span><span class="check"><svg class="ic" aria-hidden="true"><use href="#i-tick"/></svg>APPROVED</span></div>
+          <div class="bigbtn">REQUEST</div>
         </div>
       </div>
     </section>
 
     <!-- 7 · GOLDEN RULES -->
     <section class="scene" data-dur="9000">
-      <div class="stepno">THE GOLDEN RULES</div>
+      <div class="mark"><span class="bub" aria-hidden="true">7</span><span class="name">THE GOLDEN RULES</span></div>
       <h2>Four things to remember</h2>
       <div class="dontlist">
-        <div class="dont d1"><span>1️⃣</span><span><b>Submit every day you work, same day.</b> Red day on your week strip = missing timesheet = chasing you on pay day.</span></div>
-        <div class="dont d2"><span>2️⃣</span><span><b>Real times, always.</b> The agreement pays you right from honest times — overtime, allowances, the lot. Edited times get flagged for a second look, so just put what happened.</span></div>
-        <div class="dont d3"><span>3️⃣</span><span><b>PH, RDO, approved leave — submit nothing.</b> Those days pay themselves. If you actually worked one, tell your allocation manager.</span></div>
-        <div class="dont d4"><span>4️⃣</span><span><b>Something wrong? Say so early.</b> Wrong site, wrong hours, ticket expiring — your allocation manager or the office fixes it in minutes before pay day, not after.</span></div>
+        <div class="dont d1"><span class="bub" aria-hidden="true">1</span><span><b>Submit every day you work, same day.</b> Red day on your week strip = missing timesheet = chasing you on pay day.</span></div>
+        <div class="dont d2"><span class="bub" aria-hidden="true">2</span><span><b>Real times, always.</b> The agreement pays you right from honest times — overtime, allowances, the lot. Edited times get flagged for a second look, so just put what happened.</span></div>
+        <div class="dont d3"><span class="bub" aria-hidden="true">3</span><span><b>PH, RDO, approved leave — submit nothing.</b> Those days pay themselves. If you actually worked one, tell your allocation manager.</span></div>
+        <div class="dont d4"><span class="bub" aria-hidden="true">4</span><span><b>Something wrong? Say so early.</b> Wrong site, wrong hours, ticket expiring — your allocation manager or the office fixes it in minutes before pay day, not after.</span></div>
       </div>
-      <p class="sub" style="margin-top:16px;font-weight:700;color:#fff">Paid correctly, every week. That's the whole point.</p>
+      <p class="sub" style="margin-top:16px;font-weight:600;color:var(--navy)">Paid correctly, every week. That's the whole point.</p>
     </section>
   </div>
 
   <div class="bar">
-    <button class="ctrl" id="pp">⏸ Pause</button>
+    <button class="outline ctrl" id="pp">⏸ Pause</button>
     <div class="dots" id="dots"></div>
-    <button class="ctrl" id="restart">↺ Replay</button>
+    <button class="outline ctrl" id="restart">↺ Replay</button>
   </div>
-</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>PayKicker</h3>
+        <p>The site operations platform for construction subcontractors. Rostering, dayworks dockets and EBA payroll for Australian construction subcontractors. Built in Melbourne.</p>
+        <p style="margin-top:10px"><a href="https://app.paykicker.com.au/" rel="noopener"><b>Log in to PayKicker</b><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <p class="links"><a href="/eba-payroll-software">EBA payroll software</a><a href="/digital-dayworks-docket">Dayworks dockets</a><a href="/#features">Rostering</a><a href="/#features">Inductions &amp; tickets</a><a href="/#pricing">Pricing</a></p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p class="links"><a href="tel:+61340616223">03 4061 6223</a><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a><span>Melbourne, Victoria</span><a href="/status">System status</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></p>
+      </div>
+    </div>
+    <!-- Entity identity. The ABN also appears in the Organization schema in <head>
+         as a PropertyValue identifier — keep the two in step. -->
+    <p class="legal">
+      <b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+    </p>
+  </div>
+</footer>
 
 <script src="/js/worker-training.js" defer></script>
 </body>

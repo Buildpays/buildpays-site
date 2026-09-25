@@ -58,109 +58,94 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/css/setout.css">
 
 <!-- Google Analytics 4 — same stream as the rest of the site. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
 <script src="/js/pixels.js"></script>
 
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --navy:#16324f; --navy2:#1e4470; --blue:#2f6cb3; --paper:#fafbfd; --concrete:#dde6f0;
-    --ink:#22344a; --mute:#5c7089; --orange:#f25c1f; --white:#ffffff; --line:#d3deea;
-  }
-  html{scroll-behavior:smooth}
-  body{font-family:'Barlow',Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;font-size:17px}
-  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
-
-  h1,h2,h3{font-family:'Barlow Condensed',sans-serif;color:var(--navy);line-height:1.1;letter-spacing:.01em}
-  h1{font-size:clamp(38px,6vw,56px);margin-bottom:10px}
-  h2{font-size:27px;margin:44px 0 12px;padding-top:22px;border-top:2px solid var(--line)}
-  h2:first-of-type{border-top:none;padding-top:0}
-  h3{font-size:20px;margin:26px 0 8px;color:var(--navy2)}
-  p{margin-bottom:14px}
-  ul,ol{margin:0 0 16px 22px}
-  li{margin-bottom:7px}
-  a{color:var(--blue)}
-  a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-  strong,b{color:var(--navy)}
-
-  /* --- masthead --- */
-  .top{background:var(--navy);padding:18px 0}
-  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .logo{font-family:'Barlow Condensed';font-weight:800;font-size:30px;letter-spacing:.01em;color:#fff;text-decoration:none;border-left:6px solid var(--orange);padding-left:12px;line-height:1}
-  .top a.back{font-size:15px;font-weight:600;color:#a9c2dc;text-decoration:none}
-  .top a.back:hover{color:#fff}
-  .top .links{display:flex;align-items:center;gap:16px;flex-shrink:0}
-  .top a.login{font-family:'Barlow Condensed';font-weight:700;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#fff;text-decoration:none;border:2px solid #fff;border-radius:8px;padding:7px 12px;white-space:nowrap}
-  .top a.login:hover{background:#fff;color:var(--navy)}
-  /* phone: the back link loses its tail so logo + Back + Log in sit on one line */
-  @media(max-width:620px){.top .wrap{gap:10px}.top .links{gap:10px}.top a.back{font-size:14px}.top a.back .tail{display:none}.top a.login{font-size:13px;padding:6px 9px}}
-
-  main{padding:52px 0 70px}
-  .eyebrow{font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:8px}
-  .lede{font-size:19px;color:var(--navy2);margin-bottom:30px}
-
-  .note{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;padding:18px 20px;margin:20px 0}
-  .note p:last-child{margin-bottom:0}
-
-  .toc{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:38px}
-  .toc h3{margin:0 0 10px;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
-  .toc ol{margin:0 0 0 20px;columns:2;column-gap:28px}
-  .toc li{margin-bottom:4px;font-size:15px}
-  @media(max-width:620px){.toc ol{columns:1}}
-
-  /* --- buttons, same spec as the homepage --- */
-  .btn{display:inline-block;font-family:'Barlow Condensed';font-weight:700;font-size:18px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:8px;transition:transform .12s ease}
-  .btn:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-  .btn-primary{background:var(--orange);color:#fff}
-  .btn-primary:hover{transform:translateY(-1px)}
-  .cta{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:28px;margin-top:38px;text-align:center}
-  .cta h2{border-top:none;padding-top:0;margin:0 0 10px}
-  .cta p{color:var(--mute);max-width:52ch;margin:0 auto 20px}
-
-  footer{background:var(--navy);color:#8fa9c6;padding:30px 0 22px;font-size:13.5px;line-height:1.55;margin-top:0}
-  footer a{color:#bcd2e8}
-  footer .legal{font-size:12px;line-height:1.5;opacity:.75;margin-top:16px;border-top:1px solid #2b4a6e;padding-top:14px}
-</style>
 </head>
 <body>
 
-<div class="top">
+<svg class="svg-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Spray-paint edge for the orange marks: turbulence displaces the patch outline. -->
+    <filter id="spray" x="-25%" y="-40%" width="150%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="3" result="s"/>
+      <feColorMatrix in="s" type="matrix" values="0 0 0 0 1  0 0 0 0 .35  0 0 0 0 .12  0 0 0 .9 -.25" result="speck"/>
+      <feComposite in="speck" in2="d" operator="in" result="edge"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="edge"/></feMerge>
+    </filter>
+    <!-- Finer spray for the applied-rule marks on the file lines. -->
+    <filter id="spray-fine" x="-10%" y="-40%" width="120%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.12 0.22" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- Icons: one stroke weight, navy, authored. -->
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1.5V19a1.5 1.5 0 0 1-1.5 1.5A15.5 15.5 0 0 1 3.5 5.5 1.5 1.5 0 0 1 5 4z"/></symbol>
+    <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V13"/><path d="M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11M15 9v11"/><path d="M5.5 13h1.5M11.5 13h1.5M17.5 13h1.5"/></symbol>
+    <symbol id="i-docket" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 11h6M9 14h6"/><path d="M8.5 18.5c1-1.5 2-1.5 2.5 0s1.5 1.5 2.5 0 2-1.5 2.5 0"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 0 0 4v2h18v-2a2 2 0 0 1 0-4v0a2 2 0 0 1 0-4V6H3z"/><path d="M9 6v14" stroke-dasharray="2 2"/><path d="M12.5 10h5M12.5 13h4"/></symbol>
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M6 3h8l4 4v6"/><path d="M14 3v4h4"/><path d="M6 3v18h7"/><path d="M15 17h6M18 14l3 3-3 3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+    <symbol id="i-tick" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-crew" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+  </defs>
+</svg>
+
+<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="/">PayKicker</a>
-    <div class="links">
-      <a class="back" href="/">&larr; Back<span class="tail"> to paykicker.com.au</span></a>
-      <a class="login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
-    </div>
+    <a class="logo" href="/"><img src="paykicker-logo.svg" alt="PayKicker" width="202" height="30"></a>
+    <span class="spacer"></span>
+    <a class="nl" href="/#features">Features</a>
+    <a class="nl" href="/#compliance">EBA rules</a>
+    <a class="nl" href="/#how">How it works</a>
+    <a class="nl" href="/#pricing">Pricing</a>
+    <a class="nl" href="/#faq">FAQ</a>
+    <a class="nphone" href="tel:+61340616223" aria-label="Call PayKicker on 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span class="num">03 4061 6223</span></a>
+    <a class="spray" href="/#contact">Book a demo</a>
+    <a class="outline login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
   </div>
-</div>
+</nav>
 
 <main>
-<div class="wrap">
-
-  <span class="eyebrow">EBA payroll</span>
-  <h1>EBA payroll software that gets the agreement right</h1>
+<section class="sheet prose page-head" id="top">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">A</span><span class="name">EBA payroll</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h1>EBA payroll software that gets the agreement right</h1>
 
   <p class="lede">Generic payroll software assumes a 38-hour week, one hourly rate per employee,
   superannuation as a flat percentage, and allowances typed in by hand. Under a CFMEU Victorian
   Construction and General Division enterprise agreement, every one of those assumptions is wrong
   &mdash; and each one fails quietly, the same way, every week.</p>
 
-  <div class="toc">
-    <h3>On this page</h3>
+  <nav class="toc" aria-label="On this page">
+    <p class="toc-h">On this page</p>
     <ol>
-      <li><a href="#wrong">Where generic payroll breaks</a></li>
-      <li><a href="#must">What EBA-correct software must do</a></li>
-      <li><a href="#myob">The MYOB handoff</a></li>
-      <li><a href="#ask">What to ask a vendor</a></li>
-      <li><a href="#rates">Checking current rates</a></li>
+      <li data-b="B"><a href="#wrong">Where generic payroll breaks</a></li>
+      <li data-b="C"><a href="#must">What EBA-correct software must do</a></li>
+      <li data-b="D"><a href="#myob">The MYOB handoff</a></li>
+      <li data-b="E"><a href="#ask">What to ask a vendor</a></li>
+      <li data-b="F"><a href="#rates">Checking current rates</a></li>
     </ol>
+  </nav>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
   </div>
+</section>
 
-  <h2 id="wrong">Where generic payroll breaks under a construction EBA</h2>
+<section class="sheet prose" id="s-wrong">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">B</span><span class="name">Breaks</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="wrong">Where generic payroll breaks under a construction EBA</h2>
   <p>None of what follows is exotic. It is the ordinary weekly reality of running a crew under a
   construction agreement, and it is the part off-the-shelf payroll was never built for.</p>
 
@@ -203,13 +188,21 @@
   &mdash; which is exactly the short weeks: a starter&rsquo;s first part-week, a week with unpaid
   absence, a week broken up by weather. Those are the weeks nobody goes back and re-checks.</p>
 
-  <div class="note">
+  <div class="chalk aside">
     <p><b>The common thread.</b> Every one of these failures is silent, systematic and repeated. No
     worker notices two hours at the wrong rate in one week. Everyone notices it across a year, and
     by then it is a claim covering the whole crew for the whole period.</p>
   </div>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="must">What EBA-correct payroll software actually has to do</h2>
+<section class="sheet prose" id="s-must">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">C</span><span class="name">Must do</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="must">What EBA-correct payroll software actually has to do</h2>
   <ol>
     <li><b>Hold the agreement as rules, not as rates.</b> Storing a rate per employee is not
       configuring an agreement. The ordinary-hours threshold, the overtime steps, the RDO cycle and
@@ -234,8 +227,16 @@
   <p>PayKicker is built around that engine, and the hours it runs on come from the same capture as
   your <a href="/digital-dayworks-docket">dayworks dockets</a> &mdash; one set of hours doing both
   jobs, rather than two records to reconcile.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="myob">The MYOB handoff</h2>
+<section class="sheet prose" id="s-myob">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">D</span><span class="name">MYOB handoff</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="myob">The MYOB handoff</h2>
   <p>PayKicker does not replace MYOB. MYOB stays your system of record and holds your pay rates;
   PayKicker does everything that happens before the pay run &mdash; rostering, capture, EBA
   classification, approvals &mdash; and hands over an import file already matched to your payroll
@@ -244,8 +245,16 @@
   has to interpret.</p>
   <p>During a pilot we run that export alongside your existing process until it matches to the cent.
   If it does not match, we would rather find that out before you switch than after.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="ask">What to ask any payroll vendor</h2>
+<section class="sheet prose" id="s-ask">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">E</span><span class="name">Ask</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="ask">What to ask any payroll vendor</h2>
   <ul>
     <li>What do you treat as the ordinary weekly hours, and where is that configured?</li>
     <li>How do you handle the RDO cycle, and what happens when next year&rsquo;s calendar is issued?</li>
@@ -256,47 +265,69 @@
   </ul>
   <p>A vendor who cannot answer these is not necessarily selling bad software. They are selling
   software built for a different kind of employer.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="rates">Rates change &mdash; check the source</h2>
+<section class="sheet prose" id="s-rates">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">F</span><span class="name">Rates</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="rates">Rates change &mdash; check the source</h2>
   <p>The two figures on this page are stated as at 1 March 2026 and are included to illustrate the
   shape of the calculation, not as a rate reference. Wage sheets are updated, and your own
   FWC-approved agreement governs your business, not a summary on a website. For current rates and
   allowances, go to the source: <a href="https://vic.cfmeu.org/wages" rel="noopener">vic.cfmeu.org/wages</a>.</p>
-
-  <div class="cta">
-    <h2>See your own EBA running in it</h2>
-    <p>Book a demo and bring your enterprise agreement and a recent pay run. We will configure the
-    rules against your agreement and show you the same period calculated both ways.</p>
-    <a class="btn btn-primary" href="/#contact">Book a demo</a>
-  </div>
-
-  <p style="margin-top:34px;font-size:14px;color:var(--mute)">Related:
-    <a href="/digital-dayworks-docket">Digital dayworks dockets</a> &middot;
-    <a href="/">How PayKicker works</a></p>
-
-  <div class="note" style="border-left-color:var(--mute)">
-    <p style="font-size:14px;color:var(--mute)">PayKicker is independent software and is not
-    affiliated with or endorsed by the CFMEU or MYOB.</p>
-  </div>
-
-</div>
-</main>
-
-<footer>
-  <div class="wrap">
-    <p><a href="/">paykicker.com.au</a> &nbsp;&middot;&nbsp;
-       <a href="https://app.paykicker.com.au/" rel="noopener">Log in</a> &nbsp;&middot;&nbsp;
-       <a href="/digital-dayworks-docket">Digital dayworks dockets</a> &nbsp;&middot;&nbsp;
-       <a href="/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
-       <a href="/status">Status</a> &nbsp;&middot;&nbsp;
-       <a href="/terms">Terms of Service</a> &nbsp;&middot;&nbsp;
-       <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></p>
-    <div class="legal">
-      PAYKICKER PTY LTD &middot; ABN 91 700 949 944<br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+      <div class="rule" aria-hidden="true"></div>
     </div>
   </div>
-</footer>
+</section>
 
+<section class="sheet prose" id="demo">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">G</span><span class="name">Demo</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2>See your own EBA running in it</h2>
+      <p>Book a demo and bring your enterprise agreement and a recent pay run. We will configure the
+    rules against your agreement and show you the same period calculated both ways.</p>
+      <div class="cta-act"><a class="spray" href="/#contact">Book a demo</a></div>
+      <p class="related">Related:
+    <a href="/digital-dayworks-docket">Digital dayworks dockets</a> &middot;
+    <a href="/">How PayKicker works</a></p>
+      <p class="indep">PayKicker is independent software and is not
+    affiliated with or endorsed by the CFMEU or MYOB.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>PayKicker</h3>
+        <p>The site operations platform for construction subcontractors. Rostering, dayworks dockets and EBA payroll for Australian construction subcontractors. Built in Melbourne.</p>
+        <p style="margin-top:10px"><a href="https://app.paykicker.com.au/" rel="noopener"><b>Log in to PayKicker</b><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <p class="links"><a href="/eba-payroll-software">EBA payroll software</a><a href="/digital-dayworks-docket">Dayworks dockets</a><a href="/#features">Rostering</a><a href="/#features">Inductions &amp; tickets</a><a href="/#pricing">Pricing</a></p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p class="links"><a href="tel:+61340616223">03 4061 6223</a><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a><span>Melbourne, Victoria</span><a href="/status">System status</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></p>
+      </div>
+    </div>
+    <!-- Entity identity. The ABN also appears in the Organization schema in <head>
+         as a PropertyValue identifier — keep the two in step. -->
+    <p class="legal">
+      <b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+    </p>
+  </div>
+</footer>
 </body>
 </html>

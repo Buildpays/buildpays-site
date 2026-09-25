@@ -58,7 +58,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/css/setout.css">
 
 <!-- Google Analytics 4 — same stream as the rest of the site. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -66,91 +67,76 @@
 <script src="/js/pixels.js"></script>
 
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --navy:#16324f; --navy2:#1e4470; --blue:#2f6cb3; --paper:#fafbfd; --concrete:#dde6f0;
-    --ink:#22344a; --mute:#5c7089; --orange:#f25c1f; --white:#ffffff; --line:#d3deea;
+  /* The example docket: the file voice of the homepage's MYOB export, on chalk. */
+  .docket{font-family:var(--file);font-size:13px;line-height:1.45;padding:16px 16px 12px;margin-top:22px;max-width:560px}
+  .docket .dhead{display:flex;justify-content:space-between;gap:12px;font-weight:700;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--string-soft);padding-bottom:8px;margin-bottom:8px}
+  .docket .row{position:relative;isolation:isolate;display:flex;justify-content:space-between;gap:14px;padding:4px 6px;margin:0 -6px}
+  .docket .row span{min-width:0;overflow-wrap:anywhere}
+  .docket .row span:last-child{text-align:right;font-weight:700;flex:none;max-width:56%}
+  .docket .row.hot::before{content:"";position:absolute;inset:-1px -4px;z-index:-1;background:var(--orange);border-radius:38% 62% 45% 55% / 60% 40% 60% 40%;filter:url(#spray-fine);opacity:.45}
+  .docket .dfoot{border-top:1px solid var(--string-soft);margin-top:8px;padding-top:8px;font-size:12px;color:var(--ink2)}
+  .docket .legend{font-family:var(--body);font-size:12px;color:var(--ink2);margin-top:8px;display:flex;align-items:center;gap:8px}
+  .docket .legend i{display:inline-block;width:22px;height:11px;background:var(--orange);border-radius:40% 60% 50% 50%/60% 40% 60% 40%;filter:url(#spray-fine)}
+  @media(max-width:640px){
+    .docket{font-size:12px;padding:14px 12px 12px}
+    .docket .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 12px}
+    .docket .row span:last-child{max-width:none}
   }
-  html{scroll-behavior:smooth}
-  body{font-family:'Barlow',Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;font-size:17px}
-  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
-
-  h1,h2,h3{font-family:'Barlow Condensed',sans-serif;color:var(--navy);line-height:1.1;letter-spacing:.01em}
-  h1{font-size:clamp(38px,6vw,56px);margin-bottom:10px}
-  h2{font-size:27px;margin:44px 0 12px;padding-top:22px;border-top:2px solid var(--line)}
-  h2:first-of-type{border-top:none;padding-top:0}
-  h3{font-size:20px;margin:26px 0 8px;color:var(--navy2)}
-  p{margin-bottom:14px}
-  ul,ol{margin:0 0 16px 22px}
-  li{margin-bottom:7px}
-  a{color:var(--blue)}
-  a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-  strong,b{color:var(--navy)}
-
-  /* --- masthead --- */
-  .top{background:var(--navy);padding:18px 0}
-  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .logo{font-family:'Barlow Condensed';font-weight:800;font-size:30px;letter-spacing:.01em;color:#fff;text-decoration:none;border-left:6px solid var(--orange);padding-left:12px;line-height:1}
-  .top a.back{font-size:15px;font-weight:600;color:#a9c2dc;text-decoration:none}
-  .top a.back:hover{color:#fff}
-  .top .links{display:flex;align-items:center;gap:16px;flex-shrink:0}
-  .top a.login{font-family:'Barlow Condensed';font-weight:700;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#fff;text-decoration:none;border:2px solid #fff;border-radius:8px;padding:7px 12px;white-space:nowrap}
-  .top a.login:hover{background:#fff;color:var(--navy)}
-  /* phone: the back link loses its tail so logo + Back + Log in sit on one line */
-  @media(max-width:620px){.top .wrap{gap:10px}.top .links{gap:10px}.top a.back{font-size:14px}.top a.back .tail{display:none}.top a.login{font-size:13px;padding:6px 9px}}
-
-  main{padding:52px 0 70px}
-  .eyebrow{font-family:'Barlow Condensed';font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:8px}
-  .lede{font-size:19px;color:var(--navy2);margin-bottom:30px}
-
-  .note{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:8px;padding:18px 20px;margin:20px 0}
-  .note p:last-child{margin-bottom:0}
-
-  .toc{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-bottom:38px}
-  .toc h3{margin:0 0 10px;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
-  .toc ol{margin:0 0 0 20px;columns:2;column-gap:28px}
-  .toc li{margin-bottom:4px;font-size:15px}
-  @media(max-width:620px){.toc ol{columns:1}}
-
-  /* --- buttons, same spec as the homepage --- */
-  .btn{display:inline-block;font-family:'Barlow Condensed';font-weight:700;font-size:18px;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:14px 28px;border-radius:8px;transition:transform .12s ease}
-  .btn:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-  .btn-primary{background:var(--orange);color:#fff}
-  .btn-primary:hover{transform:translateY(-1px)}
-  .cta{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:28px;margin-top:38px;text-align:center}
-  .cta h2{border-top:none;padding-top:0;margin:0 0 10px}
-  .cta p{color:var(--mute);max-width:52ch;margin:0 auto 20px}
-
-  /* --- sample docket, same treatment as the homepage hero docket --- */
-  .docket{background:#0e2338;border:1px solid #2b4a6e;border-radius:14px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;padding:22px 24px;color:#cfe0f2;margin:22px 0}
-  .docket .dhead{display:flex;justify-content:space-between;gap:12px;color:#7fa6d1;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px dashed #2b4a6e;padding-bottom:10px;margin-bottom:12px}
-  .docket .row{display:flex;justify-content:space-between;gap:16px;padding:4px 0}
-  .docket .row span:last-child{color:#9cc4ee;text-align:right}
-  .docket .row.hot span:last-child{color:var(--orange);font-weight:600}
-  .docket .dfoot{border-top:1px dashed #2b4a6e;margin-top:12px;padding-top:10px;color:#7fa6d1;font-size:12px}
-
-  footer{background:var(--navy);color:#8fa9c6;padding:30px 0 22px;font-size:13.5px;line-height:1.55;margin-top:0}
-  footer a{color:#bcd2e8}
-  footer .legal{font-size:12px;line-height:1.5;opacity:.75;margin-top:16px;border-top:1px solid #2b4a6e;padding-top:14px}
 </style>
 </head>
 <body>
 
-<div class="top">
+<svg class="svg-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Spray-paint edge for the orange marks: turbulence displaces the patch outline. -->
+    <filter id="spray" x="-25%" y="-40%" width="150%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="3" result="s"/>
+      <feColorMatrix in="s" type="matrix" values="0 0 0 0 1  0 0 0 0 .35  0 0 0 0 .12  0 0 0 .9 -.25" result="speck"/>
+      <feComposite in="speck" in2="d" operator="in" result="edge"/>
+      <feMerge><feMergeNode in="d"/><feMergeNode in="edge"/></feMerge>
+    </filter>
+    <!-- Finer spray for the applied-rule marks on the file lines. -->
+    <filter id="spray-fine" x="-10%" y="-40%" width="120%" height="180%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.12 0.22" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- Icons: one stroke weight, navy, authored. -->
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1.5V19a1.5 1.5 0 0 1-1.5 1.5A15.5 15.5 0 0 1 3.5 5.5 1.5 1.5 0 0 1 5 4z"/></symbol>
+    <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V13"/><path d="M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11M15 9v11"/><path d="M5.5 13h1.5M11.5 13h1.5M17.5 13h1.5"/></symbol>
+    <symbol id="i-docket" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 11h6M9 14h6"/><path d="M8.5 18.5c1-1.5 2-1.5 2.5 0s1.5 1.5 2.5 0 2-1.5 2.5 0"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 0 0 4v2h18v-2a2 2 0 0 1 0-4v0a2 2 0 0 1 0-4V6H3z"/><path d="M9 6v14" stroke-dasharray="2 2"/><path d="M12.5 10h5M12.5 13h4"/></symbol>
+    <symbol id="i-export" viewBox="0 0 24 24"><path d="M6 3h8l4 4v6"/><path d="M14 3v4h4"/><path d="M6 3v18h7"/><path d="M15 17h6M18 14l3 3-3 3"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+    <symbol id="i-tick" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-crew" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+  </defs>
+</svg>
+
+<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="/">PayKicker</a>
-    <div class="links">
-      <a class="back" href="/">&larr; Back<span class="tail"> to paykicker.com.au</span></a>
-      <a class="login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
-    </div>
+    <a class="logo" href="/"><img src="paykicker-logo.svg" alt="PayKicker" width="202" height="30"></a>
+    <span class="spacer"></span>
+    <a class="nl" href="/#features">Features</a>
+    <a class="nl" href="/#compliance">EBA rules</a>
+    <a class="nl" href="/#how">How it works</a>
+    <a class="nl" href="/#pricing">Pricing</a>
+    <a class="nl" href="/#faq">FAQ</a>
+    <a class="nphone" href="tel:+61340616223" aria-label="Call PayKicker on 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span class="num">03 4061 6223</span></a>
+    <a class="spray" href="/#contact">Book a demo</a>
+    <a class="outline login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
   </div>
-</div>
+</nav>
 
 <main>
-<div class="wrap">
-
-  <span class="eyebrow">Dayworks dockets</span>
-  <h1>The digital dayworks docket that ends at the pay run</h1>
+<section class="sheet prose page-head" id="top">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">A</span><span class="name">Dayworks dockets</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h1>The digital dayworks docket that ends at the pay run</h1>
 
   <p class="lede">A dayworks docket has to carry three things: the labour hours per worker, the
   plant and equipment used, and the materials consumed &mdash; and then get countersigned by the head
@@ -159,20 +145,28 @@
   bookkeeper can actually bill. PayKicker does both from the one capture &mdash; docket to pay, not
   just docket to invoice.</p>
 
-  <div class="toc">
-    <h3>On this page</h3>
+  <nav class="toc" aria-label="On this page">
+    <p class="toc-h">On this page</p>
     <ol>
-      <li><a href="#capture">What a docket must capture</a></li>
-      <li><a href="#materials">Labour, plant and materials</a></li>
-      <li><a href="#leak">Where paper leaks revenue</a></li>
-      <li><a href="#topay">Docket to pay, not to invoice</a></li>
-      <li><a href="#hours">How capture ties to payroll hours</a></li>
-      <li><a href="#office">What changes in the office</a></li>
-      <li><a href="#start">Getting started</a></li>
+      <li data-b="B"><a href="#capture">What a docket must capture</a></li>
+      <li data-b="C"><a href="#materials">Labour, plant and materials</a></li>
+      <li data-b="D"><a href="#leak">Where paper leaks revenue</a></li>
+      <li data-b="E"><a href="#topay">Docket to pay, not to invoice</a></li>
+      <li data-b="F"><a href="#hours">How capture ties to payroll hours</a></li>
+      <li data-b="G"><a href="#office">What changes in the office</a></li>
+      <li data-b="H"><a href="#start">Getting started</a></li>
     </ol>
+  </nav>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
   </div>
+</section>
 
-  <h2 id="capture">What a dayworks docket actually has to capture</h2>
+<section class="sheet prose" id="s-capture">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">B</span><span class="name">Capture</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="capture">What a dayworks docket actually has to capture</h2>
   <p>A dayworks docket &mdash; a day docket, a T&amp;M sheet, a variation sheet, whatever your head
   contractor calls it &mdash; is the record of work done outside your fixed-price scope. It is also
   the only evidence you will have when that work is queried three months later by someone who was
@@ -194,8 +188,16 @@
   <p>The signature is the part everyone remembers. The <em>hours per worker per classification</em>
   is the part that quietly decides whether you made money on the variation, because it is the only
   field that has to be right twice &mdash; once for the client, and once for your own pay run.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="materials">Capture labour, plant and materials on every docket</h2>
+<section class="sheet prose" id="s-materials">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">C</span><span class="name">Materials</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="materials">Capture labour, plant and materials on every docket</h2>
   <p>PayKicker captures all three on the one docket, on site, from the worker&rsquo;s phone. Labour
   goes on per worker, by name and classification, with real start, finish and break times. Plant and
   materials go on as a separate list &mdash; the pump, the scaffold, the props, the concrete &mdash;
@@ -205,8 +207,16 @@
   <p>The signed docket shows what was used and how much, never a rate. The rates live with the
   office and are applied when the client cost report is built, so the crew never sees your pricing
   and the head contractor signs for quantities they can check on the day.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="leak">How paper dockets leak revenue</h2>
+<section class="sheet prose" id="s-leak">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">D</span><span class="name">Leaks</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="leak">How paper dockets leak revenue</h2>
   <p>Paper rarely fails dramatically. It leaks, in four predictable places.</p>
 
   <h3>The docket that never gets signed</h3>
@@ -231,8 +241,16 @@
   different person, from a different piece of paper. When those two records disagree, you have
   either underpaid a worker under your enterprise agreement or billed a client for hours you never
   paid out. Both get found later, by someone who is not pleased.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="topay">Docket to pay, not docket to invoice</h2>
+<section class="sheet prose" id="s-topay">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">E</span><span class="name">Docket to pay</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="topay">Docket to pay, not docket to invoice</h2>
   <p>Plenty of apps will get a docket signed on a phone. That addresses the first three leaks and
   leaves the fourth exactly where it was, because a docket-only tool has no idea what any of those
   hours cost you. It captures ten hours. It cannot tell you that two of them were overtime at a
@@ -243,17 +261,25 @@
   cost as well as a claim value, and those same hours land in the pay run and in the
   <a href="/eba-payroll-software">MYOB export</a> without anyone retyping them.</p>
 
-  <div class="note">
+  <div class="chalk aside">
     <p><b>The practical test.</b> Ask any docket tool what a signed docket cost you in wages. If it
     cannot answer, you are still doing that reconciliation by hand every fortnight &mdash; and that
     reconciliation is where the margin on dayworks quietly disappears.</p>
   </div>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="hours">How digital capture ties to payroll hours</h2>
+<section class="sheet prose" id="s-hours">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">F</span><span class="name">Hours</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="hours">How digital capture ties to payroll hours</h2>
   <p>The capture happens once, on site, on a phone the worker already has. From there one record
   does three jobs.</p>
 
-  <div class="docket">
+  <div class="chalk docket" role="img" aria-label="Example dayworks docket for Southline Formwork Pty Ltd">
     <div class="dhead"><span>Southline Formwork Pty Ltd</span><span>Docket &middot; Dayworks</span></div>
     <div class="row"><span>Site / location</span><span>Level 3 core, east face</span></div>
     <div class="row"><span>Instructed by</span><span>Site supervisor, 06:50</span></div>
@@ -264,6 +290,7 @@
     <div class="row"><span>Photos attached</span><span>3, timestamped</span></div>
     <div class="row"><span>Countersigned</span><span>On site, 17:34</span></div>
     <div class="dfoot">One capture &rarr; client cost report &middot; payroll hours &middot; MYOB export</div>
+    <div class="legend"><i aria-hidden="true"></i>rules applied from the agreement</div>
   </div>
 
   <p><b>It becomes the claim.</b> The signature, the photos and the description are locked to the
@@ -274,8 +301,16 @@
   <p><b>It becomes the cost.</b> Your agreement&rsquo;s rules are applied to the hours automatically,
   so the docket shows what the work is worth to bill and what it cost to pay, side by side, on the
   day it happened rather than at the end of the month.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="office">What changes in the office</h2>
+<section class="sheet prose" id="s-office">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">G</span><span class="name">Office</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="office">What changes in the office</h2>
   <p>The change most office managers notice first is not the app. It is that the Friday afternoon
   spent chasing paper stops. Unsigned dockets are visible while they can still be signed, not after.
   Hours arrive already classified against the agreement instead of as a number somebody has to
@@ -284,48 +319,70 @@
   <p>The second change is slower. Once every docket carries a cost as well as a claim, you can see
   which sites, which head contractors and which kinds of dayworks actually make money &mdash; which is
   not always the ones people assume.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-  <h2 id="start">Take just the dockets, or the lot</h2>
+<section class="sheet prose" id="s-start">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">H</span><span class="name">Start</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2 id="start">Take just the dockets, or the lot</h2>
   <p>PayKicker is modular. Dayworks dockets and client cost reports can run on their own at a flat
   monthly fee if that is the piece that hurts today, with rostering, onboarding and full
   <a href="/eba-payroll-software">EBA payroll</a> available when you want them. Most subbies start
   with dockets, because it is the fastest thing to prove.</p>
-
-  <div class="cta">
-    <h2>See it on your own dockets</h2>
-    <p>Book a demo and bring a real docket and a recent pay run. We will show you the same day going
-    through capture, cost and export &mdash; and if it does not match to the cent, we would rather you
-    knew now.</p>
-    <a class="btn btn-primary" href="/#contact">Book a demo</a>
-  </div>
-
-  <p style="margin-top:34px;font-size:14px;color:var(--mute)">Related:
-    <a href="/eba-payroll-software">EBA payroll software</a> &middot;
-    <a href="/">How PayKicker works</a></p>
-
-  <div class="note" style="border-left-color:var(--mute)">
-    <p style="font-size:14px;color:var(--mute)">PayKicker is independent software and is not
-    affiliated with or endorsed by the CFMEU or MYOB.</p>
-  </div>
-
-</div>
-</main>
-
-<footer>
-  <div class="wrap">
-    <p><a href="/">paykicker.com.au</a> &nbsp;&middot;&nbsp;
-       <a href="https://app.paykicker.com.au/" rel="noopener">Log in</a> &nbsp;&middot;&nbsp;
-       <a href="/eba-payroll-software">EBA payroll software</a> &nbsp;&middot;&nbsp;
-       <a href="/privacy">Privacy Policy</a> &nbsp;&middot;&nbsp;
-       <a href="/status">Status</a> &nbsp;&middot;&nbsp;
-       <a href="/terms">Terms of Service</a> &nbsp;&middot;&nbsp;
-       <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></p>
-    <div class="legal">
-      PAYKICKER PTY LTD &middot; ABN 91 700 949 944<br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+      <div class="rule" aria-hidden="true"></div>
     </div>
   </div>
-</footer>
+</section>
 
+<section class="sheet prose" id="demo">
+  <div class="wrap">
+    <div class="mark"><span class="bub" aria-hidden="true">J</span><span class="name">Demo</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <h2>See it on your own dockets</h2>
+      <p>Book a demo and bring a real docket and a recent pay run. We will show you the same day going
+    through capture, cost and export &mdash; and if it does not match to the cent, we would rather you
+    knew now.</p>
+      <div class="cta-act"><a class="spray" href="/#contact">Book a demo</a></div>
+      <p class="related">Related:
+    <a href="/eba-payroll-software">EBA payroll software</a> &middot;
+    <a href="/">How PayKicker works</a></p>
+      <p class="indep">PayKicker is independent software and is not
+    affiliated with or endorsed by the CFMEU or MYOB.</p>
+      <div class="rule" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>PayKicker</h3>
+        <p>The site operations platform for construction subcontractors. Rostering, dayworks dockets and EBA payroll for Australian construction subcontractors. Built in Melbourne.</p>
+        <p style="margin-top:10px"><a href="https://app.paykicker.com.au/" rel="noopener"><b>Log in to PayKicker</b><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <p class="links"><a href="/eba-payroll-software">EBA payroll software</a><a href="/digital-dayworks-docket">Dayworks dockets</a><a href="/#features">Rostering</a><a href="/#features">Inductions &amp; tickets</a><a href="/#pricing">Pricing</a></p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p class="links"><a href="tel:+61340616223">03 4061 6223</a><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a><span>Melbourne, Victoria</span><a href="/status">System status</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></p>
+      </div>
+    </div>
+    <!-- Entity identity. The ABN also appears in the Organization schema in <head>
+         as a PropertyValue identifier — keep the two in step. -->
+    <p class="legal">
+      <b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+    </p>
+  </div>
+</footer>
 </body>
 </html>
