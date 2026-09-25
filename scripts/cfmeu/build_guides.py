@@ -734,21 +734,21 @@ body = head_section("Guides", "CFMEU EBA guides for the subcontractor's office",
       <h2>{RDO_OG}</h2>
       <p>The {Y0} on-site RDO dates as month grids, how 0.8 of an hour a day becomes 26 days off, what a worked RDO pays with and without consultation, and the four ways payroll gets the bank wrong.</p>
       <p class="when">Figures dated {d_short(W["rates_from"])} and {d_short(W["benefits_from"])}. Checked {fig("as_at", d_long(AS_AT))}.</p>
-      <span class="go">Read the guide <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
     <a class="gcard chalk" href="/guides/cfmeu-site-allowance-fares-travel-2026">
       <div class="big">{m_("site_allowance","inner_new")}<small>an hour, inner Melbourne site allowance</small></div>
       <h2>{SA_OG}</h2>
       <p>The site allowance bands from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}, the {m_("wages","travel_daily")} daily fares allowance and its radial-area rules, multi-storey and leading hand rates, and how each one should land on a payslip.</p>
       <p class="when">Figures dated {d_short(A["correct_at"])} and {d_short(S["applies_from"])}. Checked {fig("as_at", d_long(AS_AT))}.</p>
-      <span class="go">Read the guide <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
     <a class="gcard chalk" href="/guides/cfmeu-eba-jobs-victoria">
       <div class="big">{N_EMP:,}<small>companies with a CFMEU EBA</small></div>
       <h2>{JOBS_OG}</h2>
       <p>What an EBA job pays right now, the tickets and search terms that get you one, how to check any company on the Fair Work Commission's register, and the full list by trade. For workers looking for a start, and for the companies on the list.</p>
       <p class="when">Company list from the Commission's lists generated {d_short(LIST_GEN)}. Pay figures checked {fig("as_at", d_long(AS_AT))}.</p>
-      <span class="go">Read the guide <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
   </div>
   <p class="note">More guides follow: overtime, weekends and inclement weather; public holidays, Cup Day and daily hire. Every figure on these pages carries its source and date, and a weekly job checks the union's published sheets and the Commission's lists; when a source changes, the page changes.</p>''')
@@ -779,6 +779,22 @@ def replace_figs(path):
 
 
 replace_figs("eba-payroll-software.html")
+
+
+def stamp_css():
+    """Version the shared stylesheet link on every page so a CSS change reaches cached browsers (Cloudflare serves
+    /css/setout.css with a one-day max-age and a week of stale-while-revalidate)."""
+    import hashlib, glob
+    v = hashlib.sha256(open(os.path.join(PUB, "css", "setout.css"), "rb").read()).hexdigest()[:8]
+    for f in glob.glob(os.path.join(PUB, "**", "*.html"), recursive=True):
+        h = io.open(f, "r", encoding="utf-8", newline="").read()
+        h2 = re.sub(r'href="/css/setout\.css(\?v=[0-9a-f]+)?"', f'href="/css/setout.css?v={v}"', h)
+        if h2 != h:
+            io.open(f, "w", encoding="utf-8", newline="").write(h2)
+            print("css version", v, "->", os.path.relpath(f, ROOT))
+
+
+stamp_css()
 
 sm = os.path.join(PUB, "sitemap.xml")
 s = io.open(sm, "r", encoding="utf-8", newline="").read()
