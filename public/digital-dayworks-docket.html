@@ -79,7 +79,8 @@
   .docket .legend i{display:inline-block;width:22px;height:11px;background:var(--orange);border-radius:40% 60% 50% 50%/60% 40% 60% 40%;filter:url(#spray-fine)}
   @media(max-width:640px){
     .docket{font-size:12px;padding:14px 12px 12px}
-    .docket .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 12px}
+    .docket .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0 12px}
+    .docket .row span:last-child{white-space:normal;text-align:right}
     .docket .row span:last-child{max-width:none}
   }
 </style>

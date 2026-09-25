@@ -114,11 +114,11 @@ p{max-width:68ch}
    stencilled name, and closes with the same string-line rule.
    ============================================================ */
 .sheet{padding:44px 0 0}
-.sheet .body{padding:22px 0 40px;display:grid;grid-template-columns:var(--rail) minmax(0,1fr)}
+.sheet .body{padding:22px 0 16px;display:grid;grid-template-columns:var(--rail) minmax(0,1fr)}
 .sheet .body > *{grid-column:2}
 .sheet .mark{padding-left:7px}
 .sheet .mark .bub{margin-left:0}
-.sheet .rule{grid-column:1/-1;margin-left:-3px;margin-right:0}
+.sheet .rule{grid-column:1/-1;margin-left:-3px;margin-right:0;margin-top:24px}
 .sheet .close{grid-column:1/-1}
 .sheet .lede + .note,.sheet p + .note{margin-top:14px}
 .sheet .more{margin-top:26px;font-size:15.5px}
@@ -189,7 +189,8 @@ p{max-width:68ch}
 @media(max-width:860px){
   :root{--rail:36px}
   .sheet{padding-top:30px}
-  .sheet .body{padding:16px 0 28px}
+  .sheet .body{padding:16px 0 8px}
+  .sheet .body > .rule{margin-top:20px}
   .foot .cols{grid-template-columns:minmax(0,1fr)}
   .foot .cols > div{padding:12px 0 10px;border-left:0;border-top:1px solid var(--string)}
   .foot .cols > div:first-child{border-top:0}

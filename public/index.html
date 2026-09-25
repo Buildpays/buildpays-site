@@ -254,7 +254,6 @@
   .rules-list{list-style:none;margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 40px;max-width:900px}
   .rules-list li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--string-soft);font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:.05em;text-transform:uppercase}
   .rules-list li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--navy);flex:none}
-  .rules-list li::after{content:"";flex:1;height:1px;background:var(--string-soft)}
   .rules-list li span{order:-1}
 
   /* --- SETUP: three stations on one string line; the numbers are the sequence --- */
@@ -268,7 +267,8 @@
   /* --- PRICE: one chalked rectangle, two halves --- */
   .price{margin-top:30px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
   .price > div{padding:34px 36px}
-  .price > div + div{border-left:1px solid var(--string-soft)}
+  .price > div + div,.price > ul{border-left:1px solid var(--string-soft)}
+  .price > ul{padding:22px 36px 24px}
   .price .num{font-family:var(--disp);font-weight:800;font-size:40px;line-height:1;letter-spacing:.01em}
   .price .num small{font-size:26px;font-weight:800}
   .price .num + p{margin-top:14px;font-size:15.5px;color:var(--ink2)}
@@ -293,7 +293,7 @@
     .sched .srow p{grid-column:2}
     .sched .srow .ruler{grid-column:2}
     .price{grid-template-columns:minmax(0,1fr)}
-    .price > div + div{border-left:0;border-top:1px solid var(--string-soft)}
+    .price > div + div,.price > ul{border-left:0;border-top:1px solid var(--string-soft)}
   }
   @media(max-width:860px){
     :root{--tapY:0px}
@@ -350,6 +350,7 @@
     .how-embed{aspect-ratio:9/16;max-width:420px}
     .rules-list{grid-template-columns:minmax(0,1fr)}
     .price > div{padding:22px 18px}
+    .price > ul{padding:10px 18px 14px}
     .price .num{font-size:30px}
     .price .num2{font-size:25px}
     .file{padding:14px 12px 12px;font-size:11.5px}
