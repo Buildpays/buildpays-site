@@ -88,7 +88,24 @@
   .tbl td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
   .guide-list h2 a{text-decoration:none}
   .guide-list h2 a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
-  @media(max-width:640px){.tbl td.n{white-space:normal} .tbl th,.tbl td{font-size:14px;padding-right:0}}
+  .emp-filter{margin-top:22px;max-width:560px}
+  .emp-filter label{display:block;font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
+  .emp-filter input{display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid var(--string);border-radius:2px;background:var(--chalk);color:var(--navy);font:inherit;font-size:16px}
+  .emp-filter input:focus{outline:2px solid var(--navy);outline-offset:1px}
+  .emp-filter .cnt{display:block;margin-top:8px;font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums}
+  .emp-jump{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:18px;font-size:14.5px;line-height:1.5;max-width:none;color:var(--ink2)}
+  .emp-jump a{white-space:nowrap}
+  .emp-sec h3{display:flex;align-items:baseline;gap:10px;margin-top:34px;scroll-margin-top:110px}
+  .emp-sec h3 .n{font-family:var(--mono);font-size:15px;font-weight:400;color:var(--ink2)}
+  .prose ul.emp{list-style:none;padding:0;margin:8px 0 0;max-width:900px;columns:2;column-gap:36px}
+  .emp li{break-inside:avoid;margin:0;padding:7px 0;border-bottom:1px solid var(--string-soft);font-size:15px;line-height:1.4;display:flex;justify-content:space-between;gap:12px}
+  .emp li + li{margin-top:0}
+  .emp .nm{min-width:0}
+  .emp .dt{flex:none;font-family:var(--mono);font-size:12.5px;color:var(--ink2);white-space:nowrap;padding-top:3px}
+  .emp .dt.old{color:var(--orange)}
+  .emp li[hidden],.emp-sec[hidden],.emp-jump[hidden]{display:none}
+  @media(max-width:860px){.emp{columns:1}}
+  @media(max-width:640px){.tbl td.n{white-space:normal} .tbl th,.tbl td{font-size:14px;padding-right:0} .emp li{flex-direction:column;gap:2px} .emp .dt{padding-top:0}}
 </style>
 </head>
 <body>
@@ -303,7 +320,7 @@
       <p>PayKicker encodes the clauses above once and applies them to every timesheet, then hands MYOB a file with the hours already classified. Bring your enterprise agreement and a recent pay run to a 30-minute demo and we will show the same period calculated both ways.</p>
       <div class="cta-act"><a class="spray" href="/#contact">Book a demo</a></div>
       <p class="related">Related:
-    <a href="/guides/cfmeu-site-allowance-fares-travel-2026">Site allowance, fares and travel 2026</a> &middot; <a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/guides/">All guides</a></p>
+    <a href="/guides/cfmeu-site-allowance-fares-travel-2026">Site allowance, fares and travel 2026</a> &middot; <a href="/guides/cfmeu-eba-jobs-victoria">CFMEU EBA jobs and the list of EBA companies</a> &middot; <a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/guides/">All guides</a></p>
       <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by the CFMEU or MYOB. This guide is general information for a subcontractor's office, not legal or industrial relations advice; the agreement and the union's published sheets are the source, and figures change at every wage increase.</p>
       <div class="rule" aria-hidden="true"></div>
     </div>

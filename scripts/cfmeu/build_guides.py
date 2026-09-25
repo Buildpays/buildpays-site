@@ -21,6 +21,7 @@ DATA = os.path.join(ROOT, "data", "cfmeu-figures.json")
 
 F = json.load(io.open(DATA, encoding="utf-8"))
 W, A, S, R = F["wages"], F["allowances"], F["site_allowance"], F["rdo"]
+E = json.load(io.open(os.path.join(ROOT, "data", "cfmeu-employers.json"), encoding="utf-8"))  # built by fwc_employers.py
 
 src = io.open(os.path.join(PUB, "eba-payroll-software.html"), "r", encoding="utf-8", newline="").read()
 NL = "\r\n" if "\r\n" in src[:3000] else "\n"
@@ -132,7 +133,24 @@ HEAD = '''<!DOCTYPE html>
   .tbl td.n{{white-space:nowrap;font-variant-numeric:tabular-nums}}
   .guide-list h2 a{{text-decoration:none}}
   .guide-list h2 a:hover{{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}}
-  @media(max-width:640px){{.tbl td.n{{white-space:normal}} .tbl th,.tbl td{{font-size:14px;padding-right:0}}}}
+  .emp-filter{{margin-top:22px;max-width:560px}}
+  .emp-filter label{{display:block;font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.1em;text-transform:uppercase}}
+  .emp-filter input{{display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid var(--string);border-radius:2px;background:var(--chalk);color:var(--navy);font:inherit;font-size:16px}}
+  .emp-filter input:focus{{outline:2px solid var(--navy);outline-offset:1px}}
+  .emp-filter .cnt{{display:block;margin-top:8px;font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums}}
+  .emp-jump{{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:18px;font-size:14.5px;line-height:1.5;max-width:none;color:var(--ink2)}}
+  .emp-jump a{{white-space:nowrap}}
+  .emp-sec h3{{display:flex;align-items:baseline;gap:10px;margin-top:34px;scroll-margin-top:110px}}
+  .emp-sec h3 .n{{font-family:var(--mono);font-size:15px;font-weight:400;color:var(--ink2)}}
+  .prose ul.emp{{list-style:none;padding:0;margin:8px 0 0;max-width:900px;columns:2;column-gap:36px}}
+  .emp li{{break-inside:avoid;margin:0;padding:7px 0;border-bottom:1px solid var(--string-soft);font-size:15px;line-height:1.4;display:flex;justify-content:space-between;gap:12px}}
+  .emp li + li{{margin-top:0}}
+  .emp .nm{{min-width:0}}
+  .emp .dt{{flex:none;font-family:var(--mono);font-size:12.5px;color:var(--ink2);white-space:nowrap;padding-top:3px}}
+  .emp .dt.old{{color:var(--orange)}}
+  .emp li[hidden],.emp-sec[hidden],.emp-jump[hidden]{{display:none}}
+  @media(max-width:860px){{.emp{{columns:1}}}}
+  @media(max-width:640px){{.tbl td.n{{white-space:normal}} .tbl th,.tbl td{{font-size:14px;padding-right:0}} .emp li{{flex-direction:column;gap:2px}} .emp .dt{{padding-top:0}}}}
 </style>
 </head>
 <body>
@@ -161,6 +179,13 @@ DEMO = '''      <h2>See your own agreement running in it</h2>
       <p class="related">Related:
     {related}</p>
       <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by the CFMEU or MYOB. This guide is general information for a subcontractor's office, not legal or industrial relations advice; the agreement and the union's published sheets are the source, and figures change at every wage increase.</p>'''
+
+DEMO_JOBS = '''      <h2>If your company is on this list</h2>
+      <p>Every company above runs payroll under the same agreement: a 36-hour week with RDOs banked daily, site allowance by the hour, fares by the day, and a wage sheet that changes three times a year. PayKicker encodes those clauses once, classifies every timesheet against them, and hands MYOB a file with the hours already sorted. Bring your agreement and a recent pay run to a 30-minute demo and we will show the same period calculated both ways.</p>
+      <div class="cta-act"><a class="spray" href="/#contact">Book a demo</a></div>
+      <p class="related">Related:
+    {related}</p>
+      <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by the CFMEU, the Fair Work Commission or MYOB, and it is not a recruiter: it does not place workers and has no relationship with the companies listed. This guide is general information for people looking for work and for the companies that employ them, not legal, industrial or careers advice. Company names are as they appear on the Commission's lists; an agreement's existence says nothing about whether a company is hiring.</p>'''
 
 TAIL = NL + "</main>" + NL + NL + FOOT + NL + NL + "</body>" + NL + "</html>" + NL
 
@@ -369,7 +394,7 @@ body += section("G", "Figures", "s-figures", f'''      <h2 id="figures">Current 
       </table></div>
       <p class="src">Source: CFMEU Victoria, <i>{W["source_title"]}</i> (rates from {fig("wages.rates_from", d_long(W["rates_from"]))}; other benefits from {fig("wages.benefits_from", d_long(W["benefits_from"]))}), <a href="{W["source_url"]}" rel="noopener">vic.cfmeu.org/wages</a>. Weekly rates are the hourly rate times 36. Site allowance, fares and the other daily and hourly extras are covered in the <a href="/guides/cfmeu-site-allowance-fares-travel-2026">site allowance, fares and travel guide</a>.</p>''')
 
-body += section("H", "Demo", "demo", DEMO.format(related='<a href="/guides/cfmeu-site-allowance-fares-travel-2026">Site allowance, fares and travel 2026</a> &middot; <a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/guides/">All guides</a>'))
+body += section("H", "Demo", "demo", DEMO.format(related='<a href="/guides/cfmeu-site-allowance-fares-travel-2026">Site allowance, fares and travel 2026</a> &middot; <a href="/guides/cfmeu-eba-jobs-victoria">CFMEU EBA jobs and the list of EBA companies</a> &middot; <a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/guides/">All guides</a>'))
 
 page(RDO_PATH, RDO_TITLE, RDO_OG, RDO_DESC, article_ld(RDO_PATH, RDO_OG, RDO_DESC, PUBLISHED, AS_AT) + NL + RDO_FAQ, body)
 
@@ -478,9 +503,148 @@ body += section("F", "Payslip", "s-payslip", f'''      <h2 id="payslip">How they
       </ol>
       <p>This is the reason PayKicker never holds a dollar rate: it classifies each hour and each day into the right category, exports units, and MYOB applies the figure you loaded from the union sheet. When the sheet changes, one number changes.</p>''')
 
-body += section("G", "Demo", "demo", DEMO.format(related='<a href="/guides/cfmeu-rdo-calendar-2026">RDO calendar 2026 and the 36-hour week</a> &middot; <a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/guides/">All guides</a>'))
+body += section("G", "Demo", "demo", DEMO.format(related='<a href="/guides/cfmeu-rdo-calendar-2026">RDO calendar 2026 and the 36-hour week</a> &middot; <a href="/guides/cfmeu-eba-jobs-victoria">CFMEU EBA jobs and the list of EBA companies</a> &middot; <a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/guides/">All guides</a>'))
 
 page(SA_PATH, SA_TITLE, SA_OG, SA_DESC, article_ld(SA_PATH, SA_OG, SA_DESC, PUBLISHED, AS_AT), body)
+
+# ---------------------------------------------------------------- CFMEU EBA jobs + employer list
+
+from decimal import Decimal
+
+JOBS_PATH = "/guides/cfmeu-eba-jobs-victoria"
+N_EMP = E["count"]
+LIST_GEN = E["list_generated"]
+YEAR = date.fromisoformat(AS_AT).year
+TRAVEL_5 = money(str(Decimal(W["travel_daily"]) * 5))
+JOBS_TITLE = f"CFMEU EBA Jobs in Victoria {YEAR}: How to Get One, and Every Company With an EBA | PayKicker"
+JOBS_OG = f"CFMEU EBA jobs: how to get one, and the list of {N_EMP} Victorian companies with a CFMEU EBA"
+JOBS_DESC = (f"What a CFMEU EBA job pays in {YEAR} (CW3 {money(W['cw3_hour'])} an hour on a 36-hour week, 26 RDOs, super and Incolink), the tickets you need, "
+             f"where EBA jobs are advertised, and a list of {N_EMP} companies with a CFMEU Victorian construction EBA, from the Fair Work Commission's register.")
+
+
+def slug(s):
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+
+
+JOBS_FAQ = [
+    ("What is a CFMEU EBA job?",
+     "A job with an employer whose enterprise agreement was made with the CFMEU's Victorian Construction and General Division and approved by the Fair Work Commission. Pay, hours, RDOs, allowances, super and redundancy come from that agreement rather than the award. Head contractors sign a builders' agreement; subcontractors sign the pattern agreement for their trade."),
+    (f"How much does a CFMEU EBA job pay in {YEAR}?",
+     f"On the union's wage sheet, from {d_long(W['rates_from'])}, a CW3 tradesperson is on {money(W['cw3_hour'])} an hour ({money(W['cw3_week'])} for the 36-hour week), a CW2 on {money(W['cw2_hour'])} and a CW1 labourer on {money(W['cw1_hour'])}. On top come super of {money(W['super_weekly'])} a week or {W['super_pct']}% (whichever is greater), {money(W['incolink_weekly'])} a week into Incolink, {money(W['travel_daily'])} a day fares and travel, and site allowance on larger projects."),
+    ("Do I have to join the union to get an EBA job?",
+     "No. Union membership is voluntary under the Fair Work Act: an employer cannot require it and cannot refuse to hire you for being a member. The agreement covers every employee in the classifications it names, member or not. Whether to join is your decision."),
+    ("How do I check whether a company has a CFMEU EBA?",
+     "Search the employer's name in the Fair Work Commission's agreements database. A CFMEU Victorian construction agreement carries the union's division in its title. The Commission also publishes a spreadsheet of every agreement it approves each year; the list on this page is built from those spreadsheets."),
+    ("Do labour hire companies have CFMEU EBAs?",
+     "Yes. Labour hire firms sign the same pattern agreement as other subcontractors and supply EBA sites at EBA rates. Their most recent agreements reached nominal expiry in May 2026; an agreement keeps operating after that date until it is replaced or terminated, so the list marks those firms rather than dropping them."),
+]
+
+
+def faq_ld(items):
+    ents = ",\n".join('    { "@type": "Question", "name": ' + json.dumps(q) + ', "acceptedAnswer": { "@type": "Answer", "text": ' + json.dumps(a) + ' } }' for q, a in items)
+    return '<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@type": "FAQPage",\n  "mainEntity": [\n' + ents + '\n  ]\n}\n</script>'
+
+
+def faq_html(items):
+    return '      <div class="faq-col">' + NL + NL.join(f'        <details><summary>{q}</summary><p>{a}</p></details>' for q, a in items) + NL + '      </div>'
+
+
+JOBS_TOC = [("B", "what", "What an EBA job is"), ("C", "pay", "What it pays"), ("D", "how", "How to get one"), ("E", "check", "Check a company"),
+            ("F", "list", f"The list: {N_EMP} companies"), ("G", "faq", "Questions"), ("H", "demo", "For the companies on the list")]
+
+body = head_section("EBA jobs", f"CFMEU EBA jobs: how to get one, and the list of Victorian companies with a CFMEU EBA",
+    f"An EBA job in Victorian construction means working for a company whose enterprise agreement was made with the CFMEU: a 36-hour week, 26 RDOs, union-negotiated rates, super and redundancy paid on top, and a wage sheet that says what everyone on the crew gets. This guide covers what those jobs pay right now, the tickets and search terms that get you one, how to check any company, and a list of {N_EMP} Victorian companies with a CFMEU construction EBA, taken from the Fair Work Commission's register.",
+    JOBS_TOC,
+    f'  <p class="note">Written 25 September 2026. Pay figures checked {fig("as_at", d_long(AS_AT))}; the company list is built from the Fair Work Commission\'s lists of approved agreements, generated {d_long(LIST_GEN)}, and refreshes automatically when the Commission updates them.</p>{NL}')
+
+body += section("B", "EBA", "s-what", '''      <h2 id="what">What a CFMEU EBA job is</h2>
+      <p>EBA stands for enterprise bargaining agreement. In Victorian commercial construction it nearly always means an agreement between an employer and the CFMEU's Victorian Construction and General Division, approved by the Fair Work Commission and running for about three years. An EBA job is a job with one of those employers. Your pay, hours, allowances, super, redundancy and rostered days off come from the agreement, which sits well above the Building and Construction General On-site Award.</p>
+      <p>Two kinds of company sign one:</p>
+      <ul>
+        <li><b>Head contractors (builders)</b> sign a builders' agreement that covers their own workforce: labourers, hoist and crane crews, carpenters, cleaners, traffic and the site team on the tools.</li>
+        <li><b>Subcontractors</b> sign the pattern agreement for their trade: formwork, steelfixing, concrete placement, scaffolding, cranes, earthmoving, cladding and so on. The trade agreements share one skeleton and one wage sheet, so a CW3 carpenter is on the same base rate whichever EBA company employs them.</li>
+      </ul>
+      <p>What every one of them carries:</p>
+      <ul>
+        <li>A <b>36-hour week</b> worked as five 8-hour days, with the extra 4 hours banked toward <b>26 paid RDOs a year</b>. The <a href="/guides/cfmeu-rdo-calendar-2026">RDO calendar guide</a> has the dates and the accrual rules.</li>
+        <li><b>Rates by classification</b>: CW1 for labourers and concrete gangs, CW2 for scaffolders, steel fixers and concrete finishers, CW3 for carpenters, plasterers, bricklayers and other tradespeople, with higher classifications above.</li>
+        <li><b>Super and Incolink</b> paid by the employer on top of wages: super at a flat weekly amount or the legislated percentage, whichever is greater, and a weekly redundancy contribution to Incolink, which also carries income protection and portable sick leave for the industry.</li>
+        <li><b>Allowances</b>: a daily fares and travel amount, site allowance on every hour worked on a project over the value threshold, multi-storey, leading hand and the rest of the sheet. The <a href="/guides/cfmeu-site-allowance-fares-travel-2026">site allowance guide</a> has the figures.</li>
+        <li><b>Portable long service leave</b> through LeavePlus, the Victorian construction scheme, which follows you from employer to employer.</li>
+        <li><b>Weather rules</b>: the union's own FAQ says work stops and the crew leaves site when the temperature reaches 35&deg;C at the nearest weather station, and nobody works in the rain.</li>
+      </ul>''')
+
+body += section("C", "Pay", "s-pay", f'''      <h2 id="pay">What an EBA job pays, dated</h2>
+      <p class="stamp">Rates from {fig("wages.rates_from", d_long(W["rates_from"]))}</p>
+      <p>These are the figures on the CFMEU Victoria on-site wage sheet. They move at each wage increase, so the date is part of the number.</p>
+      <div class="tbl"><table>
+        <thead><tr><th>Item</th><th>Figure</th><th>From</th></tr></thead>
+        <tbody>
+          <tr><td>CW3 carpenter, tile-layer, plasterer, bricklayer (100%)</td><td class="n">{m_("wages","cw3_hour")} per hour, {m_("wages","cw3_week")} per 36-hour week</td><td class="n">{fig("wages.rates_from", d_short(W["rates_from"]))}</td></tr>
+          <tr><td>CW2 scaffolder, steel fixer, concrete finisher (96%)</td><td class="n">{m_("wages","cw2_hour")} per hour, {m_("wages","cw2_week")} per week</td><td class="n">{fig("wages.rates_from", d_short(W["rates_from"]))}</td></tr>
+          <tr><td>CW1 trades labourer, concrete gang (92.4%)</td><td class="n">{m_("wages","cw1_hour")} per hour, {m_("wages","cw1_week")} per week</td><td class="n">{fig("wages.rates_from", d_short(W["rates_from"]))}</td></tr>
+          <tr><td>Superannuation (employer pays on top)</td><td class="n">{m_("wages","super_weekly")} per week or {fig("wages.super_pct", W["super_pct"])}% of ordinary time earnings, whichever is greater</td><td class="n">{fig("wages.benefits_from", d_short(W["benefits_from"]))}</td></tr>
+          <tr><td>Incolink redundancy contribution (employer pays on top)</td><td class="n">{m_("wages","incolink_weekly")} per week</td><td class="n">{fig("wages.benefits_from", d_short(W["benefits_from"]))}</td></tr>
+          <tr><td>Fares and travel allowance</td><td class="n">{m_("wages","travel_daily")} per day attended</td><td class="n">{fig("wages.benefits_from", d_short(W["benefits_from"]))}</td></tr>
+          <tr><td>Site allowance, Melbourne inner suburbs, new project over {millions(S["threshold_m"])}</td><td class="n">{m_("site_allowance","inner_new")} per hour worked</td><td class="n">{fig("site_allowance.applies_from", d_short(S["applies_from"]))}</td></tr>
+        </tbody>
+      </table></div>
+      <p>Put together for a CW3 tradesperson attending five days on a 36-hour week: {m_("wages","cw3_week")} in wages plus {TRAVEL_5} fares and travel, before any site allowance, overtime or other allowances, with {m_("wages","super_weekly")} super and {m_("wages","incolink_weekly")} Incolink paid by the employer on top. Overtime is paid at penalty rates, weekends and public holidays higher again, and an RDO is a paid day off.</p>
+      <p class="src">Source: CFMEU Victoria, <i>{W["source_title"]}</i> (rates from {fig("wages.rates_from", d_long(W["rates_from"]))}; other benefits from {fig("wages.benefits_from", d_long(W["benefits_from"]))}) and the site allowance sheet applying from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}, <a href="{W["source_url"]}" rel="noopener">vic.cfmeu.org/wages</a>. Weekly rates are the hourly rate times 36. Apprentice and other classification rates are on the same sheet.</p>''')
+
+body += section("D", "Getting in", "s-how", f'''      <h2 id="how">How to get a CFMEU EBA job</h2>
+      <ol>
+        <li><b>Get the tickets first.</b> Nobody sets foot on a Victorian construction site without a White Card (general construction induction). After that it is trade by trade: a high-risk work licence for dogging, rigging, scaffolding, crane and hoist work or a forklift; an elevated work platform ticket; confined space, working at heights and asbestos awareness for civil and demolition crews; a first aid certificate helps everywhere. Companies on the list will not look at a CV without the ticket the job needs.</li>
+        <li><b>Know your classification.</b> A labourer starts at CW1, a scaffolder or steel fixer is CW2, a qualified tradesperson CW3. The wage sheet lists the rest. It decides your rate on day one, so read the table above before the interview and ask which classification the role is.</li>
+        <li><b>Search the right words.</b> On SEEK and Indeed, search "EBA" with your trade: "EBA labourer", "EBA carpenter", "EBA formwork", "EBA rates". Adverts that say EBA rates, CFMEU EBA, RDOs or Incolink are the ones you want; an advert that quotes an award rate is not an EBA job.</li>
+        <li><b>Go direct to the companies on the list.</b> Most subcontractors hire through the office and word of mouth long before an advert goes up. Pick your trade in the list below, then the careers page, a phone call to the office, or a CV dropped at the yard. If you are already on a site, ask the leading hands which subbies are putting people on.</li>
+        <li><b>Use labour hire with an EBA to get a start.</b> Labour hire companies with their own CFMEU agreement supply EBA sites at EBA rates, and they are the fastest way in for someone without contacts. A good run through labour hire is how many people end up on a subcontractor's books.</li>
+        <li><b>Apprentices and trainees.</b> The agreement sets apprentice rates and fares by year of apprenticeship. Group training organisations place apprentices with EBA companies, and the head contractors' agreements usually carry apprentice and trainee targets on major projects.</li>
+        <li><b>Turn up with what they want.</b> Commercial experience over domestic, references from a foreman who will pick up the phone, your own hand tools for a trade role, reliability. EBA companies pay well and are held to the agreement on every hour, so they hire people who make the crew's day run.</li>
+        <li><b>Check your first payslip.</b> Rate against your classification, super at the greater of the weekly amount or the percentage, Incolink, fares on every day attended, RDO accrual shown. The <a href="/guides/cfmeu-rdo-calendar-2026">RDO guide</a> and the <a href="/guides/cfmeu-site-allowance-fares-travel-2026">allowances guide</a> set out what should be there. If something is missing, raise it with the office first; the union's wage sheets are the reference both sides use.</li>
+      </ol>
+      <div class="aside chalk">
+        <p><b>On union membership.</b> It is voluntary. Under the Fair Work Act an employer cannot require you to join and cannot refuse you work for being a member, and the agreement covers every employee in its classifications either way. Whether to join is your decision, and this page takes no side on it.</p>
+      </div>''')
+
+body += section("E", "Check", "s-check", f'''      <h2 id="check">How to check whether a company has an EBA</h2>
+      <ul>
+        <li><b>Search the Fair Work Commission's agreements database.</b> Go to <a href="{E["search_url"]}" rel="noopener">fwc.gov.au, find an agreement</a> and search the employer's name. A CFMEU Victorian construction agreement is titled <i>"[Company] and the CFMEU (Victorian Construction and General Division) Subcontractors [Trade] Enterprise Agreement 2024&nbsp;-&nbsp;2027"</i>, or for head contractors just <i>"[Company] and the CFMEU (Victorian Construction and General Division) Enterprise Agreement 2024&nbsp;-&nbsp;2027"</i>.</li>
+        <li><b>Use the Commission's yearly lists.</b> It publishes a spreadsheet of every agreement approved each year at <a href="{E["source_url"]}" rel="noopener">fwc.gov.au</a>, with the title, approval date and nominal expiry. The list below is built from those spreadsheets.</li>
+        <li><b>Mind the nominal expiry.</b> The current pattern agreements nominally expire on 2 July 2027. An agreement keeps operating past that date until it is replaced or terminated, so a company on an older agreement can still be an EBA employer; the list flags any agreement past its nominal expiry rather than dropping it.</li>
+        <li><b>Other unions, other lists.</b> Electricians (ETU), plumbers (PPTEU) and metal trades (AMWU) work the same sites under agreements with their own unions. Those are not CFMEU agreements and are not on this list. Nor are the CFMEU's agreements in other states.</li>
+        <li><b>Ask on site.</b> The union's delegates and the site office know which companies on the job are on an agreement. The CFMEU Victoria office is on (03) 9341 3444.</li>
+      </ul>''')
+
+sector_links = " ".join(f'<a href="#emp-{slug(s)}">{s} ({len(v)})</a>' for s, v in E["sectors"].items())
+n_old = sum(1 for v in E["sectors"].values() for r in v if r.get("nominal_expiry_passed"))
+sec_html = []
+for s, v in E["sectors"].items():
+    rows = NL.join(
+        f'          <li data-s="{s}"><span class="nm">{r["name"].replace("&", "&amp;")}</span>'
+        + (f'<span class="dt old">nominal expiry {d_short(r["expiry"])}</span>' if r.get("nominal_expiry_passed") else f'<span class="dt">from {d_short(r["operative"])}</span>')
+        + '</li>' for r in v)
+    sec_html.append(f'      <div class="emp-sec" id="emp-{slug(s)}">{NL}        <h3>{s} <span class="n">({len(v)})</span></h3>{NL}        <ul class="emp">{NL}{rows}{NL}        </ul>{NL}      </div>')
+list_inner = f'''      <h2 id="list">The list: {N_EMP} Victorian companies with a CFMEU EBA</h2>
+      <p class="stamp">Commission lists generated {d_long(LIST_GEN)}</p>
+      <p>Every company below is party to an enterprise agreement with the CFMEU (Victorian Construction and General Division) on the Fair Work Commission's lists of approved agreements, within or just past its nominal term, grouped by the trade named in the agreement's title. Names are as registered with the Commission, which is not always the trading name on the ute. The date is the day the agreement came into operation.</p>
+      <form class="emp-filter" role="search">
+        <label for="emp-q">Find a company or a trade</label>
+        <input id="emp-q" type="search" autocomplete="off" placeholder="Type part of a name, or a trade such as formwork">
+        <span class="cnt" id="emp-n" aria-live="polite">{N_EMP} companies</span>
+      </form>
+      <p class="emp-jump">{sector_links}</p>
+{NL.join(sec_html)}
+      <p class="src">Source: Fair Work Commission, <i>List of agreements</i> spreadsheets for {", ".join(str(f["year"]) for f in E["files"])} (<a href="{E["source_url"]}" rel="noopener">fwc.gov.au, find an agreement</a>), filtered to agreements whose title names the CFMEU's Victorian Construction and General Division and whose nominal expiry is no more than a year past. {n_old} of the {N_EMP} are past nominal expiry and marked in orange. Head contractors whose agreement title does not carry the union's name, and agreements approved after the Commission generated its list, are not captured. Companies that have changed name or closed since approval will still appear until the Commission's list changes.</p>'''
+body += section("F", "The list", "s-list", list_inner)
+
+body += section("G", "FAQ", "s-faq", f'''      <h2 id="faq">Questions people ask</h2>
+{faq_html(JOBS_FAQ)}''')
+
+body += section("H", "Employers", "demo", DEMO_JOBS.format(related='<a href="/guides/cfmeu-rdo-calendar-2026">RDO calendar 2026 and the 36-hour week</a> &middot; <a href="/guides/cfmeu-site-allowance-fares-travel-2026">Site allowance, fares and travel 2026</a> &middot; <a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/guides/">All guides</a>'))
+
+jobs_html_extra = '<script src="/js/employers.js" defer></script>'
+page(JOBS_PATH, JOBS_TITLE, JOBS_OG, JOBS_DESC, article_ld(JOBS_PATH, JOBS_OG, JOBS_DESC, PUBLISHED, max(AS_AT, LIST_GEN)) + NL + faq_ld(JOBS_FAQ) + NL + jobs_html_extra, body)
 
 # ---------------------------------------------------------------- Index
 
@@ -500,7 +664,8 @@ IDX_LD = '''<script type="application/ld+json">
   "publisher": { "@id": "https://paykicker.com.au/#organization" },
   "hasPart": [
     { "@type": "Article", "headline": "''' + RDO_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-rdo-calendar-2026" },
-    { "@type": "Article", "headline": "''' + SA_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-site-allowance-fares-travel-2026" }
+    { "@type": "Article", "headline": "''' + SA_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-site-allowance-fares-travel-2026" },
+    { "@type": "Article", "headline": "''' + JOBS_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-eba-jobs-victoria" }
   ]
 }
 </script>'''
@@ -519,8 +684,13 @@ body = head_section("Guides", "CFMEU EBA guides for the subcontractor's office",
       <p>The site allowance table from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}, the {m_("wages","travel_daily")} daily fares allowance and its radial-area rules, multi-storey and leading hand rates, and how each one should land on a payslip.</p>
       <p class="when">Figures dated {d_short(A["correct_at"])} and {d_short(S["applies_from"])}. Checked {fig("as_at", d_long(AS_AT))}.</p>
     </li>
+    <li>
+      <h2><a href="/guides/cfmeu-eba-jobs-victoria">{JOBS_OG}</a></h2>
+      <p>What an EBA job pays right now, the tickets and search terms that get you one, how to check any company on the Fair Work Commission's register, and the full list of {N_EMP} Victorian companies with a CFMEU construction EBA, by trade. For workers looking for a start, and for the companies on the list.</p>
+      <p class="when">Company list from the Commission's lists generated {d_short(LIST_GEN)}. Pay figures checked {fig("as_at", d_long(AS_AT))}.</p>
+    </li>
   </ul>
-  <p class="note">More guides follow: overtime, weekends and inclement weather; public holidays, Cup Day and daily hire. Every figure on these pages carries its source and date, and a weekly job checks the union's published sheets; when a sheet changes, the page changes.</p>''')
+  <p class="note">More guides follow: overtime, weekends and inclement weather; public holidays, Cup Day and daily hire. Every figure on these pages carries its source and date, and a weekly job checks the union's published sheets and the Commission's lists; when a source changes, the page changes.</p>''')
 
 body += section("B", "Demo", "demo", DEMO.format(related='<a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/digital-dayworks-docket">Digital dayworks dockets</a>'))
 
@@ -551,8 +721,9 @@ replace_figs("eba-payroll-software.html")
 
 sm = os.path.join(PUB, "sitemap.xml")
 s = io.open(sm, "r", encoding="utf-8", newline="").read()
-for u in ("/guides/", "/guides/cfmeu-rdo-calendar-2026", "/guides/cfmeu-site-allowance-fares-travel-2026", "/eba-payroll-software"):
-    s = re.sub(r'(<loc>https://paykicker\.com\.au' + re.escape(u) + r'</loc>\s*<lastmod>)[0-9-]+(</lastmod>)', lambda m: m.group(1) + AS_AT + m.group(2), s)
+for u, when in (("/guides/", max(AS_AT, LIST_GEN)), ("/guides/cfmeu-rdo-calendar-2026", AS_AT), ("/guides/cfmeu-site-allowance-fares-travel-2026", AS_AT),
+                ("/guides/cfmeu-eba-jobs-victoria", max(AS_AT, LIST_GEN)), ("/eba-payroll-software", AS_AT)):
+    s = re.sub(r'(<loc>https://paykicker\.com\.au' + re.escape(u) + r'</loc>\s*<lastmod>)[0-9-]+(</lastmod>)', lambda m, when=when: m.group(1) + when + m.group(2), s)
 io.open(sm, "w", encoding="utf-8", newline="").write(s)
 print("sitemap lastmod ->", AS_AT)
 print("done")
