@@ -1,0 +1,22 @@
+{
+  "wages": {
+    "url": "https://vic.cfmeu.org/wp-content/uploads/2026/02/2026-Onsite-EBA-Rates.pdf",
+    "sha256": "533f0d519a9505a3f44b0911227663f06ce7989e8a7b3b2f0a95a680c38d2907",
+    "checked": "2026-09-25"
+  },
+  "allowances": {
+    "url": "https://vic.cfmeu.org/wp-content/uploads/2026/02/2026-Onsite-Allowances-EBA-Rates.pdf",
+    "sha256": "dbc2ce1758024defcb984fdd825f4427d4ccfc7ab395038cd1118c5faa26be8b",
+    "checked": "2026-09-25"
+  },
+  "site_allowance": {
+    "url": "https://vic.cfmeu.org/wp-content/uploads/2026/09/2026-Site-Allowance-Oct.1st-2026.pdf",
+    "sha256": "45ab6e13658bd5da8317d877c59eeff37664353a4a7b28f3e81175dc03b20e48",
+    "checked": "2026-09-25"
+  },
+  "rdo_ics": {
+    "url": "https://vic.cfmeu.org/wp-content/uploads/2025/11/36hr-onsite-rdo-calendar.ics",
+    "sha256": "3c22ff62a1310614bfb4ea2fb607c3c7a98577d914c8753f76811ead8c3c1a87",
+    "checked": "2026-09-25"
+  }
+}

@@ -1,0 +1,52 @@
+name: CFMEU figures watch
+
+# Checks the CFMEU Victoria wage sheets and the on-site RDO calendar every week, and
+# the day after each of the union's usual increase dates. When a sheet changes, the
+# figures are extracted, checked against sanity gates, and published to main
+# (Cloudflare Pages deploys it). A failed gate opens an issue instead.
+
+on:
+  schedule:
+    - cron: "0 21 * * 1"   # Mondays 21:00 UTC = Tuesday 07:00/08:00 Melbourne
+    - cron: "0 21 2 2 *"   # 2 Feb
+    - cron: "0 21 2 3 *"   # 2 Mar
+    - cron: "0 21 2 10 *"  # 2 Oct
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-read every sheet even if unchanged"
+        type: boolean
+        default: false
+      dry_run:
+        description: "Report only, publish nothing"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: cfmeu-figures
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet "anthropic>=1.0" "pypdf>=5" fonttools requests
+      - name: Watch and update
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python scripts/cfmeu/watch.py \
+            ${{ inputs.force && '--force' || '' }} \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
