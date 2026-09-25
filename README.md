@@ -8,6 +8,7 @@ Everything served lives in `public/`.
 - `js/hero-pulse.js` — homepage hero: the orange pulse that walks the set-out grid from the timesheet tap to the MYOB file (desktop widths; phones use the CSS-only pulse).
 - `eba-payroll-software.html` — landing page, EBA/CFMEU payroll keyword cluster
 - `digital-dayworks-docket.html` — landing page, dayworks docket keyword cluster
+- `guides/` — CFMEU EBA guides (`index.html` plus one page per topic: RDO calendar and the 36-hour week; site allowance, fares and travel). Every dollar figure carries its CFMEU sheet and effective date; re-check them at each wage increase (1 Feb, 1 Mar and 1 Oct sheets). Generated with the build script kept in the session scratchpad, then hand-maintained.
 - `paykicker-explainer.html` — animated "one week on site" (embedded via iframe on the homepage)
 - `paykicker-worker-training.html` — worker training walkthrough (link from onboarding SMS); `noindex`
 - `404.html` — not-found page; `noindex`, and deliberately **no** `rel=canonical` (a canonical on

@@ -48,4 +48,22 @@
     <changefreq>daily</changefreq>
     <priority>0.4</priority>
   </url>
+  <url>
+    <loc>https://paykicker.com.au/guides/</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://paykicker.com.au/guides/cfmeu-rdo-calendar-2026</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://paykicker.com.au/guides/cfmeu-site-allowance-fares-travel-2026</loc>
+    <lastmod>2026-09-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
