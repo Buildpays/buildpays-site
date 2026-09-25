@@ -43,7 +43,7 @@
     dot.style.offsetPath = 'path("' + g.d + '")';
     dot.style.offsetRotate = '0deg';
     dot.style.left = '0'; dot.style.top = '0'; dot.style.margin = '0';
-    var dur = Math.max(3000, Math.min(6500, g.len * 6));
+    var dur = Math.max(6000, Math.min(12000, g.len * 12));
     anim = dot.animate(
       [{ offsetDistance: '0%', opacity: 0 }, { offsetDistance: '4%', opacity: 1 }, { offsetDistance: '96%', opacity: 1 }, { offsetDistance: '100%', opacity: 0 }],
       { duration: dur, delay: 400, easing: 'linear', fill: 'forwards' });
