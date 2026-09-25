@@ -263,9 +263,13 @@ def keep_title(new_title, old_title):
     norm = lambda t: re.sub(r"[^a-z0-9]", "", str(t).lower())
     if old_title and norm(new_title) == norm(old_title):
         return old_title
+    acronyms = {"EBA", "CFMEU", "RDO", "RDOS", "CW", "VIC", "VIC/TAS", "CPI"}
     words = []
     for w in str(new_title).split():
-        words.append(w if (w.isupper() and len(w) <= 5) or w[:1].isdigit() else w.capitalize())
+        if w.upper() in acronyms or w[:1].isdigit():
+            words.append(w.upper() if w.upper() in acronyms else w)
+        else:
+            words.append("-".join(part.capitalize() for part in w.split("-")))
     return " ".join(words)
 
 
