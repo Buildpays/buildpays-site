@@ -248,11 +248,11 @@
   .hero{padding:14px 0 0}
   .setout{
     display:grid;
-    grid-template-columns:var(--rail) 1.05fr .75fr .6fr 1.6fr;
+    grid-template-columns:var(--rail) 1fr .9fr .7fr 1.45fr;
     grid-template-rows:38px auto auto auto auto;
     grid-template-areas:
       "cn n1 n2 n3 n4"
-      "ra hd hd ph ln"
+      "ra hd hd hd ph"
       "rb sb sb b3 my"
       "rc ct ct c3 my"
       "rd ft ft d3 d4";
@@ -266,12 +266,12 @@
   .rail.top{align-items:flex-end;padding-bottom:6px}
   .cn{grid-area:cn}.n1{grid-area:n1}.n2{grid-area:n2}.n3{grid-area:n3}.n4{grid-area:n4}
   .ra{grid-area:ra}.rb{grid-area:rb}.rc{grid-area:rc}.rd{grid-area:rd}
-  .hd{grid-area:hd}.sb{grid-area:sb}.ph{grid-area:ph}.ln{grid-area:ln}.my{grid-area:my}
+  .hd{grid-area:hd}.sb{grid-area:sb}.ph{grid-area:ph}.ln{grid-area:ln;display:none}.my{grid-area:my}
   .ct{grid-area:ct}.ft{grid-area:ft}.b3{grid-area:b3}.c3{grid-area:c3}.d3{grid-area:d3}.d4{grid-area:d4}
   .ra,.rb,.rc,.rd{flex-direction:column;justify-content:flex-start;padding-top:24px}
 
   .hd{padding-top:22px;padding-bottom:20px}
-  .hd h1{font-size:clamp(44px,5.3vw,84px);font-weight:800;line-height:.92;letter-spacing:.002em;text-wrap:initial}
+  .hd h1{font-size:clamp(48px,6.9vw,110px);font-weight:800;line-height:.92;letter-spacing:.002em;text-wrap:initial}
   .hd h1 span{display:block}
   .sb{display:flex;align-items:center}
   .sb p{font-size:20px;line-height:1.45;max-width:46ch}
@@ -286,22 +286,23 @@
   .ft .fine{font-size:14px;color:var(--ink2);max-width:56ch}
 
   /* --- the demonstration: a tap at A3, a string line across to the pay lines at B4-C4 --- */
-  .ph{display:flex;align-items:flex-end;justify-content:center;padding:18px 12px 22px}
-  .ph::after{content:"";position:absolute;left:0;right:0;bottom:var(--tapY);height:1px;background:var(--string);z-index:0}
-  .phone{position:relative;z-index:1;width:100%;max-width:172px;padding:14px 14px 14px;border-radius:14px;display:flex;flex-direction:column;gap:5px}
-  .phone .k{font-family:var(--disp);font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
-  .phone .v{font-size:15px;font-weight:500;line-height:1.2}
-  .phone .v.big{font-family:var(--disp);font-weight:800;font-size:26px;line-height:1;letter-spacing:.01em}
+  .ph{display:flex;align-items:flex-start;justify-content:center;padding:22px 16px 28px}
+  .ph::after{content:"";position:absolute;left:50%;bottom:0;width:1px;height:28px;background:var(--string);z-index:0}
+  .phone{position:relative;z-index:1;width:100%;max-width:232px;padding:16px 16px 16px;border-radius:14px;display:flex;flex-direction:column;gap:5px}
+  .phone .k{font-family:var(--disp);font-weight:800;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+  .phone .v{font-size:17px;font-weight:500;line-height:1.2}
+  .phone .v.big{font-family:var(--disp);font-weight:800;font-size:30px;line-height:1;letter-spacing:.01em}
   .phone .kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 12px;align-items:baseline;border-top:1px solid var(--string-soft);padding-top:8px;margin-top:3px}
   .phone .kv .v{text-align:right;font-variant-numeric:tabular-nums}
-  .phone .tap{height:36px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--navy);color:var(--chalk);border-radius:6px;font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
+  .phone .tap{height:42px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--navy);color:var(--chalk);border-radius:6px;font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase}
   .phone .tap .ic{width:18px;height:18px}
   .phone .cap{font-size:12px;color:var(--ink2);text-align:center;margin-top:6px}
   .ln{padding:0;min-height:120px}
   .ln::after{content:"";position:absolute;left:0;right:50%;bottom:var(--tapY);height:1px;background:var(--string)}
   .ln .drop{position:absolute;left:50%;bottom:0;width:1px;height:var(--tapY);background:var(--string)}
-  .my{padding-top:0;display:flex;flex-direction:column}
-  .file{position:relative;overflow:hidden;font-family:var(--file);font-size:12px;line-height:1.45;padding:16px 14px 12px;margin-top:0;border-top:0;border-radius:0 0 3px 3px}
+  .my{padding:22px 24px 22px;display:flex;flex-direction:column}
+  .my .stub{position:absolute;left:50%;top:0;width:1px;height:22px;background:var(--string)}
+  .file{position:relative;overflow:hidden;font-family:var(--file);font-size:12px;line-height:1.45;padding:16px 14px 12px;margin-top:0;border-radius:3px}
   .file::before{content:"";position:absolute;left:50%;top:-4px;width:7px;height:7px;margin-left:-3px;border-radius:50%;background:var(--navy);z-index:3}
   .file .dhead{display:flex;justify-content:space-between;gap:12px;font-weight:700;font-size:12px;letter-spacing:.04em;border-bottom:1px solid var(--string-soft);padding-bottom:8px;margin-bottom:8px}
   .file .row{position:relative;isolation:isolate;display:flex;justify-content:space-between;gap:12px;padding:4px 6px;margin:0 -6px}
@@ -315,9 +316,10 @@
 
   /* the one motion: a lit pulse from the worker's tap along the string to the pay lines */
   .dot{position:absolute;width:11px;height:11px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--orange);border:2px solid var(--chalk);z-index:2;opacity:0;pointer-events:none}
-  .ph .dot{left:calc(50% + 78px);top:calc(100% - var(--tapY));animation:pd1 .55s linear .25s forwards}
+  .ph .dot{left:50%;top:calc(100% - 28px);animation:md1 .6s linear .3s forwards}
+  @keyframes md1{0%{opacity:0}12%{opacity:1}100%{opacity:1;top:100%}}
   .ln .dot{left:0;top:calc(100% - var(--tapY));animation:pd2 1.05s linear .8s forwards}
-  .file .row.hot::before{animation:mark .6s var(--ease) 1.95s forwards}
+  .file .row.hot::before{animation:mark .6s var(--ease) 1s forwards}
   @keyframes pd1{0%{opacity:0}12%{opacity:1}96%{opacity:1;left:100%}100%{opacity:0;left:100%}}
   @keyframes pd2{0%{opacity:1;left:0}62%{left:50%;top:calc(100% - var(--tapY))}92%{opacity:1;left:50%;top:100%}100%{opacity:0;left:50%;top:100%}}
   @keyframes mark{to{opacity:.45}}
@@ -462,7 +464,6 @@
   @media(max-width:1000px){
     .nav a.nl{display:none}
     .file{font-size:11px;padding:14px 10px 12px}
-    .phone .v.big{font-size:22px}
     .file .row{gap:8px}
     .legend-tbl{grid-template-columns:repeat(2,minmax(0,1fr))}
     .legend-tbl > div:nth-child(3){border-left:0}
@@ -499,12 +500,13 @@
     .ph{border-top:0;align-items:flex-start;justify-content:flex-start;padding-top:20px;padding-bottom:26px}
     .ph::after{left:50%;right:auto;top:auto;bottom:0;width:1px;height:26px}
     .phone{max-width:220px;margin:0 auto}
-    .ln{min-height:34px;border-top:0}
+    .ln{display:block;min-height:34px;border-top:0}
+    .my .stub{display:none}
     .ln::after{left:50%;right:auto;top:0;bottom:0;width:1px;height:auto}
     .ln .drop{display:none}
     .my{border-top:0;padding:0 16px 20px}
     .file{border-top:1px solid var(--string);border-radius:3px}
-    .ph .dot{left:50%;top:calc(100% - 26px);animation-name:md1}
+    .ph .dot{top:calc(100% - 26px)}
     .ln .dot{left:50%;top:0;animation-name:md2}
     @keyframes md1{0%{opacity:0}12%{opacity:1}100%{opacity:1;top:100%}}
     @keyframes md2{0%{opacity:1;top:0}90%{opacity:1;top:100%}100%{opacity:0;top:100%}}
@@ -654,6 +656,7 @@
       <div class="cell ln last" aria-hidden="true"><span class="drop"></span><span class="dot"></span></div>
       <div class="cell b3" aria-hidden="true"></div>
       <div class="cell my last">
+        <span class="stub" aria-hidden="true"></span>
         <div class="chalk file" role="img" aria-label="Example MYOB payroll export showing pay items generated from one timesheet">
           <div class="dhead"><span>MYOB TIMESHEET EXPORT</span><span>E0012 · TUE 07 JUL</span></div>
           <div class="row"><span>Base Hourly — 8 hrs, 0.80 to the RDO bank</span><span>7.20 units</span></div>
