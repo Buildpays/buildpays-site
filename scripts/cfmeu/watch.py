@@ -258,6 +258,17 @@ def check_date(path, new, old):
         raise Gate(f"{path} {new} is more than 200 days in the future")
 
 
+def keep_title(new_title, old_title):
+    """Sheet titles are printed in capitals; keep our typeset title unless the words changed."""
+    norm = lambda t: re.sub(r"[^a-z0-9]", "", str(t).lower())
+    if old_title and norm(new_title) == norm(old_title):
+        return old_title
+    words = []
+    for w in str(new_title).split():
+        words.append(w if (w.isupper() and len(w) <= 5) or w[:1].isdigit() else w.capitalize())
+    return " ".join(words)
+
+
 def validate(new, old, changed):
     """Compare every figure with the previous JSON. Only sections whose sheet changed are re-read;
     the others are copied from the old file so an unchanged sheet can never drift."""
@@ -275,6 +286,7 @@ def validate(new, old, changed):
         check_date("wages.rates_from", w["rates_from"], ow.get("rates_from"))
         check_date("wages.benefits_from", w["benefits_from"], ow.get("benefits_from"))
         out["wages"].update({k: w[k] for k in SCHEMA["properties"]["wages"]["required"]})
+        out["wages"]["source_title"] = keep_title(w["source_title"], ow.get("source_title"))
     if "allowances" in changed:
         a, oa = new["allowances"], old["allowances"]
         for k in SCHEMA["properties"]["allowances"]["required"]:
@@ -286,6 +298,7 @@ def validate(new, old, changed):
             raise Gate("allowances: multi-storey bands not increasing")
         check_date("allowances.correct_at", a["correct_at"], oa.get("correct_at"))
         out["allowances"].update({k: a[k] for k in SCHEMA["properties"]["allowances"]["required"]})
+        out["allowances"]["source_title"] = keep_title(a["source_title"], oa.get("source_title"))
     if "site_allowance" in changed:
         s, os_ = new["site_allowance"], old["site_allowance"]
         for k in ("threshold_m", "inner_cap_m", "inner_new", "inner_reno"):
@@ -311,6 +324,7 @@ def validate(new, old, changed):
             check_num("site_allowance.projects." + p["name"], p["rate"], None)
         check_date("site_allowance.applies_from", s["applies_from"], os_.get("applies_from"))
         out["site_allowance"].update({k: s[k] for k in SCHEMA["properties"]["site_allowance"]["required"]})
+        out["site_allowance"]["source_title"] = keep_title(s["source_title"], os_.get("source_title"))
     if "rdo_ics" in changed:
         years = new["rdo_years"]
         if not any(int(y) >= date.today().year for y in years):
