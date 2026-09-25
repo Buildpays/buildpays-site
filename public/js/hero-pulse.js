@@ -1,6 +1,6 @@
 /* Hero pulse (desktop grid only): the worker's tap travels the set-out lines
-   from the timesheet, across the top of the "Roster the crew" cell, down its
-   left edge, along its bottom line and into the MYOB file. Phone widths keep
+   from the timesheet, left along the top of the "Roster the crew" cell to its
+   right edge, down that edge, then right along its bottom line into the MYOB file. Phone widths keep
    the CSS-only vertical pulse. */
 (function () {
   'use strict';
@@ -21,7 +21,7 @@
     // Coordinates relative to .ph (the dot's containing block).
     var x0 = t.left + t.width / 2 - p.left, y0 = t.bottom - p.top;
     var yTop = s.top - p.top;            // A/B grid line
-    var xLeft = s.left - p.left;         // left edge of the "Roster the crew" cell
+    var xLeft = s.right - p.left;        // right edge of the "Roster the crew" cell
     var yBot = s.bottom - p.top;         // B/C grid line
     var xEnd = f.left - p.left;          // the file's left edge
     var d = 'M' + x0 + ' ' + y0 + ' V' + yTop + ' H' + xLeft + ' V' + yBot + ' H' + xEnd;
@@ -43,7 +43,7 @@
     dot.style.offsetPath = 'path("' + g.d + '")';
     dot.style.offsetRotate = '0deg';
     dot.style.left = '0'; dot.style.top = '0'; dot.style.margin = '0';
-    var dur = Math.max(1400, Math.min(3200, g.len * 3.2));
+    var dur = Math.max(3000, Math.min(6500, g.len * 6));
     anim = dot.animate(
       [{ offsetDistance: '0%', opacity: 0 }, { offsetDistance: '4%', opacity: 1 }, { offsetDistance: '96%', opacity: 1 }, { offsetDistance: '100%', opacity: 0 }],
       { duration: dur, delay: 400, easing: 'linear', fill: 'forwards' });
