@@ -306,7 +306,7 @@
   .file .row{position:relative;isolation:isolate;display:flex;justify-content:space-between;gap:12px;padding:4px 6px;margin:0 -6px}
   .file .row span:last-child{white-space:nowrap;font-weight:700}
   .file .row .ic{width:14px;height:14px;stroke-width:2;vertical-align:-2px}
-  .file .row.hot::before{content:"";position:absolute;inset:1px 0;z-index:-1;background:var(--orange);border-radius:38% 62% 45% 55% / 60% 40% 60% 40%;filter:url(#spray-fine);opacity:0}
+  .file .row.hot::before{content:"";position:absolute;inset:-1px -4px;z-index:-1;background:var(--orange);border-radius:38% 62% 45% 55% / 60% 40% 60% 40%;filter:url(#spray-fine);opacity:0}
   .file .dfoot{border-top:1px solid var(--string-soft);margin-top:8px;padding-top:8px;font-size:12px;color:var(--ink2)}
   .file .legend{font-family:var(--body);font-size:12px;color:var(--ink2);margin-top:8px;display:flex;align-items:center;gap:8px}
   .file .legend i{display:inline-block;width:22px;height:11px;background:var(--orange);border-radius:40% 60% 50% 50%/60% 40% 60% 40%;filter:url(#spray-fine)}
@@ -318,10 +318,10 @@
   .file .row.hot::before{animation:mark .6s var(--ease) 1.95s forwards}
   @keyframes pd1{0%{opacity:0}12%{opacity:1}96%{opacity:1;left:100%}100%{opacity:0;left:100%}}
   @keyframes pd2{0%{opacity:1;left:0}62%{left:50%;top:calc(100% - var(--tapY))}92%{opacity:1;left:50%;top:100%}100%{opacity:0;left:50%;top:100%}}
-  @keyframes mark{to{opacity:1}}
+  @keyframes mark{to{opacity:.45}}
   @media(prefers-reduced-motion:reduce){
     .dot{display:none}
-    .file .row.hot::before{animation:none;opacity:1}
+    .file .row.hot::before{animation:none;opacity:.45}
   }
 
   /* ============================================================
