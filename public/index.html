@@ -305,7 +305,7 @@
   .file .dhead{display:flex;justify-content:space-between;gap:12px;font-weight:700;font-size:12px;letter-spacing:.04em;border-bottom:1px solid var(--string-soft);padding-bottom:8px;margin-bottom:8px}
   .file .row{position:relative;isolation:isolate;display:flex;justify-content:space-between;gap:12px;padding:4px 6px;margin:0 -6px}
   .file .row span{min-width:0;overflow-wrap:anywhere}
-  .file .row span:last-child{white-space:nowrap;font-weight:700}
+  .file .row span:last-child{white-space:nowrap;font-weight:700;flex:none}
   .file .row .ic{width:14px;height:14px;stroke-width:2;vertical-align:-2px}
   .file .row.hot::before{content:"";position:absolute;inset:-1px -4px;z-index:-1;background:var(--orange);border-radius:38% 62% 45% 55% / 60% 40% 60% 40%;filter:url(#spray-fine);opacity:0}
   .file .dfoot{border-top:1px solid var(--string-soft);margin-top:8px;padding-top:8px;font-size:12px;color:var(--ink2)}
@@ -469,7 +469,7 @@
     .price{grid-template-columns:minmax(0,1fr)}
     .price > div + div{border-left:0;border-top:1px solid var(--string-soft)}
   }
-  @media(max-width:860px){
+  @media(max-width:1000px){
     :root{--rail:36px;--tapY:0px}
     .setout{
       grid-template-columns:var(--rail) minmax(0,1fr);
