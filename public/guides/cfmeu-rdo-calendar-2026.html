@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="/css/setout.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
@@ -156,7 +156,7 @@
   </div>
 </nav>
 
-<main>
+<main class="guide">
 <section class="sheet prose page-head" id="top">
   <div class="wrap">
     <div class="mark"><span class="bub" aria-hidden="true">A</span><span class="name">RDOs</span><span class="string" aria-hidden="true"></span></div>
@@ -165,6 +165,12 @@
 
   <p class="lede">If your crew is on a CFMEU Victorian Construction and General Division enterprise agreement, the week is 36 hours, not 38, and every eighth hour of a working day is banked toward a rostered day off. This guide sets out the 2026 on-site RDO dates the union publishes, how the accrual works clause by clause, what a worked RDO pays, and the four places office payroll gets it wrong.</p>
   <p class="note">Written 25 September 2026, figures checked <span data-fig="as_at">25 September 2026</span>, for the 2024&ndash;2027 agreements. Clause numbers are the formwork subcontractors' agreement; the crane, steelfixing and other trade agreements share the same skeleton with their own numbering.</p>
+  <div class="tiles">
+    <div class="tile"><b>36<small> hrs</small></b><span class="cap">the ordinary week, worked as five 8-hour days</span></div>
+    <div class="tile"><b>26</b><span class="cap">paid RDOs on the 2026 calendar, on top of leave and holidays</span></div>
+    <div class="tile"><b>0.8<small> hr</small></b><span class="cap">banked toward the next RDO on every ordinary day worked</span></div>
+    <div class="tile"><b>250<small>%</small></b><span class="cap">for an RDO worked without consultation, four-hour minimum</span></div>
+  </div>
 
   <nav class="toc" aria-label="On this page">
     <p class="toc-h">On this page</p>
@@ -227,20 +233,22 @@
     <div class="body">
       <h2 id="dates">The 2026 on-site RDO dates</h2>
       <p>These are the rostered days off on the CFMEU Victoria <b>2026 Victoria On-Site RDO calendar</b>, taken from the ICS calendar file the branch publishes. Most fall on a Monday; the ones that do not sit beside a public holiday so the crew gets a run of days off. The calendar also marks the Christmas and New Year close-down as annual leave and the "lockdown" weekends, which matter for pay if anyone works them (see the next section).</p>
-      <div class="cal">
-        <div><b>January</b><span>RDO: Mon 12, Tue 27</span><span class="ph">New Year's Day Thu 1; Australia Day Mon 26; Annual leave Fri 2 and Mon 5</span></div>
-        <div><b>February</b><span>RDO: Mon 9, Mon 23</span></div>
-        <div><b>March</b><span>RDO: Tue 10, Mon 23</span><span class="ph">Labour Day Mon 9</span></div>
-        <div><b>April</b><span>RDO: Tue 7, Tue 28</span><span class="ph">Good Friday Fri 3; Easter Monday Mon 6; ANZAC Day Sat 25; Public holiday Mon 27</span></div>
-        <div><b>May</b><span>RDO: Mon 11, Mon 25</span></div>
-        <div><b>June</b><span>RDO: Tue 9, Mon 22</span><span class="ph">King's Birthday Mon 8</span></div>
-        <div><b>July</b><span>RDO: Mon 6, Mon 20</span></div>
-        <div><b>August</b><span>RDO: Mon 3, Mon 17, Mon 31</span></div>
-        <div><b>September</b><span>RDO: Mon 14, Mon 28</span><span class="ph">Grand Final Friday Fri 25</span></div>
-        <div><b>October</b><span>RDO: Mon 12, Mon 26</span><span class="ph">West Gate Memorial Thu 15 (not a public holiday)</span></div>
-        <div><b>November</b><span>RDO: Mon 2, Wed 4, Mon 16</span><span class="ph">Melbourne Cup Day Tue 3</span></div>
-        <div><b>December</b><span>RDO: Wed 23</span><span class="ph">Picnic Day Mon 7; Christmas Day Fri 25; Boxing Day holiday Mon 28; Annual leave Thu 24 and Tue 29 to Thu 31</span></div>
+      <div class="months">
+        <div class="mon"><h4>January</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="ph">1</b><b class="al">2</b><b class="lk">3</b><b class="we">4</b><b class="al">5</b><b>6</b><b>7</b><b>8</b><b>9</b><b class="lk">10</b><b class="we">11</b><b class="rdo">12</b><b>13</b><b>14</b><b>15</b><b>16</b><b class="we">17</b><b class="we">18</b><b>19</b><b>20</b><b>21</b><b>22</b><b>23</b><b class="we">24</b><b class="we">25</b><b class="ph">26</b><b class="rdo">27</b><b>28</b><b>29</b><b>30</b><b class="we">31</b><b class="e"></b></div><p class="ph-names">New Year's Day Thu 1; Australia Day Mon 26</p></div>
+        <div class="mon"><h4>February</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b class="we">7</b><b class="we">8</b><b class="rdo">9</b><b>10</b><b>11</b><b>12</b><b>13</b><b class="we">14</b><b class="we">15</b><b>16</b><b>17</b><b>18</b><b>19</b><b>20</b><b class="we">21</b><b class="we">22</b><b class="rdo">23</b><b>24</b><b>25</b><b>26</b><b>27</b><b class="we">28</b><b class="e"></b></div></div>
+        <div class="mon"><h4>March</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b class="lk">7</b><b class="we">8</b><b class="ph">9</b><b class="rdo">10</b><b>11</b><b>12</b><b>13</b><b class="we">14</b><b class="we">15</b><b>16</b><b>17</b><b>18</b><b>19</b><b>20</b><b class="we">21</b><b class="we">22</b><b class="rdo">23</b><b>24</b><b>25</b><b>26</b><b>27</b><b class="we">28</b><b class="we">29</b><b>30</b><b>31</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Labour Day Mon 9</p></div>
+        <div class="mon"><h4>April</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b>1</b><b>2</b><b class="ph">3</b><b class="lk">4</b><b class="we">5</b><b class="ph">6</b><b class="rdo">7</b><b>8</b><b>9</b><b>10</b><b class="we">11</b><b class="we">12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b class="we">18</b><b class="we">19</b><b>20</b><b>21</b><b>22</b><b>23</b><b>24</b><b class="ph">25</b><b class="we">26</b><b class="ph">27</b><b class="rdo">28</b><b>29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Good Friday Fri 3; Easter Monday Mon 6; ANZAC Day Sat 25; Public holiday Mon 27</p></div>
+        <div class="mon"><h4>May</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b>1</b><b class="we">2</b><b class="we">3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b class="we">9</b><b class="we">10</b><b class="rdo">11</b><b>12</b><b>13</b><b>14</b><b>15</b><b class="we">16</b><b class="we">17</b><b>18</b><b>19</b><b>20</b><b>21</b><b>22</b><b class="we">23</b><b class="we">24</b><b class="rdo">25</b><b>26</b><b>27</b><b>28</b><b>29</b><b class="we">30</b><b class="we">31</b></div></div>
+        <div class="mon"><h4>June</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b class="lk">6</b><b class="we">7</b><b class="ph">8</b><b class="rdo">9</b><b>10</b><b>11</b><b>12</b><b class="we">13</b><b class="we">14</b><b>15</b><b>16</b><b>17</b><b>18</b><b>19</b><b class="we">20</b><b class="we">21</b><b class="rdo">22</b><b>23</b><b>24</b><b>25</b><b>26</b><b class="we">27</b><b class="we">28</b><b>29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">King's Birthday Mon 8</p></div>
+        <div class="mon"><h4>July</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b>1</b><b>2</b><b>3</b><b class="we">4</b><b class="we">5</b><b class="rdo">6</b><b>7</b><b>8</b><b>9</b><b>10</b><b class="we">11</b><b class="we">12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b class="we">18</b><b class="we">19</b><b class="rdo">20</b><b>21</b><b>22</b><b>23</b><b>24</b><b class="we">25</b><b class="we">26</b><b>27</b><b>28</b><b>29</b><b>30</b><b>31</b><b class="e"></b><b class="e"></b></div></div>
+        <div class="mon"><h4>August</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b class="we">2</b><b class="rdo">3</b><b>4</b><b>5</b><b>6</b><b>7</b><b class="we">8</b><b class="we">9</b><b>10</b><b>11</b><b>12</b><b>13</b><b>14</b><b class="we">15</b><b class="we">16</b><b class="rdo">17</b><b>18</b><b>19</b><b>20</b><b>21</b><b class="we">22</b><b class="we">23</b><b>24</b><b>25</b><b>26</b><b>27</b><b>28</b><b class="we">29</b><b class="we">30</b><b class="rdo">31</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div></div>
+        <div class="mon"><h4>September</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b>1</b><b>2</b><b>3</b><b>4</b><b class="we">5</b><b class="we">6</b><b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b class="we">12</b><b class="we">13</b><b class="rdo">14</b><b>15</b><b>16</b><b>17</b><b>18</b><b class="we">19</b><b class="we">20</b><b>21</b><b>22</b><b>23</b><b>24</b><b class="ph">25</b><b class="lk">26</b><b class="we">27</b><b class="rdo">28</b><b>29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Grand Final Friday Fri 25</p></div>
+        <div class="mon"><h4>October</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b>1</b><b>2</b><b class="we">3</b><b class="we">4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b class="we">10</b><b class="we">11</b><b class="rdo">12</b><b>13</b><b>14</b><b class="oth">15</b><b>16</b><b class="we">17</b><b class="we">18</b><b>19</b><b>20</b><b>21</b><b>22</b><b>23</b><b class="we">24</b><b class="we">25</b><b class="rdo">26</b><b>27</b><b>28</b><b>29</b><b>30</b><b class="lk">31</b><b class="e"></b></div><p class="ph-names">West Gate Memorial Thu 15</p></div>
+        <div class="mon"><h4>November</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b class="rdo">2</b><b class="ph">3</b><b class="rdo">4</b><b>5</b><b>6</b><b class="we">7</b><b class="we">8</b><b>9</b><b>10</b><b>11</b><b>12</b><b>13</b><b class="we">14</b><b class="we">15</b><b class="rdo">16</b><b>17</b><b>18</b><b>19</b><b>20</b><b class="we">21</b><b class="we">22</b><b>23</b><b>24</b><b>25</b><b>26</b><b>27</b><b class="we">28</b><b class="we">29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Melbourne Cup Day Tue 3</p></div>
+        <div class="mon"><h4>December</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b>1</b><b>2</b><b>3</b><b>4</b><b class="we">5</b><b class="we">6</b><b class="oth">7</b><b>8</b><b>9</b><b>10</b><b>11</b><b class="we">12</b><b class="we">13</b><b>14</b><b>15</b><b>16</b><b>17</b><b>18</b><b class="we">19</b><b class="we">20</b><b>21</b><b>22</b><b class="rdo">23</b><b class="al">24</b><b class="ph">25</b><b class="lk">26</b><b class="we">27</b><b class="ph">28</b><b class="al">29</b><b class="al">30</b><b class="al">31</b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Christmas Day Fri 25; Boxing Day holiday Mon 28; Picnic Day Mon 7</p></div>
       </div>
+      <p class="cal-key"><span><b class="rdo" style="background:var(--navy);color:var(--chalk)">12</b> RDO</span><span><b style="box-shadow:inset 0 0 0 1.5px var(--navy)">9</b> public holiday</span><span><b style="background:var(--cured)">2</b> close-down, annual leave</span><span><b style="text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px">3</b> lockdown weekend</span><span><b style="box-shadow:inset 0 0 0 1px var(--string-soft)">15</b> other industry day</span></p>
+      <p>RDO dates in list form: January Mon 12, Tue 27; February Mon 9, Mon 23; March Tue 10, Mon 23; April Tue 7, Tue 28; May Mon 11, Mon 25; June Tue 9, Mon 22; July Mon 6, Mon 20; August Mon 3, Mon 17, Mon 31; September Mon 14, Mon 28; October Mon 12, Mon 26; November Mon 2, Wed 4, Mon 16; December Wed 23.</p>
       <p>Lockdown weekends on the 2026 calendar (9): 3 and 10 January, 7 March, 4 and 25 April, 6 June, 26 September, 31 October, 26 December.</p>
       <p class="src">Source: CFMEU Victoria, Victoria On-Site RDO calendar (ICS file), <a href="https://vic.cfmeu.org/rdo-calendars/" rel="noopener">vic.cfmeu.org/rdo-calendars</a>. Public holidays as marked on that calendar. Companies can agree different RDO dates with their crew under the agreement; if yours has, your own calendar governs.</p>
       <div class="rule" aria-hidden="true"></div>
@@ -276,7 +284,7 @@
     <div class="mark"><span class="bub" aria-hidden="true">F</span><span class="name">Payroll</span><span class="string" aria-hidden="true"></span></div>
     <div class="body">
       <h2 id="payroll">Where payroll gets it wrong</h2>
-      <ol>
+      <ol class="steps">
         <li><b>The 38-hour default.</b> Off-the-shelf payroll assumes 38 ordinary hours and overtime after that. Under the agreement, ordinary time is 8 hours a day and 36 a week; the fix is a 36-hour week with daily overtime, not a weekly threshold.</li>
         <li><b>RDOs as a leave balance.</b> A hand-maintained balance drifts within a month. The bank should accrue from the hours actually classified as ordinary, week by week, so a part week or a week of leave lands correctly without anyone touching it.</li>
         <li><b>No accrual on leave and holidays.</b> Cl 38.4 counts paid leave and public holidays as days worked for accrual. A system that banks only on hours keyed in short-changes every worker who took a day off.</li>

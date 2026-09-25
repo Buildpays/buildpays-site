@@ -382,3 +382,16 @@ The finish review flagged these against the direction contract; TR reviewed the 
 - **Headline scale** stays `clamp(48px,6.9vw,110px)`. At the ~900 CSS px viewport TR reviews on, the three lines already fill their cell; larger wraps to four lines.
 - **Rendered ground** is accepted as it renders (grain over `--slab` nets around #c8c8c4 on screen). Do not lift `--slab` without a new sign-off.
 - **Hero layout** is the user-directed variant: headline across columns 1 to 3, timesheet at A4, MYOB file at B4 to C4, the pulse dropping vertically between them.
+
+## The guides' handbook voice (TR, 25 Sep 2026)
+
+TR reviewed the three `/guides/` pages and said they read "very mono, same fonts, boring". Reading pages under `<main class="guide">` therefore carry a second voice, scoped to that class in `setout.css`:
+
+- **Reading face:** Zilla Slab 400/500/600 (+400 italic) for running text, the lede and list items on guides only; Archivo stays for notes, tables, labels, the TOC and the company list. Added to the guides' Google Fonts link, nowhere else.
+- **Figure tiles (`.tiles` / `.tile`):** four navy-filled tiles under the lede with a stencil figure and an Archivo caption, each with a chalk string and nail. This is the one navy surface on the site; it is a stencilled sign, not a section, and does not license dark sections elsewhere.
+- **Numbered steps (`ol.steps`):** two-digit stencil numerals in a left gutter with a string line, the bold lead on its own line.
+- **Bars (`.bars`):** site allowance bands as navy bars proportional to the highest rate, stencil value at the right.
+- **Month grids (`.months` / `.days`):** the RDO year as twelve Monday-first grids: RDOs filled navy, public holidays ringed, close-down shaded cured, lockdown weekends underlined.
+- **Index cards (`.gcards` / `.gcard`):** the guides index is a row of chalk cards led by one stencil figure each.
+
+The Spray Law is unchanged: no orange on any of it.

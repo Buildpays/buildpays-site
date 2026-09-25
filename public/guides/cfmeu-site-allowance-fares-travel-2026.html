@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="/css/setout.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
@@ -145,7 +145,7 @@
   </div>
 </nav>
 
-<main>
+<main class="guide">
 <section class="sheet prose page-head" id="top">
   <div class="wrap">
     <div class="mark"><span class="bub" aria-hidden="true">A</span><span class="name">Allowances</span><span class="string" aria-hidden="true"></span></div>
@@ -154,6 +154,12 @@
 
   <p class="lede">Under a CFMEU Victorian Construction and General Division enterprise agreement, a worker's hourly rate is only part of the day. Site allowance rides on every hour worked on a project over the value threshold, fares and travel is a flat daily amount, and a dozen smaller allowances attach to particular work. This guide gives the current published figures with their dates, the clauses that switch each one on, and the mistakes that show up in a subcontractor's pay run.</p>
   <p class="note">Written 25 September 2026, figures checked <span data-fig="as_at">25 September 2026</span>, for the 2024&ndash;2027 agreements. Figures are the CFMEU Victoria sheets' and are dated; clause numbers are the formwork subcontractors' agreement.</p>
+  <div class="tiles">
+    <div class="tile"><b><span data-fig="site_allowance.inner_new">$5.45</span><small> /hr</small></b><span class="cap">site allowance, Melbourne inner suburbs, new project, from 1 Oct 2026</span></div>
+    <div class="tile"><b><span data-fig="wages.travel_daily">$57.60</span><small> /day</small></b><span class="cap">fares and travel on every day attended, from 1 Mar 2026</span></div>
+    <div class="tile"><b><span data-fig="site_allowance.threshold_m">$6.2m</span></b><span class="cap">project value from which site allowance applies</span></div>
+    <div class="tile"><b><span data-fig="site_allowance.cpi_pct">3.2</span><small>%</small></b><span class="cap">Melbourne CPI applied to the rates and bands on the 1 Oct 2026 sheet</span></div>
+  </div>
 
   <nav class="toc" aria-label="On this page">
     <p class="toc-h">On this page</p>
@@ -205,28 +211,23 @@
         </tbody>
       </table></div>
       <h3>New projects elsewhere, by project value</h3>
-      <div class="tbl"><table>
-        <thead><tr><th>Project value</th><th>Site allowance</th></tr></thead>
-        <tbody>
-          <tr><td>$6.2 million to $37.9 million</td><td class="n">$3.10 per hour</td></tr>
-          <tr><td>$37.9 million to $63.3 million</td><td class="n">$3.80 per hour</td></tr>
-          <tr><td>$63.3 million to $126.2 million</td><td class="n">$4.40 per hour</td></tr>
-          <tr><td>$126.2 million to $315.6 million</td><td class="n">$5.00 per hour</td></tr>
-          <tr><td>$315.6 million to $504.9 million</td><td class="n">$5.75 per hour</td></tr>
-          <tr><td>$504.9 million to $1,262.3 million</td><td class="n">$6.25 per hour</td></tr>
-          <tr><td>$1,262.3 million to $2,524.6 million</td><td class="n">$7.55 per hour</td></tr>
-          <tr><td>$2,524.6 million to $3,787 million</td><td class="n">$8.20 per hour</td></tr>
-          <tr><td>$3,787 million to $5,049 million</td><td class="n">$8.80 per hour</td></tr>
-        </tbody>
-      </table></div>
+      <p>Per hour worked, stepping up with the head contract value. The bar is the rate relative to the highest figure on the sheet.</p>
+      <div class="bars">
+        <div class="bar"><span class="lbl">$6.2 million to $37.9 million</span><i style="--w:26%"></i><span class="val">$3.10</span></div>
+        <div class="bar"><span class="lbl">$37.9 million to $63.3 million</span><i style="--w:31%"></i><span class="val">$3.80</span></div>
+        <div class="bar"><span class="lbl">$63.3 million to $126.2 million</span><i style="--w:36%"></i><span class="val">$4.40</span></div>
+        <div class="bar"><span class="lbl">$126.2 million to $315.6 million</span><i style="--w:41%"></i><span class="val">$5.00</span></div>
+        <div class="bar"><span class="lbl">$315.6 million to $504.9 million</span><i style="--w:47%"></i><span class="val">$5.75</span></div>
+        <div class="bar"><span class="lbl">$504.9 million to $1,262.3 million</span><i style="--w:51%"></i><span class="val">$6.25</span></div>
+        <div class="bar"><span class="lbl">$1,262.3 million to $2,524.6 million</span><i style="--w:62%"></i><span class="val">$7.55</span></div>
+        <div class="bar"><span class="lbl">$2,524.6 million to $3,787 million</span><i style="--w:67%"></i><span class="val">$8.20</span></div>
+        <div class="bar"><span class="lbl">$3,787 million to $5,049 million</span><i style="--w:72%"></i><span class="val">$8.80</span></div>
+      </div>
       <h3>Project-specific rates</h3>
-      <div class="tbl"><table>
-        <thead><tr><th>Project</th><th>Site allowance</th></tr></thead>
-        <tbody>
-          <tr><td>West Gate Tunnel Project</td><td class="n">$11.65 per hour</td></tr>
-          <tr><td>Metro Tunnel Project</td><td class="n">$12.15 per hour</td></tr>
-        </tbody>
-      </table></div>
+      <div class="bars">
+        <div class="bar"><span class="lbl">West Gate Tunnel Project</span><i style="--w:96%"></i><span class="val">$11.65</span></div>
+        <div class="bar"><span class="lbl">Metro Tunnel Project</span><i style="--w:100%"></i><span class="val">$12.15</span></div>
+      </div>
       <p class="src">Source: CFMEU Victoria, <i>Site Allowances</i> sheet applicable from <span data-fig="site_allowance.applies_from">1 October 2026</span>, <a href="https://vic.cfmeu.org/wages" rel="noopener">vic.cfmeu.org/wages</a>. The project value is the head contract value, which the head contractor states; ask for it in writing before the first pay run on a new job.</p>
       <div class="rule" aria-hidden="true"></div>
     </div>
@@ -293,7 +294,7 @@
     <div class="body">
       <h2 id="payslip">How they should land on a payslip</h2>
       <p>Every allowance above is either <b>per hour worked</b>, <b>per day attended</b> or <b>per week</b>, and the pay run has to carry that basis through to the payslip in units MYOB can price. The errors are always in the basis, not the arithmetic.</p>
-      <ol>
+      <ol class="steps">
         <li><b>Site allowance on ordinary hours only.</b> It is paid on every hour worked at the site, overtime included. A 10-hour day on a <span data-fig="site_allowance.inner_new">$5.45</span> site is 10 units, not 8.</li>
         <li><b>One site allowance for a two-site day.</b> Each site's rate applies to the hours worked there. Split the day.</li>
         <li><b>Fares paid twice.</b> A worker who moves between two sites gets one daily fares allowance plus paid transfer time, not two allowances.</li>

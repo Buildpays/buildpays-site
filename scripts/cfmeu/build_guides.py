@@ -110,7 +110,7 @@ HEAD = '''<!DOCTYPE html>
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="/css/setout.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
@@ -163,6 +163,14 @@ def section(letter, name, sid, inner):
             f'    <div class="body">{NL}{inner}{NL}      <div class="rule" aria-hidden="true"></div>{NL}    </div>{NL}  </div>{NL}</section>{NL}{NL}')
 
 
+def tiles(items):
+    """Four figure tiles under the lede: [(big, small_suffix_or_None, caption), ...]."""
+    out = []
+    for big, small, cap in items:
+        out.append(f'    <div class="tile"><b>{big}{("<small>" + small + "</small>") if small else ""}</b><span class="cap">{cap}</span></div>')
+    return f'  <div class="tiles">{NL}' + NL.join(out) + f'{NL}  </div>{NL}'
+
+
 def head_section(name, h1, lede, toc, extra=""):
     inner = f'      <h1>{h1}</h1>{NL}{NL}  <p class="lede">{lede}</p>{NL}{extra}'
     if toc:
@@ -191,7 +199,7 @@ TAIL = NL + "</main>" + NL + NL + FOOT + NL + NL + "</body>" + NL + "</html>" + 
 
 
 def page(path, title, ogtitle, desc, jsonld, body):
-    html = HEAD.format(title=title, ogtitle=ogtitle, desc=desc, path=path, jsonld=jsonld) + NL + SVG + NL + NL + NAV + NL + NL + "<main>" + NL + body + TAIL
+    html = HEAD.format(title=title, ogtitle=ogtitle, desc=desc, path=path, jsonld=jsonld) + NL + SVG + NL + NL + NAV + NL + NL + '<main class="guide">' + NL + body + TAIL
     html = html.replace("\r\n", "\n").replace("\n", NL)
     out = os.path.join(PUB, path.strip("/").replace("/", os.sep))
     out = os.path.join(out, "index.html") if path.endswith("/") else out + ".html"
@@ -262,6 +270,46 @@ def ranges(isos):
     return [wd(r[0]) if len(r) == 1 else f"{wd(r[0])} to {wd(r[-1])}" for r in out]
 
 
+def month_grids(year, y):
+    """Twelve month grids, Monday first: RDOs filled, public holidays ringed, close-down shaded, lockdown weekends underlined."""
+    import calendar
+    yr = int(year)
+    kind = {}
+    for d in y["rdo"]:
+        kind[d] = "rdo"
+    for p in y["public_holidays"]:
+        kind[p["date"]] = "ph"
+    for d in y.get("annual_leave", []):
+        kind.setdefault(d, "al")
+    for d in y.get("lockdown_weekends", []):
+        kind.setdefault(d, "lk")
+    for o in y.get("other", []):
+        kind.setdefault(o["date"], "oth")
+    out = []
+    for mi, mname in enumerate(MONTHS, 1):
+        cells = [f'<i>{d}</i>' for d in ("M", "T", "W", "T", "F", "S", "S")]
+        for week in calendar.Calendar(firstweekday=0).monthdayscalendar(yr, mi):
+            for wd_i, day in enumerate(week):
+                if day == 0:
+                    cells.append('<b class="e"></b>')
+                    continue
+                iso = f"{yr}-{mi:02d}-{day:02d}"
+                cls = kind.get(iso, "we" if wd_i >= 5 else "")
+                cells.append(f'<b class="{cls}">{day}</b>' if cls else f'<b>{day}</b>')
+        names = [f"{p['name']} {wd(p['date'])}" for p in y["public_holidays"] if int(p["date"][5:7]) == mi]
+        names += [f"{o['name'].split(' (')[0]} {wd(o['date'])}" for o in y.get("other", []) if int(o["date"][5:7]) == mi]
+        names_html = f'<p class="ph-names">{"; ".join(names)}</p>' if names else ""
+        out.append(f'        <div class="mon"><h4>{mname}</h4><div class="days">{"".join(cells)}</div>{names_html}</div>')
+    return NL.join(out)
+
+
+CAL_KEY = ('      <p class="cal-key"><span><b class="rdo" style="background:var(--navy);color:var(--chalk)">12</b> RDO</span>'
+           '<span><b style="box-shadow:inset 0 0 0 1.5px var(--navy)">9</b> public holiday</span>'
+           '<span><b style="background:var(--cured)">2</b> close-down, annual leave</span>'
+           '<span><b style="text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px">3</b> lockdown weekend</span>'
+           '<span><b style="box-shadow:inset 0 0 0 1px var(--string-soft)">15</b> other industry day</span></p>')
+
+
 def calendar_block(year, y):
     rows = []
     for mi, mname in enumerate(MONTHS, 1):
@@ -315,7 +363,9 @@ RDO_TOC = [("B", "week", "The 36-hour week"), ("C", "accrue", "How an RDO accrue
 body = head_section("RDOs", f"CFMEU RDO calendar {Y0} and the 36&#8209;hour week, explained for payroll",
     f"If your crew is on a CFMEU Victorian Construction and General Division enterprise agreement, the week is 36 hours, not 38, and every eighth hour of a working day is banked toward a rostered day off. This guide sets out the {Y0} on-site RDO dates the union publishes, how the accrual works clause by clause, what a worked RDO pays, and the four places office payroll gets it wrong.",
     RDO_TOC,
-    f'  <p class="note">Written 25 September 2026, figures checked {fig("as_at", d_long(AS_AT))}, for the 2024&ndash;2027 agreements. Clause numbers are the formwork subcontractors\' agreement; the crane, steelfixing and other trade agreements share the same skeleton with their own numbering.</p>{NL}')
+    f'  <p class="note">Written 25 September 2026, figures checked {fig("as_at", d_long(AS_AT))}, for the 2024&ndash;2027 agreements. Clause numbers are the formwork subcontractors\' agreement; the crane, steelfixing and other trade agreements share the same skeleton with their own numbering.</p>{NL}'
+    + tiles([("36", " hrs", "the ordinary week, worked as five 8-hour days"), ("26", None, f"paid RDOs on the {Y0} calendar, on top of leave and holidays"),
+             ("0.8", " hr", "banked toward the next RDO on every ordinary day worked"), ("250", "%", "for an RDO worked without consultation, four-hour minimum")]))
 
 body += section("B", "36 hours", "s-week", '''      <h2 id="week">The 36-hour week</h2>
       <p>Ordinary hours are the first 8 hours worked between 6:00am and 6:00pm, Monday to Friday, and the notional week is 36 hours (cl 36.1, cl 36.2(a)). The crew still turns up for five 8-hour days: 40 hours are worked in the week, 36 are paid as ordinary time, and the 4 remaining hours (0.8 a day) are banked. Every second Monday, or whichever day the industry calendar names, the bank is spent on a paid day off.</p>
@@ -346,9 +396,11 @@ for yr in reversed(years):
     if len(years) > 1:
         dates_inner += f'{NL}      <h3>{yr}</h3>'
     dates_inner += f'''
-      <div class="cal">
-{rows}
+      <div class="months">
+{month_grids(yr, R["years"][yr])}
       </div>
+{CAL_KEY}
+      <p>RDO dates in list form: {"; ".join(f"{MONTHS[m - 1]} {', '.join(wd(d) for d in R['years'][yr]['rdo'] if int(d[5:7]) == m)}" for m in range(1, 13) if any(int(d[5:7]) == m for d in R['years'][yr]['rdo']))}.</p>
       <p>Lockdown weekends on the {yr} calendar ({nlock}): {lock_txt}.</p>'''
 dates_inner += f'''
       <p class="src">Source: CFMEU Victoria, Victoria On-Site RDO calendar (ICS file), <a href="{R["source_url"]}" rel="noopener">vic.cfmeu.org/rdo-calendars</a>. Public holidays as marked on that calendar. Companies can agree different RDO dates with their crew under the agreement; if yours has, your own calendar governs.</p>'''
@@ -370,7 +422,7 @@ body += section("E", "Worked RDO", "s-worked", '''      <h2 id="worked">Working 
       <p>One more case that catches offices: a training day that lands on a scheduled RDO is paid as an ordinary day, and the worker is owed a substitute day off (cl 15.4). The RDO stays banked.</p>''')
 
 body += section("F", "Payroll", "s-payroll", '''      <h2 id="payroll">Where payroll gets it wrong</h2>
-      <ol>
+      <ol class="steps">
         <li><b>The 38-hour default.</b> Off-the-shelf payroll assumes 38 ordinary hours and overtime after that. Under the agreement, ordinary time is 8 hours a day and 36 a week; the fix is a 36-hour week with daily overtime, not a weekly threshold.</li>
         <li><b>RDOs as a leave balance.</b> A hand-maintained balance drifts within a month. The bank should accrue from the hours actually classified as ordinary, week by week, so a part week or a week of leave lands correctly without anyone touching it.</li>
         <li><b>No accrual on leave and holidays.</b> Cl 38.4 counts paid leave and public holidays as days worked for accrual. A system that banks only on hours keyed in short-changes every worker who took a day off.</li>
@@ -411,7 +463,11 @@ SA_TOC = [("B", "site", "What site allowance is"), ("C", "table", f"Site allowan
 body = head_section("Allowances", "CFMEU site allowance, fares and travel 2026: the rates and when they apply",
     "Under a CFMEU Victorian Construction and General Division enterprise agreement, a worker's hourly rate is only part of the day. Site allowance rides on every hour worked on a project over the value threshold, fares and travel is a flat daily amount, and a dozen smaller allowances attach to particular work. This guide gives the current published figures with their dates, the clauses that switch each one on, and the mistakes that show up in a subcontractor's pay run.",
     SA_TOC,
-    f'  <p class="note">Written 25 September 2026, figures checked {fig("as_at", d_long(AS_AT))}, for the 2024&ndash;2027 agreements. Figures are the CFMEU Victoria sheets\' and are dated; clause numbers are the formwork subcontractors\' agreement.</p>{NL}')
+    f'  <p class="note">Written 25 September 2026, figures checked {fig("as_at", d_long(AS_AT))}, for the 2024&ndash;2027 agreements. Figures are the CFMEU Victoria sheets\' and are dated; clause numbers are the formwork subcontractors\' agreement.</p>{NL}'
+    + tiles([(m_("site_allowance", "inner_new"), " /hr", f"site allowance, Melbourne inner suburbs, new project, from {d_short(S['applies_from'])}"),
+             (m_("wages", "travel_daily"), " /day", f"fares and travel on every day attended, from {d_short(W['benefits_from'])}"),
+             (fig("site_allowance.threshold_m", "$" + S["threshold_m"] + "m"), None, "project value from which site allowance applies"),
+             (fig("site_allowance.cpi_pct", S["cpi_pct"]), "%", f"Melbourne CPI applied to the rates and bands on the {d_short(S['applies_from'])} sheet")]))
 
 body += section("B", "Site allowance", "s-site", f'''      <h2 id="site">What site allowance is, and when it applies</h2>
       <p>Site allowance is an hourly amount paid for every hour worked on a qualifying project, ordinary and overtime alike (Appendix C, para 4). It compensates for the conditions of a large site, so it is set by the project, not the worker: everyone on the job gets the same figure, and a worker on two sites in one day earns each site's allowance on the hours worked there.</p>
@@ -422,7 +478,9 @@ body += section("B", "Site allowance", "s-site", f'''      <h2 id="site">What si
         <li><b>Indexation.</b> Both the rates and the value bands move with Melbourne CPI each year, so the band a project sits in can change mid-job.</li>
       </ul>''')
 
-band_rows = NL.join(f'          <tr><td>{millions(b["lo_m"])} to {millions(b["hi_m"])}</td><td class="n">{money(b["rate"])} per hour</td></tr>' for b in S["bands"])
+band_max = max(float(b["rate"]) for b in S["bands"] + S["projects"])
+band_rows = NL.join(f'        <div class="bar"><span class="lbl">{millions(b["lo_m"])} to {millions(b["hi_m"])}</span><i style="--w:{float(b["rate"]) / band_max * 100:.0f}%"></i><span class="val">{money(b["rate"])}</span></div>' for b in S["bands"])
+proj_bars = NL.join(f'        <div class="bar"><span class="lbl">{p["name"]}</span><i style="--w:{float(p["rate"]) / band_max * 100:.0f}%"></i><span class="val">{money(p["rate"])}</span></div>' for p in S["projects"])
 proj_rows = NL.join(f'          <tr><td>{p["name"]}</td><td class="n">{money(p["rate"])} per hour</td></tr>' for p in S["projects"])
 
 body += section("C", "The table", "s-table", f'''      <h2 id="table">Site allowance from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}</h2>
@@ -438,19 +496,14 @@ body += section("C", "The table", "s-table", f'''      <h2 id="table">Site allow
         </tbody>
       </table></div>
       <h3>New projects elsewhere, by project value</h3>
-      <div class="tbl"><table>
-        <thead><tr><th>Project value</th><th>Site allowance</th></tr></thead>
-        <tbody>
+      <p>Per hour worked, stepping up with the head contract value. The bar is the rate relative to the highest figure on the sheet.</p>
+      <div class="bars">
 {band_rows}
-        </tbody>
-      </table></div>
+      </div>
       <h3>Project-specific rates</h3>
-      <div class="tbl"><table>
-        <thead><tr><th>Project</th><th>Site allowance</th></tr></thead>
-        <tbody>
-{proj_rows}
-        </tbody>
-      </table></div>
+      <div class="bars">
+{proj_bars}
+      </div>
       <p class="src">Source: CFMEU Victoria, <i>{S["source_title"]}</i> sheet applicable from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}, <a href="{S["source_url"]}" rel="noopener">vic.cfmeu.org/wages</a>. The project value is the head contract value, which the head contractor states; ask for it in writing before the first pay run on a new job.</p>''')
 
 body += section("D", "Fares", "s-fares", f'''      <h2 id="fares">Fares and travel</h2>
@@ -493,7 +546,7 @@ body += section("E", "Extras", "s-extras", f'''      <h2 id="extras">Multi-store
 
 body += section("F", "Payslip", "s-payslip", f'''      <h2 id="payslip">How they should land on a payslip</h2>
       <p>Every allowance above is either <b>per hour worked</b>, <b>per day attended</b> or <b>per week</b>, and the pay run has to carry that basis through to the payslip in units MYOB can price. The errors are always in the basis, not the arithmetic.</p>
-      <ol>
+      <ol class="steps">
         <li><b>Site allowance on ordinary hours only.</b> It is paid on every hour worked at the site, overtime included. A 10-hour day on a {m_("site_allowance","inner_new")} site is 10 units, not 8.</li>
         <li><b>One site allowance for a two-site day.</b> Each site's rate applies to the hours worked there. Split the day.</li>
         <li><b>Fares paid twice.</b> A worker who moves between two sites gets one daily fares allowance plus paid transfer time, not two allowances.</li>
@@ -555,7 +608,9 @@ JOBS_TOC = [("B", "what", "What an EBA job is"), ("C", "pay", "What it pays"), (
 body = head_section("EBA jobs", f"CFMEU EBA jobs: how to get one, and the list of Victorian companies with a CFMEU EBA",
     f"An EBA job in Victorian construction means working for a company whose enterprise agreement was made with the CFMEU: a 36-hour week, 26 RDOs, union-negotiated rates, super and redundancy paid on top, and a wage sheet that says what everyone on the crew gets. This guide covers what those jobs pay right now, the tickets and search terms that get you one, how to check any company, and a list of {N_EMP} Victorian companies with a CFMEU construction EBA, taken from the Fair Work Commission's register.",
     JOBS_TOC,
-    f'  <p class="note">Written 25 September 2026. Pay figures checked {fig("as_at", d_long(AS_AT))}; the company list is built from the Fair Work Commission\'s lists of approved agreements, generated {d_long(LIST_GEN)}, and refreshes automatically when the Commission updates them.</p>{NL}')
+    f'  <p class="note">Written 25 September 2026. Pay figures checked {fig("as_at", d_long(AS_AT))}; the company list is built from the Fair Work Commission\'s lists of approved agreements, generated {d_long(LIST_GEN)}, and refreshes automatically when the Commission updates them.</p>{NL}'
+    + tiles([(m_("wages", "cw3_hour"), " /hr", f"CW3 tradesperson on the union sheet from {d_short(W['rates_from'])}"), ("36", " hrs", "the week, with 26 paid RDOs a year on top"),
+             (f"{N_EMP:,}", None, "Victorian companies with a CFMEU construction EBA on the Commission's lists"), (str(len(E["sectors"])), None, "trades on the list, from head contractors to wind turbine erection")]))
 
 body += section("B", "EBA", "s-what", '''      <h2 id="what">What a CFMEU EBA job is</h2>
       <p>EBA stands for enterprise bargaining agreement. In Victorian commercial construction it nearly always means an agreement between an employer and the CFMEU's Victorian Construction and General Division, approved by the Fair Work Commission and running for about three years. An EBA job is a job with one of those employers. Your pay, hours, allowances, super, redundancy and rostered days off come from the agreement, which sits well above the Building and Construction General On-site Award.</p>
@@ -593,7 +648,7 @@ body += section("C", "Pay", "s-pay", f'''      <h2 id="pay">What an EBA job pays
       <p class="src">Source: CFMEU Victoria, <i>{W["source_title"]}</i> (rates from {fig("wages.rates_from", d_long(W["rates_from"]))}; other benefits from {fig("wages.benefits_from", d_long(W["benefits_from"]))}) and the site allowance sheet applying from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}, <a href="{W["source_url"]}" rel="noopener">vic.cfmeu.org/wages</a>. Weekly rates are the hourly rate times 36. Apprentice and other classification rates are on the same sheet.</p>''')
 
 body += section("D", "Getting in", "s-how", f'''      <h2 id="how">How to get a CFMEU EBA job</h2>
-      <ol>
+      <ol class="steps">
         <li><b>Get the tickets first.</b> Nobody sets foot on a Victorian construction site without a White Card (general construction induction). After that it is trade by trade: a high-risk work licence for dogging, rigging, scaffolding, crane and hoist work or a forklift; an elevated work platform ticket; confined space, working at heights and asbestos awareness for civil and demolition crews; a first aid certificate helps everywhere. Companies on the list will not look at a CV without the ticket the job needs.</li>
         <li><b>Know your classification.</b> A labourer starts at CW1, a scaffolder or steel fixer is CW2, a qualified tradesperson CW3. The wage sheet lists the rest. It decides your rate on day one, so read the table above before the interview and ask which classification the role is.</li>
         <li><b>Search the right words.</b> On SEEK and Indeed, search "EBA" with your trade: "EBA labourer", "EBA carpenter", "EBA formwork", "EBA rates". Adverts that say EBA rates, CFMEU EBA, RDOs or Incolink are the ones you want; an advert that quotes an award rate is not an EBA job.</li>
@@ -673,23 +728,29 @@ IDX_LD = '''<script type="application/ld+json">
 body = head_section("Guides", "CFMEU EBA guides for the subcontractor's office",
     "The agreement is 186 pages and the office needs about twelve of them every week. These guides take one clause cluster at a time, in plain English, with the union's current published figures and the date each one applies from. Written by people who run CFMEU EBA crews and the payroll behind them.",
     None,
-    f'''  <ul class="guide-list">
-    <li>
-      <h2><a href="/guides/cfmeu-rdo-calendar-2026">{RDO_OG}</a></h2>
-      <p>The {Y0} on-site RDO dates, how 0.8 of an hour a day becomes 26 days off, what a worked RDO pays with and without consultation, and the four ways payroll gets the bank wrong.</p>
+    f'''  <div class="gcards">
+    <a class="gcard chalk" href="/guides/cfmeu-rdo-calendar-2026">
+      <div class="big">26<small>RDOs a year</small></div>
+      <h2>{RDO_OG}</h2>
+      <p>The {Y0} on-site RDO dates as month grids, how 0.8 of an hour a day becomes 26 days off, what a worked RDO pays with and without consultation, and the four ways payroll gets the bank wrong.</p>
       <p class="when">Figures dated {d_short(W["rates_from"])} and {d_short(W["benefits_from"])}. Checked {fig("as_at", d_long(AS_AT))}.</p>
-    </li>
-    <li>
-      <h2><a href="/guides/cfmeu-site-allowance-fares-travel-2026">{SA_OG}</a></h2>
-      <p>The site allowance table from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}, the {m_("wages","travel_daily")} daily fares allowance and its radial-area rules, multi-storey and leading hand rates, and how each one should land on a payslip.</p>
+      <span class="go">Read the guide <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="gcard chalk" href="/guides/cfmeu-site-allowance-fares-travel-2026">
+      <div class="big">{m_("site_allowance","inner_new")}<small>an hour, inner Melbourne site allowance</small></div>
+      <h2>{SA_OG}</h2>
+      <p>The site allowance bands from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}, the {m_("wages","travel_daily")} daily fares allowance and its radial-area rules, multi-storey and leading hand rates, and how each one should land on a payslip.</p>
       <p class="when">Figures dated {d_short(A["correct_at"])} and {d_short(S["applies_from"])}. Checked {fig("as_at", d_long(AS_AT))}.</p>
-    </li>
-    <li>
-      <h2><a href="/guides/cfmeu-eba-jobs-victoria">{JOBS_OG}</a></h2>
-      <p>What an EBA job pays right now, the tickets and search terms that get you one, how to check any company on the Fair Work Commission's register, and the full list of {N_EMP} Victorian companies with a CFMEU construction EBA, by trade. For workers looking for a start, and for the companies on the list.</p>
+      <span class="go">Read the guide <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+    </a>
+    <a class="gcard chalk" href="/guides/cfmeu-eba-jobs-victoria">
+      <div class="big">{N_EMP:,}<small>companies with a CFMEU EBA</small></div>
+      <h2>{JOBS_OG}</h2>
+      <p>What an EBA job pays right now, the tickets and search terms that get you one, how to check any company on the Fair Work Commission's register, and the full list by trade. For workers looking for a start, and for the companies on the list.</p>
       <p class="when">Company list from the Commission's lists generated {d_short(LIST_GEN)}. Pay figures checked {fig("as_at", d_long(AS_AT))}.</p>
-    </li>
-  </ul>
+      <span class="go">Read the guide <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+    </a>
+  </div>
   <p class="note">More guides follow: overtime, weekends and inclement weather; public holidays, Cup Day and daily hire. Every figure on these pages carries its source and date, and a weekly job checks the union's published sheets and the Commission's lists; when a source changes, the page changes.</p>''')
 
 body += section("B", "Demo", "demo", DEMO.format(related='<a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/digital-dayworks-docket">Digital dayworks dockets</a>'))
