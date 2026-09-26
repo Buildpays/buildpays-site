@@ -360,3 +360,28 @@ p{max-width:68ch}
   .gcards{grid-template-columns:1fr}
   .gcard{min-height:0}
 }
+
+/* calculator (guides) */
+.calc{padding:22px 22px 18px;margin-top:22px;max-width:980px}
+.cgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px}
+.cfield label,.crow label,.chead span{display:block;font-family:var(--disp);font-weight:800;font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.calc select,.calc input{display:block;width:100%;margin-top:5px;padding:9px 10px;border:1px solid var(--string);border-radius:2px;background:var(--slab);color:var(--navy);font:inherit;font-family:var(--body);font-size:15.5px}
+.calc select:focus,.calc input:focus{outline:2px solid var(--navy);outline-offset:1px}
+.calc input:disabled{color:var(--ink2);background:var(--chalk)}
+.cdays{margin-top:22px;border-top:1px solid var(--string)}
+.crow{display:grid;grid-template-columns:110px minmax(0,1fr) 96px;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--string-soft)}
+.crow.chead{padding:8px 0 6px}
+.crow label{font-family:var(--body);font-weight:600;font-size:15.5px;letter-spacing:0;text-transform:none;color:var(--navy)}
+.crow select,.crow input{margin-top:0}
+.crow .cnote{font-family:var(--body);font-size:14px;color:var(--ink2)}
+.cfoot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:18px;font-family:var(--body);font-size:14px;color:var(--ink2)}
+.cfoot .outline{font-size:15px;padding:8px 14px}
+.guide .tbl tfoot th{font-family:var(--body);font-weight:600;font-size:15.5px;letter-spacing:0;text-transform:none;border-top:1px solid var(--navy);border-bottom:0;white-space:normal;padding-top:12px}
+.guide .tbl tfoot th.n{font-family:var(--disp);font-weight:800;font-size:22px;letter-spacing:.02em;white-space:nowrap}
+@media(max-width:640px){
+  .calc{padding:16px 14px 14px}
+  .cgrid{grid-template-columns:1fr;gap:12px}
+  .crow{grid-template-columns:86px minmax(0,1fr) 72px;gap:8px}
+  .crow.chead span:nth-child(2){display:none}
+  .calc select,.calc input{font-size:15px;padding:8px}
+}
