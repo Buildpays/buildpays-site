@@ -362,6 +362,24 @@
     .file{padding:14px 12px 12px;font-size:11.5px}
     .file .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:0 12px;align-items:start}
   }
+
+  /* --- DEMO FORM: tick-box rows for the modules and the payroll software.
+     A link can pre-tick them (?m=dockets,payroll&pay=xero — see js/lead.js). --- */
+  .form .picks{grid-column:1/-1;border:0;margin:0;padding:0;min-width:0}
+  .form .picks legend{padding:0;margin-bottom:6px;font-size:13.5px;font-weight:600;letter-spacing:.01em}
+  .form .picks legend small{font-weight:400;color:var(--ink2);font-size:13px}
+  .form .picks .opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .form .picks .pick{display:flex;align-items:center;gap:10px;min-height:46px;padding:10px 12px;border:1px solid var(--string);border-radius:2px;
+    background:var(--chalk);font-size:15px;font-weight:400;line-height:1.3;cursor:pointer;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+  .form .picks .pick small{display:block;font-size:12.5px;color:var(--ink2)}
+  .form .picks .pick input[type]{flex:none;display:block;width:18px;height:18px;margin:0;padding:0;accent-color:var(--navy);cursor:pointer}
+  .form .picks .pick:has(input:checked){border-color:var(--navy);box-shadow:0 0 0 1px var(--navy)}
+  .form .picks .pick:has(input:focus-visible){outline:2px solid var(--orange);outline-offset:2px}
+  .form .picks.three .opts{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:640px){
+    .form .picks .opts{grid-template-columns:minmax(0,1fr)}
+    .form .picks.three .opts{grid-template-columns:repeat(3,1fr)}
+  }
 </style>
 </head>
 <body>
@@ -655,6 +673,8 @@
         <input type="hidden" name="referrer" id="f_referrer">
         <input type="hidden" name="landing_page" id="f_landing_page">
         <input type="hidden" name="first_seen" id="f_first_seen">
+        <!-- Which email recipient this is (?ref= on an outreach link — the send list's number, never a name). -->
+        <input type="hidden" name="ref" id="f_ref">
         <div class="fields">
           <label>Your name *
             <input required name="name" autocomplete="name">
@@ -668,6 +688,23 @@
           <label>Phone
             <input type="tel" name="phone" autocomplete="tel">
           </label>
+          <fieldset class="picks">
+            <legend>What would you like to see? <small>Tick any</small></legend>
+            <div class="opts">
+              <label class="pick"><input type="checkbox" name="modules" value="Dayworks dockets &amp; cost reports" data-key="dockets"><span>Dayworks dockets<small>signatures &amp; cost reports</small></span></label>
+              <label class="pick"><input type="checkbox" name="modules" value="Rostering &amp; inductions" data-key="rostering"><span>Rostering<small>inductions &amp; SWMS</small></span></label>
+              <label class="pick"><input type="checkbox" name="modules" value="EBA payroll" data-key="payroll"><span>EBA payroll<small>runs on top of rostering</small></span></label>
+              <label class="pick"><input type="checkbox" name="modules" value="The full system" data-key="all"><span>The full system<small>all of it</small></span></label>
+            </div>
+          </fieldset>
+          <fieldset class="picks three">
+            <legend>Your payroll software</legend>
+            <div class="opts">
+              <label class="pick"><input type="radio" name="payroll_software" value="MYOB" data-key="myob"><span>MYOB</span></label>
+              <label class="pick"><input type="radio" name="payroll_software" value="Xero" data-key="xero"><span>Xero</span></label>
+              <label class="pick"><input type="radio" name="payroll_software" value="Other" data-key="other"><span>Other</span></label>
+            </div>
+          </fieldset>
           <label class="full">How many people on the tools?
             <select name="headcount">
               <option>Under 20</option><option>20–50</option><option>50–100</option><option>100–200</option><option>200+</option>
@@ -740,7 +777,7 @@
 </footer>
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="/js/lead.js" defer></script>
+<script src="/js/lead.js?v=2" defer></script>
 <script src="/js/hero-pulse.js" defer></script>
 </body>
 </html>

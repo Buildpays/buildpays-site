@@ -105,6 +105,29 @@ var LINKEDIN_CONVERSION_ID = "28874580";   // e.g. "12345678"
   /* ------------------------------------------------------------------ form */
   var f=document.getElementById('demoForm'), b=document.getElementById('demoBtn'), m=document.getElementById('demoMsg');
   if(!f) return;
+
+  /* Pre-fill from an outreach link, so the reader only adds their name and email:
+       /?co=Alpha-Form%20Constructions&m=dockets,payroll&pay=xero&ref=2#contact
+     co = company, m = module keys (dockets, rostering, payroll, all), pay = myob | xero | other,
+     ref = the send list's number. Business facts only — never a person's name or email in a URL,
+     since the page address reaches analytics. Kept for the session in case they click around first. */
+  (function(){
+    var PKEY='pk_prefill', q=new URLSearchParams(location.search), p=null;
+    if(q.get('co')||q.get('m')||q.get('pay')||q.get('ref')){
+      p={co:q.get('co')||'', m:q.get('m')||'', pay:q.get('pay')||'', ref:q.get('ref')||''};
+      try { sessionStorage.setItem(PKEY, JSON.stringify(p)); } catch(e){}
+    } else {
+      try { p=JSON.parse(sessionStorage.getItem(PKEY)||'null'); } catch(e){}
+    }
+    if(!p) return;
+    if(p.co && !f.elements.company.value) f.elements.company.value=p.co.slice(0,120);
+    if(p.ref) document.getElementById('f_ref').value=p.ref.slice(0,40);
+    var keys=(p.m||'').toLowerCase().split(',');
+    if(p.pay) keys.push(p.pay.toLowerCase());
+    f.querySelectorAll('.picks input[data-key]').forEach(function(el){
+      if(keys.indexOf(el.getAttribute('data-key'))>-1) el.checked=true;
+    });
+  })();
   f.addEventListener('submit', function(e){
     e.preventDefault();
     fill(); /* refresh in case the visitor arrived via a tagged link mid-session */
@@ -114,10 +137,15 @@ var LINKEDIN_CONVERSION_ID = "28874580";   // e.g. "12345678"
     var cap=f.querySelector('[name="h-captcha-response"]');
     if(cap && !cap.value){ m.style.color='#c62828'; m.textContent='Please tick the "I am human" box first.'; return; }
     b.disabled=true; b.textContent='Sending…'; m.textContent=''; m.style.color='#5c7089';
+    /* Object.fromEntries keeps only the LAST value of a repeated name, so the ticked modules
+       are joined into one line for the enquiry email. */
+    var fd=new FormData(f), data=Object.fromEntries(fd);
+    data.modules=fd.getAll('modules').join(', ') || 'None ticked';
+    data.payroll_software=data.payroll_software || 'Not given';
     fetch('https://api.web3forms.com/submit',{
       method:'POST',
       headers:{'Content-Type':'application/json',Accept:'application/json'},
-      body:JSON.stringify(Object.fromEntries(new FormData(f)))
+      body:JSON.stringify(data)
     })
     .then(function(r){return r.json();})
     .then(function(d){
