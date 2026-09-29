@@ -128,6 +128,25 @@ var LINKEDIN_CONVERSION_ID = "28874580";   // e.g. "12345678"
       if(keys.indexOf(el.getAttribute('data-key'))>-1) el.checked=true;
     });
   })();
+  /* The same request ALSO goes into PayKicker's own CRM (app repo, pass 614: the crm-lead function).
+     Fire and forget: it never waits, never blocks the email and never shows an error — the Web3Forms
+     email above is still the record the visitor sees confirmed. Only the fields the CRM keeps are sent
+     (never the Web3Forms key or the hCaptcha token); the botcheck box travels so a bot is dropped
+     there too. A Pages preview posts to the STAGING project, so a preview can be tested end to end. */
+  var CRM_LEAD = /\.buildpays-site\.pages\.dev$/.test(location.hostname)
+    ? 'https://tupyqrqtqbabyhiloydb.supabase.co/functions/v1/crm-lead'
+    : 'https://oakqmoisxqzxosmhjfzz.supabase.co/functions/v1/crm-lead';
+  function sendToCrm(fd){
+    try {
+      var keep=['name','company','email','phone','headcount','agreement','pain','payroll_software','ref','lead_source',
+        'utm_source','utm_medium','utm_campaign','utm_term','utm_content','referrer','landing_page','botcheck'];
+      var out={}; keep.forEach(function(k){ var v=fd.get(k); if(v!=null && v!=='') out[k]=String(v); });
+      out.modules=fd.getAll('modules').join(', ');
+      fetch(CRM_LEAD,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(out), keepalive:true })
+        .catch(function(){});
+    } catch(e) {}
+  }
+
   f.addEventListener('submit', function(e){
     e.preventDefault();
     fill(); /* refresh in case the visitor arrived via a tagged link mid-session */
@@ -142,6 +161,7 @@ var LINKEDIN_CONVERSION_ID = "28874580";   // e.g. "12345678"
     var fd=new FormData(f), data=Object.fromEntries(fd);
     data.modules=fd.getAll('modules').join(', ') || 'None ticked';
     data.payroll_software=data.payroll_software || 'Not given';
+    sendToCrm(fd);
     fetch('https://api.web3forms.com/submit',{
       method:'POST',
       headers:{'Content-Type':'application/json',Accept:'application/json'},
