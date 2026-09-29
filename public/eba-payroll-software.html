@@ -36,7 +36,7 @@
   "url": "https://paykicker.com.au/eba-payroll-software",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web, iOS, Android (PWA)",
-  "description": "EBA payroll software for Australian construction subcontractors on CFMEU Victorian construction and general enterprise agreements. Holds the agreement as rules, classifies hours from real start and finish times, runs the RDO calendar, applies allowances per day and hands MYOB an import file already matched to payroll categories and job codes.",
+  "description": "EBA payroll software for Australian construction subcontractors on CFMEU Victorian construction and general enterprise agreements. Holds the agreement as rules, classifies hours from real start and finish times, runs the RDO calendar, applies allowances per day and sends the pay run to Xero or MYOB in one click, already matched to pay items and job codes.",
   "featureList": [
     "Enterprise agreement held as rules, not a rate per employee",
     "Ordinary and overtime hours classified automatically from start and finish times",
@@ -47,7 +47,7 @@
     "Superannuation calculated as the greater of the weekly floor and the percentage",
     "Pay breakdown by hours, classification and rule applied",
     "Hours sourced from the same capture as dayworks dockets",
-    "MYOB import file matched to payroll categories and job codes"
+    "One-click pay run to Xero or MYOB, matched to pay items and job codes"
   ],
   "isPartOf": { "@type": "SoftwareApplication", "name": "PayKicker", "url": "https://paykicker.com.au/" },
   "areaServed": "AU-VIC",
@@ -132,7 +132,7 @@
     <ol>
       <li data-b="B"><a href="#wrong">Where generic payroll breaks</a></li>
       <li data-b="C"><a href="#must">What EBA-correct software must do</a></li>
-      <li data-b="D"><a href="#myob">The MYOB handoff</a></li>
+      <li data-b="D"><a href="#myob">The Xero and MYOB handoff</a></li>
       <li data-b="E"><a href="#ask">What to ask a vendor</a></li>
       <li data-b="F"><a href="#rates">Checking current rates</a></li>
     </ol>
@@ -235,16 +235,16 @@
 
 <section class="sheet prose" id="s-myob">
   <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">D</span><span class="name">MYOB handoff</span><span class="string" aria-hidden="true"></span></div>
+    <div class="mark"><span class="bub" aria-hidden="true">D</span><span class="name">Payroll handoff</span><span class="string" aria-hidden="true"></span></div>
     <div class="body">
-      <h2 id="myob">The MYOB handoff</h2>
-  <p>PayKicker does not replace MYOB. MYOB stays your system of record and holds your pay rates;
-  PayKicker does everything that happens before the pay run &mdash; rostering, capture, EBA
-  classification, approvals &mdash; and hands over an import file already matched to your payroll
-  categories and job codes. Your bookkeeper keeps the process they know; what changes is that the
-  file arrives already classified against the agreement rather than as a list of hours somebody
-  has to interpret.</p>
-  <p>During a pilot we run that export alongside your existing process until it matches to the cent.
+      <h2 id="myob">The Xero and MYOB handoff</h2>
+  <p>PayKicker does not replace Xero or MYOB. Your payroll stays your system of record and holds your
+  pay rates; PayKicker does everything that happens before the pay run &mdash; rostering, capture, EBA
+  classification, approvals &mdash; and then one click sends the pay run into Xero or MYOB, already
+  matched to your pay items and job codes. Your bookkeeper keeps the process they know; what changes
+  is that the pay run arrives already classified against the agreement rather than as a list of hours
+  somebody has to interpret. Signed dockets go across the same way, as an invoice.</p>
+  <p>During a pilot we run it alongside your existing process until the pay run matches to the cent.
   If it does not match, we would rather find that out before you switch than after.</p>
       <div class="rule" aria-hidden="true"></div>
     </div>
@@ -297,7 +297,7 @@
     <a href="/digital-dayworks-docket">Digital dayworks dockets</a> &middot;
     <a href="/">How PayKicker works</a></p>
       <p class="indep">PayKicker is independent software and is not
-    affiliated with or endorsed by the CFMEU or MYOB.</p>
+    affiliated with or endorsed by the CFMEU, Xero or MYOB.</p>
       <div class="rule" aria-hidden="true"></div>
     </div>
   </div>
@@ -326,7 +326,7 @@
          as a PropertyValue identifier — keep the two in step. -->
     <p class="legal">
       <b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
     </p>
   </div>
 </footer>

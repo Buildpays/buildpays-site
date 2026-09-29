@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How PayKicker Works: Roster to MYOB Pay Run | PayKicker</title>
-<meta name="description" content="What a pay cycle costs by hand, and what PayKicker does instead: the 6am roster board, EBA rules on every timesheet, dockets signed before knock-off, and a one-click MYOB file.">
+<title>How PayKicker Works: Roster to Xero or MYOB Pay Run | PayKicker</title>
+<meta name="description" content="What a pay cycle costs by hand, and what PayKicker does instead: the 6am roster board, two-minute onboarding, EBA rules on every timesheet, dockets signed before knock-off, and one click to Xero or MYOB.">
 <link rel="canonical" href="https://paykicker.com.au/paykicker-explainer">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How PayKicker works — one week on site">
-<meta property="og:description" content="Two days on EBA payroll and another day and a half costing dockets. Here is the week PayKicker replaces, in eight scenes.">
+<meta property="og:description" content="Two days on EBA payroll and another day and a half costing dockets. Here is the week PayKicker replaces, in nine scenes.">
 <meta property="og:url" content="https://paykicker.com.au/paykicker-explainer">
 <meta property="og:site_name" content="PayKicker">
 <meta property="og:locale" content="en_AU">
@@ -198,6 +198,16 @@ svg.sig path{stroke:var(--ink);stroke-width:2.4;fill:none;stroke-linecap:round;s
   padding:8px 16px;border-radius:8px;letter-spacing:.04em;display:flex;gap:8px;align-items:center}
 .myob .cog{display:inline-block;animation:spin 3s linear infinite}
 .ticks span{opacity:0;color:var(--ok);font-weight:800;font-size:12px;margin-left:8px}
+/* the signed dockets going across as an invoice, after the pay run */
+.inv{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:10px;opacity:0;font-size:12.5px;color:var(--ink)}
+.on .inv{animation:pop .45s 2.9s var(--spring) forwards}
+.inv .box{background:var(--hiviz);color:#fff;font-family:var(--disp);font-weight:800;font-size:15px;padding:8px 16px;border-radius:8px;letter-spacing:.04em}
+.inv b{color:var(--ok)}
+/* 7 docket: the cost report is ready the moment it's signed */
+.costline{margin-top:10px;text-align:center;font-family:var(--disp);font-weight:800;letter-spacing:.05em;font-size:14px;
+  color:var(--ink);background:var(--paper);border:1px dashed var(--ink);border-radius:8px;padding:6px 10px;opacity:0}
+.costline b{color:var(--ok)}
+.on .costline{animation:pop .4s 3.7s var(--spring) forwards}
 .on .ticks span{animation:pop .3s var(--spring) forwards}
 .on .k1{animation-delay:2s}.on .k2{animation-delay:2.25s}.on .k3{animation-delay:2.5s}
 
@@ -210,7 +220,10 @@ svg.sig path{stroke:var(--ink);stroke-width:2.4;fill:none;stroke-linecap:round;s
 .mod{background:rgba(255,255,255,.08);border:1.5px solid rgba(156,196,238,.4);color:#dbe9f8;border-radius:20px;
   padding:7px 16px;font-size:13px;font-weight:600;opacity:0;transform:translateY(24px)}
 .on .mod{animation:rise .5s var(--spring) forwards}
-.on .m1{animation-delay:.7s}.on .m2{animation-delay:.85s}.on .m3{animation-delay:1s}.on .m4{animation-delay:1.15s}
+.on .m1{animation-delay:.7s}.on .m2{animation-delay:.85s}.on .m3{animation-delay:1s}.on .m4{animation-delay:1.15s}.on .m5{animation-delay:1.3s}
+.save{margin-top:14px;font-family:var(--disp);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:clamp(14px,2.2vw,18px);
+  color:var(--hiviz);opacity:0;text-align:center}
+.on .save{animation:pop .5s 1.8s var(--spring) forwards}
 .addr{margin-top:18px;font-family:var(--disp);font-weight:800;letter-spacing:.08em;text-transform:uppercase;
   font-size:clamp(18px,3.2vw,26px);color:#fff;opacity:0}
 .addr span{color:var(--hiviz)}
@@ -249,6 +262,12 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
   .scene{padding:22px 14px 72px}
   .scene h2{font-size:24px}
   .scene .sub{font-size:12.5px}
+  /* the pay run and invoice rows: keep each label on one line, ticks drop underneath */
+  .myob,.inv{flex-wrap:wrap;gap:6px 8px}
+  .myob .box,.inv .box,.inv span{white-space:nowrap}
+  .myob .box,.inv .box{font-size:13px;padding:7px 12px}
+  .ticks{flex-basis:100%;text-align:center}
+  .ticks span{margin:0 4px}
   .cost{font-size:12.5px;padding:9px 8px}
   .cost b{font-size:16px}
   .cost.hot b{font-size:22px}
@@ -281,7 +300,7 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
 </style>
 </head>
 <body>
-<h1 class="visually-hidden">How PayKicker works: what a pay cycle costs by hand, and the week that replaces it — from the 6am roster to the MYOB pay run</h1>
+<h1 class="visually-hidden">How PayKicker works: what a pay cycle costs by hand, and the week that replaces it — from the 6am roster to the pay run in Xero or MYOB</h1>
 <div class="stage" id="stage">
   <div class="sun" id="sun"></div>
   <div class="crane"><div class="mast"></div><div class="jib"></div><div class="hook"></div><div class="load"></div></div>
@@ -337,7 +356,19 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
       </div>
     </section>
 
-    <!-- 4 · THE ENGINE — the one that matters, so it runs longest -->
+    <!-- 4 · ONBOARDING — the new starter is ready before Monday -->
+    <section class="scene" data-dur="6800" data-night="1">
+      <div class="clock">SUN · 7:40 PM</div>
+      <h2>New starter onboarded in two minutes</h2>
+      <p class="sub">A text link, a few taps, tickets read from a photo. Expiring tickets get flagged; one tap reminds the worker.</p>
+      <div class="panel rise">
+        <div class="fact f1"><span class="ic">📲</span><span><b>Details and inductions</b> from a link in a text, on the worker's own phone</span></div>
+        <div class="fact f2"><span class="ic">🪪</span><span><b>White card and licences</b> read from a photo and checked, expiry dates tracked</span></div>
+        <div class="fact f3"><span class="ic">⏰</span><span><b>Ticket expiring in 21 days</b> — flagged on the board, one tap sends the reminder</span></div>
+      </div>
+    </section>
+
+    <!-- 5 · THE ENGINE — the one that matters, so it runs longest -->
     <section class="scene" data-dur="10000">
       <div class="clock">MON · 3:30 PM</div>
       <h2>Times in. Your EBA does the rest.</h2>
@@ -355,7 +386,7 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
       </div>
     </section>
 
-    <!-- 5 · CUP DAY — the engine knows the calendar too -->
+    <!-- 6 · CUP DAY — the engine knows the calendar too -->
     <section class="scene" data-dur="6800">
       <div class="clock">TUE 3 NOV · CUP DAY</div>
       <h2>Holidays pay themselves</h2>
@@ -372,11 +403,11 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
       <div class="horse">🐎</div>
     </section>
 
-    <!-- 6 · DOCKET -->
+    <!-- 7 · DOCKET -->
     <section class="scene" data-dur="8200" data-night="1">
       <div class="clock">WED · 4:45 PM</div>
       <h2>No signed docket, no payment.<br>So signing takes seconds.</h2>
-      <p class="sub">Built from the day's timesheets. Signed on site before the ute leaves.</p>
+      <p class="sub">Built from the day's timesheets. Signed on site before the ute leaves, and the cost report is ready the same instant.</p>
       <div class="panel rise">
         <div class="dhead"><span class="dlogo">SOUTHLINE FORMWORK</span><span class="dno">D-0042</span></div>
         <div class="drow d1"><span>Danny Whitlock, Tomas Novak, Wiremu Katene · Form Worker</span><b>30.0 hrs</b></div>
@@ -392,15 +423,16 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
             <div class="sigline">P. Harding · jhg.com.au <span class="vtick">✓ VERIFIED DOMAIN</span></div>
           </div>
         </div>
+        <div class="costline">📊 COST REPORT · 56.0 HRS PRICED <b>· READY ✓</b></div>
         <span class="plane">✈️</span>
       </div>
     </section>
 
-    <!-- 7 · EXPORT -->
-    <section class="scene" data-dur="7200">
+    <!-- 8 · ONE CLICK TO PAYROLL, AND THE INVOICE -->
+    <section class="scene" data-dur="8200">
       <div class="clock">THU · 9:00 AM</div>
-      <h2>One click to MYOB</h2>
-      <p class="sub">A units-only file matched to your MYOB categories. MYOB keeps every dollar rate.</p>
+      <h2>One click to Xero or MYOB</h2>
+      <p class="sub">The pay run lands in your payroll, matched to your pay items. Signed dockets go across as an invoice.</p>
       <div class="panel rise">
         <div class="csv">
           <div class="r1">T0002, Whitlock, Danny, 13/07, Base Hourly, 7.20, WGT01</div>
@@ -411,13 +443,14 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
         </div>
         <div class="myob">
           <span style="font-size:22px">→</span>
-          <span class="box"><span class="cog">⚙️</span> MYOB PAY RUN</span>
+          <span class="box"><span class="cog">⚙️</span> XERO / MYOB PAY RUN</span>
           <span class="ticks"><span class="k1">✓ rates</span><span class="k2">✓ loading</span><span class="k3">✓ balances</span></span>
         </div>
+        <div class="inv"><span>D-0042 signed</span><span style="font-size:22px">→</span><span class="box">🧾 INVOICE</span><b>✓ sheet attached</b></div>
       </div>
     </section>
 
-    <!-- 8 · CTA -->
+    <!-- 9 · CTA -->
     <section class="scene" data-dur="7400">
       <div class="clock">EVERY WEEK</div>
       <div class="hat">👷</div>
@@ -426,8 +459,10 @@ button.ctrl:focus-visible{outline:2px solid var(--hiviz);outline-offset:2px}
         <span class="mod m1">📋 Rostering &amp; safety</span>
         <span class="mod m2">✍️ Dockets &amp; cost reports</span>
         <span class="mod m3">🎫 Onboarding &amp; tickets</span>
-        <span class="mod m4">💰 EBA payroll → MYOB</span>
+        <span class="mod m4">💰 EBA payroll → Xero or MYOB</span>
+        <span class="mod m5">🧾 One-click invoicing</span>
       </div>
+      <div class="save">Customers save $5,000+ a month · from $24.99 a week</div>
       <div class="addr">paykicker<span>.com.au</span></div>
       <div class="rain">
         <i style="left:8%;background:#f25c1f"></i><i style="left:19%;background:#2e7d32;animation-delay:.2s!important"></i>

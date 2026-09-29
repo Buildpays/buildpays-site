@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Dayworks Docket App for Subcontractors | PayKicker</title>
-<meta name="description" content="Capture labour, plant and materials on a dayworks docket, countersign it on site, then flow the same hours into EBA-correct payroll and a MYOB export.">
+<meta name="description" content="Capture labour, plant and materials on a dayworks docket, countersign it on site, then send the pay run and the invoice to Xero or MYOB in one click.">
 <link rel="icon" type="image/svg+xml" href="paykicker-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="paykicker-icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="paykicker-icon-16.png">
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The digital dayworks docket that ends at the pay run">
-<meta property="og:description" content="Most docket apps stop at the client signature. PayKicker captures labour, plant and materials on the docket and carries the same hours through to EBA-correct payroll and a MYOB-ready pay file.">
+<meta property="og:description" content="Most docket apps stop at the client signature. PayKicker captures labour, plant and materials on the docket and carries the same hours through to EBA-correct payroll and an invoice, in Xero or MYOB in one click.">
 <meta property="og:url" content="https://paykicker.com.au/digital-dayworks-docket">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="PayKicker">
@@ -24,7 +24,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The digital dayworks docket that ends at the pay run">
-<meta name="twitter:description" content="Most docket apps stop at the client signature. PayKicker captures labour, plant and materials on the docket and carries the same hours through to EBA-correct payroll and a MYOB-ready pay file.">
+<meta name="twitter:description" content="Most docket apps stop at the client signature. PayKicker captures labour, plant and materials on the docket and carries the same hours through to EBA-correct payroll and an invoice, in Xero or MYOB in one click.">
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 
 <script type="application/ld+json">
@@ -36,7 +36,7 @@
   "url": "https://paykicker.com.au/digital-dayworks-docket",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web, iOS, Android (PWA)",
-  "description": "Digital dayworks docket app for Australian construction subcontractors. Workers capture labour hours per worker, plant and materials by quantity, and timestamped photos on site; the head contractor countersigns on the phone or via a secure link; the same hours flow into a client cost report, EBA-correct payroll and a MYOB export.",
+  "description": "Digital dayworks docket app for Australian construction subcontractors. Workers capture labour hours per worker, plant and materials by quantity, and timestamped photos on site; the head contractor countersigns on the phone or via a secure link; the same hours flow into an instant client cost report, EBA-correct payroll sent to Xero or MYOB in one click, and a one-click invoice.",
   "featureList": [
     "Dayworks dockets captured on site from a worker's phone",
     "Labour hours per worker, with classification, start, finish and breaks",
@@ -44,9 +44,10 @@
     "Timestamped photos attached to the docket",
     "On-site client countersignature, on the phone or via a secure link",
     "Signed docket emailed to the client",
-    "Client cost report priced from the docket",
+    "Instant client cost report priced from the docket",
+    "Signed dockets turned into one Xero or MYOB invoice in one click",
     "Docket hours flow into EBA-correct payroll",
-    "MYOB-ready pay file export",
+    "One-click pay run to Xero or MYOB",
     "Dayworks docket module available on its own, without payroll"
   ],
   "isPartOf": { "@type": "SoftwareApplication", "name": "PayKicker", "url": "https://paykicker.com.au/" },
@@ -144,8 +145,8 @@
   plant and equipment used, and the materials consumed &mdash; and then get countersigned by the head
   contractor on site. Most docket apps stop the moment that signature lands. That is the easy half.
   The hard half is turning it into hours your workers get paid correctly for, and a variation your
-  bookkeeper can actually bill. PayKicker does both from the one capture &mdash; docket to pay, not
-  just docket to invoice.</p>
+  bookkeeper can actually bill. PayKicker does both from the one capture &mdash; docket to pay and
+  docket to invoice, each in one click to Xero or MYOB.</p>
 
   <nav class="toc" aria-label="On this page">
     <p class="toc-h">On this page</p>
@@ -153,7 +154,7 @@
       <li data-b="B"><a href="#capture">What a docket must capture</a></li>
       <li data-b="C"><a href="#materials">Labour, plant and materials</a></li>
       <li data-b="D"><a href="#leak">Where paper leaks revenue</a></li>
-      <li data-b="E"><a href="#topay">Docket to pay, not to invoice</a></li>
+      <li data-b="E"><a href="#topay">Docket to pay, and to invoice</a></li>
       <li data-b="F"><a href="#hours">How capture ties to payroll hours</a></li>
       <li data-b="G"><a href="#office">What changes in the office</a></li>
       <li data-b="H"><a href="#start">Getting started</a></li>
@@ -252,7 +253,7 @@
   <div class="wrap">
     <div class="mark"><span class="bub" aria-hidden="true">E</span><span class="name">Docket to pay</span><span class="string" aria-hidden="true"></span></div>
     <div class="body">
-      <h2 id="topay">Docket to pay, not docket to invoice</h2>
+      <h2 id="topay">Docket to pay, and to invoice</h2>
   <p>Plenty of apps will get a docket signed on a phone. That addresses the first three leaks and
   leaves the fourth exactly where it was, because a docket-only tool has no idea what any of those
   hours cost you. It captures ten hours. It cannot tell you that two of them were overtime at a
@@ -260,8 +261,9 @@
   daily hire employee whose entitlements differ from the rest of the crew.</p>
   <p>PayKicker treats the docket as a payroll document that happens to also be a billing document.
   The same captured hours run through your enterprise agreement rules, so the docket carries a real
-  cost as well as a claim value, and those same hours land in the pay run and in the
-  <a href="/eba-payroll-software">MYOB export</a> without anyone retyping them.</p>
+  cost as well as a claim value, and those same hours land in the
+  <a href="/eba-payroll-software">pay run in Xero or MYOB</a> without anyone retyping them. Once the
+  docket is signed, one click turns it into the invoice, with the signed sheet attached.</p>
 
   <div class="chalk aside">
     <p><b>The practical test.</b> Ask any docket tool what a signed docket cost you in wages. If it
@@ -291,7 +293,7 @@
     <div class="row"><span>Materials &amp; plant</span><span>Concrete pump 1 day &middot; Props 24 ea</span></div>
     <div class="row"><span>Photos attached</span><span>3, timestamped</span></div>
     <div class="row"><span>Countersigned</span><span>On site, 17:34</span></div>
-    <div class="dfoot">One capture &rarr; client cost report &middot; payroll hours &middot; MYOB export</div>
+    <div class="dfoot">One capture &rarr; instant cost report &middot; pay run &middot; invoice, in Xero or MYOB</div>
     <div class="legend"><i aria-hidden="true"></i>rules applied from the agreement</div>
   </div>
 
@@ -353,7 +355,7 @@
     <a href="/eba-payroll-software">EBA payroll software</a> &middot;
     <a href="/">How PayKicker works</a></p>
       <p class="indep">PayKicker is independent software and is not
-    affiliated with or endorsed by the CFMEU or MYOB.</p>
+    affiliated with or endorsed by the CFMEU, Xero or MYOB.</p>
       <div class="rule" aria-hidden="true"></div>
     </div>
   </div>
@@ -382,7 +384,7 @@
          as a PropertyValue identifier — keep the two in step. -->
     <p class="legal">
       <b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
     </p>
   </div>
 </footer>
