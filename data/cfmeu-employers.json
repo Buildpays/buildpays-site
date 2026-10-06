@@ -1,7 +1,7 @@
 {
  "_comment": "Employers with a CFMEU (Victorian Construction and General Division) enterprise agreement in force, from the Fair Work Commission's yearly lists of approved agreements. Built by scripts/cfmeu/fwc_employers.py; do not edit by hand.",
- "as_at": "2026-09-25",
- "list_generated": "2026-09-21",
+ "as_at": "2026-10-06",
+ "list_generated": "2026-10-05",
  "source_url": "https://www.fwc.gov.au/work-conditions/enterprise-agreements/find-enterprise-agreement",
  "search_url": "https://www.fwc.gov.au/document-search?search-ui=agreements",
  "files": [
@@ -29,12 +29,12 @@
   {
    "year": 2026,
    "url": "https://www.fwc.gov.au/documents/agreements/resources/agreements2026.xlsx",
-   "sha256": "6fe313749001e00a24875588abf50b3c9acd2ad71a3ac605624ab280dd38355d",
-   "generated": "2026-09-21",
-   "rows": 2409
+   "sha256": "4a2b8a8dba90e6a2a6cdfa991e87b54af4bdcd7c0529e9103c2640703ccf802f",
+   "generated": "2026-10-05",
+   "rows": 2524
   }
  ],
- "count": 1019,
+ "count": 1021,
  "sectors": {
   "Head contractors and builders": [
    {
@@ -2974,6 +2974,13 @@
     "nominal_expiry_passed": false
    },
    {
+    "name": "Tile Effect (Vic) Pty Ltd",
+    "agreement_id": "AE534223",
+    "operative": "2026-10-07",
+    "expiry": "2027-07-02",
+    "nominal_expiry_passed": false
+   },
+   {
     "name": "Wetspot Consolidated (VIC) Pty Ltd",
     "agreement_id": "AE532510",
     "operative": "2026-04-17",
@@ -4241,6 +4248,13 @@
     "name": "Hutchinson Rigging Pty Ltd",
     "agreement_id": "AE528699",
     "operative": "2025-04-24",
+    "expiry": "2027-07-02",
+    "nominal_expiry_passed": false
+   },
+   {
+    "name": "IBM Rigging & Construction Pty Ltd",
+    "agreement_id": "AE534205",
+    "operative": "2026-10-05",
     "expiry": "2027-07-02",
     "nominal_expiry_passed": false
    },
