@@ -110,6 +110,14 @@ p{max-width:68ch}
 .nav a.nphone .ic{width:20px;height:20px}
 .nav .spray{font-size:17px;padding:9px 18px}
 .nav .login{font-size:15px;padding:8px 14px}
+.nav a.nl .tag{display:inline-block;margin-left:6px;font-family:var(--disp);font-weight:800;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--navy);padding:0 5px;line-height:16px;vertical-align:2px}   /* TR 9 Oct 2026: the Invoices tab is new */
+.also{margin-top:6px;padding:28px 30px;display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+.also .txt{flex:2 1 420px;min-width:0}
+.also h2{margin:0 0 10px;max-width:20ch}
+.also .txt p{margin:0;max-width:56ch}
+.also .act{flex:1 1 260px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.also .price-line{font-family:var(--disp);font-weight:800;font-size:26px;letter-spacing:.03em;text-transform:uppercase;line-height:1.1}
+.also .price-line small{display:block;font-family:var(--body);font-weight:400;font-size:15px;letter-spacing:0;text-transform:none;color:var(--ink2);margin-top:4px}
 
 /* ============================================================
    SHEETS: every section after the set-out carries its bubble, its
