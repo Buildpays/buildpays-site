@@ -110,7 +110,7 @@ HEAD = '''<!DOCTYPE html>
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="/css/setout.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>

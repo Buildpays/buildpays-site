@@ -30,25 +30,25 @@ typography:
     lineHeight: 0.95
     letterSpacing: "0.005em"
   title:
-    fontFamily: "Big Shoulders Stencil Display, Big Shoulders Stencil Text, Impact, sans-serif"
+    fontFamily: "Big Shoulders Display, Impact, sans-serif"
     fontSize: "24px"
     fontWeight: 700
     lineHeight: 1.05
     letterSpacing: "0.005em"
   stencil-name:
-    fontFamily: "Big Shoulders Stencil Display, Big Shoulders Stencil Text, Impact, sans-serif"
+    fontFamily: "Big Shoulders Display, Impact, sans-serif"
     fontSize: "18px"
     fontWeight: 800
     lineHeight: 1
     letterSpacing: "0.12em"
   label:
-    fontFamily: "Big Shoulders Stencil Display, Big Shoulders Stencil Text, Impact, sans-serif"
+    fontFamily: "Big Shoulders Display, Impact, sans-serif"
     fontSize: "15px"
     fontWeight: 800
     lineHeight: 1.2
     letterSpacing: "0.1em"
   action:
-    fontFamily: "Big Shoulders Stencil Display, Big Shoulders Stencil Text, Impact, sans-serif"
+    fontFamily: "Big Shoulders Display, Impact, sans-serif"
     fontSize: "20px"
     fontWeight: 800
     lineHeight: 1
@@ -168,7 +168,7 @@ The world refuses the dark SaaS hero with a screenshot beside it and the three-c
 - One ink: logo navy for all type, hairlines, nails, icons and bubbles.
 - One panel colour: chalk `#f4f2ec` on a hairline, radius 3px.
 - Fluoro orange only behind the primary action and on applied-rule marks (spray-edged via SVG filter).
-- Big Shoulders Stencil Display in caps for every heading, name, label and button; Archivo for reading; Courier Prime only for file-shaped content.
+- Big Shoulders Stencil Display in caps for the big headlines only (h1, h2); Big Shoulders Display (the same letters, solid) in caps for every name, label, button, price, number and card title; Archivo for reading; Courier Prime only for file-shaped content. (TR, 9 Oct 2026: the stencil gaps were hard to read at small sizes.)
 - Every section (a "sheet") opens with a lettered bubble and a stencilled name on a string, and closes with the same 1px rule ending in two 7px nails.
 - Flat: no box-shadows, no gradients except the slab's cured patches.
 
@@ -199,13 +199,14 @@ One literal colour sits outside the tokens: the explainer iframe well `.how-embe
 
 ## Typography
 
-**Display Font:** Big Shoulders Stencil Display (with Big Shoulders Stencil Text, Impact, sans-serif), weights 700 and 800, always uppercase.
+**Display Font:** Big Shoulders Display (with Impact, sans-serif) as `--disp`, weights 700 and 800, always uppercase: labels, names, buttons, prices, numbers, h3 and card titles.
+**Headline Font:** Big Shoulders Stencil Display (with Big Shoulders Stencil Text, Impact, sans-serif) as `--stencil`, weights 700 and 800, always uppercase: h1 and h2 only.
 **Body Font:** Archivo (with system-ui, sans-serif), weights 400, 500, 600, tabular numerals on by default (`font-variant-numeric: tabular-nums` on `body`).
 **File Font:** Courier Prime (with Courier New, monospace), weights 400 and 700, used only for content that is literally a text file: the MYOB export panel on the homepage and the example docket on the dayworks page.
 
-All three come from one Google Fonts stylesheet link (the CSP allows only `fonts.googleapis.com` and `fonts.gstatic.com`): `Big+Shoulders+Stencil+Display:wght@700;800`, `Archivo:wght@400;500;600`, `Courier+Prime:wght@400;700`.
+All three come from one Google Fonts stylesheet link (the CSP allows only `fonts.googleapis.com` and `fonts.gstatic.com`): `Big+Shoulders+Display:wght@700;800`, `Big+Shoulders+Stencil+Display:wght@700;800`, `Archivo:wght@400;500;600`, `Courier+Prime:wght@400;700`.
 
-**Character:** the stencil is a site stencil: caps, tight leading (0.92 to 1.05), almost no tracking on the big sizes and wide tracking (0.1em to 0.12em) on the small names and labels, so a 15px label and a 110px headline are unmistakably the same hand. Archivo is plain and legible; its only job is to be read.
+**Character:** the headline stencil and the solid labels are one family: caps, tight leading (0.92 to 1.05), almost no tracking on the big sizes and wide tracking (0.1em to 0.12em) on the small names and labels, so a 15px label and a 110px headline are unmistakably the same hand. Archivo is plain and legible; its only job is to be read.
 
 ### Hierarchy
 - **Display** (`{typography.display}`): the homepage `h1` (`.hd h1`), three lines each on its own `span`, `text-wrap: initial`. Steps to `clamp(38px,10.4vw,60px)` at ≤860 and `clamp(36px,10.2vw,48px)` at ≤640. The 404 uses the same treatment at `clamp(40px,6.4vw,96px)`.
