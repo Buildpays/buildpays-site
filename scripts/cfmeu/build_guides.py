@@ -13,10 +13,13 @@ import io
 import json
 import os
 import re
+import sys
 from datetime import date
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 PUB = os.path.join(ROOT, "public")
+sys.path.insert(0, os.path.join(ROOT, "scripts", "invoices"))
+import pages as INVP  # the PayKicker Invoices comparison pages and guides (9 Oct 2026); rendered with this shell below
 DATA = os.path.join(ROOT, "data", "cfmeu-figures.json")
 
 F = json.load(io.open(DATA, encoding="utf-8"))
@@ -802,6 +805,10 @@ body += section("F", "Demo", "demo", DEMO.format(related='<a href="/guides/cfmeu
 calc_extra = '<script src="/js/calc-data.js" defer></script>' + NL + '<script src="/js/calc.js" defer></script>'
 page(CALC_PATH, CALC_TITLE, CALC_OG, CALC_DESC, article_ld(CALC_PATH, CALC_OG, CALC_DESC, PUBLISHED, AS_AT) + NL + faq_ld(CALC_FAQ) + NL + calc_extra, body)
 
+# ---------------------------------------------------------------- PayKicker Invoices pages
+
+INV_BUILT = INVP.build({"page": page, "section": section, "head_section": head_section, "faq_ld": faq_ld, "faq_html": faq_html, "NL": NL})
+
 # ---------------------------------------------------------------- Index
 
 IDX_PATH = "/guides/"
@@ -822,7 +829,8 @@ IDX_LD = '''<script type="application/ld+json">
     { "@type": "Article", "headline": "''' + RDO_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-rdo-calendar-2026" },
     { "@type": "Article", "headline": "''' + SA_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-site-allowance-fares-travel-2026" },
     { "@type": "Article", "headline": "''' + JOBS_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-eba-jobs-victoria" },
-    { "@type": "WebPage", "name": "''' + CALC_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-eba-pay-calculator" }
+    { "@type": "WebPage", "name": "''' + CALC_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-eba-pay-calculator" },
+''' + ",\n".join('    { "@type": "Article", "headline": "' + t + '", "url": "https://paykicker.com.au' + u + '" }' for u, t in INV_BUILT if u.startswith("/guides/")) + '''
   ]
 }
 </script>'''
@@ -860,7 +868,10 @@ body = head_section("Guides", "CFMEU EBA guides for the subcontractor's office",
       <span class="go">Open the calculator <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
   </div>
-  <p class="note">More guides follow: overtime, weekends and inclement weather; public holidays, Cup Day and daily hire. Every figure on these pages carries its source and date, and a weekly job checks the union's published sheets and the Commission's lists; when a source changes, the page changes.</p>''')
+  <p class="note">More guides follow: overtime, weekends and inclement weather; public holidays, Cup Day and daily hire. Every figure on these pages carries its source and date, and a weekly job checks the union's published sheets and the Commission's lists; when a source changes, the page changes.</p>
+  <h2 class="gsub" style="margin-top:56px">Supplier invoices in Xero and MYOB</h2>
+  <p class="lede">For any business that pays supplier bills: approval before they reach the books, and invoices that mix GST and GST-free items.</p>
+''' + INVP.guide_cards())
 
 body += section("B", "Demo", "demo", DEMO.format(related='<a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/digital-dayworks-docket">Digital dayworks dockets</a>'))
 
@@ -910,6 +921,9 @@ s = io.open(sm, "r", encoding="utf-8", newline="").read()
 for u, when in (("/guides/", max(AS_AT, LIST_GEN)), ("/guides/cfmeu-rdo-calendar-2026", AS_AT), ("/guides/cfmeu-site-allowance-fares-travel-2026", AS_AT),
                 ("/guides/cfmeu-eba-jobs-victoria", max(AS_AT, LIST_GEN)), ("/guides/cfmeu-eba-pay-calculator", AS_AT), ("/eba-payroll-software", AS_AT)):
     s = re.sub(r'(<loc>https://paykicker\.com\.au' + re.escape(u) + r'</loc>\s*<lastmod>)[0-9-]+(</lastmod>)', lambda m, when=when: m.group(1) + when + m.group(2), s)
+for u in INVP.SITEMAP:   # the invoice pages: add once, keep lastmod at their checked date
+    if f"<loc>https://paykicker.com.au{u}</loc>" not in s:
+        s = s.replace("</urlset>", f"  <url>{NL}    <loc>https://paykicker.com.au{u}</loc>{NL}    <lastmod>{INVP.CHECKED_ISO}</lastmod>{NL}  </url>{NL}</urlset>")
 io.open(sm, "w", encoding="utf-8", newline="").write(s)
 print("sitemap lastmod ->", AS_AT)
 print("done")

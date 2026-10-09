@@ -42,6 +42,7 @@
     "Supplier matched from Xero or MYOB by ABN and name",
     "Totals, GST and duplicates checked, including bills already in Xero or MYOB",
     "Lines coded to account, job and tax code, learning from how you coded the supplier before",
+    "Invoices with GST and GST-free items detected and split automatically onto the right tax codes",
     "Approval paths with authority limits",
     "Approved bills posted to Xero or MYOB",
     "Reports and Excel exports"
@@ -58,11 +59,75 @@
   "publisher": { "@id": "https://paykicker.com.au/#organization" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What counts as an invoice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every bill or credit note PayKicker reads for you and you submit. Reading the same file again is free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do the prices include GST?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. $9.99 is what you pay, and you get a tax invoice each month."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about invoices with GST and GST-free items?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PayKicker detects them automatically. When the GST on an invoice is neither 10% of the amount before GST nor nil (a supermarket order, fresh food with packaging, a mixed hardware run), it splits the bill into a taxable line and a GST-free line that add up to the invoice, each on the right tax code. If your chart keeps account pairs such as “with GST” and “GST-free”, each line goes to its own account. Nobody works out the split by hand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when the trial ends?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It ends after 14 days or 8 invoices read, whichever comes first. Add a card to keep reading — the trial's invoices stay free. New invoices wait in PayKicker until you do; nothing is lost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How am I charged?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By card, once a month, for the band that month landed in. The card is saved and charged by Stripe; PayKicker never sees the number."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which accounting software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Xero, and MYOB Business or AccountRight. Your suppliers, accounts, jobs and tax codes come from there, and approved bills go back there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I stop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any time, from Settings. You pay for the month so far and nothing after. Everything already in Xero or MYOB stays there."
+      }
+    }
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
-<link rel="stylesheet" href="/css/setout.css?v=fcd50b84">
+<link rel="stylesheet" href="/css/setout.css?v=822718f0">
 <style>
   /* PayKicker Invoices (TR, 9 Oct 2026) — the page's own pieces, on the shared set-out system. */
   .inv-hero .acts{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:22px}
@@ -167,7 +232,7 @@
       <ol class="inv-steps">
         <li><span class="bub" aria-hidden="true">1</span><div><h3>Send it in</h3><p>Forward bills to your own invoices address, give it to your suppliers, or upload a PDF or photo.</p></div></li>
         <li><span class="bub" aria-hidden="true">2</span><div><h3>Read and checked</h3><p>Two readers check every figure. Supplier matched by ABN and name, totals and GST checked, duplicates caught — including ones already in Xero or MYOB.</p></div></li>
-        <li><span class="bub" aria-hidden="true">3</span><div><h3>Coded and approved</h3><p>Lines coded to account, job and tax code the way you coded that supplier before. Sent to the right approver, within their limit.</p></div></li>
+        <li><span class="bub" aria-hidden="true">3</span><div><h3>Coded and approved</h3><p>Lines coded to account, job and tax code the way you coded that supplier before. A bill with GST and GST-free items is spotted and split onto the right tax codes for you. Sent to the right approver, within their limit.</p></div></li>
         <li><span class="bub" aria-hidden="true">4</span><div><h3>In your books</h3><p>Approved bills go to Xero or MYOB as bills, ready to pay. Reports and Excel when you need them.</p></div></li>
       </ol>
       <div class="rule" aria-hidden="true"></div>
@@ -240,12 +305,14 @@
       <div class="faq-col">
         <details><summary>What counts as an invoice?</summary><p>Every bill or credit note PayKicker reads for you and you submit. Reading the same file again is free.</p></details>
         <details><summary>Do the prices include GST?</summary><p>Yes. $9.99 is what you pay, and you get a tax invoice each month.</p></details>
+        <details><summary>What about invoices with GST and GST-free items?</summary><p>PayKicker detects them automatically. When the GST on an invoice is neither 10% of the amount before GST nor nil (a supermarket order, fresh food with packaging, a mixed hardware run), it splits the bill into a taxable line and a GST-free line that add up to the invoice, each on the right tax code. If your chart keeps account pairs such as &ldquo;with GST&rdquo; and &ldquo;GST-free&rdquo;, each line goes to its own account. Nobody works out the split by hand.</p></details>
         <details><summary>What happens when the trial ends?</summary><p>It ends after 14 days or 8 invoices read, whichever comes first. Add a card to keep reading — the trial's invoices stay free. New invoices wait in PayKicker until you do; nothing is lost.</p></details>
         <details><summary>How am I charged?</summary><p>By card, once a month, for the band that month landed in. The card is saved and charged by Stripe; PayKicker never sees the number.</p></details>
         <details><summary>Which accounting software?</summary><p>Xero, and MYOB Business or AccountRight. Your suppliers, accounts, jobs and tax codes come from there, and approved bills go back there.</p></details>
         <details><summary>Can I stop?</summary><p>Any time, from Settings. You pay for the month so far and nothing after. Everything already in Xero or MYOB stays there.</p></details>
       </div>
-      <p class="related" style="margin-top:22px">Running crews on a CFMEU agreement? <a href="/">See PayKicker for rostering, dockets and EBA payroll</a>.</p>
+      <p class="related" style="margin-top:22px">Comparing? <a href="/compare/dext-alternative">PayKicker vs Dext</a> &middot; <a href="/compare/hubdoc-alternative">vs Hubdoc</a> &middot; <a href="/compare/approvalmax-alternative">vs ApprovalMax</a>. Guides: <a href="/guides/mixed-gst-invoices">invoices with GST and GST-free items</a> &middot; <a href="/guides/supplier-invoice-approval-xero">approval in Xero</a> &middot; <a href="/guides/supplier-invoice-approval-myob">approval in MYOB</a>.</p>
+      <p class="related">Running crews on a CFMEU agreement? <a href="/">See PayKicker for rostering, dockets and EBA payroll</a>.</p>
       <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Xero or MYOB.</p>
       <div class="rule" aria-hidden="true"></div>
     </div>
