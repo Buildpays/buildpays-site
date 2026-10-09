@@ -285,6 +285,20 @@
   .price li:last-child{border-bottom:0}
   .price li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--navy);margin-top:9px}
 
+  /* --- TWO PRODUCTS (TR 9 Oct 2026: the first page shows both) --- */
+  #products{padding-top:28px}
+  #products .body{padding-top:14px}
+  .prods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+  .prod{padding:24px 26px 26px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+  .prod .kick{font-family:var(--disp);font-weight:800;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+  .prod .kick b{color:var(--navy);border:1px solid var(--navy);padding:0 5px;margin-left:8px;font-weight:800}
+  .prod h3{margin:0}
+  .prod p{margin:0;font-size:15.5px;line-height:1.5;color:var(--ink2);max-width:46ch}
+  .prod .pl{font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:.03em;text-transform:uppercase;line-height:1.1}
+  .prod .pl small{font-family:var(--body);font-weight:400;font-size:14px;letter-spacing:0;text-transform:none;color:var(--ink2);margin-left:6px}
+  .prod .pact{margin-top:auto;padding-top:6px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  @media(max-width:860px){.prods{grid-template-columns:minmax(0,1fr)}.prod{padding:20px 18px 22px}}
+
   .demo-lede{max-width:66ch}
   .demo-lede b{font-weight:600}
 
@@ -454,7 +468,7 @@
       <div class="cell ct">
         <div class="act">
           <a class="spray" href="#contact">Book a demo</a>
-          <span class="note">No self-serve trial — if it fits, your pilot period is on us.</span>
+          <span class="note">Payroll has no self-serve trial — if it fits, your pilot period is on us.</span>
         </div>
         <a class="see" href="#how">See how it works</a>
       </div>
@@ -498,6 +512,29 @@
     <div class="rule" aria-hidden="true"></div>
   </div>
 </header>
+
+<section class="sheet" id="products" aria-labelledby="products-name">
+  <div class="wrap">
+    <div class="mark"><span class="name" id="products-name">Two products</span><span class="string" aria-hidden="true"></span></div>
+    <div class="body">
+      <div class="prods">
+        <div class="chalk prod">
+          <span class="kick">For construction subcontractors</span>
+          <h3>Rostering, dockets &amp; EBA payroll</h3>
+          <p>Roster the crew, sign dayworks dockets on site, and send EBA-correct pay to Xero or MYOB in one click.</p>
+          <div class="pact"><a class="outline" href="#contact">Book a demo</a><a href="#how">See how it works</a></div>
+        </div>
+        <div class="chalk prod">
+          <span class="kick">For any business<b>New</b></span>
+          <h3>Supplier invoices</h3>
+          <p>Forward a bill or drop the PDF. PayKicker reads it, codes it, gets it approved and posts it to Xero or MYOB.</p>
+          <div class="pl">From $9.99 a month<small>inc GST · 14 days free, no card</small></div>
+          <div class="pact"><a class="outline" href="https://app.paykicker.com.au/signup">Start free trial</a><a href="/invoices">Prices</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="sheet" id="pillars">
   <div class="wrap">
