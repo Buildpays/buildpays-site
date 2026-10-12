@@ -303,6 +303,9 @@ main>.hero:last-child{padding-bottom:var(--sec)}
 .sl-prev .ic{transform:scaleX(-1)}
 /* Over the frame's left and right edges, at the middle of the frame (the strip + 2px of border + the screen). */
 @media (min-width:1001px){
+  /* The whole slide (frame, sentence, dots) fits in one screen height: the frame narrows on a short screen, centred
+     in the column; the arrows stay on its edges (100cqw is the slideshow's own width). */
+  .sl{max-width:calc((100vh - 14rem - 16px) * 1180 / 1003);margin:0 auto}   /* 14rem + 16px: the nav, the strip, the sentence, the dots */
   .sl-btn{position:absolute;z-index:2;top:calc((2.375rem + 2px + (100cqw - 2px) * 1003 / 1180) / 2 - 1.375rem)}
   .sl-prev{left:-1.375rem}
   .sl-next{right:-1.375rem}
