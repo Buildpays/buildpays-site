@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=1">
-<script src="/js/board.js?v=1"></script>
+<link rel="stylesheet" href="/css/board.css?v=2">
+<script src="/js/board.js?v=2"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -65,19 +65,19 @@
   "name": "PayKicker products",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "item": {
-      "@type": "SoftwareApplication", "name": "PayKicker for construction crews", "url": "https://paykicker.com.au/#construction",
+      "@type": "SoftwareApplication", "name": "PayKicker for construction crews", "url": "https://paykicker.com.au/construction",
       "applicationCategory": "BusinessApplication", "operatingSystem": "Web, iOS, Android (PWA)",
       "description": "Rostering with induction and ticket gates, dayworks dockets and cost reports, and CFMEU Victoria EBA payroll sent to Xero or MYOB.",
       "offers": { "@type": "Offer", "priceCurrency": "AUD", "description": "Contact for pricing: per active employee for the full system, or a flat monthly fee per module. No lock-in." },
       "publisher": { "@id": "https://paykicker.com.au/#organization" } } },
     { "@type": "ListItem", "position": 2, "item": {
-      "@type": "SoftwareApplication", "name": "PayKicker Invoices", "url": "https://paykicker.com.au/invoices",
+      "@type": "SoftwareApplication", "name": "PayKicker Invoices", "url": "https://paykicker.com.au/ap-automation",
       "applicationCategory": "BusinessApplication", "operatingSystem": "Web",
       "description": "Supplier bills read, matched by ABN and name, coded to account, job and tax code, approved and posted into Xero or MYOB.",
       "offers": { "@type": "AggregateOffer", "priceCurrency": "AUD", "lowPrice": "9.99", "highPrice": "149", "offerCount": "4", "description": "Monthly, GST inclusive, by how many bills were read. 14-day free trial, 8 invoices read." },
       "publisher": { "@id": "https://paykicker.com.au/#organization" } } },
     { "@type": "ListItem", "position": 3, "item": {
-      "@type": "SoftwareApplication", "name": "PayKicker Square sales sync", "url": "https://paykicker.com.au/#square",
+      "@type": "SoftwareApplication", "name": "PayKicker Square sales sync", "url": "https://paykicker.com.au/integrations#square-myob",
       "applicationCategory": "BusinessApplication", "operatingSystem": "Web",
       "description": "Each Square location's day posted into Xero or MYOB as one sales invoice, and each payout settled with Square's fees on their own account. Opening soon.",
       "publisher": { "@id": "https://paykicker.com.au/#organization" } } }
@@ -117,6 +117,7 @@
 </head>
 <body>
 
+<!-- shell:nav -->
 <svg class="sprite" aria-hidden="true" focusable="false">
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
@@ -125,6 +126,8 @@
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
   <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter"/><path d="M12 10v4.5M12 17v.5" stroke="currentColor" stroke-width="1.75"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V13M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 </svg>
 
 <a class="skip" href="#main">Skip to content</a>
@@ -134,11 +137,11 @@
     <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="172" height="26"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
-      <a href="/construction">EBA Construction</a>
+      <a href="/construction">Construction</a>
       <a href="/ap-automation">AP automation</a>
-      <a href="/square">Square sales</a>
       <a href="/integrations">Integrations</a>
       <a href="/partners">Partners</a>
+      <a href="/pricing">Pricing</a>
       <span class="nav-act">
         <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
         <a class="btn go" href="#contact">Book a demo</a>
@@ -146,6 +149,7 @@
     </nav>
   </div>
 </header>
+<!-- /shell:nav -->
 
 <main id="main">
 
@@ -164,7 +168,7 @@
       </div>
     </div>
 
-    <div class="board" id="board" role="table" aria-label="Example entries coded into Xero or MYOB" aria-describedby="board-note">
+    <div class="board dep" id="board" data-flip="0,110,180,620,740,860" role="table" aria-label="Example entries coded into Xero or MYOB" aria-describedby="board-note">
       <div class="board-top" aria-hidden="true">
         <span class="bt-l">Tonight, into Xero / MYOB</span>
         <span class="bt-r">Example data</span>
@@ -223,17 +227,17 @@
   <div class="wrap">
     <h2 id="h-doors" class="h-strip">Find your door.</h2>
     <ul class="strip">
-      <li><a class="door" href="#construction">
+      <li><a class="door" href="/construction">
         <span class="fl word d-name">Construction crews</span>
         <span class="d-line">Morning roster to pay file, on your CFMEU Victoria agreement.</span>
         <span class="d-go">The crew system<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </a></li>
-      <li><a class="door" href="#business">
+      <li><a class="door" href="/integrations">
         <span class="fl word d-name">Any business</span>
         <span class="d-line">Supplier bills and Square sales, posted coded into Xero or MYOB.</span>
         <span class="d-go">Bills and sales<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </a></li>
-      <li><a class="door" href="#accountants">
+      <li><a class="door" href="/partners">
         <span class="fl word d-name">Accountants &amp; bookkeepers</span>
         <span class="d-line">Refer a client. Earn 15% of their first 12 bills.</span>
         <span class="d-go">Partners<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
@@ -251,7 +255,7 @@
       <div class="gate-copy">
         <p>Email a bill to your own invoices address, or drop in the PDF. Two readers check every figure. The supplier is found by ABN and name. Each line is coded to the account, job and tax code you used last time, GST and GST-free split. The right person approves, and the bill lands in Xero or MYOB ready to pay.</p>
         <p class="price">Free for 14 days, 8 invoices read. Then $9.99, $29.99, $69.99 or $149 a month inc GST, by how many you had.</p>
-        <p class="gate-acts"><a class="btn hair" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a> <a class="tl" href="/invoices">Prices and questions<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <p class="gate-acts"><a class="btn hair" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a> <a class="tl" href="/ap-automation">Prices and questions<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
 
@@ -318,14 +322,14 @@
   </div>
 </section>
 
-<section class="gate" id="square" aria-labelledby="h-sq">
+<section class="gate" id="square" data-live="false" aria-labelledby="h-sq">
   <div class="wrap">
     <div class="gate-head">
       <h2 id="h-sq">The day's takings,<br>posted every night.</h2>
       <div class="gate-copy">
         <p>Every shop's day goes into Xero or MYOB as one sales invoice: GST and GST-free sales, surcharges, tips, gift cards, card to Square clearing, cash to the till. Each payout is settled with Square's fees on their own account. PayKicker finds or makes every account and job for you.</p>
-        <p class="price"><span class="tag">Opening soon</span> Free for one shop up to 60 orders a month. $9.99 for two shops, $24.99 unlimited.</p>
-        <p class="gate-acts"><a class="tl" href="#contact">Tell me when it opens<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <p class="price"><span class="tag if-soon">Opening soon</span> Free for one shop up to 60 orders a month. $9.99 for two shops, $24.99 unlimited.</p>
+        <p class="gate-acts"><a class="tl if-soon" href="#contact">Tell me when it opens<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn hair if-live" href="https://app.paykicker.com.au/signup?for=square" rel="noopener">Start free trial</a> <a class="tl" href="/integrations#square-myob">What it posts<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
 
@@ -362,7 +366,7 @@
 
     <div class="coming">
       <span class="fl word st-coming">Bank coding</span>
-      <p>Bank lines coded by rules you confirm once. Transfers between your own accounts paired, Square payouts and supplier bills recognised, the rest asked in one weekly email, so the feed in Xero or MYOB matches itself. <span class="tag dim">Coming</span> <a href="#contact">Tell me when it opens</a></p>
+      <p>Bank lines coded by rules you confirm once. Transfers between your own accounts paired, Square payouts and supplier bills recognised, the rest asked in one weekly email, so the feed in Xero or MYOB matches itself. <span class="tag dim">Coming</span> <a href="/integrations#bank">What it will do</a> · <a href="#contact">Tell me when it opens</a></p>
     </div>
     <p class="aside">Other apps post a total. PayKicker posts the lines, coded, and finds every entry again before it writes, so a retry never doubles.</p>
   </div>
@@ -538,16 +542,17 @@
 
 </main>
 
+<!-- shell:footer -->
 <footer class="foot">
   <div class="wrap">
     <div class="f-cols">
       <div>
         <h3>For construction crews</h3>
-        <ul><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li></ul>
+        <ul><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
       </div>
       <div>
         <h3>For any business</h3>
-        <ul><li><a href="/invoices">Supplier invoices</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><span>Square sales sync (soon)</span></li><li><span>Bank coding (soon)</span></li></ul>
+        <ul><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync (opening soon)</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/join">Join</a></li></ul>
       </div>
       <div>
         <h3>For accountants</h3>
@@ -558,17 +563,18 @@
         <ul><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
       </div>
     </div>
-    <!-- Entity identity. The ABN also appears in the Organization schema in <head>
+    <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
          as a PropertyValue identifier: keep the two in step. -->
     <div class="legal">
       <img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="132" height="20">
       <p><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. No affiliation implied.</p>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
     </div>
   </div>
 </footer>
+<!-- /shell:footer -->
 
 <script src="https://web3forms.com/client/script.js" async defer></script>
-<script src="/js/lead.js?v=3" defer></script>
+<script src="/js/lead.js?v=4" defer></script>
 </body>
 </html>

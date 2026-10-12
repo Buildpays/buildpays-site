@@ -1,4 +1,4 @@
-// The board: split-flap rows on the homepage, plus the phone menu.
+// The board: split-flap rows on any page (every element with data-flip), plus the phone menu.
 // Loaded in <head> without defer so the "hold the lettering" class is set before first paint;
 // everything that touches the page waits for DOMContentLoaded. Vanilla, no dependencies (CSP: self only).
 (function () {
@@ -110,49 +110,77 @@
     return cells;
   }
 
-  function animateRow(row, cells) {
+  // A row: every flap but the status starts at its own moment (the board's data-flip list, else
+  // 120 ms apart, in reading order); the status shows its "via" word while the row works, then lands last.
+  function animateRow(row, cells, at) {
     row.classList.add('moving');
-    var byCol = function (sel) {
-      return cells.filter(function (c) { return c.el.parentNode.matches(sel); })[0];
-    };
-    var time = byCol('.c-time'), entry = byCol('.c-entry'), amt = byCol('.c-amt'),
-        acct = byCol('.c-acct'), job = byCol('.c-job'), gst = byCol('.c-gst'), stat = byCol('.c-stat');
-    var jobs = [];
-    function chars(c, start, stagger, spin) {
-      c.chars.forEach(function (ch, i) {
-        if (ch.v === ' ' || !ch.f) return;
-        jobs.push(wait(start + i * stagger).then(function () {
-          return run(ch.f, churn(ch.v, spin + (i % 3)), 74);
-        }));
-      });
+    var jobs = [], stat = null, k = 0;
+    cells.forEach(function (c) {
+      if (c.via) { stat = c; return; }
+      var start = at[k] != null ? at[k] : k * 120, spin = k === 0 ? 2 : 3;
+      k++;
+      if (c.kind === 'chars') {
+        c.chars.forEach(function (ch, i) {
+          if (ch.v === ' ' || !ch.f) return;
+          jobs.push(wait(start + i * 32).then(function () { return run(ch.f, churn(ch.v, spin + (i % 3)), 74); }));
+        });
+      } else {
+        jobs.push(wait(start).then(function () { return run(c.f, [c.v], 205); }));
+      }
+    });
+    if (stat) {
+      jobs.push(wait(240).then(function () {
+        stat.el.classList.add('reading');
+        return run(stat.f, [stat.via], 190);
+      }));
     }
-    chars(time, 0, 34, 2);
-    jobs.push(wait(110).then(function () { return run(entry.f, [entry.v], 210); }));
-    chars(amt, 180, 30, 3);
-    var reading = wait(240).then(function () {
-      stat.el.classList.add('reading');
-      return run(stat.f, [stat.via], 190);
-    });
-    [acct, job, gst].forEach(function (c, i) {
-      jobs.push(wait(620 + i * 120).then(function () { return run(c.f, [c.v], 200); }));
-    });
-    return Promise.all(jobs.concat([reading])).then(function () { return wait(160); }).then(function () {
-      return run(stat.f, [stat.v], 200, function () { stat.el.classList.remove('reading'); });
+    return Promise.all(jobs).then(function () { return wait(160); }).then(function () {
+      if (stat) return run(stat.f, [stat.v], 200, function () { stat.el.classList.remove('reading'); });
     }).then(function () {
       row.classList.remove('moving');
     });
   }
 
-  function initBoard() {
-    var board = document.getElementById('board');
-    if (!board) return;
-    var rows = Array.prototype.slice.call(board.querySelectorAll('.brow[data-row]'));
-    var built = rows.map(buildRow);
+  // A flap can follow a product's on/off switch elsewhere on the page:
+  // data-live-from="<id of the section carrying data-live>" with data-v-live / data-cls-live for the live state.
+  function applySwitches(scope) {
+    scope.querySelectorAll('.fl[data-live-from]').forEach(function (el) {
+      var src = document.getElementById(el.getAttribute('data-live-from'));
+      if (!src || src.getAttribute('data-live') !== 'true') return;
+      var v = el.getAttribute('data-v-live');
+      if (v) { el.setAttribute('data-v', v); el.textContent = v; }
+      var cls = el.getAttribute('data-cls-live');
+      if (cls) { el.className = el.className.replace(/\bst-\w+/g, '').trim() + ' ' + cls; }
+    });
+  }
+
+  // Every board on the page that carries data-flip. A board in the first screen runs at once; one further
+  // down waits until it is scrolled to, then runs once and stays.
+  function initBoards() {
+    applySwitches(document);
+    var boards = Array.prototype.slice.call(document.querySelectorAll('[data-flip]'));
+    var plans = boards.map(function (board) {
+      var rows = Array.prototype.slice.call(board.querySelectorAll('.brow[data-row]'));
+      var at = (board.getAttribute('data-flip') || '').split(',').filter(Boolean).map(Number);
+      var gap = Number(board.getAttribute('data-gap')) || 640;
+      return { board: board, rows: rows, built: rows.map(buildRow), at: at, gap: gap };
+    });
     root.classList.remove('flip');
     if (!canAnimate) return;
-    // One orchestrated run: rows start in sequence, overlap a little, settle, and stay.
-    rows.forEach(function (row, i) {
-      wait(320 + i * 640).then(function () { return animateRow(row, built[i]); });
+    function go(p) {
+      if (p.done) return;
+      p.done = true;
+      p.rows.forEach(function (row, i) {
+        wait(320 + i * p.gap).then(function () { return animateRow(row, p.built[i], p.at); });
+      });
+    }
+    plans.forEach(function (p) {
+      var r = p.board.getBoundingClientRect();
+      if (!('IntersectionObserver' in window) || r.top < window.innerHeight) { go(p); return; }
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { io.disconnect(); go(p); } });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+      io.observe(p.board);
     });
   }
 
@@ -175,7 +203,7 @@
   }
 
   function init() {
-    try { initBoard(); } catch (e) { root.classList.remove('flip'); }
+    try { initBoards(); } catch (e) { root.classList.remove('flip'); }
     initMenu();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

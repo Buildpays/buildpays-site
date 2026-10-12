@@ -21,3 +21,8 @@
 /buildpays-logo.png             https://paykicker.com.au/paykicker-logo.png             301
 /buildpays-logo-dark.png        https://paykicker.com.au/paykicker-logo-dark.png        301
 /buildpays-icon.png             https://paykicker.com.au/paykicker-icon-512.png         301
+
+# Supplier invoices moved to /ap-automation in the site redesign (Oct 2026). Path only, like
+# everything in this file; the page itself was removed, so nothing else answers on /invoices.
+/invoices                       /ap-automation                                         301
+/invoices.html                  /ap-automation                                         301

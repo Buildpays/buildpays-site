@@ -1,4 +1,4 @@
-// /invoices — the "how many invoices a month?" slider (TR, 9 Oct 2026). A file, not inline: the site's CSP allows no inline script.
+// /ap-automation (was /invoices) — the "how many invoices a month?" slider (TR, 9 Oct 2026). A file, not inline: the site's CSP allows no inline script.
 // The bands are the public price list (GST-inclusive); PayKicker's own copy lives in the app (supabase/functions/_shared/invoiceTiers.js).
 (function () {
   var BANDS = [

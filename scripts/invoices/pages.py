@@ -17,7 +17,7 @@ ARROW = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use
 
 TRIAL = '''      <h2>Try it on your own bills</h2>
       <p>Connect Xero or MYOB, forward a few real supplier invoices and watch them arrive read, coded and split. 14 days and 8 invoices free, no card to start. After that it is $9.99 a month up to 20 invoices, $29.99 up to 100, $69.99 up to 400 and $149 up to 2,000, GST included, for the band each month lands in.</p>
-      <div class="cta-act"><a class="spray" href="https://app.paykicker.com.au/signup">Start free trial</a><a href="/invoices">How it works and prices</a></div>
+      <div class="cta-act"><a class="spray" href="https://app.paykicker.com.au/signup">Start free trial</a><a href="/ap-automation">How it works and prices</a></div>
       <p class="related">Related: {related}</p>
       <p class="indep">{indep}</p>'''
 
@@ -64,7 +64,7 @@ def ld_page(path, kind, headline, desc, crumbs, faq, faq_ld):
         "url": "https://paykicker.com.au" + path, "datePublished": PUBLISHED, "dateModified": CHECKED_ISO, "inLanguage": "en-AU",
         "author": {"@id": "https://paykicker.com.au/#organization"}, "publisher": {"@id": "https://paykicker.com.au/#organization"},
         "mainEntityOfPage": "https://paykicker.com.au" + path,
-        "about": {"@id": "https://paykicker.com.au/invoices#software"},
+        "about": {"@id": "https://paykicker.com.au/ap-automation#software"},
     }
     bc = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": n, "item": "https://paykicker.com.au" + u} for i, (n, u) in enumerate(crumbs + [(headline, path)])]}
@@ -100,7 +100,7 @@ def build(h):
         page(path, title, og, desc, ld_page(path, kind, og, desc, crumbs, faq, faq_ld), body)
         built.append((path, og))
 
-    INV = [("PayKicker", "/"), ("Invoices", "/invoices")]
+    INV = [("PayKicker", "/"), ("AP automation", "/ap-automation")]
     GUIDES = [("PayKicker", "/"), ("Guides", "/guides/")]
 
     # ------------------------------------------------------------------ Dext

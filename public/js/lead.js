@@ -104,7 +104,7 @@ var LINKEDIN_CONVERSION_ID = "28874580";   // e.g. "12345678"
 
   /* ------------------------------------------------------------------ form */
   var f=document.getElementById('demoForm'), b=document.getElementById('demoBtn'), m=document.getElementById('demoMsg');
-  if(!f) return;
+  if(!f) return; var bLabel=b.textContent; /* the page's own button words, restored after a failed send */
 
   /* Pre-fill from an outreach link, so the reader only adds their name and email:
        /?co=Alpha-Form%20Constructions&m=dockets,payroll&pay=xero&ref=2#contact
@@ -214,7 +214,7 @@ var LINKEDIN_CONVERSION_ID = "28874580";   // e.g. "12345678"
     })
     .catch(function(){
       if(window.hcaptcha && typeof hcaptcha.reset==='function'){ try { hcaptcha.reset(); } catch(e){} }
-      b.disabled=false; b.textContent='Book my demo';
+      b.disabled=false; b.textContent=bLabel;
       m.style.color='#c62828';
       m.innerHTML="Something went wrong. Email us directly at <a href='mailto:operations@paykicker.com.au' style='color:#f25c1f'>operations@paykicker.com.au</a>.";
     });
