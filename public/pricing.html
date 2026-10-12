@@ -30,9 +30,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=1010f721">
-<script src="/js/board.js?v=9"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=d9f176a3">
+<script src="/js/board.js?v=10"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -88,7 +88,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="230" height="34"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="200" height="30"></a>
     <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
@@ -126,7 +126,7 @@
     <div class="plans">
 
       <div class="plan" id="crew-system">
-        <div class="plan-name"><span class="fl word">Crew system</span><span class="fl word st-live">Live</span></div>
+        <div class="plan-name"><h2 class="plan-title">Crew system</h2><span class="pill st-live">Live</span></div>
         <div class="plan-body">
           <p>Rostering, dayworks dockets and EBA payroll for construction subcontractors, sent to Xero or MYOB.</p>
           <p class="plan-price">Contact us<small>for a quote</small></p>
@@ -142,7 +142,7 @@
       </div>
 
       <div class="plan" id="supplier-invoices">
-        <div class="plan-name"><span class="fl word">Supplier invoices</span><span class="fl word st-live">Live</span></div>
+        <div class="plan-name"><h2 class="plan-title">Supplier invoices</h2><span class="pill st-live">Live</span></div>
         <div class="plan-body">
           <p>Bills read, matched by ABN and name, coded, approved and posted into Xero or MYOB. You pay the band your month landed in.</p>
           <p class="plan-price">From $9.99<small>a month inc GST · 14 days free, 8 invoices read</small></p>
@@ -163,7 +163,7 @@
 
       <!-- Square: going live = data-live="true" here (the same switch as /integrations, /join and the homepage). -->
       <div class="plan" id="square" data-live="false">
-        <div class="plan-name"><span class="fl word">Square sales sync</span><span class="fl word st-soon if-soon">Opening soon</span><span class="fl word st-live if-live">Live</span></div>
+        <div class="plan-name"><h2 class="plan-title">Square sales sync</h2><span class="pill st-soon if-soon">Opening soon</span><span class="pill st-live if-live">Live</span></div>
         <div class="plan-body">
           <p>Each Square location's day posted into Xero or MYOB as one sales invoice, and each payout settled with Square's fees on their own accounts.</p>
           <p class="plan-price">Free to start<small>for one location up to 60 orders a month</small></p>
@@ -182,25 +182,25 @@
       </div>
 
       <div class="plan" id="shopify">
-        <div class="plan-name"><span class="fl word">Shopify sales sync</span><span class="fl word st-coming">Coming</span></div>
+        <div class="plan-name"><h2 class="plan-title">Shopify sales sync</h2><span class="pill st-coming">Coming</span></div>
         <div class="plan-body">
           <p>Shopify POS and your online store will post into Xero or MYOB through the same engine as Square.</p>
-          <div class="blank more"><span class="blank-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><p>The price is set when Shopify opens.</p></div>
+          <div class="blank more"><p>The price is set when Shopify opens.</p></div>
           <p class="gate-acts"><a class="tl" href="/integrations#shopify">What it will post<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
         </div>
       </div>
 
       <div class="plan" id="bank-coding">
-        <div class="plan-name"><span class="fl word">Bank coding</span><span class="fl word st-coming">Coming</span></div>
+        <div class="plan-name"><h2 class="plan-title">Bank coding</h2><span class="pill st-coming">Coming</span></div>
         <div class="plan-body">
           <p>Bank lines coded by rules you confirm once and written into Xero or MYOB, so the file's own feed matches itself.</p>
-          <div class="blank more"><span class="blank-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><p>The price is set when bank coding opens.</p></div>
+          <div class="blank more"><p>The price is set when bank coding opens.</p></div>
           <p class="gate-acts"><a class="tl" href="/integrations#bank">What it will do<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
         </div>
       </div>
 
       <div class="plan" id="partners">
-        <div class="plan-name"><span class="fl word">Referral partner</span><span class="fl word st-live">Live</span></div>
+        <div class="plan-name"><h2 class="plan-title">Referral partner</h2><span class="pill st-live">Live</span></div>
         <div class="plan-body">
           <p>For accountants, bookkeepers and anyone who refers a business.</p>
           <p class="plan-price">Free<small>to join</small></p>
@@ -230,7 +230,7 @@
   </div>
 </section>
 
-<section class="gate" aria-label="Independence">
+<section class="gate tail" aria-label="Independence">
   <div class="wrap">
     <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Xero, MYOB, Square, Shopify or the CFMEU.</p>
   </div>

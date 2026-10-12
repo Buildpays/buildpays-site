@@ -22,9 +22,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=1010f721">
-<script src="/js/board.js?v=9"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=d9f176a3">
+<script src="/js/board.js?v=10"></script>
 
 <!-- Google Analytics 4 — same stream as the rest of the site. Disclosed in the privacy policy. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -32,31 +32,25 @@
 <script src="/js/pixels.js"></script>
 
 <style>
-  /* Status: the board reads green when it is up, amber when something is behind, orange when it is down. */
-  .banner{display:flex;align-items:center;gap:18px;margin-top:clamp(28px,3.4vw,44px);max-width:52rem;padding:20px clamp(16px,2.4vw,24px);background:var(--housing);border:1px solid var(--line);border-radius:2px;
-    box-shadow:0 30px 60px -36px rgba(var(--shade-rgb),calc(.85 * var(--sk))),inset 0 1px 0 rgba(var(--ink-rgb),.04)}
-  .banner .dot{position:relative;flex:none;width:22px;height:44px;border-radius:2px;background:linear-gradient(to bottom,var(--flap-hi) 0 50%,var(--flap-lo) 50% 100%);box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.45 * var(--sk)))}
-  .banner .dot::after{content:"";position:absolute;left:5px;right:5px;top:50%;height:12px;margin-top:-6px;border-radius:1px;background:var(--dim);transition:background-color .4s}
+  /* Status: green when it is up, amber when something is behind, red when it is down. */
+  .banner{display:flex;align-items:center;gap:18px;margin-top:clamp(28px,3.4*var(--vw),44px);max-width:52rem;padding:22px clamp(18px,2.4*var(--vw),28px);background:#fff;border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}
+  .banner .dot{position:relative;flex:none;width:14px;height:14px;border-radius:50%;background:var(--grey-bg);box-shadow:0 0 0 5px var(--surface);transition:background-color .4s}
   .banner .txt{flex:1;min-width:0}
-  .banner .head{display:block;font-family:var(--f-board);font-weight:800;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);transition:color .4s}
-  .banner .sub{display:block;margin-top:8px;font-size:max(var(--rt-min),calc(1.05rem * .77));line-height:1.45;color:var(--ink)}
-  .banner.up .dot::after{background:var(--green)}.banner.up .head{color:var(--green)}
-  .banner.warn .dot::after{background:var(--amber)}.banner.warn .head{color:var(--amber)}
-  .banner.down .dot::after{background:var(--orange)}.banner.down .head{color:var(--orange)}
-  .checked{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:16px;font-family:var(--f-ui);font-size:max(var(--rt-min),calc(.98rem * .77));color:var(--dim)}
-  #stamp{font-family:var(--f-board);font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);font-variant-numeric:tabular-nums}
-  .svc{margin-top:clamp(28px,3.4vw,44px);max-width:52rem;border-top:1px solid var(--line-2)}
-  .svc-row{display:grid;grid-template-columns:minmax(0,1fr) 13.5rem;gap:10px 24px;align-items:center;padding:16px 4px;border-bottom:1px solid var(--line)}
-  .svc-name b{display:block;font-family:var(--f-board);font-weight:800;font-size:1.3rem;letter-spacing:.04em;text-transform:uppercase}
-  .svc-name span{display:block;margin-top:2px;color:var(--dim);font-size:max(var(--rt-min),calc(1rem * .77));line-height:1.5}
-  .svc .pill{position:relative;display:block;height:46px;line-height:46px;padding:0 .7em;border-radius:2px;background:linear-gradient(to bottom,var(--flap-hi) 0 50%,var(--flap-lo) 50% 100%);
-    box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.45 * var(--sk))),inset 0 1px 0 rgba(var(--ink-rgb),.05);font-family:var(--f-board);font-weight:700;font-size:1.2rem;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;color:var(--dim)}
-  .svc .pill::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;margin-top:-1px;background:var(--hinge)}
-  .svc .pill.up{color:var(--green)}.svc .pill.warn{color:var(--amber)}.svc .pill.down{color:var(--orange)}
-  .contact dl{margin:0;border-top:1px solid var(--p-ink)}
-  .contact dt{padding-top:16px;font-family:var(--f-board);font-weight:800;font-size:1rem;letter-spacing:.1em;text-transform:uppercase}
-  .contact dd{margin:4px 0 0;padding-bottom:16px;border-bottom:1px solid var(--p-rule)}
-  @media (max-width:640px){.svc-row{grid-template-columns:minmax(0,1fr);padding:16px 0}.svc .pill{justify-self:start;min-width:12rem}}
+  .banner .head{display:block;font-weight:600;font-size:clamp(1.5rem,2.6*var(--vw),2rem);line-height:1.1;letter-spacing:-.02em;color:var(--ink);transition:color .4s}
+  .banner .sub{display:block;margin-top:8px;line-height:1.5;color:var(--ink-2)}
+  .banner.up .dot{background:var(--green);box-shadow:0 0 0 5px var(--green-bg)}.banner.up .head{color:var(--green)}
+  .banner.warn .dot{background:var(--amber);box-shadow:0 0 0 5px var(--amber-bg)}.banner.warn .head{color:var(--amber)}
+  .banner.down .dot{background:var(--red);box-shadow:0 0 0 5px var(--red-bg)}.banner.down .head{color:var(--red)}
+  .checked{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:16px;font-size:15px;color:var(--ink-2)}
+  #stamp{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+  .svc{margin-top:clamp(28px,3.4*var(--vw),44px);max-width:52rem;border-top:1px solid var(--border)}
+  .svc-row{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:10px 24px;align-items:center;padding:18px 0;border-bottom:1px solid var(--border)}
+  .svc-name b{display:block;font-weight:600;font-size:1.0625rem}
+  .svc-name span{display:block;margin-top:2px;color:var(--ink-2);font-size:15px;line-height:1.5}
+  .contact dl{margin:0;border-top:1px solid var(--border)}
+  .contact dt{padding-top:16px;font-weight:600}
+  .contact dd{margin:4px 0 0;padding-bottom:16px;border-bottom:1px solid var(--border)}
+  @media (max-width:640px){.svc-row{grid-template-columns:minmax(0,1fr)}.svc .pill{justify-self:start}}
 </style>
 </head>
 <body>
@@ -79,7 +73,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="230" height="34"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="200" height="30"></a>
     <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">

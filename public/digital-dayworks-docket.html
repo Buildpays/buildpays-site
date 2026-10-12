@@ -59,9 +59,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=1010f721">
-<script src="/js/board.js?v=9"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=d9f176a3">
+<script src="/js/board.js?v=10"></script>
 
 <!-- Google Analytics 4 — same stream as the rest of the site. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -70,7 +70,7 @@
 
 <style>
   /* The example docket is a document, so it keeps the document's typewriter face; the row the agreement's rules touched is marked amber. */
-  .docket{max-width:560px;margin-top:26px;padding:18px 18px 14px;background:#fff;color:#1b2b3c;border-radius:2px;box-shadow:0 2px 4px rgba(22,40,58,.12),0 16px 26px -18px rgba(22,40,58,.4);
+  .docket{max-width:560px;margin-top:26px;padding:18px 18px 14px;background:#fff;color:#1b2b3c;border:1px solid var(--border);border-radius:8px;box-shadow:0 2px 4px rgba(22,40,58,.12),0 16px 26px -18px rgba(22,40,58,.4);
     font-family:"Courier Prime",ui-monospace,monospace;font-size:14px;line-height:1.45}
   .text section>.docket{margin-top:26px;margin-bottom:10px}
   .docket .dhead{display:flex;justify-content:space-between;gap:12px;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid #1b2b3c;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
@@ -80,7 +80,7 @@
   .docket .row.hot{background:rgba(240,181,65,.34);border-bottom-color:transparent}
   .docket .dfoot{margin-top:10px;padding-top:8px;border-top:1px solid #1b2b3c;font-size:13px;color:#4a5868}
   .docket .legend{display:flex;align-items:center;gap:8px;margin-top:8px;font-family:var(--f-ui);font-size:13px;color:#4a5868}
-  .docket .legend i{display:inline-block;width:22px;height:12px;border-radius:2px;background:rgba(240,181,65,.6)}
+  .docket .legend i{display:inline-block;width:22px;height:12px;border-radius:4px;background:rgba(240,181,65,.6)}
   @media (max-width:640px){
     .docket{font-size:13px;padding:14px 12px 12px}
     .docket .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0 12px}
@@ -108,7 +108,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="230" height="34"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="200" height="30"></a>
     <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">

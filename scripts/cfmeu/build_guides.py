@@ -6,8 +6,8 @@ figure never has to be edited in HTML. Run from the repo root:
 
     python scripts/cfmeu/build_guides.py
 
-The pages are set in the site's board world (public/css/board.css): the head on the night
-ground, the text on the warm paper sheet. The nav and footer are the site's one shell
+The pages are set in the site's one system (public/css/board.css): the head, then the text in
+one white reading column. The nav and footer are the site's one shell
 (scripts/shell/nav.html and footer.html), stamped in by scripts/shell.py as each page is
 written, so the guides always match the rest of the site.
 """
@@ -108,9 +108,9 @@ HEAD = '''<!DOCTYPE html>
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/css/board.css">
-<script src="/js/board.js?v=9"></script>
+<script src="/js/board.js?v=10"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
 <script src="/js/pixels.js"></script>

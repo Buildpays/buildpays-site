@@ -30,9 +30,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=1010f721">
-<script src="/js/board.js?v=9"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=d9f176a3">
+<script src="/js/board.js?v=10"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -115,7 +115,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="230" height="34"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="200" height="30"></a>
     <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
@@ -160,8 +160,10 @@
       <div class="hero-shot">
         <!-- The approver's view of a bill, the whole capture, from the app harness (synthetic data).
              Provenance: /screens/invoice-approval.json -->
-        <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async"></div>
-        <p class="hero-ex"><span class="ex-label">Example data</span></p>
+        <figure class="shot">
+          <figcaption class="shot-bar"><i aria-hidden="true"><span></span></i>Invoices · INV-20955 in review<span class="sb-r">Example data</span></figcaption>
+          <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async"></div>
+        </figure>
       </div>
     </div>
   </div>
@@ -196,28 +198,28 @@
 
     <div class="bands">
       <div class="band inv-band" data-top="20">
-        <span class="fl word">Lite</span><span class="rng">Up to 20 invoices</span>
+        <span class="b-name">Lite</span><span class="rng">Up to 20 invoices</span>
         <span class="pr">$9.99<small>a month inc GST</small></span>
         <span class="who">A sole trader or a small crew with a few bills a week.</span>
-        <span class="mk">Your month lands here</span>
+        <span class="mk pill st-coded">Your month lands here</span>
       </div>
       <div class="band inv-band here" data-top="100">
-        <span class="fl word">Starter</span><span class="rng">21 to 100 invoices</span>
+        <span class="b-name">Starter</span><span class="rng">21 to 100 invoices</span>
         <span class="pr">$29.99<small>a month inc GST</small></span>
         <span class="who">A busy small business, one or two people entering bills.</span>
-        <span class="mk">Your month lands here</span>
+        <span class="mk pill st-coded">Your month lands here</span>
       </div>
       <div class="band inv-band" data-top="400">
-        <span class="fl word">Business</span><span class="rng">101 to 400 invoices</span>
+        <span class="b-name">Business</span><span class="rng">101 to 400 invoices</span>
         <span class="pr">$69.99<small>a month inc GST</small></span>
         <span class="who">An office with approvers and several jobs on the go.</span>
-        <span class="mk">Your month lands here</span>
+        <span class="mk pill st-coded">Your month lands here</span>
       </div>
       <div class="band inv-band" data-top="2000">
-        <span class="fl word">Pro</span><span class="rng">401 to 2,000 invoices</span>
+        <span class="b-name">Pro</span><span class="rng">401 to 2,000 invoices</span>
         <span class="pr">$149<small>a month inc GST</small></span>
         <span class="who">High volume, many suppliers, several approval limits.</span>
-        <span class="mk">Your month lands here</span>
+        <span class="mk pill st-coded">Your month lands here</span>
       </div>
       <div class="band-big"><b>Over 2,000 a month</b><span>We'll price it with you.</span><a href="mailto:operations@paykicker.com.au">Talk to us</a></div>
     </div>
@@ -269,9 +271,9 @@
         <details><summary>Can I stop?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Any time, from Settings. You pay for the month so far, and the charges stop there. Everything already in Xero or MYOB stays there.</p></details>
       </div>
       <ul class="rows related">
-        <li><span class="fl word">Comparing?</span><p><a href="/compare/dext-alternative">PayKicker vs Dext</a> · <a href="/compare/hubdoc-alternative">vs Hubdoc</a> · <a href="/compare/approvalmax-alternative">vs ApprovalMax</a></p></li>
-        <li><span class="fl word">Guides</span><p><a href="/guides/mixed-gst-invoices">Invoices with GST and GST-free items</a> · <a href="/guides/supplier-invoice-approval-xero">Approval in Xero</a> · <a href="/guides/supplier-invoice-approval-myob">Approval in MYOB</a></p></li>
-        <li><span class="fl word">Crews</span><p>Running crews on a CFMEU agreement? <a href="/construction">See PayKicker for rostering, dockets and EBA payroll</a>.</p></li>
+        <li><span class="r-name">Comparing?</span><p><a href="/compare/dext-alternative">PayKicker vs Dext</a> · <a href="/compare/hubdoc-alternative">vs Hubdoc</a> · <a href="/compare/approvalmax-alternative">vs ApprovalMax</a></p></li>
+        <li><span class="r-name">Guides</span><p><a href="/guides/mixed-gst-invoices">Invoices with GST and GST-free items</a> · <a href="/guides/supplier-invoice-approval-xero">Approval in Xero</a> · <a href="/guides/supplier-invoice-approval-myob">Approval in MYOB</a></p></li>
+        <li><span class="r-name">Crews</span><p>Running crews on a CFMEU agreement? <a href="/construction">See PayKicker for rostering, dockets and EBA payroll</a>.</p></li>
       </ul>
       <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Xero or MYOB.</p>
     </div>

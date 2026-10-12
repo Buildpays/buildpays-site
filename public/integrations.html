@@ -30,9 +30,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=1010f721">
-<script src="/js/board.js?v=9"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=d9f176a3">
+<script src="/js/board.js?v=10"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -88,7 +88,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="230" height="34"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="200" height="30"></a>
     <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
@@ -132,48 +132,19 @@
 
       <div class="hero-shot">
         <!-- Every connection and whether it is open (the statuses are the site's own switches, not example data). -->
-        <div class="board mini" data-flip data-gap="380" role="table" aria-label="Every connection and whether it is open">
-          <div class="board-top" aria-hidden="true">
-            <span class="bt-l">Connections</span>
-            <span class="bt-r">Into Xero / MYOB</span>
-          </div>
-          <div class="brow bhead" role="row">
-            <span class="c-conn" role="columnheader">From</span>
-            <span class="c-to" role="columnheader">Into</span>
-            <span class="c-stat" role="columnheader">Status</span>
-            <span class="c-go" role="columnheader"><span class="sr">Details</span></span>
-          </div>
-          <div class="brow" role="row" data-row="0">
-            <span class="c-conn" role="cell"><span class="fl word" data-v="SQUARE SALES">SQUARE SALES</span></span>
-            <span class="c-to" role="cell"><span class="fl word" data-v="MYOB">MYOB</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-soon" data-v="OPENING SOON" data-via="CHECKING" data-live-from="square-myob" data-v-live="LIVE" data-cls-live="st-live">OPENING SOON</span></span>
-            <span class="c-go" role="cell"><a href="#square-myob">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-          </div>
-          <div class="brow" role="row" data-row="1">
-            <span class="c-conn" role="cell"><span class="fl word" data-v="SQUARE SALES">SQUARE SALES</span></span>
-            <span class="c-to" role="cell"><span class="fl word" data-v="XERO">XERO</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-soon" data-v="OPENING SOON" data-via="CHECKING" data-live-from="square-xero" data-v-live="LIVE" data-cls-live="st-live">OPENING SOON</span></span>
-            <span class="c-go" role="cell"><a href="#square-xero">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-          </div>
-          <div class="brow" role="row" data-row="2">
-            <span class="c-conn" role="cell"><span class="fl word" data-v="SUPPLIER INVOICES">SUPPLIER INVOICES</span></span>
-            <span class="c-to" role="cell"><span class="fl word" data-v="MYOB / XERO">MYOB / XERO</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-live" data-v="LIVE" data-via="CHECKING">LIVE</span></span>
-            <span class="c-go" role="cell"><a href="#invoices">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-          </div>
-          <div class="brow" role="row" data-row="3">
-            <span class="c-conn" role="cell"><span class="fl word" data-v="SHOPIFY SALES">SHOPIFY SALES</span></span>
-            <span class="c-to" role="cell"><span class="fl word" data-v="MYOB / XERO">MYOB / XERO</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-coming" data-v="COMING" data-via="CHECKING">COMING</span></span>
-            <span class="c-go" role="cell"><a href="#shopify">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-          </div>
-          <div class="brow" role="row" data-row="4">
-            <span class="c-conn" role="cell"><span class="fl word" data-v="BANK CODING">BANK CODING</span></span>
-            <span class="c-to" role="cell"><span class="fl word" data-v="MYOB / XERO">MYOB / XERO</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-coming" data-v="COMING" data-via="CHECKING">COMING</span></span>
-            <span class="c-go" role="cell"><a href="#bank">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-          </div>
-          <p class="board-note">Crews: Xero payroll and MYOB payroll are part of the crew system. <a href="/construction">Rostering, dockets and EBA payroll</a>.</p>
+        <div class="tcard">
+          <p class="tcard-top"><b>Connections</b><span>Into Xero / MYOB</span></p>
+          <table class="tbl" aria-label="Every connection and whether it is open">
+            <thead><tr><th scope="col">From</th><th scope="col">Into</th><th scope="col">Status</th><th scope="col"><span class="sr">Details</span></th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Square sales</th><td class="c-why">MYOB</td><td class="s"><span class="pill st-soon" data-live-from="square-myob" data-v-live="Live" data-cls-live="st-live">Opening soon</span></td><td class="go"><a href="#square-myob">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
+              <tr><th scope="row">Square sales</th><td class="c-why">Xero</td><td class="s"><span class="pill st-soon" data-live-from="square-xero" data-v-live="Live" data-cls-live="st-live">Opening soon</span></td><td class="go"><a href="#square-xero">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
+              <tr><th scope="row">Supplier invoices</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-live">Live</span></td><td class="go"><a href="#invoices">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
+              <tr><th scope="row">Shopify sales</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-coming">Coming</span></td><td class="go"><a href="#shopify">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
+              <tr><th scope="row">Bank coding</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-coming">Coming</span></td><td class="go"><a href="#bank">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
+            </tbody>
+          </table>
+          <p class="tcard-note">Crews: Xero payroll and MYOB payroll are part of the crew system. <a href="/construction">Rostering, dockets and EBA payroll</a>.</p>
         </div>
       </div>
     </div>
@@ -183,8 +154,8 @@
 <!-- Square into MYOB. Going live: set data-live="true" on this section (and on #square-xero, and the Square rows on /pricing, /join and the homepage). -->
 <section class="conn" id="square-myob" data-live="false" aria-labelledby="h-sqm">
   <div class="wrap">
-    <p class="conn-name"><span class="fl word">Square sales</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="fl word">MYOB</span>
-      <span class="fl word st-soon if-soon">Opening soon</span><span class="fl word st-live if-live">Live</span></p>
+    <p class="conn-name"><span>Square sales</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>MYOB</span>
+      <span class="pill st-soon if-soon">Opening soon</span><span class="pill st-live if-live">Live</span></p>
     <div class="gate-head">
       <h2 id="h-sqm">Each shop's day,<br>in MYOB every night.</h2>
       <div class="gate-copy">
@@ -229,7 +200,7 @@
         <!-- The real Sales > Day Summaries screen, the whole capture, from the app harness (synthetic data).
              Provenance: /screens/sales-days.json -->
         <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." loading="lazy" decoding="async"></div>
-        <figcaption><span class="ex-label">Example data</span><span class="ex-row">08 OCT · SQUARE — 43 ORDERS, HIGH STREET · 1,873.00 · MYOB #1201 · <b class="fl word st-coded ex-st" data-v="POSTED" data-via="READING">POSTED</b></span></figcaption>
+        <figcaption><span class="ex-row">8 Oct · Square, 43 orders, High Street · 1,873.00 · MYOB #1201</span><span class="pill st-coded">Posted</span><span class="ex-label">Example data</span></figcaption>
       </figure>
     </div>
 
@@ -259,8 +230,8 @@
 <!-- Square into Xero. Same switch as above. -->
 <section class="conn" id="square-xero" data-live="false" aria-labelledby="h-sqx">
   <div class="wrap">
-    <p class="conn-name"><span class="fl word">Square sales</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="fl word">Xero</span>
-      <span class="fl word st-soon if-soon">Opening soon</span><span class="fl word st-live if-live">Live</span></p>
+    <p class="conn-name"><span>Square sales</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>Xero</span>
+      <span class="pill st-soon if-soon">Opening soon</span><span class="pill st-live if-live">Live</span></p>
     <div class="gate-head">
       <h2 id="h-sqx">The same day,<br>in Xero.</h2>
       <div class="gate-copy">
@@ -306,8 +277,8 @@
 
 <section class="conn" id="invoices" aria-labelledby="h-inv">
   <div class="wrap">
-    <p class="conn-name"><span class="fl word">Supplier invoices</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="fl word">MYOB / Xero</span>
-      <span class="fl word st-live">Live</span></p>
+    <p class="conn-name"><span>Supplier invoices</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>MYOB / Xero</span>
+      <span class="pill st-live">Live</span></p>
     <div class="gate-head">
       <h2 id="h-inv">Forward the bill.<br>It lands coded.</h2>
       <div class="gate-copy">
@@ -349,7 +320,7 @@
         <!-- The approver's view of a bill, the whole capture, from the app harness (synthetic data).
              Provenance: /screens/invoice-approval.json -->
         <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." loading="lazy" decoding="async"></div>
-        <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b class="fl word st-coded ex-st" data-v="CODED" data-via="READING">CODED</b></span></figcaption>
+        <figcaption><span class="ex-row">30 Sep · Northside Timber &amp; Hardware INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 jobs · GST</span><span class="pill st-coded">Coded</span><span class="ex-label">Example data</span></figcaption>
       </figure>
     </div>
   </div>
@@ -357,13 +328,13 @@
 
 <section class="conn" id="shopify" aria-labelledby="h-shop">
   <div class="wrap">
-    <p class="conn-name"><span class="fl word">Shopify sales</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="fl word">MYOB / Xero</span>
-      <span class="fl word st-coming">Coming</span></p>
+    <p class="conn-name"><span>Shopify sales</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>MYOB / Xero</span>
+      <span class="pill st-coming">Coming</span></p>
     <div class="gate-head">
       <h2 id="h-shop">The till and the online store, posted the Square way.</h2>
       <div class="gate-copy">
         <p class="lede">Shopify POS and your online store will post into Xero or MYOB through the same engine as Square.</p>
-        <div class="blank more"><span class="blank-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><p>The price is set when Shopify opens.</p></div>
+        <div class="blank more"><p>The price is set when Shopify opens.</p></div>
         <p class="gate-acts"><a class="btn hair" href="/#contact">Tell me when it opens</a><a class="btn hair" href="/pricing#shopify">See pricing</a></p>
       </div>
     </div>
@@ -382,13 +353,13 @@
 
 <section class="conn" id="bank" aria-labelledby="h-bank">
   <div class="wrap">
-    <p class="conn-name"><span class="fl word">Bank coding</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span class="fl word">MYOB / Xero</span>
-      <span class="fl word st-coming">Coming</span></p>
+    <p class="conn-name"><span>Bank coding</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>MYOB / Xero</span>
+      <span class="pill st-coming">Coming</span></p>
     <div class="gate-head">
       <h2 id="h-bank">Bank lines coded,<br>so the feed matches itself.</h2>
       <div class="gate-copy">
         <p class="lede">Each bank line written into Xero or MYOB with account, GST, job and memo, so the file's own feed matches it.</p>
-        <div class="blank more"><span class="blank-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><p>No price yet: PayKicker reads lines and writes entries, and never moves money.</p></div>
+        <div class="blank more"><p>No price yet: PayKicker reads lines and writes entries, and never moves money.</p></div>
         <p class="gate-acts"><a class="btn hair" href="/#contact">Tell me when it opens</a><a class="btn hair" href="/pricing#bank-coding">See pricing</a></p>
       </div>
     </div>
@@ -413,7 +384,7 @@
   </div>
 </section>
 
-<section class="gate" id="crews" aria-labelledby="h-crews">
+<section class="gate dark" id="crews" aria-labelledby="h-crews">
   <div class="wrap">
     <div class="gate-head">
       <h2 id="h-crews">Also: Xero payroll and MYOB payroll for crews.</h2>

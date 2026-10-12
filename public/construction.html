@@ -30,9 +30,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=1010f721">
-<script src="/js/board.js?v=9"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=d9f176a3">
+<script src="/js/board.js?v=10"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -111,7 +111,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="230" height="34"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="200" height="30"></a>
     <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
@@ -155,56 +155,23 @@
       </div>
 
       <div class="hero-shot">
-        <div class="board pay" data-flip="0,140,420" data-gap="520" role="table" aria-label="Example pay lines sent to Xero or MYOB, generated from one timesheet" aria-describedby="pay-note">
-          <div class="board-top" aria-hidden="true">
-            <span class="bt-l">Xero / MYOB pay run</span>
-            <span class="bt-r">D003 · Mon 12 Oct</span>
-          </div>
-          <div class="brow bhead" role="row">
-            <span class="c-pay" role="columnheader">Pay category</span>
-            <span class="c-why" role="columnheader">From the timesheet</span>
-            <span class="c-units" role="columnheader">Units</span>
-            <span class="c-stat" role="columnheader">Status</span>
-          </div>
-          <div class="brow" role="row" data-row="0">
-            <span class="c-pay" role="cell"><span class="fl word" data-v="BASE HOURLY">BASE HOURLY</span></span>
-            <span class="c-why" role="cell">8&nbsp;hrs, 0.80&nbsp;to&nbsp;the&nbsp;RDO&nbsp;bank</span>
-            <span class="c-units" role="cell"><span class="fl chars" data-v="7.20">7.20</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
-          </div>
-          <div class="brow" role="row" data-row="1">
-            <span class="c-pay" role="cell"><span class="fl word" data-v="OVERTIME 2.0X">OVERTIME 2.0X</span></span>
-            <span class="c-why" role="cell"><span class="tag">EBA rule</span>&gt;8 hrs</span>
-            <span class="c-units" role="cell"><span class="fl chars" data-v="2.00">2.00</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
-          </div>
-          <div class="brow" role="row" data-row="2">
-            <span class="c-pay" role="cell"><span class="fl word" data-v="SITE ALLOWANCE TOWER">SITE ALLOWANCE TOWER</span></span>
-            <span class="c-why" role="cell"><span class="tag">EBA rule</span>10.70 per&nbsp;hr, 7.20&nbsp;+&nbsp;2</span>
-            <span class="c-units" role="cell"><span class="fl chars" data-v="9.20">9.20</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
-          </div>
-          <div class="brow" role="row" data-row="3">
-            <span class="c-pay" role="cell"><span class="fl word" data-v="FARES &amp; TRAVEL">FARES &amp; TRAVEL</span></span>
-            <span class="c-why" role="cell">Daily</span>
-            <span class="c-units" role="cell"><span class="fl chars" data-v="1.00">1.00</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
-          </div>
-          <div class="brow" role="row" data-row="4">
-            <span class="c-pay" role="cell"><span class="fl word" data-v="MEAL ALLOWANCE O/T">MEAL ALLOWANCE O/T</span></span>
-            <span class="c-why" role="cell">Auto, OT ≥1.5h</span>
-            <span class="c-units" role="cell"><span class="fl chars" data-v="1.00">1.00</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
-          </div>
-          <div class="brow" role="row" data-row="5">
-            <span class="c-pay" role="cell"><span class="fl word" data-v="JOB COSTING">JOB COSTING</span></span>
-            <span class="c-why" role="cell">Labour onto the job</span>
-            <span class="c-units" role="cell"><span class="fl chars" data-v="T1">T1</span></span>
-            <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
-          </div>
-          <p class="board-note" id="pay-note"><b>One tap from the worker. Every rule from the agreement. Zero spreadsheets.</b> One worker, one day. Lines marked EBA rule are applied from the agreement.</p>
+        <!-- One worker's day as the pay lines sent to Xero or MYOB (example data). -->
+        <div class="tcard">
+          <p class="tcard-top"><b>Xero / MYOB pay run</b><span>D003 · Mon 12 Oct</span></p>
+          <table class="tbl" aria-label="Example pay lines sent to Xero or MYOB, generated from one timesheet" aria-describedby="pay-note">
+            <thead><tr><th scope="col">Pay category</th><th scope="col">From the timesheet</th><th scope="col" class="n">Units</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Base hourly</th><td class="c-why">8&nbsp;hrs, 0.80&nbsp;to&nbsp;the&nbsp;RDO&nbsp;bank</td><td class="n u">7.20</td><td class="s"><span class="pill st-coded">Coded</span></td></tr>
+              <tr><th scope="row">Overtime 2.0x</th><td class="c-why"><span class="tag">EBA rule</span>&gt;8 hrs</td><td class="n u">2.00</td><td class="s"><span class="pill st-coded">Coded</span></td></tr>
+              <tr><th scope="row">Site allowance Tower</th><td class="c-why"><span class="tag">EBA rule</span>10.70 per&nbsp;hr, 7.20&nbsp;+&nbsp;2</td><td class="n u">9.20</td><td class="s"><span class="pill st-coded">Coded</span></td></tr>
+              <tr><th scope="row">Fares &amp; travel</th><td class="c-why">Daily</td><td class="n u">1.00</td><td class="s"><span class="pill st-coded">Coded</span></td></tr>
+              <tr><th scope="row">Meal allowance O/T</th><td class="c-why">Auto, OT ≥1.5h</td><td class="n u">1.00</td><td class="s"><span class="pill st-coded">Coded</span></td></tr>
+              <tr><th scope="row">Job costing</th><td class="c-why">Labour onto the job</td><td class="n u">T1</td><td class="s"><span class="pill st-coded">Coded</span></td></tr>
+            </tbody>
+          </table>
+          <p class="tcard-note" id="pay-note"><b>One tap from the worker. Every rule from the agreement. Zero spreadsheets.</b> One worker, one day. Lines marked EBA rule are applied from the agreement.</p>
         </div>
-        <p class="hero-ex"><span class="ex-label">Example data</span></p>
+        <p class="hero-ex">Example data</p>
       </div>
     </div>
   </div>
@@ -216,17 +183,17 @@
     <div class="duo">
     <div class="duo-copy">
     <ul class="rows">
-      <li><span class="fl word">Rostering &amp; safety</span><p><b>Daily boards</b>, induction gates, SWMS signed before work, SMS to the crew.</p></li>
-      <li><span class="fl word">Dockets &amp; cost reports</span><p><b>Signed on site</b> or by secure link, a cost report, one-click invoicing.</p></li>
-      <li><span class="fl word">EBA payroll</span><p><b>Every clause encoded once</b>; the pay run to Xero or MYOB in one click.</p></li>
-      <li><span class="fl word">Cashflow</span><p><b>Thirteen weeks of the money</b>: wages, bills, builder claims, what to chase.</p></li>
+      <li><span class="r-name">Rostering &amp; safety</span><p><b>Daily boards</b>, induction gates, SWMS signed before work, SMS to the crew.</p></li>
+      <li><span class="r-name">Dockets &amp; cost reports</span><p><b>Signed on site</b> or by secure link, a cost report, one-click invoicing.</p></li>
+      <li><span class="r-name">EBA payroll</span><p><b>Every clause encoded once</b>; the pay run to Xero or MYOB in one click.</p></li>
+      <li><span class="r-name">Cashflow</span><p><b>Thirteen weeks of the money</b>: wages, bills, builder claims, what to chase.</p></li>
     </ul>
     <p class="rows-foot">Onboarding &amp; tickets come with every plan. Payroll runs on top of rostering.</p>
     </div>
     <figure class="exhibit duo-shot">
       <!-- The office's home screen, the whole capture, from the app harness (synthetic data). Provenance: /screens/office-day.json -->
       <div class="win"><img src="/screens/office-day.webp" width="1271" height="1080" alt="PayKicker's home screen for the office, example data: Monday 12 October, 8 things need you, 37 crew, 13 sites, 36 timesheets to approve and 237 to export; Needs you (a casual conversion, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers onboarding, tickets to verify and tickets expiring); today on site by crew; hours this week, upcoming leave, the week's roster and dockets this week." decoding="async" loading="lazy"></div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">MON 12 OCT · 8 THINGS NEED YOU · 24 ON THE TOOLS · 8 SITES</span></figcaption>
+      <figcaption><span class="ex-row">Mon 12 Oct · 8 things need you · 24 on the tools · 8 sites</span><span class="ex-label">Example data</span></figcaption>
     </figure>
     </div>
   </div>
@@ -256,10 +223,10 @@
       <div class="srow"><span class="stag">Cost reports</span><h3>Instant cost reports</h3><p>Any project, any dates, valued against your rates, signature status shown.</p></div>
       <div class="srow"><span class="stag">Invoicing</span><h3>Dockets to invoice in one click</h3><p>Signed dockets become one Xero or MYOB invoice, signed sheets attached.</p></div>
     </div>
-    <figure class="exhibit ex-left ex-pair">
+    <figure class="exhibit ex-pair">
       <!-- The rostering board and the worker's timesheet, each the whole capture, from the app harness (synthetic data). Provenance: /screens/roster-board.json, /screens/timesheet-phone.json -->
       <div class="shot-pair"><div class="win"><img src="/screens/roster-board.webp" width="1012" height="860" alt="PayKicker rostering board, example data: a draft day with eight sites, each with its crew and start and finish, the people still to place, and a warning that one worker can't be placed on a site because he hasn't done its induction." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/timesheet-phone.webp" width="390" height="912" alt="PayKicker on a worker's phone, example data: today's timesheet, site Tower, start 6:00 AM, finish 4:30 PM, 10 hours with lunch deducted, and the Submit day button." loading="lazy" decoding="async"></div></div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">MON 12 OCT · TOWER · 06:00–16:30 · 10.00 HRS · <b class="fl word st-coded ex-st" data-v="SUBMITTED" data-via="READING">SUBMITTED</b></span></figcaption>
+      <figcaption><span class="ex-row">Mon 12 Oct · Tower · 06:00–16:30 · 10.00 hrs</span><span class="pill st-coded">Submitted</span><span class="ex-label">Example data</span></figcaption>
     </figure>
     <p class="more"><a class="tl" href="/digital-dayworks-docket">Digital dayworks dockets, and why docket-to-pay beats docket-to-invoice<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
   </div>
@@ -290,13 +257,13 @@
       </div>
     </div>
     <ul class="rule-cells" aria-label="Rules the engine applies">
-      <li class="fl word">Overtime</li>
-      <li class="fl word">Weekends</li>
-      <li class="fl word">RDOs</li>
-      <li class="fl word">Allowances</li>
-      <li class="fl word">Travel</li>
-      <li class="fl word">Casual loadings</li>
-      <li class="fl word">Public holidays</li>
+      <li>Overtime</li>
+      <li>Weekends</li>
+      <li>RDOs</li>
+      <li>Allowances</li>
+      <li>Travel</li>
+      <li>Casual loadings</li>
+      <li>Public holidays</li>
     </ul>
   </div>
 </section>
@@ -334,7 +301,7 @@
   </div>
 </section>
 
-<section class="talk" id="contact" aria-labelledby="h-talk">
+<section class="talk dark" id="contact" aria-labelledby="h-talk">
   <div class="wrap talk-in">
     <div class="talk-side">
       <h2 id="h-talk">See your own EBA running in it.</h2>

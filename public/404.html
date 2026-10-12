@@ -17,26 +17,21 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=1010f721">
-<script src="/js/board.js?v=9"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=d9f176a3">
+<script src="/js/board.js?v=10"></script>
 <style>
-  /* Not found: one row on the board, and it is not on it. */
-  .lost{padding:clamp(48px,8*var(--vw),120px) 0 clamp(72px,10*var(--vw),150px)}
+  /* Not found: one row, and this page is not on it. */
+  .lost{padding:clamp(56px,8*var(--vw),120px) 0 clamp(72px,10*var(--vw),140px)}
   .lost h1{max-width:14ch}
   .lost h1 span{display:block}
-  .lost .strap{margin-top:22px;max-width:40ch}
-  .board.lost-b{--cols:max-content minmax(0,1fr) max-content;max-width:60rem}
-  .lost-b .c-stat .fl{min-width:12.5rem}
-  .lost-b .c-stat .fl,.lost-b .c-stat .fl .lf>b{text-align:center}
-  .fl.st-off{color:var(--amber)}
+  .lost-row{display:grid;grid-template-columns:max-content minmax(0,1fr) max-content;gap:12px 24px;align-items:center;max-width:44rem;margin-top:40px;padding:18px 24px;background:#fff;border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}
+  .lost-row .code{font-weight:600;font-size:1.75rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .lost-row .what{color:var(--ink-2)}
+  .lost .strap{margin-top:28px;max-width:40ch}
   .lost .acts{margin-top:32px;align-items:center;gap:14px 24px}
-  .lost .small{font-family:var(--f-board);font-weight:700;font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
-  @media (max-width:640px){
-    .board.lost-b{--cols:max-content minmax(0,1fr)}
-    .lost-b .c-stat{grid-column:1/-1}
-    .lost-b .c-stat .fl{min-width:0}
-  }
+  .lost .small{color:var(--ink-2);font-size:14px}
+  @media (max-width:560px){.lost-row{grid-template-columns:max-content minmax(0,1fr)}.lost-row .pill{grid-column:1/-1;justify-self:start}}
 </style>
 </head>
 <body>
@@ -58,7 +53,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="230" height="34"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="200" height="30"></a>
     <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
@@ -80,18 +75,15 @@
 <main id="main" class="hero lost">
   <div class="wrap">
     <h1><span>Wrong gate, mate.</span><span>Nothing here.</span></h1>
-    <div class="board lost-b" data-flip data-gap="0" aria-hidden="true">
-      <div class="board-top"><span class="bt-l">paykicker.com.au</span><span class="bt-r">Departures</span></div>
-      <div class="brow" data-row="0">
-        <span class="c-time"><span class="fl chars" data-v="404">404</span></span>
-        <span class="c-entry"><span class="fl word" data-v="THIS PAGE">THIS PAGE</span></span>
-        <span class="c-stat"><span class="fl word st-off" data-v="NOT ON THE BOARD" data-via="CHECKING">NOT ON THE BOARD</span></span>
-      </div>
+    <div class="lost-row" aria-hidden="true">
+      <span class="code">404</span>
+      <span class="what">This page</span>
+      <span class="pill st-soon">Not on the board</span>
     </div>
     <p class="strap">The page you're after doesn't exist — it might have moved, or the link had a typo.</p>
     <div class="acts">
       <a class="btn go big" href="/">Back to the site office</a>
-      <p class="small">PAYKICKER · paykicker.com.au</p>
+      <p class="small">PayKicker · paykicker.com.au</p>
     </div>
   </div>
 </main>
