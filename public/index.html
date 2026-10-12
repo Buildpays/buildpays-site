@@ -259,65 +259,10 @@
       </div>
     </div>
 
-    <figure class="exhibit ex-right">
-      <!-- Exhibit: Invoices, one bill. Drawn in HTML; swap for a capture when the build lands. -->
-      <div class="screen scr-bill">
-        <div class="app-bar">
-          <img src="/paykicker-icon.svg" alt="" width="20" height="20">
-          <span class="ab-t">Invoices</span>
-          <span class="ab-tabs"><span>Inbox</span><span class="on">Bills</span><span>Suppliers</span><span>Reports</span></span>
-          <span class="ab-co">Southline Formwork Pty Ltd</span>
-        </div>
-        <div class="bill">
-          <div class="bill-top">
-            <div>
-              <p class="bt-sup">Westgate Reo Supplies</p>
-              <p class="bt-meta">Invoice 44821 · 04 Jul · Due 31 Jul</p>
-            </div>
-            <ol class="path" aria-label="Approval path">
-              <li class="done"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>To submit</li>
-              <li class="done"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Approved</li>
-              <li class="now"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>In MYOB</li>
-            </ol>
-          </div>
-          <div class="bill-body">
-            <div class="doc" aria-label="The supplier's PDF">
-              <p class="doc-h">TAX INVOICE</p>
-              <p class="doc-s">Westgate Reo Supplies</p>
-              <p class="doc-m">Invoice 44821<br>04 Jul</p>
-              <ul class="doc-l">
-                <li><span>N12 reo bar, 6 m</span><span>2,640.00</span></li>
-                <li><span>N16 reo bar, 6 m</span><span>980.00</span></li>
-                <li><span>Bar chairs, tie wire</span><span>300.00</span></li>
-              </ul>
-              <p class="doc-t"><span>GST</span><span>392.00</span></p>
-              <p class="doc-t tot"><span>Total</span><span>4,312.00</span></p>
-            </div>
-            <div class="fields">
-              <div class="checks">
-                <span class="chip ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>ABN matched</span>
-                <span class="chip ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Two readers agree</span>
-                <span class="chip ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Not already in MYOB</span>
-              </div>
-              <table class="lines">
-                <thead><tr><th>Line</th><th>Account</th><th>Job</th><th>Tax</th><th class="n">Amount</th></tr></thead>
-                <tbody>
-                  <tr><td>N12 reo bar, 6 m</td><td>6-2100 Materials</td><td>WGT01</td><td>GST</td><td class="n">2,640.00</td></tr>
-                  <tr><td>N16 reo bar, 6 m</td><td>6-2100 Materials</td><td>WGT01</td><td>GST</td><td class="n">980.00</td></tr>
-                  <tr><td>Bar chairs, tie wire</td><td>6-2100 Materials</td><td>WGT01</td><td>GST</td><td class="n">300.00</td></tr>
-                </tbody>
-                <tfoot>
-                  <tr><td colspan="4">Subtotal</td><td class="n">3,920.00</td></tr>
-                  <tr><td colspan="4">GST</td><td class="n">392.00</td></tr>
-                  <tr class="tot"><td colspan="4">Total</td><td class="n">4,312.00</td></tr>
-                </tfoot>
-              </table>
-              <p class="posted"><span class="pill green">In MYOB</span> Bill posted, ready to pay in MYOB.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">04 JUL · WESTGATE REO SUPPLIES INV 44821 · 4,312.00 · 6-2100 MATERIALS · WGT01 · GST · <b>CODED</b></span></figcaption>
+    <figure class="exhibit ex-right ex-shot">
+      <!-- Exhibit: the real Invoices screen, captured from the app harness (synthetic data). Provenance: /screens/invoices-bill.json -->
+      <div class="screen shot"><img src="/screens/invoices-bill.webp" width="1012" height="1064" alt="PayKicker Invoices screen, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30, read from the supplier's PDF shown beside it, in review, every check passed, each line coded to an account, a job and GST, with Approve, Hold and Reject." loading="lazy" decoding="async"></div>
+      <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b>CODED</b></span></figcaption>
     </figure>
   </div>
 </section>
@@ -333,35 +278,10 @@
       </div>
     </div>
 
-    <figure class="exhibit ex-left">
-      <!-- Exhibit: Sales, Day Summaries. Drawn in HTML; swap for a capture when the build lands. -->
-      <div class="screen scr-sales">
-        <div class="app-bar">
-          <img src="/paykicker-icon.svg" alt="" width="20" height="20">
-          <span class="ab-t">Sales</span>
-          <span class="ab-tabs"><span>Locations</span><span class="on">Day Summaries</span><span>Payouts</span><span>Set Up Integration</span></span>
-          <span class="ab-co">Posting to Xero</span>
-        </div>
-        <div class="sales">
-          <div class="sales-top">
-            <span class="loc">Brunswick</span>
-            <span class="sub">Square · one sales invoice a day</span>
-          </div>
-          <table class="days">
-            <thead><tr><th>Day</th><th class="n">Orders</th><th class="n">Sales</th><th class="n">Refunds</th><th class="n">GST</th><th class="n">Card</th><th class="n">Cash</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td data-l="Day">Wed 08 Jul</td><td class="n" data-l="Orders">187</td><td class="n" data-l="Sales">1,603.50</td><td class="n" data-l="Refunds">0.00</td><td class="n" data-l="GST">145.77</td><td class="n" data-l="Card">1,388.10</td><td class="n" data-l="Cash">215.40</td><td data-l="Status"><span class="pill amber">Posts tonight</span></td></tr>
-              <tr class="hl"><td data-l="Day">Tue 07 Jul</td><td class="n" data-l="Orders">212</td><td class="n" data-l="Sales">1,842.00</td><td class="n" data-l="Refunds">0.00</td><td class="n" data-l="GST">167.45</td><td class="n" data-l="Card">1,596.40</td><td class="n" data-l="Cash">245.60</td><td data-l="Status"><span class="pill green">Posted · INV-0187</span></td></tr>
-              <tr><td data-l="Day">Mon 06 Jul</td><td class="n" data-l="Orders">164</td><td class="n" data-l="Sales">1,377.20</td><td class="n" data-l="Refunds">24.50</td><td class="n" data-l="GST">122.97</td><td class="n" data-l="Card">1,170.30</td><td class="n" data-l="Cash">182.40</td><td data-l="Status"><span class="pill green">Posted · INV-0186</span></td></tr>
-              <tr><td data-l="Day">Sun 05 Jul</td><td class="n" data-l="Orders">241</td><td class="n" data-l="Sales">2,118.90</td><td class="n" data-l="Refunds">0.00</td><td class="n" data-l="GST">186.40</td><td class="n" data-l="Card">1,842.35</td><td class="n" data-l="Cash">276.55</td><td data-l="Status"><span class="pill green">Posted · INV-0185</span></td></tr>
-              <tr><td data-l="Day">Sat 04 Jul</td><td class="n" data-l="Orders">266</td><td class="n" data-l="Sales">2,406.30</td><td class="n" data-l="Refunds">12.00</td><td class="n" data-l="GST">217.66</td><td class="n" data-l="Card">2,071.80</td><td class="n" data-l="Cash">322.50</td><td data-l="Status"><span class="pill green">Posted · INV-0184</span></td></tr>
-              <tr><td data-l="Day">Fri 03 Jul</td><td class="n" data-l="Orders">198</td><td class="n" data-l="Sales">1,690.10</td><td class="n" data-l="Refunds">0.00</td><td class="n" data-l="GST">153.65</td><td class="n" data-l="Card">1,459.25</td><td class="n" data-l="Cash">230.85</td><td data-l="Status"><span class="pill green">Posted · INV-0183</span></td></tr>
-            </tbody>
-          </table>
-          <p class="sales-foot">Card to Square clearing · cash to the till · fees settled on each payout</p>
-        </div>
-      </div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">07 JUL · SQUARE — 212 ORDERS, BRUNSWICK · 1,842.00 · 4-1000 SALES · BRUNSWICK · GST · <b>CODED</b></span></figcaption>
+    <figure class="exhibit ex-left ex-shot">
+      <!-- Exhibit: the real Sales > Day Summaries screen, captured from the app harness (synthetic data). Provenance: /screens/sales-days.json -->
+      <div class="screen shot"><img src="/screens/sales-days.webp" width="1012" height="710" alt="PayKicker Sales screen, Day Summaries, example data: October's orders, net sales, GST and takings for one Square location, then each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers, one needing attention." loading="lazy" decoding="async"></div>
+      <figcaption><span class="ex-label">Example data</span><span class="ex-row">08 OCT · SQUARE — 43 ORDERS, HIGH STREET · 1,873.00 · MYOB #1201 · <b>POSTED</b></span></figcaption>
     </figure>
 
     <div class="coming">
@@ -392,36 +312,8 @@
     </div>
 
     <figure class="exhibit ex-right">
-      <!-- Exhibit: the morning allocation board plus a worker's one-tap timesheet. Drawn in HTML; swap for a capture. -->
-      <div class="screen scr-crew">
-        <div class="app-bar">
-          <img src="/paykicker-icon.svg" alt="" width="20" height="20">
-          <span class="ab-t">Allocation</span>
-          <span class="ab-tabs"><span class="on">Tue 07 Jul</span><span>Wed 08 Jul</span><span>Crew</span><span>Dockets</span></span>
-          <span class="ab-co">Southline Formwork Pty Ltd</span>
-        </div>
-        <div class="crew">
-          <div class="alloc">
-            <div class="alloc-top"><span class="site">WGT01</span><span class="sub">Start 7:00 · 6 rostered · SMS sent 6:04</span></div>
-            <ul class="people">
-              <li><span class="nm">Marko Petrović</span><span class="cl">Leading hand</span><span class="gt ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Inducted</span><span class="gt ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tickets</span></li>
-              <li><span class="nm">Sione Taufa</span><span class="cl">Formworker</span><span class="gt ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Inducted</span><span class="gt warn"><svg class="ic" aria-hidden="true"><use href="#i-warn"/></svg>Ticket expiring 14 Jul</span></li>
-              <li><span class="nm">Daniel Reyes</span><span class="cl">Formworker</span><span class="gt ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Inducted</span><span class="gt ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tickets</span></li>
-              <li><span class="nm">Liam O'Brien</span><span class="cl">Crane dogman</span><span class="gt ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Inducted</span><span class="gt ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tickets</span></li>
-              <li><span class="nm">Hamid Rahimi</span><span class="cl">Labourer</span><span class="gt ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Inducted</span><span class="gt ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Tickets</span></li>
-              <li class="blocked"><span class="nm">Jack Byrne</span><span class="cl">Formworker</span><span class="gt no">Not inducted on WGT01</span><span class="gt no">Can't be rostered</span></li>
-            </ul>
-          </div>
-          <div class="tap" aria-label="A worker's timesheet on the phone">
-            <p class="tap-d">Tue 07 Jul</p>
-            <p class="tap-s">WGT01 · 7:00 to 3:30</p>
-            <p class="tap-h"><span>Hours</span><b>8.0</b></p>
-            <p class="tap-h"><span>Site allowance</span><b>Yes</b></p>
-            <span class="tap-btn">Submit timesheet</span>
-            <p class="tap-n">One tap. Split across sites if the day was.</p>
-          </div>
-        </div>
-      </div>
+      <!-- Exhibit: the real rostering board and the worker's timesheet on a phone, captured from the app harness (synthetic data). Provenance: /screens/roster-board.json, /screens/timesheet-phone.json -->
+      <div class="shot-pair"><div class="screen shot"><img src="/screens/roster-board.webp" width="1012" height="860" alt="PayKicker rostering board, example data: a draft day with eight sites, each with its crew and start and finish, the people still to place, and a warning that one worker can't be placed on a site because he hasn't done its induction." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/timesheet-phone.webp" width="390" height="912" alt="PayKicker on a worker's phone, example data: today's timesheet, site Tower, start 6:00 AM, finish 4:30 PM, 10 hours with lunch deducted, and the Submit day button." loading="lazy" decoding="async"></div></div>
       <figcaption><span class="ex-label">Example data</span><span class="ex-row">03 JUL · WAGES — EBA PAY RUN W27 · 38,412.60 · 6-1000 WAGES · WGT01 · <b>CODED</b></span></figcaption>
     </figure>
   </div>

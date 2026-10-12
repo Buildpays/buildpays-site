@@ -150,65 +150,10 @@
       </div>
     </div>
 
-    <figure class="exhibit ex-right">
-      <!-- Exhibit: Invoices, one bill. Drawn in HTML from the app's screen; example data. -->
-      <div class="screen scr-bill">
-        <div class="app-bar">
-          <img src="/paykicker-icon.svg" alt="" width="20" height="20">
-          <span class="ab-t">Invoices</span>
-          <span class="ab-tabs"><span>Inbox</span><span class="on">Bills</span><span>Suppliers</span><span>Reports</span></span>
-          <span class="ab-co">Southline Formwork Pty Ltd</span>
-        </div>
-        <div class="bill">
-          <div class="bill-top">
-            <div>
-              <p class="bt-sup">Westgate Reo Supplies</p>
-              <p class="bt-meta">Invoice 44821 · 04 Jul · Due 31 Jul</p>
-            </div>
-            <ol class="path" aria-label="Approval path">
-              <li class="done"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>To submit</li>
-              <li class="done"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Approved</li>
-              <li class="now"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>In MYOB</li>
-            </ol>
-          </div>
-          <div class="bill-body">
-            <div class="doc" aria-label="The supplier's PDF">
-              <p class="doc-h">TAX INVOICE</p>
-              <p class="doc-s">Westgate Reo Supplies</p>
-              <p class="doc-m">Invoice 44821<br>04 Jul</p>
-              <ul class="doc-l">
-                <li><span>N12 reo bar, 6 m</span><span>2,640.00</span></li>
-                <li><span>N16 reo bar, 6 m</span><span>980.00</span></li>
-                <li><span>Bar chairs, tie wire</span><span>300.00</span></li>
-              </ul>
-              <p class="doc-t"><span>GST</span><span>392.00</span></p>
-              <p class="doc-t tot"><span>Total</span><span>4,312.00</span></p>
-            </div>
-            <div class="fields">
-              <div class="checks">
-                <span class="chip ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>ABN matched</span>
-                <span class="chip ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Two readers agree</span>
-                <span class="chip ok"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Not already in MYOB</span>
-              </div>
-              <table class="lines">
-                <thead><tr><th>Line</th><th>Account</th><th>Job</th><th>Tax</th><th class="n">Amount</th></tr></thead>
-                <tbody>
-                  <tr><td>N12 reo bar, 6 m</td><td>6-2100 Materials</td><td>WGT01</td><td>GST</td><td class="n">2,640.00</td></tr>
-                  <tr><td>N16 reo bar, 6 m</td><td>6-2100 Materials</td><td>WGT01</td><td>GST</td><td class="n">980.00</td></tr>
-                  <tr><td>Bar chairs, tie wire</td><td>6-2100 Materials</td><td>WGT01</td><td>GST</td><td class="n">300.00</td></tr>
-                </tbody>
-                <tfoot>
-                  <tr><td colspan="4">Subtotal</td><td class="n">3,920.00</td></tr>
-                  <tr><td colspan="4">GST</td><td class="n">392.00</td></tr>
-                  <tr class="tot"><td colspan="4">Total</td><td class="n">4,312.00</td></tr>
-                </tfoot>
-              </table>
-              <p class="posted"><span class="pill green">In MYOB</span> Bill posted, ready to pay in MYOB.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">04 JUL · WESTGATE REO SUPPLIES INV 44821 · 4,312.00 · 6-2100 MATERIALS · WGT01 · GST · <b>CODED</b></span></figcaption>
+    <figure class="exhibit ex-right ex-shot">
+      <!-- Exhibit: the real Invoices screen, captured from the app harness (synthetic data). Provenance: /screens/invoices-bill.json -->
+      <div class="screen shot"><img src="/screens/invoices-bill.webp" width="1012" height="1064" alt="PayKicker Invoices screen, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30, read from the supplier's PDF shown beside it, in review, every check passed, each line coded to an account, a job and GST, with Approve, Hold and Reject." decoding="async"></div>
+      <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b>CODED</b></span></figcaption>
     </figure>
   </div>
 </section>

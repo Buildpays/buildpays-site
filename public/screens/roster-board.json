@@ -1,0 +1,16 @@
+{
+  "source": "app harness /harness.html?role=admin&mods=rostering&tour=0#allocate (Reopen board, then Thomas Lee dragged onto Tower)",
+  "app_commit": "b3e6407ffdc1b29e810345dec5303ce6e2e41852",
+  "app_branch": "pass-855-bank-pdf (main + the bank passes)",
+  "captured": "2026-10-12T03:03:56.908Z",
+  "viewport": "1280x900@2",
+  "clip_css_px": {
+    "x": 256,
+    "y": 126,
+    "width": 1012,
+    "height": 860
+  },
+  "format": "webp q88",
+  "shows": "Rostering daily board reopened as a draft: eight sites with crew and start/finish, the To place tray, and a drop refused at the induction gate",
+  "data": "synthetic (harness fakes): the fixture site names that are real Melbourne projects replaced in flight with made-up ones (e.g. Riverside Quay Stage 2, Kingsway Apartments); nothing written to the app repo; per-site start/finish filled on the seeded roster (the fixture leaves them empty); Reopen board, then Thomas Lee dragged onto Tower"
+}

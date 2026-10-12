@@ -144,18 +144,13 @@
     </div>
 
     <div class="demo">
-      <div class="ts" role="img" aria-label="A worker's one-tap timesheet: Tuesday 7 July, on site WGT01, on at 06:00, off at 16:30, 30 minute break">
-        <p class="ts-k">Timesheet</p>
-        <p class="ts-d">Tue 07 Jul</p>
-        <dl><dt>On</dt><dd>06:00</dd><dt>Off</dt><dd>16:30</dd><dt>Break</dt><dd>30 min</dd><dt>Site</dt><dd>WGT01</dd></dl>
-        <p class="ts-tap"><svg class="ic" aria-hidden="true"><use href="#i-tap"/></svg>Submit</p>
-        <p class="ts-n">One tap</p>
-      </div>
+      <!-- The real worker timesheet on a phone, captured from the app harness (synthetic data). Provenance: /screens/timesheet-phone.json -->
+      <figure class="phone-shot ts-shot"><img src="/screens/timesheet-phone.webp" width="390" height="912" alt="PayKicker on a worker's phone, example data: today's timesheet, site Tower, start 6:00 AM, finish 4:30 PM, 10 hours with lunch deducted, and the Submit day button." decoding="async"><figcaption><span class="ex-label">Example data</span></figcaption></figure>
 
       <div class="board pay" data-flip="0,140,420" data-gap="520" role="table" aria-label="Example pay lines sent to Xero or MYOB, generated from one timesheet" aria-describedby="pay-note">
         <div class="board-top" aria-hidden="true">
           <span class="bt-l">Xero / MYOB pay run</span>
-          <span class="bt-r">E0012 · Tue 07 Jul</span>
+          <span class="bt-r">D003 · Mon 12 Oct</span>
         </div>
         <div class="brow bhead" role="row">
           <span class="c-pay" role="columnheader">Pay category</span>
@@ -176,7 +171,7 @@
           <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
         </div>
         <div class="brow" role="row" data-row="2">
-          <span class="c-pay" role="cell"><span class="fl word" data-v="SITE ALLOWANCE WGT01">SITE ALLOWANCE WGT01</span></span>
+          <span class="c-pay" role="cell"><span class="fl word" data-v="SITE ALLOWANCE TOWER">SITE ALLOWANCE TOWER</span></span>
           <span class="c-why" role="cell"><span class="tag">EBA rule</span>10.70, per hr, 7.20 + 2</span>
           <span class="c-units" role="cell"><span class="fl chars" data-v="9.20">9.20</span></span>
           <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
@@ -196,7 +191,7 @@
         <div class="brow" role="row" data-row="5">
           <span class="c-pay" role="cell"><span class="fl word" data-v="JOB COSTING">JOB COSTING</span></span>
           <span class="c-why" role="cell">Labour onto the job</span>
-          <span class="c-units" role="cell"><span class="fl chars" data-v="WGT01">WGT01</span></span>
+          <span class="c-units" role="cell"><span class="fl chars" data-v="T1">T1</span></span>
           <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
         </div>
         <p class="board-note" id="pay-note"><b>One tap from the worker. Every rule from the agreement. Zero spreadsheets.</b> Example data: one worker, one day. Lines marked EBA rule are applied from the agreement.</p>
