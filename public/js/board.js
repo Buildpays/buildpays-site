@@ -1,4 +1,4 @@
-// The site's few behaviours: the dark preview switch, the product on/off switches, the nav (scroll state, one orange in
+// The site's few behaviours: the light theme switch (dark is the default), the product on/off switches, the nav (scroll state, one orange in
 // view, the phone menu), the full-size view of every product window, the homepage's screen slideshow, and a once-only
 // fade-up as sections and cards enter.
 // Loaded in <head> without defer so the "js", theme and reveal classes are set before first paint; everything that
@@ -10,27 +10,30 @@
   var canReveal = !still && 'IntersectionObserver' in window;
   if (canReveal) root.classList.add('rv-on');
 
-  // The dark preview: ?theme=dark turns it on and keeps it for the tab (sessionStorage); ?theme=light clears it.
-  // Storage can be missing or throw (private windows, blocked site data): then the query alone decides.
-  var dark = false;
+  // Dark is the default. ?theme=light turns the light theme on and keeps it for the tab (sessionStorage); ?theme=dark
+  // clears it. Storage can be missing or throw (private windows, blocked site data): then the query alone decides.
+  var light = false;
   try {
     var q = (location.search.match(/[?&]theme=(dark|light)\b/) || [])[1];
-    if (q === 'dark') sessionStorage.setItem('pk-theme', 'dark');
-    else if (q === 'light') sessionStorage.removeItem('pk-theme');
-    dark = q === 'dark' || (q !== 'light' && sessionStorage.getItem('pk-theme') === 'dark');
-  } catch (e) { dark = /[?&]theme=dark\b/.test(location.search); }
+    if (q === 'light') sessionStorage.setItem('pk-theme', 'light');
+    else if (q === 'dark') sessionStorage.removeItem('pk-theme');
+    light = q === 'light' || (q !== 'dark' && sessionStorage.getItem('pk-theme') === 'light');
+  } catch (e) { light = /[?&]theme=light\b/.test(location.search); }
   var MARK_DARK = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23f25c1f' d='M15 0H85A15 15 0 0 1 100 15V85A15 15 0 0 1 85 100H15A15 15 0 0 1 0 85V15A15 15 0 0 1 15 0Z'/%3E%3Cpath fill='%2312293f' d='M61.52 18.32L32.72 54.32L47.12 54.32L38.48 81.68L67.28 45.68L52.88 45.68Z'/%3E%3C/svg%3E";
   function themeColor() {
     var m = document.querySelector('meta[name="theme-color"]');
-    if (m) m.setAttribute('content', '#0b0f14');
+    if (m) m.setAttribute('content', '#ffffff');
   }
-  if (dark) { root.setAttribute('data-theme', 'dark'); themeColor(); }
-  // The logo and the mark: the reversed artwork (CSS swaps it too, before paint; this covers the rest).
+  if (light) { root.setAttribute('data-theme', 'light'); themeColor(); }
+  // The logo and the mark (CSS swaps them too, before paint; this covers the rest): the pages carry the reversed logo,
+  // and the light theme puts the dark-on-white one back; on the dark ground the mark is drawn the reversed way.
   function applyTheme() {
-    if (!dark) return;
-    themeColor();
-    document.querySelectorAll('img[src$="paykicker-logo.svg"]').forEach(function (i) { i.src = i.getAttribute('src').replace('paykicker-logo.svg', 'paykicker-logo-reversed.svg'); });
-    document.querySelectorAll('img[src$="paykicker-icon.svg"]').forEach(function (i) { i.src = MARK_DARK; });
+    if (light) {
+      themeColor();
+      document.querySelectorAll('img[src$="paykicker-logo-reversed.svg"]').forEach(function (i) { i.src = i.getAttribute('src').replace('paykicker-logo-reversed.svg', 'paykicker-logo.svg'); });
+    } else {
+      document.querySelectorAll('img[src$="paykicker-icon.svg"]').forEach(function (i) { i.src = MARK_DARK; });
+    }
   }
 
   // A label can follow a product's on/off switch elsewhere on the page:
