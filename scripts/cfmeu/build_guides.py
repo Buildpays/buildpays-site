@@ -102,6 +102,7 @@ HEAD = '''<!DOCTYPE html>
 <meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{ogtitle}">
 <meta name="twitter:description" content="{desc}">
@@ -110,7 +111,7 @@ HEAD = '''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/css/board.css">
-<script src="/js/board.js?v=12"></script>
+<script src="/js/board.js?v=13"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
 <script src="/js/pixels.js"></script>

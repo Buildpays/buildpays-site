@@ -1,7 +1,7 @@
-// The site's few behaviours: the light theme switch (dark is the default), the product on/off switches, the nav (scroll state, one orange in
-// view, the phone menu), the full-size view of every product window, the homepage's screen slideshow, and a once-only
-// fade-up as sections and cards enter.
-// Loaded in <head> without defer so the "js", theme and reveal classes are set before first paint; everything that
+// The site's few behaviours (the site is dark only, no theme switch): the product on/off switches, the nav (scroll
+// state, one orange in view, the phone menu), the full-size view of every product window, the homepage's screen
+// slideshow, and a once-only fade-up as sections and cards enter.
+// Loaded in <head> without defer so the "js" and reveal classes are set before first paint; everything that
 // touches the page waits for DOMContentLoaded. Vanilla, no dependencies (CSP: self only).
 (function () {
   var root = document.documentElement;
@@ -9,32 +9,6 @@
   var still = !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canReveal = !still && 'IntersectionObserver' in window;
   if (canReveal) root.classList.add('rv-on');
-
-  // Dark is the default. ?theme=light turns the light theme on and keeps it for the tab (sessionStorage); ?theme=dark
-  // clears it. Storage can be missing or throw (private windows, blocked site data): then the query alone decides.
-  var light = false;
-  try {
-    var q = (location.search.match(/[?&]theme=(dark|light)\b/) || [])[1];
-    if (q === 'light') sessionStorage.setItem('pk-theme', 'light');
-    else if (q === 'dark') sessionStorage.removeItem('pk-theme');
-    light = q === 'light' || (q !== 'dark' && sessionStorage.getItem('pk-theme') === 'light');
-  } catch (e) { light = /[?&]theme=light\b/.test(location.search); }
-  var MARK_DARK = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23f25c1f' d='M15 0H85A15 15 0 0 1 100 15V85A15 15 0 0 1 85 100H15A15 15 0 0 1 0 85V15A15 15 0 0 1 15 0Z'/%3E%3Cpath fill='%2312293f' d='M61.52 18.32L32.72 54.32L47.12 54.32L38.48 81.68L67.28 45.68L52.88 45.68Z'/%3E%3C/svg%3E";
-  function themeColor() {
-    var m = document.querySelector('meta[name="theme-color"]');
-    if (m) m.setAttribute('content', '#ffffff');
-  }
-  if (light) { root.setAttribute('data-theme', 'light'); themeColor(); }
-  // The logo and the mark (CSS swaps them too, before paint; this covers the rest): the pages carry the reversed logo,
-  // and the light theme puts the dark-on-white one back; on the dark ground the mark is drawn the reversed way.
-  function applyTheme() {
-    if (light) {
-      themeColor();
-      document.querySelectorAll('img[src$="paykicker-logo-reversed.svg"]').forEach(function (i) { i.src = i.getAttribute('src').replace('paykicker-logo-reversed.svg', 'paykicker-logo.svg'); });
-    } else {
-      document.querySelectorAll('img[src$="paykicker-icon.svg"]').forEach(function (i) { i.src = MARK_DARK; });
-    }
-  }
 
   // A label can follow a product's on/off switch elsewhere on the page:
   // data-live-from="<id of the element carrying data-live>" with data-v-live (the live text) and data-cls-live (the
@@ -252,7 +226,6 @@
   }
 
   function init() {
-    try { applyTheme(); } catch (e) { /* the CSS swap stands */ }
     try { applySwitches(); } catch (e) { /* the labels stay as written */ }
     try { initNavScroll(); } catch (e) { /* the bar stays solid */ }
     try { initQuiet(); } catch (e) { /* the nav keeps its orange */ }

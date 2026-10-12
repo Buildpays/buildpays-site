@@ -154,8 +154,8 @@ var LINKEDIN_CONVERSION_ID = "28874580";   // e.g. "12345678"
        its token into a hidden h-captcha-response field inside the form; Web3Forms verifies it
        server-side. An empty token means the box was not ticked — say so instead of posting. */
     var cap=f.querySelector('[name="h-captcha-response"]');
-    if(cap && !cap.value){ m.style.color='#c62828'; m.textContent='Please tick the "I am human" box first.'; return; }
-    b.disabled=true; b.textContent='Sending…'; m.textContent=''; m.style.color='#5c7089';
+    if(cap && !cap.value){ m.style.color='var(--red,#c62828)'; m.textContent='Please tick the "I am human" box first.'; return; }
+    b.disabled=true; b.textContent='Sending…'; m.textContent=''; m.style.color='var(--ink-2,#5c7089)';
     /* Object.fromEntries keeps only the LAST value of a repeated name, so the ticked modules
        are joined into one line for the enquiry email. */
     var fd=new FormData(f), data=Object.fromEntries(fd);
@@ -208,14 +208,14 @@ var LINKEDIN_CONVERSION_ID = "28874580";   // e.g. "12345678"
         }
         f.reset();
         b.style.display='none';
-        m.style.color='#2e7d32';
+        m.style.color='var(--green,#2e7d32)';
         m.textContent="✓ Thanks — we'll be in touch within one business day.";
       } else { throw new Error(d.message||'failed'); }
     })
     .catch(function(){
       if(window.hcaptcha && typeof hcaptcha.reset==='function'){ try { hcaptcha.reset(); } catch(e){} }
       b.disabled=false; b.textContent=bLabel;
-      m.style.color='#c62828';
+      m.style.color='var(--red,#c62828)';
       m.innerHTML="Something went wrong. Email us directly at <a href='mailto:operations@paykicker.com.au' style='color:#f25c1f'>operations@paykicker.com.au</a>.";
     });
   });

@@ -1,213 +1,535 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-25T00:00:00+10:00",
+  "generatedAt": "2026-10-13T11:00:00+11:00",
   "title": "Design System: PayKicker site",
   "source": {
-    "branch": "redesign-setout",
-    "sharedStylesheet": "public/css/setout.css",
-    "pageStyles": ["public/index.html", "public/status.html", "public/404.html", "public/paykicker-worker-training.html", "public/digital-dayworks-docket.html"]
+    "branch": "redesign-premium",
+    "sharedStylesheet": "public/css/board.css",
+    "behaviour": "public/js/board.js",
+    "shell": [
+      "scripts/shell/nav.html",
+      "scripts/shell/footer.html"
+    ]
   },
   "extensions": {
     "colorMeta": {
-      "slab": { "role": "neutral", "displayName": "Slab", "canonical": "#d8d5ce", "purpose": "Page ground and nav strip; carries the inline-SVG grain and cured radial patches.", "tonalRamp": ["#26251f", "#3f3d36", "#5b5950", "#78766c", "#96938a", "#b5b2a9", "#d8d5ce", "#ecebe6"] },
-      "cured": { "role": "neutral", "displayName": "Cured", "canonical": "#c6c3bb", "purpose": "Darker cured patches on the slab; solid ground of the footer.", "tonalRamp": ["#23221d", "#3b3a34", "#55534c", "#706e66", "#8d8b82", "#aaa79f", "#c6c3bb", "#e3e1dc"] },
-      "navy": { "role": "primary-ink", "displayName": "Logo Navy", "canonical": "#12293f", "purpose": "All type, hairlines on interactive things, nails, icons, focus ring, selection; fill of the tap button and hovered outline button.", "tonalRamp": ["#12293f", "#243c55", "#3a526c", "#546985", "#71829d", "#909db5", "#b2bacc", "#d6dbe5"] },
-      "ink2": { "role": "secondary-ink", "displayName": "Ink 2", "canonical": "#3f4f5f", "purpose": "Secondary text tinted from navy (5.74:1 on the slab): notes, fine print, answers, keys, markers, placeholders.", "tonalRamp": ["#151c22", "#28323b", "#3f4f5f", "#5a6a7a", "#788797", "#98a4b1", "#bac2cb", "#dde1e6"] },
-      "chalk": { "role": "surface", "displayName": "Chalk", "canonical": "#f4f2ec", "purpose": "The one panel colour; input backgrounds; text on navy fills; the pulse dot's ring.", "tonalRamp": ["#2a2925", "#47453f", "#66645c", "#87857c", "#a9a79e", "#cbc9c1", "#e7e5df", "#f4f2ec"] },
-      "orange": { "role": "primary", "displayName": "Fluoro Orange", "canonical": "#ff5a1f", "purpose": "The spray mark: behind the primary action, on applied-rule marks, the pulse; status warn/down state. Never a text, icon, link or heading colour.", "tonalRamp": ["#3d1104", "#6b1f07", "#9a2d0b", "#c93c0f", "#ff5a1f", "#ff8455", "#ffab8a", "#ffd3c1"] },
-      "string": { "role": "line", "displayName": "String", "canonical": "rgba(18,41,63,.55)", "resolvedOnSlab": "#6b767f", "purpose": "1px string lines: section rules, grid borders, panel borders, input borders, link underlines, footer dividers.", "tonalRamp": ["rgba(18,41,63,1)", "rgba(18,41,63,.85)", "rgba(18,41,63,.7)", "rgba(18,41,63,.55)", "rgba(18,41,63,.45)", "rgba(18,41,63,.3)", "rgba(18,41,63,.2)", "rgba(18,41,63,.1)"] },
-      "string-soft": { "role": "line", "displayName": "String Soft", "canonical": "rgba(18,41,63,.3)", "resolvedOnSlab": "#9da1a3", "purpose": "Hairlines inside a panel or list: FAQ rows, file header/footer rules, module and price dividers, TOC and table rows.", "tonalRamp": ["rgba(18,41,63,1)", "rgba(18,41,63,.85)", "rgba(18,41,63,.7)", "rgba(18,41,63,.55)", "rgba(18,41,63,.45)", "rgba(18,41,63,.3)", "rgba(18,41,63,.2)", "rgba(18,41,63,.1)"] }
+      "ground": {
+        "role": "neutral",
+        "displayName": "Workroom Ground",
+        "canonical": "#0b0f14",
+        "purpose": "The page, the nav at rest, input fields; theme-color and color-scheme dark.",
+        "tonalRamp": [
+          "#0e141a",
+          "#1d2735",
+          "#2f4056",
+          "#455e7d",
+          "#5a7ba5",
+          "#89a0be",
+          "#bdcadb",
+          "#ebeff4"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#131922",
+        "purpose": "Cards, panels, secondary buttons, table heads, the one band per page.",
+        "tonalRamp": [
+          "#0f131a",
+          "#1d2634",
+          "#303f55",
+          "#455b7c",
+          "#5b78a4",
+          "#899ebd",
+          "#bec9da",
+          "#ebeff4"
+        ]
+      },
+      "raised": {
+        "role": "neutral",
+        "displayName": "Raised Surface",
+        "canonical": "#1a2230",
+        "purpose": "Window strips, card bars, the price strip, the footer, the eyebrow pill.",
+        "tonalRamp": [
+          "#0e131a",
+          "#1d2535",
+          "#2f3d56",
+          "#44597e",
+          "#5a75a5",
+          "#889cbe",
+          "#bdc8db",
+          "#ebeef4"
+        ]
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Field",
+        "canonical": "#0b0f14",
+        "purpose": "An input's ground.",
+        "tonalRamp": [
+          "#0e141a",
+          "#1d2735",
+          "#2f4056",
+          "#455e7d",
+          "#5a7ba5",
+          "#89a0be",
+          "#bdcadb",
+          "#ebeff4"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#f3f5f7",
+        "purpose": "Headings, body copy in panels, values (17.6:1 on the ground).",
+        "tonalRamp": [
+          "#101418",
+          "#212931",
+          "#354250",
+          "#4e6174",
+          "#668099",
+          "#91a3b6",
+          "#c2ccd6",
+          "#edf0f3"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#9aa6b2",
+        "purpose": "Ledes, notes, captions, table headers (7.8:1 on the ground, 6.4:1 on raised).",
+        "tonalRamp": [
+          "#121417",
+          "#23292e",
+          "#39424b",
+          "#54616e",
+          "#6e8091",
+          "#97a3b0",
+          "#c5ccd3",
+          "#eef0f2"
+        ]
+      },
+      "border": {
+        "role": "line",
+        "displayName": "Hairline",
+        "canonical": "rgba(255,255,255,.10)",
+        "purpose": "Every divider, card edge, table row rule."
+      },
+      "border-control": {
+        "role": "line",
+        "displayName": "Control Edge",
+        "canonical": "rgba(255,255,255,.22)",
+        "purpose": "Inputs and secondary buttons."
+      },
+      "border-hover": {
+        "role": "line",
+        "displayName": "Control Edge Hover",
+        "canonical": "rgba(255,255,255,.4)",
+        "purpose": "A control's edge, hovered."
+      },
+      "orange": {
+        "role": "primary",
+        "displayName": "Kicker Orange",
+        "canonical": "#f25c1f",
+        "purpose": "The one primary action per view; hover/focus colour of secondary controls and links.",
+        "tonalRamp": [
+          "#270d02",
+          "#4d1904",
+          "#7d2907",
+          "#b73d0b",
+          "#f1500e",
+          "#f58151",
+          "#f9b99f",
+          "#fdeae2"
+        ]
+      },
+      "orange-deep": {
+        "role": "primary",
+        "displayName": "Kicker Orange, pressed",
+        "canonical": "#e04f14",
+        "purpose": "The primary button, hovered.",
+        "tonalRamp": [
+          "#250d03",
+          "#4b1a07",
+          "#7a2b0b",
+          "#b23f10",
+          "#ea5315",
+          "#f08356",
+          "#f7baa1",
+          "#fceae3"
+        ]
+      },
+      "on-orange": {
+        "role": "primary-ink",
+        "displayName": "On Orange",
+        "canonical": "#0b1826",
+        "purpose": "Lettering on orange (5.4:1).",
+        "tonalRamp": [
+          "#091420",
+          "#12283f",
+          "#1e4167",
+          "#2c5f96",
+          "#397dc6",
+          "#71a1d6",
+          "#b0cbe8",
+          "#e7eff8"
+        ]
+      },
+      "screen-edge": {
+        "role": "neutral",
+        "displayName": "Screen Edge",
+        "canonical": "#f4f6fa",
+        "purpose": "The app's own page colour behind a capture inside its frame.",
+        "tonalRamp": [
+          "#0d121c",
+          "#1a2438",
+          "#293a5b",
+          "#3d5585",
+          "#5070af",
+          "#8198c6",
+          "#b9c6df",
+          "#eaeef5"
+        ]
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Placeholder",
+        "canonical": "#87929e",
+        "purpose": "Placeholder lettering (6.1:1).",
+        "tonalRamp": [
+          "#121417",
+          "#24292d",
+          "#3b4249",
+          "#57606b",
+          "#727f8d",
+          "#99a3ad",
+          "#c7ccd1",
+          "#eef0f1"
+        ]
+      },
+      "green": {
+        "role": "status",
+        "displayName": "Live",
+        "canonical": "#7fd6a3",
+        "purpose": "Live pills, ticks in price strips and comparison tables.",
+        "tonalRamp": [
+          "#0a1f13",
+          "#143e25",
+          "#20643c",
+          "#2f9358",
+          "#3ec174",
+          "#74d29b",
+          "#b2e6c7",
+          "#e8f8ee"
+        ]
+      },
+      "green-tint": {
+        "role": "status",
+        "displayName": "Live Tint",
+        "canonical": "rgba(127,214,163,.12)",
+        "purpose": "Live pill ground."
+      },
+      "amber": {
+        "role": "status",
+        "displayName": "Opening Soon",
+        "canonical": "#f0b541",
+        "purpose": "Opening-soon pills; the money wash hue.",
+        "tonalRamp": [
+          "#261a03",
+          "#4c3406",
+          "#7b550a",
+          "#b47c0e",
+          "#eca313",
+          "#f2bd55",
+          "#f8daa0",
+          "#fdf4e3"
+        ]
+      },
+      "amber-tint": {
+        "role": "status",
+        "displayName": "Opening Soon Tint",
+        "canonical": "rgba(240,181,65,.12)",
+        "purpose": "Opening-soon pill ground."
+      },
+      "grey": {
+        "role": "status",
+        "displayName": "Coming",
+        "canonical": "#9aa6b2",
+        "purpose": "Coming pills.",
+        "tonalRamp": [
+          "#121417",
+          "#23292e",
+          "#39424b",
+          "#54616e",
+          "#6e8091",
+          "#97a3b0",
+          "#c5ccd3",
+          "#eef0f2"
+        ]
+      },
+      "grey-tint": {
+        "role": "status",
+        "displayName": "Coming Tint",
+        "canonical": "rgba(154,166,178,.12)",
+        "purpose": "Coming pill ground."
+      },
+      "red": {
+        "role": "status",
+        "displayName": "Down",
+        "canonical": "#f2a191",
+        "purpose": "Down pills, invalid input edges, form error messages.",
+        "tonalRamp": [
+          "#240a04",
+          "#491309",
+          "#771f0e",
+          "#ad2e14",
+          "#e43c1b",
+          "#ec735b",
+          "#f4b1a4",
+          "#fce8e4"
+        ]
+      },
+      "red-tint": {
+        "role": "status",
+        "displayName": "Down Tint",
+        "canonical": "rgba(242,161,145,.12)",
+        "purpose": "Down pill ground."
+      },
+      "money-wash": {
+        "role": "accent",
+        "displayName": "Money Wash",
+        "canonical": "rgba(240,181,65,.18)",
+        "purpose": "The mark under one money fact per paragraph."
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Homepage h1 only (.hd h1); three lines, each its own span. Steps to clamp(38px,10.4vw,60px) at <=860 and clamp(36px,10.2vw,48px) at <=640." },
-      "page-title": { "displayName": "Page title", "purpose": "h1 in .page-head on reading pages; clamp(36px,9.6vw,56px) at <=860." },
-      "headline": { "displayName": "Headline", "purpose": "Every h2; .prose h2 clamp(30px,3.6vw,50px); .lawtext h2 clamp(26px,3vw,36px); phone clamp(30px,8.6vw,40px)." },
-      "title": { "displayName": "Title", "purpose": "h3 at 24px; schedule 21px, stations 26px, footer heads 16px, lawtext h3 21px." },
-      "stencil-name": { "displayName": "Stencil name", "purpose": "The section name beside its bubble (.mark .name); 15px at <=640." },
-      "label": { "displayName": "Label", "purpose": "Stencil small caps 12px to 16px, 0.08em to 0.12em tracking, usually ink2: bubble letters, feature tags, phone keys, table heads, pills." },
-      "action": { "displayName": "Action", "purpose": "Button text: spray 20px (nav 17px, form 21px); outline 18px (login 15px); phone number 19px." },
-      "lede": { "displayName": "Lede", "purpose": ".lede 19px max 64ch; hero sub line 20px/1.45 max 46ch." },
-      "body": { "displayName": "Body", "purpose": "17px/1.55 on body, paragraphs max 68ch; 16px at <=640; reading-page lists and tables 15px to 15.5px." },
-      "note": { "displayName": "Note", "purpose": "15px ink2 secondary text; fine print 14px to 12.5px." },
-      "file": { "displayName": "File", "purpose": "Courier Prime only where content is a text file: MYOB export (.file 12px) and the docket (.docket 13px)." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "The homepage headline only; two lines at 1440 and up."
+      },
+      "page-title": {
+        "displayName": "Page title",
+        "purpose": "Product page heroes."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section heads, max 22ch."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card, plan and step names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text, max 60 to 68ch; 17px at 1440 and up."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hero strap and section ledes, secondary ink."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Notes, captions, fine print; never under 14px on a phone."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Pills, window strips, footer heads; sentence case, 14px on a phone."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Prices and counts, tabular figures."
+      }
     },
     "shadows": [
-      { "name": "none", "value": "none", "purpose": "The system is flat; no box-shadow is defined in setout.css or index.html." },
-      { "name": "training-tap-drop", "value": "drop-shadow(0 3px 4px rgba(18,41,63,.35))", "purpose": "One-off on the training page's arriving hand icon (.tap .ic); not a system value." }
+      {
+        "name": "surface-highlight",
+        "value": "inset 0 1px 0 rgba(255,255,255,.04)",
+        "purpose": "Cards, panels, framed screens, tables: borders do the work."
+      },
+      {
+        "name": "menu-panel",
+        "value": "0 24px 40px -24px rgba(0,0,0,.6)",
+        "purpose": "The phone menu panel only."
+      },
+      {
+        "name": "input-ring",
+        "value": "0 0 0 3px rgba(255,255,255,.16)",
+        "purpose": "An input with focus."
+      }
     ],
     "motion": [
-      { "name": "ease", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "--ease: every shared transition (spray hover .35s, nav underline .3s, outline fill .2s, input focus .2s, FAQ plus .3s) and the mark fill." },
-      { "name": "pulse-drop", "value": "md1 .6s linear .3s forwards", "purpose": "The orange pulse dot (11px, 2px chalk ring) drops from the worker's tap to the phone cell's floor on load." },
-      { "name": "pulse-travel-phone", "value": "md2 1.05s linear .8s forwards", "purpose": "At <=860 the dot travels the vertical connector (.ln) down to the file panel." },
-      { "name": "pulse-travel-desktop", "value": "pd2 1.05s linear .8s forwards", "purpose": "Bound to .ln .dot at desktop, but .ln is display:none above 860px, so it never plays there; pd1 is defined and unused." },
-      { "name": "mark-fill", "value": "mark .6s var(--ease) 1s forwards (to opacity .45)", "purpose": "The orange applied-rule marks on the hot file rows fill after the pulse arrives." },
-      { "name": "reduced-motion", "value": ".dot{display:none} .row.hot::before{opacity:.45} transitions none; scroll-behavior auto", "purpose": "prefers-reduced-motion: marks lit instantly, no pulse, no hover transitions." },
-      { "name": "training-spring", "value": "cubic-bezier(.34,1.56,.64,1)", "purpose": "Page-local --spring on the training page for rise/slam/stampIn props; scenes cross-fade .45s on --ease; reduced motion collapses to .01s." }
+      {
+        "name": "fade-up",
+        "value": "opacity 0 to 1, translateY(12px) to 0, 450ms ease-out, once",
+        "purpose": "Sections after the first and cards as they enter; none with reduced motion."
+      },
+      {
+        "name": "hover",
+        "value": "150ms",
+        "purpose": "Colour and border changes on controls and links."
+      },
+      {
+        "name": "lift",
+        "value": "translateY(-2px), 200ms cubic-bezier(.2,.8,.2,1)",
+        "purpose": "Card hover."
+      },
+      {
+        "name": "crossfade",
+        "value": "opacity 250ms ease-out",
+        "purpose": "Slideshow change; none with reduced motion."
+      },
+      {
+        "name": "menu",
+        "value": "opacity and translateY(-8px), 200ms ease-out",
+        "purpose": "The phone menu panel."
+      }
     ],
     "breakpoints": [
-      { "name": "tablet", "value": "1000px", "changes": "nav links hidden; file 11px; modules 2-up; schedule 2 columns; price stacked" },
-      { "name": "phone", "value": "860px", "changes": "rail 36px; sheet padding 30/16/8; footer one column; hero grid collapses to rail + one column, number bubbles and empty cells hidden, demonstration stacks under the action; stations vertical; page-head h1, prose h2, lawtext h2 step down; TOC one column" },
-      { "name": "narrow", "value": "640px", "changes": "body 16px; gutter 16px; nav 56px, logo 24px, phone number text hidden, spray 14px, login 13px; h2 clamp(30px,8.6vw,40px); lede 16.5px; mark name 15px; form one column; FAQ summary 19px; hero h1 clamp(36px,10.2vw,48px); explainer portrait 9/16; rules and modules one column; file rows two-column grid" },
-      { "name": "tiny", "value": "400px", "changes": "logo 21px; phone link hidden; spray 13px 7px 9px; login 12px 6px 7px" }
-    ],
-    "layout": {
-      "wrap": "1360px",
-      "gutter": "24px (16px at <=640)",
-      "rail": "44px (36px at <=860)",
-      "heroGridColumns": "var(--rail) 1fr .9fr .7fr 1.45fr",
-      "heroGridRows": "38px auto auto auto auto",
-      "heroGridAreas": ["cn n1 n2 n3 n4", "ra hd hd hd ph", "rb sb sb b3 my", "rc ct ct c3 my", "rd ft ft d3 d4"],
-      "heroGridAreasPhone": ["ra hd", "rb sb", "rc ct", "rc ph", "rc ln", "rc my", "rd ft"],
-      "nailSize": "7px",
-      "hairline": "1px"
-    },
-    "filters": {
-      "grain": "feTurbulence fractalNoise baseFrequency .85 numOctaves 3, feColorMatrix to navy at .16 alpha, tiled 280x280 on body",
-      "spray": "feTurbulence fractalNoise 0.045 0.09 seed 11 + feDisplacementMap scale 16 + speck layer (turbulence 1.4, alpha .9 -.25) merged; region -25%/-40% 150%/180%",
-      "spray-fine": "feTurbulence fractalNoise 0.12 0.22 seed 5 + feDisplacementMap scale 6; region -10%/-40% 120%/180%"
-    },
-    "accessibility": {
-      "contrast": [
-        { "pair": "navy on slab", "ratio": "10.13:1", "where": "all body text and headings" },
-        { "pair": "ink2 on slab", "ratio": "5.74:1", "where": "notes, fine print, feature copy" },
-        { "pair": "navy on chalk", "ratio": "13.26:1", "where": "panel text, inputs" },
-        { "pair": "ink2 on chalk", "ratio": "7.52:1", "where": "file footer, legend, FAQ answers in panels" },
-        { "pair": "chalk on navy", "ratio": "13.26:1", "where": "tap button, hovered outline button, selection" },
-        { "pair": "navy on orange", "ratio": "4.76:1", "where": "spray button text (20px 800), down pill" },
-        { "pair": "navy on cured", "ratio": "8.43:1", "where": "footer" },
-        { "pair": "ink2 on cured", "ratio": "4.78:1", "where": "footer legal line 12.5px" },
-        { "pair": "string on slab (non-text)", "ratio": "3.17:1", "where": "hairlines, input borders" },
-        { "pair": "string-soft on slab (decorative)", "ratio": "1.78:1", "where": "inner dividers only, never a control boundary" }
-      ],
-      "focusRing": "2px solid var(--navy), outline-offset 3px; form fields: border navy + box-shadow 0 0 0 1px navy",
-      "textSizeAdjust": "100% (html)",
-      "selection": "navy background, chalk text",
-      "decorativeMarkup": "bubbles, strings, rules and empty grid cells are aria-hidden; the phone and file panels carry role=img with a full aria-label"
-    }
+      {
+        "name": "phone",
+        "value": "640px"
+      },
+      {
+        "name": "stack-tight",
+        "value": "820px"
+      },
+      {
+        "name": "stack-heads",
+        "value": "900px"
+      },
+      {
+        "name": "stack",
+        "value": "1000px"
+      },
+      {
+        "name": "menu",
+        "value": "1199px"
+      },
+      {
+        "name": "grow",
+        "value": "1440px"
+      }
+    ]
   },
   "components": [
     {
-      "name": "Spray Button",
+      "name": "Primary Button",
       "kind": "button",
-      "refersTo": "button-spray",
-      "description": "The one primary action; fluoro orange spray patch behind navy stencil text. Needs the #spray filter in the page's SVG defs.",
-      "html": "<a class=\"ds-spray\" href=\"#contact\">Book a demo</a>",
-      "css": ".ds-spray{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:20px;letter-spacing:.05em;text-transform:uppercase;color:var(--navy,#12293f);text-decoration:none;padding:12px 26px;border:0;cursor:pointer;background:transparent;white-space:nowrap}.ds-spray::before{content:\"\";position:absolute;inset:2px 2px;z-index:-1;background:var(--orange,#ff5a1f);border-radius:46% 54% 41% 59% / 58% 44% 56% 42%;filter:url(#spray);transform:rotate(-1.2deg);transition:transform .35s cubic-bezier(.16,1,.3,1)}.ds-spray:hover::before{transform:rotate(.6deg) scale(1.04)}.ds-spray:focus-visible{outline:2px solid var(--navy,#12293f);outline-offset:3px}.ds-spray:disabled{cursor:default;color:var(--ink2,#3f4f5f)}.ds-spray:disabled::before{opacity:.55}"
+      "refersTo": "button-primary",
+      "description": "The one orange action per view.",
+      "html": "<button class=\"ds-btn-go\">Book a demo</button>",
+      "css": ".ds-btn-go{display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem;padding:0 1.125rem;border-radius:.5rem;border:1px solid #f25c1f;background:#f25c1f;color:#0b1826;font:600 .9375rem/1.2 Geist,system-ui,sans-serif;letter-spacing:-.005em;cursor:pointer;transition:background-color .15s,border-color .15s,transform .15s}.ds-btn-go:hover{background:#e04f14;border-color:#e04f14}.ds-btn-go:active{transform:translateY(1px)}.ds-btn-go:focus-visible{outline:2px solid #f3f5f7;outline-offset:3px}"
     },
     {
-      "name": "Outline Button",
+      "name": "Secondary Button",
       "kind": "button",
-      "refersTo": "button-outline",
-      "description": "Secondary action: navy hairline box, fills navy on hover.",
-      "html": "<a class=\"ds-outline\" href=\"#\">Log in</a>",
-      "css": ".ds-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:18px;letter-spacing:.05em;text-transform:uppercase;color:var(--navy,#12293f);text-decoration:none;padding:10px 20px;border:1px solid var(--navy,#12293f);border-radius:2px;background:transparent;white-space:nowrap;transition:background .2s cubic-bezier(.16,1,.3,1),color .2s cubic-bezier(.16,1,.3,1)}.ds-outline:hover{background:var(--navy,#12293f);color:var(--chalk,#f4f2ec)}.ds-outline:focus-visible{outline:2px solid var(--navy,#12293f);outline-offset:3px}"
+      "refersTo": "button-secondary",
+      "description": "Every other action; edge and lettering turn orange on hover and focus.",
+      "html": "<button class=\"ds-btn-hair\">See pricing</button>",
+      "css": ".ds-btn-hair{display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem;padding:0 1.125rem;border-radius:.5rem;border:1px solid rgba(255,255,255,.22);background:#131922;color:#f3f5f7;font:600 .9375rem/1.2 Geist,system-ui,sans-serif;cursor:pointer;transition:border-color .15s,color .15s}.ds-btn-hair:hover,.ds-btn-hair:focus-visible{border-color:#f25c1f;color:#f25c1f;outline:none}"
     },
     {
-      "name": "Section Mark",
-      "kind": "custom",
-      "refersTo": "bubble",
-      "description": "Opens every sheet: lettered grid bubble, stencilled name, a string with a nail at its end.",
-      "html": "<div class=\"ds-mark\"><span class=\"ds-bub\" aria-hidden=\"true\">E</span><span class=\"ds-name\">Modules</span><span class=\"ds-string\" aria-hidden=\"true\"></span></div>",
-      "css": ".ds-mark{display:flex;align-items:center;gap:14px;min-height:30px;color:var(--navy,#12293f)}.ds-bub{display:inline-flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--navy,#12293f);font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:16px;line-height:1;background:transparent}.ds-name{font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:18px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}.ds-string{flex:1;position:relative;height:1px;background:var(--string,rgba(18,41,63,.55))}.ds-string::after{content:\"\";position:absolute;right:-3px;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--navy,#12293f)}"
+      "name": "Status Pills",
+      "kind": "chip",
+      "refersTo": "pill-live",
+      "description": "Live, opening soon, coming: tinted ground, a dot, sentence case.",
+      "html": "<span class=\"ds-pill ds-live\">Live</span> <span class=\"ds-pill ds-soon\">Opening soon</span> <span class=\"ds-pill ds-coming\">Coming</span>",
+      "css": ".ds-pill{display:inline-flex;align-items:center;gap:.375rem;padding:.1875rem .625rem;border-radius:999px;font:500 .8125rem/1.4 Geist,system-ui,sans-serif}.ds-pill::before{content:\"\";width:.375rem;height:.375rem;border-radius:50%;background:currentColor}.ds-live{background:rgba(127,214,163,.12);color:#7fd6a3}.ds-soon{background:rgba(240,181,65,.12);color:#f0b541}.ds-coming{background:rgba(154,166,178,.12);color:#9aa6b2}"
     },
     {
-      "name": "Closing Rule",
-      "kind": "custom",
-      "refersTo": "bubble",
-      "description": "The string-line rule with two survey nails that closes every sheet.",
-      "html": "<div class=\"ds-rule\" aria-hidden=\"true\"></div>",
-      "css": ".ds-rule{position:relative;height:1px;background:var(--string,rgba(18,41,63,.55));margin:24px 3px 0}.ds-rule::before,.ds-rule::after{content:\"\";position:absolute;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--navy,#12293f)}.ds-rule::before{left:-3px}.ds-rule::after{right:-3px}"
-    },
-    {
-      "name": "Chalk Panel",
+      "name": "Product Card",
       "kind": "card",
-      "refersTo": "chalk-panel",
-      "description": "The one panel: a chalked rectangle on the slab with a string hairline.",
-      "html": "<div class=\"ds-chalk\"><p>Every clause of your agreement encoded once; leave, holidays and RDOs handled; one-click export.</p></div>",
-      "css": ".ds-chalk{background:var(--chalk,#f4f2ec);border:1px solid var(--string,rgba(18,41,63,.55));border-radius:3px;color:var(--navy,#12293f);padding:18px 22px;font-family:var(--body,Archivo,system-ui,sans-serif);font-size:17px;line-height:1.55;max-width:72ch}"
+      "refersTo": "card",
+      "description": "Name and status, a window strip, the whole snip, one line, an arrow link; lifts 2px on hover.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-h\"><b>AP automation</b><span class=\"ds-pill ds-live\">Live</span></div><div class=\"ds-card-bar\">Invoices · INV-20955, read and coded</div><div class=\"ds-card-shot\"></div><div class=\"ds-card-f\"><p>Bills read, coded and approved into Xero or MYOB.</p><a href=\"#\">AP automation &rarr;</a></div></article>",
+      "css": ".ds-card{max-width:22rem;background:#131922;border:1px solid rgba(255,255,255,.10);border-radius:.75rem;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);color:#f3f5f7;font-family:Geist,system-ui,sans-serif;transition:transform .2s cubic-bezier(.2,.8,.2,1),border-color .2s}.ds-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.22)}.ds-card-h{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;font-size:1.125rem}.ds-card-bar{display:flex;align-items:center;height:2rem;padding:0 1.25rem;background:#1a2230;border-top:1px solid rgba(255,255,255,.10);border-bottom:1px solid rgba(255,255,255,.10);font-size:.8125rem;font-weight:500;color:#9aa6b2}.ds-card-shot{height:9rem;background:#f4f6fa}.ds-card-f{padding:1rem 1.25rem 1.25rem;border-top:1px solid rgba(255,255,255,.10)}.ds-card-f p{margin:0 0 .75rem;color:#9aa6b2;line-height:1.55}.ds-card-f a{color:#f3f5f7;font-weight:500;text-decoration:none;transition:color .15s}.ds-card-f a:hover{color:#f25c1f}.ds-pill{display:inline-flex;align-items:center;gap:.375rem;padding:.1875rem .625rem;border-radius:999px;font:500 .8125rem/1.4 Geist,system-ui,sans-serif}.ds-pill::before{content:\"\";width:.375rem;height:.375rem;border-radius:50%;background:currentColor}.ds-live{background:rgba(127,214,163,.12);color:#7fd6a3}.ds-soon{background:rgba(240,181,65,.12);color:#f0b541}.ds-coming{background:rgba(154,166,178,.12);color:#9aa6b2}"
     },
     {
-      "name": "File Panel",
+      "name": "Price Strip",
       "kind": "custom",
-      "refersTo": "chalk-panel",
-      "description": "The text-file voice in Courier Prime: MYOB export lines with orange applied-rule marks on the hot rows. Needs #spray-fine.",
-      "html": "<div class=\"ds-file\"><div class=\"ds-dhead\"><span>MYOB TIMESHEET EXPORT</span><span>E0012 · TUE 07 JUL</span></div><div class=\"ds-row\"><span>Base Hourly — 8 hrs, 0.80 to the RDO bank</span><span>7.20 units</span></div><div class=\"ds-row ds-hot\"><span>Overtime 2.0x — &gt;8 hrs</span><span>2.00 units</span></div><div class=\"ds-row ds-hot\"><span>Site Allowance 10.70 · WGT01 — per hr</span><span>9.20 units</span></div><div class=\"ds-dfoot\">One tap from the worker. Every rule from the agreement.</div></div>",
-      "css": ".ds-file{position:relative;background:var(--chalk,#f4f2ec);border:1px solid var(--string,rgba(18,41,63,.55));border-radius:3px;color:var(--navy,#12293f);font-family:var(--file,\"Courier Prime\",\"Courier New\",monospace);font-size:12px;line-height:1.45;padding:16px 14px 12px;font-variant-numeric:tabular-nums}.ds-file::before{content:\"\";position:absolute;left:50%;top:-4px;width:7px;height:7px;margin-left:-3px;border-radius:50%;background:var(--navy,#12293f)}.ds-dhead{display:flex;justify-content:space-between;gap:12px;font-weight:700;font-size:12px;letter-spacing:.04em;border-bottom:1px solid var(--string-soft,rgba(18,41,63,.3));padding-bottom:8px;margin-bottom:8px}.ds-row{position:relative;isolation:isolate;display:flex;justify-content:space-between;gap:12px;padding:4px 6px;margin:0 -6px}.ds-row span:last-child{white-space:nowrap;font-weight:700;flex:none}.ds-hot::before{content:\"\";position:absolute;inset:-1px -4px;z-index:-1;background:var(--orange,#ff5a1f);border-radius:38% 62% 45% 55% / 60% 40% 60% 40%;filter:url(#spray-fine);opacity:.45}.ds-dfoot{border-top:1px solid var(--string-soft,rgba(18,41,63,.3));margin-top:8px;padding-top:8px;font-size:12px;color:var(--ink2,#3f4f5f)}"
+      "refersTo": "price-strip",
+      "description": "The big figure first, then up to three facts with green ticks.",
+      "html": "<div class=\"ds-ps\"><div class=\"ds-ps-big\">From $9.99 a month<small>inc GST</small></div><ul><li>14 days free, 8 invoices read</li><li>No card to start</li><li>Cancel any time</li></ul></div>",
+      "css": ".ds-ps{display:flex;flex-wrap:wrap;gap:.875rem 2rem;align-items:center;padding:1.25rem 1.5rem;background:#1a2230;border:1px solid rgba(255,255,255,.10);border-radius:.75rem;color:#f3f5f7;font-family:Geist,system-ui,sans-serif}.ds-ps-big{font-weight:600;font-size:2rem;line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.ds-ps-big small{display:block;margin-top:.375rem;font-weight:400;font-size:.9375rem;letter-spacing:0;color:#9aa6b2}.ds-ps ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.5rem;font-size:.9375rem}.ds-ps li::before{content:\"\\2713\";color:#7fd6a3;margin-right:.625rem}"
     },
     {
-      "name": "Text Input",
+      "name": "Text Field",
       "kind": "input",
       "refersTo": "input",
-      "description": "A chalk box with a navy hairline; focus thickens the line to 2px.",
-      "html": "<label class=\"ds-label\">Company<input class=\"ds-input\" type=\"text\" placeholder=\"Southline Formwork Pty Ltd\"></label>",
-      "css": ".ds-label{display:block;font-family:var(--body,Archivo,system-ui,sans-serif);font-size:13.5px;font-weight:600;letter-spacing:.01em;color:var(--navy,#12293f)}.ds-input{display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid var(--string,rgba(18,41,63,.55));border-radius:2px;background:var(--chalk,#f4f2ec);color:var(--navy,#12293f);font:inherit;font-size:16px;font-weight:400;caret-color:var(--navy,#12293f);transition:border-color .2s cubic-bezier(.16,1,.3,1),box-shadow .2s cubic-bezier(.16,1,.3,1)}.ds-input::placeholder{color:var(--ink2,#3f4f5f);opacity:1}.ds-input:focus-visible{outline:0;border-color:var(--navy,#12293f);box-shadow:0 0 0 1px var(--navy,#12293f)}"
+      "description": "Dark field, firm edge; an ink border and a soft ring on focus.",
+      "html": "<label class=\"ds-lab\">Email *<input class=\"ds-in\" type=\"email\" placeholder=\"you@company.com.au\"></label>",
+      "css": ".ds-lab{display:flex;flex-direction:column;gap:.375rem;font:500 .875rem Geist,system-ui,sans-serif;color:#f3f5f7}.ds-in{min-height:2.75rem;padding:.625rem .75rem;background:#0b0f14;color:#f3f5f7;border:1px solid rgba(255,255,255,.22);border-radius:.5rem;font:400 .9375rem Geist,system-ui,sans-serif;transition:border-color .15s,box-shadow .15s}.ds-in::placeholder{color:#87929e}.ds-in:hover{border-color:rgba(255,255,255,.4)}.ds-in:focus{outline:none;border-color:#f3f5f7;box-shadow:0 0 0 3px rgba(255,255,255,.16)}"
     },
     {
-      "name": "Nav Strip",
+      "name": "Navigation",
       "kind": "nav",
-      "refersTo": "nav-link",
-      "description": "The thin title-block strip: logo, section links with a sliding underline, phone, spray action, outline login.",
-      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-logo\">PayKicker</span><span class=\"ds-nav-spacer\"></span><a class=\"ds-nl\" href=\"#\">Features</a><a class=\"ds-nl\" href=\"#\">EBA rules</a><a class=\"ds-nl\" href=\"#\">Pricing</a><a class=\"ds-nphone\" href=\"#\">03 4061 6223</a><a class=\"ds-spray ds-nav-spray\" href=\"#\">Book a demo</a><a class=\"ds-outline ds-nav-login\" href=\"#\">Log in</a></nav>",
-      "css": ".ds-nav{display:flex;align-items:center;gap:22px;height:62px;padding:0 24px;background:var(--slab,#d8d5ce);border-bottom:1px solid var(--string,rgba(18,41,63,.55));color:var(--navy,#12293f);font-family:var(--body,Archivo,system-ui,sans-serif)}.ds-nav-logo{font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:22px;letter-spacing:.04em;text-transform:uppercase}.ds-nav-spacer{flex:1}.ds-nl{font-size:15px;font-weight:500;text-decoration:none;color:var(--navy,#12293f);padding:6px 0;position:relative}.ds-nl::after{content:\"\";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--navy,#12293f);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-nl:hover::after{transform:scaleX(1)}.ds-nl:focus-visible{outline:2px solid var(--navy,#12293f);outline-offset:3px}.ds-nphone{font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:19px;letter-spacing:.04em;text-decoration:none;color:var(--navy,#12293f);white-space:nowrap}.ds-spray{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--navy,#12293f);text-decoration:none;border:0;background:transparent;white-space:nowrap}.ds-nav-spray{font-size:17px;padding:9px 18px}.ds-spray::before{content:\"\";position:absolute;inset:2px 2px;z-index:-1;background:var(--orange,#ff5a1f);border-radius:46% 54% 41% 59% / 58% 44% 56% 42%;filter:url(#spray);transform:rotate(-1.2deg)}.ds-outline{display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--navy,#12293f);text-decoration:none;border:1px solid var(--navy,#12293f);border-radius:2px;background:transparent;white-space:nowrap;transition:background .2s,color .2s}.ds-nav-login{font-size:15px;padding:8px 14px}.ds-outline:hover{background:var(--navy,#12293f);color:var(--chalk,#f4f2ec)}"
+      "refersTo": "nav",
+      "description": "64px bar: the reversed logo, links that turn orange, the number, Log in and Book a demo; the current page underlined.",
+      "html": "<nav class=\"ds-nav\"><b class=\"ds-logo\">PAY<i>KICKER</i></b><a href=\"#\">Construction</a><a href=\"#\" aria-current=\"page\">AP automation</a><a href=\"#\">Integrations</a><a href=\"#\">Pricing</a><span>03 4061 6223</span><a class=\"ds-nb\" href=\"#\">Log in</a><a class=\"ds-nb ds-ng\" href=\"#\">Book a demo</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:1.625rem;height:4rem;padding:0 1.5rem;background:#0b0f14;border-bottom:1px solid rgba(255,255,255,.10);font:500 .9375rem Geist,system-ui,sans-serif;color:#f3f5f7;white-space:nowrap}.ds-logo{margin-right:auto;font-weight:700;font-size:1.25rem}.ds-logo i{color:#f25c1f}.ds-nav a{color:#f3f5f7;text-decoration:none;padding:.375rem 0;transition:color .15s}.ds-nav a:hover{color:#f25c1f}.ds-nav a[aria-current=\"page\"]{box-shadow:inset 0 -2px 0 #f3f5f7}.ds-nav .ds-nb{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 1rem;border-radius:.5rem;border:1px solid rgba(255,255,255,.22);background:#131922;font-weight:600;font-size:.875rem}.ds-nav .ds-nb:hover{border-color:#f25c1f}.ds-nav .ds-ng{background:#f25c1f;border-color:#f25c1f;color:#0b1826}.ds-nav .ds-ng:hover{background:#e04f14;color:#0b1826}"
     },
     {
-      "name": "Status Pill",
-      "kind": "chip",
-      "refersTo": "status-pill",
-      "description": "Service state on the status page: string at rest, navy when up, orange border when degraded, orange fill when down.",
-      "html": "<span class=\"ds-pill ds-pill-up\">Up</span> <span class=\"ds-pill ds-pill-warn\">Degraded</span> <span class=\"ds-pill ds-pill-down\">Down</span>",
-      "css": ".ds-pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--string,rgba(18,41,63,.55));border-radius:2px;color:var(--ink2,#3f4f5f);white-space:nowrap;line-height:1.2}.ds-pill::before{content:\"\";width:8px;height:8px;border-radius:50%;background:var(--string,rgba(18,41,63,.55));flex:none}.ds-pill-up{border-color:var(--navy,#12293f);color:var(--navy,#12293f)}.ds-pill-up::before{background:var(--navy,#12293f)}.ds-pill-warn{border-color:var(--orange,#ff5a1f);color:var(--navy,#12293f)}.ds-pill-warn::before{background:var(--orange,#ff5a1f)}.ds-pill-down{background:var(--orange,#ff5a1f);border-color:var(--orange,#ff5a1f);color:var(--navy,#12293f)}.ds-pill-down::before{background:var(--navy,#12293f)}"
-    },
-    {
-      "name": "FAQ Row",
+      "name": "Framed Screen",
       "kind": "custom",
-      "refersTo": "chalk-panel",
-      "description": "One devoted column of hairline rows; the summary is a stencil question with a drawn plus that rotates open.",
-      "html": "<div class=\"ds-faq\"><details><summary>Do we have to move off MYOB?</summary><p>No. MYOB stays the system of record and holds the rates. <b>PayKicker exports the file.</b></p></details><details><summary>Is there a free trial?</summary><p>No self-serve trial. If it fits, the pilot period is on us.</p></details></div>",
-      "css": ".ds-faq{max-width:760px;padding:8px 0;border-top:1px solid var(--string,rgba(18,41,63,.55));color:var(--navy,#12293f);font-family:var(--body,Archivo,system-ui,sans-serif)}.ds-faq details{border-bottom:1px solid var(--string-soft,rgba(18,41,63,.3))}.ds-faq details:last-child{border-bottom:0}.ds-faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 4px;font-family:var(--disp,\"Big Shoulders Stencil Display\",Impact,sans-serif);font-weight:800;font-size:24px;letter-spacing:.01em;line-height:1.05;text-transform:uppercase}.ds-faq summary::-webkit-details-marker{display:none}.ds-faq summary::after{content:\"\";flex:none;width:14px;height:14px;background:linear-gradient(var(--navy,#12293f),var(--navy,#12293f)) center/14px 1.5px no-repeat,linear-gradient(var(--navy,#12293f),var(--navy,#12293f)) center/1.5px 14px no-repeat;transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-faq details[open] summary::after{transform:rotate(45deg)}.ds-faq summary:focus-visible{outline:2px solid var(--navy,#12293f);outline-offset:3px}.ds-faq details p{padding:0 4px 20px;font-size:15.5px;color:var(--ink2,#3f4f5f);max-width:62ch;line-height:1.55}.ds-faq details p b{color:var(--navy,#12293f);font-weight:600}"
+      "refersTo": "card",
+      "description": "A whole app capture in a 12px dark frame under a window strip; opens full size on click.",
+      "html": "<figure class=\"ds-shot\"><div class=\"ds-bar\">Invoices · INV-20955 in review<span>Example data</span></div><div class=\"ds-cap\"></div></figure>",
+      "css": ".ds-shot{margin:0;max-width:30rem;border:1px solid rgba(255,255,255,.10);border-radius:.75rem;overflow:hidden;background:#131922;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);font-family:Geist,system-ui,sans-serif}.ds-bar{display:flex;align-items:center;gap:.75rem;height:2.375rem;padding:0 1rem;background:#1a2230;border-bottom:1px solid rgba(255,255,255,.10);font-weight:500;font-size:.8125rem;color:#9aa6b2}.ds-bar span{margin-left:auto;font-weight:400}.ds-cap{aspect-ratio:1180/1003;background:#f4f6fa;cursor:zoom-in}"
     }
   ],
   "narrative": {
-    "northStar": "Set-Out Marks",
-    "overview": "The rules are set out on the slab before the crew arrives. Every page is a surveyor's set-out drawing on raw concrete: a light warm grey slab with a grain and darker cured patches, string lines stretched between survey nails, grid bubbles lettered down the left and numbered across the top, section names stencilled in caps, and a single fluoro spray mark where the one action is. Type is all logo navy. Chalk white is the only panel, a chalked rectangle drawn on the slab for anything that has to read as a thing (a phone, a MYOB file, a form, a table of modules). Nothing floats, nothing casts a shadow, nothing is white and nothing is dark: the slab is the page.\n\nThe world refuses the dark SaaS hero with a screenshot beside it and the three-card feature grid. Density is drawing-sheet density: generous slab between marks, but every mark is exact. Icons are authored single-stroke SVG in navy at one stroke weight. Links are underlined with a string line. The one motion is a lit pulse that travels the string from the worker's tap to the pay line, then the applied-rule marks fill in orange. The proof is the demonstration itself: a real-shaped one-tap timesheet becomes real-shaped MYOB pay lines.",
+    "northStar": "The Dark Workroom",
+    "overview": "The site is a dark, quiet room with the lights on the work. The ground is a near-black blue (#0b0f14); everything the visitor reads sits on it in one typeface, Geist, at one weight family; the brightest things on any page are the real app screens, white captures held in dark rounded frames. Colour is almost absent: one orange for the one action that matters in the view, and three soft tints that say whether a product is live, opening soon or coming. Depth comes from borders and tone steps, not from shadows or glows.\n\nThe system is borrowed in spirit from the premium product sites the owner pointed at (Notion, Linear, the Google Store) and kept plain for a trade audience: short sentences, prices stated up front, nothing that moves unless it is arriving. The site is **dark only**. There is no light theme and no theme switch; the logo is always the reversed one.\n\nAbove 1440px the page does not stretch a phone layout: the root font-size grows (16px at 1440, about 18px at 1920, 20px at 2560), every component is sized in rem, and the content column grows with the screen, so a big monitor sees the same page in the same proportions, larger.",
     "keyCharacteristics": [
-      "Raw slab ground (#d8d5ce + inline-SVG grain + cured radial patches); never white, cream or dark.",
-      "One ink: logo navy for all type, hairlines, nails, icons and bubbles.",
-      "One panel colour: chalk #f4f2ec on a hairline, radius 3px.",
-      "Fluoro orange only behind the primary action and on applied-rule marks (spray-edged via SVG filter).",
-      "Big Shoulders Stencil Display in caps for every heading, name, label and button; Archivo for reading; Courier Prime only for file-shaped content.",
-      "Every section (a \"sheet\") opens with a lettered bubble and a stencilled name on a string, and closes with the same 1px rule ending in two 7px nails.",
-      "Flat: no box-shadows, no gradients except the slab's cured patches."
+      "One typeface (Geist 400/500/600/700), headlines at 600 with tight tracking (-0.02em), no uppercase labels.",
+      "One ground, two surface steps (#131922, #1a2230), hairline borders at 10% white.",
+      "One orange (#f25c1f) per view, on the primary action only; hover turns secondary controls and links orange.",
+      "Real product screens, whole, never cropped, never upscaled past their own pixels, framed at a 12px radius.",
+      "One band per page: the surface tone held by a hairline above and below.",
+      "A once-only 12px fade-up as sections arrive; nothing moves with reduced motion."
     ],
     "rules": [
-      { "name": "The Spray Law", "body": "Orange is reserved for the primary action (\"Book a demo\" / \"Book my demo\" / the 404's \"Back to the site office\") and for marks that show a rule being applied (the hot file rows, the legend swatch, the training stamp, the pulse). Nothing else wears it: not headings, not icons, not links, not hover states. The status page is the one built exception: orange signals a degraded or down service. Nothing new may take a fourth use.", "section": "colors" },
-      { "name": "The One Ink Rule", "body": "Type is navy or ink2. There is no third text colour and no coloured text; emphasis is weight (600 in Archivo, 700/800 in the stencil face), never hue.", "section": "colors" },
-      { "name": "The One Panel Rule", "body": "Anything that must read as an object on the slab is a .chalk panel: chalk fill, 1px string border, 3px radius. There is no second surface colour, no card tint, no dark panel.", "section": "colors" },
-      { "name": "The Stencil Rule", "body": "The stencil face is always uppercase and always 700 or 800. It never sets running text, never drops below 11.5px, and never appears in mixed case.", "section": "typography" },
-      { "name": "The File Voice Rule", "body": "Courier Prime appears only where the content is a text file (the MYOB export, the docket). It is not a code font, a caption font or a label font.", "section": "typography" },
-      { "name": "The Tabular Rule", "body": "Numerals are tabular everywhere (body), so times, units and dollar amounts line up in the file, the phone panel and the tables without any extra class.", "section": "typography" },
-      { "name": "The Flat Slab Rule", "body": "Nothing casts a shadow on the slab. An object is a chalk panel; a boundary is a string; a point is a nail.", "section": "elevation" }
+      {
+        "name": "The One Orange Rule",
+        "body": "One orange button per view. While a page's own orange action is on screen, the nav's Book a demo steps back to the secondary style (board.js adds `.nav.quiet`); it returns when none is in view.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Glow Rule",
+        "body": "No gradients, glows, blur halos or coloured shadows anywhere. Borders and tone steps carry depth.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Caps Rule",
+        "body": "No tracked uppercase labels anywhere; labels are sentence case at weight 500.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruler Figures Rule",
+        "body": "Money, hours and counts use tabular figures (`font-variant-numeric: tabular-nums`) so columns line up.",
+        "section": "typography"
+      },
+      {
+        "name": "The Borders Do The Work Rule",
+        "body": "Depth is a tone step plus a 1px hairline. A hover lifts a card 2px and firms its edge to the control edge; it never adds a shadow.",
+        "section": "elevation"
+      }
     ],
     "dos": [
-      "Do start every new section as a .sheet: .mark (bubble letter, stencilled name, string) then .body then .rule, and let the rail carry the letter.",
-      "Do put the one action on the slab as a .spray and every secondary action as an .outline; one spray per viewport.",
-      "Do use .chalk for anything that must read as an object, and --string-soft for the dividers inside it.",
-      "Do author icons as 24px single-stroke SVG symbols in the page's .svg-defs block, stroke-width 1.6 (1.5 at 26px, 2 to 2.2 for ticks), navy via currentColor.",
-      "Do keep hairlines at 1px and nails at 7px; when a string ends, it ends in a nail.",
-      "Do load fonts only through the single Google Fonts stylesheet link (Big Shoulders Stencil Display 700/800, Archivo 400/500/600, Courier Prime 400/700); the CSP allows no other font host.",
-      "Do keep the reduced-motion branch honest: pulse hidden, marks at rest opacity .45, transitions off, scroll-behavior: auto.",
-      "Do keep the copy rules from PRODUCT.md: no pay rate, penalty or allowance figure without a source; the independence line on every page naming an agreement or MYOB; the legal footer; Southline Formwork Pty Ltd as the only example business; trade terminology (subbie, crew, docket, dayworks, RDO, EBA, SWMS, allocation board, pay run, MYOB file).",
-      "Do verify every page at 390px: number bubbles off, letter rail on, demonstration stacked under the action."
+      "Do keep the site dark only: #0b0f14 ground, the reversed logo, `theme-color` #0b0f14.",
+      "Do put exactly one orange button in any view, and let hover turn secondary controls and links orange.",
+      "Do show the real app's screens whole, from the harness with synthetic data, each with its `.json` provenance sidecar; the example business is Southline Formwork Pty Ltd and no other.",
+      "Do size components in rem so the page grows with the root font-size above 1440.",
+      "Do state prices with their source and GST basis (inc GST), and highlight at most one money fact per paragraph.",
+      "Do keep text at 14px or more at phone width and secondary text at 4.5:1 or better."
     ],
     "donts": [
-      "Don't put orange on a heading, icon, link, border, hover or background. The Spray Law is the world's one hard prohibition.",
-      "Don't add a second panel colour, a white surface, a cream tint or a dark section.",
-      "Don't add a box-shadow, gradient fill or blur. The slab is flat; the training page's one drop-shadow on an animated prop is not a licence.",
-      "Don't set the stencil face in mixed case, below 700, or as running text; don't use Courier Prime outside file-shaped content.",
-      "Don't add eyebrow or kicker labels above headings. The stencilled section name is the section's literal name in its bubble; no \"FEATURES\" tag above an h2 that says something else.",
-      "Don't use emoji or glyph-font icons anywhere.",
-      "Don't invent a fifth spray variant or a new bubble size; reuse 30 / 26 / 24px.",
-      "Don't raise --string or --string-soft opacity to make a line \"read\"; the hairline is the design."
+      "Don't add a light theme, a theme switch or a second stylesheet; tokens live on `:root` in board.css.",
+      "Don't crop a screen, upscale it past its own pixels, or put a glow, gradient or blur halo behind it.",
+      "Don't add testimonials, customer logos, client names, invented figures or photos of real crews or sites.",
+      "Don't name a competitor in a comparison table or in public copy outside the dated /compare pages: it is \"other apps\".",
+      "Don't use uppercase tracked labels, a second typeface or a colour outside the tokens above.",
+      "Don't load a script, font or API from a host the CSP in `public/_headers` does not list (self-hosted scripts, Google Fonts only)."
     ]
   }
 }

@@ -3,22 +3,6 @@
   "detector": {
     "ignoreRules": [],
     "ignoreFiles": [],
-    "ignoreValues": [
-      {
-        "rule": "design-system-font",
-        "value": "sofia sans condensed",
-        "createdAt": "2026-10-12T02:08:44.698Z"
-      },
-      {
-        "rule": "design-system-font",
-        "value": "alegreya sans",
-        "createdAt": "2026-10-12T02:08:45.042Z"
-      },
-      {
-        "rule": "design-system-font",
-        "value": "sofia sans",
-        "createdAt": "2026-10-12T02:08:45.376Z"
-      }
-    ]
+    "ignoreValues": []
   }
 }
