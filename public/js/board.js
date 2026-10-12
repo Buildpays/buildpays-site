@@ -8,12 +8,6 @@
   var canAnimate = !still && typeof Element !== 'undefined' && 'animate' in Element.prototype;
   if (canAnimate) root.classList.add('flip');
 
-  // Homepage only, while the redesign is reviewed: /?hero=board shows the old hero (#hero-old) instead of the new one.
-  // The class lands before first paint (CSS hides #hero-new); init() then swaps the hidden attributes.
-  // GO-LIVE: delete this switch, swapHero() and #hero-old.
-  var oldHero = /(?:^|&)hero=board(?:&|$)/.test(location.search.slice(1));
-  if (oldHero) root.classList.add('hero-board');
-
   // Preview switches while the owner compares (not the default): ?theme=light and ?wide=1 set html[data-theme="light"]
   // and html[data-wide] before first paint, and are kept for the rest of the tab (sessionStorage), so every page
   // reached by a link keeps them. ?theme=navy / ?wide=0 clear them. Storage can be blocked: then only the page with
@@ -220,12 +214,15 @@
     if (!el || el.closest('[hidden]')) return null;
     var row = el.querySelector('.nrow');
     var start = el.getAttribute('data-start') || '23:00';
+    // A phone: no night run (it would sit on blank cells while the visitor scrolls). The row is built at rest and only
+    // the summary lands, once, when the strip comes into view.
+    var rest = !canAnimate || (window.matchMedia && window.matchMedia('(max-width: 640px)').matches);
     var cells = {};
     row.querySelectorAll('[data-k]').forEach(function (c) {
       var fl = c.querySelector('.fl'), k = c.getAttribute('data-k'), fin = fl.getAttribute('data-v');
       if (fl.classList.contains('chars')) {
         var shape = fl.getAttribute('data-shape') || fin;
-        var first = canAnimate ? (k === 'time' ? start : pad('', shape.length)) : fin;
+        var first = !rest ? (k === 'time' ? start : pad('', shape.length)) : fin;
         fl.textContent = '';
         cells[k] = { el: fl, fin: fin, len: shape.length, chars: shape.split('').map(function (ch, i) {
           var s = document.createElement('span');
@@ -234,10 +231,11 @@
           return makeFlap(s, first.charAt(i));
         }) };
       } else {
-        cells[k] = { el: fl, fin: fin, f: makeFlap(fl, canAnimate ? ' ' : fin) };
+        cells[k] = { el: fl, fin: fin, f: makeFlap(fl, !rest || (canAnimate && k === 'entry') ? ' ' : fin) };
       }
     });
     if (!canAnimate) return null;
+    if (rest) return function play() { return run(cells.entry.f, [cells.entry.fin], 230); };
     el.classList.remove('settled');   // the run needs every cell; it folds them again when it lands
     cells.entry.el.classList.remove('st-coded');
     var stat = cells.stat, via = stat.el.getAttribute('data-via') || 'READING', done = stat.el.getAttribute('data-done') || 'CODED';
@@ -299,11 +297,70 @@
     };
   }
 
-  // The hero switch (see the top): swap which hero is in the page before anything is built.
-  function swapHero() {
-    if (!oldHero) return;
-    var n = document.getElementById('hero-new'), o = document.getElementById('hero-old');
-    if (n && o) { n.hidden = true; o.hidden = false; }
+  // The homepage window: one screen at a time, the three products as tabs under it. It moves on every 6 s until the
+  // visitor hovers, focuses or taps a tab, then stays where they put it. Arrow keys, Home and End move between tabs.
+  // Reduced motion: no rotation (the tabs still switch, without the fade).
+  function initWindow() {
+    var hw = document.querySelector('[data-hw]');
+    if (!hw) return;
+    var list = hw.querySelector('[role="tablist"]');
+    var tabs = Array.prototype.slice.call(hw.querySelectorAll('[role="tab"]'));
+    var imgs = Array.prototype.slice.call(hw.querySelectorAll('.hw-win img'));
+    var lines = Array.prototype.slice.call(hw.querySelectorAll('.hw-line'));
+    var panel = hw.querySelector('[role="tabpanel"]');
+    var cur = 0, timer = null;
+    function show(i, focus) {
+      cur = (i + tabs.length) % tabs.length;
+      tabs.forEach(function (t, k) { t.setAttribute('aria-selected', k === cur ? 'true' : 'false'); t.tabIndex = k === cur ? 0 : -1; });
+      imgs.forEach(function (im, k) { im.classList.toggle('on', k === cur); if (k === cur) im.removeAttribute('aria-hidden'); else im.setAttribute('aria-hidden', 'true'); });
+      lines.forEach(function (l, k) { l.hidden = k !== cur; });
+      panel.setAttribute('aria-labelledby', tabs[cur].id);
+      if (focus) tabs[cur].focus();
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    tabs.forEach(function (t, k) {
+      t.addEventListener('click', function () { stop(); show(k); });
+      t.addEventListener('keydown', function (e) {
+        var to = e.key === 'ArrowRight' ? cur + 1 : e.key === 'ArrowLeft' ? cur - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
+        if (to === null) return;
+        e.preventDefault(); stop(); show(to, true);
+      });
+    });
+    list.addEventListener('pointerenter', stop);
+    list.addEventListener('focusin', stop);
+    if (!still) timer = setInterval(function () { if (!document.hidden) show(cur + 1); }, 6000);
+  }
+
+  // A figcaption's board row (.ex-row) lands its status word once, as a flap, when its exhibit comes into view:
+  // READING, then the word. Reduced motion (or no Web Animations): the word as written.
+  function initLand() {
+    document.querySelectorAll('.ex-st').forEach(function (el) {
+      var v = el.getAttribute('data-v'), via = el.getAttribute('data-via') || 'READING';
+      var sr = document.createElement('span');
+      sr.className = 'sr';
+      sr.textContent = v;
+      el.parentNode.insertBefore(sr, el.nextSibling);
+      el.setAttribute('aria-hidden', 'true');
+      if (!canAnimate || !('IntersectionObserver' in window)) return;
+      // The flap's lettering sits in absolute leaves, so hold its width at the longer of the two words first.
+      el.textContent = via.length > v.length ? via : v;
+      el.style.width = Math.ceil(el.getBoundingClientRect().width) + 'px';
+      var f = makeFlap(el, ' ');
+      var fig = el.closest('figure') || el;
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          io.disconnect();
+          wait(260).then(function () {
+            el.classList.add('reading');
+            return run(f, [via], 190);
+          }).then(function () { return wait(520); }).then(function () {
+            return run(f, [v], 200, function () { el.classList.remove('reading'); });
+          });
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.35 });
+      io.observe(fig);
+    });
   }
 
   function initMenu() {
@@ -325,15 +382,16 @@
   }
 
   function init() {
-    swapHero();
+    try { initWindow(); } catch (e) { /* the first screen stays */ }
+    try { initLand(); } catch (e) { /* the words stay as written */ }
     var night = null;
     try { night = initNight(); } catch (e) { night = null; }
     try { initBoards(); } catch (e) { root.classList.remove('flip'); }
-    // The night strip runs once the three screens have lit (or once it is scrolled to, further down a phone).
+    // The night strip runs shortly after load when it is on screen, else as soon as it is scrolled to.
     if (night) {
       var strip = document.querySelector('[data-night]');
       var go = function (ms) { wait(ms).then(night); };
-      if (!('IntersectionObserver' in window) || strip.getBoundingClientRect().top < window.innerHeight) go(1300);
+      if (!('IntersectionObserver' in window) || strip.getBoundingClientRect().top < window.innerHeight) go(900);
       else {
         var io = new IntersectionObserver(function (es) {
           es.forEach(function (e) { if (e.isIntersecting) { io.disconnect(); go(350); } });

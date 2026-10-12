@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=owner1">
-<script src="/js/board.js?v=4"></script>
+<link rel="stylesheet" href="/css/board.css?v=owner2">
+<script src="/js/board.js?v=5"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -108,15 +108,6 @@
   "publisher": { "@id": "https://paykicker.com.au/#organization" }
 }
 </script>
-<style>
-  /* Page-only composition. The shared world lives in /css/board.css. */
-  .hero-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end}
-  .hero-head .strap{max-width:34ch}
-  /* The owner's headline is long: a step down from the display size, three lines beside the actions at 1440, four at most on a phone. */
-  h1.h-long{font-size:clamp(2.3rem,10.4vw,3.4rem);line-height:.95;letter-spacing:-.01em}
-  @media (min-width:901px){h1.h-long{font-size:clamp(3.3rem,4.7vw,4.2rem)}}
-  @media (max-width:900px){.hero-head{grid-template-columns:1fr;gap:18px}}
-</style>
 </head>
 <body>
 
@@ -156,132 +147,59 @@
 
 <main id="main">
 
-<!-- Two heroes while the redesign is reviewed. #hero-new (three products on screen + the night shift) is the page;
-     #hero-old (the four-row flip board) shows only at /?hero=board, for comparison (board.js swaps them).
-     GO-LIVE: delete #hero-old, the .hero-board rules in board.css and the hero switch at the top of board.js. -->
-<section class="hero hero-new" id="hero-new" aria-labelledby="h-hero">
-  <div class="wrap">
-    <div class="hero-head">
-      <h1 id="h-hero" class="h-long">Everything your business does manually, now to MYOB/Xero automatically.</h1>
-      <div class="hero-side">
-        <p class="strap">Hours back every week. Every figure checked against its source.</p>
-        <p class="strap-2">Xero or MYOB stays your books. PayKicker never moves money.</p>
-        <div class="acts">
-          <a class="btn go big" href="#contact">Book a demo</a>
-          <a class="btn hair big" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a>
+<section class="hero hero-home" aria-labelledby="h-hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 id="h-hero">Everything your business does manually, now to MYOB/Xero automatically.</h1>
+      <p class="strap">Hours back every week. Every figure checked against its source.</p>
+      <p class="strap-2">Xero or MYOB stays your books. PayKicker never moves money.</p>
+      <div class="acts">
+        <a class="btn go big" href="#contact">Book a demo</a>
+        <a class="btn hair big" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a>
+      </div>
+      <p class="fine-dim">Free trial is for supplier invoices: 14 days, no card. Or call <a href="tel:+61340616223">03&nbsp;4061&nbsp;6223</a>.</p>
+      <p class="hero-partner"><a href="/partners">Accountant or bookkeeper? Refer a client and earn 15% for a year<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+
+    <!-- One window onto the real app, the three products as tabs under it (board.js rotates them every 6 s until a tab is
+         hovered, focused or tapped; reduced motion: no rotation). Synthetic data; provenance in /screens/*.json. Each image
+         is cropped in CSS (.h-roster / .h-bills / .h-sales) to its telling region, never past 1x its capture. -->
+    <div class="hw" data-hw>
+      <div class="hw-win" id="hw-panel" role="tabpanel" aria-labelledby="hw-t0">
+        <img class="i-roster h-roster on" src="/screens/roster-board.webp" width="1012" height="860" alt="PayKicker rostering board, example data: a draft day of sites, each with its crew and start and finish, the people still to place, and a warning that one worker can't be placed on a site because he hasn't done its induction." decoding="async" fetchpriority="high">
+        <img class="i-bills h-bills" src="/screens/invoice-approval.webp" width="1340" height="897" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice to Southline Formwork Pty Ltd for $1,796.30, nothing unusual found, each line coded to an account, a job and GST, and the Approve your part, Hold and Reject buttons." decoding="async" aria-hidden="true">
+        <img class="i-sales h-sales" src="/screens/sales-days.webp" width="1012" height="710" alt="PayKicker Sales screen, Day Summaries, example data: October's orders, net sales, GST and takings for one Square location, then each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers, one needing attention." decoding="async" aria-hidden="true">
+      </div>
+      <div class="hw-bar">
+        <div class="hw-tabs" role="tablist" aria-label="PayKicker products">
+          <button class="hw-tab" type="button" role="tab" id="hw-t0" aria-selected="true" aria-controls="hw-panel">Construction software</button>
+          <button class="hw-tab" type="button" role="tab" id="hw-t1" aria-selected="false" aria-controls="hw-panel" tabindex="-1">AP automation</button>
+          <button class="hw-tab" type="button" role="tab" id="hw-t2" aria-selected="false" aria-controls="hw-panel" tabindex="-1">Integrations</button>
         </div>
-        <p class="fine-dim">Free trial is for supplier invoices: 14 days, no card. Or call <a href="tel:+61340616223">03&nbsp;4061&nbsp;6223</a>.</p>
+        <p class="hw-ex">Example data</p>
       </div>
-    </div>
+      <p class="hw-line">Roster the crew, sign the docket, send EBA-correct pay to Xero or MYOB. <a class="tl" href="/construction">Construction software<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      <p class="hw-line" hidden>Supplier bills read, coded, approved and posted. <a class="tl" href="/ap-automation">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      <p class="hw-line" hidden>Square and Shopify sales into Xero or MYOB, every night. <a class="tl" href="/integrations">Integrations<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
 
-    <!-- The three products, each a lit screen from the real app (synthetic data; provenance in /screens/*.json),
-         cropped in CSS (.pg-roster / .pg-bills / .pg-sales) to its most telling region. -->
-    <ul class="pgates">
-      <li><a class="pg" href="/construction">
-        <span class="pg-shot pg-roster"><span class="pg-frame"><img src="/screens/roster-board.webp" width="1012" height="860" alt="" decoding="async" fetchpriority="high"></span><span class="pg-ex">Example data</span></span>
-        <h2 class="pg-name">Construction software<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></h2>
-        <span class="pg-line">Roster the crew, sign the docket, send EBA-correct pay to Xero or MYOB.</span>
-      </a></li>
-      <li><a class="pg" href="/ap-automation">
-        <span class="pg-shot pg-bills"><span class="pg-frame"><img src="/screens/invoice-approval.webp" width="1340" height="897" alt="" decoding="async"></span><span class="pg-ex">Example data</span></span>
-        <h2 class="pg-name">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></h2>
-        <span class="pg-line">Supplier bills read, coded, approved and posted.</span>
-      </a></li>
-      <li><a class="pg" href="/integrations">
-        <span class="pg-shot pg-sales"><span class="pg-frame"><img src="/screens/sales-days.webp" width="1012" height="710" alt="" decoding="async"></span><span class="pg-ex">Example data</span></span>
-        <h2 class="pg-name">Integrations<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></h2>
-        <span class="pg-line">Square and Shopify sales into Xero or MYOB, every night.</span>
-      </a></li>
-    </ul>
-
-    <!-- The night shift: one row of the board under a clock that runs 23:00 to 06:00 (board.js). The list is the
-         screen-reader text and the run's script; the row in the markup is where the run settles. -->
-    <div class="night settled" data-night data-start="23:00">
-      <ol class="sr n-list" aria-label="Example night, into Xero or MYOB">
-        <li data-t="23:10" data-e="WAGES — EBA PAY RUN W27" data-a="38,412.60" data-c="6-1000" data-g="WGT01">23:10, wages — EBA pay run W27, 38,412.60, account 6-1000, job WGT01: coded.</li>
-        <li data-t="01:40" data-e="WESTGATE REO SUPPLIES INV 44821" data-a="4,312.00" data-c="6-2100" data-g="GST">01:40, Westgate Reo Supplies invoice 44821, 4,312.00, account 6-2100, GST: coded.</li>
-        <li data-t="05:20" data-e="SQUARE — 212 ORDERS, BRUNSWICK" data-a="1,842.00" data-c="4-1000" data-g="GST">05:20, Square, 212 orders, Brunswick, 1,842.00, account 4-1000, GST: coded.</li>
-        <li>06:00: 3 entries coded, 0 waiting on you.</li>
-      </ol>
-      <div class="nrow" aria-hidden="true">
-        <span class="n-time" data-k="time"><span class="fl chars" data-v="06:00">06:00</span></span>
-        <span class="n-entry" data-k="entry"><span class="fl word st-coded" data-v="3 ENTRIES CODED · 0 WAITING ON YOU">3 ENTRIES CODED · 0 WAITING ON YOU</span></span>
-        <span class="n-amt" data-k="amt"><span class="fl chars" data-v="         " data-shape="00,000.00">         </span></span>
-        <span class="n-acct" data-k="acct"><span class="fl word" data-v=" "> </span></span>
-        <span class="n-gate" data-k="gate"><span class="fl word" data-v=" "> </span></span>
-        <span class="n-stat" data-k="stat"><span class="fl word" data-v=" " data-via="READING" data-done="CODED"> </span></span>
-      </div>
-    </div>
-    <p class="hero-partner"><a href="/partners">Accountant or bookkeeper? Refer a client and earn 15% for a year<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><span class="n-ex">Example data</span></p>
-  </div>
-</section>
-
-<section class="hero hero-old" id="hero-old" aria-labelledby="h-hero-old" hidden>
-  <div class="wrap">
-    <div class="hero-head">
-      <h1 id="h-hero-old" class="h-long">Everything your business does manually, now to MYOB/Xero automatically.</h1>
-      <div class="hero-side">
-        <p class="strap">Hours back every week. Every figure checked against its source.</p>
-        <p class="strap-2">Xero or MYOB stays your books. PayKicker never moves money.</p>
-        <div class="acts">
-          <a class="btn go big" href="#contact">Book a demo</a>
-          <a class="btn hair big" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a>
+      <!-- The night shift: one row of the board under a clock that runs 23:00 to 06:00 (board.js). The list is the
+           screen-reader text and the run's script; the row in the markup is where the run settles. -->
+      <div class="night settled" data-night data-start="23:00">
+        <ol class="sr n-list" aria-label="Example night, into Xero or MYOB">
+          <li data-t="23:10" data-e="WAGES — EBA PAY RUN W27" data-a="38,412.60" data-c="6-1000" data-g="WGT01">23:10, wages — EBA pay run W27, 38,412.60, account 6-1000, job WGT01: coded.</li>
+          <li data-t="01:40" data-e="WESTGATE REO SUPPLIES INV 44821" data-a="4,312.00" data-c="6-2100" data-g="GST">01:40, Westgate Reo Supplies invoice 44821, 4,312.00, account 6-2100, GST: coded.</li>
+          <li data-t="05:20" data-e="SQUARE — 212 ORDERS, BRUNSWICK" data-a="1,842.00" data-c="4-1000" data-g="GST">05:20, Square, 212 orders, Brunswick, 1,842.00, account 4-1000, GST: coded.</li>
+          <li>06:00: 3 entries coded, 0 waiting on you.</li>
+        </ol>
+        <div class="nrow" aria-hidden="true">
+          <span class="n-time" data-k="time"><span class="fl chars" data-v="06:00">06:00</span></span>
+          <span class="n-entry" data-k="entry"><span class="fl word st-coded" data-v="3 ENTRIES CODED · 0 WAITING ON YOU">3 ENTRIES CODED · 0 WAITING ON YOU</span></span>
+          <span class="n-amt" data-k="amt"><span class="fl chars" data-v="         " data-shape="00,000.00">         </span></span>
+          <span class="n-acct" data-k="acct"><span class="fl word" data-v=" "> </span></span>
+          <span class="n-gate" data-k="gate"><span class="fl word" data-v=" "> </span></span>
+          <span class="n-stat" data-k="stat"><span class="fl word" data-v=" " data-via="READING" data-done="CODED"> </span></span>
         </div>
-        <p class="fine-dim">Free trial is for supplier invoices: 14 days, no card. Or call <a href="tel:+61340616223">03&nbsp;4061&nbsp;6223</a>.</p>
       </div>
-    </div>
-
-    <div class="board dep" id="board" data-flip="0,110,180,620,740,860" role="table" aria-label="Example entries coded into Xero or MYOB" aria-describedby="board-note">
-      <div class="board-top" aria-hidden="true">
-        <span class="bt-l">Tonight, into Xero / MYOB</span>
-        <span class="bt-r">Example data</span>
-      </div>
-      <div class="brow bhead" role="row">
-        <span class="c-time" role="columnheader">Time</span>
-        <span class="c-entry" role="columnheader">Entry</span>
-        <span class="c-amt" role="columnheader">Amount</span>
-        <span class="c-acct" role="columnheader">Gate: account</span>
-        <span class="c-job" role="columnheader">Job</span>
-        <span class="c-gst" role="columnheader">GST</span>
-        <span class="c-stat" role="columnheader">Status</span>
-      </div>
-      <div class="brow" role="row" data-row="0">
-        <span class="c-time" role="cell"><span class="fl chars" data-v="03 JUL">03 JUL</span></span>
-        <span class="c-entry" role="cell"><span class="fl word" data-v="WAGES — EBA PAY RUN W27">WAGES — EBA PAY RUN W27</span></span>
-        <span class="c-amt" role="cell"><span class="fl chars" data-v="38,412.60">38,412.60</span></span>
-        <span class="c-acct" role="cell"><span class="fl word" data-v="6-1000 WAGES">6-1000 WAGES</span></span>
-        <span class="c-job" role="cell"><span class="fl word" data-v="WGT01">WGT01</span></span>
-        <span class="c-gst" role="cell"><span class="fl word" data-v="—" data-sr="No GST">—</span></span>
-        <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
-      </div>
-      <div class="brow" role="row" data-row="1">
-        <span class="c-time" role="cell"><span class="fl chars" data-v="04 JUL">04 JUL</span></span>
-        <span class="c-entry" role="cell"><span class="fl word" data-v="WESTGATE REO SUPPLIES INV 44821">WESTGATE REO SUPPLIES INV 44821</span></span>
-        <span class="c-amt" role="cell"><span class="fl chars" data-v=" 4,312.00"> 4,312.00</span></span>
-        <span class="c-acct" role="cell"><span class="fl word" data-v="6-2100 MATERIALS">6-2100 MATERIALS</span></span>
-        <span class="c-job" role="cell"><span class="fl word" data-v="WGT01">WGT01</span></span>
-        <span class="c-gst" role="cell"><span class="fl word" data-v="GST">GST</span></span>
-        <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
-      </div>
-      <div class="brow" role="row" data-row="2">
-        <span class="c-time" role="cell"><span class="fl chars" data-v="07 JUL">07 JUL</span></span>
-        <span class="c-entry" role="cell"><span class="fl word" data-v="SQUARE — 212 ORDERS, BRUNSWICK">SQUARE — 212 ORDERS, BRUNSWICK</span></span>
-        <span class="c-amt" role="cell"><span class="fl chars" data-v=" 1,842.00"> 1,842.00</span></span>
-        <span class="c-acct" role="cell"><span class="fl word" data-v="4-1000 SALES">4-1000 SALES</span></span>
-        <span class="c-job" role="cell"><span class="fl word" data-v="BRUNSWICK">BRUNSWICK</span></span>
-        <span class="c-gst" role="cell"><span class="fl word" data-v="GST">GST</span></span>
-        <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
-      </div>
-      <div class="brow" role="row" data-row="3">
-        <span class="c-time" role="cell"><span class="fl chars" data-v="07 JUL">07 JUL</span></span>
-        <span class="c-entry" role="cell"><span class="fl word" data-v="TRANSFER TO SAVINGS">TRANSFER TO SAVINGS</span></span>
-        <span class="c-amt" role="cell"><span class="fl chars" data-v="20,000.00">20,000.00</span></span>
-        <span class="c-acct" role="cell"><span class="fl word" data-v="PAIRED 0119">PAIRED 0119</span></span>
-        <span class="c-job" role="cell"><span class="fl word" data-v="—" data-sr="No job">—</span></span>
-        <span class="c-gst" role="cell"><span class="fl word" data-v="—" data-sr="No GST">—</span></span>
-        <span class="c-stat" role="cell"><span class="fl word st-coming" data-v="COMING" data-via="READING">COMING</span></span>
-      </div>
-      <p class="board-note" id="board-note">Wages, a supplier bill and a day of Square sales, coded with account, job and GST. Bank coding is coming and is not live yet.</p>
     </div>
   </div>
 </section>
@@ -289,8 +207,8 @@
 <div id="business">
 
 <section class="gate" id="ap" aria-labelledby="h-ap">
-  <div class="wrap">
-    <div class="gate-head">
+  <div class="wrap duo">
+    <div class="duo-copy">
       <h2 id="h-ap">Forward the bill.<br>It lands coded.</h2>
       <div class="gate-copy">
         <p>Email a bill to your own invoices address, or drop in the PDF. Two readers check every figure. The supplier is found by ABN and name. Each line is coded to the account, job and tax code you used last time, GST and GST-free split. The right person approves, and the bill lands in Xero or MYOB ready to pay.</p>
@@ -299,17 +217,19 @@
       </div>
     </div>
 
-    <figure class="exhibit ex-right ex-shot ex-wide">
-      <!-- Exhibit: the approver's view of a bill, captured from the app harness (synthetic data). Provenance: /screens/invoice-approval.json -->
-      <div class="screen shot"><img src="/screens/invoice-approval.webp" width="1340" height="897" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 waiting on this approver, the supplier's PDF beside the figures read from it, nothing unusual found, each line coded to an account, a job and GST, and the Approve your part, Hold and Reject buttons." loading="lazy" decoding="async"></div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b>CODED</b></span></figcaption>
+    <figure class="exhibit duo-shot">
+      <!-- Exhibit: the approver's view of a bill, captured from the app harness (synthetic data), cropped to the approval
+           panel beside the PDF (.w-bills). Provenance: /screens/invoice-approval.json -->
+      <div class="win w-bills"><img class="i-bills" src="/screens/invoice-approval.webp" width="1340" height="897" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice to Southline Formwork Pty Ltd for $1,796.30 waiting on this approver, the supplier's PDF beside the figures read from it, nothing unusual found, each line coded to an account, a job and GST, and the Approve your part, Hold and Reject buttons." loading="lazy" decoding="async"></div>
+      <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b class="fl word st-coded ex-st" data-v="CODED" data-via="READING">CODED</b></span></figcaption>
     </figure>
   </div>
 </section>
 
 <section class="gate" id="square" data-live="false" aria-labelledby="h-sq">
   <div class="wrap">
-    <div class="gate-head">
+    <div class="duo flip">
+    <div class="duo-copy">
       <h2 id="h-sq">The day's takings,<br>posted every night.</h2>
       <div class="gate-copy">
         <p>Every shop's day goes into Xero or MYOB as one sales invoice: GST and GST-free sales, surcharges, tips, gift cards, card to Square clearing, cash to the till. Each payout is settled with Square's fees on their own account. PayKicker finds or makes every account and job for you.</p>
@@ -318,11 +238,13 @@
       </div>
     </div>
 
-    <figure class="exhibit ex-left ex-shot">
-      <!-- Exhibit: the real Sales > Day Summaries screen, captured from the app harness (synthetic data). Provenance: /screens/sales-days.json -->
-      <div class="screen shot"><img src="/screens/sales-days.webp" width="1012" height="710" alt="PayKicker Sales screen, Day Summaries, example data: October's orders, net sales, GST and takings for one Square location, then each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers, one needing attention." loading="lazy" decoding="async"></div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">08 OCT · SQUARE — 43 ORDERS, HIGH STREET · 1,873.00 · MYOB #1201 · <b>POSTED</b></span></figcaption>
+    <figure class="exhibit duo-shot">
+      <!-- Exhibit: the real Sales > Day Summaries screen, captured from the app harness (synthetic data), cropped to the
+           days and their status (.w-sales). Provenance: /screens/sales-days.json -->
+      <div class="win w-sales"><img class="i-sales" src="/screens/sales-days.webp" width="1012" height="710" alt="PayKicker Sales screen, Day Summaries, example data: October's orders, net sales, GST and takings for one Square location, then each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers, one needing attention." loading="lazy" decoding="async"></div>
+      <figcaption><span class="ex-label">Example data</span><span class="ex-row">08 OCT · SQUARE — 43 ORDERS, HIGH STREET · 1,873.00 · MYOB #1201 · <b class="fl word st-coded ex-st" data-v="POSTED" data-via="READING">POSTED</b></span></figcaption>
     </figure>
+    </div>
 
     <div class="coming">
       <span class="fl word st-coming">Bank coding</span>
@@ -335,8 +257,8 @@
 </div>
 
 <section class="gate" id="construction" aria-labelledby="h-con">
-  <div class="wrap">
-    <div class="gate-head split">
+  <div class="wrap duo">
+    <div class="duo-copy">
       <h2 id="h-con">From the 6am board<br>to the pay file.</h2>
       <div class="gate-copy">
         <p>For Melbourne subcontractors on a CFMEU Victoria enterprise agreement: formwork, structure, steelfixing, cranes, concrete pumping and cutting, civil. Every clause of your agreement, encoded once.</p>
@@ -351,10 +273,11 @@
       </ul>
     </div>
 
-    <figure class="exhibit ex-right">
-      <!-- Exhibit: the office's day and the worker's day, captured from the app harness (synthetic data). Provenance: /screens/my-work.json, /screens/my-work-phone.json -->
-      <div class="shot-pair"><div class="screen shot"><img src="/screens/my-work.webp" width="1008" height="1054" alt="PayKicker's home screen for the office, example data: Monday 12 October, 8 things need you today and 24 on the tools across 8 sites; what needs you, each with its button (timesheets to approve, dockets awaiting signature, leave requests, tickets to verify); today on site by crew; upcoming leave; the week's roster." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/my-work-phone.webp" width="390" height="877" alt="PayKicker on a worker's phone, My work, example data: today's site Tower rostered 6:30 to 3:00 with its address and gate, the week, and Enter today's hours, Raise a docket, My roster, My timesheets, My dockets and Ask for leave." loading="lazy" decoding="async"></div></div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">03 JUL · WAGES — EBA PAY RUN W27 · 38,412.60 · 6-1000 WAGES · WGT01 · <b>CODED</b></span></figcaption>
+    <figure class="exhibit duo-shot">
+      <!-- Exhibit: the office's day (cropped to Needs you, .w-mywork) and the worker's day, captured from the app harness
+           (synthetic data). Provenance: /screens/my-work.json, /screens/my-work-phone.json -->
+      <div class="shot-pair"><div class="win w-mywork"><img class="i-mywork" src="/screens/my-work.webp" width="1008" height="1054" alt="PayKicker's home screen for the office, example data: what needs you today, each with its button: a casual conversion to answer, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers still onboarding and tickets to verify." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/my-work-phone.webp" width="390" height="877" alt="PayKicker on a worker's phone, My work, example data: today's site Tower rostered 6:30 to 3:00 with its address and gate, the week, and Enter today's hours, Raise a docket, My roster, My timesheets, My dockets and Ask for leave." loading="lazy" decoding="async"></div></div>
+      <figcaption><span class="ex-label">Example data</span><span class="ex-row">03 JUL · WAGES — EBA PAY RUN W27 · 38,412.60 · 6-1000 WAGES · WGT01 · <b class="fl word st-coded ex-st" data-v="CODED" data-via="READING">CODED</b></span></figcaption>
     </figure>
   </div>
 </section>
@@ -479,20 +402,20 @@
   <div class="wrap">
     <div class="f-cols">
       <div>
-        <h3>For construction crews</h3>
-        <ul><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
+        <p class="f-h" id="f-crews">For construction crews</p>
+        <ul aria-labelledby="f-crews"><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
       </div>
       <div>
-        <h3>For any business</h3>
-        <ul><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync (opening soon)</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/join">Join</a></li></ul>
+        <p class="f-h" id="f-any">For any business</p>
+        <ul aria-labelledby="f-any"><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync (opening soon)</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/join">Join</a></li></ul>
       </div>
       <div>
-        <h3>For accountants</h3>
-        <ul><li><a href="/partners">Become a partner</a></li><li><a href="/partner-terms">Partner terms</a></li></ul>
+        <p class="f-h" id="f-acc">For accountants</p>
+        <ul aria-labelledby="f-acc"><li><a href="/partners">Become a partner</a></li><li><a href="/partner-terms">Partner terms</a></li></ul>
       </div>
       <div>
-        <h3>Contact</h3>
-        <ul><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
+        <p class="f-h" id="f-contact">Contact</p>
+        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
       </div>
     </div>
     <!-- Entity identity. The ABN also appears in the Organization schema on the homepage

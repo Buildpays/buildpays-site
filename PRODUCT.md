@@ -38,6 +38,13 @@ Founder story, confirmed usable on the site (TR, 25 Sep 2026): PayKicker was bui
 
 Confirmed capabilities (from the shipped site copy, JSON-LD featureList and the app repo per the repo README rules): daily allocation board with SMS; induction and ticket enforcement before rostering; one-tap timesheets split across multi-site days; self-serve onboarding with tickets read from a photo; dayworks dockets with labour, plant and materials by quantity, e-signature on phone or secure link, signed copy emailed; named or anonymous crew dockets; automatic public holiday and RDO pay lines; payroll classification kept separate from client charge role with variations flagged; client-ready Excel cost reports; MYOB-ready export matched to payroll categories and job codes. Three modules: rostering and inductions, dockets and cost reports, EBA payroll (runs on top of rostering). Onboarding and tickets come with every plan.
 
+Verified figures (12 Oct 2026), each with its source:
+
+- Supplier invoices: free trial 14 days, 8 invoices read; then $9.99, $29.99, $69.99 or $149 a month inc GST, by how many bills were read (app `invoiceTiers.js`; the live invoices page).
+- Square sales sync: free for 1 location up to 60 orders a month; $9.99 for 2 locations up to 500 orders; $24.99 unlimited; all inc GST (app `squareTiers.js`: 0 / 908 / 2272 cents ex GST).
+- Crew system: "from $24.99 per week" and the "$5,000 a month" line, carried unchanged from the live homepage (the owner's figures).
+- Referral partners: 15% of the inc-GST bill total on each of the client's first 12 charged bills; the client gets 75% off its first 3 charged bills (live /partners).
+
 Constraints future work must keep:
 
 - **No invented figures.** The site states no pay rate, penalty step or allowance amount without a source; `eba-payroll-software.html` carries exactly two dated dollar amounts. Pricing is "contact us": per active employee for the full system, flat monthly fee per module, no lock-in.

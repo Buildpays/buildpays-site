@@ -12,5 +12,6 @@
   },
   "format": "webp q88",
   "shows": "Invoices, the approver's view: bill INV-20955 from Northside Timber & Hardware in review and waiting on this approver — the supplier PDF beside the figures read from it, the checks (nothing unusual), each line coded to account, job and GST, and Approve your part / Hold / Reject",
+  "bill_to": "Southline Formwork Pty Ltd (checked in the capture, 12 Oct 2026)",
   "data": "synthetic (harness fakes): made-up suppliers, ABNs and the invoice the harness draws; the fixture site names that are real Melbourne projects, and the harness company name, replaced in flight with made-up ones (e.g. Riverside Quay Stage 2, Southline Formwork Pty Ltd); nothing written to the app repo"
 }

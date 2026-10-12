@@ -139,25 +139,30 @@ h1{font-size:clamp(3rem,12.4vw,6rem);line-height:.9;letter-spacing:-.015em;font-
 
 /* A flap: the cell. Top half a touch lighter, a hinge line across the middle. */
 .fl{position:relative;display:block;height:var(--fh);line-height:var(--fh);padding:0 .55em;border-radius:2px;
-  background:linear-gradient(to bottom,var(--flap-hi) 0 50%,var(--flap-lo) 50% 100%);
+  background:linear-gradient(to bottom,var(--ftop,var(--flap-lo)) 0 50%,var(--flap-lo) 50% 100%);
   box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.45 * var(--sk))),inset 0 1px 0 rgba(var(--ink-rgb),.05);
   font-family:var(--f-board);font-weight:700;font-size:var(--fs);letter-spacing:.035em;text-transform:uppercase;
   font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;color:var(--ink);
   white-space:pre;overflow:hidden;perspective:340px;transition:color .7s cubic-bezier(.2,.8,.2,1)}
 .fl::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;margin-top:-1px;z-index:3;pointer-events:none;
-  background:var(--hinge);box-shadow:0 1px 0 rgba(var(--ink-rgb),.05)}
+  background:var(--hinge);box-shadow:0 1px 0 rgba(var(--ink-rgb),.05);opacity:var(--hg,0)}
+/* The hinge line runs only through board-size lettering (a board's rows); on a label-size flap it would read as a strikethrough. */
+.board{--hg:1;--ftop:var(--flap-hi)}
+.board.mini{--hg:0;--ftop:var(--flap-lo)}
+/* Label-size flaps (names, statuses, the night strip, a caption's status) are one flat cell: the two-tone split, like the
+   hinge, would cut through small lettering. */
 .fl.chars{display:inline-flex;gap:2px;padding:0;background:none;box-shadow:none;overflow:visible;perspective:none}
 .fl.chars::after{display:none}
 .fl.chars .cell{position:relative;display:block;width:var(--cw);height:var(--fh);text-align:center;padding:0;border-radius:2px;overflow:hidden;perspective:300px;
-  background:linear-gradient(to bottom,var(--flap-hi) 0 50%,var(--flap-lo) 50% 100%);box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.45 * var(--sk))),inset 0 1px 0 rgba(var(--ink-rgb),.05)}
-.fl.chars .cell::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;margin-top:-1px;z-index:3;background:var(--hinge);box-shadow:0 1px 0 rgba(var(--ink-rgb),.05)}
+  background:linear-gradient(to bottom,var(--ftop,var(--flap-lo)) 0 50%,var(--flap-lo) 50% 100%);box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.45 * var(--sk))),inset 0 1px 0 rgba(var(--ink-rgb),.05)}
+.fl.chars .cell::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;margin-top:-1px;z-index:3;background:var(--hinge);box-shadow:0 1px 0 rgba(var(--ink-rgb),.05);opacity:var(--hg,0)}
 .fl.chars .cell.gap{background:none;box-shadow:none;width:calc(var(--cw) * .5)}
 .fl.chars .cell.gap::after{display:none}
 .fl.chars .cell.pun{width:calc(var(--cw) * .62)}
 
 /* Leaves, built by board.js */
 .lf{position:absolute;left:0;right:0;height:50%;overflow:hidden;padding:inherit;backface-visibility:hidden}
-.lf.top,.lf.ft{top:0;background:var(--flap-hi);transform-origin:50% 100%}
+.lf.top,.lf.ft{top:0;background:var(--ftop,var(--flap-lo));transform-origin:50% 100%}
 .lf.bot,.lf.fb{bottom:0;background:var(--flap-lo);transform-origin:50% 0}
 .lf.ft,.lf.fb{visibility:hidden;z-index:2}
 .lf>b{position:absolute;left:0;right:0;height:var(--fh);line-height:var(--fh);padding:inherit;font-weight:inherit;white-space:pre}
@@ -179,23 +184,16 @@ h1{font-size:clamp(3rem,12.4vw,6rem);line-height:.9;letter-spacing:-.015em;font-
 .flip [data-flip] .fl{color:transparent}
 .flip [data-flip] .fl.chars{visibility:hidden}
 
-/* Below desktop the row folds to three lines: time + status, entry, amount + gate */
+/* Smaller screens: smaller board lettering (the pay board and the mini board fold in their own rules). */
 @media (max-width:1260px){
   :root{--fs:1.16rem;--fh:42px}
-  .board.dep{display:block;padding:14px 16px}
-  .board.dep .brow.bhead{display:none}
-  .board.dep .brow{display:grid;grid-template-columns:max-content minmax(0,1fr) max-content max-content;grid-template-areas:"time . . stat" "entry entry entry entry" "amt acct job gst";gap:6px 8px;padding:12px 0;border-top:1px solid var(--line)}
-  .board.dep .board-top+.bhead+.brow{border-top:0}
-  .dep .c-time{grid-area:time}.dep .c-entry{grid-area:entry}.dep .c-amt{grid-area:amt;justify-self:start}.dep .c-acct{grid-area:acct}.dep .c-job{grid-area:job}.dep .c-gst{grid-area:gst}.dep .c-stat{grid-area:stat;min-width:7.2rem}
-  .dep .c-gst{min-width:3.4rem}
 }
 @media (max-width:640px){
   :root{--fs:.98rem;--fh:36px}
+  .board{--hg:0;--ftop:var(--flap-lo)}
   .fl{letter-spacing:.03em;padding:0 .45em}
   .word .lf>b{padding:0 .45em}
   .board{padding:12px 12px}
-  .board.dep .brow{grid-template-columns:minmax(0,1fr) 6.3rem 2.9rem;grid-template-areas:"time stat stat" "entry entry entry" "amt amt amt" "acct job gst";gap:6px}
-  .dep .c-stat,.dep .c-gst,.dep .c-job{min-width:0}
   .board-top{font-size:.8rem;letter-spacing:.12em}
 }
 
@@ -238,7 +236,8 @@ h1{font-size:clamp(3rem,12.4vw,6rem);line-height:.9;letter-spacing:-.015em;font-
 @media (max-width:900px){.gate-head,.gate-head.split{grid-template-columns:1fr;grid-template-areas:none;gap:18px}.gate-head.split>*{grid-area:auto}}
 
 /* An exhibit: one large product screen on the night ground, set on a flat mat (--frame). */
-.exhibit{position:relative;margin:clamp(44px,5.5vw,80px) 0 0;isolation:isolate;max-width:1180px}
+.exhibit{position:relative;margin:clamp(44px,5.5vw,80px) 0 0;isolation:isolate;max-width:880px}
+.exhibit.ex-pair{max-width:none}
 .ex-right{margin-left:auto}
 .ex-left{margin-right:auto}
 .exhibit figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px;margin-top:calc(var(--mat) + 14px);color:var(--dim)}
@@ -252,15 +251,8 @@ h1{font-size:clamp(3rem,12.4vw,6rem);line-height:.9;letter-spacing:-.015em;font-
 .pill.green{background:var(--ok-bg);color:var(--ok)}
 .pill.amber{background:var(--wait-bg);color:var(--wait)}
 
-/* A real app screen, captured from the app (public/screens/, provenance in each .json): it scales to the frame and never
-   past its own size. The phone capture sits beside the board as a phone. */
-.screen.shot{max-width:1012px;background:#f4f7fb}
-.exhibit.ex-shot{max-width:1012px}
-.shot img,.phone-shot img{display:block;width:100%;height:auto}
-.phone-shot img{border-radius:18px;background:#f4f7fb;box-shadow:var(--frame)}
-.shot-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,15rem);gap:clamp(30px,3.2vw,46px);align-items:start;max-width:1180px}
-.shot-pair .screen.shot{max-width:none;margin:0}
-@media (max-width:860px){.shot-pair{grid-template-columns:1fr}.shot-pair .phone-shot{max-width:15rem}}
+/* A phone capture sits as a phone: its own rounded corners, the same frame. */
+.phone-shot img{display:block;width:100%;height:auto;border-radius:18px;background:#f4f7fb;box-shadow:var(--frame)}
 
 .coming{display:grid;grid-template-columns:minmax(0,19rem) minmax(0,1fr);gap:24px;align-items:center;margin-top:clamp(40px,4.6vw,64px);padding:18px 8px;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line)}
 .coming p{font-size:1.1rem;color:var(--ink)}
@@ -334,7 +326,7 @@ h1{font-size:clamp(3rem,12.4vw,6rem);line-height:.9;letter-spacing:-.015em;font-
 /* ---------------------------------------------------------------- footer */
 .foot{border-top:1px solid var(--line-2);padding:clamp(40px,4.6vw,64px) 0 40px;font-family:var(--f-ui);font-size:.95rem}
 .f-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}
-.foot h3{font-weight:700;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+.foot .f-h{margin:0 0 14px;font-family:var(--f-board);font-weight:700;font-size:.85rem;line-height:1.2;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
 .foot li{padding:4px 0}
 .foot li span{color:var(--dim)}
 .legal{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:28px;align-items:start;margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
@@ -384,10 +376,10 @@ h1{font-size:clamp(3rem,12.4vw,6rem);line-height:.9;letter-spacing:-.015em;font-
 @media (max-width:640px){.pay .c-stat{min-width:5.6rem}}
 
 /* The worker's timesheet beside it: the phone screen, on paper. */
-.demo{display:grid;grid-template-columns:15.5rem minmax(0,1fr);gap:clamp(28px,3.4vw,48px);align-items:start;margin-top:clamp(36px,4.6vw,60px)}
+.demo{display:grid;grid-template-columns:minmax(0,248px) minmax(0,1fr);gap:clamp(28px,3.4vw,48px);align-items:start;margin-top:clamp(36px,4.6vw,60px)}
 .ts-shot{margin:0}
 .ts-shot figcaption{margin-top:calc(var(--mat) + 12px)}
-@media (max-width:1000px){.demo{grid-template-columns:1fr}.ts-shot{max-width:15.5rem}}
+@media (max-width:1000px){.demo{grid-template-columns:1fr}.ts-shot{max-width:248px}}
 
 /* ---------------------------------------------------------------- the mini board (an index of rows that link) */
 .board.mini{--cols:minmax(0,1fr) minmax(0,15rem) 10.5rem max-content;--fs:1.12rem;--fh:44px;margin-top:clamp(32px,4vw,52px)}
@@ -653,7 +645,7 @@ input[type=range]:focus-visible{outline:2px solid var(--amber);outline-offset:4p
 .tile:nth-child(-n+2){border-top:0}
 .tile>b,.gcard .fig,.stamp{position:relative;display:block;border-radius:2px;background:linear-gradient(to bottom,var(--flap-hi) 0 50%,var(--flap-lo) 50% 100%);
   box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.45 * var(--sk))),inset 0 1px 0 rgba(var(--ink-rgb),.05);color:var(--ink);font-family:var(--f-board);text-transform:uppercase;font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1}
-.tile>b::after,.gcard .fig::after,.stamp::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;margin-top:-1px;background:var(--hinge);box-shadow:0 1px 0 rgba(var(--ink-rgb),.05);pointer-events:none}
+.tile>b::after,.gcard .fig::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;margin-top:-1px;background:var(--hinge);box-shadow:0 1px 0 rgba(var(--ink-rgb),.05);pointer-events:none}
 .tile>b{height:54px;line-height:54px;padding:0 .5em;font-weight:800;font-size:1.7rem;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-align:right}
 .tile>b small{font-size:.6em;font-weight:700;letter-spacing:.04em;color:var(--dim);margin-left:.15em}
 .tile .cap{font-size:1.05rem;line-height:1.4;color:var(--ink)}
@@ -689,7 +681,7 @@ input[type=range]:focus-visible{outline:2px solid var(--amber);outline-offset:4p
 .callout{padding:20px clamp(18px,2.4vw,26px);background:#ede4d1;border:1px solid var(--p-rule);border-radius:2px}
 .text section>.callout{margin-top:26px;margin-bottom:6px}
 .callout p+p{margin-top:10px}
-.stamp{display:inline-block;padding:9px 14px;font-weight:700;font-size:1.02rem;line-height:1.25;letter-spacing:.06em}
+.stamp{display:inline-block;padding:9px 14px;background:var(--flap-lo);font-weight:700;font-size:1.02rem;line-height:1.25;letter-spacing:.06em}
 .text .src,.text .related{font-size:.98rem;line-height:1.55;color:var(--p-dim)}
 .text .indep{margin-top:22px;font-size:.95rem;line-height:1.55;color:var(--p-dim);max-width:76ch}
 .cta-act{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
@@ -721,8 +713,7 @@ input[type=range]:focus-visible{outline:2px solid var(--amber);outline-offset:4p
 .mon .days i{font-style:normal;text-align:center;font-family:var(--f-board);font-weight:700;font-size:.8rem;letter-spacing:.06em;color:var(--p-dim)}
 .mon .days b,.cal-key b{display:flex;align-items:center;justify-content:center;height:30px;border-radius:2px;font-family:var(--f-ui);font-weight:500;font-size:.92rem;font-variant-numeric:tabular-nums;color:var(--p-ink)}
 .days b.we{color:#6f6858}
-.days b.rdo,.cal-key b.rdo{position:relative;background:linear-gradient(to bottom,var(--flap-hi) 0 50%,var(--flap-lo) 50% 100%);color:var(--ink);font-weight:700;box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.3 * var(--sk)))}
-.days b.rdo::after,.cal-key b.rdo::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;margin-top:-1px;background:var(--hinge)}
+.days b.rdo,.cal-key b.rdo{position:relative;background:linear-gradient(to bottom,var(--flap-lo) 0 100%);color:var(--ink);font-weight:700;box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.3 * var(--sk)))}
 .days b.ph,.cal-key b.ph{box-shadow:inset 0 0 0 1.5px var(--p-ink);font-weight:700}
 .days b.al,.cal-key b.al{background:#e2d6be}
 .days b.lk,.cal-key b.lk{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px;font-weight:700}
@@ -801,87 +792,144 @@ input[type=range]:focus-visible{outline:2px solid var(--amber);outline-offset:4p
 @media (max-width:900px){.gcard{grid-template-columns:minmax(0,1fr);padding:22px 0}.gcard .big,.gcard .go,.gcard>h2,.gcard>p{grid-column:1;grid-row:auto}.gcard .big{flex-direction:row;align-items:center;gap:14px}}
 .doc-hero .gcards+.note{margin-top:22px}
 
-/* ================================================================ homepage hero: three products on screen, the night shift */
-/* Old hero for comparison at /?hero=board (board.js sets .hero-board before first paint). GO-LIVE: delete these two rules. */
-.hero-board #hero-new{display:none!important}
-.hero-board #hero-old{display:block!important}
-
-.hero-new{padding-top:clamp(28px,3vw,44px)}
-
-/* Three gates: each a lit product screen with its name and one line; the whole gate is the link. */
-.pgates{--mat:clamp(6px,.6vw,9px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,2.6vw,40px);margin-top:clamp(28px,2.4vw,36px)}
-.pg{display:flex;flex-direction:column;color:var(--ink);text-decoration:none}
-.pg:hover{color:var(--ink)}
-.pg:focus-visible{outline-offset:8px}
-.pg-shot{position:relative;display:block;isolation:isolate}
-.pg-frame{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#f4f7fb;
-  box-shadow:var(--frame);
-  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1)}
-/* The crop: the image is scaled so the region's width fills the frame (--z = image width / region width), then moved
-   by the region's top-left corner as a share of the image (--x, --y). No re-capture. */
-.pg-frame img{position:absolute;left:0;top:0;max-width:none;width:calc(100% * var(--z));height:auto;transform:translate(var(--x),var(--y))}
-.pg-roster{--z:1.3676;--x:0%;--y:0%}           /* the induction refusal, the toolbar, the first row of sites */
-.pg-bills{--z:1.12;--x:0%;--y:-1.2%}           /* the approver's view: the PDF, the read figures, Approve your part */
-.pg-sales{--z:1.2494;--x:-1.383%;--y:-12.676%} /* each day's sales, GST, card and cash, posted to MYOB */
-/* The synthetic-data label hangs just above each screen, at its right edge. */
-.pg-ex{position:absolute;right:0;bottom:100%;margin-bottom:calc(var(--mat) + 5px);font-family:var(--f-board);font-weight:700;font-size:.75rem;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
-.pg-name{display:flex;align-items:center;gap:.35em;margin-top:calc(var(--mat) + 12px);font-size:clamp(1.45rem,1.95vw,1.85rem);line-height:1.05;letter-spacing:.025em;text-transform:uppercase;transition:color .2s}
-.pg-name .ic{width:.8em;height:.8em;color:var(--amber);transition:transform .2s cubic-bezier(.2,.8,.2,1)}
-.pg-line{margin-top:6px;max-width:40ch;font-size:1.1rem;line-height:1.42;color:var(--ink)}
-.pg:hover .pg-name{color:var(--amber)}
-.pg:hover .pg-name .ic{transform:translateX(4px)}
-.pg:hover .pg-frame{transform:translateY(-3px);box-shadow:var(--frame-hi)}
-/* On load the screens come up one after another, a brightness settle from dim to lit (reduced motion: lit). */
-@media (prefers-reduced-motion:no-preference){
-  .pg-frame img{filter:brightness(.48) saturate(.6);animation:pg-on 1.5s cubic-bezier(.16,1,.3,1) forwards}
-  .pgates>li:nth-child(1) .pg-frame img{animation-delay:.2s}
-  .pgates>li:nth-child(2) .pg-frame img{animation-delay:.62s}
-  .pgates>li:nth-child(3) .pg-frame img{animation-delay:1.04s}
+/* ================================================================ screens: a window onto the real app */
+/* A window shows one telling region of a capture (public/screens/, provenance in each .json). The capture is scaled so
+   the region (--rw x --rh capture px, top-left at --rx, --ry) fills the window exactly, like object-fit: cover with an
+   object-position, and the window is never wider than the region or 880px: a screen is never upscaled past its capture
+   and never larger than 880px, at any width. --nw is the capture's width in CSS px (it was taken at 2x). */
+.win{position:relative;display:block;width:100%;max-width:min(880px,calc(var(--rw) * 1px));aspect-ratio:var(--rw)/var(--rh);overflow:hidden;border-radius:4px;background:#f4f7fb;box-shadow:var(--frame)}
+.win img{position:absolute;left:0;top:0;max-width:none;height:auto;width:calc(100% * var(--nw) / var(--rw));margin:calc(-100% * var(--ry) / var(--rw)) 0 0 calc(-100% * var(--rx) / var(--rw))}
+.i-roster{--nw:1012}.i-bills{--nw:1340}.i-sales{--nw:1012}.i-mywork{--nw:1008}
+/* Regions, sized to the column each window sits in. The whole board; the approval panel with the PDF's edge (.w-wide: with
+   the PDF's right half, for a full-width exhibit); the days to their status; Needs you. Phone: a narrower region of each,
+   so the lettering stays readable. */
+.w-roster{--rx:0;--ry:0;--rw:1012;--rh:860}
+.w-bills{--rx:642;--ry:0;--rw:698;--rh:500}
+.w-bills.w-wide{--rx:440;--rw:900;--rh:600}
+.w-sales{--rx:0;--ry:0;--rw:790;--rh:560}
+.w-mywork{--rx:0;--ry:140;--rw:570;--rh:550}
+@media (max-width:640px){
+  .w-roster{--rw:520;--rh:560}
+  .w-bills,.w-bills.w-wide{--rx:676;--rw:520;--rh:460}
+  .w-sales{--rw:460;--rh:400}
 }
-@keyframes pg-on{to{filter:brightness(1) saturate(1)}}
+.ex-right .win{margin-left:auto}
+.phone-shot{max-width:240px}
 
-/* The night shift: the board compressed to one row, a clock on the left. */
-.night{margin-top:clamp(28px,2.2vw,32px);padding:14px 18px;background:var(--housing);border:1px solid var(--line);border-radius:2px;
-  box-shadow:0 30px 60px -36px rgba(var(--shade-rgb),calc(.85 * var(--sk))),inset 0 1px 0 rgba(var(--ink-rgb),.04)}
-.nrow{display:grid;grid-template-columns:max-content minmax(0,1fr) max-content max-content max-content max-content;column-gap:10px;align-items:center}
+/* Two-column gate: the copy (about 40%) beside its screen (about 60%); stacked, copy first, at 1000 and below. */
+.duo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:clamp(28px,4.4vw,72px);align-items:start}
+.duo.flip{grid-template-columns:minmax(0,6fr) minmax(0,4fr)}
+.duo.flip>.duo-shot{order:-1}
+.duo>.exhibit{margin:0;max-width:none;display:flex;flex-direction:column;align-items:flex-end}
+.duo.flip>.exhibit{align-items:flex-start}
+@media (min-width:1001px){.duo>.exhibit{position:sticky;top:96px}}
+.duo>.exhibit>.shot-pair{width:100%}
+.duo-shot{container-type:inline-size}
+.duo>.exhibit .win{margin-left:auto}
+.duo.flip>.exhibit .win{margin-left:0}
+.gate .duo h2{font-size:clamp(2.3rem,3.9vw,3.6rem)}
+.duo .gate-copy{margin-top:22px;padding-top:0}
+.duo .mods{margin-top:28px}
+.duo .rows{margin-top:0}
+.duo .rows>li{grid-template-columns:minmax(0,1fr);gap:10px;padding:16px 0}
+@media (max-width:1000px){
+  .duo,.duo.flip{grid-template-columns:minmax(0,1fr);gap:36px}
+  .duo.flip>.duo-shot{order:0}
+  .duo>.exhibit .win{margin-left:0}
+  .duo>.exhibit{align-items:flex-start}
+}
+
+/* The office screen with the worker's phone beside it. */
+.shot-pair{display:grid;grid-template-columns:minmax(0,880px) minmax(0,240px);gap:clamp(24px,3vw,44px);align-items:start}
+.duo .shot-pair{grid-template-columns:minmax(0,1fr) minmax(0,220px)}
+.duo .shot-pair .win{margin-left:0}
+@container (max-width:640px){.duo .shot-pair{grid-template-columns:minmax(0,1fr)}.duo .shot-pair .phone-shot{max-width:220px}}
+.shot-pair .phone-shot{max-width:none}
+@media (max-width:860px){.shot-pair,.duo .shot-pair{grid-template-columns:minmax(0,1fr)}.shot-pair .phone-shot{max-width:240px}}
+
+/* The figcaption's board row: its status word lands once, as a small flap, when the exhibit comes into view (board.js). */
+.ex-row .ex-st{display:inline-block;vertical-align:middle;--fs:.92rem;--fh:28px;padding:0 .5em;letter-spacing:.06em}
+.ex-row .ex-st .lf>b{padding:0 .5em}
+
+/* ================================================================ homepage hero: the headline beside one product window */
+.hero-home{padding:clamp(28px,3.4vw,52px) 0 clamp(28px,3vw,44px)}
+.hero-home::before{display:none}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) min(880px,58vw);gap:clamp(32px,3.4vw,56px);align-items:start}
+.hero-copy{padding-top:2px}
+.hero-copy h1{font-size:clamp(2.5rem,3.5vw,3.6rem);line-height:.96;letter-spacing:-.01em}
+.hero-copy .strap{margin-top:22px;max-width:30ch}
+.hero-copy .acts{margin-top:24px}
+.hero-partner{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);font-family:var(--f-ui);font-weight:500;font-size:1rem;line-height:1.4}
+.hero-partner .ic{margin-left:.35em;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.hero-partner a:hover .ic{transform:translateX(3px)}
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hero-copy h1{font-size:clamp(2.3rem,7.4vw,3.6rem)}
+  .hero-copy .strap{max-width:40ch}
+}
+
+/* The window: one screen at a time, the three products as tabs under it. Crossfade only. */
+.hw{container:hw/inline-size;min-width:0}
+.hw-win{position:relative;width:calc(100% - 2 * var(--mat));max-width:880px;margin:var(--mat);aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#f4f7fb;box-shadow:var(--frame)}
+.hw-win img{position:absolute;left:0;top:0;max-width:none;height:auto;width:calc(100% * var(--nw) / var(--rw));margin:calc(-100% * var(--ry) / var(--rw)) 0 0 calc(-100% * var(--rx) / var(--rw));opacity:0;transition:opacity .3s ease}
+.hw-win img.on{opacity:1}
+html:not(.js) .hw-win img:first-child{opacity:1}
+.h-roster{--rx:0;--ry:0;--rw:1012}   /* the induction refusal, the toolbar, the first row of sites */
+.h-bills{--rx:396;--ry:0;--rw:944}   /* Approve your part, the checks, the coded figures, beside the PDF */
+.h-sales{--rx:0;--ry:0;--rw:1012}    /* the month's tiles, then each day posted to MYOB */
+/* Where the window is narrower (beside the headline at 1001-1250, or stacked at 641-860), a closer region of each. */
+@media (min-width:1001px) and (max-width:1250px),(min-width:641px) and (max-width:760px){
+  .hw-win{max-width:730px}
+  .h-roster{--rw:760}
+  .h-bills{--rx:610;--rw:730}
+  .h-sales{--rw:830}
+}
+@media (max-width:640px){
+  .hw-win{aspect-ratio:5/4}
+  .h-roster{--rw:500}
+  .h-bills{--rx:676;--rw:520}
+  .h-sales{--rw:480}
+}
+@media (prefers-reduced-motion:reduce){.hw-win img{transition:none}}
+.hw-bar{display:flex;flex-wrap:wrap;align-items:flex-end;gap:4px 24px;margin-top:6px;border-bottom:1px solid var(--line)}
+.hw-tabs{display:flex;gap:clamp(20px,2.6vw,40px)}
+.hw-tab{position:relative;margin:0;padding:12px 0 11px;background:none;border:0;border-radius:0;font-family:var(--f-board);font-weight:700;font-size:clamp(1.02rem,1.2vw,1.18rem);line-height:1.15;letter-spacing:.045em;text-transform:uppercase;color:var(--dim);cursor:pointer;text-align:left;transition:color .18s}
+.hw-tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:transparent;transition:background-color .2s}
+.hw-tab:hover,.hw-tab[aria-selected="true"]{color:var(--ink)}
+.hw-tab[aria-selected="true"]::after{background:var(--orange)}
+.hw-tab:focus-visible{outline-offset:2px}
+.hw-ex{margin-left:auto;padding-bottom:13px;font-family:var(--f-board);font-weight:700;font-size:.75rem;line-height:1.2;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.hw-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px;margin-top:14px;font-size:1.1rem;line-height:1.45}
+.hw-line .tl{white-space:nowrap}
+@container hw (max-width:520px){
+  .hw-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%}
+  .hw-tab{font-size:.94rem;padding:10px 0 9px}
+  .hw-ex{order:-1;width:100%;padding:0 0 2px;text-align:right}
+  .hw-bar{gap:0}
+}
+
+/* The night shift: the board compressed to one quiet row under the tabs, a clock on the left. No housing. */
+.night{margin-top:22px;--fs:1.02rem;--fh:36px}
+.nrow{display:grid;grid-template-columns:max-content minmax(0,1fr) max-content max-content max-content max-content;column-gap:8px;align-items:center}
 .n-time .fl{color:var(--amber)}
 .n-amt{justify-self:end}
 .n-acct .fl{width:4.4em}
 .n-gate .fl{width:3.9em;text-align:center;padding:0}
 .n-gate .lf>b{padding:0}
-.n-stat .fl{width:5.6em}
+.n-stat .fl{width:5.8em}
 .nrow.moving .n-entry .fl,.nrow.moving .n-acct .fl,.nrow.moving .n-gate .fl{color:var(--amber)}
 .flip [data-night] .fl{color:transparent}
 .flip [data-night] .fl.chars{visibility:hidden}
-.hero-partner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;margin-top:16px;font-size:1.06rem}
-.hero-partner a{font-family:var(--f-ui);font-weight:500}
-.hero-partner a .ic{margin-left:.35em}
-.hero-partner a .ic{transition:transform .2s cubic-bezier(.2,.8,.2,1)}
-.hero-partner a:hover .ic{transform:translateX(3px)}
-.n-ex{font-family:var(--f-board);font-weight:700;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
-
-@media (max-width:860px){
-  .pgates{grid-template-columns:1fr;gap:44px}
-  .pg-frame{aspect-ratio:16/10}
-  .pg-roster{--z:1.4457;--x:-1.976%;--y:-28.49%}   /* phone: the first row of sites, their hours and crews */
-}
-@media (max-width:640px){
-  .night{padding:10px 12px}
-  .nrow{--fs:.9rem;--fh:34px;grid-template-columns:max-content minmax(0,1fr) max-content max-content max-content;grid-template-areas:"time entry entry entry entry" "amt amt acct gate stat";gap:6px}
+@container hw (max-width:760px){
+  .nrow{grid-template-columns:max-content minmax(0,1fr) max-content max-content max-content;grid-template-areas:"time entry entry entry entry" "amt amt acct gate stat";gap:6px}
   .n-time{grid-area:time}.n-entry{grid-area:entry;min-width:0}.n-amt{grid-area:amt;justify-self:start}.n-acct{grid-area:acct}.n-gate{grid-area:gate}.n-stat{grid-area:stat}
-  .n-stat .fl{width:5.3em}
-  .hero-partner{flex-direction:column;gap:8px;font-size:1rem}
 }
-
-/* The night strip, settled: once the run lands on the summary the empty flaps fold away and the summary takes the row. */
+@media (max-width:640px){.night{--fs:.9rem;--fh:34px}}
+/* Settled: once the run lands on the summary the empty flaps fold away and the summary takes the row. */
 .night.settled .n-amt,.night.settled .n-acct,.night.settled .n-gate,.night.settled .n-stat{display:none}
 .night.settled .nrow{grid-template-columns:max-content minmax(0,1fr);grid-template-areas:none}
 .night.settled .n-time,.night.settled .n-entry{grid-area:auto}
 .night.settled .n-time{justify-self:start}
-@media (max-width:640px){.night.settled .nrow{grid-template-columns:minmax(0,1fr);row-gap:6px}}
-
-/* The approval view: a wider screen than the others (the PDF beside the read figures). */
-.exhibit.ex-wide,.ex-wide .screen.shot{max-width:1180px}
 
 /* ================================================================ preview switches (not the default) */
 /* ?theme=light — board.js sets html[data-theme="light"] before first paint and keeps it for the tab (sessionStorage).
@@ -905,13 +953,16 @@ html[data-theme="light"]{
   --hinge:rgba(16,36,58,.16);
   --nav-bg:rgba(255,255,255,.96);
   --sb:#c3ccd6;
+  --line:#d7dce2;
+  --line-2:#d7dce2;
+  --mat:0px;
 }
 html[data-theme="light"] .brand img,html[data-theme="light"] .legal img{content:url(/paykicker-logo.svg)}
-html[data-theme="light"]{--frame:0 0 0 1px var(--line-2),0 0 0 var(--mat) var(--flap),0 0 0 calc(var(--mat) + 1px) var(--line),0 calc(var(--mat) + 3px) 6px -2px rgba(0,0,0,.08);
-  --frame-hi:0 0 0 1px var(--amber),0 0 0 var(--mat) var(--flap),0 0 0 calc(var(--mat) + 1px) var(--line),0 calc(var(--mat) + 3px) 6px -2px rgba(0,0,0,.08)}
+/* A screen on white: the hairline and a small neutral offset shadow, no mat. Controls keep a firmer edge than hairlines. */
+html[data-theme="light"]{--frame:0 0 0 1px var(--line),0 8px 24px -16px rgba(18,41,63,.35);--frame-hi:0 0 0 1px var(--amber),0 8px 24px -16px rgba(18,41,63,.35)}
+html[data-theme="light"] .btn.hair,html[data-theme="light"] .menu-btn{border-color:#a9b3be}
 html[data-theme="light"] .form,html[data-theme="light"] .paper{box-shadow:0 0 0 1px var(--line-2),0 3px 8px -2px rgba(0,0,0,.08)}
 html[data-theme="light"] .btn.go:hover{background:#e04f14;border-color:#e04f14}
-html[data-theme="light"] .pg-frame img{filter:none;animation:none}
 html[data-theme="light"] .band.here{background:rgba(143,91,0,.07)}
 html[data-theme="light"] .choice:has(input:checked){background:rgba(22,112,63,.07)}
 
@@ -919,8 +970,7 @@ html[data-theme="light"] .choice:has(input:checked){background:rgba(22,112,63,.0
    flaps and every rem-sized track scale with it, so a large screen is filled rather than framed. */
 @media (min-width:1441px){
   html[data-wide]{--max:clamp(1344px,90vw,2080px);--fh:3.125rem;font-size:clamp(16px,calc(16px + (100vw - 1440px) * .0083),22px)}
-  html[data-wide] .exhibit,html[data-wide] .exhibit.ex-shot,html[data-wide] .exhibit.ex-wide,html[data-wide] .screen.shot,html[data-wide] .ex-wide .screen.shot,html[data-wide] .shot-pair,html[data-wide] .how-embed{max-width:min(100%,1640px)}
-  html[data-wide] .shot-pair{grid-template-columns:minmax(0,1fr) minmax(0,19rem)}
+  html[data-wide] .how-embed{max-width:min(100%,1640px)}
   html[data-wide] .brand img{width:200px}
   html[data-wide] .nav-in{min-height:76px}
 }
