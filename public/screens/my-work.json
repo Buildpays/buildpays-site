@@ -1,0 +1,16 @@
+{
+  "source": "app harness /harness.html?role=admin&tour=0#dashboard",
+  "app_commit": "b3e6407ffdc1b29e810345dec5303ce6e2e41852",
+  "app_branch": "pass-855-bank-pdf (main + the bank passes)",
+  "captured": "2026-10-12T04:33:04.332Z",
+  "viewport": "1280x900@2",
+  "clip_css_px": {
+    "x": 258,
+    "y": 765,
+    "width": 1008,
+    "height": 1054
+  },
+  "format": "webp q88",
+  "shows": "The office's home screen (Dashboard) for an owner/admin: the day's greeting and counts, Needs you (what is waiting, each with its button), today on site by crew, upcoming leave and the week's roster",
+  "data": "synthetic (harness fakes): the fixture site names that are real Melbourne projects, and the harness company name, replaced in flight with made-up ones (e.g. Riverside Quay Stage 2, Southline Formwork Pty Ltd); nothing written to the app repo; the set-up checklist and travel claims above it are outside the crop"
+}

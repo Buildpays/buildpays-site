@@ -1,0 +1,16 @@
+{
+  "source": "app harness /harness.html?role=worker&tour=0",
+  "app_commit": "b3e6407ffdc1b29e810345dec5303ce6e2e41852",
+  "app_branch": "pass-855-bank-pdf (main + the bank passes)",
+  "captured": "2026-10-12T04:33:04.333Z",
+  "viewport": "390x1000@2 (mobile)",
+  "clip_css_px": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 877
+  },
+  "format": "webp q88",
+  "shows": "Worker phone, My work: today's site and hours, the week, Enter today's hours, Raise a docket, roster, timesheets, dockets, leave",
+  "data": "synthetic (harness fakes): the fixture site names that are real Melbourne projects, and the harness company name, replaced in flight with made-up ones (e.g. Riverside Quay Stage 2, Southline Formwork Pty Ltd); nothing written to the app repo; the harness worker owes 18 onboarding answers; they were filled in the page's data, then Enter today's hours opened and Back pressed so the home screen re-read them"
+}

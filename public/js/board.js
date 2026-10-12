@@ -14,6 +14,23 @@
   var oldHero = /(?:^|&)hero=board(?:&|$)/.test(location.search.slice(1));
   if (oldHero) root.classList.add('hero-board');
 
+  // Preview switches while the owner compares (not the default): ?theme=light and ?wide=1 set html[data-theme="light"]
+  // and html[data-wide] before first paint, and are kept for the rest of the tab (sessionStorage), so every page
+  // reached by a link keeps them. ?theme=navy / ?wide=0 clear them. Storage can be blocked: then only the page with
+  // the query shows the preview.
+  function flag(name) { var m = location.search.slice(1).match(new RegExp('(?:^|&)' + name + '=([^&]*)')); return m ? m[1] : null; }
+  function keep(key, on, val) {
+    var q = flag(key), v = null;
+    try {
+      if (q !== null) { if (q === val) sessionStorage.setItem('pk-' + key, val); else sessionStorage.removeItem('pk-' + key); }
+      v = sessionStorage.getItem('pk-' + key);
+    } catch (e) { v = null; }
+    if (q !== null) v = q === val ? val : null;
+    if (v === val) on();
+  }
+  keep('theme', function () { root.setAttribute('data-theme', 'light'); }, 'light');
+  keep('wide', function () { root.setAttribute('data-wide', ''); }, '1');
+
   var DIGITS = '0123456789';
   var LETTERS = 'ABCDEFGHIJKLMNOPRSTUVWY';
 
@@ -221,6 +238,7 @@
       }
     });
     if (!canAnimate) return null;
+    el.classList.remove('settled');   // the run needs every cell; it folds them again when it lands
     cells.entry.el.classList.remove('st-coded');
     var stat = cells.stat, via = stat.el.getAttribute('data-via') || 'READING', done = stat.el.getAttribute('data-done') || 'CODED';
     var entries = Array.prototype.slice.call(el.querySelectorAll('.n-list li[data-t]')).map(function (li) {
@@ -272,10 +290,11 @@
     }
     return function play() {
       var now = start, p = Promise.resolve();
+      el.classList.remove('settled');
       entries.forEach(function (e) {
         p = p.then(function () { return walk(now, e.t); }).then(function () { now = e.t; return entry(e); }).then(function () { return wait(1500); });
       });
-      p.then(function () { return walk(now, cells.time.fin); }).then(settle);
+      p.then(function () { return walk(now, cells.time.fin); }).then(settle).then(function () { el.classList.add('settled'); });
       return { el: el };
     };
   }

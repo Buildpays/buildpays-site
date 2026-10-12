@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PayKicker: Your Books, Coded Overnight into Xero or MYOB</title>
-<meta name="description" content="PayKicker reads your crew's hours, your suppliers' bills and your Square sales, and posts them into Xero or MYOB coded to the account, job and GST. Built in Melbourne.">
+<title>PayKicker: Everything Your Business Does Manually, Now to MYOB/Xero Automatically</title>
+<meta name="description" content="Everything your business does manually, now to MYOB/Xero automatically: crew hours, supplier bills and Square sales read, coded to the account, job and GST, and posted. Hours back every week. Every figure checked against its source. Built in Melbourne.">
 <link rel="icon" type="image/svg+xml" href="paykicker-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="paykicker-icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="paykicker-icon-16.png">
@@ -13,26 +13,26 @@
 <meta name="theme-color" content="#0b1826">
 <link rel="canonical" href="https://paykicker.com.au/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="PayKicker: your books, coded overnight into Xero or MYOB">
-<meta property="og:description" content="Hours, supplier bills and Square sales, read, coded and posted into Xero or MYOB. Xero or MYOB stays your books. PayKicker never moves money.">
+<meta property="og:title" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
+<meta property="og:description" content="Hours back every week. Every figure checked against its source. Crew hours, supplier bills and Square sales read, coded and posted into MYOB or Xero. Xero or MYOB stays your books. PayKicker never moves money.">
 <meta property="og:url" content="https://paykicker.com.au/">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="PayKicker">
 <meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="PayKicker: your books, coded into Xero or MYOB">
+<meta property="og:image:alt" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PayKicker: your books, coded overnight into Xero or MYOB">
-<meta name="twitter:description" content="Hours, supplier bills and Square sales, read, coded and posted into Xero or MYOB. Xero or MYOB stays your books. PayKicker never moves money.">
+<meta name="twitter:title" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
+<meta name="twitter:description" content="Hours back every week. Every figure checked against its source. Crew hours, supplier bills and Square sales read, coded and posted into MYOB or Xero. Xero or MYOB stays your books. PayKicker never moves money.">
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <meta name="robots" content="index, follow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=hero3p">
-<script src="/js/board.js?v=3"></script>
+<link rel="stylesheet" href="/css/board.css?v=owner1">
+<script src="/js/board.js?v=4"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -112,6 +112,9 @@
   /* Page-only composition. The shared world lives in /css/board.css. */
   .hero-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end}
   .hero-head .strap{max-width:34ch}
+  /* The owner's headline is long: a step down from the display size, three lines beside the actions at 1440, four at most on a phone. */
+  h1.h-long{font-size:clamp(2.3rem,10.4vw,3.4rem);line-height:.95;letter-spacing:-.01em}
+  @media (min-width:901px){h1.h-long{font-size:clamp(3.3rem,4.7vw,4.2rem)}}
   @media (max-width:900px){.hero-head{grid-template-columns:1fr;gap:18px}}
 </style>
 </head>
@@ -159,9 +162,9 @@
 <section class="hero hero-new" id="hero-new" aria-labelledby="h-hero">
   <div class="wrap">
     <div class="hero-head">
-      <h1 id="h-hero">Your books.<br>Coded overnight.</h1>
+      <h1 id="h-hero" class="h-long">Everything your business does manually, now to MYOB/Xero automatically.</h1>
       <div class="hero-side">
-        <p class="strap">Hours, supplier bills and Square sales — read, coded and posted into Xero or MYOB while you sleep.</p>
+        <p class="strap">Hours back every week. Every figure checked against its source.</p>
         <p class="strap-2">Xero or MYOB stays your books. PayKicker never moves money.</p>
         <div class="acts">
           <a class="btn go big" href="#contact">Book a demo</a>
@@ -180,7 +183,7 @@
         <span class="pg-line">Roster the crew, sign the docket, send EBA-correct pay to Xero or MYOB.</span>
       </a></li>
       <li><a class="pg" href="/ap-automation">
-        <span class="pg-shot pg-bills"><span class="pg-frame"><img src="/screens/invoices-bill.webp" width="1012" height="1064" alt="" decoding="async"></span><span class="pg-ex">Example data</span></span>
+        <span class="pg-shot pg-bills"><span class="pg-frame"><img src="/screens/invoice-approval.webp" width="1340" height="897" alt="" decoding="async"></span><span class="pg-ex">Example data</span></span>
         <h2 class="pg-name">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></h2>
         <span class="pg-line">Supplier bills read, coded, approved and posted.</span>
       </a></li>
@@ -193,7 +196,7 @@
 
     <!-- The night shift: one row of the board under a clock that runs 23:00 to 06:00 (board.js). The list is the
          screen-reader text and the run's script; the row in the markup is where the run settles. -->
-    <div class="night" data-night data-start="23:00">
+    <div class="night settled" data-night data-start="23:00">
       <ol class="sr n-list" aria-label="Example night, into Xero or MYOB">
         <li data-t="23:10" data-e="WAGES — EBA PAY RUN W27" data-a="38,412.60" data-c="6-1000" data-g="WGT01">23:10, wages — EBA pay run W27, 38,412.60, account 6-1000, job WGT01: coded.</li>
         <li data-t="01:40" data-e="WESTGATE REO SUPPLIES INV 44821" data-a="4,312.00" data-c="6-2100" data-g="GST">01:40, Westgate Reo Supplies invoice 44821, 4,312.00, account 6-2100, GST: coded.</li>
@@ -216,9 +219,9 @@
 <section class="hero hero-old" id="hero-old" aria-labelledby="h-hero-old" hidden>
   <div class="wrap">
     <div class="hero-head">
-      <h1 id="h-hero-old">Your books.<br>Coded overnight.</h1>
+      <h1 id="h-hero-old" class="h-long">Everything your business does manually, now to MYOB/Xero automatically.</h1>
       <div class="hero-side">
-        <p class="strap">Hours, supplier bills and Square sales — read, coded and posted into Xero or MYOB while you sleep.</p>
+        <p class="strap">Hours back every week. Every figure checked against its source.</p>
         <p class="strap-2">Xero or MYOB stays your books. PayKicker never moves money.</p>
         <div class="acts">
           <a class="btn go big" href="#contact">Book a demo</a>
@@ -296,9 +299,9 @@
       </div>
     </div>
 
-    <figure class="exhibit ex-right ex-shot">
-      <!-- Exhibit: the real Invoices screen, captured from the app harness (synthetic data). Provenance: /screens/invoices-bill.json -->
-      <div class="screen shot"><img src="/screens/invoices-bill.webp" width="1012" height="1064" alt="PayKicker Invoices screen, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30, read from the supplier's PDF shown beside it, in review, every check passed, each line coded to an account, a job and GST, with Approve, Hold and Reject." loading="lazy" decoding="async"></div>
+    <figure class="exhibit ex-right ex-shot ex-wide">
+      <!-- Exhibit: the approver's view of a bill, captured from the app harness (synthetic data). Provenance: /screens/invoice-approval.json -->
+      <div class="screen shot"><img src="/screens/invoice-approval.webp" width="1340" height="897" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 waiting on this approver, the supplier's PDF beside the figures read from it, nothing unusual found, each line coded to an account, a job and GST, and the Approve your part, Hold and Reject buttons." loading="lazy" decoding="async"></div>
       <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b>CODED</b></span></figcaption>
     </figure>
   </div>
@@ -349,8 +352,8 @@
     </div>
 
     <figure class="exhibit ex-right">
-      <!-- Exhibit: the real rostering board and the worker's timesheet on a phone, captured from the app harness (synthetic data). Provenance: /screens/roster-board.json, /screens/timesheet-phone.json -->
-      <div class="shot-pair"><div class="screen shot"><img src="/screens/roster-board.webp" width="1012" height="860" alt="PayKicker rostering board, example data: a draft day with eight sites, each with its crew and start and finish, the people still to place, and a warning that one worker can't be placed on a site because he hasn't done its induction." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/timesheet-phone.webp" width="390" height="912" alt="PayKicker on a worker's phone, example data: today's timesheet, site Tower, start 6:00 AM, finish 4:30 PM, 10 hours with lunch deducted, and the Submit day button." loading="lazy" decoding="async"></div></div>
+      <!-- Exhibit: the office's day and the worker's day, captured from the app harness (synthetic data). Provenance: /screens/my-work.json, /screens/my-work-phone.json -->
+      <div class="shot-pair"><div class="screen shot"><img src="/screens/my-work.webp" width="1008" height="1054" alt="PayKicker's home screen for the office, example data: Monday 12 October, 8 things need you today and 24 on the tools across 8 sites; what needs you, each with its button (timesheets to approve, dockets awaiting signature, leave requests, tickets to verify); today on site by crew; upcoming leave; the week's roster." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/my-work-phone.webp" width="390" height="877" alt="PayKicker on a worker's phone, My work, example data: today's site Tower rostered 6:30 to 3:00 with its address and gate, the week, and Enter today's hours, Raise a docket, My roster, My timesheets, My dockets and Ask for leave." loading="lazy" decoding="async"></div></div>
       <figcaption><span class="ex-label">Example data</span><span class="ex-row">03 JUL · WAGES — EBA PAY RUN W27 · 38,412.60 · 6-1000 WAGES · WGT01 · <b>CODED</b></span></figcaption>
     </figure>
   </div>

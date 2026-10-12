@@ -23,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=339e133a">
-<script src="/js/board.js?v=2"></script>
+<link rel="stylesheet" href="/css/board.css?v=owner1">
+<script src="/js/board.js?v=4"></script>
 
 <!-- Google Analytics 4 — same stream as the rest of the site. Disclosed in the privacy policy. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -34,8 +34,8 @@
 <style>
   /* Status: the board reads green when it is up, amber when something is behind, orange when it is down. */
   .banner{display:flex;align-items:center;gap:18px;margin-top:clamp(28px,3.4vw,44px);max-width:52rem;padding:20px clamp(16px,2.4vw,24px);background:var(--housing);border:1px solid var(--line);border-radius:2px;
-    box-shadow:0 30px 60px -36px rgba(0,0,0,.85),inset 0 1px 0 rgba(244,236,220,.04)}
-  .banner .dot{position:relative;flex:none;width:22px;height:44px;border-radius:2px;background:linear-gradient(to bottom,var(--flap-hi) 0 50%,var(--flap-lo) 50% 100%);box-shadow:0 1px 2px rgba(0,0,0,.45)}
+    box-shadow:0 30px 60px -36px rgba(var(--shade-rgb),calc(.85 * var(--sk))),inset 0 1px 0 rgba(var(--ink-rgb),.04)}
+  .banner .dot{position:relative;flex:none;width:22px;height:44px;border-radius:2px;background:linear-gradient(to bottom,var(--flap-hi) 0 50%,var(--flap-lo) 50% 100%);box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.45 * var(--sk)))}
   .banner .dot::after{content:"";position:absolute;left:5px;right:5px;top:50%;height:12px;margin-top:-6px;border-radius:1px;background:var(--dim);transition:background-color .4s}
   .banner .txt{flex:1;min-width:0}
   .banner .head{display:block;font-family:var(--f-board);font-weight:800;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);transition:color .4s}
@@ -50,8 +50,8 @@
   .svc-name b{display:block;font-family:var(--f-board);font-weight:800;font-size:1.3rem;letter-spacing:.04em;text-transform:uppercase}
   .svc-name span{display:block;margin-top:2px;color:var(--dim);font-size:1rem;line-height:1.4}
   .svc .pill{position:relative;display:block;height:46px;line-height:46px;padding:0 .7em;border-radius:2px;background:linear-gradient(to bottom,var(--flap-hi) 0 50%,var(--flap-lo) 50% 100%);
-    box-shadow:0 1px 2px rgba(0,0,0,.45),inset 0 1px 0 rgba(244,236,220,.05);font-family:var(--f-board);font-weight:700;font-size:1.2rem;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;color:var(--dim)}
-  .svc .pill::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;margin-top:-1px;background:rgba(4,10,18,.85)}
+    box-shadow:0 1px 2px rgba(var(--shade-rgb),calc(.45 * var(--sk))),inset 0 1px 0 rgba(var(--ink-rgb),.05);font-family:var(--f-board);font-weight:700;font-size:1.2rem;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;overflow:hidden;color:var(--dim)}
+  .svc .pill::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;margin-top:-1px;background:var(--hinge)}
   .svc .pill.up{color:var(--green)}.svc .pill.warn{color:var(--amber)}.svc .pill.down{color:var(--orange)}
   .contact dl{margin:0;border-top:1px solid var(--p-ink)}
   .contact dt{padding-top:16px;font-family:var(--f-board);font-weight:800;font-size:1rem;letter-spacing:.1em;text-transform:uppercase}
