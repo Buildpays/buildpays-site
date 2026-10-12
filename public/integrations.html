@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=562dffae">
-<script src="/js/board.js?v=7"></script>
+<link rel="stylesheet" href="/css/board.css?v=346e251d">
+<script src="/js/board.js?v=8"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -108,10 +108,21 @@
 
 <section class="hero sub" aria-labelledby="h-hero">
   <div class="wrap">
-    <div class="hero-head">
-      <h1 id="h-hero">One connection.<br>Coded into Xero or MYOB.</h1>
-      <div class="hero-side">
+    <div class="hero-split">
+      <div class="hero-copy">
+        <h1 id="h-hero">One connection.<br>Coded into Xero or MYOB.</h1>
         <p class="strap">Each connection reads what your business already produces and writes it into Xero or MYOB, coded.</p>
+        <div class="acts">
+          <a class="btn go big" href="/#contact">Book a demo</a>
+          <a class="btn hair big" href="/pricing#square">See pricing</a>
+        </div>
+        <p class="fine-dim">Xero or MYOB stays your books. PayKicker never moves money.</p>
+      </div>
+
+      <div class="hero-shot">
+        <!-- The real Sales > Day Summaries screen, the whole capture, from the app harness (synthetic data).
+             Provenance: /screens/sales-days.json -->
+        <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." decoding="async"></div>
         <div class="price-strip">
           <p class="ps-big">Free to start<small>one Square shop, up to 60 orders a month; opening soon</small></p>
           <ul class="ps-facts">
@@ -120,11 +131,7 @@
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Prices per month, inc GST, billed monthly</li>
           </ul>
         </div>
-        <div class="acts">
-          <a class="btn go big" href="/#contact">Book a demo</a>
-          <a class="btn hair big" href="/pricing#square">See pricing</a>
-        </div>
-        <p class="fine-dim">Xero or MYOB stays your books. PayKicker never moves money.</p>
+        <p class="hero-ex"><span class="ex-label">Example data</span></p>
       </div>
     </div>
 
@@ -305,7 +312,7 @@
     <div class="gate-head">
       <h2 id="h-inv">Forward the bill.<br>It lands coded.</h2>
       <div class="gate-copy">
-        <p class="lede">Email a bill or drop in the PDF; it lands in Xero or MYOB coded, approved and ready to pay.</p>
+        <p class="lede">Email a bill or drop in the PDF. GST and GST-free are split, every line coded, a bill split across two jobs, all automatically. Then a warning for anything that looks like fraud: a duplicate invoice, an ABN that fails, or bank details that differ from the ones in your books.</p>
         <div class="price-strip">
           <p class="ps-big">From $9.99 a month<small>inc GST</small></p>
           <ul class="ps-facts">

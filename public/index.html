@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=562dffae">
-<script src="/js/board.js?v=7"></script>
+<link rel="stylesheet" href="/css/board.css?v=346e251d">
+<script src="/js/board.js?v=8"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -149,15 +149,17 @@
 
 <section class="hero hero-home" aria-labelledby="h-hero">
   <div class="wrap">
-    <h1 id="h-hero">Everything your business does manually, now to MYOB/Xero automatically.</h1>
-    <div class="hero-row">
-      <p class="strap">Hours back every week. Every figure checked against its source.</p>
+    <div class="hero-top">
+      <div>
+        <h1 id="h-hero">Everything your business does manually, now to MYOB/Xero automatically.</h1>
+        <p class="strap">Hours back every week. Every figure checked against its source.</p>
+      </div>
       <div class="hero-act">
-        <div class="acts">
-          <a class="btn go big" href="#contact">Book a demo</a>
-          <a class="btn hair big" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a>
+        <div class="acts-xl">
+          <a class="btn go xl" href="#contact">Book a demo</a>
+          <a class="btn hair xl" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a>
         </div>
-        <p class="fine-dim">Free trial is for supplier invoices: 14 days, no card. Or call <a href="tel:+61340616223">03&nbsp;4061&nbsp;6223</a>.</p>
+        <p class="fine-dim">Free trial is for supplier invoices: 14 days, no card.<br>Or call <a href="tel:+61340616223">03&nbsp;4061&nbsp;6223</a>.</p>
       </div>
     </div>
 
@@ -184,24 +186,6 @@
       </li>
     </ul>
 
-    <!-- The night shift: one row of the board under a clock that runs 23:00 to 06:00 (board.js). The list is the
-         screen-reader text and the run's script; the row in the markup is where the run settles. -->
-    <div class="night settled" data-night data-start="23:00">
-      <ol class="sr n-list" aria-label="Example night, into Xero or MYOB">
-        <li data-t="23:10" data-e="WAGES — EBA PAY RUN W27" data-a="38,412.60" data-c="6-1000" data-g="WGT01">23:10, wages — EBA pay run W27, 38,412.60, account 6-1000, job WGT01: coded.</li>
-        <li data-t="01:40" data-e="WESTGATE REO SUPPLIES INV 44821" data-a="4,312.00" data-c="6-2100" data-g="GST">01:40, Westgate Reo Supplies invoice 44821, 4,312.00, account 6-2100, GST: coded.</li>
-        <li data-t="05:20" data-e="SQUARE — 212 ORDERS, BRUNSWICK" data-a="1,842.00" data-c="4-1000" data-g="GST">05:20, Square, 212 orders, Brunswick, 1,842.00, account 4-1000, GST: coded.</li>
-        <li>06:00: 3 entries coded, 0 waiting on you.</li>
-      </ol>
-      <div class="nrow" aria-hidden="true">
-        <span class="n-time" data-k="time"><span class="fl chars" data-v="06:00">06:00</span></span>
-        <span class="n-entry" data-k="entry"><span class="fl word st-coded" data-v="3 ENTRIES CODED · 0 WAITING ON YOU">3 ENTRIES CODED · 0 WAITING ON YOU</span></span>
-        <span class="n-amt" data-k="amt"><span class="fl chars" data-v="         " data-shape="00,000.00">         </span></span>
-        <span class="n-acct" data-k="acct"><span class="fl word" data-v=" "> </span></span>
-        <span class="n-gate" data-k="gate"><span class="fl word" data-v=" "> </span></span>
-        <span class="n-stat" data-k="stat"><span class="fl word" data-v=" " data-via="READING" data-done="CODED"> </span></span>
-      </div>
-    </div>
     <p class="hero-partner"><a href="/partners">Accountant or bookkeeper? Refer a client and earn 15% for a year<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
   </div>
 </section>
@@ -209,17 +193,17 @@
 <div id="business">
 
 <section class="gate" id="ap" aria-labelledby="h-ap">
-  <div class="wrap duo">
+  <div class="wrap duo sm">
     <div class="duo-copy">
       <h2 id="h-ap">Forward the bill.<br>It lands coded.</h2>
       <div class="gate-copy">
-        <p>Email a bill or drop in the PDF. It lands in Xero or MYOB ready to pay.</p>
+        <p>Email a bill or drop in the PDF. GST and GST-free are split, every line coded, a bill split across two jobs, all automatically. Then a warning for anything that looks like fraud: a duplicate invoice, an ABN that fails, or bank details that differ from the ones in your books.</p>
         <ul class="mods">
           <li><b>Two readers</b> Every figure checked; the supplier found by ABN and name.</li>
-          <li><b>Coded</b> Account, job and tax code as last time; GST and GST-free split.</li>
-          <li><b>Approved</b> By the right person, within their limit.</li>
+          <li><b>Coded as last time</b> Account, job and tax code as you coded that supplier.</li>
+          <li><b>Approved</b> By the right person, within their limit, then into Xero or MYOB.</li>
         </ul>
-        <p class="price"><mark class="hi">From $9.99 a month inc GST.</mark> Other apps start at $42 + GST.</p>
+        <p class="price"><mark class="hi">From $9.99 a month inc GST.</mark> Other apps start at $42&nbsp;+&nbsp;GST.</p>
         <p class="gate-acts"><a class="btn hair" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a><a class="btn hair" href="/pricing#supplier-invoices">See pricing</a><a class="tl" href="/ap-automation">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
@@ -235,7 +219,7 @@
 
 <section class="gate" id="square" data-live="false" aria-labelledby="h-sq">
   <div class="wrap">
-    <div class="duo flip">
+    <div class="duo sm flip">
     <div class="duo-copy">
       <h2 id="h-sq">The day's takings,<br>posted every night.</h2>
       <div class="gate-copy">
@@ -260,7 +244,7 @@
 
     <div class="coming">
       <span class="fl word st-coming">Bank coding</span>
-      <p>Bank lines coded by rules you confirm once, so the feed in Xero or MYOB matches itself. <span class="tag dim">Coming</span> <a href="/integrations#bank">What it will do</a> · <a href="#contact">Tell me when it opens</a></p>
+      <div><p>Bank lines coded by rules you confirm once, so the feed in Xero or MYOB matches itself.</p><p class="coming-acts"><span class="tag dim">Coming</span> <a href="/integrations#bank">What it will do</a> · <a href="#contact">Tell me when it opens</a></p></div>
     </div>
     <p class="aside">Other apps post a total. PayKicker posts the lines, coded, and finds every entry again before it writes, so a retry never doubles.</p>
   </div>
@@ -269,7 +253,7 @@
 </div>
 
 <section class="gate" id="construction" aria-labelledby="h-con">
-  <div class="wrap duo">
+  <div class="wrap duo sm">
     <div class="duo-copy">
       <h2 id="h-con">From the 6am board<br>to the pay file.</h2>
       <div class="gate-copy">

@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=562dffae">
-<script src="/js/board.js?v=7"></script>
+<link rel="stylesheet" href="/css/board.css?v=346e251d">
+<script src="/js/board.js?v=8"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -135,10 +135,21 @@
 
 <section class="hero sub" aria-labelledby="h-hero">
   <div class="wrap">
-    <div class="hero-head">
-      <h1 id="h-hero">Supplier invoices, read and coded into Xero or MYOB.</h1>
-      <div class="hero-side">
-        <p class="strap">Email a bill or drop in the PDF: PayKicker reads it, codes it, gets it approved and posts it to Xero or MYOB.</p>
+    <div class="hero-split">
+      <div class="hero-copy">
+        <h1 id="h-hero">Supplier invoices, read and coded into Xero or MYOB.</h1>
+        <p class="strap">Email a bill or drop in the PDF. GST and GST-free are split, every line coded, a bill split across two jobs, all automatically. Then a warning for anything that looks like fraud: a duplicate invoice, an ABN that fails, or bank details that differ from the ones in your books.</p>
+        <div class="acts">
+          <a class="btn go big" href="https://app.paykicker.com.au/signup" rel="noopener">Start 14-day free trial</a>
+          <a class="btn hair big" href="/pricing#supplier-invoices">See pricing</a>
+        </div>
+        <p class="fine-dim">Or sign up straight from <a href="https://app.paykicker.com.au/signup?via=xero" rel="noopener">Xero</a> or <a href="https://app.paykicker.com.au/signup?via=myob" rel="noopener">MYOB</a>. Other apps start at $42&nbsp;+&nbsp;GST.</p>
+      </div>
+
+      <div class="hero-shot">
+        <!-- The approver's view of a bill, the whole capture, from the app harness (synthetic data).
+             Provenance: /screens/invoice-approval.json -->
+        <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async"></div>
         <div class="price-strip">
           <p class="ps-big">From $9.99 a month<small>inc GST</small></p>
           <ul class="ps-facts">
@@ -147,20 +158,9 @@
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Cancel any time</li>
           </ul>
         </div>
-        <div class="acts">
-          <a class="btn go big" href="https://app.paykicker.com.au/signup" rel="noopener">Start 14-day free trial</a>
-          <a class="btn hair big" href="/pricing#supplier-invoices">See pricing</a>
-        </div>
-        <p class="fine-dim">Or sign up straight from <a href="https://app.paykicker.com.au/signup?via=xero" rel="noopener">Xero</a> or <a href="https://app.paykicker.com.au/signup?via=myob" rel="noopener">MYOB</a>. Other apps start at $42 + GST.</p>
+        <p class="hero-ex"><span class="ex-label">Example data</span></p>
       </div>
     </div>
-
-    <figure class="exhibit ex-right">
-      <!-- Exhibit: the approver's view of a bill, the whole capture, from the app harness (synthetic data).
-           Provenance: /screens/invoice-approval.json -->
-      <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async"></div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b class="fl word st-coded ex-st" data-v="CODED" data-via="READING">CODED</b></span></figcaption>
-    </figure>
   </div>
 </section>
 
