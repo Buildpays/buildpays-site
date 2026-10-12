@@ -330,6 +330,74 @@
     });
   }
 
+  // Every product window (.win) opens its whole capture full size: click, tap, Enter or Space. The window becomes a
+  // button named by its screenshot's alt; a "View full size" label sits on it (hover/focus) or under it (narrow screens).
+  // The overlay holds the capture at its own CSS size (the files are 2x), never wider than 96vw on a wide screen and at
+  // full size on a phone, scrolling as needed. Close, Esc or a click on the backdrop closes it; focus goes back.
+  function initZoom() {
+    var wins = Array.prototype.slice.call(document.querySelectorAll('.win'));
+    if (!wins.length) return;
+    var lb = null, img = null, cap = null, close = null, from = null;
+    function build() {
+      lb = document.createElement('div');
+      lb.className = 'lb';
+      lb.hidden = true;
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-modal', 'true');
+      lb.setAttribute('aria-label', 'Screen at full size');
+      lb.innerHTML = '<button class="lb-close" type="button"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg><span>Close</span></button><div class="lb-in"><img alt=""><p class="lb-cap"></p></div>';
+      document.body.appendChild(lb);
+      img = lb.querySelector('img'); cap = lb.querySelector('.lb-cap'); close = lb.querySelector('.lb-close');
+      close.addEventListener('click', hide);
+      lb.addEventListener('click', function (e) { if (e.target === lb || e.target === lb.firstChild.nextSibling || e.target === cap) hide(); });   // the backdrop, not the image
+      lb.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { e.preventDefault(); hide(); }
+        else if (e.key === 'Tab') { e.preventDefault(); close.focus(); }   // the one control in the dialog
+      });
+    }
+    function show(win) {
+      var src = win.querySelector('img');
+      if (!src) return;
+      if (!lb) build();
+      from = win;
+      var w = Number(src.getAttribute('width')) || Math.round((src.naturalWidth || 1600) / 2);
+      img.style.setProperty('--lw', w + 'px');
+      img.src = src.currentSrc || src.src;
+      img.alt = src.alt;
+      cap.textContent = 'Example data.';
+      lb.hidden = false;
+      lb.scrollTop = 0; lb.scrollLeft = 0;
+      root.classList.add('lb-open');
+      close.focus();
+    }
+    function hide() {
+      if (!lb || lb.hidden) return;
+      lb.hidden = true;
+      root.classList.remove('lb-open');
+      if (from) from.focus();
+    }
+    wins.forEach(function (win) {
+      var src = win.querySelector('img');
+      if (!src) return;
+      win.setAttribute('role', 'button');
+      win.tabIndex = 0;
+      win.setAttribute('aria-label', 'View full size: ' + src.alt);
+      var box = document.createElement('div');
+      box.className = 'win-box';
+      win.parentNode.insertBefore(box, win);
+      box.appendChild(win);
+      var hint = document.createElement('span');
+      hint.className = 'win-hint';
+      hint.setAttribute('aria-hidden', 'true');
+      hint.textContent = 'View full size';
+      box.appendChild(hint);
+      win.addEventListener('click', function () { show(win); });
+      win.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); show(win); }
+      });
+    });
+  }
+
   function initMenu() {
     var nav = document.querySelector('.nav');
     var btn = nav && nav.querySelector('.menu-btn');
@@ -350,6 +418,7 @@
 
   function init() {
     try { initQuiet(); } catch (e) { /* the nav keeps its orange */ }
+    try { initZoom(); } catch (e) { /* the windows stay as pictures */ }
     try { initLand(); } catch (e) { /* the words stay as written */ }
     var night = null;
     try { night = initNight(); } catch (e) { night = null; }

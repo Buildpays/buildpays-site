@@ -885,14 +885,14 @@ input[type=range]:focus-visible{outline:2px solid var(--amber);outline-offset:4p
 .night.settled .n-time{justify-self:start}
 
 /* ================================================================ round 4: price strips, money facts, comparisons */
-/* The price strip: a flat panel under a page's one sentence. The big figure in board lettering, three short facts. */
-.price-strip{display:grid;grid-template-columns:minmax(0,max-content) minmax(13rem,1fr);gap:12px clamp(20px,2.6vw,36px);align-items:center;margin-top:22px;padding:16px 22px;background:var(--housing);border:1px solid var(--line);border-radius:2px}
-.ps-big{font-family:var(--f-board);font-weight:800;font-size:clamp(1.9rem,2.6vw,2.5rem);line-height:1;letter-spacing:.005em;color:var(--ink)}
-.ps-big small{display:block;max-width:22ch;margin-top:6px;font-family:var(--f-ui);font-weight:600;font-size:.92rem;line-height:1.4;letter-spacing:0;color:var(--dim)}
-.ps-facts{display:flex;flex-direction:column;gap:6px;font-family:var(--f-ui);font-weight:600;font-size:.98rem;line-height:1.4}
+/* The price strip: a flat panel under a page's one sentence. The big figure in board lettering, always on one line;
+   the three short facts sit beside it while there is room, else drop under it. */
+.price-strip{display:flex;flex-wrap:wrap;gap:12px clamp(20px,2.6vw,36px);align-items:center;margin-top:22px;padding:16px 22px;background:var(--housing);border:1px solid var(--line);border-radius:2px}
+.ps-big{flex:0 0 auto;white-space:nowrap;font-family:var(--f-board);font-weight:800;font-size:clamp(1.75rem,2.3vw,2.4rem);line-height:1;letter-spacing:.005em;color:var(--ink)}
+.ps-big small{display:block;max-width:22ch;white-space:normal;margin-top:6px;font-family:var(--f-ui);font-weight:600;font-size:.92rem;line-height:1.4;letter-spacing:0;color:var(--dim)}
+.ps-facts{flex:1 1 15rem;min-width:0;display:flex;flex-direction:column;gap:6px;font-family:var(--f-ui);font-weight:600;font-size:.98rem;line-height:1.4}
 .ps-facts li{display:flex;gap:8px;align-items:flex-start}
 .ps-facts .ic{color:var(--green);margin-top:.12em}
-@media (max-width:560px){.price-strip{grid-template-columns:minmax(0,1fr)}}
 .hero-side .price-strip+.acts{margin-top:20px}
 
 /* A money fact, marked: an amber wash, at most one a paragraph. */
@@ -944,3 +944,39 @@ mark.hi{background:var(--hi);color:inherit;padding:.04em .14em;margin:0 -.14em;b
   .f-fine,.pick small,.picks legend small,.picks legend,.form label{font-size:14px}
   .tbl.fold td[data-l]::before{font-size:.875rem;letter-spacing:.1em}
 }
+
+/* ================================================================ round 4b */
+/* The homepage windows' note, at the right end of the third window's link row. */
+.trio-foot{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin-top:8px}
+.trio-foot .tl{margin-top:0}
+.trio-foot .trio-note{margin-top:0}
+
+/* Every window opens its whole capture full size (board.js): a zoom cursor, and a hairline "View full size" label at
+   the window's bottom-right on hover and focus; at 1000 and below the label is a short line under the window. */
+.win-box{position:relative;min-width:0}
+.win[role="button"]{cursor:zoom-in}
+.win[role="button"]:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.win-hint{position:absolute;right:10px;bottom:10px;padding:4px 10px;background:#fff;border:1px solid var(--ctl);border-radius:2px;font-family:var(--f-ui);font-weight:600;font-size:.875rem;line-height:1.3;color:var(--ink);opacity:0;pointer-events:none;transition:opacity .18s}
+.win-box:hover .win-hint,.win-box:focus-within .win-hint{opacity:1}
+@media (max-width:1000px),(hover:none){
+  .win-hint{position:static;display:block;width:max-content;max-width:100%;margin:8px 0 0 auto;padding:0;background:none;border:0;opacity:1;color:var(--dim);font-weight:500}
+}
+@media (prefers-reduced-motion:reduce){.win-hint{transition:none}}
+
+/* The full-size view: white ground at 96%, the capture at its own CSS size (capture px / 2), never wider than 96vw;
+   it scrolls when taller than the screen. On a phone the capture keeps its own size and scrolls both ways, so the
+   lettering is readable. */
+.lb{position:fixed;inset:0;cursor:zoom-out;z-index:60;overflow:auto;overscroll-behavior:contain;background:rgba(255,255,255,.96);-webkit-overflow-scrolling:touch}
+.lb[hidden]{display:none!important}
+.lb-in{min-height:100%;display:flex;flex-direction:column;align-items:center;padding:64px 2vw 32px}
+.lb img{cursor:auto;display:block;width:var(--lw);max-width:96vw;height:auto;border-radius:4px;box-shadow:var(--frame);background:var(--screen-edge)}
+.lb-cap{margin-top:12px;max-width:min(96vw,72ch);font-family:var(--f-ui);font-size:.95rem;line-height:1.45;color:var(--dim);text-align:center}
+.lb-close{position:fixed;top:12px;right:12px;z-index:61;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;background:#fff;color:var(--ink);border:1px solid var(--ctl);border-radius:2px;font:600 .95rem/1.3 var(--f-ui);cursor:pointer}
+.lb-close:hover{border-color:var(--amber);color:var(--amber)}
+.lb-close:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+@media (max-width:640px){
+  .lb-in{align-items:flex-start;width:max-content;min-width:100%;padding:64px 16px 32px}
+  .lb img{max-width:none}
+  .lb-cap{max-width:calc(100vw - 32px);text-align:left}
+}
+html.lb-open{overflow:hidden}
