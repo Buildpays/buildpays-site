@@ -1,0 +1,16 @@
+{
+  "source": "app harness /harness.html?role=admin&tour=0#dashboard (menu collapsed)",
+  "app_commit": "b3e6407ffdc1b29e810345dec5303ce6e2e41852",
+  "app_branch": "pass-855-bank-pdf (main + the bank passes)",
+  "captured": "2026-10-12T09:42:41.879Z",
+  "viewport": "1440x1000@2 (menu collapsed)",
+  "clip_css_px": {
+    "x": 121,
+    "y": 754,
+    "width": 1271,
+    "height": 1080
+  },
+  "format": "webp q88",
+  "shows": "The office's home screen (Dashboard) for an owner/admin, whole from the greeting line to below its last card: the day's greeting and counts (crew, sites, to approve, to export), Needs you (casual conversion, pay items, timesheets to approve, dockets awaiting signature, leave requests, onboarding, tickets), Today on site by crew, and Hours this week, Upcoming leave, Roster this week and Dockets this week on the right",
+  "data": "synthetic (harness fakes): harness fixture edited in flight before capture: the fixture's site names that are real Melbourne projects replaced with made-up ones, and per-site start/finish filled on the seeded roster (the fixture leaves them empty). Nothing written to the app repo. The set-up checklist and travel claims above the greeting are outside the clip (hidden in place before the shot so their shadow does not shade its top edge). The content column is the app's widest (1128 CSS px); the app's own page ground is taken wider on both sides so the clip has the homepage windows' 1012:860 aspect."
+}

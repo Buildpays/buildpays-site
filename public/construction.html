@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=346e251d">
+<link rel="stylesheet" href="/css/board.css?v=a3951283">
 <script src="/js/board.js?v=8"></script>
 
 <!-- Google Analytics 4 -->
@@ -135,11 +135,20 @@
       <div class="hero-copy">
         <h1 id="h-hero">Run the site.<br>Sign the docket.<br>Nail the pay run.</h1>
         <p class="strap">Roster the crew, sign dayworks dockets on site, and send EBA-correct payroll to Xero or MYOB in one click.</p>
+        <p class="mods-line"><b>Each module can be taken separately:</b> dockets alone, rostering alone, dockets + rostering, or rostering + payroll. Onboarding and tickets come with every plan.</p>
         <div class="acts">
           <a class="btn go big" href="#contact">Book a demo</a>
           <a class="btn hair big" href="/pricing#crew-system">See pricing</a>
         </div>
         <p class="fine-dim">No self-serve trial for payroll: if it fits, the pilot period is on us. Or call <a href="tel:+61340616223">03&nbsp;4061&nbsp;6223</a>.</p>
+        <div class="price-strip">
+          <p class="ps-big">From $24.99 a week<small>pick your modules</small></p>
+          <ul class="ps-facts">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Setup and EBA configuration included</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Onboarding &amp; tickets with every plan</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>No lock-in</li>
+          </ul>
+        </div>
       </div>
 
       <div class="hero-shot">
@@ -156,7 +165,7 @@
           </div>
           <div class="brow" role="row" data-row="0">
             <span class="c-pay" role="cell"><span class="fl word" data-v="BASE HOURLY">BASE HOURLY</span></span>
-            <span class="c-why" role="cell">8 hrs, 0.80 to the RDO bank</span>
+            <span class="c-why" role="cell">8&nbsp;hrs, 0.80&nbsp;to&nbsp;the&nbsp;RDO&nbsp;bank</span>
             <span class="c-units" role="cell"><span class="fl chars" data-v="7.20">7.20</span></span>
             <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
           </div>
@@ -168,7 +177,7 @@
           </div>
           <div class="brow" role="row" data-row="2">
             <span class="c-pay" role="cell"><span class="fl word" data-v="SITE ALLOWANCE TOWER">SITE ALLOWANCE TOWER</span></span>
-            <span class="c-why" role="cell"><span class="tag">EBA rule</span>10.70, per hr, 7.20 + 2</span>
+            <span class="c-why" role="cell"><span class="tag">EBA rule</span>10.70 per&nbsp;hr, 7.20&nbsp;+&nbsp;2</span>
             <span class="c-units" role="cell"><span class="fl chars" data-v="9.20">9.20</span></span>
             <span class="c-stat" role="cell"><span class="fl word st-coded" data-v="CODED" data-via="READING">CODED</span></span>
           </div>
@@ -192,14 +201,6 @@
           </div>
           <p class="board-note" id="pay-note"><b>One tap from the worker. Every rule from the agreement. Zero spreadsheets.</b> One worker, one day. Lines marked EBA rule are applied from the agreement.</p>
         </div>
-        <div class="price-strip">
-          <p class="ps-big">From $24.99 a week<small>pick your modules</small></p>
-          <ul class="ps-facts">
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Setup and EBA configuration included</li>
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Onboarding &amp; tickets with every plan</li>
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>No lock-in</li>
-          </ul>
-        </div>
         <p class="hero-ex"><span class="ex-label">Example data</span></p>
       </div>
     </div>
@@ -220,8 +221,8 @@
     <p class="rows-foot">Onboarding &amp; tickets come with every plan. Payroll runs on top of rostering.</p>
     </div>
     <figure class="exhibit duo-shot">
-      <!-- The office's home screen, the whole capture, from the app harness (synthetic data). Provenance: /screens/my-work.json -->
-      <div class="win"><img src="/screens/my-work.webp" width="1008" height="1054" alt="PayKicker's home screen for the office, example data: the day's greeting and counts, what needs you today, each with its button (a casual conversion to answer, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers still onboarding and tickets to verify), and who is on which site today." loading="lazy" decoding="async"></div>
+      <!-- The office's home screen, the whole capture, from the app harness (synthetic data). Provenance: /screens/office-day.json -->
+      <div class="win"><img src="/screens/office-day.webp" width="1271" height="1080" alt="PayKicker's home screen for the office, example data: Monday 12 October, 8 things need you, 37 crew, 13 sites, 36 timesheets to approve and 237 to export; Needs you (a casual conversion, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers onboarding, tickets to verify and tickets expiring); today on site by crew; hours this week, upcoming leave, the week's roster and dockets this week." decoding="async" loading="lazy"></div>
       <figcaption><span class="ex-label">Example data</span><span class="ex-row">MON 12 OCT · 8 THINGS NEED YOU · 24 ON THE TOOLS · 8 SITES</span></figcaption>
     </figure>
     </div>
@@ -434,15 +435,14 @@
       </div>
       <div>
         <p class="f-h" id="f-contact">Contact</p>
-        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
+        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
       </div>
     </div>
     <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
          as a PropertyValue identifier: keep the two in step. -->
     <div class="legal">
-      <img src="/paykicker-logo.svg" alt="PayKicker" width="132" height="20">
-      <p><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
+      <p class="legal-id"><img src="/paykicker-logo.svg" alt="PayKicker" width="106" height="16"><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b></p>
+      <p>PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
     </div>
   </div>
 </footer>

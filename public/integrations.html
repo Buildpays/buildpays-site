@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=346e251d">
+<link rel="stylesheet" href="/css/board.css?v=a3951283">
 <script src="/js/board.js?v=8"></script>
 
 <!-- Google Analytics 4 -->
@@ -117,12 +117,6 @@
           <a class="btn hair big" href="/pricing#square">See pricing</a>
         </div>
         <p class="fine-dim">Xero or MYOB stays your books. PayKicker never moves money.</p>
-      </div>
-
-      <div class="hero-shot">
-        <!-- The real Sales > Day Summaries screen, the whole capture, from the app harness (synthetic data).
-             Provenance: /screens/sales-days.json -->
-        <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." decoding="async"></div>
         <div class="price-strip">
           <p class="ps-big">Free to start<small>one Square shop, up to 60 orders a month; opening soon</small></p>
           <ul class="ps-facts">
@@ -131,52 +125,54 @@
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Prices per month, inc GST, billed monthly</li>
           </ul>
         </div>
-        <p class="hero-ex"><span class="ex-label">Example data</span></p>
       </div>
-    </div>
 
-    <div class="board mini" data-flip data-gap="380" role="table" aria-label="Every connection and whether it is open">
-      <div class="board-top" aria-hidden="true">
-        <span class="bt-l">Connections</span>
-        <span class="bt-r">Into Xero / MYOB</span>
+      <div class="hero-shot">
+        <!-- Every connection and whether it is open (the statuses are the site's own switches, not example data). -->
+        <div class="board mini" data-flip data-gap="380" role="table" aria-label="Every connection and whether it is open">
+          <div class="board-top" aria-hidden="true">
+            <span class="bt-l">Connections</span>
+            <span class="bt-r">Into Xero / MYOB</span>
+          </div>
+          <div class="brow bhead" role="row">
+            <span class="c-conn" role="columnheader">From</span>
+            <span class="c-to" role="columnheader">Into</span>
+            <span class="c-stat" role="columnheader">Status</span>
+            <span class="c-go" role="columnheader"><span class="sr">Details</span></span>
+          </div>
+          <div class="brow" role="row" data-row="0">
+            <span class="c-conn" role="cell"><span class="fl word" data-v="SQUARE SALES">SQUARE SALES</span></span>
+            <span class="c-to" role="cell"><span class="fl word" data-v="MYOB">MYOB</span></span>
+            <span class="c-stat" role="cell"><span class="fl word st-soon" data-v="OPENING SOON" data-via="CHECKING" data-live-from="square-myob" data-v-live="LIVE" data-cls-live="st-live">OPENING SOON</span></span>
+            <span class="c-go" role="cell"><a href="#square-myob">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
+          </div>
+          <div class="brow" role="row" data-row="1">
+            <span class="c-conn" role="cell"><span class="fl word" data-v="SQUARE SALES">SQUARE SALES</span></span>
+            <span class="c-to" role="cell"><span class="fl word" data-v="XERO">XERO</span></span>
+            <span class="c-stat" role="cell"><span class="fl word st-soon" data-v="OPENING SOON" data-via="CHECKING" data-live-from="square-xero" data-v-live="LIVE" data-cls-live="st-live">OPENING SOON</span></span>
+            <span class="c-go" role="cell"><a href="#square-xero">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
+          </div>
+          <div class="brow" role="row" data-row="2">
+            <span class="c-conn" role="cell"><span class="fl word" data-v="SUPPLIER INVOICES">SUPPLIER INVOICES</span></span>
+            <span class="c-to" role="cell"><span class="fl word" data-v="MYOB / XERO">MYOB / XERO</span></span>
+            <span class="c-stat" role="cell"><span class="fl word st-live" data-v="LIVE" data-via="CHECKING">LIVE</span></span>
+            <span class="c-go" role="cell"><a href="#invoices">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
+          </div>
+          <div class="brow" role="row" data-row="3">
+            <span class="c-conn" role="cell"><span class="fl word" data-v="SHOPIFY SALES">SHOPIFY SALES</span></span>
+            <span class="c-to" role="cell"><span class="fl word" data-v="MYOB / XERO">MYOB / XERO</span></span>
+            <span class="c-stat" role="cell"><span class="fl word st-coming" data-v="COMING" data-via="CHECKING">COMING</span></span>
+            <span class="c-go" role="cell"><a href="#shopify">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
+          </div>
+          <div class="brow" role="row" data-row="4">
+            <span class="c-conn" role="cell"><span class="fl word" data-v="BANK CODING">BANK CODING</span></span>
+            <span class="c-to" role="cell"><span class="fl word" data-v="MYOB / XERO">MYOB / XERO</span></span>
+            <span class="c-stat" role="cell"><span class="fl word st-coming" data-v="COMING" data-via="CHECKING">COMING</span></span>
+            <span class="c-go" role="cell"><a href="#bank">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
+          </div>
+          <p class="board-note">Crews: Xero payroll and MYOB payroll are part of the crew system. <a href="/construction">Rostering, dockets and EBA payroll</a>.</p>
+        </div>
       </div>
-      <div class="brow bhead" role="row">
-        <span class="c-conn" role="columnheader">From</span>
-        <span class="c-to" role="columnheader">Into</span>
-        <span class="c-stat" role="columnheader">Status</span>
-        <span class="c-go" role="columnheader"><span class="sr">Details</span></span>
-      </div>
-      <div class="brow" role="row" data-row="0">
-        <span class="c-conn" role="cell"><span class="fl word" data-v="SQUARE SALES">SQUARE SALES</span></span>
-        <span class="c-to" role="cell"><span class="fl word" data-v="MYOB">MYOB</span></span>
-        <span class="c-stat" role="cell"><span class="fl word st-soon" data-v="OPENING SOON" data-via="CHECKING" data-live-from="square-myob" data-v-live="LIVE" data-cls-live="st-live">OPENING SOON</span></span>
-        <span class="c-go" role="cell"><a href="#square-myob">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-      </div>
-      <div class="brow" role="row" data-row="1">
-        <span class="c-conn" role="cell"><span class="fl word" data-v="SQUARE SALES">SQUARE SALES</span></span>
-        <span class="c-to" role="cell"><span class="fl word" data-v="XERO">XERO</span></span>
-        <span class="c-stat" role="cell"><span class="fl word st-soon" data-v="OPENING SOON" data-via="CHECKING" data-live-from="square-xero" data-v-live="LIVE" data-cls-live="st-live">OPENING SOON</span></span>
-        <span class="c-go" role="cell"><a href="#square-xero">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-      </div>
-      <div class="brow" role="row" data-row="2">
-        <span class="c-conn" role="cell"><span class="fl word" data-v="SUPPLIER INVOICES">SUPPLIER INVOICES</span></span>
-        <span class="c-to" role="cell"><span class="fl word" data-v="MYOB / XERO">MYOB / XERO</span></span>
-        <span class="c-stat" role="cell"><span class="fl word st-live" data-v="LIVE" data-via="CHECKING">LIVE</span></span>
-        <span class="c-go" role="cell"><a href="#invoices">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-      </div>
-      <div class="brow" role="row" data-row="3">
-        <span class="c-conn" role="cell"><span class="fl word" data-v="SHOPIFY SALES">SHOPIFY SALES</span></span>
-        <span class="c-to" role="cell"><span class="fl word" data-v="MYOB / XERO">MYOB / XERO</span></span>
-        <span class="c-stat" role="cell"><span class="fl word st-coming" data-v="COMING" data-via="CHECKING">COMING</span></span>
-        <span class="c-go" role="cell"><a href="#shopify">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-      </div>
-      <div class="brow" role="row" data-row="4">
-        <span class="c-conn" role="cell"><span class="fl word" data-v="BANK CODING">BANK CODING</span></span>
-        <span class="c-to" role="cell"><span class="fl word" data-v="MYOB / XERO">MYOB / XERO</span></span>
-        <span class="c-stat" role="cell"><span class="fl word st-coming" data-v="COMING" data-via="CHECKING">COMING</span></span>
-        <span class="c-go" role="cell"><a href="#bank">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></span>
-      </div>
-      <p class="board-note">Crews: Xero payroll and MYOB payroll are part of the crew system. <a href="/construction">Rostering, dockets and EBA payroll</a>.</p>
     </div>
   </div>
 </section>
@@ -447,15 +443,14 @@
       </div>
       <div>
         <p class="f-h" id="f-contact">Contact</p>
-        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
+        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
       </div>
     </div>
     <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
          as a PropertyValue identifier: keep the two in step. -->
     <div class="legal">
-      <img src="/paykicker-logo.svg" alt="PayKicker" width="132" height="20">
-      <p><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
+      <p class="legal-id"><img src="/paykicker-logo.svg" alt="PayKicker" width="106" height="16"><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b></p>
+      <p>PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
     </div>
   </div>
 </footer>

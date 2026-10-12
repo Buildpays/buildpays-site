@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=346e251d">
+<link rel="stylesheet" href="/css/board.css?v=a3951283">
 <script src="/js/board.js?v=8"></script>
 
 <!-- Google Analytics 4 -->
@@ -163,30 +163,60 @@
       </div>
     </div>
 
-    <!-- Three windows onto the real app, side by side, each the whole capture at one aspect (1012:860). Synthetic data;
-         provenance in /screens/*.json. -->
-    <ul class="trio" aria-label="PayKicker products">
-      <li>
-        <div class="win"><img src="/screens/roster-board.webp" width="1012" height="860" alt="PayKicker rostering board, example data: a draft day of eight sites, each with its crew and start and finish, the people still to place, and a warning that one worker can't be placed on a site because he hasn't done its induction." decoding="async" fetchpriority="high"></div>
-        <span class="fl word">Construction software</span>
-        <p>Roster the crew, sign the docket, EBA-correct pay into Xero or MYOB.</p>
-        <a class="tl" href="/construction">Construction software<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </li>
-      <li>
-        <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async"></div>
-        <span class="fl word">AP automation</span>
-        <p>Supplier bills read, coded, approved and posted to Xero or MYOB.</p>
-        <a class="tl" href="/ap-automation">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </li>
-      <li>
-        <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." decoding="async"></div>
-        <span class="fl word">Integrations</span>
-        <p>Square and Shopify sales into Xero or MYOB, every night.</p>
-        <p class="trio-foot"><a class="tl" href="/integrations">Integrations<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><span class="trio-note">Example data</span></p>
-      </li>
-    </ul>
+  </div>
 
+  <!-- The shelf: three product cards, each with the whole capture of one real screen at one aspect (1012:860). Synthetic
+       data; provenance in /screens/*.json. -->
+  <div class="shelf">
+    <div class="wrap">
+      <ul class="trio" aria-label="PayKicker products">
+        <li>
+          <article class="pcard" aria-labelledby="pc-con">
+            <div class="pc-head"><h2 class="pc-name" id="pc-con">Construction software</h2><span class="fl word st-live pc-st">Live</span></div>
+            <div class="pc-screen">
+              <p class="pc-bar">Office · Monday 12 October</p>
+              <div class="win"><img src="/screens/office-day.webp" width="1271" height="1080" alt="PayKicker's home screen for the office, example data: Monday 12 October, 8 things need you, 37 crew, 13 sites, 36 timesheets to approve and 237 to export; Needs you (a casual conversion, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers onboarding, tickets to verify and tickets expiring); today on site by crew; hours this week, upcoming leave, the week's roster and dockets this week." decoding="async" fetchpriority="high"></div>
+            </div>
+            <div class="pc-foot">
+              <p>Roster the crew, sign the docket, EBA-correct pay into Xero or MYOB.</p>
+              <a class="tl" href="/construction">Construction software<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="pcard" aria-labelledby="pc-ap">
+            <div class="pc-head"><h2 class="pc-name" id="pc-ap">AP automation</h2><span class="fl word st-live pc-st">Live</span></div>
+            <div class="pc-screen">
+              <p class="pc-bar">Invoices · INV-20955 in review</p>
+              <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async"></div>
+            </div>
+            <div class="pc-foot">
+              <p>Supplier bills read, coded, approved and posted to Xero or MYOB.</p>
+              <a class="tl" href="/ap-automation">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>
+        </li>
+        <li>
+          <article class="pcard" aria-labelledby="pc-int">
+            <div class="pc-head"><h2 class="pc-name" id="pc-int">Integrations</h2><span class="fl word st-soon pc-st" data-live-from="square" data-v-live="LIVE" data-cls-live="st-live">Opening soon</span></div>
+            <div class="pc-screen">
+              <p class="pc-bar">Sales · Day summaries, October</p>
+              <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." decoding="async"></div>
+            </div>
+            <div class="pc-foot">
+              <p>Square and Shopify sales into Xero or MYOB, every night.</p>
+              <a class="tl" href="/integrations">Integrations<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>
+        </li>
+      </ul>
+      <p class="shelf-note">Example data</p>
+    </div>
+  </div>
+
+  <div class="wrap">
     <p class="hero-partner"><a href="/partners">Accountant or bookkeeper? Refer a client and earn 15% for a year<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+
   </div>
 </section>
 
@@ -253,8 +283,8 @@
 </div>
 
 <section class="gate" id="construction" aria-labelledby="h-con">
-  <div class="wrap duo sm">
-    <div class="duo-copy">
+  <div class="wrap">
+    <div class="gate-head">
       <h2 id="h-con">From the 6am board<br>to the pay file.</h2>
       <div class="gate-copy">
         <p>For Melbourne subcontractors on a CFMEU Victoria agreement. Every clause encoded once.</p>
@@ -269,11 +299,12 @@
       </div>
     </div>
 
-    <figure class="exhibit duo-shot">
-      <!-- Exhibit: the office's day and the worker's day, each the whole capture, from the app harness (synthetic data).
-           Provenance: /screens/my-work.json, /screens/my-work-phone.json -->
-      <div class="shot-pair"><div class="win"><img src="/screens/my-work.webp" width="1008" height="1054" alt="PayKicker's home screen for the office, example data: the day's greeting and counts, what needs you today, each with its button (a casual conversion to answer, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers still onboarding and tickets to verify), and who is on which site today." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/my-work-phone.webp" width="390" height="877" alt="PayKicker on a worker's phone, My work, example data: today's site Tower rostered 6:30 to 3:00 with its address and gate, the week, and Enter today's hours, Raise a docket, My roster, My timesheets, My dockets and Ask for leave." loading="lazy" decoding="async"></div></div>
-      <figcaption><span class="ex-label">Example data</span><span class="ex-row">03 JUL · WAGES — EBA PAY RUN W27 · 38,412.60 · 6-1000 WAGES · WGT01 · <b class="fl word st-coded ex-st" data-v="CODED" data-via="READING">CODED</b></span></figcaption>
+    <figure class="exhibit ex-wide">
+      <!-- Exhibit: the office's rostering board and the worker's day, each the whole capture, from the app harness (synthetic
+           data). The office's home screen is the construction card in the hero, so it is not shown twice here.
+           Provenance: /screens/roster-board.json, /screens/my-work-phone.json -->
+      <div class="shot-pair"><div class="win"><img src="/screens/roster-board.webp" width="1012" height="860" alt="PayKicker rostering board, example data: a draft day of eight sites, each with its crew and start and finish, the people still to place, and a warning that one worker can't be placed on a site because he hasn't done its induction." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/my-work-phone.webp" width="390" height="877" alt="PayKicker on a worker's phone, My work, example data: today's site Tower rostered 6:30 to 3:00 with its address and gate, the week, and Enter today's hours, Raise a docket, My roster, My timesheets, My dockets and Ask for leave." loading="lazy" decoding="async"></div></div>
+      <figcaption><span class="ex-label">Example data</span><span class="ex-row">MON 12 OCT · DAY SHIFT · 8 SITES · 24 OF 37 PLACED · TOWER INDUCTION · <b class="fl word st-coded ex-st" data-v="CHECKED" data-via="READING">CHECKED</b></span></figcaption>
     </figure>
   </div>
 </section>
@@ -412,15 +443,14 @@
       </div>
       <div>
         <p class="f-h" id="f-contact">Contact</p>
-        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
+        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
       </div>
     </div>
     <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
          as a PropertyValue identifier: keep the two in step. -->
     <div class="legal">
-      <img src="/paykicker-logo.svg" alt="PayKicker" width="132" height="20">
-      <p><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
+      <p class="legal-id"><img src="/paykicker-logo.svg" alt="PayKicker" width="106" height="16"><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b></p>
+      <p>PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
     </div>
   </div>
 </footer>
