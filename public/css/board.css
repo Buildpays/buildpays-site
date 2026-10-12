@@ -303,9 +303,10 @@ main>.hero:last-child{padding-bottom:var(--sec)}
 .sl-prev .ic{transform:scaleX(-1)}
 /* Over the frame's left and right edges, at the middle of the frame (the strip + 2px of border + the screen). */
 @media (min-width:1001px){
-  /* The whole slide (frame, sentence, dots) fits in one screen height: the frame narrows on a short screen, centred
-     in the column; the arrows stay on its edges (100cqw is the slideshow's own width). */
-  .sl{max-width:calc((100vh - 14rem - 16px) * 1180 / 1003);margin:0 auto}   /* 14rem + 16px: the nav, the strip, the sentence, the dots */
+  /* The framed screen (strip + capture) fits the window height under the nav, so it is always seen whole; the
+     sentence and dots follow under it. Centred in the column; the arrows stay on its edges (100cqw is the
+     slideshow's own width). */
+  .sl{max-width:calc((100vh - 5rem - 24px - 2.375rem - 2px) * 1180 / 1003 + 2px);margin:0 auto}
   .sl-btn{position:absolute;z-index:2;top:calc((2.375rem + 2px + (100cqw - 2px) * 1003 / 1180) / 2 - 1.375rem)}
   .sl-prev{left:-1.375rem}
   .sl-next{right:-1.375rem}
@@ -403,6 +404,19 @@ html.lb-open{overflow:hidden}
 @container (max-width:440px){.ex-wide .shot-pair{grid-template-columns:minmax(0,1fr)}.ex-wide .shot-pair .phone-shot{max-width:13.75rem}}
 .ex-pair{max-width:75rem;margin-top:clamp(2.5rem,4.4*var(--vw),3.5rem)}
 @media (max-width:640px){.shot-pair,.ex-wide .shot-pair{grid-template-columns:minmax(0,1fr)}.shot-pair .phone-shot,.ex-wide .shot-pair .phone-shot{max-width:13.75rem}}
+
+/* A framed screen beside its copy fits the window height under the nav (1001px and up), so it is always seen whole:
+   its width follows from the capture's shape (--ar on the figure, set in the page) and the height left, never wider
+   than its column (or its file's pixels, far wider still). It sits at its column's inner edge, next to the copy; the
+   caption under it. Stacked (1000 and below) nothing changes. */
+@media (min-width:1001px){
+  .fit{--fit-h:calc(100vh - 5rem - 24px);--bar:0px}
+  .fit:has(> .shot-bar),.fit:has(> .shot > .shot-bar){--bar:2.375rem}
+  .exhibit.fit,.shot.fit{max-width:calc((var(--fit-h) - var(--bar) - 2px) * var(--ar) + 2px)}
+  .duo>.exhibit.fit{max-width:min(55rem,calc((var(--fit-h) - var(--bar) - 2px) * var(--ar) + 2px));justify-self:start}
+  .duo.flip>.exhibit.fit{justify-self:end}
+  .exhibit.ex-wide.fit{max-width:min(calc(2026px + 15.25rem),calc((var(--fit-h) - 2px) * var(--ar) + 2px + 15.25rem));margin-left:0}
+}
 
 /* ---------------------------------------------------------------- gates (the homepage sections, and the product pages' sections) */
 .gate-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:1.5rem clamp(2rem,4.4*var(--vw),4rem);align-items:start}
