@@ -1,0 +1,19 @@
+{
+  "source": "app harness /harness.html?role=admin&mods=invoices&xero=1&tour=0#invoices/open/b9 (menu collapsed)",
+  "app_commit": "b3e6407ffdc1b29e810345dec5303ce6e2e41852",
+  "app_branch": "pass-855-bank-pdf (main + the bank passes)",
+  "captured": "2026-10-12T10:32:32.833Z",
+  "viewport": "452x1000 CSS px (the app's own single-column layout), device scale 2.528 so the file is ~1120px wide",
+  "clip_css_px": {
+    "x": 5,
+    "y": 1162,
+    "width": 443,
+    "height": 332
+  },
+  "aspect": "4:3 (the three homepage card snips share it)",
+  "ends_on": "the bottom rule of the Tax invoice panel's \"Supplier\" row (Invoice, Due and the coded lines continue below; the card opens the whole screen)",
+  "format": "webp q90",
+  "shows": "Invoices, bill INV-20955's Tax invoice panel: the total with its GST, the two GL accounts, the two jobs, the tax code and the supplier (a legible part of the screen; the card opens the whole screen, /screens/invoice-approval.webp)",
+  "data": "synthetic (harness fakes): harness fixture edited in flight before capture: the fixture's site names that are real Melbourne projects replaced with made-up ones, and per-site start/finish filled on the seeded roster (the fixture leaves them empty). Nothing written to the app repo.",
+  "bill_to": "Southline Formwork Pty Ltd"
+}

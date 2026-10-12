@@ -192,13 +192,13 @@
     if (!nav || !('IntersectionObserver' in window)) return;
     var gos = Array.prototype.slice.call(document.querySelectorAll('.btn.go')).filter(function (b) { return !nav.contains(b); });
     if (!gos.length) return;
-    var seen = new Set();
-    gos.forEach(function (b) { var r = b.getBoundingClientRect(); if (r.height && r.bottom > 68 && r.top < window.innerHeight) seen.add(b); });
+    var seen = new Set(), bar = nav.offsetHeight || 76;   // the bar's own height (76px since round 7)
+    gos.forEach(function (b) { var r = b.getBoundingClientRect(); if (r.height && r.bottom > bar && r.top < window.innerHeight) seen.add(b); });
     nav.classList.toggle('quiet', seen.size > 0);
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting && e.target.getClientRects().length) seen.add(e.target); else seen.delete(e.target); });
       nav.classList.toggle('quiet', seen.size > 0);
-    }, { rootMargin: '-68px 0px 0px 0px', threshold: 0 });
+    }, { rootMargin: '-' + bar + 'px 0px 0px 0px', threshold: 0 });
     gos.forEach(function (b) { io.observe(b); });
   }
 
@@ -234,8 +234,10 @@
     });
   }
 
-  // Every product window (.win) opens its whole capture full size: click, tap, Enter or Space. The window becomes a
-  // button named by its screenshot's alt; a "View full size" label sits on it (hover/focus) or under it (narrow screens).
+  // Every product window (.win) opens its whole capture full size: click, tap, Enter or Space. A window that shows a part
+  // of a screen (the homepage cards) names the whole capture in data-full (with data-full-w, its CSS width, and
+  // data-full-alt), and that is what opens. The window becomes a button named by the capture it opens; a "View full
+  // size" (or "View the whole screen") label sits on it (hover/focus) or under it (narrow screens).
   // The overlay holds the capture at its own CSS size (the files are 2x), never wider than 96vw on a wide screen and at
   // full size on a phone, scrolling as needed. Close, Esc or a click on the backdrop closes it; focus goes back.
   function initZoom() {
@@ -264,10 +266,11 @@
       if (!src) return;
       if (!lb) build();
       from = win;
-      var w = Number(src.getAttribute('width')) || Math.round((src.naturalWidth || 1600) / 2);
+      var full = win.getAttribute('data-full');
+      var w = Number(full ? win.getAttribute('data-full-w') : src.getAttribute('width')) || Math.round((src.naturalWidth || 1600) / 2);
       img.style.setProperty('--lw', w + 'px');
-      img.src = src.currentSrc || src.src;
-      img.alt = src.alt;
+      img.src = full || src.currentSrc || src.src;
+      img.alt = full ? (win.getAttribute('data-full-alt') || src.alt) : src.alt;
       cap.textContent = 'Example data.';
       lb.hidden = false;
       lb.scrollTop = 0; lb.scrollLeft = 0;
@@ -285,7 +288,7 @@
       if (!src) return;
       win.setAttribute('role', 'button');
       win.tabIndex = 0;
-      win.setAttribute('aria-label', 'View full size: ' + src.alt);
+      win.setAttribute('aria-label', (win.getAttribute('data-full') ? 'View the whole screen: ' + (win.getAttribute('data-full-alt') || src.alt) : 'View full size: ' + src.alt));
       var box = document.createElement('div');
       box.className = 'win-box';
       win.parentNode.insertBefore(box, win);
@@ -293,7 +296,7 @@
       var hint = document.createElement('span');
       hint.className = 'win-hint';
       hint.setAttribute('aria-hidden', 'true');
-      hint.textContent = 'View full size';
+      hint.textContent = win.getAttribute('data-full') ? 'View the whole screen' : 'View full size';
       box.appendChild(hint);
       win.addEventListener('click', function () { show(win); });
       win.addEventListener('keydown', function (e) {

@@ -23,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=a3951283">
-<script src="/js/board.js?v=8"></script>
+<link rel="stylesheet" href="/css/board.css?v=1010f721">
+<script src="/js/board.js?v=9"></script>
 
 <!-- Google Analytics 4 — same stream as the rest of the site. Disclosed in §10 below. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -44,6 +44,7 @@
   <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter"/><path d="M12 10v4.5M12 17v.5" stroke="currentColor" stroke-width="1.75"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M8.6 3.5 6.1 3.2a1.6 1.6 0 0 0-1.7 1.1c-.5 1.8-.3 3.9.7 6.1a17.6 17.6 0 0 0 8.5 8.5c2.2 1 4.3 1.2 6.1.7a1.6 1.6 0 0 0 1.1-1.7l-.3-2.5a1.6 1.6 0 0 0-1.2-1.4l-2.9-.7a1.6 1.6 0 0 0-1.5.4l-1.2 1.2a12.4 12.4 0 0 1-5.3-5.3l1.2-1.2a1.6 1.6 0 0 0 .4-1.5l-.7-2.9a1.6 1.6 0 0 0-1.4-1.2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
   <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V13M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 </svg>
 
@@ -51,7 +52,8 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="172" height="26"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="230" height="34"></a>
+    <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
       <a href="/construction">Construction</a>
@@ -59,6 +61,7 @@
       <a href="/integrations">Integrations</a>
       <a href="/partners">Partners</a>
       <a href="/pricing">Pricing</a>
+      <a class="nav-tel" href="tel:+61340616223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>03&nbsp;4061&nbsp;6223</a>
       <span class="nav-act">
         <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
         <a class="btn go" href="/#contact">Book a demo</a>

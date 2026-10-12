@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=a3951283">
-<script src="/js/board.js?v=8"></script>
+<link rel="stylesheet" href="/css/board.css?v=1010f721">
+<script src="/js/board.js?v=9"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -121,6 +121,7 @@
   <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter"/><path d="M12 10v4.5M12 17v.5" stroke="currentColor" stroke-width="1.75"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M8.6 3.5 6.1 3.2a1.6 1.6 0 0 0-1.7 1.1c-.5 1.8-.3 3.9.7 6.1a17.6 17.6 0 0 0 8.5 8.5c2.2 1 4.3 1.2 6.1.7a1.6 1.6 0 0 0 1.1-1.7l-.3-2.5a1.6 1.6 0 0 0-1.2-1.4l-2.9-.7a1.6 1.6 0 0 0-1.5.4l-1.2 1.2a12.4 12.4 0 0 1-5.3-5.3l1.2-1.2a1.6 1.6 0 0 0 .4-1.5l-.7-2.9a1.6 1.6 0 0 0-1.4-1.2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
   <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V13M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 </svg>
 
@@ -128,7 +129,8 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="172" height="26"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="230" height="34"></a>
+    <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
       <a href="/construction">Construction</a>
@@ -136,6 +138,7 @@
       <a href="/integrations">Integrations</a>
       <a href="/partners">Partners</a>
       <a href="/pricing">Pricing</a>
+      <a class="nav-tel" href="tel:+61340616223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>03&nbsp;4061&nbsp;6223</a>
       <span class="nav-act">
         <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
         <a class="btn go" href="#contact">Book a demo</a>
@@ -159,14 +162,15 @@
           <a class="btn go xl" href="#contact">Book a demo</a>
           <a class="btn hair xl" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a>
         </div>
-        <p class="fine-dim">Free trial is for supplier invoices: 14 days, no card.<br>Or call <a href="tel:+61340616223">03&nbsp;4061&nbsp;6223</a>.</p>
+        <p class="fine-dim">Free trial is for supplier invoices: 14 days, no card.<br>Or call <a href="tel:+61340616223"><b>03&nbsp;4061&nbsp;6223</b></a>.</p>
       </div>
     </div>
 
   </div>
 
-  <!-- The shelf: three product cards, each with the whole capture of one real screen at one aspect (1012:860). Synthetic
-       data; provenance in /screens/*.json. -->
+  <!-- The shelf: three product cards. Each window shows a legible part of one real screen, captured on its own at the
+       app's natural size (4:3, /screens/card-*.webp); a click opens the whole screen (data-full). Synthetic data;
+       provenance in /screens/*.json. -->
   <div class="shelf">
     <div class="wrap">
       <ul class="trio" aria-label="PayKicker products">
@@ -174,8 +178,8 @@
           <article class="pcard" aria-labelledby="pc-con">
             <div class="pc-head"><h2 class="pc-name" id="pc-con">Construction software</h2><span class="fl word st-live pc-st">Live</span></div>
             <div class="pc-screen">
-              <p class="pc-bar">Office · Monday 12 October</p>
-              <div class="win"><img src="/screens/office-day.webp" width="1271" height="1080" alt="PayKicker's home screen for the office, example data: Monday 12 October, 8 things need you, 37 crew, 13 sites, 36 timesheets to approve and 237 to export; Needs you (a casual conversion, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers onboarding, tickets to verify and tickets expiring); today on site by crew; hours this week, upcoming leave, the week's roster and dockets this week." decoding="async" fetchpriority="high"></div>
+              <p class="pc-bar">Office · Needs you today</p>
+              <div class="win" data-full="/screens/office-day.webp" data-full-w="1271" data-full-alt="PayKicker's home screen for the office, example data: Monday 12 October, 8 things need you, 37 crew, 13 sites, 36 timesheets to approve and 237 to export; Needs you (a casual conversion, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers onboarding, tickets to verify and tickets expiring); today on site by crew; hours this week, upcoming leave, the week's roster and dockets this week."><img src="/screens/card-office.webp" width="452" height="339" alt="PayKicker's home screen for the office, Needs you, example data: a casual now permanent by law, 43 pay items still to name before the pay run, 36 timesheets to approve and 16 dockets awaiting signature, each with its button." decoding="async" fetchpriority="high"></div>
             </div>
             <div class="pc-foot">
               <p>Roster the crew, sign the docket, EBA-correct pay into Xero or MYOB.</p>
@@ -187,8 +191,8 @@
           <article class="pcard" aria-labelledby="pc-ap">
             <div class="pc-head"><h2 class="pc-name" id="pc-ap">AP automation</h2><span class="fl word st-live pc-st">Live</span></div>
             <div class="pc-screen">
-              <p class="pc-bar">Invoices · INV-20955 in review</p>
-              <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async"></div>
+              <p class="pc-bar">Invoices · INV-20955, read and coded</p>
+              <div class="win" data-full="/screens/invoice-approval.webp" data-full-w="1180" data-full-alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST."><img src="/screens/card-invoice.webp" width="443" height="332" alt="PayKicker Invoices, a supplier's tax invoice read and coded, example data: total $1,796.30 ($1,633.00 + GST $163.30), two GL accounts (5-1300 Materials, timber &amp; hardware, $1,285.00; 5-1350 Site consumables, $348.00), two jobs (T1 Tower, J103 Riverside Quay Stage 2), tax code GST, supplier Northside Timber &amp; Hardware." decoding="async"></div>
             </div>
             <div class="pc-foot">
               <p>Supplier bills read, coded, approved and posted to Xero or MYOB.</p>
@@ -201,7 +205,7 @@
             <div class="pc-head"><h2 class="pc-name" id="pc-int">Integrations</h2><span class="fl word st-soon pc-st" data-live-from="square" data-v-live="LIVE" data-cls-live="st-live">Opening soon</span></div>
             <div class="pc-screen">
               <p class="pc-bar">Sales · Day summaries, October</p>
-              <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." decoding="async"></div>
+              <div class="win" data-full="/screens/sales-days.webp" data-full-w="1144" data-full-alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers."><img src="/screens/card-sales.webp" width="433" height="325" alt="PayKicker Sales, October's day summaries, example data: 513 orders, $19,923 net sales after $25 refunds, $1,449 GST, $20,168 takings including $159 tips, and Thursday 8 October posted to MYOB as #1201: sales $1,873.00, GST $136.22, 43 orders, card $1,558.36, cash $337.14." decoding="async"></div>
             </div>
             <div class="pc-foot">
               <p>Square and Shopify sales into Xero or MYOB, every night.</p>
@@ -309,24 +313,6 @@
   </div>
 </section>
 
-<section class="gate gate-plain" id="accountants" aria-labelledby="h-acc">
-  <div class="wrap">
-    <div class="gate-head">
-      <h2 id="h-acc">Refer a client.<br>Earn 15% for a year.</h2>
-      <div class="gate-copy">
-        <p>For accountants and bookkeepers who look after small businesses on Xero or MYOB.</p>
-        <p class="gate-acts"><a class="btn hair" href="/partners">Become a partner</a> <a class="tl" href="/partner-terms">Partner terms<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-      </div>
-    </div>
-    <ul class="strip strip-terms">
-      <li><span class="fl word d-name">Sign up</span><span class="d-line">Your name, email and bank account. Share your link or code.</span></li>
-      <li><span class="fl word d-name">Earn</span><span class="d-line"><b>15% of the bill total</b>, inc GST, on each client's first 12 charged bills.</span></li>
-      <li><span class="fl word d-name">Get paid</span><span class="d-line"><b>By direct deposit</b> each month from the 8th, once $50 is owed.</span></li>
-      <li><span class="fl word d-name">Your client</span><span class="d-line"><b>75% off</b> its first 3 charged bills, and told you receive a fee.</span></li>
-    </ul>
-  </div>
-</section>
-
 <section class="why" aria-labelledby="h-why">
   <div class="wrap">
     <div class="why-head">
@@ -407,6 +393,24 @@
       <p id="demoMsg" role="status"></p>
       <p class="f-fine">We reply within one business day. Your details stay with us: no lists, no spam.</p>
     </form>
+  </div>
+</section>
+
+<section class="gate gate-plain" id="accountants" aria-labelledby="h-acc">
+  <div class="wrap">
+    <div class="gate-head">
+      <h2 id="h-acc">Refer a client.<br>Earn 15% for a year.</h2>
+      <div class="gate-copy">
+        <p>For accountants and bookkeepers who look after small businesses on Xero or MYOB.</p>
+        <p class="gate-acts"><a class="btn hair" href="/partners">Become a partner</a> <a class="tl" href="/partner-terms">Partner terms<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </div>
+    <ul class="strip strip-terms">
+      <li><span class="fl word d-name">Sign up</span><span class="d-line">Your name, email and bank account. Share your link or code.</span></li>
+      <li><span class="fl word d-name">Earn</span><span class="d-line"><b>15% of the bill total</b>, inc GST, on each client's first 12 charged bills.</span></li>
+      <li><span class="fl word d-name">Get paid</span><span class="d-line"><b>By direct deposit</b> each month from the 8th, once $50 is owed.</span></li>
+      <li><span class="fl word d-name">Your client</span><span class="d-line"><b>75% off</b> its first 3 charged bills, and told you receive a fee.</span></li>
+    </ul>
   </div>
 </section>
 

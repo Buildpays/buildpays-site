@@ -1,0 +1,18 @@
+{
+  "source": "app harness /harness.html?role=admin&tour=0#dashboard (menu collapsed)",
+  "app_commit": "b3e6407ffdc1b29e810345dec5303ce6e2e41852",
+  "app_branch": "pass-855-bank-pdf (main + the bank passes)",
+  "captured": "2026-10-12T10:32:16.204Z",
+  "viewport": "452x1000 CSS px (the app's own single-column layout), device scale 2.478 so the file is ~1120px wide",
+  "clip_css_px": {
+    "x": 0,
+    "y": 1212,
+    "width": 452,
+    "height": 339
+  },
+  "aspect": "4:3 (the three homepage card snips share it)",
+  "ends_on": "the bottom rule of the Needs you row \"Dockets awaiting signature\" (the list continues below; the card opens the whole screen)",
+  "format": "webp q90",
+  "shows": "The office Dashboard's Needs you card: casual conversion, pay items to name, timesheets to approve, dockets awaiting signature, each with its count and button (a legible part of the screen; the card opens the whole screen, /screens/office-day.webp)",
+  "data": "synthetic (harness fakes): harness fixture edited in flight before capture: the fixture's site names that are real Melbourne projects replaced with made-up ones, and per-site start/finish filled on the seeded roster (the fixture leaves them empty). Nothing written to the app repo."
+}
