@@ -8,6 +8,12 @@
   var canAnimate = !still && typeof Element !== 'undefined' && 'animate' in Element.prototype;
   if (canAnimate) root.classList.add('flip');
 
+  // Homepage only, while the redesign is reviewed: /?hero=board shows the old hero (#hero-old) instead of the new one.
+  // The class lands before first paint (CSS hides #hero-new); init() then swaps the hidden attributes.
+  // GO-LIVE: delete this switch, swapHero() and #hero-old.
+  var oldHero = /(?:^|&)hero=board(?:&|$)/.test(location.search.slice(1));
+  if (oldHero) root.classList.add('hero-board');
+
   var DIGITS = '0123456789';
   var LETTERS = 'ABCDEFGHIJKLMNOPRSTUVWY';
 
@@ -158,7 +164,7 @@
   // down waits until it is scrolled to, then runs once and stays.
   function initBoards() {
     applySwitches(document);
-    var boards = Array.prototype.slice.call(document.querySelectorAll('[data-flip]'));
+    var boards = Array.prototype.slice.call(document.querySelectorAll('[data-flip]')).filter(function (b) { return !b.closest('[hidden]'); });
     var plans = boards.map(function (board) {
       var rows = Array.prototype.slice.call(board.querySelectorAll('.brow[data-row]'));
       var at = (board.getAttribute('data-flip') || '').split(',').filter(Boolean).map(Number);
@@ -184,6 +190,103 @@
     });
   }
 
+  // The night shift (homepage hero): one row of the board under a clock. The clock runs from data-start to the
+  // settled time while the row flips through the night's entries (the <li>s of .n-list, which are also the
+  // screen-reader text), then lands on the summary already in the markup. One run, no loop; reduced motion
+  // (or no Web Animations) shows the settled row as built.
+  function pad(v, n) { while (v.length < n) v = ' ' + v; return v; }
+  function mins(t) { var m = Number(t.slice(0, 2)) * 60 + Number(t.slice(3, 5)); return m < 720 ? m + 1440 : m; }
+  function hhmm(m) { m = m % 1440; var h = Math.floor(m / 60), n = m % 60; return (h < 10 ? '0' : '') + h + ':' + (n < 10 ? '0' : '') + n; }
+
+  function initNight() {
+    var el = document.querySelector('[data-night]');
+    if (!el || el.closest('[hidden]')) return null;
+    var row = el.querySelector('.nrow');
+    var start = el.getAttribute('data-start') || '23:00';
+    var cells = {};
+    row.querySelectorAll('[data-k]').forEach(function (c) {
+      var fl = c.querySelector('.fl'), k = c.getAttribute('data-k'), fin = fl.getAttribute('data-v');
+      if (fl.classList.contains('chars')) {
+        var shape = fl.getAttribute('data-shape') || fin;
+        var first = canAnimate ? (k === 'time' ? start : pad('', shape.length)) : fin;
+        fl.textContent = '';
+        cells[k] = { el: fl, fin: fin, len: shape.length, chars: shape.split('').map(function (ch, i) {
+          var s = document.createElement('span');
+          s.className = 'cell' + (ch === ',' || ch === '.' || ch === ':' ? ' pun' : '');
+          fl.appendChild(s);
+          return makeFlap(s, first.charAt(i));
+        }) };
+      } else {
+        cells[k] = { el: fl, fin: fin, f: makeFlap(fl, canAnimate ? ' ' : fin) };
+      }
+    });
+    if (!canAnimate) return null;
+    cells.entry.el.classList.remove('st-coded');
+    var stat = cells.stat, via = stat.el.getAttribute('data-via') || 'READING', done = stat.el.getAttribute('data-done') || 'CODED';
+    var entries = Array.prototype.slice.call(el.querySelectorAll('.n-list li[data-t]')).map(function (li) {
+      return { t: li.getAttribute('data-t'), e: li.getAttribute('data-e'), a: li.getAttribute('data-a'), c: li.getAttribute('data-c'), g: li.getAttribute('data-g') };
+    });
+
+    function chars(cell, v, spin, step) {
+      v = pad(v, cell.len);
+      return Promise.all(cell.chars.map(function (f, i) {
+        var ch = v.charAt(i);
+        if (f.cur === ch) return null;
+        return wait(i * 32).then(function () { return run(f, churn(ch, spin + (i % 2)), step); });
+      }));
+    }
+    function word(cell, v, step) { return run(cell.f, [v], step || 205); }
+    // The clock walks in steps of 50 minutes and lands on the exact time.
+    function walk(from, to) {
+      var a = mins(from), b = mins(to), stops = [], p = Promise.resolve();
+      for (var m = a + 50; m < b - 15; m += 50) stops.push(hhmm(m));
+      stops.push(to);
+      stops.forEach(function (t, i) {
+        p = p.then(function () { return chars(cells.time, t, 1, 66); }).then(function () { return wait(i === stops.length - 1 ? 60 : 110); });
+      });
+      return p;
+    }
+    function entry(e) {
+      row.classList.add('moving');
+      stat.el.classList.remove('st-coded');
+      stat.el.classList.add('reading');
+      return Promise.all([
+        word(stat, via, 190),
+        word(cells.entry, e.e),
+        wait(110).then(function () { return chars(cells.amt, e.a, 2, 74); }),
+        wait(190).then(function () { return word(cells.acct, e.c); }),
+        wait(270).then(function () { return word(cells.gate, e.g); })
+      ]).then(function () { return wait(240); }).then(function () {
+        return run(stat.f, [done], 200, function () { stat.el.classList.remove('reading'); stat.el.classList.add('st-coded'); });
+      }).then(function () { row.classList.remove('moving'); });
+    }
+    function settle() {
+      return Promise.all([
+        chars(cells.amt, '', 1, 70),
+        wait(90).then(function () { return word(cells.acct, cells.acct.fin, 180); }),
+        wait(160).then(function () { return word(cells.gate, cells.gate.fin, 180); }),
+        wait(230).then(function () { return word(stat, stat.fin, 180); }).then(function () { stat.el.classList.remove('st-coded'); })
+      ]).then(function () {
+        return run(cells.entry.f, [cells.entry.fin], 230, function () { cells.entry.el.classList.add('st-coded'); });
+      });
+    }
+    return function play() {
+      var now = start, p = Promise.resolve();
+      entries.forEach(function (e) {
+        p = p.then(function () { return walk(now, e.t); }).then(function () { now = e.t; return entry(e); }).then(function () { return wait(1500); });
+      });
+      p.then(function () { return walk(now, cells.time.fin); }).then(settle);
+      return { el: el };
+    };
+  }
+
+  // The hero switch (see the top): swap which hero is in the page before anything is built.
+  function swapHero() {
+    if (!oldHero) return;
+    var n = document.getElementById('hero-new'), o = document.getElementById('hero-old');
+    if (n && o) { n.hidden = true; o.hidden = false; }
+  }
+
   function initMenu() {
     var nav = document.querySelector('.nav');
     var btn = nav && nav.querySelector('.menu-btn');
@@ -203,7 +306,22 @@
   }
 
   function init() {
+    swapHero();
+    var night = null;
+    try { night = initNight(); } catch (e) { night = null; }
     try { initBoards(); } catch (e) { root.classList.remove('flip'); }
+    // The night strip runs once the three screens have lit (or once it is scrolled to, further down a phone).
+    if (night) {
+      var strip = document.querySelector('[data-night]');
+      var go = function (ms) { wait(ms).then(night); };
+      if (!('IntersectionObserver' in window) || strip.getBoundingClientRect().top < window.innerHeight) go(1300);
+      else {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { io.disconnect(); go(350); } });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.5 });
+        io.observe(strip);
+      }
+    }
     initMenu();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

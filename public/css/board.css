@@ -780,3 +780,80 @@ input[type=range]:focus-visible{outline:2px solid var(--amber);outline-offset:4p
 .gcard:hover .go svg{transform:translateX(3px)}
 @media (max-width:900px){.gcard{grid-template-columns:minmax(0,1fr);padding:22px 0}.gcard .big,.gcard .go,.gcard>h2,.gcard>p{grid-column:1;grid-row:auto}.gcard .big{flex-direction:row;align-items:center;gap:14px}}
 .doc-hero .gcards+.note{margin-top:22px}
+
+/* ================================================================ homepage hero: three products on screen, the night shift */
+/* Old hero for comparison at /?hero=board (board.js sets .hero-board before first paint). GO-LIVE: delete these two rules. */
+.hero-board #hero-new{display:none!important}
+.hero-board #hero-old{display:block!important}
+
+.hero-new{padding-top:clamp(28px,3vw,44px)}
+
+/* Three gates: each a lit product screen with its name and one line; the whole gate is the link. */
+.pgates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.4vw,36px);margin-top:clamp(24px,2vw,30px)}
+.pg{display:flex;flex-direction:column;color:var(--ink);text-decoration:none}
+.pg:hover{color:var(--ink)}
+.pg:focus-visible{outline-offset:8px}
+.pg-shot{position:relative;display:block;isolation:isolate}
+/* The one light: a warm bleed behind each screen. */
+.pg-shot::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:-30% -18% -28%;
+  background:radial-gradient(ellipse 58% 56% at 50% 50%,rgba(240,181,65,.42) 0%,rgba(240,181,65,.22) 38%,rgba(242,92,31,.08) 62%,rgba(11,24,38,0) 80%)}
+.pg-frame{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;border-radius:4px;background:#f4f7fb;
+  box-shadow:0 40px 70px -36px rgba(0,0,0,.85),0 14px 26px -16px rgba(0,0,0,.5),0 0 0 1px rgba(244,236,220,.08);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1)}
+/* The crop: the image is scaled so the region's width fills the frame (--z = image width / region width), then moved
+   by the region's top-left corner as a share of the image (--x, --y). No re-capture. */
+.pg-frame img{position:absolute;left:0;top:0;max-width:none;width:calc(100% * var(--z));height:auto;transform:translate(var(--x),var(--y))}
+.pg-roster{--z:1.3676;--x:0%;--y:0%}           /* the induction refusal, the toolbar, the first row of sites */
+.pg-bills{--z:1.9387;--x:-48.42%;--y:-17.86%}  /* every check passed, the total, each line's account and job */
+.pg-sales{--z:1.2494;--x:-1.383%;--y:-12.676%} /* each day's sales, GST, card and cash, posted to MYOB */
+/* The synthetic-data label hangs just above each screen, at its right edge. */
+.pg-ex{position:absolute;right:0;bottom:100%;margin-bottom:6px;font-family:var(--f-board);font-weight:700;font-size:.75rem;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.pg-name{display:flex;align-items:center;gap:.35em;margin-top:16px;font-size:clamp(1.45rem,1.95vw,1.85rem);line-height:1.05;letter-spacing:.025em;text-transform:uppercase;transition:color .2s}
+.pg-name .ic{width:.8em;height:.8em;color:var(--amber);transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.pg-line{margin-top:6px;max-width:40ch;font-size:1.1rem;line-height:1.42;color:var(--ink)}
+.pg:hover .pg-name{color:var(--amber)}
+.pg:hover .pg-name .ic{transform:translateX(4px)}
+.pg:hover .pg-frame{transform:translateY(-3px);box-shadow:0 48px 80px -36px rgba(0,0,0,.9),0 18px 30px -16px rgba(0,0,0,.55),0 0 0 1px rgba(240,181,65,.4)}
+/* On load the screens light one after another, from dim to lit (reduced motion: lit). */
+@media (prefers-reduced-motion:no-preference){
+  .pg-shot::before{opacity:0;animation:pg-light 1.8s cubic-bezier(.16,1,.3,1) forwards}
+  .pg-frame img{filter:brightness(.48) saturate(.6);animation:pg-on 1.5s cubic-bezier(.16,1,.3,1) forwards}
+  .pgates>li:nth-child(1) .pg-shot::before,.pgates>li:nth-child(1) .pg-frame img{animation-delay:.2s}
+  .pgates>li:nth-child(2) .pg-shot::before,.pgates>li:nth-child(2) .pg-frame img{animation-delay:.62s}
+  .pgates>li:nth-child(3) .pg-shot::before,.pgates>li:nth-child(3) .pg-frame img{animation-delay:1.04s}
+}
+@keyframes pg-light{to{opacity:1}}
+@keyframes pg-on{to{filter:brightness(1) saturate(1)}}
+
+/* The night shift: the board compressed to one row, a clock on the left. */
+.night{margin-top:clamp(28px,2.2vw,32px);padding:14px 18px;background:var(--housing);border:1px solid var(--line);border-radius:2px;
+  box-shadow:0 30px 60px -36px rgba(0,0,0,.85),inset 0 1px 0 rgba(244,236,220,.04)}
+.nrow{display:grid;grid-template-columns:max-content minmax(0,1fr) max-content max-content max-content max-content;column-gap:10px;align-items:center}
+.n-time .fl{color:var(--amber)}
+.n-amt{justify-self:end}
+.n-acct .fl{width:4.4em}
+.n-gate .fl{width:3.9em;text-align:center;padding:0}
+.n-gate .lf>b{padding:0}
+.n-stat .fl{width:5.6em}
+.nrow.moving .n-entry .fl,.nrow.moving .n-acct .fl,.nrow.moving .n-gate .fl{color:var(--amber)}
+.flip [data-night] .fl{color:transparent}
+.flip [data-night] .fl.chars{visibility:hidden}
+.hero-partner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;margin-top:16px;font-size:1.06rem}
+.hero-partner a{font-family:var(--f-ui);font-weight:500}
+.hero-partner a .ic{margin-left:.35em}
+.hero-partner a .ic{transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.hero-partner a:hover .ic{transform:translateX(3px)}
+.n-ex{font-family:var(--f-board);font-weight:700;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+
+@media (max-width:860px){
+  .pgates{grid-template-columns:1fr;gap:44px}
+  .pg-frame{aspect-ratio:16/10}
+  .pg-roster{--z:1.4457;--x:-1.976%;--y:-28.49%}   /* phone: the first row of sites, their hours and crews */
+}
+@media (max-width:640px){
+  .night{padding:10px 12px}
+  .nrow{--fs:.9rem;--fh:34px;grid-template-columns:max-content minmax(0,1fr) max-content max-content max-content;grid-template-areas:"time entry entry entry entry" "amt amt acct gate stat";gap:6px}
+  .n-time{grid-area:time}.n-entry{grid-area:entry;min-width:0}.n-amt{grid-area:amt;justify-self:start}.n-acct{grid-area:acct}.n-gate{grid-area:gate}.n-stat{grid-area:stat}
+  .n-stat .fl{width:5.3em}
+  .hero-partner{flex-direction:column;gap:8px;font-size:1rem}
+}
