@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#12293f">
+<meta name="theme-color" content="#0b1826">
 <link rel="canonical" href="https://paykicker.com.au/guides/cfmeu-rdo-calendar-2026">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
@@ -28,8 +28,9 @@
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="/css/setout.css?v=822718f0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=339e133a">
+<script src="/js/board.js?v=2"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
 <script src="/js/pixels.js"></script>
@@ -71,96 +72,46 @@
   ]
 }
 </script>
-<style>
-  .guide-list{list-style:none;padding:0;margin-top:26px;max-width:760px}
-  .guide-list li{border-top:1px solid var(--string);padding:22px 0}
-  .guide-list li:last-child{border-bottom:1px solid var(--string)}
-  .guide-list h2{font-size:clamp(24px,2.6vw,32px);max-width:none;margin:0 0 8px}
-  .guide-list p{max-width:66ch}
-  .guide-list .when{font-size:13.5px;color:var(--ink2);margin-top:8px}
-  .cal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0 28px;margin-top:18px;max-width:900px}
-  .cal div{padding:12px 0;border-bottom:1px solid var(--string-soft)}
-  .cal b{display:block;font-family:var(--disp);font-weight:800;font-size:17px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
-  .cal span{display:block;font-size:15px;line-height:1.5}
-  .cal span.ph{color:var(--ink2);font-size:13.5px}
-  .src{font-size:13.5px;color:var(--ink2);max-width:72ch;margin-top:12px}
-  .stamp{display:inline-block;font-family:var(--disp);font-weight:800;font-size:14px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--navy);padding:4px 10px;margin:0 0 12px}
-  .tbl td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
-  .guide-list h2 a{text-decoration:none}
-  .guide-list h2 a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
-  .emp-filter{margin-top:22px;max-width:560px}
-  .emp-filter label{display:block;font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
-  .emp-filter input{display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid var(--string);border-radius:2px;background:var(--chalk);color:var(--navy);font:inherit;font-size:16px}
-  .emp-filter input:focus{outline:2px solid var(--navy);outline-offset:1px}
-  .emp-filter .cnt{display:block;margin-top:8px;font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums}
-  .emp-jump{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:18px;font-size:14.5px;line-height:1.5;max-width:none;color:var(--ink2)}
-  .emp-jump a{white-space:nowrap}
-  .emp-sec h3{display:flex;align-items:baseline;gap:10px;margin-top:34px;scroll-margin-top:110px}
-  .emp-sec h3 .n{font-family:var(--mono);font-size:15px;font-weight:400;color:var(--ink2)}
-  .prose ul.emp{list-style:none;padding:0;margin:8px 0 0;max-width:900px;columns:2;column-gap:36px}
-  .emp li{break-inside:avoid;margin:0;padding:7px 0;border-bottom:1px solid var(--string-soft);font-size:15px;line-height:1.4;display:flex;justify-content:space-between;gap:12px}
-  .emp li + li{margin-top:0}
-  .emp .nm{min-width:0}
-  .emp .dt{flex:none;font-family:var(--mono);font-size:12.5px;color:var(--ink2);white-space:nowrap;padding-top:3px}
-  .emp .dt.old{color:var(--orange)}
-  .emp li[hidden],.emp-sec[hidden],.emp-jump[hidden]{display:none}
-  @media(max-width:860px){.emp{columns:1}}
-  @media(max-width:640px){.tbl td.n{white-space:normal} .tbl th,.tbl td{font-size:14px;padding-right:0} .emp li{flex-direction:column;gap:2px} .emp .dt{padding-top:0}}
-</style>
 </head>
 <body>
-
-<svg class="svg-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <!-- Spray-paint edge for the orange marks: turbulence displaces the patch outline. -->
-    <filter id="spray" x="-25%" y="-40%" width="150%" height="180%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="3" seed="11" result="n"/>
-      <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
-      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="3" result="s"/>
-      <feColorMatrix in="s" type="matrix" values="0 0 0 0 1  0 0 0 0 .35  0 0 0 0 .12  0 0 0 .9 -.25" result="speck"/>
-      <feComposite in="speck" in2="d" operator="in" result="edge"/>
-      <feMerge><feMergeNode in="d"/><feMergeNode in="edge"/></feMerge>
-    </filter>
-    <!-- Finer spray for the applied-rule marks on the file lines. -->
-    <filter id="spray-fine" x="-10%" y="-40%" width="120%" height="180%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.12 0.22" numOctaves="2" seed="5" result="n"/>
-      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <!-- Icons: one stroke weight, navy, authored. -->
-    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1.5V19a1.5 1.5 0 0 1-1.5 1.5A15.5 15.5 0 0 1 3.5 5.5 1.5 1.5 0 0 1 5 4z"/></symbol>
-    <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V13"/><path d="M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5"/></symbol>
-    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11M15 9v11"/><path d="M5.5 13h1.5M11.5 13h1.5M17.5 13h1.5"/></symbol>
-    <symbol id="i-docket" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 11h6M9 14h6"/><path d="M8.5 18.5c1-1.5 2-1.5 2.5 0s1.5 1.5 2.5 0 2-1.5 2.5 0"/></symbol>
-    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 0 0 4v2h18v-2a2 2 0 0 1 0-4v0a2 2 0 0 1 0-4V6H3z"/><path d="M9 6v14" stroke-dasharray="2 2"/><path d="M12.5 10h5M12.5 13h4"/></symbol>
-    <symbol id="i-export" viewBox="0 0 24 24"><path d="M6 3h8l4 4v6"/><path d="M14 3v4h4"/><path d="M6 3v18h7"/><path d="M15 17h6M18 14l3 3-3 3"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
-    <symbol id="i-tick" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
-    <symbol id="i-crew" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
-  </defs>
+<!-- shell:nav -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter"/><path d="M12 10v4.5M12 17v.5" stroke="currentColor" stroke-width="1.75"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V13M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 </svg>
 
-<nav class="nav" aria-label="Main">
-  <div class="wrap">
-    <a class="logo" href="/"><img src="/paykicker-logo.svg" alt="PayKicker" width="202" height="30"></a>
-    <span class="spacer"></span>
-    <a class="nl" href="/construction#features">Features</a>
-    <a class="nl" href="/construction#how">How it works</a>
-    <a class="nl" href="/construction#pricing">Pricing</a>
-    <a class="nl" href="/ap-automation">Invoices<span class="tag">New</span></a>
-    <a class="nl" href="/construction#faq">FAQ</a>
-    <a class="nl" href="/guides/">Guides</a>
-    <a class="nphone" href="tel:+61340616223" aria-label="Call PayKicker on 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span class="num">03 4061 6223</span></a>
-    <a class="spray" href="/#contact">Book a demo</a>
-    <a class="outline login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
-  </div>
-</nav>
+<a class="skip" href="#main">Skip to content</a>
 
-<main class="guide">
-<section class="sheet prose page-head" id="top">
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="172" height="26"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
+    <nav class="links" id="navlinks" aria-label="Main">
+      <a href="/construction">Construction</a>
+      <a href="/ap-automation">AP automation</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/partners">Partners</a>
+      <a href="/pricing">Pricing</a>
+      <span class="nav-act">
+        <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
+        <a class="btn go" href="/#contact">Book a demo</a>
+      </span>
+    </nav>
+  </div>
+</header>
+<!-- /shell:nav -->
+
+<main id="main" class="guide">
+
+<section class="hero doc-hero">
   <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">A</span><span class="name">RDOs</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
       <h1>CFMEU RDO calendar 2026 and the 36&#8209;hour week, explained for payroll</h1>
 
   <p class="lede">If your crew is on a CFMEU Victorian Construction and General Division enterprise agreement, the week is 36 hours, not 38, and every eighth hour of a working day is banked toward a rostered day off. This guide sets out the 2026 on-site RDO dates the union publishes, how the accrual works clause by clause, what a worked RDO pays, and the four places office payroll gets it wrong.</p>
@@ -175,37 +126,29 @@
   <nav class="toc" aria-label="On this page">
     <p class="toc-h">On this page</p>
     <ol>
-      <li data-b="B"><a href="#week">The 36-hour week</a></li>
-      <li data-b="C"><a href="#accrue">How an RDO accrues</a></li>
-      <li data-b="D"><a href="#dates">2026 RDO dates</a></li>
-      <li data-b="E"><a href="#worked">Working on an RDO</a></li>
-      <li data-b="F"><a href="#payroll">Where payroll gets it wrong</a></li>
-      <li data-b="G"><a href="#figures">Current figures, dated</a></li>
-      <li data-b="H"><a href="#demo">See it running</a></li>
+      <li><a href="#week">The 36-hour week</a></li>
+      <li><a href="#accrue">How an RDO accrues</a></li>
+      <li><a href="#dates">2026 RDO dates</a></li>
+      <li><a href="#worked">Working on an RDO</a></li>
+      <li><a href="#payroll">Where payroll gets it wrong</a></li>
+      <li><a href="#figures">Current figures, dated</a></li>
+      <li><a href="#demo">See it running</a></li>
     </ol>
   </nav>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
   </div>
 </section>
 
-<section class="sheet prose" id="s-week">
-  <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">B</span><span class="name">36 hours</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
+<div class="wrap paper-wrap">
+<article class="paper text">
+
+<section id="s-week">
       <h2 id="week">The 36-hour week</h2>
       <p>Ordinary hours are the first 8 hours worked between 6:00am and 6:00pm, Monday to Friday, and the notional week is 36 hours (cl 36.1, cl 36.2(a)). The crew still turns up for five 8-hour days: 40 hours are worked in the week, 36 are paid as ordinary time, and the 4 remaining hours (0.8 a day) are banked. Every second Monday, or whichever day the industry calendar names, the bank is spent on a paid day off.</p>
       <p>That is the whole mechanism, and it is why a payroll system set up for a 38-hour week is wrong every single week. Under a 38-hour default, overtime starts two hours too late and nothing is banked at all.</p>
       <p>The union puts it plainly on its wage sheets: the 36-hour week was won in 2000 and gives workers 26 paid days off a year on top of leave and public holidays. Those 26 days are the RDOs (cl 38.3).</p>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
-  </div>
 </section>
 
-<section class="sheet prose" id="s-accrue">
-  <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">C</span><span class="name">Accrual</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
+<section id="s-accrue">
       <h2 id="accrue">How an RDO accrues</h2>
       <p>The cycle is ten working days over two weeks: 8 hours on each of nine days, with 0.8 of an hour banked each day toward the tenth (cl 38.1). Nine days of 0.8 is 7.2 hours, plus the 0.8 that would have been banked on the day itself, and the RDO is paid as an 8-hour day.</p>
       <h3>What counts as a day worked for accrual</h3>
@@ -219,70 +162,52 @@
         <li>The RDO itself. A day off does not bank toward the next day off.</li>
         <li>Casual employees. Casuals are paid a loading on ordinary hours instead of banking RDOs.</li>
       </ul>
-      <div class="aside chalk">
+      <div class="callout">
         <p><b>Two ways to hold the bank.</b> Some payroll setups treat RDOs as a leave balance that is topped up by hand; the agreement treats them as an accrual that runs off the hours actually worked. The second is the only one that survives a part week, a week with leave in it, or a worker who starts mid-cycle. In PayKicker the accrual is exported with the timesheet hours and MYOB runs the bank and prints it on the payslip.</p>
       </div>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
-  </div>
 </section>
 
-<section class="sheet prose" id="s-dates">
-  <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">D</span><span class="name">2026 dates</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
+<section id="s-dates">
       <h2 id="dates">The 2026 on-site RDO dates</h2>
       <p>These are the rostered days off on the CFMEU Victoria <b>2026 Victoria On-Site RDO calendar</b>, taken from the ICS calendar file the branch publishes. Most fall on a Monday; the ones that do not sit beside a public holiday so the crew gets a run of days off. The calendar also marks the Christmas and New Year close-down as annual leave and the "lockdown" weekends, which matter for pay if anyone works them (see the next section).</p>
       <div class="months">
-        <div class="mon"><h4>January</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="ph">1</b><b class="al">2</b><b class="lk">3</b><b class="we">4</b><b class="al">5</b><b>6</b><b>7</b><b>8</b><b>9</b><b class="lk">10</b><b class="we">11</b><b class="rdo">12</b><b>13</b><b>14</b><b>15</b><b>16</b><b class="we">17</b><b class="we">18</b><b>19</b><b>20</b><b>21</b><b>22</b><b>23</b><b class="we">24</b><b class="we">25</b><b class="ph">26</b><b class="rdo">27</b><b>28</b><b>29</b><b>30</b><b class="we">31</b><b class="e"></b></div><p class="ph-names">New Year's Day Thu 1; Australia Day Mon 26</p></div>
-        <div class="mon"><h4>February</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b class="we">7</b><b class="we">8</b><b class="rdo">9</b><b>10</b><b>11</b><b>12</b><b>13</b><b class="we">14</b><b class="we">15</b><b>16</b><b>17</b><b>18</b><b>19</b><b>20</b><b class="we">21</b><b class="we">22</b><b class="rdo">23</b><b>24</b><b>25</b><b>26</b><b>27</b><b class="we">28</b><b class="e"></b></div></div>
-        <div class="mon"><h4>March</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b class="lk">7</b><b class="we">8</b><b class="ph">9</b><b class="rdo">10</b><b>11</b><b>12</b><b>13</b><b class="we">14</b><b class="we">15</b><b>16</b><b>17</b><b>18</b><b>19</b><b>20</b><b class="we">21</b><b class="we">22</b><b class="rdo">23</b><b>24</b><b>25</b><b>26</b><b>27</b><b class="we">28</b><b class="we">29</b><b>30</b><b>31</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Labour Day Mon 9</p></div>
-        <div class="mon"><h4>April</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b>1</b><b>2</b><b class="ph">3</b><b class="lk">4</b><b class="we">5</b><b class="ph">6</b><b class="rdo">7</b><b>8</b><b>9</b><b>10</b><b class="we">11</b><b class="we">12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b class="we">18</b><b class="we">19</b><b>20</b><b>21</b><b>22</b><b>23</b><b>24</b><b class="ph">25</b><b class="we">26</b><b class="ph">27</b><b class="rdo">28</b><b>29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Good Friday Fri 3; Easter Monday Mon 6; ANZAC Day Sat 25; Public holiday Mon 27</p></div>
-        <div class="mon"><h4>May</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b>1</b><b class="we">2</b><b class="we">3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b class="we">9</b><b class="we">10</b><b class="rdo">11</b><b>12</b><b>13</b><b>14</b><b>15</b><b class="we">16</b><b class="we">17</b><b>18</b><b>19</b><b>20</b><b>21</b><b>22</b><b class="we">23</b><b class="we">24</b><b class="rdo">25</b><b>26</b><b>27</b><b>28</b><b>29</b><b class="we">30</b><b class="we">31</b></div></div>
-        <div class="mon"><h4>June</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b class="lk">6</b><b class="we">7</b><b class="ph">8</b><b class="rdo">9</b><b>10</b><b>11</b><b>12</b><b class="we">13</b><b class="we">14</b><b>15</b><b>16</b><b>17</b><b>18</b><b>19</b><b class="we">20</b><b class="we">21</b><b class="rdo">22</b><b>23</b><b>24</b><b>25</b><b>26</b><b class="we">27</b><b class="we">28</b><b>29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">King's Birthday Mon 8</p></div>
-        <div class="mon"><h4>July</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b>1</b><b>2</b><b>3</b><b class="we">4</b><b class="we">5</b><b class="rdo">6</b><b>7</b><b>8</b><b>9</b><b>10</b><b class="we">11</b><b class="we">12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b class="we">18</b><b class="we">19</b><b class="rdo">20</b><b>21</b><b>22</b><b>23</b><b>24</b><b class="we">25</b><b class="we">26</b><b>27</b><b>28</b><b>29</b><b>30</b><b>31</b><b class="e"></b><b class="e"></b></div></div>
-        <div class="mon"><h4>August</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b class="we">2</b><b class="rdo">3</b><b>4</b><b>5</b><b>6</b><b>7</b><b class="we">8</b><b class="we">9</b><b>10</b><b>11</b><b>12</b><b>13</b><b>14</b><b class="we">15</b><b class="we">16</b><b class="rdo">17</b><b>18</b><b>19</b><b>20</b><b>21</b><b class="we">22</b><b class="we">23</b><b>24</b><b>25</b><b>26</b><b>27</b><b>28</b><b class="we">29</b><b class="we">30</b><b class="rdo">31</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div></div>
-        <div class="mon"><h4>September</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b>1</b><b>2</b><b>3</b><b>4</b><b class="we">5</b><b class="we">6</b><b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b class="we">12</b><b class="we">13</b><b class="rdo">14</b><b>15</b><b>16</b><b>17</b><b>18</b><b class="we">19</b><b class="we">20</b><b>21</b><b>22</b><b>23</b><b>24</b><b class="ph">25</b><b class="lk">26</b><b class="we">27</b><b class="rdo">28</b><b>29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Grand Final Friday Fri 25</p></div>
-        <div class="mon"><h4>October</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b>1</b><b>2</b><b class="we">3</b><b class="we">4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b class="we">10</b><b class="we">11</b><b class="rdo">12</b><b>13</b><b>14</b><b class="oth">15</b><b>16</b><b class="we">17</b><b class="we">18</b><b>19</b><b>20</b><b>21</b><b>22</b><b>23</b><b class="we">24</b><b class="we">25</b><b class="rdo">26</b><b>27</b><b>28</b><b>29</b><b>30</b><b class="lk">31</b><b class="e"></b></div><p class="ph-names">West Gate Memorial Thu 15</p></div>
-        <div class="mon"><h4>November</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b class="rdo">2</b><b class="ph">3</b><b class="rdo">4</b><b>5</b><b>6</b><b class="we">7</b><b class="we">8</b><b>9</b><b>10</b><b>11</b><b>12</b><b>13</b><b class="we">14</b><b class="we">15</b><b class="rdo">16</b><b>17</b><b>18</b><b>19</b><b>20</b><b class="we">21</b><b class="we">22</b><b>23</b><b>24</b><b>25</b><b>26</b><b>27</b><b class="we">28</b><b class="we">29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Melbourne Cup Day Tue 3</p></div>
-        <div class="mon"><h4>December</h4><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b>1</b><b>2</b><b>3</b><b>4</b><b class="we">5</b><b class="we">6</b><b class="oth">7</b><b>8</b><b>9</b><b>10</b><b>11</b><b class="we">12</b><b class="we">13</b><b>14</b><b>15</b><b>16</b><b>17</b><b>18</b><b class="we">19</b><b class="we">20</b><b>21</b><b>22</b><b class="rdo">23</b><b class="al">24</b><b class="ph">25</b><b class="lk">26</b><b class="we">27</b><b class="ph">28</b><b class="al">29</b><b class="al">30</b><b class="al">31</b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Christmas Day Fri 25; Boxing Day holiday Mon 28; Picnic Day Mon 7</p></div>
+        <div class="mon"><h3>January</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="ph">1</b><b class="al">2</b><b class="lk">3</b><b class="we">4</b><b class="al">5</b><b>6</b><b>7</b><b>8</b><b>9</b><b class="lk">10</b><b class="we">11</b><b class="rdo">12</b><b>13</b><b>14</b><b>15</b><b>16</b><b class="we">17</b><b class="we">18</b><b>19</b><b>20</b><b>21</b><b>22</b><b>23</b><b class="we">24</b><b class="we">25</b><b class="ph">26</b><b class="rdo">27</b><b>28</b><b>29</b><b>30</b><b class="we">31</b><b class="e"></b></div><p class="ph-names">New Year's Day Thu 1; Australia Day Mon 26</p></div>
+        <div class="mon"><h3>February</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b class="we">7</b><b class="we">8</b><b class="rdo">9</b><b>10</b><b>11</b><b>12</b><b>13</b><b class="we">14</b><b class="we">15</b><b>16</b><b>17</b><b>18</b><b>19</b><b>20</b><b class="we">21</b><b class="we">22</b><b class="rdo">23</b><b>24</b><b>25</b><b>26</b><b>27</b><b class="we">28</b><b class="e"></b></div></div>
+        <div class="mon"><h3>March</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b><b class="lk">7</b><b class="we">8</b><b class="ph">9</b><b class="rdo">10</b><b>11</b><b>12</b><b>13</b><b class="we">14</b><b class="we">15</b><b>16</b><b>17</b><b>18</b><b>19</b><b>20</b><b class="we">21</b><b class="we">22</b><b class="rdo">23</b><b>24</b><b>25</b><b>26</b><b>27</b><b class="we">28</b><b class="we">29</b><b>30</b><b>31</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Labour Day Mon 9</p></div>
+        <div class="mon"><h3>April</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b>1</b><b>2</b><b class="ph">3</b><b class="lk">4</b><b class="we">5</b><b class="ph">6</b><b class="rdo">7</b><b>8</b><b>9</b><b>10</b><b class="we">11</b><b class="we">12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b class="we">18</b><b class="we">19</b><b>20</b><b>21</b><b>22</b><b>23</b><b>24</b><b class="ph">25</b><b class="we">26</b><b class="ph">27</b><b class="rdo">28</b><b>29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Good Friday Fri 3; Easter Monday Mon 6; ANZAC Day Sat 25; Public holiday Mon 27</p></div>
+        <div class="mon"><h3>May</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b>1</b><b class="we">2</b><b class="we">3</b><b>4</b><b>5</b><b>6</b><b>7</b><b>8</b><b class="we">9</b><b class="we">10</b><b class="rdo">11</b><b>12</b><b>13</b><b>14</b><b>15</b><b class="we">16</b><b class="we">17</b><b>18</b><b>19</b><b>20</b><b>21</b><b>22</b><b class="we">23</b><b class="we">24</b><b class="rdo">25</b><b>26</b><b>27</b><b>28</b><b>29</b><b class="we">30</b><b class="we">31</b></div></div>
+        <div class="mon"><h3>June</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b class="lk">6</b><b class="we">7</b><b class="ph">8</b><b class="rdo">9</b><b>10</b><b>11</b><b>12</b><b class="we">13</b><b class="we">14</b><b>15</b><b>16</b><b>17</b><b>18</b><b>19</b><b class="we">20</b><b class="we">21</b><b class="rdo">22</b><b>23</b><b>24</b><b>25</b><b>26</b><b class="we">27</b><b class="we">28</b><b>29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">King's Birthday Mon 8</p></div>
+        <div class="mon"><h3>July</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b>1</b><b>2</b><b>3</b><b class="we">4</b><b class="we">5</b><b class="rdo">6</b><b>7</b><b>8</b><b>9</b><b>10</b><b class="we">11</b><b class="we">12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b class="we">18</b><b class="we">19</b><b class="rdo">20</b><b>21</b><b>22</b><b>23</b><b>24</b><b class="we">25</b><b class="we">26</b><b>27</b><b>28</b><b>29</b><b>30</b><b>31</b><b class="e"></b><b class="e"></b></div></div>
+        <div class="mon"><h3>August</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b class="we">2</b><b class="rdo">3</b><b>4</b><b>5</b><b>6</b><b>7</b><b class="we">8</b><b class="we">9</b><b>10</b><b>11</b><b>12</b><b>13</b><b>14</b><b class="we">15</b><b class="we">16</b><b class="rdo">17</b><b>18</b><b>19</b><b>20</b><b>21</b><b class="we">22</b><b class="we">23</b><b>24</b><b>25</b><b>26</b><b>27</b><b>28</b><b class="we">29</b><b class="we">30</b><b class="rdo">31</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div></div>
+        <div class="mon"><h3>September</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b>1</b><b>2</b><b>3</b><b>4</b><b class="we">5</b><b class="we">6</b><b>7</b><b>8</b><b>9</b><b>10</b><b>11</b><b class="we">12</b><b class="we">13</b><b class="rdo">14</b><b>15</b><b>16</b><b>17</b><b>18</b><b class="we">19</b><b class="we">20</b><b>21</b><b>22</b><b>23</b><b>24</b><b class="ph">25</b><b class="lk">26</b><b class="we">27</b><b class="rdo">28</b><b>29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Grand Final Friday Fri 25</p></div>
+        <div class="mon"><h3>October</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b>1</b><b>2</b><b class="we">3</b><b class="we">4</b><b>5</b><b>6</b><b>7</b><b>8</b><b>9</b><b class="we">10</b><b class="we">11</b><b class="rdo">12</b><b>13</b><b>14</b><b class="oth">15</b><b>16</b><b class="we">17</b><b class="we">18</b><b>19</b><b>20</b><b>21</b><b>22</b><b>23</b><b class="we">24</b><b class="we">25</b><b class="rdo">26</b><b>27</b><b>28</b><b>29</b><b>30</b><b class="lk">31</b><b class="e"></b></div><p class="ph-names">West Gate Memorial Thu 15</p></div>
+        <div class="mon"><h3>November</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="we">1</b><b class="rdo">2</b><b class="ph">3</b><b class="rdo">4</b><b>5</b><b>6</b><b class="we">7</b><b class="we">8</b><b>9</b><b>10</b><b>11</b><b>12</b><b>13</b><b class="we">14</b><b class="we">15</b><b class="rdo">16</b><b>17</b><b>18</b><b>19</b><b>20</b><b class="we">21</b><b class="we">22</b><b>23</b><b>24</b><b>25</b><b>26</b><b>27</b><b class="we">28</b><b class="we">29</b><b>30</b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Melbourne Cup Day Tue 3</p></div>
+        <div class="mon"><h3>December</h3><div class="days"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i><i>S</i><b class="e"></b><b>1</b><b>2</b><b>3</b><b>4</b><b class="we">5</b><b class="we">6</b><b class="oth">7</b><b>8</b><b>9</b><b>10</b><b>11</b><b class="we">12</b><b class="we">13</b><b>14</b><b>15</b><b>16</b><b>17</b><b>18</b><b class="we">19</b><b class="we">20</b><b>21</b><b>22</b><b class="rdo">23</b><b class="al">24</b><b class="ph">25</b><b class="lk">26</b><b class="we">27</b><b class="ph">28</b><b class="al">29</b><b class="al">30</b><b class="al">31</b><b class="e"></b><b class="e"></b><b class="e"></b></div><p class="ph-names">Christmas Day Fri 25; Boxing Day holiday Mon 28; Picnic Day Mon 7</p></div>
       </div>
-      <p class="cal-key"><span><b class="rdo" style="background:var(--navy);color:var(--chalk)">12</b> RDO</span><span><b style="box-shadow:inset 0 0 0 1.5px var(--navy)">9</b> public holiday</span><span><b style="background:var(--cured)">2</b> close-down, annual leave</span><span><b style="text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px">3</b> lockdown weekend</span><span><b style="box-shadow:inset 0 0 0 1px var(--string-soft)">15</b> other industry day</span></p>
+      <p class="cal-key"><span><b class="rdo">12</b> RDO</span><span><b class="ph">9</b> public holiday</span><span><b class="al">2</b> close-down, annual leave</span><span><b class="lk">3</b> lockdown weekend</span><span><b class="oth">15</b> other industry day</span></p>
       <p>RDO dates in list form: January Mon 12, Tue 27; February Mon 9, Mon 23; March Tue 10, Mon 23; April Tue 7, Tue 28; May Mon 11, Mon 25; June Tue 9, Mon 22; July Mon 6, Mon 20; August Mon 3, Mon 17, Mon 31; September Mon 14, Mon 28; October Mon 12, Mon 26; November Mon 2, Wed 4, Mon 16; December Wed 23.</p>
       <p>Lockdown weekends on the 2026 calendar (9): 3 and 10 January, 7 March, 4 and 25 April, 6 June, 26 September, 31 October, 26 December.</p>
       <p class="src">Source: CFMEU Victoria, Victoria On-Site RDO calendar (ICS file), <a href="https://vic.cfmeu.org/rdo-calendars/" rel="noopener">vic.cfmeu.org/rdo-calendars</a>. Public holidays as marked on that calendar. Companies can agree different RDO dates with their crew under the agreement; if yours has, your own calendar governs.</p>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
-  </div>
 </section>
 
-<section class="sheet prose" id="s-worked">
-  <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">E</span><span class="name">Worked RDO</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
+<section id="s-worked">
       <h2 id="worked">Working on an RDO</h2>
       <p>Crews do work RDOs, usually because a pour or a crane lift will not wait. The agreement sets two different rates for the same day, and which one applies turns on one fact: were the workers consulted (cl 38.8)?</p>
-      <div class="tbl"><table>
+      <div class="tbl-wrap"><table class="tbl fold">
         <thead><tr><th>Situation</th><th>Rate for the day</th><th>Clause</th></tr></thead>
         <tbody>
-          <tr><td>Workers <b>were</b> consulted beforehand</td><td>Ordinary rate, and the banked RDO is kept</td><td class="n">38.8(e)</td></tr>
-          <tr><td>Workers were <b>not</b> consulted</td><td>250%, minimum four hours (public-holiday money)</td><td class="n">38.8(f), 38.10</td></tr>
-          <tr><td>The RDO attached to a designated long weekend (a "lockdown" weekend on the union calendar)</td><td>250%, consulted or not</td><td class="n">38.8(k)</td></tr>
-          <tr><td>Casual, not consulted</td><td>275% (250% plus the casual loading)</td><td class="n">38.8(g), 14.10</td></tr>
+          <tr><td>Workers <b>were</b> consulted beforehand</td><td data-l="Rate for the day">Ordinary rate, and the banked RDO is kept</td><td data-l="Clause" class="n">38.8(e)</td></tr>
+          <tr><td>Workers were <b>not</b> consulted</td><td data-l="Rate for the day">250%, minimum four hours (public-holiday money)</td><td data-l="Clause" class="n">38.8(f), 38.10</td></tr>
+          <tr><td>The RDO attached to a designated long weekend (a "lockdown" weekend on the union calendar)</td><td data-l="Rate for the day">250%, consulted or not</td><td data-l="Clause" class="n">38.8(k)</td></tr>
+          <tr><td>Casual, not consulted</td><td data-l="Rate for the day">275% (250% plus the casual loading)</td><td data-l="Clause" class="n">38.8(g), 14.10</td></tr>
         </tbody>
       </table></div>
       <p>Consultation means written notice to the affected workers <b>and</b> their union representative before the day (cl 38.8(c)). A text to the leading hand the night before is not consultation, and the difference on a Saturday pour is the whole day at 250%.</p>
       <p>Hours past eight on a consulted RDO are ordinary overtime. Hours on an unconsulted one are all at the penalty rate.</p>
       <p>One more case that catches offices: a training day that lands on a scheduled RDO is paid as an ordinary day, and the worker is owed a substitute day off (cl 15.4). The RDO stays banked.</p>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
-  </div>
 </section>
 
-<section class="sheet prose" id="s-payroll">
-  <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">F</span><span class="name">Payroll</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
+<section id="s-payroll">
       <h2 id="payroll">Where payroll gets it wrong</h2>
       <ol class="steps">
         <li><b>The 38-hour default.</b> Off-the-shelf payroll assumes 38 ordinary hours and overtime after that. Under the agreement, ordinary time is 8 hours a day and 36 a week; the fix is a 36-hour week with daily overtime, not a weekly threshold.</li>
@@ -291,78 +216,70 @@
         <li><b>A worked RDO paid as "base hourly".</b> When a worked RDO is paid on the ordinary pay item, the payslip cannot show that it was an RDO or that the crew was consulted. Put worked RDOs on their own pay item, named for what they are, so the dispute never starts.</li>
       </ol>
       <p>The RDO bank is the thing an office is least able to reconstruct after the fact. If you are auditing a period, start from the classified hours and rebuild the accrual; do not start from the balance.</p>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
-  </div>
 </section>
 
-<section class="sheet prose" id="s-figures">
-  <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">G</span><span class="name">Figures</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
+<section id="s-figures">
       <h2 id="figures">Current figures, dated</h2>
       <p class="stamp">As at <span data-fig="as_at">25 September 2026</span></p>
       <p>These come from the CFMEU Victoria wage sheets. They change at every wage increase, so treat the date on this page as part of the figure.</p>
-      <div class="tbl"><table>
+      <div class="tbl-wrap"><table class="tbl fold">
         <thead><tr><th>Item</th><th>Figure</th><th>From</th></tr></thead>
         <tbody>
-          <tr><td>CW3 carpenter, tile-layer, plasterer, bricklayer (100%)</td><td class="n"><span data-fig="wages.cw3_hour">$62.21</span> per hour, <span data-fig="wages.cw3_week">$2,239.56</span> per 36-hour week</td><td class="n"><span data-fig="wages.rates_from">1 Feb 2026</span></td></tr>
-          <tr><td>CW2 scaffolder, steel fixer, concrete finisher (96%)</td><td class="n"><span data-fig="wages.cw2_hour">$58.46</span> per hour, <span data-fig="wages.cw2_week">$2,104.56</span> per week</td><td class="n"><span data-fig="wages.rates_from">1 Feb 2026</span></td></tr>
-          <tr><td>CW1 trades labourer, concrete gang (92.4%)</td><td class="n"><span data-fig="wages.cw1_hour">$56.65</span> per hour, <span data-fig="wages.cw1_week">$2,039.40</span> per week</td><td class="n"><span data-fig="wages.rates_from">1 Feb 2026</span></td></tr>
-          <tr><td>Superannuation</td><td class="n"><span data-fig="wages.super_weekly">$280</span> per week or <span data-fig="wages.super_pct">12</span>% of ordinary time earnings, whichever is greater</td><td class="n"><span data-fig="wages.benefits_from">1 Mar 2026</span></td></tr>
-          <tr><td>Incolink redundancy contribution</td><td class="n"><span data-fig="wages.incolink_weekly">$160.00</span> per week</td><td class="n"><span data-fig="wages.benefits_from">1 Mar 2026</span></td></tr>
-          <tr><td>Travel allowance (fares and travel)</td><td class="n"><span data-fig="wages.travel_daily">$57.60</span> per day</td><td class="n"><span data-fig="wages.benefits_from">1 Mar 2026</span></td></tr>
+          <tr><td>CW3 carpenter, tile-layer, plasterer, bricklayer (100%)</td><td data-l="Figure" class="n"><span data-fig="wages.cw3_hour">$62.21</span> per hour, <span data-fig="wages.cw3_week">$2,239.56</span> per 36-hour week</td><td data-l="From" class="n"><span data-fig="wages.rates_from">1 Feb 2026</span></td></tr>
+          <tr><td>CW2 scaffolder, steel fixer, concrete finisher (96%)</td><td data-l="Figure" class="n"><span data-fig="wages.cw2_hour">$58.46</span> per hour, <span data-fig="wages.cw2_week">$2,104.56</span> per week</td><td data-l="From" class="n"><span data-fig="wages.rates_from">1 Feb 2026</span></td></tr>
+          <tr><td>CW1 trades labourer, concrete gang (92.4%)</td><td data-l="Figure" class="n"><span data-fig="wages.cw1_hour">$56.65</span> per hour, <span data-fig="wages.cw1_week">$2,039.40</span> per week</td><td data-l="From" class="n"><span data-fig="wages.rates_from">1 Feb 2026</span></td></tr>
+          <tr><td>Superannuation</td><td data-l="Figure" class="n"><span data-fig="wages.super_weekly">$280</span> per week or <span data-fig="wages.super_pct">12</span>% of ordinary time earnings, whichever is greater</td><td data-l="From" class="n"><span data-fig="wages.benefits_from">1 Mar 2026</span></td></tr>
+          <tr><td>Incolink redundancy contribution</td><td data-l="Figure" class="n"><span data-fig="wages.incolink_weekly">$160.00</span> per week</td><td data-l="From" class="n"><span data-fig="wages.benefits_from">1 Mar 2026</span></td></tr>
+          <tr><td>Travel allowance (fares and travel)</td><td data-l="Figure" class="n"><span data-fig="wages.travel_daily">$57.60</span> per day</td><td data-l="From" class="n"><span data-fig="wages.benefits_from">1 Mar 2026</span></td></tr>
         </tbody>
       </table></div>
       <p class="src">Source: CFMEU Victoria, <i>2026 EBA Wages, On-Site Construction 36 Hour Week</i> (rates from <span data-fig="wages.rates_from">1 February 2026</span>; other benefits from <span data-fig="wages.benefits_from">1 March 2026</span>), <a href="https://vic.cfmeu.org/wages" rel="noopener">vic.cfmeu.org/wages</a>. Weekly rates are the hourly rate times 36. Site allowance, fares and the other daily and hourly extras are covered in the <a href="/guides/cfmeu-site-allowance-fares-travel-2026">site allowance, fares and travel guide</a>.</p>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
-  </div>
 </section>
 
-<section class="sheet prose" id="demo">
-  <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">H</span><span class="name">Demo</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
+<section id="demo">
       <h2>See your own agreement running in it</h2>
       <p>PayKicker encodes the clauses above once and applies them to every timesheet, then hands MYOB a file with the hours already classified. Bring your enterprise agreement and a recent pay run to a 30-minute demo and we will show the same period calculated both ways.</p>
-      <div class="cta-act"><a class="spray" href="/#contact">Book a demo</a></div>
+      <div class="cta-act"><a class="btn go big" href="/#contact">Book a demo</a></div>
       <p class="related">Related:
     <a href="/guides/cfmeu-site-allowance-fares-travel-2026">Site allowance, fares and travel 2026</a> &middot; <a href="/guides/cfmeu-eba-jobs-victoria">CFMEU EBA jobs and the list of EBA companies</a> &middot; <a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/guides/">All guides</a></p>
       <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by the CFMEU or MYOB. This guide is general information for a subcontractor's office, not legal or industrial relations advice; the agreement and the union's published sheets are the source, and figures change at every wage increase.</p>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
-  </div>
 </section>
 
+</article>
+</div>
 
 </main>
 
+<!-- shell:footer -->
 <footer class="foot">
   <div class="wrap">
-    <div class="cols">
+    <div class="f-cols">
       <div>
-        <h3>PayKicker</h3>
-        <p>The site operations platform for construction subcontractors. Rostering, dayworks dockets and EBA payroll for Australian construction subcontractors. Built in Melbourne.</p>
-        <p style="margin-top:10px"><a href="https://app.paykicker.com.au/" rel="noopener"><b>Log in to PayKicker</b><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <h3>For construction crews</h3>
+        <ul><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
       </div>
       <div>
-        <h3>Product</h3>
-        <p class="links"><a href="/ap-automation">Supplier invoices</a><a href="/eba-payroll-software">EBA payroll software</a><a href="/digital-dayworks-docket">Dayworks dockets</a><a href="/construction#features">Rostering</a><a href="/construction#features">Inductions &amp; tickets</a><a href="/guides/">Guides</a><a href="/construction#pricing">Pricing</a></p>
+        <h3>For any business</h3>
+        <ul><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync (opening soon)</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/join">Join</a></li></ul>
+      </div>
+      <div>
+        <h3>For accountants</h3>
+        <ul><li><a href="/partners">Become a partner</a></li><li><a href="/partner-terms">Partner terms</a></li></ul>
       </div>
       <div>
         <h3>Contact</h3>
-        <p class="links"><a href="tel:+61340616223">03 4061 6223</a><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a><span>Melbourne, Victoria</span><a href="/status">System status</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></p>
+        <ul><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
       </div>
     </div>
-    <!-- Entity identity. The ABN also appears in the Organization schema in <head>
-         as a PropertyValue identifier — keep the two in step. -->
-    <p class="legal">
-      <b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
-    </p>
+    <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
+         as a PropertyValue identifier: keep the two in step. -->
+    <div class="legal">
+      <img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="132" height="20">
+      <p><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
+    </div>
   </div>
 </footer>
-
+<!-- /shell:footer -->
 </body>
 </html>

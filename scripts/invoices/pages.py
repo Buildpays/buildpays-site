@@ -17,7 +17,7 @@ ARROW = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use
 
 TRIAL = '''      <h2>Try it on your own bills</h2>
       <p>Connect Xero or MYOB, forward a few real supplier invoices and watch them arrive read, coded and split. 14 days and 8 invoices free, no card to start. After that it is $9.99 a month up to 20 invoices, $29.99 up to 100, $69.99 up to 400 and $149 up to 2,000, GST included, for the band each month lands in.</p>
-      <div class="cta-act"><a class="spray" href="https://app.paykicker.com.au/signup">Start free trial</a><a href="/ap-automation">How it works and prices</a></div>
+      <div class="cta-act"><a class="btn go big" href="https://app.paykicker.com.au/signup">Start free trial</a><a href="/ap-automation">How it works and prices</a></div>
       <p class="related">Related: {related}</p>
       <p class="indep">{indep}</p>'''
 
@@ -51,7 +51,7 @@ def related(*keys):
 def table(head, rows):
     th = "".join(f"<th>{h}</th>" for h in head)
     body = "\n".join("        <tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
-    return f'      <div class="tbl"><table>\n        <thead><tr>{th}</tr></thead>\n        <tbody>\n{body}\n        </tbody>\n      </table></div>'
+    return f'      <div class="tbl-wrap"><table class="tbl fold">\n        <thead><tr>{th}</tr></thead>\n        <tbody>\n{body}\n        </tbody>\n      </table></div>'
 
 
 def src(items):
@@ -319,8 +319,8 @@ def guide_cards():
     out = []
     for k, big, small, p in cards:
         path, title = ALL[k]
-        out.append(f'''    <a class="gcard chalk" href="{path}">
-      <div class="big">{big}<small>{small}</small></div>
+        out.append(f'''    <a class="gcard" href="{path}">
+      <div class="big"><span class="fig">{big}</span><small>{small}</small></div>
       <h2>{title}</h2>
       <p>{p}</p>
       <p class="when">Written {CHECKED}.</p>

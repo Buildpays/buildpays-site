@@ -6,8 +6,10 @@ figure never has to be edited in HTML. Run from the repo root:
 
     python scripts/cfmeu/build_guides.py
 
-The page shell (SVG defs, nav, footer) is lifted from public/eba-payroll-software.html
-so the guides always match the rest of the site.
+The pages are set in the site's board world (public/css/board.css): the head on the night
+ground, the text on the warm paper sheet. The nav and footer are the site's one shell
+(scripts/shell/nav.html and footer.html), stamped in by scripts/shell.py as each page is
+written, so the guides always match the rest of the site.
 """
 import io
 import json
@@ -26,20 +28,13 @@ F = json.load(io.open(DATA, encoding="utf-8"))
 W, A, S, R = F["wages"], F["allowances"], F["site_allowance"], F["rdo"]
 E = json.load(io.open(os.path.join(ROOT, "data", "cfmeu-employers.json"), encoding="utf-8"))  # built by fwc_employers.py
 
-src = io.open(os.path.join(PUB, "eba-payroll-software.html"), "r", encoding="utf-8", newline="").read()
-NL = "\r\n" if "\r\n" in src[:3000] else "\n"
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+import shell as SHELL  # the one site nav and footer (scripts/shell.py)
 
-
-def block(pattern):
-    m = re.search(pattern, src, re.S)
-    assert m, pattern[:40]
-    return m.group(0)
-
-
-SVG = block(r'<svg class="svg-defs".*?</svg>')
-NAV = block(r'<nav class="nav" aria-label="Main">.*?</nav>').replace('src="paykicker-logo.svg"', 'src="/paykicker-logo.svg"')
-FOOT = block(r'<footer class="foot">.*?</footer>')
-assert '/guides/' in NAV and '/guides/' in FOOT, "nav/footer on the landing page must carry the Guides link"
+# Keep the line endings the checkout already has for these pages.
+_probe = os.path.join(PUB, "guides", "index.html")
+NL = "\r\n" if os.path.exists(_probe) and b"\r\n" in open(_probe, "rb").read(3000) else "\n"
+assert b"/guides/" in open(os.path.join(ROOT, "scripts", "shell", "footer.html"), "rb").read(), "the site footer must carry the Guides link"
 
 # ---------------------------------------------------------------- formatting helpers
 
@@ -95,7 +90,7 @@ HEAD = '''<!DOCTYPE html>
 <link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#12293f">
+<meta name="theme-color" content="#0b1826">
 <link rel="canonical" href="https://paykicker.com.au{path}">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
@@ -113,57 +108,22 @@ HEAD = '''<!DOCTYPE html>
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="/css/setout.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<link rel="stylesheet" href="/css/board.css">
+<script src="/js/board.js?v=2"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
 <script src="/js/pixels.js"></script>
 {jsonld}
-<style>
-  .guide-list{{list-style:none;padding:0;margin-top:26px;max-width:760px}}
-  .guide-list li{{border-top:1px solid var(--string);padding:22px 0}}
-  .guide-list li:last-child{{border-bottom:1px solid var(--string)}}
-  .guide-list h2{{font-size:clamp(24px,2.6vw,32px);max-width:none;margin:0 0 8px}}
-  .guide-list p{{max-width:66ch}}
-  .guide-list .when{{font-size:13.5px;color:var(--ink2);margin-top:8px}}
-  .cal{{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0 28px;margin-top:18px;max-width:900px}}
-  .cal div{{padding:12px 0;border-bottom:1px solid var(--string-soft)}}
-  .cal b{{display:block;font-family:var(--disp);font-weight:800;font-size:17px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}}
-  .cal span{{display:block;font-size:15px;line-height:1.5}}
-  .cal span.ph{{color:var(--ink2);font-size:13.5px}}
-  .src{{font-size:13.5px;color:var(--ink2);max-width:72ch;margin-top:12px}}
-  .stamp{{display:inline-block;font-family:var(--disp);font-weight:800;font-size:14px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--navy);padding:4px 10px;margin:0 0 12px}}
-  .tbl td.n{{white-space:nowrap;font-variant-numeric:tabular-nums}}
-  .guide-list h2 a{{text-decoration:none}}
-  .guide-list h2 a:hover{{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}}
-  .emp-filter{{margin-top:22px;max-width:560px}}
-  .emp-filter label{{display:block;font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.1em;text-transform:uppercase}}
-  .emp-filter input{{display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid var(--string);border-radius:2px;background:var(--chalk);color:var(--navy);font:inherit;font-size:16px}}
-  .emp-filter input:focus{{outline:2px solid var(--navy);outline-offset:1px}}
-  .emp-filter .cnt{{display:block;margin-top:8px;font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums}}
-  .emp-jump{{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:18px;font-size:14.5px;line-height:1.5;max-width:none;color:var(--ink2)}}
-  .emp-jump a{{white-space:nowrap}}
-  .emp-sec h3{{display:flex;align-items:baseline;gap:10px;margin-top:34px;scroll-margin-top:110px}}
-  .emp-sec h3 .n{{font-family:var(--mono);font-size:15px;font-weight:400;color:var(--ink2)}}
-  .prose ul.emp{{list-style:none;padding:0;margin:8px 0 0;max-width:900px;columns:2;column-gap:36px}}
-  .emp li{{break-inside:avoid;margin:0;padding:7px 0;border-bottom:1px solid var(--string-soft);font-size:15px;line-height:1.4;display:flex;justify-content:space-between;gap:12px}}
-  .emp li + li{{margin-top:0}}
-  .emp .nm{{min-width:0}}
-  .emp .dt{{flex:none;font-family:var(--mono);font-size:12.5px;color:var(--ink2);white-space:nowrap;padding-top:3px}}
-  .emp .dt.old{{color:var(--orange)}}
-  .emp li[hidden],.emp-sec[hidden],.emp-jump[hidden]{{display:none}}
-  @media(max-width:860px){{.emp{{columns:1}}}}
-  @media(max-width:640px){{.tbl td.n{{white-space:normal}} .tbl th,.tbl td{{font-size:14px;padding-right:0}} .emp li{{flex-direction:column;gap:2px}} .emp .dt{{padding-top:0}}}}
-</style>
 </head>
 <body>
 '''
 
 
 def section(letter, name, sid, inner):
-    return (f'<section class="sheet prose" id="{sid}">{NL}  <div class="wrap">{NL}'
-            f'    <div class="mark"><span class="bub" aria-hidden="true">{letter}</span><span class="name">{name}</span><span class="string" aria-hidden="true"></span></div>{NL}'
-            f'    <div class="body">{NL}{inner}{NL}      <div class="rule" aria-hidden="true"></div>{NL}    </div>{NL}  </div>{NL}</section>{NL}{NL}')
+    """One section of the paper sheet. letter and name were the old set-out marks; kept in the
+    signature so callers (pages.py) need not change, no longer printed."""
+    return f'<section id="{sid}">{NL}{inner}{NL}</section>{NL}{NL}'
 
 
 def tiles(items):
@@ -175,40 +135,69 @@ def tiles(items):
 
 
 def head_section(name, h1, lede, toc, extra=""):
+    """The page head on the night ground, then the opening of the paper sheet the sections sit on
+    (closed by TAIL). name was the old set-out mark; no longer printed."""
     inner = f'      <h1>{h1}</h1>{NL}{NL}  <p class="lede">{lede}</p>{NL}{extra}'
     if toc:
-        items = NL.join(f'      <li data-b="{b}"><a href="#{a}">{t}</a></li>' for b, a, t in toc)
+        items = NL.join(f'      <li><a href="#{a}">{t}</a></li>' for b, a, t in toc)
         inner += f'{NL}  <nav class="toc" aria-label="On this page">{NL}    <p class="toc-h">On this page</p>{NL}    <ol>{NL}{items}{NL}    </ol>{NL}  </nav>'
-    return (f'<section class="sheet prose page-head" id="top">{NL}  <div class="wrap">{NL}'
-            f'    <div class="mark"><span class="bub" aria-hidden="true">A</span><span class="name">{name}</span><span class="string" aria-hidden="true"></span></div>{NL}'
-            f'    <div class="body">{NL}{inner}{NL}      <div class="rule" aria-hidden="true"></div>{NL}    </div>{NL}  </div>{NL}</section>{NL}{NL}')
+    return (f'<section class="hero doc-hero">{NL}  <div class="wrap">{NL}{inner}{NL}  </div>{NL}</section>{NL}{NL}'
+            f'<div class="wrap paper-wrap">{NL}<article class="paper text">{NL}{NL}')
 
 
 DEMO = '''      <h2>See your own agreement running in it</h2>
       <p>PayKicker encodes the clauses above once and applies them to every timesheet, then hands MYOB a file with the hours already classified. Bring your enterprise agreement and a recent pay run to a 30-minute demo and we will show the same period calculated both ways.</p>
-      <div class="cta-act"><a class="spray" href="/#contact">Book a demo</a></div>
+      <div class="cta-act"><a class="btn go big" href="/#contact">Book a demo</a></div>
       <p class="related">Related:
     {related}</p>
       <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by the CFMEU or MYOB. This guide is general information for a subcontractor's office, not legal or industrial relations advice; the agreement and the union's published sheets are the source, and figures change at every wage increase.</p>'''
 
 DEMO_JOBS = '''      <h2>If your company is on this list</h2>
       <p>Every company above runs payroll under the same agreement: a 36-hour week with RDOs banked daily, site allowance by the hour, fares by the day, and a wage sheet that changes three times a year. PayKicker encodes those clauses once, classifies every timesheet against them, and hands MYOB a file with the hours already sorted. Bring your agreement and a recent pay run to a 30-minute demo and we will show the same period calculated both ways.</p>
-      <div class="cta-act"><a class="spray" href="/#contact">Book a demo</a></div>
+      <div class="cta-act"><a class="btn go big" href="/#contact">Book a demo</a></div>
       <p class="related">Related:
     {related}</p>
       <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by the CFMEU, the Fair Work Commission or MYOB, and it is not a recruiter: it does not place workers and has no relationship with the companies listed. This guide is general information for people looking for work and for the companies that employ them, not legal, industrial or careers advice. Company names are as they appear on the Commission's lists; an agreement's existence says nothing about whether a company is hiring.</p>'''
 
-TAIL = NL + "</main>" + NL + NL + FOOT + NL + NL + "</body>" + NL + "</html>" + NL
+TAIL = "</article>" + NL + "</div>" + NL + NL + "</main>" + NL + NL + "<!-- shell:footer --><!-- /shell:footer -->" + NL + "</body>" + NL + "</html>" + NL
+
+
+def fold_tables(html):
+    """A data table folds to one block per row on a phone: each cell after the first carries its
+    column's heading in data-l (board.css .tbl.fold). Only tables marked class="tbl fold"."""
+    def table(m):
+        t = m.group(0)
+        head = re.search(r"<thead>(.*?)</thead>", t, re.S)
+        if not head:
+            return t
+        labels = [re.sub(r"<[^>]+>", "", h).strip() for h in re.findall(r"<th[^>]*>(.*?)</th>", head.group(1), re.S)]
+
+        def row(rm):
+            k = [0]
+
+            def cell(cm):
+                i = k[0]
+                k[0] += 1
+                if i == 0 or i >= len(labels) or not labels[i] or "data-l=" in cm.group(0):
+                    return cm.group(0)
+                return '<td data-l="' + labels[i] + '"' + cm.group(0)[3:]
+            return re.sub(r"<td\b[^>]*>", cell, rm.group(0))
+        return re.sub(r"<tr>.*?</tr>", row, t, flags=re.S) if "<tbody>" in t else t
+    return re.sub(r'<table class="tbl fold">.*?</table>', table, html, flags=re.S)
 
 
 def page(path, title, ogtitle, desc, jsonld, body):
-    html = HEAD.format(title=title, ogtitle=ogtitle, desc=desc, path=path, jsonld=jsonld) + NL + SVG + NL + NL + NAV + NL + NL + '<main class="guide">' + NL + body + TAIL
+    html = (HEAD.format(title=title, ogtitle=ogtitle, desc=desc, path=path, jsonld=jsonld)
+            + "<!-- shell:nav --><!-- /shell:nav -->" + NL + NL + '<main id="main" class="guide">' + NL + NL + body + TAIL)
+    html = fold_tables(html)
     html = html.replace("\r\n", "\n").replace("\n", NL)
     out = os.path.join(PUB, path.strip("/").replace("/", os.sep))
     out = os.path.join(out, "index.html") if path.endswith("/") else out + ".html"
+    stamped = SHELL.stamp(html.encode("utf-8"), path)
+    assert stamped is not None, "shell markers missing on " + path
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    io.open(out, "w", encoding="utf-8", newline="").write(html)
-    print("wrote", os.path.relpath(out, ROOT), len(html))
+    io.open(out, "wb").write(stamped)
+    print("wrote", os.path.relpath(out, ROOT), len(stamped))
 
 
 def article_ld(path, headline, desc, published, modified):
@@ -273,7 +262,7 @@ def ranges(isos):
     return [wd(r[0]) if len(r) == 1 else f"{wd(r[0])} to {wd(r[-1])}" for r in out]
 
 
-def month_grids(year, y):
+def month_grids(year, y, h="h3"):
     """Twelve month grids, Monday first: RDOs filled, public holidays ringed, close-down shaded, lockdown weekends underlined."""
     import calendar
     yr = int(year)
@@ -302,15 +291,15 @@ def month_grids(year, y):
         names = [f"{p['name']} {wd(p['date'])}" for p in y["public_holidays"] if int(p["date"][5:7]) == mi]
         names += [f"{o['name'].split(' (')[0]} {wd(o['date'])}" for o in y.get("other", []) if int(o["date"][5:7]) == mi]
         names_html = f'<p class="ph-names">{"; ".join(names)}</p>' if names else ""
-        out.append(f'        <div class="mon"><h4>{mname}</h4><div class="days">{"".join(cells)}</div>{names_html}</div>')
+        out.append(f'        <div class="mon"><{h}>{mname}</{h}><div class="days">{"".join(cells)}</div>{names_html}</div>')
     return NL.join(out)
 
 
-CAL_KEY = ('      <p class="cal-key"><span><b class="rdo" style="background:var(--navy);color:var(--chalk)">12</b> RDO</span>'
-           '<span><b style="box-shadow:inset 0 0 0 1.5px var(--navy)">9</b> public holiday</span>'
-           '<span><b style="background:var(--cured)">2</b> close-down, annual leave</span>'
-           '<span><b style="text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px">3</b> lockdown weekend</span>'
-           '<span><b style="box-shadow:inset 0 0 0 1px var(--string-soft)">15</b> other industry day</span></p>')
+CAL_KEY = ('      <p class="cal-key"><span><b class="rdo">12</b> RDO</span>'
+           '<span><b class="ph">9</b> public holiday</span>'
+           '<span><b class="al">2</b> close-down, annual leave</span>'
+           '<span><b class="lk">3</b> lockdown weekend</span>'
+           '<span><b class="oth">15</b> other industry day</span></p>')
 
 
 def calendar_block(year, y):
@@ -388,7 +377,7 @@ body += section("C", "Accrual", "s-accrue", '''      <h2 id="accrue">How an RDO 
         <li>The RDO itself. A day off does not bank toward the next day off.</li>
         <li>Casual employees. Casuals are paid a loading on ordinary hours instead of banking RDOs.</li>
       </ul>
-      <div class="aside chalk">
+      <div class="callout">
         <p><b>Two ways to hold the bank.</b> Some payroll setups treat RDOs as a leave balance that is topped up by hand; the agreement treats them as an accrual that runs off the hours actually worked. The second is the only one that survives a part week, a week with leave in it, or a worker who starts mid-cycle. In PayKicker the accrual is exported with the timesheet hours and MYOB runs the bank and prints it on the payslip.</p>
       </div>''')
 
@@ -400,7 +389,7 @@ for yr in reversed(years):
         dates_inner += f'{NL}      <h3>{yr}</h3>'
     dates_inner += f'''
       <div class="months">
-{month_grids(yr, R["years"][yr])}
+{month_grids(yr, R["years"][yr], "h4" if len(years) > 1 else "h3")}
       </div>
 {CAL_KEY}
       <p>RDO dates in list form: {"; ".join(f"{MONTHS[m - 1]} {', '.join(wd(d) for d in R['years'][yr]['rdo'] if int(d[5:7]) == m)}" for m in range(1, 13) if any(int(d[5:7]) == m for d in R['years'][yr]['rdo']))}.</p>
@@ -411,7 +400,7 @@ body += section("D", f"{Y0} dates", "s-dates", dates_inner)
 
 body += section("E", "Worked RDO", "s-worked", '''      <h2 id="worked">Working on an RDO</h2>
       <p>Crews do work RDOs, usually because a pour or a crane lift will not wait. The agreement sets two different rates for the same day, and which one applies turns on one fact: were the workers consulted (cl 38.8)?</p>
-      <div class="tbl"><table>
+      <div class="tbl-wrap"><table class="tbl fold">
         <thead><tr><th>Situation</th><th>Rate for the day</th><th>Clause</th></tr></thead>
         <tbody>
           <tr><td>Workers <b>were</b> consulted beforehand</td><td>Ordinary rate, and the banked RDO is kept</td><td class="n">38.8(e)</td></tr>
@@ -436,7 +425,7 @@ body += section("F", "Payroll", "s-payroll", '''      <h2 id="payroll">Where pay
 body += section("G", "Figures", "s-figures", f'''      <h2 id="figures">Current figures, dated</h2>
       <p class="stamp">As at {fig("as_at", d_long(AS_AT))}</p>
       <p>These come from the CFMEU Victoria wage sheets. They change at every wage increase, so treat the date on this page as part of the figure.</p>
-      <div class="tbl"><table>
+      <div class="tbl-wrap"><table class="tbl fold">
         <thead><tr><th>Item</th><th>Figure</th><th>From</th></tr></thead>
         <tbody>
           <tr><td>CW3 carpenter, tile-layer, plasterer, bricklayer (100%)</td><td class="n">{m_("wages","cw3_hour")} per hour, {m_("wages","cw3_week")} per 36-hour week</td><td class="n">{fig("wages.rates_from", d_short(W["rates_from"]))}</td></tr>
@@ -490,7 +479,7 @@ body += section("C", "The table", "s-table", f'''      <h2 id="table">Site allow
       <p class="stamp">Applies from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}</p>
       <p>The union's site allowance sheet for this period applies the {fig("site_allowance.cpi_pct", S["cpi_pct"])}% All Groups CPI (Melbourne) increase to both the rates and the project values. The previous sheet applies to hours worked up to {fig("site_allowance.day_before", day_before_long(S["applies_from"]))}.</p>
       <h3>Melbourne inner suburbs and shopping centres</h3>
-      <div class="tbl"><table>
+      <div class="tbl-wrap"><table class="tbl fold">
         <thead><tr><th>Project</th><th>Site allowance</th></tr></thead>
         <tbody>
           <tr><td>New projects, {millions(S["threshold_m"])} to {millions(S["inner_cap_m"])}</td><td class="n">{m_("site_allowance","inner_new")} per hour</td></tr>
@@ -523,7 +512,7 @@ body += section("D", "Fares", "s-fares", f'''      <h2 id="fares">Fares and trav
 body += section("E", "Extras", "s-extras", f'''      <h2 id="extras">Multi-storey, leading hand and the rest</h2>
       <p class="stamp">Correct at {fig("allowances.correct_at", d_long(A["correct_at"]))}</p>
       <p>The allowances sheet runs to two pages. These are the ones a formwork, structure or civil subcontractor's office meets most weeks.</p>
-      <div class="tbl"><table>
+      <div class="tbl-wrap"><table class="tbl fold">
         <thead><tr><th>Allowance</th><th>Figure</th><th>Basis</th></tr></thead>
         <tbody>
           <tr><td>Multi-storey, start to 15th floor</td><td class="n">{m_("allowances","multistorey_1_15")} per hour</td><td>Per hour worked</td></tr>
@@ -635,7 +624,7 @@ body += section("B", "EBA", "s-what", '''      <h2 id="what">What a CFMEU EBA jo
 body += section("C", "Pay", "s-pay", f'''      <h2 id="pay">What an EBA job pays, dated</h2>
       <p class="stamp">Rates from {fig("wages.rates_from", d_long(W["rates_from"]))}</p>
       <p>These are the figures on the CFMEU Victoria on-site wage sheet. They move at each wage increase, so the date is part of the number.</p>
-      <div class="tbl"><table>
+      <div class="tbl-wrap"><table class="tbl fold">
         <thead><tr><th>Item</th><th>Figure</th><th>From</th></tr></thead>
         <tbody>
           <tr><td>CW3 carpenter, tile-layer, plasterer, bricklayer (100%)</td><td class="n">{m_("wages","cw3_hour")} per hour, {m_("wages","cw3_week")} per 36-hour week</td><td class="n">{fig("wages.rates_from", d_short(W["rates_from"]))}</td></tr>
@@ -661,7 +650,7 @@ body += section("D", "Getting in", "s-how", f'''      <h2 id="how">How to get a 
         <li><b>Turn up with what they want.</b> Commercial experience over domestic, references from a foreman who will pick up the phone, your own hand tools for a trade role, reliability. EBA companies pay well and are held to the agreement on every hour, so they hire people who make the crew's day run.</li>
         <li><b>Check your first payslip.</b> Rate against your classification, super at the greater of the weekly amount or the percentage, Incolink, fares on every day attended, RDO accrual shown. The <a href="/guides/cfmeu-rdo-calendar-2026">RDO guide</a> and the <a href="/guides/cfmeu-site-allowance-fares-travel-2026">allowances guide</a> set out what should be there. If something is missing, raise it with the office first; the union's wage sheets are the reference both sides use.</li>
       </ol>
-      <div class="aside chalk">
+      <div class="callout">
         <p><b>On union membership.</b> It is voluntary. Under the Fair Work Act an employer cannot require you to join and cannot refuse you work for being a member, and the agreement covers every employee in its classifications either way. Whether to join is your decision, and this page takes no side on it.</p>
       </div>''')
 
@@ -753,7 +742,7 @@ body = head_section("Calculator", f"CFMEU EBA pay calculator {YEAR}: a week on t
     f'  <p class="note">Independent, not the union\'s. Rates from {fig("wages.rates_from", d_long(W["rates_from"]))}; allowances correct at {fig("allowances.correct_at", d_long(A["correct_at"]))}; site allowance from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}. Full-time weekly hire, day work inside 6am to 6pm; casuals, shiftwork and apprentices are not modelled.</p>{NL}')
 
 body += section("B", "Your week", "s-week", f'''      <h2 id="week">Your week</h2>
-      <form class="calc chalk" id="calc" novalidate>
+      <form class="cform" id="calc" novalidate>
         <div class="cgrid">
           <div class="cfield"><label for="cls">Classification</label><select id="cls">{opts([("cw3", f"CW3 tradesperson ({money(W['cw3_hour'])})"), ("cw2", f"CW2 scaffolder, steel fixer, concrete finisher ({money(W['cw2_hour'])})"), ("cw1", f"CW1 labourer, concrete gang ({money(W['cw1_hour'])})"), ("custom", "Another rate (type it in)")], "cw3")}</select></div>
           <div class="cfield"><label for="rate">Hourly rate</label><input id="rate" type="number" inputmode="decimal" min="0" step="0.01" value="{W["cw3_hour"]}" disabled></div>
@@ -767,7 +756,7 @@ body += section("B", "Your week", "s-week", f'''      <h2 id="week">Your week</h
           <div class="crow"><label for="h-sat">Saturday</label><span class="cnote">Double time, 4-hour minimum</span><input id="h-sat" type="number" inputmode="decimal" min="0" max="16" step="0.5" value="0" aria-label="Saturday hours"></div>
           <div class="crow"><label for="h-sun">Sunday</label><span class="cnote">Double time, 4-hour minimum</span><input id="h-sun" type="number" inputmode="decimal" min="0" max="16" step="0.5" value="0" aria-label="Sunday hours"></div>
         </div>
-        <p class="cfoot"><button type="reset" class="outline" id="calc-reset">Start again</button><span>Hours are the hours on the tools, meal break excluded. Enter 0 for a day not attended, or pick "Not attended".</span></p>
+        <p class="cfoot"><button type="reset" class="btn pb" id="calc-reset">Start again</button><span>Hours are the hours on the tools, meal break excluded. Enter 0 for a day not attended, or pick "Not attended".</span></p>
       </form>''')
 
 body += section("C", "The week", "s-result", f'''      <h2 id="result">What the week pays</h2>
@@ -777,7 +766,7 @@ body += section("C", "The week", "s-result", f'''      <h2 id="result">What the 
         <div class="tile"><b id="t-inco">$0.00</b><span class="cap">Incolink redundancy contribution, paid by the employer</span></div>
         <div class="tile"><b id="t-bank">+0.0 hrs</b><span class="cap" id="t-bank-how">banked toward the next RDO</span></div>
       </div>
-      <div class="tbl"><table>
+      <div class="tbl-wrap"><table class="tbl tbl-calc">
         <thead><tr><th>Line on the payslip</th><th>Units</th><th>Rate</th><th>Amount</th></tr></thead>
         <tbody id="calc-lines"></tbody>
         <tfoot><tr><th>Cost to the employer for the week, wages plus super and Incolink</th><th></th><th></th><th class="n" id="t-total">$0.00</th></tr></tfoot>
@@ -839,29 +828,29 @@ body = head_section("Guides", "CFMEU EBA guides for the subcontractor's office",
     "The agreement is 186 pages and the office needs about twelve of them every week. These guides take one clause cluster at a time, in plain English, with the union's current published figures and the date each one applies from. Written by people who run CFMEU EBA crews and the payroll behind them.",
     None,
     f'''  <div class="gcards">
-    <a class="gcard chalk" href="/guides/cfmeu-rdo-calendar-2026">
-      <div class="big">26<small>RDOs a year</small></div>
+    <a class="gcard" href="/guides/cfmeu-rdo-calendar-2026">
+      <div class="big"><span class="fig">26</span><small>RDOs a year</small></div>
       <h2>{RDO_OG}</h2>
       <p>The {Y0} on-site RDO dates as month grids, how 0.8 of an hour a day becomes 26 days off, what a worked RDO pays with and without consultation, and the four ways payroll gets the bank wrong.</p>
       <p class="when">Figures dated {d_short(W["rates_from"])} and {d_short(W["benefits_from"])}. Checked {fig("as_at", d_long(AS_AT))}.</p>
       <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
-    <a class="gcard chalk" href="/guides/cfmeu-site-allowance-fares-travel-2026">
-      <div class="big">{m_("site_allowance","inner_new")}<small>an hour, inner Melbourne site allowance</small></div>
+    <a class="gcard" href="/guides/cfmeu-site-allowance-fares-travel-2026">
+      <div class="big"><span class="fig">{m_("site_allowance","inner_new")}</span><small>an hour, inner Melbourne site allowance</small></div>
       <h2>{SA_OG}</h2>
       <p>The site allowance bands from {fig("site_allowance.applies_from", d_long(S["applies_from"]))}, the {m_("wages","travel_daily")} daily fares allowance and its radial-area rules, multi-storey and leading hand rates, and how each one should land on a payslip.</p>
       <p class="when">Figures dated {d_short(A["correct_at"])} and {d_short(S["applies_from"])}. Checked {fig("as_at", d_long(AS_AT))}.</p>
       <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
-    <a class="gcard chalk" href="/guides/cfmeu-eba-jobs-victoria">
-      <div class="big">{N_EMP:,}<small>companies with a CFMEU EBA</small></div>
+    <a class="gcard" href="/guides/cfmeu-eba-jobs-victoria">
+      <div class="big"><span class="fig">{N_EMP:,}</span><small>companies with a CFMEU EBA</small></div>
       <h2>{JOBS_OG}</h2>
       <p>What an EBA job pays right now, the tickets and search terms that get you one, how to check any company on the Fair Work Commission's register, and the full list by trade. For workers looking for a start, and for the companies on the list.</p>
       <p class="when">Company list from the Commission's lists generated {d_short(LIST_GEN)}. Pay figures checked {fig("as_at", d_long(AS_AT))}.</p>
       <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
-    <a class="gcard chalk" href="/guides/cfmeu-eba-pay-calculator">
-      <div class="big">{m_("wages","cw3_week")}<small>a 36-hour week at CW3, before allowances</small></div>
+    <a class="gcard" href="/guides/cfmeu-eba-pay-calculator">
+      <div class="big"><span class="fig">{m_("wages","cw3_week")}</span><small>a 36-hour week at CW3, before allowances</small></div>
       <h2>{CALC_OG}</h2>
       <p>Type a week's hours, pick the site allowance and the leading hand band, and see the payslip lines: ordinary time, double-time overtime, weekend and holiday rates, fares, super and Incolink.</p>
       <p class="when">Rates from {d_short(W["rates_from"])}. Checked {fig("as_at", d_long(AS_AT))}.</p>
@@ -869,7 +858,7 @@ body = head_section("Guides", "CFMEU EBA guides for the subcontractor's office",
     </a>
   </div>
   <p class="note">More guides follow: overtime, weekends and inclement weather; public holidays, Cup Day and daily hire. Every figure on these pages carries its source and date, and a weekly job checks the union's published sheets and the Commission's lists; when a source changes, the page changes.</p>
-  <h2 class="gsub" style="margin-top:56px">Supplier invoices in Xero and MYOB</h2>
+  <h2 class="gsub">Supplier invoices in Xero and MYOB</h2>
   <p class="lede">For any business that pays supplier bills: approval before they reach the books, and invoices that mix GST and GST-free items.</p>
 ''' + INVP.guide_cards())
 
@@ -902,16 +891,21 @@ replace_figs("eba-payroll-software.html")
 
 
 def stamp_css():
-    """Version the shared stylesheet link on every page so a CSS change reaches cached browsers (Cloudflare serves
-    /css/setout.css with a one-day max-age and a week of stale-while-revalidate)."""
+    """Version the shared stylesheet links on every page so a CSS change reaches cached browsers (Cloudflare serves
+    /css/*.css with a one-day max-age and a week of stale-while-revalidate). board.css is the site's; setout.css
+    survives only for the self-contained worker training page."""
     import hashlib, glob
-    v = hashlib.sha256(open(os.path.join(PUB, "css", "setout.css"), "rb").read()).hexdigest()[:8]
-    for f in glob.glob(os.path.join(PUB, "**", "*.html"), recursive=True):
-        h = io.open(f, "r", encoding="utf-8", newline="").read()
-        h2 = re.sub(r'href="/css/setout\.css(\?v=[0-9a-f]+)?"', f'href="/css/setout.css?v={v}"', h)
-        if h2 != h:
-            io.open(f, "w", encoding="utf-8", newline="").write(h2)
-            print("css version", v, "->", os.path.relpath(f, ROOT))
+    for name in ("board", "setout"):
+        css = os.path.join(PUB, "css", name + ".css")
+        if not os.path.exists(css):
+            continue
+        v = hashlib.sha256(open(css, "rb").read()).hexdigest()[:8]
+        for f in glob.glob(os.path.join(PUB, "**", "*.html"), recursive=True):
+            h = io.open(f, "r", encoding="utf-8", newline="").read()
+            h2 = re.sub(r'href="/css/' + name + r'\.css(\?v=[0-9a-z]+)?"', f'href="/css/{name}.css?v={v}"', h)
+            if h2 != h:
+                io.open(f, "w", encoding="utf-8", newline="").write(h2)
+                print("css version", name, v, "->", os.path.relpath(f, ROOT))
 
 
 stamp_css()

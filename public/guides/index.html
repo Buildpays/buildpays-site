@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#12293f">
+<meta name="theme-color" content="#0b1826">
 <link rel="canonical" href="https://paykicker.com.au/guides/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
@@ -28,8 +28,9 @@
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Big+Shoulders+Stencil+Display:wght@700;800&family=Archivo:wght@400;500;600&family=Courier+Prime:wght@400;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="/css/setout.css?v=822718f0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=339e133a">
+<script src="/js/board.js?v=2"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
 <script src="/js/pixels.js"></script>
@@ -54,123 +55,73 @@
   ]
 }
 </script>
-<style>
-  .guide-list{list-style:none;padding:0;margin-top:26px;max-width:760px}
-  .guide-list li{border-top:1px solid var(--string);padding:22px 0}
-  .guide-list li:last-child{border-bottom:1px solid var(--string)}
-  .guide-list h2{font-size:clamp(24px,2.6vw,32px);max-width:none;margin:0 0 8px}
-  .guide-list p{max-width:66ch}
-  .guide-list .when{font-size:13.5px;color:var(--ink2);margin-top:8px}
-  .cal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0 28px;margin-top:18px;max-width:900px}
-  .cal div{padding:12px 0;border-bottom:1px solid var(--string-soft)}
-  .cal b{display:block;font-family:var(--disp);font-weight:800;font-size:17px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
-  .cal span{display:block;font-size:15px;line-height:1.5}
-  .cal span.ph{color:var(--ink2);font-size:13.5px}
-  .src{font-size:13.5px;color:var(--ink2);max-width:72ch;margin-top:12px}
-  .stamp{display:inline-block;font-family:var(--disp);font-weight:800;font-size:14px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--navy);padding:4px 10px;margin:0 0 12px}
-  .tbl td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
-  .guide-list h2 a{text-decoration:none}
-  .guide-list h2 a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
-  .emp-filter{margin-top:22px;max-width:560px}
-  .emp-filter label{display:block;font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.1em;text-transform:uppercase}
-  .emp-filter input{display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid var(--string);border-radius:2px;background:var(--chalk);color:var(--navy);font:inherit;font-size:16px}
-  .emp-filter input:focus{outline:2px solid var(--navy);outline-offset:1px}
-  .emp-filter .cnt{display:block;margin-top:8px;font-size:14px;color:var(--ink2);font-variant-numeric:tabular-nums}
-  .emp-jump{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:18px;font-size:14.5px;line-height:1.5;max-width:none;color:var(--ink2)}
-  .emp-jump a{white-space:nowrap}
-  .emp-sec h3{display:flex;align-items:baseline;gap:10px;margin-top:34px;scroll-margin-top:110px}
-  .emp-sec h3 .n{font-family:var(--mono);font-size:15px;font-weight:400;color:var(--ink2)}
-  .prose ul.emp{list-style:none;padding:0;margin:8px 0 0;max-width:900px;columns:2;column-gap:36px}
-  .emp li{break-inside:avoid;margin:0;padding:7px 0;border-bottom:1px solid var(--string-soft);font-size:15px;line-height:1.4;display:flex;justify-content:space-between;gap:12px}
-  .emp li + li{margin-top:0}
-  .emp .nm{min-width:0}
-  .emp .dt{flex:none;font-family:var(--mono);font-size:12.5px;color:var(--ink2);white-space:nowrap;padding-top:3px}
-  .emp .dt.old{color:var(--orange)}
-  .emp li[hidden],.emp-sec[hidden],.emp-jump[hidden]{display:none}
-  @media(max-width:860px){.emp{columns:1}}
-  @media(max-width:640px){.tbl td.n{white-space:normal} .tbl th,.tbl td{font-size:14px;padding-right:0} .emp li{flex-direction:column;gap:2px} .emp .dt{padding-top:0}}
-</style>
 </head>
 <body>
-
-<svg class="svg-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <!-- Spray-paint edge for the orange marks: turbulence displaces the patch outline. -->
-    <filter id="spray" x="-25%" y="-40%" width="150%" height="180%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.045 0.09" numOctaves="3" seed="11" result="n"/>
-      <feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G" result="d"/>
-      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="3" result="s"/>
-      <feColorMatrix in="s" type="matrix" values="0 0 0 0 1  0 0 0 0 .35  0 0 0 0 .12  0 0 0 .9 -.25" result="speck"/>
-      <feComposite in="speck" in2="d" operator="in" result="edge"/>
-      <feMerge><feMergeNode in="d"/><feMergeNode in="edge"/></feMerge>
-    </filter>
-    <!-- Finer spray for the applied-rule marks on the file lines. -->
-    <filter id="spray-fine" x="-10%" y="-40%" width="120%" height="180%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.12 0.22" numOctaves="2" seed="5" result="n"/>
-      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <!-- Icons: one stroke weight, navy, authored. -->
-    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1.5V19a1.5 1.5 0 0 1-1.5 1.5A15.5 15.5 0 0 1 3.5 5.5 1.5 1.5 0 0 1 5 4z"/></symbol>
-    <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12"/><path d="M15 11.5a1.5 1.5 0 0 1 3 0V13"/><path d="M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5"/></symbol>
-    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18M9 9v11M15 9v11"/><path d="M5.5 13h1.5M11.5 13h1.5M17.5 13h1.5"/></symbol>
-    <symbol id="i-docket" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 11h6M9 14h6"/><path d="M8.5 18.5c1-1.5 2-1.5 2.5 0s1.5 1.5 2.5 0 2-1.5 2.5 0"/></symbol>
-    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 0 0 4v2h18v-2a2 2 0 0 1 0-4v0a2 2 0 0 1 0-4V6H3z"/><path d="M9 6v14" stroke-dasharray="2 2"/><path d="M12.5 10h5M12.5 13h4"/></symbol>
-    <symbol id="i-export" viewBox="0 0 24 24"><path d="M6 3h8l4 4v6"/><path d="M14 3v4h4"/><path d="M6 3v18h7"/><path d="M15 17h6M18 14l3 3-3 3"/></symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
-    <symbol id="i-tick" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
-    <symbol id="i-crew" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
-  </defs>
+<!-- shell:nav -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter"/><path d="M12 10v4.5M12 17v.5" stroke="currentColor" stroke-width="1.75"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V13M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
 </svg>
 
-<nav class="nav" aria-label="Main">
-  <div class="wrap">
-    <a class="logo" href="/"><img src="/paykicker-logo.svg" alt="PayKicker" width="202" height="30"></a>
-    <span class="spacer"></span>
-    <a class="nl" href="/construction#features">Features</a>
-    <a class="nl" href="/construction#how">How it works</a>
-    <a class="nl" href="/construction#pricing">Pricing</a>
-    <a class="nl" href="/ap-automation">Invoices<span class="tag">New</span></a>
-    <a class="nl" href="/construction#faq">FAQ</a>
-    <a class="nl" href="/guides/">Guides</a>
-    <a class="nphone" href="tel:+61340616223" aria-label="Call PayKicker on 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span class="num">03 4061 6223</span></a>
-    <a class="spray" href="/#contact">Book a demo</a>
-    <a class="outline login" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
-  </div>
-</nav>
+<a class="skip" href="#main">Skip to content</a>
 
-<main class="guide">
-<section class="sheet prose page-head" id="top">
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="172" height="26"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
+    <nav class="links" id="navlinks" aria-label="Main">
+      <a href="/construction">Construction</a>
+      <a href="/ap-automation">AP automation</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/partners">Partners</a>
+      <a href="/pricing">Pricing</a>
+      <span class="nav-act">
+        <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
+        <a class="btn go" href="/#contact">Book a demo</a>
+      </span>
+    </nav>
+  </div>
+</header>
+<!-- /shell:nav -->
+
+<main id="main" class="guide">
+
+<section class="hero doc-hero">
   <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">A</span><span class="name">Guides</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
       <h1>CFMEU EBA guides for the subcontractor's office</h1>
 
   <p class="lede">The agreement is 186 pages and the office needs about twelve of them every week. These guides take one clause cluster at a time, in plain English, with the union's current published figures and the date each one applies from. Written by people who run CFMEU EBA crews and the payroll behind them.</p>
   <div class="gcards">
-    <a class="gcard chalk" href="/guides/cfmeu-rdo-calendar-2026">
-      <div class="big">26<small>RDOs a year</small></div>
+    <a class="gcard" href="/guides/cfmeu-rdo-calendar-2026">
+      <div class="big"><span class="fig">26</span><small>RDOs a year</small></div>
       <h2>CFMEU RDO calendar 2026 and the 36-hour week, explained for payroll</h2>
       <p>The 2026 on-site RDO dates as month grids, how 0.8 of an hour a day becomes 26 days off, what a worked RDO pays with and without consultation, and the four ways payroll gets the bank wrong.</p>
       <p class="when">Figures dated 1 Feb 2026 and 1 Mar 2026. Checked <span data-fig="as_at">25 September 2026</span>.</p>
       <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
-    <a class="gcard chalk" href="/guides/cfmeu-site-allowance-fares-travel-2026">
-      <div class="big"><span data-fig="site_allowance.inner_new">$5.45</span><small>an hour, inner Melbourne site allowance</small></div>
+    <a class="gcard" href="/guides/cfmeu-site-allowance-fares-travel-2026">
+      <div class="big"><span class="fig"><span data-fig="site_allowance.inner_new">$5.45</span></span><small>an hour, inner Melbourne site allowance</small></div>
       <h2>CFMEU site allowance, fares and travel 2026: the rates and when they apply</h2>
       <p>The site allowance bands from <span data-fig="site_allowance.applies_from">1 October 2026</span>, the <span data-fig="wages.travel_daily">$57.60</span> daily fares allowance and its radial-area rules, multi-storey and leading hand rates, and how each one should land on a payslip.</p>
       <p class="when">Figures dated 1 Mar 2026 and 1 Oct 2026. Checked <span data-fig="as_at">25 September 2026</span>.</p>
       <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
-    <a class="gcard chalk" href="/guides/cfmeu-eba-jobs-victoria">
-      <div class="big">1,021<small>companies with a CFMEU EBA</small></div>
+    <a class="gcard" href="/guides/cfmeu-eba-jobs-victoria">
+      <div class="big"><span class="fig">1,021</span><small>companies with a CFMEU EBA</small></div>
       <h2>CFMEU EBA jobs: how to get one, and the list of 1021 Victorian companies with a CFMEU EBA</h2>
       <p>What an EBA job pays right now, the tickets and search terms that get you one, how to check any company on the Fair Work Commission's register, and the full list by trade. For workers looking for a start, and for the companies on the list.</p>
       <p class="when">Company list from the Commission's lists generated 5 Oct 2026. Pay figures checked <span data-fig="as_at">25 September 2026</span>.</p>
       <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
-    <a class="gcard chalk" href="/guides/cfmeu-eba-pay-calculator">
-      <div class="big"><span data-fig="wages.cw3_week">$2,239.56</span><small>a 36-hour week at CW3, before allowances</small></div>
+    <a class="gcard" href="/guides/cfmeu-eba-pay-calculator">
+      <div class="big"><span class="fig"><span data-fig="wages.cw3_week">$2,239.56</span></span><small>a 36-hour week at CW3, before allowances</small></div>
       <h2>CFMEU EBA pay calculator 2026: a week on the tools, priced by the agreement</h2>
       <p>Type a week's hours, pick the site allowance and the leading hand band, and see the payslip lines: ordinary time, double-time overtime, weekend and holiday rates, fares, super and Incolink.</p>
       <p class="when">Rates from 1 Feb 2026. Checked <span data-fig="as_at">25 September 2026</span>.</p>
@@ -178,79 +129,81 @@
     </a>
   </div>
   <p class="note">More guides follow: overtime, weekends and inclement weather; public holidays, Cup Day and daily hire. Every figure on these pages carries its source and date, and a weekly job checks the union's published sheets and the Commission's lists; when a source changes, the page changes.</p>
-  <h2 class="gsub" style="margin-top:56px">Supplier invoices in Xero and MYOB</h2>
+  <h2 class="gsub">Supplier invoices in Xero and MYOB</h2>
   <p class="lede">For any business that pays supplier bills: approval before they reach the books, and invoices that mix GST and GST-free items.</p>
   <div class="gcards">
-    <a class="gcard chalk" href="/guides/mixed-gst-invoices">
-      <div class="big">&times;10<small>the GST printed, times ten, is the taxable part</small></div>
+    <a class="gcard" href="/guides/mixed-gst-invoices">
+      <div class="big"><span class="fig">&times;10</span><small>the GST printed, times ten, is the taxable part</small></div>
       <h2>Invoices with GST and GST-free items</h2>
       <p>The GST times 10 split worked through, what the ATO says the invoice must show, and how to enter the two lines in Xero or MYOB.</p>
       <p class="when">Written 9 October 2026.</p>
       <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
-    <a class="gcard chalk" href="/guides/supplier-invoice-approval-xero">
-      <div class="big">1<small>approve step in Xero's own bills</small></div>
+    <a class="gcard" href="/guides/supplier-invoice-approval-xero">
+      <div class="big"><span class="fig">1</span><small>approve step in Xero's own bills</small></div>
       <h2>Supplier invoice approval in Xero</h2>
       <p>What Xero's Draft, Awaiting Approval and Awaiting Payment do, where they stop, and six decisions for approval levels, limits and job coding.</p>
       <p class="when">Written 9 October 2026.</p>
       <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
-    <a class="gcard chalk" href="/guides/supplier-invoice-approval-myob">
-      <div class="big">1&times;<small>keyed once, after it is approved</small></div>
+    <a class="gcard" href="/guides/supplier-invoice-approval-myob">
+      <div class="big"><span class="fig">1&times;</span><small>keyed once, after it is approved</small></div>
       <h2>Supplier invoice approval in MYOB</h2>
       <p>MYOB saves a bill ready to pay. How to approve supplier invoices before they reach MYOB, with jobs, limits and GST codes.</p>
       <p class="when">Written 9 October 2026.</p>
       <span class="go">Read the guide <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
   </div>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
   </div>
 </section>
 
-<section class="sheet prose" id="demo">
-  <div class="wrap">
-    <div class="mark"><span class="bub" aria-hidden="true">B</span><span class="name">Demo</span><span class="string" aria-hidden="true"></span></div>
-    <div class="body">
+<div class="wrap paper-wrap">
+<article class="paper text">
+
+<section id="demo">
       <h2>See your own agreement running in it</h2>
       <p>PayKicker encodes the clauses above once and applies them to every timesheet, then hands MYOB a file with the hours already classified. Bring your enterprise agreement and a recent pay run to a 30-minute demo and we will show the same period calculated both ways.</p>
-      <div class="cta-act"><a class="spray" href="/#contact">Book a demo</a></div>
+      <div class="cta-act"><a class="btn go big" href="/#contact">Book a demo</a></div>
       <p class="related">Related:
     <a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/digital-dayworks-docket">Digital dayworks dockets</a></p>
       <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by the CFMEU or MYOB. This guide is general information for a subcontractor's office, not legal or industrial relations advice; the agreement and the union's published sheets are the source, and figures change at every wage increase.</p>
-      <div class="rule" aria-hidden="true"></div>
-    </div>
-  </div>
 </section>
 
+</article>
+</div>
 
 </main>
 
+<!-- shell:footer -->
 <footer class="foot">
   <div class="wrap">
-    <div class="cols">
+    <div class="f-cols">
       <div>
-        <h3>PayKicker</h3>
-        <p>The site operations platform for construction subcontractors. Rostering, dayworks dockets and EBA payroll for Australian construction subcontractors. Built in Melbourne.</p>
-        <p style="margin-top:10px"><a href="https://app.paykicker.com.au/" rel="noopener"><b>Log in to PayKicker</b><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <h3>For construction crews</h3>
+        <ul><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/" aria-current="page">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
       </div>
       <div>
-        <h3>Product</h3>
-        <p class="links"><a href="/ap-automation">Supplier invoices</a><a href="/eba-payroll-software">EBA payroll software</a><a href="/digital-dayworks-docket">Dayworks dockets</a><a href="/construction#features">Rostering</a><a href="/construction#features">Inductions &amp; tickets</a><a href="/guides/">Guides</a><a href="/construction#pricing">Pricing</a></p>
+        <h3>For any business</h3>
+        <ul><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync (opening soon)</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/join">Join</a></li></ul>
+      </div>
+      <div>
+        <h3>For accountants</h3>
+        <ul><li><a href="/partners">Become a partner</a></li><li><a href="/partner-terms">Partner terms</a></li></ul>
       </div>
       <div>
         <h3>Contact</h3>
-        <p class="links"><a href="tel:+61340616223">03 4061 6223</a><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a><span>Melbourne, Victoria</span><a href="/status">System status</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></p>
+        <ul><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
       </div>
     </div>
-    <!-- Entity identity. The ABN also appears in the Organization schema in <head>
-         as a PropertyValue identifier — keep the two in step. -->
-    <p class="legal">
-      <b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
-      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd; no affiliation implied.
-    </p>
+    <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
+         as a PropertyValue identifier: keep the two in step. -->
+    <div class="legal">
+      <img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="132" height="20">
+      <p><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
+      PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
+    </div>
   </div>
 </footer>
-
+<!-- /shell:footer -->
 </body>
 </html>
