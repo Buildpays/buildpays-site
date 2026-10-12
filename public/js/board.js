@@ -8,23 +8,6 @@
   var canAnimate = !still && typeof Element !== 'undefined' && 'animate' in Element.prototype;
   if (canAnimate) root.classList.add('flip');
 
-  // Preview switches while the owner compares (not the default): ?theme=light and ?wide=1 set html[data-theme="light"]
-  // and html[data-wide] before first paint, and are kept for the rest of the tab (sessionStorage), so every page
-  // reached by a link keeps them. ?theme=navy / ?wide=0 clear them. Storage can be blocked: then only the page with
-  // the query shows the preview.
-  function flag(name) { var m = location.search.slice(1).match(new RegExp('(?:^|&)' + name + '=([^&]*)')); return m ? m[1] : null; }
-  function keep(key, on, val) {
-    var q = flag(key), v = null;
-    try {
-      if (q !== null) { if (q === val) sessionStorage.setItem('pk-' + key, val); else sessionStorage.removeItem('pk-' + key); }
-      v = sessionStorage.getItem('pk-' + key);
-    } catch (e) { v = null; }
-    if (q !== null) v = q === val ? val : null;
-    if (v === val) on();
-  }
-  keep('theme', function () { root.setAttribute('data-theme', 'light'); }, 'light');
-  keep('wide', function () { root.setAttribute('data-wide', ''); }, '1');
-
   var DIGITS = '0123456789';
   var LETTERS = 'ABCDEFGHIJKLMNOPRSTUVWY';
 
@@ -297,38 +280,22 @@
     };
   }
 
-  // The homepage window: one screen at a time, the three products as tabs under it. It moves on every 6 s until the
-  // visitor hovers, focuses or taps a tab, then stays where they put it. Arrow keys, Home and End move between tabs.
-  // Reduced motion: no rotation (the tabs still switch, without the fade).
-  function initWindow() {
-    var hw = document.querySelector('[data-hw]');
-    if (!hw) return;
-    var list = hw.querySelector('[role="tablist"]');
-    var tabs = Array.prototype.slice.call(hw.querySelectorAll('[role="tab"]'));
-    var imgs = Array.prototype.slice.call(hw.querySelectorAll('.hw-win img'));
-    var lines = Array.prototype.slice.call(hw.querySelectorAll('.hw-line'));
-    var panel = hw.querySelector('[role="tabpanel"]');
-    var cur = 0, timer = null;
-    function show(i, focus) {
-      cur = (i + tabs.length) % tabs.length;
-      tabs.forEach(function (t, k) { t.setAttribute('aria-selected', k === cur ? 'true' : 'false'); t.tabIndex = k === cur ? 0 : -1; });
-      imgs.forEach(function (im, k) { im.classList.toggle('on', k === cur); if (k === cur) im.removeAttribute('aria-hidden'); else im.setAttribute('aria-hidden', 'true'); });
-      lines.forEach(function (l, k) { l.hidden = k !== cur; });
-      panel.setAttribute('aria-labelledby', tabs[cur].id);
-      if (focus) tabs[cur].focus();
-    }
-    function stop() { if (timer) { clearInterval(timer); timer = null; } }
-    tabs.forEach(function (t, k) {
-      t.addEventListener('click', function () { stop(); show(k); });
-      t.addEventListener('keydown', function (e) {
-        var to = e.key === 'ArrowRight' ? cur + 1 : e.key === 'ArrowLeft' ? cur - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
-        if (to === null) return;
-        e.preventDefault(); stop(); show(to, true);
-      });
-    });
-    list.addEventListener('pointerenter', stop);
-    list.addEventListener('focusin', stop);
-    if (!still) timer = setInterval(function () { if (!document.hidden) show(cur + 1); }, 6000);
+  // One orange in view: while one of the page's own orange actions (outside the nav) is on screen, the nav's Book a demo
+  // steps back to a hairline (.nav.quiet in board.css); it comes back once none is in view. Phone widths keep the nav's
+  // actions inside the menu, so this only matters where the nav shows them.
+  function initQuiet() {
+    var nav = document.querySelector('.nav');
+    if (!nav || !('IntersectionObserver' in window)) return;
+    var gos = Array.prototype.slice.call(document.querySelectorAll('.btn.go')).filter(function (b) { return !nav.contains(b); });
+    if (!gos.length) return;
+    var seen = new Set();
+    gos.forEach(function (b) { var r = b.getBoundingClientRect(); if (r.height && r.bottom > 68 && r.top < window.innerHeight) seen.add(b); });
+    nav.classList.toggle('quiet', seen.size > 0);
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting && e.target.getClientRects().length) seen.add(e.target); else seen.delete(e.target); });
+      nav.classList.toggle('quiet', seen.size > 0);
+    }, { rootMargin: '-68px 0px 0px 0px', threshold: 0 });
+    gos.forEach(function (b) { io.observe(b); });
   }
 
   // A figcaption's board row (.ex-row) lands its status word once, as a flap, when its exhibit comes into view:
@@ -382,7 +349,7 @@
   }
 
   function init() {
-    try { initWindow(); } catch (e) { /* the first screen stays */ }
+    try { initQuiet(); } catch (e) { /* the nav keeps its orange */ }
     try { initLand(); } catch (e) { /* the words stay as written */ }
     var night = null;
     try { night = initNight(); } catch (e) { night = null; }

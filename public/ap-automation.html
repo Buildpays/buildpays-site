@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0b1826">
+<meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://paykicker.com.au/ap-automation">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=owner2">
-<script src="/js/board.js?v=5"></script>
+<link rel="stylesheet" href="/css/board.css?v=23b93b5b">
+<script src="/js/board.js?v=6"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -114,7 +114,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="172" height="26"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="172" height="26"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
       <a href="/construction">Construction</a>
@@ -138,23 +138,27 @@
     <div class="hero-head">
       <h1 id="h-hero">Supplier invoices, read and coded into Xero or MYOB.</h1>
       <div class="hero-side">
-        <p class="strap">Email a bill to your own invoices address or drop in the PDF. PayKicker reads it, finds the supplier in your books by ABN and name, codes it to the account, job and tax code you use, sends it to the right person to approve, then posts it to Xero or MYOB.</p>
+        <p class="strap">Email a bill or drop in the PDF: PayKicker reads it, codes it, gets it approved and posts it to Xero or MYOB.</p>
+        <div class="price-strip">
+          <p class="ps-big">From $9.99 a month<small>inc GST</small></p>
+          <ul class="ps-facts">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>14 days free, 8 invoices read</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>No card to start</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Cancel any time</li>
+          </ul>
+        </div>
         <div class="acts">
           <a class="btn go big" href="https://app.paykicker.com.au/signup" rel="noopener">Start 14-day free trial</a>
           <a class="btn hair big" href="/pricing#supplier-invoices">See pricing</a>
         </div>
-        <p class="fine-dim">8 invoices read free. No card to start.</p>
-        <div class="acts">
-          <a class="btn hair" href="https://app.paykicker.com.au/signup?via=xero" rel="noopener">Sign up with Xero</a>
-          <a class="btn hair" href="https://app.paykicker.com.au/signup?via=myob" rel="noopener">Sign up with MYOB</a>
-        </div>
+        <p class="fine-dim">Or sign up straight from <a href="https://app.paykicker.com.au/signup?via=xero" rel="noopener">Xero</a> or <a href="https://app.paykicker.com.au/signup?via=myob" rel="noopener">MYOB</a>. Other apps start at $42 + GST.</p>
       </div>
     </div>
 
     <figure class="exhibit ex-right">
-      <!-- Exhibit: the approver's view of a bill, captured from the app harness (synthetic data), cropped to the approval
-           panel beside the PDF (.w-bills). Provenance: /screens/invoice-approval.json -->
-      <div class="win w-bills w-wide"><img class="i-bills" src="/screens/invoice-approval.webp" width="1340" height="897" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice to Southline Formwork Pty Ltd for $1,796.30 waiting on this approver, the supplier's PDF beside the figures read from it, nothing unusual found, each line coded to an account, a job and GST, and the Approve your part, Hold and Reject buttons." decoding="async"></div>
+      <!-- Exhibit: the approver's view of a bill, the whole capture, from the app harness (synthetic data).
+           Provenance: /screens/invoice-approval.json -->
+      <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async"></div>
       <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b class="fl word st-coded ex-st" data-v="CODED" data-via="READING">CODED</b></span></figcaption>
     </figure>
   </div>
@@ -164,10 +168,10 @@
   <div class="wrap">
     <h2 id="h-how" class="sec-h">From inbox to your books.</h2>
     <ol class="rows steps">
-      <li><h3 class="h3">Send it in</h3><p>Forward bills to your own invoices address, give it to your suppliers, or upload a PDF or photo.</p></li>
-      <li><h3 class="h3">Read and checked</h3><p>Two readers check every figure. Supplier matched by ABN and name, totals and GST checked, duplicates caught, including ones already in Xero or MYOB.</p></li>
-      <li><h3 class="h3">Coded and approved</h3><p>Lines coded to account, job and tax code the way you coded that supplier before. A bill with GST and GST-free items is spotted and split onto the right tax codes for you. Sent to the right approver, within their limit.</p></li>
-      <li><h3 class="h3">In your books</h3><p>Approved bills go to Xero or MYOB as bills, ready to pay. Reports and Excel when you need them.</p></li>
+      <li><h3 class="h3">Send it in</h3><p>Forward bills to your own invoices address, or upload a PDF or photo.</p></li>
+      <li><h3 class="h3">Read and checked</h3><p><b>Two readers</b> check every figure; supplier matched by ABN, duplicates caught.</p></li>
+      <li><h3 class="h3">Coded and approved</h3><p>Coded as you coded that supplier before, <b>GST split</b>, approved within limits.</p></li>
+      <li><h3 class="h3">In your books</h3><p>Approved bills land in Xero or MYOB, ready to pay.</p></li>
     </ol>
   </div>
 </section>
@@ -177,7 +181,7 @@
     <div class="gate-head">
       <h2 id="h-price">Pay for the month you had.</h2>
       <div class="gate-copy">
-        <p class="lede">At the end of each month we count the invoices PayKicker read and you pay the band that count falls in, so a quiet month costs less. Prices include GST.</p>
+        <p class="lede">You pay the band your month's count of invoices read lands in, so a quiet month costs less. Prices include GST.</p>
       </div>
     </div>
 
@@ -214,7 +218,24 @@
       </div>
       <div class="band-big"><b>Over 2,000 a month</b><span>We'll price it with you.</span><a href="mailto:operations@paykicker.com.au">Talk to us</a></div>
     </div>
-    <p class="note-dim more">Everything is in every band: your invoices email address, Xero and MYOB, supplier matching by ABN and name, approvals with limits, duplicate checks, reports, and as many logins as you need.</p>
+    <p class="note-dim more">Every band has everything: your invoices address, Xero and MYOB, supplier matching, approvals with limits, duplicate checks, reports and as many logins as you need.</p>
+
+    <div class="vs-wrap" id="vs-invoices">
+      <h3>PayKicker vs other apps</h3>
+      <table class="tbl vs">
+        <thead><tr><th scope="col"><span class="sr">Supplier invoices</span></th><th scope="col" class="pk"><img src="/paykicker-icon.svg" alt="" width="22" height="22"><span>PayKicker</span></th><th scope="col">Other apps</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Up to 20 invoices a month</th><td class="pk" data-l="PayKicker"><mark class="hi">$9.99 inc GST</mark></td><td data-l="Other apps">from $42 + GST</td></tr>
+          <tr><th scope="row">Up to 100 invoices a month</th><td class="pk" data-l="PayKicker"><mark class="hi">$29.99 inc GST</mark></td><td data-l="Other apps">from $42 + GST (capture) plus $83 + tax (approvals)</td></tr>
+          <tr><th scope="row">Approvals with authority limits</th><td class="pk" data-l="PayKicker">Included</td><td data-l="Other apps">A second app</td></tr>
+          <tr><th scope="row">Supplier matched by ABN and name from your Xero or MYOB</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps"><span class="ns">Not stated</span></td></tr>
+          <tr><th scope="row">GST and GST-free items split onto the right tax codes</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps"><span class="ns">Not stated</span></td></tr>
+          <tr><th scope="row">Xero and MYOB</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td></tr>
+          <tr><th scope="row">Trial</th><td class="pk" data-l="PayKicker">14 days, 8 invoices read, no card</td><td data-l="Other apps">Varies</td></tr>
+        </tbody>
+      </table>
+      <p class="vs-note">Other apps: the public monthly prices of a widely used receipt-capture app (Business plan) and a widely used approvals app (Standard plan, 100 documents), read 9 October 2026, plus tax.</p>
+    </div>
   </div>
 </section>
 
@@ -222,7 +243,7 @@
   <div class="wrap">
     <div>
       <h2 id="h-trial">14 days free. 8 invoices read.</h2>
-      <p>Connect Xero or MYOB, send in your real bills and watch them land coded. A card is asked for only when you decide to keep going.</p>
+      <p>Connect Xero or MYOB, send in real bills and watch them land coded. A card only when you keep going.</p>
     </div>
     <div class="acts">
       <a class="btn go big" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a>
@@ -280,7 +301,7 @@
     <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
          as a PropertyValue identifier: keep the two in step. -->
     <div class="legal">
-      <img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="132" height="20">
+      <img src="/paykicker-logo.svg" alt="PayKicker" width="132" height="20">
       <p><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
       PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
     </div>

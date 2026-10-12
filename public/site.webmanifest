@@ -4,8 +4,8 @@
   "description": "Rostering, dayworks dockets and EBA payroll for construction subcontractors.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#12293f",
-  "theme_color": "#12293f",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     { "src": "/paykicker-icon-180.png", "sizes": "180x180", "type": "image/png" },
     { "src": "/paykicker-icon-512.png", "sizes": "512x512", "type": "image/png" },

@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0b1826">
+<meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://paykicker.com.au/integrations">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=owner2">
-<script src="/js/board.js?v=5"></script>
+<link rel="stylesheet" href="/css/board.css?v=23b93b5b">
+<script src="/js/board.js?v=6"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -87,7 +87,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="172" height="26"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="172" height="26"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
       <a href="/construction">Construction</a>
@@ -111,8 +111,20 @@
     <div class="hero-head">
       <h1 id="h-hero">One connection.<br>Coded into Xero or MYOB.</h1>
       <div class="hero-side">
-        <p class="strap">Each connection reads one thing your business already produces and writes it into Xero or MYOB, coded to the account, job and GST.</p>
-        <p class="strap-2">Xero or MYOB stays your books. PayKicker never moves money.</p>
+        <p class="strap">Each connection reads what your business already produces and writes it into Xero or MYOB, coded.</p>
+        <div class="price-strip">
+          <p class="ps-big">Free to start<small>one Square shop, up to 60 orders a month; opening soon</small></p>
+          <ul class="ps-facts">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Square: two shops $9.99, unlimited $24.99</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Supplier invoices from $9.99</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>A month, inc GST, billed monthly</li>
+          </ul>
+        </div>
+        <div class="acts">
+          <a class="btn go big" href="/#contact">Book a demo</a>
+          <a class="btn hair big" href="/pricing#square">See pricing</a>
+        </div>
+        <p class="fine-dim">Xero or MYOB stays your books. PayKicker never moves money.</p>
       </div>
     </div>
 
@@ -170,40 +182,70 @@
     <div class="gate-head">
       <h2 id="h-sqm">Each shop's day,<br>in MYOB every night.</h2>
       <div class="gate-copy">
-        <p class="lede">Every Square location's day goes into MYOB as one sales invoice, and every payout is settled with Square's fees on their own accounts. Set it up for me finds or makes every account, customer and job it needs.</p>
+        <p class="lede">Every Square shop's day goes into MYOB as one sales invoice, matched to Square's own totals to the cent.</p>
+        <div class="price-strip">
+          <p class="ps-big">Free for one shop<small>up to 60 orders a month</small></p>
+          <ul class="ps-facts">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$9.99 two shops, up to 500 orders</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$24.99 unlimited</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>A month, inc GST, billed monthly</li>
+          </ul>
+        </div>
+        <p class="gate-acts"><a class="btn hair if-soon" href="/?m=square#contact">Tell me when it opens</a><a class="btn go if-live" href="https://app.paykicker.com.au/signup?for=square&amp;via=myob" rel="noopener">Start free trial</a><a class="btn hair" href="/pricing#square">See pricing</a></p>
+        <p class="note-dim if-soon">Opening soon: these are the prices it opens at.</p>
       </div>
     </div>
-    <div class="conn-body">
+    <div class="conn-body wide">
       <div>
         <h3>What it posts</h3>
         <ul class="posts">
-          <li><b>One sales invoice per location per day</b>, tax-inclusive, to the location's own customer, every line on the location's job.</li>
-          <li>Sales with GST and GST-free sales, net of discounts; discounts on their own line when you give them an account.</li>
-          <li>Card surcharges and service charges on their own accounts; cash rounding GST-free; tips (no GST) and gift cards sold kept apart, and a gift card redeemed taken off what you owe on gift cards.</li>
-          <li>Card payments into your Square clearing account, cash into your cash account.</li>
-          <li>A day with more refunded than sold goes in as one general journal.</li>
-          <li><b>Each payout:</b> what Square kept (fees, third-party fees, Square Capital repayments, chargebacks, holds, adjustments), each on its own account and the fees on the location's job, as one spend money out of Square clearing; the payout itself as a transfer to your bank.</li>
-          <li>Every entry is found again before it is written, so a retry never doubles.</li>
+          <li><b>One sales invoice per shop per day</b>, every line on the shop's job.</li>
+          <li><b>GST, GST-free, surcharges, tips and gift cards</b>, each on its own account.</li>
+          <li><b>Card into Square clearing</b>, cash into your cash account.</li>
+          <li><b>Each payout settled</b>: Square's fees on their own account, the payout to your bank.</li>
         </ul>
+        <details class="more-detail">
+          <summary>What your MYOB file needs<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <table class="tbl fold">
+            <thead><tr><th scope="col">For</th><th scope="col">In MYOB</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">The connection</th><td data-l="In MYOB">Sales, customers and banking permission: <code>sme-sales</code> <code>sme-contacts-customer</code> <code>sme-banking</code>. A file connected before you added Square is asked to reconnect once.</td></tr>
+              <tr><th scope="row">Square clearing</th><td data-l="In MYOB">A Bank account.</td></tr>
+              <tr><th scope="row">Cash takings</th><td data-l="In MYOB">A Bank account (a payment lands in it).</td></tr>
+              <tr><th scope="row">Jobs</th><td data-l="In MYOB">A job per location. Required, unless you choose “No job for this location”.</td></tr>
+              <tr><th scope="row">Tax codes</th><td data-l="In MYOB"><code>GST</code> <code>FRE</code> <code>N-T</code></td></tr>
+            </tbody>
+          </table>
+          <p class="note-dim">Set it up for me uses the names Square's own connectors use (Square Balance, Square Fees and so on) and never makes an account whose name already exists.</p>
+        </details>
       </div>
-      <div>
-        <h3>What your MYOB file needs</h3>
-        <table class="tbl fold">
-          <thead><tr><th scope="col">For</th><th scope="col">In MYOB</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">The connection</th><td data-l="In MYOB">Sales, customers and banking permission: <code>sme-sales</code> <code>sme-contacts-customer</code> <code>sme-banking</code>. A file connected before you added Square is asked to reconnect once.</td></tr>
-            <tr><th scope="row">Square clearing</th><td data-l="In MYOB">A Bank account.</td></tr>
-            <tr><th scope="row">Cash takings</th><td data-l="In MYOB">A Bank account (a payment lands in it).</td></tr>
-            <tr><th scope="row">Jobs</th><td data-l="In MYOB">A job per location. Required, unless you choose “No job for this location”.</td></tr>
-            <tr><th scope="row">Tax codes</th><td data-l="In MYOB"><code>GST</code> <code>FRE</code> <code>N-T</code></td></tr>
-          </tbody>
-        </table>
-        <p class="note-dim more">Set it up for me uses the names Square's own connectors use (Square Balance, Square Fees and so on) and never makes an account whose name already exists.</p>
-      </div>
+      <figure class="exhibit conn-shot">
+        <!-- The real Sales > Day Summaries screen, the whole capture, from the app harness (synthetic data).
+             Provenance: /screens/sales-days.json -->
+        <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." loading="lazy" decoding="async"></div>
+        <figcaption><span class="ex-label">Example data</span><span class="ex-row">08 OCT · SQUARE — 43 ORDERS, HIGH STREET · 1,873.00 · MYOB #1201 · <b class="fl word st-coded ex-st" data-v="POSTED" data-via="READING">POSTED</b></span></figcaption>
+      </figure>
     </div>
-    <div class="conn-foot">
-      <p class="price"><span class="if-soon">Prices when it opens: free for one location up to 60 orders a month · $9.99 for two locations, up to 500 orders · $24.99 unlimited. A month, inc GST.</span><span class="if-live">Free for one location up to 60 orders a month · $9.99 for two locations, up to 500 orders · $24.99 unlimited. A month, inc GST.</span></p>
-      <p class="gate-acts"><a class="btn hair if-soon" href="/?m=square#contact">Tell me when it opens</a><a class="btn go if-live" href="https://app.paykicker.com.au/signup?for=square&amp;via=myob" rel="noopener">Start free trial</a><a class="btn hair" href="/pricing#square">See pricing</a></p>
+
+    <div class="vs-wrap" id="vs-square">
+      <h3>PayKicker vs other apps</h3>
+      <table class="tbl vs">
+        <thead><tr><th scope="col"><span class="sr">Square sync</span></th><th scope="col" class="pk"><img src="/paykicker-icon.svg" alt="" width="22" height="22"><span>PayKicker</span></th><th scope="col">Other apps</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">One shop, up to 60 orders a month</th><td class="pk" data-l="PayKicker">Free</td><td data-l="Other apps">Free</td></tr>
+          <tr><th scope="row">Two shops, up to 500 orders a month</th><td class="pk" data-l="PayKicker"><mark class="hi">$9.99 a month inc GST</mark></td><td data-l="Other apps">US$18 a month, billed yearly, before tax</td></tr>
+          <tr><th scope="row">Unlimited shops and orders</th><td class="pk" data-l="PayKicker"><mark class="hi">$24.99 a month inc GST</mark></td><td data-l="Other apps">US$49 a month, billed yearly, before tax</td></tr>
+          <tr><th scope="row">Billing</th><td class="pk" data-l="PayKicker">Monthly, cancel any time</td><td data-l="Other apps">Yearly</td></tr>
+          <tr><th scope="row">Works with</th><td class="pk" data-l="PayKicker">Xero and MYOB</td><td data-l="Other apps">Xero <span class="ns">(MYOB not stated)</span></td></tr>
+          <tr><th scope="row">A job per shop in MYOB or Xero, fees on that job</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps"><span class="ns">Not stated</span></td></tr>
+          <tr><th scope="row">Surcharges, tips and gift cards each on their own account</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps">Surcharges on a line; <span class="ns">tips and gift cards not stated</span></td></tr>
+          <tr><th scope="row">Every day matched to Square's own totals to the cent before it posts</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps"><span class="ns">Not stated</span></td></tr>
+          <tr><th scope="row">Each payout settled with Square's fees on their own account</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps">Settlements synced</td></tr>
+          <tr><th scope="row">Month-end pack and GST summary</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps"><span class="ns">Not stated</span></td></tr>
+          <tr><th scope="row">Finds every entry again before writing, so a retry never doubles</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps"><span class="ns">Not stated</span></td></tr>
+        </tbody>
+      </table>
+      <p class="vs-note">Other apps: the public pricing page of a widely used Square sync app, read 12 October 2026; its prices are in US dollars before tax, billed yearly. That app's Square-to-Xero connection is free for its core features; its paid plans are quoted. PayKicker's prices are in Australian dollars, GST included, billed monthly; Square sync is opening soon at these prices.</p>
     </div>
   </div>
 </section>
@@ -216,39 +258,42 @@
     <div class="gate-head">
       <h2 id="h-sqx">The same day,<br>in Xero.</h2>
       <div class="gate-copy">
-        <p class="lede">The same posting in Xero's words: one sales invoice per location per day, the payments into Square clearing and your cash account, and every payout settled with Square's fees.</p>
+        <p class="lede">The same posting in Xero's words, every payout settled with Square's fees on their own account.</p>
+        <div class="price-strip">
+          <p class="ps-big">Free for one shop<small>up to 60 orders a month</small></p>
+          <ul class="ps-facts">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$9.99 two shops, up to 500 orders</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$24.99 unlimited</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>A month, inc GST, billed monthly</li>
+          </ul>
+        </div>
+        <p class="gate-acts"><a class="btn hair if-soon" href="/?m=square#contact">Tell me when it opens</a><a class="btn go if-live" href="https://app.paykicker.com.au/signup?for=square&amp;via=xero" rel="noopener">Start free trial</a><a class="btn hair" href="/pricing#square">See pricing</a><a class="tl" href="#vs-square">PayKicker vs other apps<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
-    <div class="conn-body">
+    <div class="conn-body solo">
       <div>
         <h3>What it posts</h3>
         <ul class="posts">
-          <li><b>One sales invoice per location per day</b>, tax-inclusive, to the location's own contact, every line on the location's option of your jobs tracking category.</li>
-          <li>Sales with GST and GST-free sales, net of discounts; surcharges and service charges on their own accounts; cash rounding GST-free; tips and gift cards kept apart.</li>
-          <li>Card payments into your Square clearing account, cash into your cash account.</li>
-          <li>A day with more refunded than sold goes in as a credit note plus the refunds.</li>
-          <li><b>Each payout:</b> what Square kept, each on its own account and the fees on the location's job, as one bank transaction out of Square clearing; the payout itself as a transfer to your bank.</li>
-          <li>Every entry is found again before it is written, and each carries its own key, so a retry never doubles.</li>
+          <li><b>One sales invoice per shop per day</b>, on the shop's jobs tracking option.</li>
+          <li><b>GST, GST-free, surcharges, tips and gift cards</b>, each on its own account.</li>
+          <li><b>Card into Square clearing</b>, cash into your cash account.</li>
+          <li><b>Each payout settled</b>: Square's fees on their own account, the payout to your bank.</li>
         </ul>
+        <details class="more-detail">
+          <summary>What your Xero file needs<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <table class="tbl fold">
+            <thead><tr><th scope="col">For</th><th scope="col">In Xero</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">The connection</th><td data-l="In Xero">Invoices, payments, bank transactions, contacts and settings: <code>accounting.invoices</code> <code>accounting.payments</code> <code>accounting.banktransactions</code> <code>accounting.contacts</code> <code>accounting.settings</code></td></tr>
+              <tr><th scope="row">Square clearing</th><td data-l="In Xero">A BANK account.</td></tr>
+              <tr><th scope="row">Cash takings</th><td data-l="In Xero">A bank account, or an account with “Enable payments to this account”.</td></tr>
+              <tr><th scope="row">Jobs</th><td data-l="In Xero">An option of your jobs tracking category per location. Required, unless you choose “No job for this location”.</td></tr>
+              <tr><th scope="row">Tax codes</th><td data-l="In Xero"><code>OUTPUT</code> <code>EXEMPTOUTPUT</code> <code>INPUT</code> <code>BASEXCLUDED</code></td></tr>
+            </tbody>
+          </table>
+          <p class="note-dim">With no jobs tracking category in Xero, or several options that could be the location, you pick from a list on the location.</p>
+        </details>
       </div>
-      <div>
-        <h3>What your Xero file needs</h3>
-        <table class="tbl fold">
-          <thead><tr><th scope="col">For</th><th scope="col">In Xero</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">The connection</th><td data-l="In Xero">Invoices, payments, bank transactions, contacts and settings: <code>accounting.invoices</code> <code>accounting.payments</code> <code>accounting.banktransactions</code> <code>accounting.contacts</code> <code>accounting.settings</code></td></tr>
-            <tr><th scope="row">Square clearing</th><td data-l="In Xero">A BANK account.</td></tr>
-            <tr><th scope="row">Cash takings</th><td data-l="In Xero">A bank account, or an account with “Enable payments to this account”.</td></tr>
-            <tr><th scope="row">Jobs</th><td data-l="In Xero">An option of your jobs tracking category per location. Required, unless you choose “No job for this location”.</td></tr>
-            <tr><th scope="row">Tax codes</th><td data-l="In Xero"><code>OUTPUT</code> <code>EXEMPTOUTPUT</code> <code>INPUT</code> <code>BASEXCLUDED</code></td></tr>
-          </tbody>
-        </table>
-        <p class="note-dim more">With no jobs tracking category in Xero, or several options that could be the location, you pick from a list on the location.</p>
-      </div>
-    </div>
-    <div class="conn-foot">
-      <p class="price"><span class="if-soon">Prices when it opens: free for one location up to 60 orders a month · $9.99 for two locations, up to 500 orders · $24.99 unlimited. A month, inc GST.</span><span class="if-live">Free for one location up to 60 orders a month · $9.99 for two locations, up to 500 orders · $24.99 unlimited. A month, inc GST.</span></p>
-      <p class="gate-acts"><a class="btn hair if-soon" href="/?m=square#contact">Tell me when it opens</a><a class="btn go if-live" href="https://app.paykicker.com.au/signup?for=square&amp;via=xero" rel="noopener">Start free trial</a><a class="btn hair" href="/pricing#square">See pricing</a></p>
     </div>
   </div>
 </section>
@@ -260,35 +305,46 @@
     <div class="gate-head">
       <h2 id="h-inv">Forward the bill.<br>It lands coded.</h2>
       <div class="gate-copy">
-        <p class="lede">Email a bill to your own invoices address or drop in the PDF. Two readers check every figure, the right person approves, and the bill lands in Xero or MYOB ready to pay.</p>
+        <p class="lede">Email a bill or drop in the PDF; it lands in Xero or MYOB coded, approved and ready to pay.</p>
+        <div class="price-strip">
+          <p class="ps-big">From $9.99 a month<small>inc GST</small></p>
+          <ul class="ps-facts">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>14 days free, 8 invoices read</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>No card to start</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Cancel any time</li>
+          </ul>
+        </div>
+        <p class="gate-acts"><a class="btn go" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a><a class="btn hair" href="/pricing#supplier-invoices">See pricing</a><a class="tl" href="/ap-automation">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
-    <div class="conn-body">
+    <div class="conn-body wide">
       <div>
         <h3>What it posts</h3>
         <ul class="posts">
-          <li><b>Each approved bill as a bill</b> in Xero or MYOB, ready to pay, against the supplier found by ABN and name.</li>
-          <li>Lines coded to account, job and tax code the way you coded that supplier before.</li>
-          <li>A bill with GST and GST-free items split onto the right tax codes, the two lines adding up to the invoice.</li>
-          <li>Credit notes too. Totals, GST and duplicates checked first, including bills already in Xero or MYOB.</li>
+          <li><b>Each approved bill as a bill</b>, against the supplier found by ABN and name.</li>
+          <li><b>Lines coded</b> to account, job and tax code as you coded that supplier.</li>
+          <li><b>GST and GST-free split</b> onto the right tax codes, adding up to the invoice.</li>
+          <li><b>Credit notes too</b>; totals, GST and duplicates checked first.</li>
         </ul>
+        <details class="more-detail">
+          <summary>What your file needs<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <table class="tbl fold">
+            <thead><tr><th scope="col">For</th><th scope="col">In Xero or MYOB</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">The connection</th><td data-l="In Xero or MYOB">Xero, or MYOB Business or AccountRight, connected when you sign up.</td></tr>
+              <tr><th scope="row">Suppliers</th><td data-l="In Xero or MYOB">The suppliers already in your file; a bill is matched to one by ABN and name.</td></tr>
+              <tr><th scope="row">Accounts, jobs, tax codes</th><td data-l="In Xero or MYOB">Read from your file. Nothing to set up twice.</td></tr>
+              <tr><th scope="row">Approvals</th><td data-l="In Xero or MYOB">Who approves, and up to what amount, set in PayKicker.</td></tr>
+            </tbody>
+          </table>
+        </details>
       </div>
-      <div>
-        <h3>What your file needs</h3>
-        <table class="tbl fold">
-          <thead><tr><th scope="col">For</th><th scope="col">In Xero or MYOB</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">The connection</th><td data-l="In Xero or MYOB">Xero, or MYOB Business or AccountRight, connected when you sign up.</td></tr>
-            <tr><th scope="row">Suppliers</th><td data-l="In Xero or MYOB">The suppliers already in your file; a bill is matched to one by ABN and name.</td></tr>
-            <tr><th scope="row">Accounts, jobs, tax codes</th><td data-l="In Xero or MYOB">Read from your file. Nothing to set up twice.</td></tr>
-            <tr><th scope="row">Approvals</th><td data-l="In Xero or MYOB">Who approves, and up to what amount, set in PayKicker.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="conn-foot">
-      <p class="price">Free trial: 14 days, 8 invoices read. Then $9.99 · $29.99 · $69.99 · $149 a month inc GST, by how many you had.</p>
-      <p class="gate-acts"><a class="tl" href="/ap-automation">Prices and questions<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn go" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a><a class="btn hair" href="/pricing#supplier-invoices">See pricing</a></p>
+      <figure class="exhibit conn-shot">
+        <!-- The approver's view of a bill, the whole capture, from the app harness (synthetic data).
+             Provenance: /screens/invoice-approval.json -->
+        <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." loading="lazy" decoding="async"></div>
+        <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b class="fl word st-coded ex-st" data-v="CODED" data-via="READING">CODED</b></span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -300,26 +356,20 @@
     <div class="gate-head">
       <h2 id="h-shop">The till and the online store, posted the Square way.</h2>
       <div class="gate-copy">
-        <p class="lede">Shopify POS and your online store, read the same way Square is and posted by the same engine. It reads a test store's day right to the cent today; it is not open yet.</p>
+        <p class="lede">Shopify POS and your online store will post into Xero or MYOB through the same engine as Square.</p>
+        <div class="blank more"><span class="blank-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><p>The price is set when Shopify opens.</p></div>
+        <p class="gate-acts"><a class="btn hair" href="/#contact">Tell me when it opens</a><a class="btn hair" href="/pricing#shopify">See pricing</a></p>
       </div>
     </div>
     <div class="conn-body">
       <div>
         <h3>What it will post</h3>
         <ul class="posts">
-          <li><b>One sales invoice per location per day</b>, with GST and GST-free sales split, every line on the location's job.</li>
-          <li>Your online store as a location of its own, with shipping on its own line.</li>
-          <li>Shopify Payments into a clearing account; every other way a customer paid kept apart.</li>
+          <li><b>One sales invoice per location per day</b>, on the location's job.</li>
+          <li><b>Your online store</b> as a location of its own, shipping on its own line.</li>
+          <li><b>Shopify Payments</b> into a clearing account; every other way of paying kept apart.</li>
         </ul>
       </div>
-      <div>
-        <h3>Price</h3>
-        <div class="blank"><span class="blank-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><p>No price yet. It is set when Shopify opens.</p></div>
-      </div>
-    </div>
-    <div class="conn-foot">
-      <p class="price">Coming. POS and online, into Xero or MYOB.</p>
-      <p class="gate-acts"><a class="btn hair" href="/#contact">Tell me when it opens</a><a class="btn hair" href="/pricing#shopify">See pricing</a></p>
     </div>
   </div>
 </section>
@@ -331,31 +381,28 @@
     <div class="gate-head">
       <h2 id="h-bank">Bank lines coded,<br>so the feed matches itself.</h2>
       <div class="gate-copy">
-        <p class="lede">PayKicker reads each bank line, decides what it is, and writes the entry into Xero or MYOB with account, GST, job and memo, so the file's own bank feed matches it.</p>
+        <p class="lede">Each bank line written into Xero or MYOB with account, GST, job and memo, so the file's own feed matches it.</p>
+        <div class="blank more"><span class="blank-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><p>No price yet: PayKicker reads lines and writes entries, and never moves money.</p></div>
+        <p class="gate-acts"><a class="btn hair" href="/#contact">Tell me when it opens</a><a class="btn hair" href="/pricing#bank-coding">See pricing</a></p>
       </div>
     </div>
     <div class="conn-body">
       <div>
         <h3>What it will post</h3>
         <ul class="posts">
-          <li>Transfers between your own accounts, paired.</li>
-          <li>Square payouts and supplier bills PayKicker already posted, recognised.</li>
-          <li>Everything else by rules you confirm once.</li>
-          <li>A line it cannot decide is asked in plain words, with one weekly email. Nothing posts until it is answered.</li>
+          <li><b>Transfers between your own accounts</b>, paired.</li>
+          <li><b>Square payouts and supplier bills</b> PayKicker already posted, recognised.</li>
+          <li><b>Everything else</b> by rules you confirm once.</li>
+          <li><b>Unsure lines</b> asked in one weekly email; nothing posts until answered.</li>
         </ul>
       </div>
       <div>
         <h3>Where the lines come from</h3>
         <ul class="posts">
-          <li>MYOB's own bank feed, with the banking permission.</li>
-          <li>Or a statement you upload: CSV, QIF, OFX or PDF.</li>
+          <li><b>MYOB's own bank feed</b>, with the banking permission.</li>
+          <li><b>Or a statement you upload</b>: CSV, QIF, OFX or PDF.</li>
         </ul>
-        <div class="blank more"><span class="blank-cells" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><p>No price yet.</p></div>
       </div>
-    </div>
-    <div class="conn-foot">
-      <p class="price">Coming. PayKicker reads lines and writes accounting entries; it never moves money.</p>
-      <p class="gate-acts"><a class="btn hair" href="/#contact">Tell me when it opens</a><a class="btn hair" href="/pricing#bank-coding">See pricing</a></p>
     </div>
   </div>
 </section>
@@ -365,8 +412,8 @@
     <div class="gate-head">
       <h2 id="h-crews">Also: Xero payroll and MYOB payroll for crews.</h2>
       <div class="gate-copy">
-        <p>For subcontractors on a CFMEU Victoria agreement, the crew system sends the EBA-correct pay run into Xero or MYOB payroll in one click, matched to your pay items and job codes, and turns signed dockets into an invoice.</p>
-        <p class="gate-acts"><a class="btn hair" href="/construction">The crew system</a><a class="tl" href="/pricing#crew-system">Every plan and price<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <p>For subcontractors on a CFMEU Victoria agreement: <b>the EBA-correct pay run into Xero or MYOB payroll in one click</b>, and signed dockets as an invoice.</p>
+        <p class="gate-acts"><a class="btn hair" href="/construction">The crew system</a><a class="btn hair" href="/pricing#crew-system">See pricing</a></p>
       </div>
     </div>
     <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Xero, MYOB, Square, Shopify or the CFMEU.</p>
@@ -399,7 +446,7 @@
     <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
          as a PropertyValue identifier: keep the two in step. -->
     <div class="legal">
-      <img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="132" height="20">
+      <img src="/paykicker-logo.svg" alt="PayKicker" width="132" height="20">
       <p><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
       PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
     </div>

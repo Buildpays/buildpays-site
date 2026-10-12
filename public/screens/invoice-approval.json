@@ -2,16 +2,17 @@
   "source": "app harness /harness.html?role=admin&mods=invoices&xero=1&tour=0#invoices/open/b9 (menu collapsed)",
   "app_commit": "b3e6407ffdc1b29e810345dec5303ce6e2e41852",
   "app_branch": "pass-855-bank-pdf (main + the bank passes)",
-  "captured": "2026-10-12T04:33:04.330Z",
-  "viewport": "1440x1000@2 (menu collapsed)",
+  "captured": "2026-10-12T06:14:13.000Z",
+  "viewport": "1280x1000@2 (menu collapsed)",
   "clip_css_px": {
     "x": 86,
     "y": 150,
-    "width": 1340,
-    "height": 897
+    "width": 1180,
+    "height": 1003
   },
   "format": "webp q88",
-  "shows": "Invoices, the approver's view: bill INV-20955 from Northside Timber & Hardware in review and waiting on this approver — the supplier PDF beside the figures read from it, the checks (nothing unusual), each line coded to account, job and GST, and Approve your part / Hold / Reject",
+  "shows": "Invoices, the approver's view, whole: bill INV-20955 from Northside Timber & Hardware in review and waiting on this approver, from its header card (Approve your part / Hold / Reject, the jobs and the total) down to the last coded line: the supplier PDF beside the checks (nothing unusual), the tax invoice's figures and each line coded to account, job and GST",
   "bill_to": "Southline Formwork Pty Ltd (checked in the capture, 12 Oct 2026)",
-  "data": "synthetic (harness fakes): made-up suppliers, ABNs and the invoice the harness draws; the fixture site names that are real Melbourne projects, and the harness company name, replaced in flight with made-up ones (e.g. Riverside Quay Stage 2, Southline Formwork Pty Ltd); nothing written to the app repo"
+  "data": "synthetic (harness fakes): made-up suppliers, ABNs and the invoice the harness draws; the fixture site names that are real Melbourne projects, and the harness company name, replaced in flight with made-up ones (e.g. Riverside Quay Stage 2, Southline Formwork Pty Ltd); nothing written to the app repo",
+  "aspect": "1180x1003 CSS px, the roster board's 1012:860 (round 4: the three homepage windows share one aspect)"
 }

@@ -1,16 +1,17 @@
 {
-  "source": "app harness /harness.html?role=admin&mods=square&tour=0#sales/days",
+  "source": "app harness /harness.html?role=admin&mods=square&tour=0#sales/days (menu collapsed)",
   "app_commit": "b3e6407ffdc1b29e810345dec5303ce6e2e41852",
   "app_branch": "pass-855-bank-pdf (main + the bank passes)",
-  "captured": "2026-10-12T03:03:56.907Z",
-  "viewport": "1280x900@2",
+  "captured": "2026-10-12T06:14:13.000Z",
+  "viewport": "1240x1000@2 (menu collapsed)",
   "clip_css_px": {
-    "x": 256,
-    "y": 323,
-    "width": 1012,
-    "height": 710
+    "x": 84,
+    "y": 75,
+    "width": 1144,
+    "height": 972
   },
   "format": "webp q88",
-  "shows": "Sales > Day Summaries, High Street, October: month tiles and each day with its status",
-  "data": "synthetic (harness fakes): each ready day posted with the screen's own Post button, answered by the harness's fake MYOB, which numbers the invoices"
+  "shows": "Sales > Day Summaries, whole: the screen's own header (Square and MYOB connected, High Street Shop, 48 of 60 free orders), the tabs, October 2026, the one day needing attention, the month's tiles (orders, net sales, GST, takings) and every day of the table with its sales, refunds, GST, card, cash and status, most posted to MYOB with their invoice numbers",
+  "data": "synthetic (harness fakes): each ready day posted with the screen's own Post button, answered by the harness's fake MYOB, which numbers the invoices; the harness Square merchant renamed in flight to High Street Shop; nothing written to the app repo",
+  "aspect": "1144x972 CSS px, the roster board's 1012:860 (round 4: the three homepage windows share one aspect)"
 }

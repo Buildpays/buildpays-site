@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="paykicker-icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="paykicker-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0b1826">
+<meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://paykicker.com.au/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=owner2">
-<script src="/js/board.js?v=5"></script>
+<link rel="stylesheet" href="/css/board.css?v=23b93b5b">
+<script src="/js/board.js?v=6"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -128,7 +128,7 @@
 
 <header class="nav" id="top">
   <div class="wrap nav-in">
-    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="172" height="26"></a>
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo.svg" alt="PayKicker" width="172" height="26"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
       <a href="/construction">Construction</a>
@@ -148,59 +148,62 @@
 <main id="main">
 
 <section class="hero hero-home" aria-labelledby="h-hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1 id="h-hero">Everything your business does manually, now to MYOB/Xero automatically.</h1>
+  <div class="wrap">
+    <h1 id="h-hero">Everything your business does manually, now to MYOB/Xero automatically.</h1>
+    <div class="hero-row">
       <p class="strap">Hours back every week. Every figure checked against its source.</p>
-      <p class="strap-2">Xero or MYOB stays your books. PayKicker never moves money.</p>
-      <div class="acts">
-        <a class="btn go big" href="#contact">Book a demo</a>
-        <a class="btn hair big" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a>
+      <div class="hero-act">
+        <div class="acts">
+          <a class="btn go big" href="#contact">Book a demo</a>
+          <a class="btn hair big" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a>
+        </div>
+        <p class="fine-dim">Free trial is for supplier invoices: 14 days, no card. Or call <a href="tel:+61340616223">03&nbsp;4061&nbsp;6223</a>.</p>
       </div>
-      <p class="fine-dim">Free trial is for supplier invoices: 14 days, no card. Or call <a href="tel:+61340616223">03&nbsp;4061&nbsp;6223</a>.</p>
-      <p class="hero-partner"><a href="/partners">Accountant or bookkeeper? Refer a client and earn 15% for a year<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
     </div>
 
-    <!-- One window onto the real app, the three products as tabs under it (board.js rotates them every 6 s until a tab is
-         hovered, focused or tapped; reduced motion: no rotation). Synthetic data; provenance in /screens/*.json. Each image
-         is cropped in CSS (.h-roster / .h-bills / .h-sales) to its telling region, never past 1x its capture. -->
-    <div class="hw" data-hw>
-      <div class="hw-win" id="hw-panel" role="tabpanel" aria-labelledby="hw-t0">
-        <img class="i-roster h-roster on" src="/screens/roster-board.webp" width="1012" height="860" alt="PayKicker rostering board, example data: a draft day of sites, each with its crew and start and finish, the people still to place, and a warning that one worker can't be placed on a site because he hasn't done its induction." decoding="async" fetchpriority="high">
-        <img class="i-bills h-bills" src="/screens/invoice-approval.webp" width="1340" height="897" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice to Southline Formwork Pty Ltd for $1,796.30, nothing unusual found, each line coded to an account, a job and GST, and the Approve your part, Hold and Reject buttons." decoding="async" aria-hidden="true">
-        <img class="i-sales h-sales" src="/screens/sales-days.webp" width="1012" height="710" alt="PayKicker Sales screen, Day Summaries, example data: October's orders, net sales, GST and takings for one Square location, then each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers, one needing attention." decoding="async" aria-hidden="true">
-      </div>
-      <div class="hw-bar">
-        <div class="hw-tabs" role="tablist" aria-label="PayKicker products">
-          <button class="hw-tab" type="button" role="tab" id="hw-t0" aria-selected="true" aria-controls="hw-panel">Construction software</button>
-          <button class="hw-tab" type="button" role="tab" id="hw-t1" aria-selected="false" aria-controls="hw-panel" tabindex="-1">AP automation</button>
-          <button class="hw-tab" type="button" role="tab" id="hw-t2" aria-selected="false" aria-controls="hw-panel" tabindex="-1">Integrations</button>
-        </div>
-        <p class="hw-ex">Example data</p>
-      </div>
-      <p class="hw-line">Roster the crew, sign the docket, send EBA-correct pay to Xero or MYOB. <a class="tl" href="/construction">Construction software<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-      <p class="hw-line" hidden>Supplier bills read, coded, approved and posted. <a class="tl" href="/ap-automation">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-      <p class="hw-line" hidden>Square and Shopify sales into Xero or MYOB, every night. <a class="tl" href="/integrations">Integrations<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    <!-- Three windows onto the real app, side by side, each the whole capture at one aspect (1012:860). Synthetic data;
+         provenance in /screens/*.json. -->
+    <ul class="trio" aria-label="PayKicker products">
+      <li>
+        <div class="win"><img src="/screens/roster-board.webp" width="1012" height="860" alt="PayKicker rostering board, example data: a draft day of eight sites, each with its crew and start and finish, the people still to place, and a warning that one worker can't be placed on a site because he hasn't done its induction." decoding="async" fetchpriority="high"></div>
+        <span class="fl word">Construction software</span>
+        <p>Roster the crew, sign the docket, EBA-correct pay into Xero or MYOB.</p>
+        <a class="tl" href="/construction">Construction software<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </li>
+      <li>
+        <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async"></div>
+        <span class="fl word">AP automation</span>
+        <p>Supplier bills read, coded, approved and posted to Xero or MYOB.</p>
+        <a class="tl" href="/ap-automation">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </li>
+      <li>
+        <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." decoding="async"></div>
+        <span class="fl word">Integrations</span>
+        <p>Square and Shopify sales into Xero or MYOB, every night.</p>
+        <a class="tl" href="/integrations">Integrations<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </li>
+    </ul>
+    <p class="trio-note">Example data</p>
 
-      <!-- The night shift: one row of the board under a clock that runs 23:00 to 06:00 (board.js). The list is the
-           screen-reader text and the run's script; the row in the markup is where the run settles. -->
-      <div class="night settled" data-night data-start="23:00">
-        <ol class="sr n-list" aria-label="Example night, into Xero or MYOB">
-          <li data-t="23:10" data-e="WAGES — EBA PAY RUN W27" data-a="38,412.60" data-c="6-1000" data-g="WGT01">23:10, wages — EBA pay run W27, 38,412.60, account 6-1000, job WGT01: coded.</li>
-          <li data-t="01:40" data-e="WESTGATE REO SUPPLIES INV 44821" data-a="4,312.00" data-c="6-2100" data-g="GST">01:40, Westgate Reo Supplies invoice 44821, 4,312.00, account 6-2100, GST: coded.</li>
-          <li data-t="05:20" data-e="SQUARE — 212 ORDERS, BRUNSWICK" data-a="1,842.00" data-c="4-1000" data-g="GST">05:20, Square, 212 orders, Brunswick, 1,842.00, account 4-1000, GST: coded.</li>
-          <li>06:00: 3 entries coded, 0 waiting on you.</li>
-        </ol>
-        <div class="nrow" aria-hidden="true">
-          <span class="n-time" data-k="time"><span class="fl chars" data-v="06:00">06:00</span></span>
-          <span class="n-entry" data-k="entry"><span class="fl word st-coded" data-v="3 ENTRIES CODED · 0 WAITING ON YOU">3 ENTRIES CODED · 0 WAITING ON YOU</span></span>
-          <span class="n-amt" data-k="amt"><span class="fl chars" data-v="         " data-shape="00,000.00">         </span></span>
-          <span class="n-acct" data-k="acct"><span class="fl word" data-v=" "> </span></span>
-          <span class="n-gate" data-k="gate"><span class="fl word" data-v=" "> </span></span>
-          <span class="n-stat" data-k="stat"><span class="fl word" data-v=" " data-via="READING" data-done="CODED"> </span></span>
-        </div>
+    <!-- The night shift: one row of the board under a clock that runs 23:00 to 06:00 (board.js). The list is the
+         screen-reader text and the run's script; the row in the markup is where the run settles. -->
+    <div class="night settled" data-night data-start="23:00">
+      <ol class="sr n-list" aria-label="Example night, into Xero or MYOB">
+        <li data-t="23:10" data-e="WAGES — EBA PAY RUN W27" data-a="38,412.60" data-c="6-1000" data-g="WGT01">23:10, wages — EBA pay run W27, 38,412.60, account 6-1000, job WGT01: coded.</li>
+        <li data-t="01:40" data-e="WESTGATE REO SUPPLIES INV 44821" data-a="4,312.00" data-c="6-2100" data-g="GST">01:40, Westgate Reo Supplies invoice 44821, 4,312.00, account 6-2100, GST: coded.</li>
+        <li data-t="05:20" data-e="SQUARE — 212 ORDERS, BRUNSWICK" data-a="1,842.00" data-c="4-1000" data-g="GST">05:20, Square, 212 orders, Brunswick, 1,842.00, account 4-1000, GST: coded.</li>
+        <li>06:00: 3 entries coded, 0 waiting on you.</li>
+      </ol>
+      <div class="nrow" aria-hidden="true">
+        <span class="n-time" data-k="time"><span class="fl chars" data-v="06:00">06:00</span></span>
+        <span class="n-entry" data-k="entry"><span class="fl word st-coded" data-v="3 ENTRIES CODED · 0 WAITING ON YOU">3 ENTRIES CODED · 0 WAITING ON YOU</span></span>
+        <span class="n-amt" data-k="amt"><span class="fl chars" data-v="         " data-shape="00,000.00">         </span></span>
+        <span class="n-acct" data-k="acct"><span class="fl word" data-v=" "> </span></span>
+        <span class="n-gate" data-k="gate"><span class="fl word" data-v=" "> </span></span>
+        <span class="n-stat" data-k="stat"><span class="fl word" data-v=" " data-via="READING" data-done="CODED"> </span></span>
       </div>
     </div>
+    <p class="hero-partner"><a href="/partners">Accountant or bookkeeper? Refer a client and earn 15% for a year<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
   </div>
 </section>
 
@@ -211,16 +214,21 @@
     <div class="duo-copy">
       <h2 id="h-ap">Forward the bill.<br>It lands coded.</h2>
       <div class="gate-copy">
-        <p>Email a bill to your own invoices address, or drop in the PDF. Two readers check every figure. The supplier is found by ABN and name. Each line is coded to the account, job and tax code you used last time, GST and GST-free split. The right person approves, and the bill lands in Xero or MYOB ready to pay.</p>
-        <p class="price">Free for 14 days, 8 invoices read. Then $9.99, $29.99, $69.99 or $149 a month inc GST, by how many you had.</p>
-        <p class="gate-acts"><a class="btn hair" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a> <a class="tl" href="/ap-automation">Prices and questions<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <p>Email a bill or drop in the PDF. It lands in Xero or MYOB ready to pay.</p>
+        <ul class="mods">
+          <li><b>Two readers</b> Every figure checked; the supplier found by ABN and name.</li>
+          <li><b>Coded</b> Account, job and tax code as last time; GST and GST-free split.</li>
+          <li><b>Approved</b> By the right person, within their limit.</li>
+        </ul>
+        <p class="price"><mark class="hi">From $9.99 a month inc GST.</mark> Other apps start at $42 + GST.</p>
+        <p class="gate-acts"><a class="btn hair" href="https://app.paykicker.com.au/signup" rel="noopener">Start free trial</a><a class="btn hair" href="/pricing#supplier-invoices">See pricing</a><a class="tl" href="/ap-automation">AP automation<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
 
     <figure class="exhibit duo-shot">
-      <!-- Exhibit: the approver's view of a bill, captured from the app harness (synthetic data), cropped to the approval
-           panel beside the PDF (.w-bills). Provenance: /screens/invoice-approval.json -->
-      <div class="win w-bills"><img class="i-bills" src="/screens/invoice-approval.webp" width="1340" height="897" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice to Southline Formwork Pty Ltd for $1,796.30 waiting on this approver, the supplier's PDF beside the figures read from it, nothing unusual found, each line coded to an account, a job and GST, and the Approve your part, Hold and Reject buttons." loading="lazy" decoding="async"></div>
+      <!-- Exhibit: the approver's view of a bill, the whole capture, from the app harness (synthetic data).
+           Provenance: /screens/invoice-approval.json -->
+      <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." loading="lazy" decoding="async"></div>
       <figcaption><span class="ex-label">Example data</span><span class="ex-row">30 SEP · NORTHSIDE TIMBER &amp; HARDWARE INV-20955 · 1,796.30 · 5-1300 / 5-1350 · 2 JOBS · GST · <b class="fl word st-coded ex-st" data-v="CODED" data-via="READING">CODED</b></span></figcaption>
     </figure>
   </div>
@@ -232,23 +240,28 @@
     <div class="duo-copy">
       <h2 id="h-sq">The day's takings,<br>posted every night.</h2>
       <div class="gate-copy">
-        <p>Every shop's day goes into Xero or MYOB as one sales invoice: GST and GST-free sales, surcharges, tips, gift cards, card to Square clearing, cash to the till. Each payout is settled with Square's fees on their own account. PayKicker finds or makes every account and job for you.</p>
-        <p class="price"><span class="tag if-soon">Opening soon</span> Free for one shop up to 60 orders a month. $9.99 for two shops, $24.99 unlimited.</p>
-        <p class="gate-acts"><a class="tl if-soon" href="#contact">Tell me when it opens<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn hair if-live" href="https://app.paykicker.com.au/signup?for=square" rel="noopener">Start free trial</a> <a class="tl" href="/integrations#square-myob">What it posts<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <p>Each shop's day goes into Xero or MYOB as one sales invoice.</p>
+        <ul class="mods">
+          <li><b>Every line on its account</b> GST-free sales, surcharges, tips and gift cards apart.</li>
+          <li><b>To the cent</b> Each day matched to Square's own totals before it posts.</li>
+          <li><b>Payouts settled</b> Square's fees on their own account; accounts and jobs made for you.</li>
+        </ul>
+        <p class="price"><span class="tag if-soon">Opening soon</span> <mark class="hi">Free for one shop; two shops $9.99, unlimited $24.99 inc GST, billed monthly.</mark> Other sync apps: US$18 and US$49 a month, billed yearly.</p>
+        <p class="gate-acts"><a class="btn hair if-soon" href="#contact">Tell me when it opens</a><a class="btn hair if-live" href="https://app.paykicker.com.au/signup?for=square" rel="noopener">Start free trial</a><a class="btn hair" href="/pricing#square">See pricing</a><a class="tl" href="/integrations#square-myob">What it posts<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
 
     <figure class="exhibit duo-shot">
-      <!-- Exhibit: the real Sales > Day Summaries screen, captured from the app harness (synthetic data), cropped to the
-           days and their status (.w-sales). Provenance: /screens/sales-days.json -->
-      <div class="win w-sales"><img class="i-sales" src="/screens/sales-days.webp" width="1012" height="710" alt="PayKicker Sales screen, Day Summaries, example data: October's orders, net sales, GST and takings for one Square location, then each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers, one needing attention." loading="lazy" decoding="async"></div>
+      <!-- Exhibit: the real Sales > Day Summaries screen, the whole capture, from the app harness (synthetic data).
+           Provenance: /screens/sales-days.json -->
+      <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." loading="lazy" decoding="async"></div>
       <figcaption><span class="ex-label">Example data</span><span class="ex-row">08 OCT · SQUARE — 43 ORDERS, HIGH STREET · 1,873.00 · MYOB #1201 · <b class="fl word st-coded ex-st" data-v="POSTED" data-via="READING">POSTED</b></span></figcaption>
     </figure>
     </div>
 
     <div class="coming">
       <span class="fl word st-coming">Bank coding</span>
-      <p>Bank lines coded by rules you confirm once. Transfers between your own accounts paired, Square payouts and supplier bills recognised, the rest asked in one weekly email, so the feed in Xero or MYOB matches itself. <span class="tag dim">Coming</span> <a href="/integrations#bank">What it will do</a> · <a href="#contact">Tell me when it opens</a></p>
+      <p>Bank lines coded by rules you confirm once, so the feed in Xero or MYOB matches itself. <span class="tag dim">Coming</span> <a href="/integrations#bank">What it will do</a> · <a href="#contact">Tell me when it opens</a></p>
     </div>
     <p class="aside">Other apps post a total. PayKicker posts the lines, coded, and finds every entry again before it writes, so a retry never doubles.</p>
   </div>
@@ -261,22 +274,22 @@
     <div class="duo-copy">
       <h2 id="h-con">From the 6am board<br>to the pay file.</h2>
       <div class="gate-copy">
-        <p>For Melbourne subcontractors on a CFMEU Victoria enterprise agreement: formwork, structure, steelfixing, cranes, concrete pumping and cutting, civil. Every clause of your agreement, encoded once.</p>
-        <p class="small">Onboarding and tickets come with every plan. Payroll runs on top of rostering. Take one module, some, or the lot.</p>
-        <p class="gate-acts"><a class="btn hair" href="#contact">Book a demo</a> <a class="tl" href="/construction">The crew system in full<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a> <a class="tl" href="/guides/">Guides<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+        <p>For Melbourne subcontractors on a CFMEU Victoria agreement. Every clause encoded once.</p>
+        <ul class="mods">
+          <li><b>Rostering &amp; safety</b> Nobody goes on the board without the induction and the ticket.</li>
+          <li><b>Dockets &amp; cost reports</b> Dayworks signed on site, cost reports the client can read.</li>
+          <li><b>EBA payroll</b> The pay run to Xero or MYOB in one click.</li>
+          <li><b>Cashflow</b> Thirteen weeks of the money: wages, bills, builder claims, what to chase.</li>
+        </ul>
+        <p class="price"><mark class="hi">From $24.99 a week</mark>, pick your modules. Setup and EBA configuration included.</p>
+        <p class="gate-acts"><a class="btn hair" href="#contact">Book a demo</a><a class="btn hair" href="/pricing#crew-system">See pricing</a><a class="tl" href="/construction">The crew system<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
       </div>
-      <ul class="mods">
-        <li><b>Rostering &amp; safety</b> Nobody goes on the board without the induction and the ticket.</li>
-        <li><b>Dockets &amp; cost reports</b> Dayworks signed on site, cost reports the client can read.</li>
-        <li><b>EBA payroll</b> The pay run to Xero or MYOB in one click.</li>
-        <li><b>Cashflow</b> Thirteen weeks of the money: wages from the roster, supplier bills, builder claims read from the emails they arrive in, and what to chase.</li>
-      </ul>
     </div>
 
     <figure class="exhibit duo-shot">
-      <!-- Exhibit: the office's day (cropped to Needs you, .w-mywork) and the worker's day, captured from the app harness
-           (synthetic data). Provenance: /screens/my-work.json, /screens/my-work-phone.json -->
-      <div class="shot-pair"><div class="win w-mywork"><img class="i-mywork" src="/screens/my-work.webp" width="1008" height="1054" alt="PayKicker's home screen for the office, example data: what needs you today, each with its button: a casual conversion to answer, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers still onboarding and tickets to verify." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/my-work-phone.webp" width="390" height="877" alt="PayKicker on a worker's phone, My work, example data: today's site Tower rostered 6:30 to 3:00 with its address and gate, the week, and Enter today's hours, Raise a docket, My roster, My timesheets, My dockets and Ask for leave." loading="lazy" decoding="async"></div></div>
+      <!-- Exhibit: the office's day and the worker's day, each the whole capture, from the app harness (synthetic data).
+           Provenance: /screens/my-work.json, /screens/my-work-phone.json -->
+      <div class="shot-pair"><div class="win"><img src="/screens/my-work.webp" width="1008" height="1054" alt="PayKicker's home screen for the office, example data: the day's greeting and counts, what needs you today, each with its button (a casual conversion to answer, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers still onboarding and tickets to verify), and who is on which site today." loading="lazy" decoding="async"></div><div class="phone-shot"><img src="/screens/my-work-phone.webp" width="390" height="877" alt="PayKicker on a worker's phone, My work, example data: today's site Tower rostered 6:30 to 3:00 with its address and gate, the week, and Enter today's hours, Raise a docket, My roster, My timesheets, My dockets and Ask for leave." loading="lazy" decoding="async"></div></div>
       <figcaption><span class="ex-label">Example data</span><span class="ex-row">03 JUL · WAGES — EBA PAY RUN W27 · 38,412.60 · 6-1000 WAGES · WGT01 · <b class="fl word st-coded ex-st" data-v="CODED" data-via="READING">CODED</b></span></figcaption>
     </figure>
   </div>
@@ -293,8 +306,9 @@
     </div>
     <ul class="strip strip-terms">
       <li><span class="fl word d-name">Sign up</span><span class="d-line">Your name, email and bank account. Share your link or code.</span></li>
-      <li><span class="fl word d-name">Earn</span><span class="d-line">15% of the bill total, inc GST, on each of the client's first 12 charged bills, on every PayKicker subscription they take.</span></li>
-      <li><span class="fl word d-name">Get paid</span><span class="d-line">By direct deposit each month from the 8th, once $50 is owed. The client gets 75% off its first 3 charged bills and is told you receive a fee.</span></li>
+      <li><span class="fl word d-name">Earn</span><span class="d-line"><b>15% of the bill total</b>, inc GST, on each client's first 12 charged bills.</span></li>
+      <li><span class="fl word d-name">Get paid</span><span class="d-line"><b>By direct deposit</b> each month from the 8th, once $50 is owed.</span></li>
+      <li><span class="fl word d-name">Your client</span><span class="d-line"><b>75% off</b> its first 3 charged bills, and told you receive a fee.</span></li>
     </ul>
   </div>
 </section>
@@ -421,7 +435,7 @@
     <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
          as a PropertyValue identifier: keep the two in step. -->
     <div class="legal">
-      <img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="132" height="20">
+      <img src="/paykicker-logo.svg" alt="PayKicker" width="132" height="20">
       <p><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b><br>
       PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
     </div>

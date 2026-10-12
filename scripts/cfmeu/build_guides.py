@@ -90,7 +90,7 @@ HEAD = '''<!DOCTYPE html>
 <link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0b1826">
+<meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://paykicker.com.au{path}">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="article">
@@ -110,7 +110,7 @@ HEAD = '''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@500;700;800&family=Sofia+Sans:wght@400;500;600;700&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 <link rel="stylesheet" href="/css/board.css">
-<script src="/js/board.js?v=2"></script>
+<script src="/js/board.js?v=6"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
 <script src="/js/gtag.js"></script>
 <script src="/js/pixels.js"></script>
