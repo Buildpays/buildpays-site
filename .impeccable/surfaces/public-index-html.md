@@ -7,22 +7,63 @@ related_targets: []
 
 # Surface brief: homepage (public/index.html)
 
-Scope: the homepage only, on branch `redesign-setout`. Visitor mode: Persuade.
+Scope: the homepage, on branch `redesign-yearend` — the first surface of a replacement visual world for the whole site
+(then /construction, /ap-automation, /square, /integrations, /partners). Visitor mode: Persuade.
 
-Audience: the owner/director and the office/payroll manager of a Melbourne CFMEU-EBA subcontractor, both equally. Job: decide in one screen that PayKicker sets their agreement out once and every timesheet lands on it. Action: book a 30-minute demo bringing their EBA and a recent pay run (form `#demoForm`, phone 03 4061 6223). Proof on hand: the synthetic MYOB export sample (E0012, WGT01), the explainer iframe, the founder line "built by someone who runs CFMEU EBA crews" (no name). Constraints: keep every section, sentence of product copy, form field, hidden attribution field, script include, JSON-LD block, the explainer embed (portrait on phones), the independence and legal lines. Fonts only from Google Fonts (CSP). No invented figures, customers or photos.
+Audience: three, equally — the owner or office manager of a Melbourne construction subcontractor on a CFMEU agreement; the
+owner of any Australian small business (a shop on Square, a trade, a cafe); the accountant or bookkeeper who looks after
+them. Job: see in one screen that PayKicker reads what the business already produces (hours, supplier bills, Square sales,
+bank lines) and writes it into Xero or MYOB coded — and which door is theirs. Action: Book a demo (form `#contact`, the
+one orange action) or Start free trial (Invoices, outline). Proof: the pack itself — every figure carries a note naming the
+product that wrote it and the artifact it came from, shown as an exhibit. Constraints: PRODUCT.md (no invented figures,
+no customers or testimonials, independence line, legal footer, CSP, analytics wiring, logo locked); copy verified against
+the app repo 12 Oct 2026 (see the plan file); "other apps", never Amaka; Yo More never named; example businesses are
+Southline Formwork Pty Ltd (construction) and — new, TR to confirm — a fictional retail example for the Square lines.
 
-Unresolved: founder name and trade (do not invent). Whether the set-out grid bubbles persist onto the landing pages (decided after TR picks a direction).
+Unresolved: the retail example business name; whether exhibits are captured from the real app (TR's choice: the real product
+on screen) or drawn — the mock draws them in HTML with the app's real labels, the build captures them from the harness.
 
 ## Direction contract
 
-THESIS: The rules are set out on the slab before the crew arrives. The homepage is a surveyor's set-out of PayKicker's week: string lines, grid bubbles, stencilled names, one spray mark for the action. It refuses the dark SaaS hero with a screenshot beside it and the three-card feature grid.
+THESIS: The books, set like the best firm's year-end pack — and PayKicker is the one who wrote them. The homepage is a
+financial-statements pack prepared for an example business: statements, notes and exhibits, where every figure carries a
+note naming the PayKicker product that wrote it into Xero or MYOB. It refuses the SaaS hero with a device-framed screenshot,
+the three-card feature grid, and the cream-paper-and-italic-serif editorial look.
 
-OWN-WORLD: Ground is raw concrete, a light warm grey slab (#d8d5ce with an inline-SVG grain and darker cured patches around #c6c3bb), never white, never cream, never dark. Ink is logo navy #12293f for all type and for the string lines (1px hairlines at about 55% navy, with a survey-nail dot at each end). Chalk white #f4f2ec is the only panel colour: a chalked rectangle drawn on the slab. Fluoro orange #ff5a1f is reserved by law for the primary action (an irregular spray-paint patch behind "Book a demo") and for the applied-rule marks in the demonstration; nothing else wears it, not headings, not icons, not links. Grid bubbles: navy hairline circles with a letter down the left edge (A, B, C…) and a number along the top (1, 2, 3…), as on a set-out drawing; every section is named by its bubble and its literal stencilled name (ROSTER, DOCKET, PAY RUN, RULES, SETUP, PRICE, DEMO, FAQ). Display face: Big Shoulders Stencil Display (Google Fonts) in caps, 700 to 800; body: Archivo 400/500 with tabular numerals; the MYOB file sample alone may use Courier Prime because it is a text file. Icons are authored single-stroke SVG in navy. Links are underlined with a string line. Inputs are chalk boxes with a navy hairline. Each section closes with the same string-line rule with two nails. One motion: on load and on scroll into view, a lit pulse travels the string line from the worker's tap to the pay line; reduced motion lights it instantly.
+OWN-WORLD: Paper white ground (#ffffff) with one cool second surface (#f4f6f8) for exhibits and the footer; ink is logo navy
+#12293f for figures, heads and rules of weight, a greyed navy (#5c6977) for notes and secondary text; hairlines #d7dce2;
+the only accent is the logo's orange #f25c1f, spent on the primary action and the small "written by PayKicker" marks beside
+figures. No gradients, no shadows, no rounded cards; exhibits sit in 1px hairline frames. Type: Schibsted Grotesk for
+headlines, figures, column heads, labels and buttons (tight tracking at display size, tabular numerals — verify `tnum`,
+else Public Sans for figures) and Source Serif 4 for narrative notes and body. Composition: a pack's page grid — a wide
+left margin column carrying note markers and section numbers, statements as right-aligned figure columns on hairline
+rules, section titles set like statement titles ("Statement of … for the week ended 7 July 2026"), a contents list, and
+exhibits lettered A, B, C. Controls: solid navy or hairline-outlined rectangles, 0 radius; links underlined with a hairline.
 
-STORY: A subbie owner or payroll manager understands within seconds that PayKicker encodes a CFMEU EBA once and every one-tap timesheet comes out as the right MYOB pay line and a signed docket; believes it because the demonstration shows a real-shaped tap becoming real-shaped pay lines, and because the page speaks as a subbie; then books the demo with their own agreement.
+STORY: An owner or accountant lands on a pack that looks like the one their firm sends at year-end, except the figures are
+this week's and each one is footnoted "written by PayKicker from …". They believe it because the note points at the
+artifact (a one-tap timesheet, a bill PDF, a Square day) shown beside it as an exhibit, in the real app. They find their
+door in the contents (crews, any business, accountants) and book a demo or start the trial.
 
-FIRST VIEWPORT: Full-bleed slab. The nav is a thin title-block strip: logo left, section links, phone number, "Book a demo" orange patch, "Log in" outline. Below, the set-out grid: number bubbles 1 to 4 across the top edge, letter bubbles A to D down the left, string lines between. The headline "Run the site. Sign the docket. Nail the pay run." is stencilled in navy across columns 1 to 2, three lines, sized so the three lines fill rows A to B. The sub line sits at B1 in Archivo. "Book a demo" on its orange spray patch sits at C1 with the chalk note "No self-serve trial. If it fits, the pilot period is on us." beside it, and "See how it works" underlined below. Columns 3 to 4, rows A to C hold the demonstration: a chalk phone panel (Tue 07 Jul · 06:00 to 15:30 · WGT01 · one tap) at A3, a string line running from it across the grid to a chalk panel at B4 to C4 showing the MYOB export lines (the existing E0012 sample), with the overtime and site-allowance lines marked in orange as the applied rules. The phone line and fine print sit at D1. At 390px the number bubbles drop, the letter bubbles stay as a left rail, and the demonstration stacks under the action.
+FIRST VIEWPORT: A hairline nav: logo left; EBA Construction · AP automation · Square sales · Integrations · Partners; Log in
+outlined; Book a demo solid orange. Below, the pack cover as the thesis: small tracked caps "PAYKICKER · PREPARED FOR
+SOUTHLINE FORMWORK PTY LTD · WEEK ENDED 7 JULY 2026", then the headline in Schibsted at display size: "Your books. Written by
+the software." with the strap "Hours, supplier bills and Square sales read, coded and posted into Xero or MYOB — every
+figure below carries the note that says so." Beneath it, inside the first viewport on desktop, the first statement:
+"Statement of entries written" — four rows (Wages — EBA pay run W27 · Materials — Westgate Reo INV 44821 · Sales — 212
+Square orders · Transfer to savings, paired) with right-aligned figures, each row ending in an orange note marker; the
+contents list (1 Construction crews · 2 Any business · 3 Accountants & bookkeepers) on the right as the doors.
 
-FORM: A surveyor's set-out on a raw slab, position 5 on the ordered grounded list (docket book, hoarding signage, shop-drawing sheet, 6am whiteboard, set-out marks, off-form concrete, footy scoreboard); seed key d4d011c9, assigned index 5. Raises: literal stencilled section names in grid bubbles (Industrial Quote Grammar); string lines as one SVG path set with a travelling pulse (Man-Machine); each engine rule as a full-width row, hours in, pay line out (Forge Scale Shower); orange reserved by law (Arcade Pixel Glow); identical crew chips as the roster row's ruler (VU Meter Bridge); one devoted column closed by the same rule, dated at the bottom (Fansite Shrine).
+FORM: The year-end pack, position 1 on the grounded list (year-end pack, general ledger page, reconciliation screen, tax
+invoice, bank statement, pay advice, Z report); seed key 937ee779, kind pick (the roll dealt 5, the bank statement, twice;
+TR declined it and took the pick). Raises from the declined challengers: cover lines in tiers (the cover carries kicker,
+headline, strap as three ranked tiers); caption boxes with their own physics (note markers behave one way everywhere:
+superscript, orange, the note revealed in the margin once on scroll and left lit); unlit segments designed too (the
+"opening soon" and "coming" rows are designed blanks, same columns, greyed figures); one-bit chrome discipline (exhibits in
+one hairline weight, no device chrome); a single light source (one accent, one direction of emphasis); a wake that traces
+motion (revealed notes stay revealed). Signature interaction: the notes — as a statement scrolls into view its figures
+tabulate once and each marker lights, its note sliding into the margin; reduced motion shows everything at rest.
 
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md rewritten
+from the built world, and every shipping raster (the captured product screens) carrying its provenance and a synthetic-data
+label.
