@@ -262,10 +262,10 @@ main>.hero:last-child{padding-bottom:var(--sec)}
 .pc-name{font-size:1.125rem;line-height:1.3;letter-spacing:-.01em}
 .pc-screen{border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .pc-bar{display:flex;align-items:center;height:2rem;padding:0 1.25rem;background:var(--surface);border-bottom:1px solid var(--border);font-weight:500;font-size:.8125rem;line-height:1;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-/* The snip scales with the card (4:3) but never past its own size (its max-width/height on the img): a wider card
-   centres it on the capture's own edge colour. */
+/* The snip fills the card (4:3), never past the file's own pixels (its max-width/height on the img); only a card wider
+   than that would centre it on the capture's own edge colour. */
 .pc-screen{container-type:inline-size}
-.pcard .win{border:0;border-radius:0;box-shadow:none;display:grid;place-items:center;height:min(75cqw,339px)}
+.pcard .win{border:0;border-radius:0;box-shadow:none;display:grid;grid-template:minmax(0,1fr)/minmax(0,1fr);place-items:center;height:min(75cqw,840px)}
 .pcard .win img{width:100%;height:100%;object-fit:contain}
 .pc-foot{display:flex;flex-direction:column;gap:.75rem;flex:1;padding:1rem 1.25rem 1.25rem}
 .pc-foot p{color:var(--ink-2);line-height:1.55}
@@ -285,10 +285,10 @@ main>.hero:last-child{padding-bottom:var(--sec)}
 .js .sl-view>.sl-slide{grid-area:1/1}
 .sl-slide{margin:0;min-width:0;transition:opacity .25s ease-out,visibility 0s linear 0s}
 .sl-slide[aria-hidden="true"]{opacity:0;visibility:hidden;transition:opacity .25s ease-out,visibility 0s linear .25s}
-/* The frame is the column wide; its height is the captures' shape (1180 x 1003) up to the tallest capture's own
-   height (1080). A capture never shows past its own size (max-width/height on the img): on a wider frame it sits
-   centred on the capture's own edge colour. */
-.sl-slide .win{display:grid;place-items:center;height:min(calc((100cqw - 2px) * 1003 / 1180),1080px);background:var(--screen-edge)}
+/* The frame is the column wide, in the captures' shape (1180 x 1003). A capture fills it, never past the file's own
+   pixels (max-width/height on the img; the files are 2x); only a frame wider than that centres it on the capture's
+   own edge colour. */
+.sl-slide .win{display:grid;grid-template:minmax(0,1fr)/minmax(0,1fr);place-items:center;height:calc((100cqw - 2px) * 1003 / 1180);background:var(--screen-edge)}
 .sl-slide .win img{width:100%;height:100%;object-fit:contain}
 .sl-cap{max-width:70ch;margin:1.25rem auto 0;text-align:center;color:var(--ink);text-wrap:balance}
 .sl-ctl{display:none}
@@ -303,7 +303,7 @@ main>.hero:last-child{padding-bottom:var(--sec)}
 .sl-prev .ic{transform:scaleX(-1)}
 /* Over the frame's left and right edges, at the middle of the frame (the strip + 2px of border + the screen). */
 @media (min-width:1001px){
-  .sl-btn{position:absolute;z-index:2;top:calc((2.375rem + 2px + min((100cqw - 2px) * 1003 / 1180,1080px)) / 2 - 1.375rem)}
+  .sl-btn{position:absolute;z-index:2;top:calc((2.375rem + 2px + (100cqw - 2px) * 1003 / 1180) / 2 - 1.375rem)}
   .sl-prev{left:-1.375rem}
   .sl-next{right:-1.375rem}
 }
@@ -393,12 +393,12 @@ html.lb-open{overflow:hidden}
 .shot-pair .phone-shot{max-width:none}
 @container (max-width:640px){.shot-pair{grid-template-columns:minmax(0,1fr) minmax(0,10rem)}}
 @container (max-width:440px){.shot-pair{grid-template-columns:minmax(0,1fr)}.shot-pair .phone-shot{max-width:13.75rem}}
-/* The office screen never past its own size (the roster board is 1012 wide): on a wider column the pair is centred. */
-.ex-wide{container-type:inline-size;max-width:calc(1014px + 15.25rem);margin:clamp(2.5rem,4.4*var(--vw),3.5rem) auto 0}
+/* The roster board fills the column up to its file's own pixels (2024); on a wider column the pair is centred. */
+.ex-wide{container-type:inline-size;max-width:calc(2026px + 15.25rem);margin:clamp(2.5rem,4.4*var(--vw),3.5rem) auto 0}
 .ex-wide .shot-pair{grid-template-columns:minmax(0,1fr) minmax(0,13.75rem);gap:1.5rem}
 @container (max-width:640px){.ex-wide .shot-pair{grid-template-columns:minmax(0,1fr) minmax(0,9.375rem)}}
 @container (max-width:440px){.ex-wide .shot-pair{grid-template-columns:minmax(0,1fr)}.ex-wide .shot-pair .phone-shot{max-width:13.75rem}}
-.ex-pair{max-width:min(75rem,calc(1014px + 17.25rem));margin:clamp(2.5rem,4.4*var(--vw),3.5rem) auto 0}
+.ex-pair{max-width:75rem;margin-top:clamp(2.5rem,4.4*var(--vw),3.5rem)}
 @media (max-width:640px){.shot-pair,.ex-wide .shot-pair{grid-template-columns:minmax(0,1fr)}.shot-pair .phone-shot,.ex-wide .shot-pair .phone-shot{max-width:13.75rem}}
 
 /* ---------------------------------------------------------------- gates (the homepage sections, and the product pages' sections) */
