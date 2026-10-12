@@ -1,13 +1,37 @@
-// The site's few behaviours: the product on/off switches, the nav (scroll state, one orange in view, the phone menu),
-// the full-size view of every product window, and a once-only fade-up as sections and cards enter.
-// Loaded in <head> without defer so the "js" and reveal classes are set before first paint; everything that touches the
-// page waits for DOMContentLoaded. Vanilla, no dependencies (CSP: self only).
+// The site's few behaviours: the dark preview switch, the product on/off switches, the nav (scroll state, one orange in
+// view, the phone menu), the full-size view of every product window, the homepage's screen slideshow, and a once-only
+// fade-up as sections and cards enter.
+// Loaded in <head> without defer so the "js", theme and reveal classes are set before first paint; everything that
+// touches the page waits for DOMContentLoaded. Vanilla, no dependencies (CSP: self only).
 (function () {
   var root = document.documentElement;
   root.classList.add('js');
   var still = !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canReveal = !still && 'IntersectionObserver' in window;
   if (canReveal) root.classList.add('rv-on');
+
+  // The dark preview: ?theme=dark turns it on and keeps it for the tab (sessionStorage); ?theme=light clears it.
+  // Storage can be missing or throw (private windows, blocked site data): then the query alone decides.
+  var dark = false;
+  try {
+    var q = (location.search.match(/[?&]theme=(dark|light)\b/) || [])[1];
+    if (q === 'dark') sessionStorage.setItem('pk-theme', 'dark');
+    else if (q === 'light') sessionStorage.removeItem('pk-theme');
+    dark = q === 'dark' || (q !== 'light' && sessionStorage.getItem('pk-theme') === 'dark');
+  } catch (e) { dark = /[?&]theme=dark\b/.test(location.search); }
+  var MARK_DARK = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23f25c1f' d='M15 0H85A15 15 0 0 1 100 15V85A15 15 0 0 1 85 100H15A15 15 0 0 1 0 85V15A15 15 0 0 1 15 0Z'/%3E%3Cpath fill='%2312293f' d='M61.52 18.32L32.72 54.32L47.12 54.32L38.48 81.68L67.28 45.68L52.88 45.68Z'/%3E%3C/svg%3E";
+  function themeColor() {
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', '#0b0f14');
+  }
+  if (dark) { root.setAttribute('data-theme', 'dark'); themeColor(); }
+  // The logo and the mark: the reversed artwork (CSS swaps it too, before paint; this covers the rest).
+  function applyTheme() {
+    if (!dark) return;
+    themeColor();
+    document.querySelectorAll('img[src$="paykicker-logo.svg"]').forEach(function (i) { i.src = i.getAttribute('src').replace('paykicker-logo.svg', 'paykicker-logo-reversed.svg'); });
+    document.querySelectorAll('img[src$="paykicker-icon.svg"]').forEach(function (i) { i.src = MARK_DARK; });
+  }
 
   // A label can follow a product's on/off switch elsewhere on the page:
   // data-live-from="<id of the element carrying data-live>" with data-v-live (the live text) and data-cls-live (the
@@ -158,6 +182,54 @@
     });
   }
 
+  // The screen slideshow (.sl): one slide shown at a time; previous and next (wrapping round), the dots, the arrow keys
+  // while the slideshow (or one of its controls) has focus, and a swipe of 40px or more. A 250ms crossfade (CSS; none
+  // with reduced motion). No autoplay. The slides not shown are aria-hidden and inert, so neither a screen reader nor
+  // the Tab key lands in them.
+  function initSlides() {
+    document.querySelectorAll('.sl').forEach(function (sl) {
+      var view = sl.querySelector('.sl-view');
+      var slides = Array.prototype.slice.call(sl.querySelectorAll('.sl-slide'));
+      if (!view || slides.length < 2) return;
+      var dots = Array.prototype.slice.call(sl.querySelectorAll('.sl-dot'));
+      var cur = 0;
+      function show(i) {
+        var was = cur;
+        cur = (i + slides.length) % slides.length;
+        var lost = slides[was].contains(document.activeElement) && was !== cur;
+        slides.forEach(function (s, k) {
+          if (k === cur) { s.removeAttribute('aria-hidden'); s.removeAttribute('inert'); }
+          else { s.setAttribute('aria-hidden', 'true'); s.setAttribute('inert', ''); }
+        });
+        dots.forEach(function (d, k) { d.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
+        if (lost) sl.focus();
+      }
+      show(0);
+      var prev = sl.querySelector('.sl-prev'), next = sl.querySelector('.sl-next');
+      if (prev) prev.addEventListener('click', function () { show(cur - 1); });
+      if (next) next.addEventListener('click', function () { show(cur + 1); });
+      dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); }); });
+      sl.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        e.preventDefault();
+        show(cur + (e.key === 'ArrowRight' ? 1 : -1));
+      });
+      // Swipe: a horizontal move of 40px or more (and more across than down) changes the slide; the click that
+      // follows it does not open the lightbox.
+      var x0 = null, y0 = 0, swiped = false;
+      view.addEventListener('pointerdown', function (e) { if (e.isPrimary) { x0 = e.clientX; y0 = e.clientY; swiped = false; } });
+      view.addEventListener('pointerup', function (e) {
+        if (x0 === null || !e.isPrimary) return;
+        var dx = e.clientX - x0, dy = e.clientY - y0;
+        x0 = null;
+        if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy)) { swiped = true; show(cur + (dx < 0 ? 1 : -1)); }
+      });
+      view.addEventListener('pointercancel', function () { x0 = null; });
+      view.addEventListener('click', function (e) { if (swiped) { swiped = false; e.preventDefault(); e.stopPropagation(); } }, true);
+      view.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    });
+  }
+
   function initMenu() {
     var nav = document.querySelector('.nav');
     var btn = nav && nav.querySelector('.menu-btn');
@@ -177,10 +249,12 @@
   }
 
   function init() {
+    try { applyTheme(); } catch (e) { /* the CSS swap stands */ }
     try { applySwitches(); } catch (e) { /* the labels stay as written */ }
     try { initNavScroll(); } catch (e) { /* the bar stays solid */ }
     try { initQuiet(); } catch (e) { /* the nav keeps its orange */ }
     try { initZoom(); } catch (e) { /* the windows stay as pictures */ }
+    try { initSlides(); } catch (e) { root.classList.add('sl-off'); }
     try { initReveal(); } catch (e) { root.classList.remove('rv-on'); }
     initMenu();
   }

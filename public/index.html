@@ -31,8 +31,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=d9f176a3">
-<script src="/js/board.js?v=10"></script>
+<link rel="stylesheet" href="/css/board.css?v=90c794eb">
+<script src="/js/board.js?v=11"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -163,16 +163,9 @@
   </div>
 
   <div class="wrap">
-    <!-- The big shot: the approver's view of a bill, the whole capture, from the app harness (synthetic data).
-         Provenance: /screens/invoice-approval.json. A click opens it full size. -->
-    <figure class="shot hero-big">
-      <figcaption class="shot-bar"><i aria-hidden="true"><span></span></i>Invoices · INV-20955 in review<span class="sb-r">Example data</span></figcaption>
-      <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." decoding="async" fetchpriority="high"></div>
-    </figure>
-
-    <!-- The three product cards. Each window shows a legible part of one real screen, captured on its own at the app's
-         natural size (4:3, /screens/card-*.webp); a click opens the whole screen (data-full). Synthetic data;
-         provenance in /screens/*.json. -->
+    <!-- The three product cards, straight under the hero's words. Each window shows a legible part of one real screen,
+         captured on its own at the app's natural size (4:3, /screens/card-*.webp); a click opens the whole screen
+         (data-full). Synthetic data; provenance in /screens/*.json. -->
     <ul class="trio" aria-label="PayKicker products">
       <li>
         <article class="pcard" aria-labelledby="pc-con">
@@ -218,11 +211,54 @@
   </div>
 </section>
 
+<section class="see" id="see" aria-labelledby="h-see">
+  <div class="wrap">
+    <!-- See it work: three whole screens from the app harness (synthetic data), one at a time, each with one sentence.
+         Provenance: /screens/office-day.json, invoice-approval.json, sales-days.json. A click opens the screen full
+         size. board.js runs the slideshow; without script the three stand one under another. -->
+    <h2 class="see-h" id="h-see">See it work</h2>
+    <div class="sl" role="region" aria-roledescription="carousel" aria-label="PayKicker screens, example data" tabindex="0">
+      <div class="sl-view" id="see-view" aria-live="polite">
+        <figure class="sl-slide" role="group" aria-roledescription="slide" aria-label="1 of 3">
+          <div class="shot">
+            <p class="shot-bar"><i aria-hidden="true"><span></span></i>Office · Monday 12 October<span class="sb-r">Example data</span></p>
+            <div class="win"><img src="/screens/office-day.webp" width="1271" height="1080" alt="PayKicker's home screen for the office, example data: Monday 12 October, 8 things need you, 37 crew, 13 sites, 36 timesheets to approve and 237 to export; Needs you (a casual conversion, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers onboarding, tickets to verify and tickets expiring); today on site by crew; hours this week, upcoming leave, the week's roster and dockets this week." loading="lazy" decoding="async"></div>
+          </div>
+          <figcaption class="sl-cap">The office's day: what needs you, who is on which site, and the week's roster, in one screen.</figcaption>
+        </figure>
+        <figure class="sl-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+          <div class="shot">
+            <p class="shot-bar"><i aria-hidden="true"><span></span></i>Invoices · INV-20955 in review<span class="sb-r">Example data</span></p>
+            <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." loading="lazy" decoding="async"></div>
+          </div>
+          <figcaption class="sl-cap">A supplier bill read, checked, coded line by line to account, job and GST, ready for the right person to approve.</figcaption>
+        </figure>
+        <figure class="sl-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+          <div class="shot">
+            <p class="shot-bar"><i aria-hidden="true"><span></span></i>Sales · Day summaries, October<span class="sb-r">Example data</span></p>
+            <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." loading="lazy" decoding="async"></div>
+          </div>
+          <figcaption class="sl-cap">Every Square day matched to the cent and posted into MYOB or Xero as one sales invoice.</figcaption>
+        </figure>
+      </div>
+      <div class="sl-ctl">
+        <button class="sl-btn sl-prev" type="button" aria-controls="see-view" aria-label="Previous screen"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <div class="sl-dots">
+          <button class="sl-dot" type="button" aria-label="Screen 1 of 3: the office's day"></button>
+          <button class="sl-dot" type="button" aria-label="Screen 2 of 3: a supplier bill in review"></button>
+          <button class="sl-dot" type="button" aria-label="Screen 3 of 3: Square day summaries"></button>
+        </div>
+        <button class="sl-btn sl-next" type="button" aria-controls="see-view" aria-label="Next screen"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div id="business">
 
 <section class="gate" id="ap" aria-labelledby="h-ap">
   <div class="wrap">
-    <!-- The approver's view of this bill is the big shot under the hero, so it is not shown twice here. -->
+    <!-- The approver's view of a bill is slide 2 of the slideshow above, so it is not shown again here. -->
     <div class="gate-head">
       <h2 id="h-ap">Forward the bill.<br>It lands coded.</h2>
       <div class="gate-copy">
