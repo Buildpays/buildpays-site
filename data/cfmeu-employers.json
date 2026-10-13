@@ -1,7 +1,7 @@
 {
  "_comment": "Employers with a CFMEU (Victorian Construction and General Division) enterprise agreement in force, from the Fair Work Commission's yearly lists of approved agreements. Built by scripts/cfmeu/fwc_employers.py; do not edit by hand.",
- "as_at": "2026-10-06",
- "list_generated": "2026-10-05",
+ "as_at": "2026-10-13",
+ "list_generated": "2026-10-10",
  "source_url": "https://www.fwc.gov.au/work-conditions/enterprise-agreements/find-enterprise-agreement",
  "search_url": "https://www.fwc.gov.au/document-search?search-ui=agreements",
  "files": [
@@ -29,12 +29,12 @@
   {
    "year": 2026,
    "url": "https://www.fwc.gov.au/documents/agreements/resources/agreements2026.xlsx",
-   "sha256": "4a2b8a8dba90e6a2a6cdfa991e87b54af4bdcd7c0529e9103c2640703ccf802f",
-   "generated": "2026-10-05",
-   "rows": 2524
+   "sha256": "f89075a34f92bec9d8a700455db0691b4ae67ffdd049f99df1346cf2dd2cb054",
+   "generated": "2026-10-10",
+   "rows": 2580
   }
  ],
- "count": 1021,
+ "count": 1023,
  "sectors": {
   "Head contractors and builders": [
    {
@@ -3154,6 +3154,13 @@
     "name": "Smart Commercial Group Pty Ltd",
     "agreement_id": "AE529384",
     "operative": "2025-06-24",
+    "expiry": "2027-07-02",
+    "nominal_expiry_passed": false
+   },
+   {
+    "name": "Stilcon Industrial Solutions Blast and Paint (Vic) Pty Ltd",
+    "agreement_id": "AE534315",
+    "operative": "2026-10-16",
     "expiry": "2027-07-02",
     "nominal_expiry_passed": false
    },
@@ -6848,6 +6855,13 @@
     "name": "The Stambos Family Trust t/as CXM Building Constructions",
     "agreement_id": "AE532480",
     "operative": "2026-04-09",
+    "expiry": "2027-07-02",
+    "nominal_expiry_passed": false
+   },
+   {
+    "name": "Stilcon Industrial Solutions Blast and Paint (Vic) Pty Ltd",
+    "agreement_id": "AE534268",
+    "operative": "2026-10-12",
     "expiry": "2027-07-02",
     "nominal_expiry_passed": false
    },
