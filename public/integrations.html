@@ -50,7 +50,7 @@
   "mainEntity": {
     "@type": "ItemList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "PayKicker Square sales sync", "url": "https://paykicker.com.au/integrations#square-myob", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Each Square location's day posted into MYOB or Xero as one sales invoice, and each payout settled with Square's fees on their own accounts. Opening soon." } },
+      { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "PayKicker Square sales sync", "url": "https://paykicker.com.au/integrations#square-myob", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Each Square location's day posted into MYOB or Xero as one sales invoice, and each payout settled with Square's fees on their own accounts." } },
       { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "PayKicker Invoices", "url": "https://paykicker.com.au/ap-automation", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Supplier bills read, matched by ABN and name, coded to account, job and tax code, approved and posted into Xero or MYOB.", "offers": { "@type": "AggregateOffer", "priceCurrency": "AUD", "lowPrice": "9.99", "highPrice": "149.00", "offerCount": "4" } } },
       { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "PayKicker Shopify sales sync", "url": "https://paykicker.com.au/integrations#shopify", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Shopify POS and online store sales posted into Xero or MYOB. Coming." } },
       { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "PayKicker bank coding", "url": "https://paykicker.com.au/integrations#bank", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Bank lines coded and written into Xero or MYOB so the file's own bank feed matches. Coming." } }
@@ -121,9 +121,9 @@
         </div>
         <p class="fine-dim">Xero or MYOB stays your books. PayKicker never moves money.</p>
         <div class="price-strip">
-          <p class="ps-big">Free to start<small>one Square shop, up to 60 orders a month; opening soon</small></p>
+          <p class="ps-big">Free to start<small>Square, up to 60 orders a month, any number of shops</small></p>
           <ul class="ps-facts">
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Square: two shops $9.99, unlimited $24.99</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Square: $9.99 up to 500 orders, unlimited $29.99</li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Supplier invoices from $9.99</li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Prices per month, inc GST, billed monthly</li>
           </ul>
@@ -137,8 +137,8 @@
           <table class="tbl" aria-label="Every connection and whether it is open">
             <thead><tr><th scope="col">From</th><th scope="col">Into</th><th scope="col">Status</th><th scope="col"><span class="sr">Details</span></th></tr></thead>
             <tbody>
-              <tr><th scope="row">Square sales</th><td class="c-why">MYOB</td><td class="s"><span class="pill st-soon" data-live-from="square-myob" data-v-live="Live" data-cls-live="st-live">Opening soon</span></td><td class="go"><a href="#square-myob">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
-              <tr><th scope="row">Square sales</th><td class="c-why">Xero</td><td class="s"><span class="pill st-soon" data-live-from="square-xero" data-v-live="Live" data-cls-live="st-live">Opening soon</span></td><td class="go"><a href="#square-xero">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
+              <tr><th scope="row">Square sales</th><td class="c-why">MYOB</td><td class="s"><span class="pill st-live" data-live-from="square-myob" data-v-live="Live" data-cls-live="st-live">Live</span></td><td class="go"><a href="#square-myob">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
+              <tr><th scope="row">Square sales</th><td class="c-why">Xero</td><td class="s"><span class="pill st-live" data-live-from="square-xero" data-v-live="Live" data-cls-live="st-live">Live</span></td><td class="go"><a href="#square-xero">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
               <tr><th scope="row">Supplier invoices</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-live">Live</span></td><td class="go"><a href="#invoices">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
               <tr><th scope="row">Shopify sales</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-coming">Coming</span></td><td class="go"><a href="#shopify">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
               <tr><th scope="row">Bank coding</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-coming">Coming</span></td><td class="go"><a href="#bank">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
@@ -152,7 +152,7 @@
 </section>
 
 <!-- Square into MYOB. Going live: set data-live="true" on this section (and on #square-xero, and the Square rows on /pricing, /join and the homepage). -->
-<section class="conn" id="square-myob" data-live="false" aria-labelledby="h-sqm">
+<section class="conn" id="square-myob" data-live="true" aria-labelledby="h-sqm">
   <div class="wrap">
     <p class="conn-name"><span>Square sales</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>MYOB</span>
       <span class="pill st-soon if-soon">Opening soon</span><span class="pill st-live if-live">Live</span></p>
@@ -161,10 +161,10 @@
       <div class="gate-copy">
         <p class="lede">Every Square shop's day goes into MYOB as one sales invoice, matched to Square's own totals to the cent.</p>
         <div class="price-strip">
-          <p class="ps-big">Free for one shop<small>up to 60 orders a month</small></p>
+          <p class="ps-big">Free to start<small>up to 60 orders a month, any number of shops</small></p>
           <ul class="ps-facts">
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$9.99 two shops, up to 500 orders</li>
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$24.99 unlimited</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$9.99 up to 500 orders, any number of shops</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$29.99 unlimited orders</li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Prices per month, inc GST, billed monthly</li>
           </ul>
         </div>
@@ -209,9 +209,9 @@
       <table class="tbl vs">
         <thead><tr><th scope="col"><span class="sr">Square sync</span></th><th scope="col" class="pk"><img src="/paykicker-icon-reversed.svg" alt="" width="22" height="22"><span>PayKicker</span></th><th scope="col">Other apps</th></tr></thead>
         <tbody>
-          <tr><th scope="row">One shop, up to 60 orders a month</th><td class="pk" data-l="PayKicker">Free</td><td data-l="Other apps">Free</td></tr>
-          <tr><th scope="row">Two shops, up to 500 orders a month</th><td class="pk" data-l="PayKicker"><mark class="hi">$9.99 a month inc GST</mark></td><td data-l="Other apps">US$18 a month, billed yearly, before tax</td></tr>
-          <tr><th scope="row">Unlimited shops and orders</th><td class="pk" data-l="PayKicker"><mark class="hi">$24.99 a month inc GST</mark></td><td data-l="Other apps">US$49 a month, billed yearly, before tax</td></tr>
+          <tr><th scope="row">Up to 60 orders a month</th><td class="pk" data-l="PayKicker">Free, any number of shops</td><td data-l="Other apps">Free (one store)</td></tr>
+          <tr><th scope="row">Up to 500 orders a month</th><td class="pk" data-l="PayKicker"><mark class="hi">$9.99 a month inc GST</mark>, any number of shops</td><td data-l="Other apps">US$18 a month (two stores), billed yearly, before tax</td></tr>
+          <tr><th scope="row">Unlimited orders</th><td class="pk" data-l="PayKicker"><mark class="hi">$29.99 a month inc GST</mark>, any number of shops</td><td data-l="Other apps">US$49 a month (unlimited stores), billed yearly, before tax</td></tr>
           <tr><th scope="row">Billing</th><td class="pk" data-l="PayKicker">Monthly, cancel any time</td><td data-l="Other apps">Yearly</td></tr>
           <tr><th scope="row">Works with</th><td class="pk" data-l="PayKicker">Xero and MYOB</td><td data-l="Other apps">Xero <span class="ns">(MYOB not stated)</span></td></tr>
           <tr><th scope="row">A job per shop in MYOB or Xero, fees on that job</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps"><span class="ns">Not stated</span></td></tr>
@@ -222,13 +222,13 @@
           <tr><th scope="row">Finds every entry again before writing, so a retry never doubles</th><td class="pk" data-l="PayKicker"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span></td><td data-l="Other apps"><span class="ns">Not stated</span></td></tr>
         </tbody>
       </table>
-      <p class="vs-note">Other apps: the public pricing page of a widely used Square sync app, read 12 October 2026; its prices are in US dollars before tax, billed yearly. That app's Square-to-Xero connection is free for its core features; its paid plans are quoted. PayKicker's prices are in Australian dollars, GST included, billed monthly; Square sync is opening soon at these prices.</p>
+      <p class="vs-note">Other apps: the public pricing page of a widely used Square sync app, read 12 October 2026; its prices are in US dollars before tax, billed yearly. That app's Square-to-Xero connection is free for its core features; its paid plans are quoted. PayKicker's prices are in Australian dollars, GST included, billed monthly, by orders counted across every connected shop, with no limit on shops.</p>
     </div>
   </div>
 </section>
 
 <!-- Square into Xero. Same switch as above. -->
-<section class="conn" id="square-xero" data-live="false" aria-labelledby="h-sqx">
+<section class="conn" id="square-xero" data-live="true" aria-labelledby="h-sqx">
   <div class="wrap">
     <p class="conn-name"><span>Square sales</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>Xero</span>
       <span class="pill st-soon if-soon">Opening soon</span><span class="pill st-live if-live">Live</span></p>
@@ -237,10 +237,10 @@
       <div class="gate-copy">
         <p class="lede">The same posting in Xero's words, every payout settled with Square's fees on their own account.</p>
         <div class="price-strip">
-          <p class="ps-big">Free for one shop<small>up to 60 orders a month</small></p>
+          <p class="ps-big">Free to start<small>up to 60 orders a month, any number of shops</small></p>
           <ul class="ps-facts">
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$9.99 two shops, up to 500 orders</li>
-            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$24.99 unlimited</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$9.99 up to 500 orders, any number of shops</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$29.99 unlimited orders</li>
             <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Prices per month, inc GST, billed monthly</li>
           </ul>
         </div>
@@ -409,7 +409,7 @@
       </div>
       <div>
         <p class="f-h" id="f-any">For any business</p>
-        <ul aria-labelledby="f-any"><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations" aria-current="page">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync (opening soon)</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/join">Join</a></li></ul>
+        <ul aria-labelledby="f-any"><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations" aria-current="page">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/join">Join</a></li></ul>
       </div>
       <div>
         <p class="f-h" id="f-acc">For accountants</p>
