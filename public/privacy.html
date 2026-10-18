@@ -85,7 +85,7 @@
     <div class="mark"><span class="bub" aria-hidden="true">A</span><span class="name">Legal</span><span class="string" aria-hidden="true"></span></div>
     <div class="body">
       <h1>Privacy Policy</h1>
-  <p class="note">Effective 6 September 2026 &nbsp;·&nbsp; Last updated 29 September 2026</p>
+  <p class="note">Effective 6 September 2026 &nbsp;·&nbsp; Last updated 18 October 2026</p>
 
   <p class="lede">PayKicker holds employment records for construction workers — names, hours,
   tickets, signatures, and sometimes health and cultural information. This policy explains exactly
@@ -103,6 +103,7 @@
       <li><a href="#share">Who we share it with</a></li>
       <li><a href="#overseas">Overseas disclosure</a></li>
       <li><a href="#payroll">Payroll connections</a></li>
+      <li><a href="#sales">Sales sync and the Shopify app</a></li>
       <li><a href="#website">Website, cookies and analytics</a></li>
       <li><a href="#security">How we protect it</a></li>
       <li><a href="#retention">How long we keep it</a></li>
@@ -187,7 +188,7 @@
   the time of signing and their signature.</p>
 
   <h3>From visitors to this website</h3>
-  <p>See <a href="#website">section 10</a>.</p>
+  <p>See <a href="#website">section 11</a>.</p>
 
   <h2 id="sensitive">4. Sensitive information</h2>
   <p>Some of what PayKicker holds is <strong>sensitive information</strong> under the Privacy Act,
@@ -266,6 +267,8 @@
         is sent. No names, pay rates, bank details, addresses or documents are sent</td><td>Overseas (United States)</td></tr>
       <tr><td>Your payroll system, where you connect one — for example MYOB</td><td>Australia</td></tr>
       <tr><td>Xero, where you connect it: employees, pay items, timesheets and docket invoices</td><td>Overseas (Xero hosts its data with Amazon Web Services in the United States)</td></tr>
+      <tr><td>Square, where a business connects its point of sale for sales sync: we read orders, payments, item categories, payouts and fees as daily totals (section 10). Nothing is sent to Square</td><td>Overseas (United States)</td></tr>
+      <tr><td>Shopify, where a business connects its store for sales sync, including through our Shopify App Store app: we read the store name and locations, orders, refunds, payments and payouts as daily totals (section 10). Nothing is sent to Shopify except our app's billing requests</td><td>Overseas (Shopify hosts its data in North America)</td></tr>
     </tbody>
   </table>
   </div>
@@ -300,7 +303,36 @@
   connections are authorised by the customer through their payroll provider's own secure sign-in,
   and can be disconnected by the customer at any time.</p>
 
-  <h2 id="website">10. Website, cookies and analytics</h2>
+  <h2 id="sales">10. Sales sync and the Shopify app</h2>
+  <p>A business can connect its Shopify store to PayKicker's sales sync, from the Shopify App Store or
+  from inside PayKicker. We read the store's name and locations, its orders, refunds and payments, and
+  its Shopify Payments payouts and fees. We use them only to work out each location's daily sales
+  totals and post them, with each payout, to the business's own MYOB or Xero file. Our access is
+  read-only.</p>
+  <p><strong>We do not store customer personal information.</strong> We do not ask Shopify for
+  customers' names, email addresses, phone numbers or addresses. We keep day totals (sales by product
+  type, payment types, refunds and fees) and, where a day needs a note, an order number.</p>
+  <p>Access tokens are encrypted before they are stored, the App Store app's tokens expire hourly, and
+  every connection uses HTTPS. The figures are stored in Australia, in a Sydney data centre. Only the
+  business's logins with access to Sales can see them; our support staff have read-only access
+  (<a href="#security">section 12</a>).</p>
+  <p><strong>Uninstalling.</strong> When Shopify tells us the app was uninstalled, we delete the access
+  tokens and stop reading at once. When Shopify's shop erasure notice follows, 48 hours later, we delete
+  the store's connection record. An install never linked to a PayKicker business is deleted after 24
+  hours. The daily summaries, payouts and location names already read stay in the business's account
+  as its accounting records until the account is closed (<a href="#retention">section 13</a>).</p>
+  <p><strong>Data requests.</strong> We answer and record Shopify's customer data-request and erasure
+  notices. We hold no personal information about a store's customers, so there is nothing to return or
+  erase, and our record says so.</p>
+  <p><strong>Square</strong>, the business's point-of-sale system, works the same way: we read its orders,
+  payments, item categories, payouts and fees, and the bank account a payout lands in, as daily totals,
+  and never ask Square for customer details. Disconnecting asks Square to end our access and deletes
+  the tokens.</p>
+  <p><strong>Billing.</strong> A sales sync plan taken through the Shopify App Store is charged on the
+  merchant's Shopify invoice; we never see card details for it. Questions:
+  <a href="#contact">section 18</a>.</p>
+
+  <h2 id="website">11. Website, cookies and analytics</h2>
   <p>This website uses <strong>Google Analytics 4</strong> and <strong>Cloudflare</strong> analytics
   to understand how many people visit and which pages are useful. These set cookies or similar
   identifiers and record your approximate location (from your IP address), device and browser type,
@@ -332,7 +364,7 @@
   <p>The PayKicker application itself does not use advertising or tracking cookies. It stores only
   what is needed to keep you signed in.</p>
 
-  <h2 id="security">11. How we protect information</h2>
+  <h2 id="security">12. How we protect information</h2>
   <ul>
     <li><strong>Access boundaries are enforced in the database</strong>, not just hidden in the
       interface. Each business can read only its own records. This is enforced on every request.</li>
@@ -352,7 +384,7 @@
   <p>No system is perfectly secure. We keep our software patched, limit what we collect in the first
   place, and design so that a mistake in one place does not expose everything.</p>
 
-  <h2 id="retention">12. How long we keep information</h2>
+  <h2 id="retention">13. How long we keep information</h2>
   <p>We keep worker and payroll records for as long as the employer's account is active, because
   employment and pay records must be retained under the <em>Fair Work Act 2009</em> — generally for
   seven years.</p>
@@ -370,7 +402,7 @@
   provider and for 30 days in our own backup store, then overwritten — so a deleted record can persist in a
   backup for up to 30 days and no longer.</p>
 
-  <h2 id="rights">13. Access, correction and deletion</h2>
+  <h2 id="rights">14. Access, correction and deletion</h2>
   <p>You can ask us:</p>
   <ul>
     <li>what personal information we hold about you</li>
@@ -384,13 +416,13 @@
   employer we will usually direct your request to them.</p>
   <p>If we refuse a request, we will tell you why in writing and how to complain about it.</p>
 
-  <h2 id="breach">14. Data breaches</h2>
+  <h2 id="breach">15. Data breaches</h2>
   <p>If a data breach occurs that is likely to result in serious harm, we will notify affected
   individuals and the Office of the Australian Information Commissioner as required by the
   Notifiable Data Breaches scheme. We will also promptly notify any affected customer, so they can
   meet their own obligations to their workers.</p>
 
-  <h2 id="complaints">15. Complaints</h2>
+  <h2 id="complaints">16. Complaints</h2>
   <p>If you think we have mishandled your personal information, please tell us first — email
   <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a> with "Privacy
   complaint" in the subject line. We will acknowledge within 5 business days and respond within 30
@@ -400,12 +432,12 @@
   <a href="https://www.oaic.gov.au" rel="noopener">oaic.gov.au</a> · 1300 363 992 ·
   GPO Box 5218, Sydney NSW 2001.</p>
 
-  <h2 id="changes">16. Changes to this policy</h2>
+  <h2 id="changes">17. Changes to this policy</h2>
   <p>We update this policy when the product or our providers change. The effective date at the top
   always shows the current version. If a change materially affects how we handle your information,
   we will notify account holders by email before it takes effect.</p>
 
-  <h2 id="contact">17. Contact us</h2>
+  <h2 id="contact">18. Contact us</h2>
   <p>
     <strong>PAYKICKER PTY LTD</strong> · ABN 91 700 949 944<br>
     Melbourne, Victoria, Australia<br>
