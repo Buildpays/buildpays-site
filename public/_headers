@@ -10,3 +10,8 @@
 # short enough that replacing one actually takes effect.
 /*.png
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# The Shopify App Store review screencast: a reviewer link, not a page for search engines.
+/shopify/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: public, max-age=3600
