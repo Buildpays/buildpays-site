@@ -1,11 +1,10 @@
 // /join: tick plans, see what the month costs, hand off to the app's sign-up.
 // A file, not inline: the site's CSP allows no inline script.
 //
-// The app's /signup takes ONE product today (for=square, else invoices; via=xero|myob; ref=CODE).
-// Until the app takes several (for=invoices,square), only the first ticked plan is sent and the
-// page says the rest is added after sign-up. When the app is ready, set MULTI to true.
+// The app's /signup takes a comma list (for=invoices,square; via=xero|myob; ref=CODE) since app pass 857.
+// MULTI false would send only the first ticked plan and say the rest is added after sign-up.
 (function () {
-  var MULTI = false;
+  var MULTI = true;
   var SIGNUP = 'https://app.paykicker.com.au/signup';
   var ORDER = ['invoices', 'square'];
   var PLANS = {
@@ -17,8 +16,8 @@
     },
     square: {
       name: 'Square sales sync',
-      cost: '$0 for one location up to 60 orders a month; $9.99 for two locations; $24.99 unlimited',
-      pitch: 'Square sales sync: each shop’s day posted every night. Free for one location.',
+      cost: '$0 up to 60 orders a month; $9.99 up to 500; $29.99 unlimited; any number of shops',
+      pitch: 'Square sales sync: each shop’s day posted every night. Free up to 60 orders a month.',
       soon: 'Square sales sync opens soon.',
       href: '/integrations#square-myob'
     }
