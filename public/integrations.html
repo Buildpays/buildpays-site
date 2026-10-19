@@ -53,7 +53,8 @@
       { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "PayKicker Square sales sync", "url": "https://paykicker.com.au/integrations#square-myob", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Each Square location's day posted into MYOB or Xero as one sales invoice, and each payout settled with Square's fees on their own accounts." } },
       { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "PayKicker Invoices", "url": "https://paykicker.com.au/ap-automation", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Supplier bills read, matched by ABN and name, coded to account, job and tax code, approved and posted into Xero or MYOB.", "offers": { "@type": "AggregateOffer", "priceCurrency": "AUD", "lowPrice": "9.99", "highPrice": "149.00", "offerCount": "4" } } },
       { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "PayKicker Shopify sales sync", "url": "https://paykicker.com.au/integrations#shopify", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Shopify POS and online store sales posted into Xero or MYOB. Coming." } },
-      { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "PayKicker bank coding", "url": "https://paykicker.com.au/integrations#bank", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Bank lines coded and written into Xero or MYOB so the file's own bank feed matches. Coming." } }
+      { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "PayKicker bank coding", "url": "https://paykicker.com.au/integrations#bank", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Bank lines coded and written into Xero or MYOB so the file's own bank feed matches. Coming." } },
+      { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "PayKicker delivery payouts", "url": "https://paykicker.com.au/delivery-payouts", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Uber Eats and DoorDash payouts posted into MYOB or Xero from the weekly statement, with commission, fees, refunds, tips and GST on their own lines. Part of the Sales sync." } }
     ]
   }
 }
@@ -139,6 +140,8 @@
             <tbody>
               <tr><th scope="row">Square sales</th><td class="c-why">MYOB</td><td class="s"><span class="pill st-live" data-live-from="square-myob" data-v-live="Live" data-cls-live="st-live">Live</span></td><td class="go"><a href="#square-myob">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
               <tr><th scope="row">Square sales</th><td class="c-why">Xero</td><td class="s"><span class="pill st-live" data-live-from="square-xero" data-v-live="Live" data-cls-live="st-live">Live</span></td><td class="go"><a href="#square-xero">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
+              <tr><th scope="row">Uber Eats payouts</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-live">Live</span></td><td class="go"><a href="#delivery">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
+              <tr><th scope="row">DoorDash payouts</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-live">Live</span></td><td class="go"><a href="#delivery">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
               <tr><th scope="row">Supplier invoices</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-live">Live</span></td><td class="go"><a href="#invoices">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
               <tr><th scope="row">Shopify sales</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-coming">Coming</span></td><td class="go"><a href="#shopify">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
               <tr><th scope="row">Bank coding</th><td class="c-why">MYOB / Xero</td><td class="s"><span class="pill st-coming">Coming</span></td><td class="go"><a href="#bank">Details<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></td></tr>
@@ -275,6 +278,41 @@
   </div>
 </section>
 
+<!-- Uber Eats and DoorDash payouts (app passes 909-914). Full page: /delivery-payouts. -->
+<section class="conn" id="delivery" aria-labelledby="h-del">
+  <div class="wrap">
+    <p class="conn-name"><span>Uber Eats and DoorDash payouts</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>MYOB / Xero</span>
+      <span class="pill st-live">Live</span></p>
+    <div class="gate-head">
+      <h2 id="h-del">The weekly payout,<br>every line on its account.</h2>
+      <div class="gate-copy">
+        <p class="lede">Upload the weekly statement or forward the email. Each payout posts into MYOB or Xero with the commission, fees, refunds, tips and GST on their own lines.</p>
+        <div class="price-strip">
+          <p class="ps-big">Included<small>in the Sales sync, no extra charge</small></p>
+          <ul class="ps-facts">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Free up to 60 orders a month</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$9.99 up to 500 orders, $29.99 unlimited</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Prices per month, inc GST, billed monthly</li>
+          </ul>
+        </div>
+        <p class="gate-acts"><a class="btn hair" href="https://app.paykicker.com.au/signup?for=square" rel="noopener">Start free</a><a class="tl" href="/delivery-payouts">How delivery payouts work<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </div>
+    <div class="conn-body solo">
+      <div>
+        <h3>What it posts</h3>
+        <ul class="posts">
+          <li><b>One entry per payout</b>, dated the payout date, against a clearing account for each platform.</li>
+          <li><b>Commission and fees</b> on their own account; GST on them claimed only once you hold the platform's tax invoice.</li>
+          <li><b>Offers you fund, refunds and error charges</b> off your sales; <b>tips</b> owed to staff.</li>
+          <li><b>Sales your Square till already records</b> never posted twice; a café on the platform's tablet gets the sales posted too.</li>
+        </ul>
+        <p class="note-dim more">Statements come in by upload or forwarded email; there is no direct connection to Uber Eats or DoorDash yet. <a href="/delivery-payouts#not-yet">What it doesn't do yet</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="conn" id="invoices" aria-labelledby="h-inv">
   <div class="wrap">
     <p class="conn-name"><span>Supplier invoices</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>MYOB / Xero</span>
@@ -393,7 +431,7 @@
         <p class="gate-acts"><a class="btn hair" href="/construction">The crew system</a><a class="btn hair" href="/pricing#crew-system">See pricing</a></p>
       </div>
     </div>
-    <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Xero, MYOB, Square, Shopify or the CFMEU.</p>
+    <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Xero, MYOB, Square, Shopify, Uber Eats, DoorDash or the CFMEU.</p>
   </div>
 </section>
 

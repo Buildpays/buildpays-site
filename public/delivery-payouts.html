@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uber Eats &amp; DoorDash payouts into MYOB and Xero | PayKicker</title>
+<meta name="description" content="Uber Eats and DoorDash payouts posted into MYOB or Xero: commission, fees, refunds, tips and GST each on its own line. Part of the Sales sync, free to start.">
+<link rel="icon" type="image/svg+xml" href="/paykicker-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/paykicker-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b0f14">
+<link rel="canonical" href="https://paykicker.com.au/delivery-payouts">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Uber Eats and DoorDash payouts into MYOB and Xero">
+<meta property="og:description" content="Upload the weekly statement or forward the email. Each payout posts into MYOB or Xero with commission, fees, refunds, tips and GST on their own lines.">
+<meta property="og:url" content="https://paykicker.com.au/delivery-payouts">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="PayKicker">
+<meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Uber Eats and DoorDash payouts into MYOB and Xero">
+<meta name="twitter:description" content="Each weekly payout posted with commission, fees, refunds, tips and GST on their own lines. Part of the Sales sync, free to start.">
+<meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=e477408b">
+<script src="/js/board.js?v=13"></script>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
+<script src="/js/gtag.js"></script>
+<script src="/js/pixels.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://paykicker.com.au/delivery-payouts#software",
+  "name": "PayKicker delivery payouts",
+  "url": "https://paykicker.com.au/delivery-payouts",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Uber Eats and DoorDash payouts posted into MYOB or Xero for Australian cafés and restaurants. The weekly statement is uploaded or forwarded by email; each payout posts as one entry with commission, fees, refunds, error charges, offers, tips and GST on their own lines against a clearing account per platform.",
+  "featureList": [
+    "Uber Eats Payment Details and DoorDash Payouts or Transactions breakdown CSVs, uploaded or forwarded by email",
+    "One entry per payout, dated the payout date",
+    "Commission, fees, refunds, error charges, offers, tips and GST each on its own line",
+    "A clearing account per platform; weeks that net below zero carried through it",
+    "GST on the platform's fees claimed only once its tax invoice is held",
+    "A weekly reminder when a statement has not arrived",
+    "Sales already posted from the till are never posted twice"
+  ],
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "AUD",
+    "lowPrice": "0",
+    "highPrice": "29.99",
+    "offerCount": "3"
+  },
+  "isPartOf": { "@type": "SoftwareApplication", "name": "PayKicker", "url": "https://paykicker.com.au/" },
+  "areaServed": "AU",
+  "publisher": { "@id": "https://paykicker.com.au/#organization" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Can I claim GST on Uber Eats and DoorDash commission?", "acceptedAnswer": { "@type": "Answer", "text": "Only when you hold the platform's tax invoice for its fees, with its ABN and the GST shown. Until you tick that you hold it, PayKicker posts the fees GST-free and says so on every payout. Once ticked, the GST is claimed at your fees tax code, and when the statement shows the GST on the fees PayKicker checks the two agree; if they don't, the payout waits for a look. Your accountant has the final word on what you claim." } },
+    { "@type": "Question", "name": "My till already records Uber Eats or DoorDash orders. Will they be counted twice?", "acceptedAnswer": { "@type": "Answer", "text": "No. You tell PayKicker once, per platform, that your till already records the orders. The sales then come into your books from the till as they do today, and PayKicker posts only the payout against that platform's clearing account. With Square connected, PayKicker suggests the answer from the payment names it sees, and you confirm it." } },
+    { "@type": "Question", "name": "What about DoorDash's monthly statement?", "acceptedAnswer": { "@type": "Answer", "text": "The monthly statement is a PDF, and PayKicker doesn't read it. Use the CSV reports instead: in the DoorDash Merchant Portal, Reports, Create report, Financials, then Payouts or Transactions breakdown. DoorDash emails you when the report is ready and keeps it for 7 days. Download it and upload it, or forward the email with the CSV attached." } },
+    { "@type": "Question", "name": "How are tips handled?", "acceptedAnswer": { "@type": "Answer", "text": "Tips are owed to your staff, so they are not income. They post to a tips account you choose, with no GST, and stay there until you pay them out." } },
+    { "@type": "Question", "name": "What does it cost?", "acceptedAnswer": { "@type": "Answer", "text": "Delivery payouts are part of the Sales sync and cost nothing extra: free up to 60 orders a month, $9.99 up to 500 and $29.99 unlimited, per month, inc GST. When PayKicker posts your delivery sales too, those orders count toward the same monthly total; when your till records them, they are already counted there." } },
+    { "@type": "Question", "name": "Do I need Square?", "acceptedAnswer": { "@type": "Answer", "text": "No. A café that takes delivery orders on the platforms' own tablets signs up for the Sales sync and connects MYOB or Xero; PayKicker then posts the delivery sales, with their GST, as well as each payout." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "PayKicker", "item": "https://paykicker.com.au/" },
+    { "@type": "ListItem", "position": 2, "name": "Integrations", "item": "https://paykicker.com.au/integrations" },
+    { "@type": "ListItem", "position": 3, "name": "Delivery payouts", "item": "https://paykicker.com.au/delivery-payouts" }
+  ]
+}
+</script>
+<style>
+/* Page-only: the two-case chooser and the doesn't-do-yet box. Tokens from board.css. */
+.dp-cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:clamp(2rem,3.4*var(--vw),3rem)}
+.dp-cases>li{padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}
+.dp-cases h3{font-size:1.125rem;margin-bottom:.5rem}
+.dp-cases p{color:var(--ink-2);max-width:none}
+.dp-cases p+p{margin-top:.625rem}
+.dp-cases b{color:var(--ink)}
+.dp-note{margin-top:1rem}
+.dp-not{margin-top:clamp(2.5rem,4*var(--vw),3.5rem);max-width:64rem}
+.dp-not h3{font-size:1.25rem;margin-bottom:.75rem}
+.dp-not ul{display:grid;gap:.625rem}
+.dp-not li{color:var(--ink-2);line-height:1.55;padding-left:1.125rem;position:relative}
+.dp-not li::before{content:"";position:absolute;left:0;top:.65em;width:.375rem;height:.375rem;border-radius:50%;background:var(--ink-2)}
+.dp-not b{color:var(--ink)}
+.vs-wrap+.vs-wrap{margin-top:clamp(2.5rem,4*var(--vw),3rem)}
+@media (max-width:1000px){.dp-cases{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<!-- shell:nav -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter"/><path d="M12 10v4.5M12 17v.5" stroke="currentColor" stroke-width="1.75"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M8.6 3.5 6.1 3.2a1.6 1.6 0 0 0-1.7 1.1c-.5 1.8-.3 3.9.7 6.1a17.6 17.6 0 0 0 8.5 8.5c2.2 1 4.3 1.2 6.1.7a1.6 1.6 0 0 0 1.1-1.7l-.3-2.5a1.6 1.6 0 0 0-1.2-1.4l-2.9-.7a1.6 1.6 0 0 0-1.5.4l-1.2 1.2a12.4 12.4 0 0 1-5.3-5.3l1.2-1.2a1.6 1.6 0 0 0 .4-1.5l-.7-2.9a1.6 1.6 0 0 0-1.4-1.2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V13M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="200" height="30"></a>
+    <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
+    <nav class="links" id="navlinks" aria-label="Main">
+      <a href="/construction">Construction</a>
+      <a href="/ap-automation">AP automation</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/partners">Partners</a>
+      <a href="/pricing">Pricing</a>
+      <a class="nav-tel" href="tel:+61340616223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>03&nbsp;4061&nbsp;6223</a>
+      <span class="nav-act">
+        <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
+        <a class="btn go" href="/#contact">Book a demo</a>
+      </span>
+    </nav>
+  </div>
+</header>
+<!-- /shell:nav -->
+
+<main id="main">
+
+<section class="hero sub" aria-labelledby="h-hero">
+  <div class="wrap">
+    <div class="hero-split">
+      <div class="hero-copy">
+        <h1 id="h-hero">Uber Eats and DoorDash payouts, posted into MYOB and Xero.</h1>
+        <p class="strap">Upload the weekly statement or forward the email. Each payout goes into your books with the commission, fees, refunds, tips and GST each on its own line, and nothing posted twice.</p>
+        <div class="acts">
+          <a class="btn go big" href="https://app.paykicker.com.au/signup?for=square" rel="noopener">Start free</a>
+          <a class="btn hair big" href="/pricing#square">See pricing</a>
+        </div>
+        <p class="fine-dim">Part of the Sales sync. Xero or MYOB stays your books. PayKicker never moves money.</p>
+        <div class="price-strip">
+          <p class="ps-big">Free to start<small>up to 60 orders a month, any number of shops</small></p>
+          <ul class="ps-facts">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>$9.99 up to 500 orders, $29.99 unlimited</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Delivery payouts included, no extra charge</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Prices per month, inc GST, billed monthly</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hero-shot">
+        <!-- One Uber Eats payout as PayKicker posts it: the runbook's worked example 1 (payout only, no tax invoice yet),
+             app repo docs/reference/DELIVERY-PAYOUTS.md. Example data, not a customer's. -->
+        <div class="tcard">
+          <p class="tcard-top"><b>One Uber Eats payout</b><span>Example data</span></p>
+          <table class="tbl" aria-label="One Uber Eats payout and where each line posts, example data">
+            <thead><tr><th scope="col">Line</th><th scope="col">Posts to</th><th scope="col" class="n">Amount</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Orders paid out</th><td class="c-why">Uber Eats clearing</td><td class="s n">55.00</td></tr>
+              <tr><th scope="row">Uber Eats fee</th><td class="c-why">Fees, GST-free until the tax invoice is held</td><td class="s n">&minus;16.50</td></tr>
+              <tr><th scope="row">Refund</th><td class="c-why">Off your sales, at GST</td><td class="s n">&minus;11.00</td></tr>
+              <tr><th scope="row">Offers on items</th><td class="c-why">Off your sales, at GST</td><td class="s n">&minus;3.30</td></tr>
+              <tr><th scope="row">Tips</th><td class="c-why">Tips owed to staff, no GST</td><td class="s n">2.00</td></tr>
+              <tr><th scope="row">Paid to your bank</th><td class="c-why">Your bank account</td><td class="s n"><b>26.20</b></td></tr>
+            </tbody>
+          </table>
+          <p class="tcard-note">The lines add up to the statement's own payout to the cent, or nothing posts. <b>One payout, one entry</b>, dated the payout date.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gate" id="what" aria-labelledby="h-what">
+  <div class="wrap">
+    <div class="gate-head">
+      <h2 id="h-what">Every line of the statement, on its own account.</h2>
+      <div class="gate-copy">
+        <p class="lede">The platform pays you less than you sold, and the gap is commission, fees, refunds and offers. PayKicker puts each one where your accountant expects it, against a clearing account for each platform.</p>
+      </div>
+    </div>
+    <div class="conn-body">
+      <div>
+        <h3>What it posts</h3>
+        <ul class="posts">
+          <li><b>One entry per payout</b>, dated the payout date. In MYOB a payout with both sales and fee lines goes as two journals the same day, so each side is reported correctly on your BAS.</li>
+          <li><b>Commission and fees</b> on your fees account; ads the platform charges on your marketing account.</li>
+          <li><b>Offers you fund, refunds, error charges and adjustments</b> off your sales, at your sales tax code.</li>
+          <li><b>Tips</b> on a tips account: owed to staff, not income.</li>
+          <li><b>A clearing account per platform</b>, so Uber Eats and DoorDash each clear to zero.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What it checks first</h3>
+        <ul class="posts">
+          <li><b>GST on the platform's fees</b> is claimed only once you tick that you hold its tax invoice. Until then the fees post GST-free and the payout says so.</li>
+          <li><b>A week that nets below zero</b> posts to the clearing account with no bank line; Uber's Remaining Balance on the next payout clears it.</li>
+          <li><b>A line it can't place</b>, such as a Reversal or Other payments, waits until you choose once: sales, fee or clearing. PayKicker remembers.</li>
+          <li><b>Figures that don't add up</b> to the statement's own payout are held as Needs a look, with the reason. PayKicker never posts a balancing line.</li>
+          <li><b>Never twice</b>: before writing, PayKicker looks for the entry in your file, so a retry finishes the job instead of doubling it.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gate" id="till" aria-labelledby="h-till">
+  <div class="wrap">
+    <h2 id="h-till" class="sec-h">Does your till already record delivery orders?</h2>
+    <ul class="dp-cases">
+      <li>
+        <h3>Yes: the orders come through Square</h3>
+        <p>Your Square sales already post to your books every night, delivery orders included. <b>PayKicker posts only the payout</b>, against the platform's clearing account, and never the sales twice.</p>
+        <p>Those orders are already counted in your Square orders for the month.</p>
+      </li>
+      <li>
+        <h3>No: the orders arrive on the platform's tablet</h3>
+        <p>Nothing else books them, so <b>PayKicker posts the sales too</b>, with their GST, as well as the payout.</p>
+        <p>Those orders count toward your Sales sync orders for the month.</p>
+      </li>
+    </ul>
+    <p class="note-dim dp-note">You confirm the answer once for each platform; with Square connected, PayKicker suggests it from the payment names it sees. Nothing posts until it is confirmed. Shopify cafés: the same choice, when Shopify sales sync opens.</p>
+  </div>
+</section>
+
+<section class="gate" id="start" aria-labelledby="h-start">
+  <div class="wrap">
+    <h2 id="h-start" class="sec-h">Three steps to the first payout.</h2>
+    <ol class="rows steps">
+      <li><h3 class="h3">Connect MYOB or Xero</h3><p>Sign up for the Sales sync and connect your file in the same step.</p></li>
+      <li><h3 class="h3">Bring in the weekly statement</h3><p>Upload the CSV, or forward the statement email with the CSV attached to your PayKicker address.</p></li>
+      <li><h3 class="h3">Confirm once how orders reach your books</h3><p>Pick the accounts and switch posting on. Press Post on each payout, or let each one post by itself overnight.</p></li>
+    </ol>
+    <details class="more-detail">
+      <summary>Which file to download<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+      <table class="tbl fold">
+        <thead><tr><th scope="col">Platform</th><th scope="col">Where</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Uber Eats</th><td data-l="Where">Uber Eats Manager, Reports, the <b>Payment Details</b> report, Download. One row per order, with the payout date. The weekly summary CSV under Payment History has no dates, so PayKicker asks for this one.</td></tr>
+          <tr><th scope="row">DoorDash</th><td data-l="Where">Merchant Portal, Reports, Create report, Financials, then <b>Payouts</b> (one row per payout) or <b>Transactions breakdown</b> (one row per order). DoorDash emails you when it is ready; the file stays in Reports for 7 days.</td></tr>
+        </tbody>
+      </table>
+    </details>
+    <details class="more-detail">
+      <summary>What your MYOB or Xero file needs<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+      <table class="tbl fold">
+        <thead><tr><th scope="col">For</th><th scope="col">In MYOB or Xero</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Clearing</th><td data-l="In MYOB or Xero">An account for each platform. In Xero it must not be a bank account: a current asset or a liability.</td></tr>
+          <tr><th scope="row">Payouts</th><td data-l="In MYOB or Xero">The bank account the payouts go into.</td></tr>
+          <tr><th scope="row">Fees and marketing</th><td data-l="In MYOB or Xero">An expense account for the platform's fees, and one for its ads if you buy them.</td></tr>
+          <tr><th scope="row">Sales</th><td data-l="In MYOB or Xero">Your sales account and its tax code; offers, refunds and error charges come off it.</td></tr>
+          <tr><th scope="row">Tips</th><td data-l="In MYOB or Xero">An account for tips owed to staff, if the platform pays you tips.</td></tr>
+          <tr><th scope="row">Tax codes</th><td data-l="In MYOB or Xero">MYOB: <code>GST</code> <code>FRE</code> <code>N-T</code>. Xero: <code>OUTPUT</code> <code>INPUT</code> <code>EXEMPTEXPENSES</code> <code>BASEXCLUDED</code>.</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </div>
+</section>
+
+<section class="gate" id="email" aria-labelledby="h-email">
+  <div class="wrap">
+    <div class="gate-head">
+      <h2 id="h-email">Forward the email. Hear about a missing week.</h2>
+      <div class="gate-copy">
+        <p class="lede">Your business has one PayKicker address. Forward the Uber Eats pay-statement email or DoorDash's report-ready email to it, with the CSV attached.</p>
+      </div>
+    </div>
+    <div class="conn-body">
+      <div>
+        <h3>Forwarded statements</h3>
+        <ul class="posts">
+          <li><b>Read automatically</b> when it comes from the email address of your own PayKicker login and your mailbox's checks pass.</li>
+          <li><b>Held, never lost</b>: an email PayKicker can't verify is kept aside with the reason, and you upload the CSV instead.</li>
+          <li><b>A new store is checked once</b>: the first emailed statement for a store waits for you to say it's yours.</li>
+          <li>An email without the CSV only tells PayKicker a statement is due.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Reminders</h3>
+        <ul class="posts">
+          <li><b>One email on Monday night</b>, once posting is on, to the owners and admins when a week's statement hasn't arrived by the Wednesday after the week closed.</li>
+          <li><b>A second the next week</b> if it still hasn't, then nothing until a statement arrives.</li>
+          <li><b>Payouts waiting 7 days or more</b> for a look are listed in the same email.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gate" id="pricing" aria-labelledby="h-price">
+  <div class="wrap">
+    <div class="gate-head">
+      <h2 id="h-price">Part of the Sales sync. Delivery adds nothing.</h2>
+      <div class="gate-copy">
+        <p class="lede">One price for your till and your delivery payouts, by orders a month across every shop. Prices include GST.</p>
+        <table class="tbl">
+          <thead><tr><th scope="col">Orders a month</th><th scope="col" class="n">A month inc GST</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Up to 60</th><td class="n">Free</td></tr>
+            <tr><th scope="row">Up to 500</th><td class="n">$9.99</td></tr>
+            <tr><th scope="row">Unlimited</th><td class="n">$29.99</td></tr>
+          </tbody>
+        </table>
+        <p class="note-dim more">Any number of shops on every plan. Billed monthly, cancel any time.</p>
+      </div>
+    </div>
+
+    <div class="vs-wrap" id="vs-hand">
+      <h3>PayKicker vs doing it by hand</h3>
+      <table class="tbl vs">
+        <thead><tr><th scope="col"><span class="sr">Each week</span></th><th scope="col" class="pk"><img src="/paykicker-icon-reversed.svg" alt="" width="22" height="22"><span>PayKicker</span></th><th scope="col">By hand</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">The weekly statement</th><td class="pk" data-l="PayKicker">Uploaded or forwarded, then read for you</td><td data-l="By hand">Downloaded, then typed in line by line</td></tr>
+          <tr><th scope="row">Commission, fees, refunds, offers and tips</th><td class="pk" data-l="PayKicker">Each on its own account</td><td data-l="By hand">Worked out from the statement</td></tr>
+          <tr><th scope="row">GST on the platform's fees</th><td class="pk" data-l="PayKicker">Claimed only once you hold the tax invoice, and said on every payout</td><td data-l="By hand">Up to you to remember</td></tr>
+          <tr><th scope="row">A week that nets below zero</th><td class="pk" data-l="PayKicker">Carried on the clearing account until the next payout clears it</td><td data-l="By hand">A journal to remember</td></tr>
+          <tr><th scope="row">Sales your till already records</th><td class="pk" data-l="PayKicker">Never posted twice</td><td data-l="By hand">Easy to count twice</td></tr>
+          <tr><th scope="row">A missing week</th><td class="pk" data-l="PayKicker">An email on Monday night</td><td data-l="By hand">Found at reconciliation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="vs-wrap" id="vs-apps">
+      <h3>PayKicker vs other apps</h3>
+      <table class="tbl vs">
+        <thead><tr><th scope="col"><span class="sr">Price</span></th><th scope="col" class="pk"><img src="/paykicker-icon-reversed.svg" alt="" width="22" height="22"><span>PayKicker</span></th><th scope="col">Other apps</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">A café, up to 500 orders a month</th><td class="pk" data-l="PayKicker"><mark class="hi">$9.99 a month inc GST</mark>, delivery included</td><td data-l="Other apps">From US$18 to US$49 a month before tax, with a cap on integrations <span class="ns">(the e-commerce accounting apps)</span></td></tr>
+          <tr><th scope="row">A multi-site group</th><td class="pk" data-l="PayKicker">Any number of shops; $29.99 a month inc GST for unlimited orders</td><td data-l="Other apps">Quote only <span class="ns">(a US-based reconciliation suite)</span></td></tr>
+        </tbody>
+      </table>
+      <p class="vs-note">Other apps: the public pricing of the e-commerce accounting apps (from US$18 to US$49 a month before tax, plans capped by the number of integrations) and of a US-based reconciliation suite (quote only, sold to multi-site groups), read 18 October 2026. PayKicker's prices are in Australian dollars, GST included, billed monthly.</p>
+    </div>
+
+    <div class="callout dp-not" id="not-yet">
+      <h3>What it doesn't do yet</h3>
+      <ul>
+        <li><b>No direct connection to Uber Eats or DoorDash yet.</b> Statements come in by upload or by forwarded email.</li>
+        <li><b>No Menulog.</b> Menulog closed in Australia in November 2025.</li>
+        <li><b>No PDFs.</b> PayKicker reads the platforms' CSV reports, not the PDF statements or the email's own text.</li>
+        <li><b>No opening of DoorDash's download link.</b> It sits behind your Merchant Portal login; download the CSV and upload or forward it.</li>
+        <li><b>No undo button.</b> A payout posted by mistake is reversed in MYOB or Xero, then skipped in PayKicker.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band-cta" aria-labelledby="h-go">
+  <div class="wrap">
+    <div>
+      <h2 id="h-go">Free up to 60 orders a month.</h2>
+      <p>Connect MYOB or Xero, bring in one week's statement and see the payout before it posts. No card to start.</p>
+    </div>
+    <div class="acts">
+      <a class="btn go big" href="https://app.paykicker.com.au/signup?for=square" rel="noopener">Start free</a>
+      <a class="btn hair big" href="/#contact">Book a demo</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="h-faq">
+  <div class="wrap faq-in">
+    <h2 id="h-faq">Questions.</h2>
+    <div>
+      <div class="qs">
+        <details><summary>Can I claim GST on Uber Eats and DoorDash commission?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Only when you hold the platform's tax invoice for its fees, with its ABN and the GST shown. Until you tick that you hold it, PayKicker posts the fees GST-free and says so on every payout. Once ticked, the GST is claimed at your fees tax code, and when the statement shows the GST on the fees PayKicker checks the two agree; if they don't, the payout waits for a look. Your accountant has the final word on what you claim.</p></details>
+        <details><summary>My till already records Uber Eats or DoorDash orders. Will they be counted twice?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. You tell PayKicker once, per platform, that your till already records the orders. The sales then come into your books from the till as they do today, and PayKicker posts only the payout against that platform's clearing account. With Square connected, PayKicker suggests the answer from the payment names it sees, and you confirm it.</p></details>
+        <details><summary>What about DoorDash's monthly statement?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>The monthly statement is a PDF, and PayKicker doesn't read it. Use the CSV reports instead: in the DoorDash Merchant Portal, Reports, Create report, Financials, then Payouts or Transactions breakdown. DoorDash emails you when the report is ready and keeps it for 7 days. Download it and upload it, or forward the email with the CSV attached.</p></details>
+        <details><summary>How are tips handled?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Tips are owed to your staff, so they are not income. They post to a tips account you choose, with no GST, and stay there until you pay them out.</p></details>
+        <details><summary>What does it cost?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Delivery payouts are part of the Sales sync and cost nothing extra: free up to 60 orders a month, $9.99 up to 500 and $29.99 unlimited, per month, inc GST. When PayKicker posts your delivery sales too, those orders count toward the same monthly total; when your till records them, they are already counted there.</p></details>
+        <details><summary>Do I need Square?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. A café that takes delivery orders on the platforms' own tablets signs up for the Sales sync and connects MYOB or Xero; PayKicker then posts the delivery sales, with their GST, as well as each payout.</p></details>
+      </div>
+      <ul class="rows related">
+        <li><span class="r-name">Square</span><p><a href="/integrations#square-myob">Square sales into MYOB</a> · <a href="/integrations#square-xero">into Xero</a></p></li>
+        <li><span class="r-name">Supplier bills</span><p>Read and coded into MYOB or Xero. <a href="/ap-automation">AP automation</a></p></li>
+        <li><span class="r-name">Every plan</span><p><a href="/pricing">Pricing</a> · <a href="/integrations">Integrations</a></p></li>
+      </ul>
+      <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Uber Eats, DoorDash, Xero, MYOB or Square.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- shell:footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="f-cols">
+      <div>
+        <p class="f-h" id="f-crews">For construction crews</p>
+        <ul aria-labelledby="f-crews"><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-any">For any business</p>
+        <ul aria-labelledby="f-any"><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/join">Join</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-acc">For accountants</p>
+        <ul aria-labelledby="f-acc"><li><a href="/partners">Become a partner</a></li><li><a href="/partner-terms">Partner terms</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-contact">Contact</p>
+        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
+      </div>
+    </div>
+    <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
+         as a PropertyValue identifier: keep the two in step. -->
+    <div class="legal">
+      <p class="legal-id"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="106" height="16"><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b></p>
+      <p>PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
+    </div>
+  </div>
+</footer>
+<!-- /shell:footer -->
+</body>
+</html>
