@@ -162,6 +162,20 @@ mark.hi{background:var(--hi);color:inherit;padding:.06em .3em;margin:0 -.1em;bor
 /* One orange in view: while a page's own primary action is on screen, the nav's Book a demo steps back (board.js). */
 .nav.quiet .nav-act .btn.go{background:var(--card);color:var(--ink);border-color:var(--border-2)}
 
+/* ---------------------------------------------------------------- the country bar (js/country-bar.js) */
+/* One slim line above the nav for a visitor Cloudflare places outside Australia, pointing at that country's page. In
+   the flow, not fixed: it scrolls away and the sticky nav takes the top, so it never covers a button. No orange at
+   rest (the view's one orange stays the page's own action); the link and Dismiss turn orange on hover and focus. */
+.cbar{background:var(--card);border-bottom:1px solid var(--border);color:var(--ink-2);font-size:.875rem;line-height:1.45}
+.cbar-in{display:flex;align-items:center;gap:.75rem;min-height:2.75rem}
+.cbar-t{flex:1 1 auto;min-width:0;margin:0;padding:.5rem 0;text-wrap:pretty}
+.cbar-a{display:inline-flex;align-items:center;gap:.35em;margin-left:.125rem;font-weight:500;color:var(--ink);white-space:nowrap;text-decoration:underline;text-decoration-color:var(--ul)}
+.cbar-a .ic{width:1em;height:1em;vertical-align:0}
+.cbar-x{flex:none;display:inline-flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;margin-right:-.5rem;padding:0;background:transparent;color:var(--ink-2);border:1px solid transparent;border-radius:var(--r-sm);cursor:pointer;transition:border-color var(--t),color var(--t)}
+.cbar-x .ic{width:1.125rem;height:1.125rem}
+.cbar-x:is(:hover,:focus-visible){color:var(--orange);border-color:var(--orange)}
+@media (max-width:640px){.cbar-x{width:2.75rem;height:2.75rem;margin-right:-.625rem}}
+
 /* ---------------------------------------------------------------- sections and rhythm */
 /* One rhythm. A plain section is spaced by margins, so two in a row collapse to one --sec between them; a band (the
    surface or the dark one) holds --sec inside top and bottom. */

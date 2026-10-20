@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PayKicker for New Zealand businesses: supplier invoices into Xero or MYOB | PayKicker</title>
+<meta name="description" content="Supplier invoices read and coded into Xero NZ or MYOB Business NZ, with GST at 15% split from the no-GST lines. Prices in NZ dollars, no GST added. 14 days free.">
+<link rel="icon" type="image/svg+xml" href="/paykicker-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/paykicker-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b0f14">
+<link rel="canonical" href="https://paykicker.com.au/nz/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PayKicker for New Zealand businesses: supplier invoices into Xero or MYOB">
+<meta property="og:description" content="Forward a bill or drop in the PDF. It is read, GST at 15% split from the no-GST lines, coded and sent to Xero NZ or MYOB Business NZ. NZ$ prices, no GST added.">
+<meta property="og:url" content="https://paykicker.com.au/nz/">
+<meta property="og:locale" content="en_NZ">
+<meta property="og:site_name" content="PayKicker">
+<meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PayKicker for New Zealand businesses: supplier invoices into Xero or MYOB">
+<meta name="twitter:description" content="Supplier invoices read, GST at 15% split, coded and sent to Xero NZ or MYOB Business NZ. NZ$ prices, no GST added. 14 days free.">
+<meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=e6a8f6d1">
+<script src="/js/board.js?v=13"></script>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
+<script src="/js/gtag.js"></script>
+<script src="/js/pixels.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://paykicker.com.au/nz/#software",
+  "name": "PayKicker for New Zealand",
+  "url": "https://paykicker.com.au/nz/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Supplier invoices for GST-registered New Zealand businesses: bills forwarded by email or uploaded, read, checked and coded, then sent to Xero NZ or MYOB Business NZ. GST at 15% and no-GST lines go onto the file's own tax codes. Prices in New Zealand dollars, with no GST added.",
+  "featureList": [
+    "Bills forwarded to your own invoices address, or uploaded as a PDF or photo",
+    "Tax invoices and taxable supply information both read",
+    "GST at 15% and no-GST lines split onto the file's own tax codes",
+    "Supplier matched by GST number and name in Xero NZ, by name in MYOB Business NZ",
+    "GST number checked against the IRD check digit",
+    "Duplicate bills caught, including bills already in Xero or MYOB",
+    "The bank account on a bill compared with the one held for that supplier",
+    "Bills go through without a job when the file has no jobs"
+  ],
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "NZD",
+    "lowPrice": "9.99",
+    "highPrice": "149",
+    "offerCount": "4"
+  },
+  "isPartOf": { "@type": "SoftwareApplication", "name": "PayKicker", "url": "https://paykicker.com.au/" },
+  "areaServed": "NZ",
+  "publisher": { "@id": "https://paykicker.com.au/#organization" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Do you charge New Zealand GST?", "acceptedAnswer": { "@type": "Answer", "text": "No. PayKicker Pty Ltd is an Australian company. You give your GST number or NZBN when you sign up, and with it New Zealand law treats the service as supplied outside New Zealand, so no New Zealand GST is added (GST Act 1985, ss 8(4D) and 8BB(2)). No Australian GST is charged either: each monthly invoice says GST is not charged because the service is supplied to a GST-registered business outside Australia. The price you see is the price you pay." } },
+    { "@type": "Question", "name": "Do I need a GST number?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, or your NZBN. PayKicker sells to GST-registered businesses in New Zealand only, and the sign-up does not finish without one. The number is checked for format: the IRD check digit for a GST number, the check digit for an NZBN. It is not looked up on a register." } },
+    { "@type": "Question", "name": "Does it work with MYOB Business NZ?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. PayKicker has been tested on a MYOB Business NZ file: bills go in as purchase bills on S15 and E. A MYOB Business NZ supplier card has no GST number, so suppliers are matched there by name. PayKicker has not yet been tested on an AccountRight NZ file; if you use AccountRight, email support@paykicker.com.au before you start." } },
+    { "@type": "Question", "name": "What about zero-rated and no-GST lines?", "acceptedAnswer": { "@type": "Answer", "text": "A bill with 15% lines and no-GST lines is split into a 15% part and a no-GST part that add up to the bill, each on its own tax code. In Xero NZ the no-GST part goes on No GST, because Xero NZ keeps Zero Rated for sales. In MYOB Business NZ it goes on E. PayKicker checks that the codes give the GST printed on the bill." } },
+    { "@type": "Question", "name": "Can I use it with Shopify, Square or Uber Eats?", "acceptedAnswer": { "@type": "Answer", "text": "Shopify sales sync for New Zealand stores is opening soon: it is built and tested, and waits on the Shopify App Store review. Square is not available in New Zealand. Uber Eats and DoorDash payouts are not available in New Zealand yet." } },
+    { "@type": "Question", "name": "Which currency am I billed in?", "acceptedAnswer": { "@type": "Answer", "text": "New Zealand dollars, once a month, by card through Stripe. The numbers are the same as the Australian prices, with no GST added: NZ$9.99, NZ$29.99, NZ$69.99 or NZ$149, for the band your month lands in. PayKicker Pty Ltd, an Australian company, issues the bill." } },
+    { "@type": "Question", "name": "Where is my data kept?", "acceptedAnswer": { "@type": "Answer", "text": "The main store of your data is in Australia, in a Sydney data centre. PayKicker's own encrypted backup copies are kept for 30 days in its hosting provider's Oceania storage region, which spans Australia and New Zealand. Some information, such as email and card payments, is handled overseas by the providers listed in the privacy policy." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "PayKicker", "item": "https://paykicker.com.au/" },
+    { "@type": "ListItem", "position": 2, "name": "New Zealand", "item": "https://paykicker.com.au/nz/" }
+  ]
+}
+</script>
+<style>
+/* Page-only: the doesn't-do-yet box (as delivery-payouts.html's dp-not). Tokens from board.css. */
+.nz-not{margin-top:clamp(2.5rem,4*var(--vw),3.5rem);max-width:64rem}
+.nz-not h3{font-size:1.25rem;margin-bottom:.75rem}
+.nz-not ul{display:grid;gap:.625rem}
+.nz-not li{color:var(--ink-2);line-height:1.55;padding-left:1.125rem;position:relative}
+.nz-not li::before{content:"";position:absolute;left:0;top:.65em;width:.375rem;height:.375rem;border-radius:50%;background:var(--ink-2)}
+.nz-not b{color:var(--ink)}
+.nz-not a{white-space:nowrap}
+</style>
+</head>
+<body>
+<!-- shell:nav -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter"/><path d="M12 10v4.5M12 17v.5" stroke="currentColor" stroke-width="1.75"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M8.6 3.5 6.1 3.2a1.6 1.6 0 0 0-1.7 1.1c-.5 1.8-.3 3.9.7 6.1a17.6 17.6 0 0 0 8.5 8.5c2.2 1 4.3 1.2 6.1.7a1.6 1.6 0 0 0 1.1-1.7l-.3-2.5a1.6 1.6 0 0 0-1.2-1.4l-2.9-.7a1.6 1.6 0 0 0-1.5.4l-1.2 1.2a12.4 12.4 0 0 1-5.3-5.3l1.2-1.2a1.6 1.6 0 0 0 .4-1.5l-.7-2.9a1.6 1.6 0 0 0-1.4-1.2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V13M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="200" height="30"></a>
+    <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
+    <nav class="links" id="navlinks" aria-label="Main">
+      <a href="/construction">Construction</a>
+      <a href="/ap-automation">AP automation</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/partners">Partners</a>
+      <a href="/pricing">Pricing</a>
+      <a class="nav-tel" href="tel:+61340616223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>03&nbsp;4061&nbsp;6223</a>
+      <span class="nav-act">
+        <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
+        <a class="btn go" href="/#contact">Book a demo</a>
+      </span>
+    </nav>
+  </div>
+</header>
+<!-- /shell:nav -->
+
+<main id="main">
+
+<section class="hero sub" aria-labelledby="h-hero">
+  <div class="wrap">
+    <div class="hero-split">
+      <div class="hero-copy">
+        <h1 id="h-hero">Supplier invoices into Xero or MYOB, for New Zealand businesses.</h1>
+        <p class="strap">Forward a bill or drop in the PDF. PayKicker reads it, splits GST at 15% from the no-GST lines, codes every line and sends it to Xero NZ or MYOB Business NZ, ready to pay.</p>
+        <div class="acts">
+          <a class="btn go big" href="https://app.paykicker.com.au/signup?via=xero" rel="noopener">Sign up with Xero</a>
+          <a class="btn hair big" href="https://app.paykicker.com.au/signup?via=myob" rel="noopener">Sign up with MYOB</a>
+        </div>
+        <p class="fine-dim">Sign up through your Xero or MYOB file, not by email: that is how PayKicker knows your business is in New Zealand. Xero or MYOB stays your books. PayKicker never moves money.</p>
+        <div class="price-strip">
+          <p class="ps-big">From NZ$9.99 a month<small>no GST added</small></p>
+          <ul class="ps-facts">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>14 days free, 8 invoices read</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>No card to start</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Cancel any time</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="hero-shot">
+        <!-- What a New Zealand business can use today. Statuses, not example data: they follow the app's PROVEN / HELD /
+             NOT_SOLD lists (app repo supabase/functions/_shared/tax/editions.js). Shopify going live: set data-live="true"
+             on #shopify below and this pill follows it. -->
+        <div class="tcard">
+          <p class="tcard-top"><b>In New Zealand</b><span>Into Xero NZ / MYOB Business NZ</span></p>
+          <table class="tbl" aria-label="What PayKicker does in New Zealand and whether it is open">
+            <thead><tr><th scope="col">What</th><th scope="col">Into</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Supplier invoices</th><td class="c-why">Xero NZ / MYOB Business NZ</td><td class="s"><span class="pill st-live">Live</span></td></tr>
+              <tr><th scope="row">Shopify sales</th><td class="c-why">Xero / MYOB</td><td class="s"><span class="pill st-soon" data-live-from="shopify" data-v-live="Live" data-cls-live="st-live">Opening soon</span></td></tr>
+              <tr><th scope="row">Uber Eats and DoorDash payouts</th><td class="c-why">Xero / MYOB</td><td class="s"><span class="pill st-coming">Not yet</span></td></tr>
+              <tr><th scope="row">Bank coding</th><td class="c-why">Xero / MYOB</td><td class="s"><span class="pill st-coming">Coming</span></td></tr>
+              <tr><th scope="row">Square sales</th><td class="c-why">Square does not operate in New Zealand</td><td class="s"><span class="pill st-coming">Not available</span></td></tr>
+              <tr><th scope="row">The crew system</th><td class="c-why">Rostering, dockets, EBA payroll</td><td class="s"><span class="pill st-coming">Australia only</span></td></tr>
+            </tbody>
+          </table>
+          <p class="tcard-note"><b>Live</b> means a New Zealand business can sign up and use it today.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gate" id="invoices" aria-labelledby="h-inv">
+  <div class="wrap">
+    <div class="gate-head">
+      <h2 id="h-inv">Supplier invoices, live in New Zealand now.</h2>
+      <div class="gate-copy">
+        <p class="lede">The same supplier invoices Australian businesses use, set to New Zealand: GST at 15%, GST numbers, New Zealand bank accounts and your file's own tax codes.</p>
+      </div>
+    </div>
+    <div class="conn-body">
+      <div>
+        <h3>What it does</h3>
+        <ul class="posts">
+          <li><b>Send it in</b>: forward bills to your own invoices address, or upload a PDF or photo.</li>
+          <li><b>Two readers</b> read every figure. Where they disagree, the figure is outlined for you to confirm against the bill.</li>
+          <li><b>Tax invoice or taxable supply information</b>: since 1 April 2023 IRD calls the GST record taxable supply information. PayKicker reads a bill headed either way.</li>
+          <li><b>GST at 15% split from the no-GST lines</b>, onto your file's own codes. Xero NZ: &ldquo;15% GST on Expenses&rdquo; and &ldquo;No GST&rdquo;. MYOB Business NZ: S15 and E.</li>
+          <li><b>Coded and approved</b>, then sent to Xero or MYOB as a bill ready to pay.</li>
+          <li><b>No jobs in your file?</b> Bills go through without one. Once the file has a job, every bill needs one.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What it checks first</h3>
+        <ul class="posts">
+          <li><b>The supplier</b>, matched in Xero NZ by GST number and name. A MYOB Business NZ supplier card has no GST number, so in MYOB the match is by name.</li>
+          <li><b>The GST number</b> on the bill, against the IRD check digit. PayKicker checks the format; it does not look the number up on a register.</li>
+          <li><b>Duplicates</b>: the same supplier, number and total as a bill already in PayKicker, Xero or MYOB.</li>
+          <li><b>The bank account</b>: the New Zealand account number on the bill (15 or 16 digits) is compared with the one your Xero or MYOB holds for that supplier. If they differ, the bill says not to pay until you have confirmed it with the supplier.</li>
+          <li><b>The GST maths</b>: subtotal plus GST equals the total, and the lines' tax codes give the GST printed on the bill.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gate" id="start" aria-labelledby="h-start">
+  <div class="wrap">
+    <h2 id="h-start" class="sec-h">Sign up through Xero or MYOB.</h2>
+    <ol class="rows steps">
+      <li><h3 class="h3">Press Sign up with Xero or Sign up with MYOB</h3><p>PayKicker takes your business name from the file and connects it in the same step. The email sign-up on that page is for Australian businesses: it asks for an ABN.</p></li>
+      <li><h3 class="h3">Give your GST number or NZBN</h3><p>Once PayKicker has read your New Zealand file, it asks for one. PayKicker sells to GST-registered businesses in New Zealand only. The number's check digit is checked; it is not looked up on a register.</p></li>
+      <li><h3 class="h3">Send in real bills</h3><p>14 days and 8 invoices read, free. No card to start. Add a card when you keep going.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="gate" id="pricing" aria-labelledby="h-price">
+  <div class="wrap">
+    <div class="gate-head">
+      <h2 id="h-price">The same numbers, in NZ dollars. No GST added.</h2>
+      <div class="gate-copy">
+        <p class="lede">You pay the band your month's count of invoices read lands in, so a quiet month costs less. Billed monthly in NZ$, by card.</p>
+        <table class="tbl">
+          <thead><tr><th scope="col">Band</th><th scope="col">Invoices a month</th><th scope="col" class="n">A month, NZ$</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Lite</th><td>Up to 20</td><td class="n">NZ$9.99</td></tr>
+            <tr><th scope="row">Starter</th><td>21 to 100</td><td class="n">NZ$29.99</td></tr>
+            <tr><th scope="row">Business</th><td>101 to 400</td><td class="n">NZ$69.99</td></tr>
+            <tr><th scope="row">Pro</th><td>401 to 2,000</td><td class="n">NZ$149</td></tr>
+            <tr><th scope="row">Over 2,000</th><td colspan="2">We'll price it with you.</td></tr>
+          </tbody>
+        </table>
+        <p class="note-dim more">No GST is added. PayKicker Pty Ltd is an Australian company, and the service is supplied to a GST-registered business outside Australia, so each monthly invoice says GST is not charged. With your GST number or NZBN, New Zealand law treats the service as supplied outside New Zealand, so no New Zealand GST is added either (GST Act 1985, ss 8(4D) and 8BB(2)).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shopify for New Zealand stores. Going live: set data-live="true" here; the hero pill follows it, the pill and the
+     button below swap. Built and proven on staging (app repo DECISIONS "Pass 934", Xero NZ INV-0001); held on production
+     until the Shopify App Store review is through (editions.js HELD). -->
+<section class="conn" id="shopify" data-live="false" aria-labelledby="h-shop">
+  <div class="wrap">
+    <p class="conn-name"><span>Shopify sales</span><svg class="ic arrow" aria-hidden="true"><use href="#i-arrow"/></svg><span>Xero / MYOB</span>
+      <span class="pill st-soon if-soon">Opening soon</span><span class="pill st-live if-live">Live</span></p>
+    <div class="gate-head">
+      <h2 id="h-shop">Shopify for New Zealand stores: opening soon.</h2>
+      <div class="gate-copy">
+        <p class="lede">Built and tested on a New Zealand test store: a day's orders posted into Xero NZ as one sales invoice, with the 15% GST inside the prices. A New Zealand store cannot connect yet, because PayKicker's Shopify App Store listing is still under review.</p>
+        <div class="blank more"><p>Free up to 60 orders a month, any number of locations. The paid plans' prices are set when it opens.</p></div>
+        <p class="gate-acts"><a class="btn hair if-soon" href="/#contact">Tell me when it opens</a><a class="btn hair" href="/integrations#shopify">What it will post</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gate" id="not-yet" aria-labelledby="h-not">
+  <div class="wrap">
+    <h2 id="h-not" class="sec-h">What PayKicker does not do in New Zealand yet.</h2>
+    <div class="callout nz-not">
+      <ul>
+        <li><b>No Square.</b> Square is not available in New Zealand, so there is no Square sales sync there.</li>
+        <li><b>No Uber Eats or DoorDash payouts yet.</b> PayKicker has not yet seen a real New Zealand statement, so it does not post them to a New Zealand file. <a href="/#contact">Tell me when</a></li>
+        <li><b>No bank coding yet.</b> It is coming, in New Zealand as in Australia.</li>
+        <li><b>No crew system.</b> Rostering, dockets and EBA payroll are built for Australian awards and agreements only.</li>
+        <li><b>No email sign-up.</b> A New Zealand business signs up through its Xero or MYOB file.</li>
+        <li><b>No register check.</b> GST numbers and NZBNs are checked for format, not looked up.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band-cta" aria-labelledby="h-go">
+  <div class="wrap">
+    <div>
+      <h2 id="h-go">14 days free. 8 invoices read.</h2>
+      <p>Connect Xero or MYOB, send in real bills and watch them land coded. No card to start.</p>
+    </div>
+    <div class="acts">
+      <a class="btn go big" href="https://app.paykicker.com.au/signup?via=xero" rel="noopener">Sign up with Xero</a>
+      <a class="btn hair big" href="https://app.paykicker.com.au/signup?via=myob" rel="noopener">Sign up with MYOB</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="h-faq">
+  <div class="wrap faq-in">
+    <h2 id="h-faq">Questions.</h2>
+    <div>
+      <div class="qs">
+        <details><summary>Do you charge New Zealand GST?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. PayKicker Pty Ltd is an Australian company. You give your GST number or NZBN when you sign up, and with it New Zealand law treats the service as supplied outside New Zealand, so no New Zealand GST is added (GST Act 1985, ss 8(4D) and 8BB(2)). No Australian GST is charged either: each monthly invoice says GST is not charged because the service is supplied to a GST-registered business outside Australia. The price you see is the price you pay.</p></details>
+        <details><summary>Do I need a GST number?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes, or your NZBN. PayKicker sells to GST-registered businesses in New Zealand only, and the sign-up does not finish without one. The number is checked for format: the IRD check digit for a GST number, the check digit for an NZBN. It is not looked up on a register.</p></details>
+        <details><summary>Does it work with MYOB Business NZ?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. PayKicker has been tested on a MYOB Business NZ file: bills go in as purchase bills on S15 and E. A MYOB Business NZ supplier card has no GST number, so suppliers are matched there by name. PayKicker has not yet been tested on an AccountRight NZ file; if you use AccountRight, email <a href="mailto:support@paykicker.com.au">support@paykicker.com.au</a> before you start.</p></details>
+        <details><summary>What about zero-rated and no-GST lines?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>A bill with 15% lines and no-GST lines is split into a 15% part and a no-GST part that add up to the bill, each on its own tax code. In Xero NZ the no-GST part goes on No GST, because Xero NZ keeps Zero Rated for sales. In MYOB Business NZ it goes on E. PayKicker checks that the codes give the GST printed on the bill.</p></details>
+        <details><summary>Can I use it with Shopify, Square or Uber Eats?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Shopify sales sync for New Zealand stores is opening soon: it is built and tested, and waits on the Shopify App Store review. Square is not available in New Zealand. Uber Eats and DoorDash payouts are not available in New Zealand yet.</p></details>
+        <details><summary>Which currency am I billed in?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>New Zealand dollars, once a month, by card through Stripe. The numbers are the same as the Australian prices, with no GST added: NZ$9.99, NZ$29.99, NZ$69.99 or NZ$149, for the band your month lands in. PayKicker Pty Ltd, an Australian company, issues the bill.</p></details>
+        <details><summary>Where is my data kept?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>The main store of your data is in Australia, in a Sydney data centre. PayKicker's own encrypted backup copies are kept for 30 days in its hosting provider's Oceania storage region, which spans Australia and New Zealand. Some information, such as email and card payments, is handled overseas by the providers listed in the <a href="/privacy#overseas">privacy policy</a>.</p></details>
+      </div>
+      <ul class="rows related">
+        <li><span class="r-name">Talk to us</span><p><a href="mailto:support@paykicker.com.au">support@<wbr>paykicker.com.au</a> · <a href="tel:+61340616223">+61 3 4061 6223</a></p></li>
+        <li><span class="r-name">Supplier invoices</span><p>How it works in full. <a href="/ap-automation">AP automation</a></p></li>
+        <li><span class="r-name">Every plan</span><p><a href="/pricing">Pricing</a> · <a href="/integrations">Integrations</a></p></li>
+      </ul>
+      <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Xero, MYOB, Shopify, Square, Uber Eats or DoorDash.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- shell:footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="f-cols">
+      <div>
+        <p class="f-h" id="f-crews">For construction crews</p>
+        <ul aria-labelledby="f-crews"><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-any">For any business</p>
+        <ul aria-labelledby="f-any"><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/nz/" aria-current="page">New Zealand</a></li><li><a href="/join">Join</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-acc">For accountants</p>
+        <ul aria-labelledby="f-acc"><li><a href="/partners">Become a partner</a></li><li><a href="/partner-terms">Partner terms</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-contact">Contact</p>
+        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
+      </div>
+    </div>
+    <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
+         as a PropertyValue identifier: keep the two in step. -->
+    <div class="legal">
+      <p class="legal-id"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="106" height="16"><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b></p>
+      <p>PayKicker is payroll software and does not provide legal or industrial relations advice. Verify your pay rules against your FWC-approved enterprise agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
+    </div>
+  </div>
+</footer>
+<script src="/js/country-bar.js" defer></script>
+<!-- /shell:footer -->
+</body>
+</html>
