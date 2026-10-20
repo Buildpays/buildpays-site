@@ -1,7 +1,7 @@
 {
  "_comment": "Employers with a CFMEU (Victorian Construction and General Division) enterprise agreement in force, from the Fair Work Commission's yearly lists of approved agreements. Built by scripts/cfmeu/fwc_employers.py; do not edit by hand.",
- "as_at": "2026-10-13",
- "list_generated": "2026-10-10",
+ "as_at": "2026-10-20",
+ "list_generated": "2026-10-19",
  "source_url": "https://www.fwc.gov.au/work-conditions/enterprise-agreements/find-enterprise-agreement",
  "search_url": "https://www.fwc.gov.au/document-search?search-ui=agreements",
  "files": [
@@ -29,12 +29,12 @@
   {
    "year": 2026,
    "url": "https://www.fwc.gov.au/documents/agreements/resources/agreements2026.xlsx",
-   "sha256": "f89075a34f92bec9d8a700455db0691b4ae67ffdd049f99df1346cf2dd2cb054",
-   "generated": "2026-10-10",
-   "rows": 2580
+   "sha256": "fd564c1ab35abd98918fc71a092b0669e1a8b5572ec5bbe4b9b663567688153a",
+   "generated": "2026-10-19",
+   "rows": 2634
   }
  ],
- "count": 1023,
+ "count": 1024,
  "sectors": {
   "Head contractors and builders": [
    {
@@ -3820,6 +3820,13 @@
     "name": "Rapid Passive Fire Pty Ltd",
     "agreement_id": "AE530614",
     "operative": "2025-10-06",
+    "expiry": "2027-07-02",
+    "nominal_expiry_passed": false
+   },
+   {
+    "name": "Smoke Control Systems Pty Ltd",
+    "agreement_id": "AE534371",
+    "operative": "2026-10-23",
     "expiry": "2027-07-02",
     "nominal_expiry_passed": false
    },
