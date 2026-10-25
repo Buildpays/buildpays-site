@@ -237,3 +237,19 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+/* A link to a question opens it (/partners "Already a partner?" -> #already): when the page or the hash lands on a <details>,
+   it opens. TR, 25 Oct 2026: the questions expand like the other pages. */
+(function () {
+  'use strict';
+  function openTarget() {
+    var id = '';
+    try { id = decodeURIComponent((location.hash || '').slice(1)); } catch (e) { return; }
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') el.open = true;
+  }
+  window.addEventListener('hashchange', openTarget);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', openTarget);
+  else openTarget();
+})();
