@@ -53,7 +53,7 @@
     if (worstDown) {
       head.textContent = "We have a problem";
       sub.textContent = !app
-        ? "This device cannot reach the app. If other sites load, it is us — please phone 03 4061 6223."
+        ? "This device cannot reach the app. If other sites load, it is us — please phone (03) 4061 6223."
         : "The app is reachable but the database is not answering. We are almost certainly already on it.";
     } else if (degraded) {
       head.textContent = "Working, with something behind";

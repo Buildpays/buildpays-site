@@ -465,7 +465,7 @@
       "kind": "nav",
       "refersTo": "nav",
       "description": "64px bar: the reversed logo, links that turn orange, the number, Log in and Book a demo; the current page underlined.",
-      "html": "<nav class=\"ds-nav\"><b class=\"ds-logo\">PAY<i>KICKER</i></b><a href=\"#\">Construction</a><a href=\"#\" aria-current=\"page\">AP automation</a><a href=\"#\">Integrations</a><a href=\"#\">Pricing</a><span>03 4061 6223</span><a class=\"ds-nb\" href=\"#\">Log in</a><a class=\"ds-nb ds-ng\" href=\"#\">Book a demo</a></nav>",
+      "html": "<nav class=\"ds-nav\"><b class=\"ds-logo\">PAY<i>KICKER</i></b><a href=\"#\">Construction</a><a href=\"#\" aria-current=\"page\">AP automation</a><a href=\"#\">Integrations</a><a href=\"#\">Pricing</a><span>(03) 4061 6223</span><a class=\"ds-nb\" href=\"#\">Log in</a><a class=\"ds-nb ds-ng\" href=\"#\">Book a demo</a></nav>",
       "css": ".ds-nav{display:flex;align-items:center;gap:1.625rem;height:4rem;padding:0 1.5rem;background:#0b0f14;border-bottom:1px solid rgba(255,255,255,.10);font:500 .9375rem Geist,system-ui,sans-serif;color:#f3f5f7;white-space:nowrap}.ds-logo{margin-right:auto;font-weight:700;font-size:1.25rem}.ds-logo i{color:#f25c1f}.ds-nav a{color:#f3f5f7;text-decoration:none;padding:.375rem 0;transition:color .15s}.ds-nav a:hover{color:#f25c1f}.ds-nav a[aria-current=\"page\"]{box-shadow:inset 0 -2px 0 #f3f5f7}.ds-nav .ds-nb{display:inline-flex;align-items:center;min-height:2.5rem;padding:0 1rem;border-radius:.5rem;border:1px solid rgba(255,255,255,.22);background:#131922;font-weight:600;font-size:.875rem}.ds-nav .ds-nb:hover{border-color:#f25c1f}.ds-nav .ds-ng{background:#f25c1f;border-color:#f25c1f;color:#0b1826}.ds-nav .ds-ng:hover{background:#e04f14;color:#0b1826}"
     },
     {

@@ -32,7 +32,7 @@ Founder story, confirmed usable on the site (TR, 25 Sep 2026): PayKicker was bui
 - Melbourne, Victoria. Pay cycle is weekly; the 6am site allocation board, SWMS and induction gates, the 36-hour week RDO calendar, and Cup Day are real rituals of the audience's week.
 - Office tooling: MYOB AccountRight/Business payroll, Excel cost reports and dayworks valuations against a client rate schedule, the FWC-approved enterprise agreement PDF (about 186 pages), Incolink and CBUS obligations.
 - Workers use a phone web app added to the home screen: no app store, no passwords.
-- The site's only conversion path is the Web3Forms enquiry form (fires GA4 `generate_lead` on confirmed send, posts hidden attribution fields) plus a `mailto:` and the phone number 03 4061 6223.
+- The site's only conversion path is the Web3Forms enquiry form (fires GA4 `generate_lead` on confirmed send, posts hidden attribution fields) plus a `mailto:` and the phone number (03) 4061 6223.
 
 ## Capabilities and Constraints
 

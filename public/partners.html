@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/css/board.css?v=e6a8f6d1">
-<script src="/js/board.js?v=13"></script>
+<script src="/js/board.js?v=14"></script>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
@@ -93,7 +93,7 @@
 <header class="nav" id="top">
   <div class="wrap nav-in">
     <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="200" height="30"></a>
-    <a class="nav-call" href="tel:+61340616223" aria-label="Call 03 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
+    <a class="nav-call" href="tel:+61340616223" aria-label="Call (03) 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <nav class="links" id="navlinks" aria-label="Main">
       <a href="/construction">Construction</a>
@@ -101,7 +101,7 @@
       <a href="/integrations">Integrations</a>
       <a href="/partners" aria-current="page">Partners</a>
       <a href="/pricing">Pricing</a>
-      <a class="nav-tel" href="tel:+61340616223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>03&nbsp;4061&nbsp;6223</a>
+      <a class="nav-tel" href="tel:+61340616223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>(03)&nbsp;4061&nbsp;6223</a>
       <span class="nav-act">
         <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
         <a class="btn go" href="/#contact">Book a demo</a>
@@ -182,13 +182,15 @@
     <p><strong>50% off its first 3 bills</strong> that carry a charge. Its price is not higher because it was referred. We tell the business that you receive a referral fee — at sign-up, in its welcome email and on its billing page — and you agree to tell them too.</p>
 
     <h2>Questions</h2>
-    <p class="q"><strong>Do I need an ABN?</strong> No. Anyone can be a partner.</p>
-    <p class="q"><strong>Do I charge GST?</strong> No invoice is needed and the fee is GST-inclusive. Your own tax on what you receive is yours to handle; ask your accountant.</p>
-    <p class="q"><strong>Can I refer my own business?</strong> No — a sign-up with the partner's own email isn't tagged.</p>
-    <p class="q"><strong>Can I connect my client's Xero or MYOB?</strong> Yes, if you're an Adviser or Standard user on the client's Xero, or have access to its MYOB company file. Square needs the owner to add you on Square with full permissions; if they haven't, the owner gets a “Connect your Square” link.</p>
-    <p class="q"><strong>Who approves the invoices?</strong> The owner decides. Your firm doesn't approve invoices unless the owner ticks Approve or names your firm on an approval path.</p>
-    <p class="q"><strong>Who pays, my firm or the client?</strong> You choose for each client. If your firm pays, you get one monthly tax invoice at the full price listing each client you pay for, and your referral fees are set against that bill as a credit. If the client pays, it adds its own card.</p>
-    <p class="q" id="already"><strong>I'm already a partner. What changes?</strong> Nothing, unless you want it to. You can turn your partner link into a practice account and keep your code, the businesses you referred and your earnings. A business you referred doesn't share its books with your firm unless its owner adds your firm.</p>
+    <div class="qs">
+      <details><summary>Do I need an ABN?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. Anyone can be a partner.</p></details>
+      <details><summary>Do I charge GST?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No invoice is needed and the fee is GST-inclusive. Your own tax on what you receive is yours to handle; ask your accountant.</p></details>
+      <details><summary>Can I refer my own business?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No — a sign-up with the partner's own email isn't tagged.</p></details>
+      <details><summary>Can I connect my client's Xero or MYOB?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes, if you're an Adviser or Standard user on the client's Xero, or have access to its MYOB company file. Square needs the owner to add you on Square with full permissions; if they haven't, the owner gets a “Connect your Square” link.</p></details>
+      <details><summary>Who approves the invoices?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>The owner decides. Your firm doesn't approve invoices unless the owner ticks Approve or names your firm on an approval path.</p></details>
+      <details><summary>Who pays, my firm or the client?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>You choose for each client. If your firm pays, you get one monthly tax invoice at the full price listing each client you pay for, and your referral fees are set against that bill as a credit. If the client pays, it adds its own card.</p></details>
+      <details id="already"><summary>I'm already a partner. What changes?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Nothing, unless you want it to. You can turn your partner link into a practice account and keep your code, the businesses you referred and your earnings. A business you referred doesn't share its books with your firm unless its owner adds your firm.</p></details>
+    </div>
     <p class="q">The full rules: <a href="/partner-terms">partner terms</a>. Questions: <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a>.</p>
     <p class="q paper-act"><a class="btn go big" href="https://app.paykicker.com.au/partners" rel="noopener">Become a partner</a></p>
   </article>
@@ -220,7 +222,7 @@
       </div>
       <div>
         <p class="f-h" id="f-contact">Contact</p>
-        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">03 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
+        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">(03) 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
       </div>
     </div>
     <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
