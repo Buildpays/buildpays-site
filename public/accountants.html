@@ -111,11 +111,14 @@
 #vs{max-width:none}
 /* TR, 26 Oct 2026: "add logos to here" / "add Square before sales with logo and logos for xero and myob". The marks are
    Simple Icons 13.21.0 paths (CC0), drawn as each brand shows them on a dark ground: Square in white, Xero's blue disc with
-   white letters, MYOB's white letters on its purple tile. The word always follows the mark; the mark is aria-hidden. */
+   white letters, MYOB's white letters on its purple tile. Square's word follows its mark (aria-hidden); Xero and MYOB show the mark alone, named by aria-label. */
 :root{--bm-xero:#13b5ea;--bm-myob:#6100a5;--bm-on:#fff;--hi-orange:rgba(242,92,31,.24);--hi-orange-line:rgba(242,92,31,.45)}
 .bm{white-space:nowrap}
 .bm-i{display:inline-block;width:.82em;height:.82em;margin:0 .18em 0 .04em;vertical-align:-.08em}
 .acc-hero h1 .bm-i{width:.74em;height:.74em;vertical-align:-.04em}
+/* TR: "I don't think words Xero and MYOB are needed after logos" — their marks carry the name (aria-label for a screen reader). */
+.bm-i.bm-only{width:1.05em;height:1.05em;margin:0 .06em;vertical-align:-.2em}
+.acc-hero h1 .bm-i.bm-only{width:.92em;height:.92em;vertical-align:-.12em}
 /* TR: "why is the highlight a wierd colour?" — the site's amber money wash (--hi) turns olive on this table's dark cell; here
    PayKicker's prices carry the brand orange instead (TR: "Why can't it be our brand orange highlight?"). */
 #vs mark.hi{background:var(--hi-orange);color:var(--ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--hi-orange-line)}
@@ -168,7 +171,7 @@
 </svg>
 <section class="hero sub acc-hero" aria-labelledby="h-hero">
   <div class="wrap hero-c">
-    <h1 id="h-hero">Your clients' invoices and <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-square"/></svg>Square</span> sales into <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-xero"/></svg>Xero</span> or <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-myob"/></svg>MYOB</span>, from one screen.</h1>
+    <h1 id="h-hero">Your clients' invoices and <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-square"/></svg>Square</span> sales into <svg class="bm-i bm-only" role="img" aria-label="Xero"><use href="#bm-xero"/></svg> or <svg class="bm-i bm-only" role="img" aria-label="MYOB"><use href="#bm-myob"/></svg>, from one screen.</h1>
     <p class="strap">And earn 15% of what they pay PayKicker for a year.</p>
     <div class="acts">
       <!-- data-utm: js/accountants.js carries the visit's utm_* on to the app (from an email); without them the link is plain. -->
@@ -216,7 +219,7 @@
             <div class="win" data-full="/screens/sales-days.webp" data-full-w="1144" data-full-alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers."><img src="/screens/card-sales.webp" width="433" height="325" style="max-width:1120px;max-height:841px" alt="PayKicker Sales, October's day summaries, example data: 513 orders, $19,923 net sales after $25 refunds, $1,449 GST, $20,168 takings including $159 tips, and Thursday 8 October posted to MYOB as #1201: sales $1,873.00, GST $136.22, 43 orders, card $1,558.36, cash $337.14." loading="lazy" decoding="async"></div>
           </div>
           <div class="pc-foot">
-            <p><span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-square"/></svg>Square</span> sales posted to <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-xero"/></svg>Xero</span> or <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-myob"/></svg>MYOB</span> every night, and each Square, Uber Eats and DoorDash payout with its fees.</p>
+            <p><span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-square"/></svg>Square</span> sales posted to <svg class="bm-i bm-only" role="img" aria-label="Xero"><use href="#bm-xero"/></svg> or <svg class="bm-i bm-only" role="img" aria-label="MYOB"><use href="#bm-myob"/></svg> every night, and each Square, Uber Eats and DoorDash payout with its fees.</p>
             <a class="tl" href="/integrations#square-myob">Sales sync<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </article>
