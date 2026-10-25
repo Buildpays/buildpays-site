@@ -487,13 +487,15 @@ html.lb-open{overflow:hidden}
 @media (max-width:900px){.faq-in{grid-template-columns:1fr}}
 
 /* ---------------------------------------------------------------- footer */
-/* TR, 26 Oct 2026: "footer is taking too much space" — each group is ONE row now: its heading, then its links across (they
-   wrap). Four rows and the legal line instead of four tall columns. */
-.foot{border-top:1px solid var(--border);background:var(--surface);padding:2rem 0 1.25rem;font-size:.875rem;line-height:1.4}
-.f-cols{display:flex;flex-direction:column;gap:.625rem}
-.f-cols>div{display:grid;grid-template-columns:11.5rem minmax(0,1fr);gap:.25rem 1.5rem;align-items:baseline}
-.foot .f-h{margin:0;font-weight:500;font-size:.8125rem;color:var(--ink-2)}
-.foot ul{display:flex;flex-wrap:wrap;gap:.375rem 1.375rem}
+/* TR, 26 Oct 2026: "footer is taking too much space" … "no, make it as colums like bfore but not take that much space". The
+   four columns stay; the two long lists (For any business, Contact) run in two short sub-columns, and the spacing is tighter —
+   the tallest column is five links. */
+.foot{border-top:1px solid var(--border);background:var(--surface);padding:2.25rem 0 1.25rem;font-size:.875rem;line-height:1.4}
+.f-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.75fr) minmax(0,.9fr) minmax(0,1.75fr);gap:1.5rem 2rem}
+.foot .f-h{margin:0 0 .5rem;font-weight:500;font-size:.8125rem;color:var(--ink-2)}
+.foot ul{display:flex;flex-direction:column;gap:.3125rem}
+.f-cols>div:is(:nth-child(2),:nth-child(4)) ul{display:block;columns:2;column-gap:1.5rem}
+.f-cols>div:is(:nth-child(2),:nth-child(4)) li{break-inside:avoid;padding-bottom:.3125rem}
 .foot a{color:var(--ink)}
 .foot a:hover{text-decoration:none}
 .foot a[aria-current="page"]{font-weight:600}
@@ -503,8 +505,8 @@ html.lb-open{overflow:hidden}
 .legal-id img{width:7.5rem;height:auto}
 .legal p{color:var(--ink-2);font-size:.8125rem;line-height:1.5}
 .legal b{color:var(--ink);font-weight:500}
-@media (max-width:900px){.f-cols{gap:1rem}.f-cols>div{grid-template-columns:minmax(0,1fr)}.legal{grid-template-columns:1fr}}
-@media (max-width:640px){.foot{font-size:.9375rem;padding-top:1.75rem}.foot ul{gap:.5rem 1.25rem}.foot ul a{display:inline-block;padding:.125rem 0}.legal p,.legal-id{font-size:.875rem}}
+@media (max-width:900px){.f-cols{grid-template-columns:1fr 1fr;gap:1.25rem 1.5rem}.f-cols>div:is(:nth-child(2),:nth-child(4)) ul{columns:1}.legal{grid-template-columns:1fr}}
+@media (max-width:640px){.foot{font-size:.9375rem;padding-top:1.75rem}.foot ul{gap:.25rem}.foot ul a{display:inline-block;padding:.1875rem 0}.legal p,.legal-id{font-size:.875rem}}
 
 /* ---------------------------------------------------------------- lists and steps */
 /* Rows: a name and a line, hairlines between. */
