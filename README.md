@@ -3,6 +3,11 @@ Marketing site for PayKicker (paykicker.com.au). Static HTML — no build step.
 
 Everything served lives in `public/`.
 
+The one exception is `functions/` (Cloudflare Pages Functions, compiled from the repo root): `functions/r/[token].js` and
+`functions/o/[token].js` answer `paykicker.com.au/r/<token>` and `/o/<token>.gif`, the tracked links and open picture in the app's
+sales-CRM emails. Each hands the request (with its User-Agent) to the app's public `crm-track` edge function and passes its 302 / GIF
+back; on any failure a click goes to the home page and an open still gets the GIF. No secret lives here. `node scripts/track-proxy.test.mjs`.
+
 - `index.html` — marketing site
 - `css/board.css` + `js/board.js` — the site system (the departures-board world: tokens, nav, footer, board rows, the paper reading sheet for guides, compare and legal pages, forms, tables). Page-only CSS stays inline. `scripts/shell.py` stamps the one nav and footer (`scripts/shell/`) into every page; `--check` lists drift. `css/setout.css` survives only for the self-contained worker training page.
 - `eba-payroll-software.html` — landing page, EBA/CFMEU payroll keyword cluster
