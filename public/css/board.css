@@ -496,7 +496,7 @@ html.lb-open{overflow:hidden}
 .foot ul{display:flex;flex-direction:column;gap:.3125rem}
 .f-cols>div:is(:nth-child(2),:nth-child(4)) ul{display:block;columns:2;column-gap:1.5rem}
 .f-cols>div:is(:nth-child(2),:nth-child(4)) li{break-inside:avoid;padding-bottom:.3125rem}
-.f-cols>div:nth-child(4) li:nth-child(-n+2){column-span:all}   /* the phone and the email run across both: the address never wraps */
+.f-cols>div:nth-child(4) li:nth-child(-n+3){column-span:all}   /* phone, email and Melbourne run across both; the four links sit 2 × 2 */
 .foot a{color:var(--ink)}
 .foot a:hover{text-decoration:none}
 .foot a[aria-current="page"]{font-weight:600}
@@ -507,7 +507,7 @@ html.lb-open{overflow:hidden}
 .legal p{color:var(--ink-2);font-size:.8125rem;line-height:1.5}
 .legal b{color:var(--ink);font-weight:500}
 @media (max-width:900px){.f-cols{grid-template-columns:1fr 1fr;gap:1.25rem 1.5rem}.f-cols>div:is(:nth-child(2),:nth-child(4)) ul{columns:1}.legal{grid-template-columns:1fr}}
-@media (max-width:640px){.foot{font-size:.9375rem;padding-top:1.75rem}.foot ul{gap:.25rem}.foot ul a{display:inline-block;padding:.1875rem 0}.legal p,.legal-id{font-size:.875rem}}
+@media (max-width:640px){.f-cols{grid-auto-flow:row dense}.f-cols>div:is(:nth-child(2),:nth-child(4)){grid-column:1/-1}.f-cols>div:is(:nth-child(2),:nth-child(4)) ul{columns:2}.foot{font-size:.9375rem;padding-top:1.75rem}.foot ul{gap:.25rem}.foot ul a{display:inline-block;padding:.1875rem 0}.legal p,.legal-id{font-size:.875rem}}
 
 /* ---------------------------------------------------------------- lists and steps */
 /* Rows: a name and a line, hairlines between. */
