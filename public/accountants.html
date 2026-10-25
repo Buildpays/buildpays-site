@@ -112,13 +112,13 @@
 /* TR, 26 Oct 2026: "add logos to here" / "add Square before sales with logo and logos for xero and myob". The marks are
    Simple Icons 13.21.0 paths (CC0), drawn as each brand shows them on a dark ground: Square in white, Xero's blue disc with
    white letters, MYOB's white letters on its purple tile. The word always follows the mark; the mark is aria-hidden. */
-:root{--bm-xero:#13b5ea;--bm-myob:#6100a5;--bm-on:#fff}
+:root{--bm-xero:#13b5ea;--bm-myob:#6100a5;--bm-on:#fff;--hi-orange:rgba(242,92,31,.24);--hi-orange-line:rgba(242,92,31,.45)}
 .bm{white-space:nowrap}
 .bm-i{display:inline-block;width:.82em;height:.82em;margin:0 .18em 0 .04em;vertical-align:-.08em}
 .acc-hero h1 .bm-i{width:.74em;height:.74em;vertical-align:-.04em}
 /* TR: "why is the highlight a wierd colour?" — the site's amber money wash (--hi) turns olive on this table's dark cell; here
-   PayKicker's prices are plain bold white instead. */
-#vs mark.hi{background:none;padding:0;margin:0;color:var(--ink);font-weight:600}
+   PayKicker's prices carry the brand orange instead (TR: "Why can't it be our brand orange highlight?"). */
+#vs mark.hi{background:var(--hi-orange);color:var(--ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--hi-orange-line)}
 </style>
 </head>
 <body>
