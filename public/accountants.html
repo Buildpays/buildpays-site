@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PayKicker for accountants and bookkeepers">
-<meta property="og:description" content="Your clients' invoices and sales into Xero or MYOB, from one screen. And earn 15% of what they pay PayKicker for a year.">
+<meta property="og:description" content="Your clients' invoices and Square sales into Xero or MYOB, from one screen. And earn 15% of what they pay PayKicker for a year.">
 <meta property="og:url" content="https://paykicker.com.au/accountants">
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="PayKicker">
@@ -25,7 +25,7 @@
 <meta property="og:image:alt" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PayKicker for accountants and bookkeepers">
-<meta name="twitter:description" content="Your clients' invoices and sales into Xero or MYOB, from one screen. And earn 15% of what they pay PayKicker for a year.">
+<meta name="twitter:description" content="Your clients' invoices and Square sales into Xero or MYOB, from one screen. And earn 15% of what they pay PayKicker for a year.">
 <meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,6 +109,16 @@
 .acc-stats span{color:var(--ink-2);line-height:1.5}
 @media (max-width:820px){.acc-stats{grid-template-columns:minmax(0,1fr)}.acc-stats li{padding:1.25rem}}
 #vs{max-width:none}
+/* TR, 26 Oct 2026: "add logos to here" / "add Square before sales with logo and logos for xero and myob". The marks are
+   Simple Icons 13.21.0 paths (CC0), drawn as each brand shows them on a dark ground: Square in white, Xero's blue disc with
+   white letters, MYOB's white letters on its purple tile. The word always follows the mark; the mark is aria-hidden. */
+:root{--bm-xero:#13b5ea;--bm-myob:#6100a5;--bm-on:#fff}
+.bm{white-space:nowrap}
+.bm-i{display:inline-block;width:.82em;height:.82em;margin:0 .18em 0 .04em;vertical-align:-.08em}
+.acc-hero h1 .bm-i{width:.74em;height:.74em;vertical-align:-.04em}
+/* TR: "why is the highlight a wierd colour?" — the site's amber money wash (--hi) turns olive on this table's dark cell; here
+   PayKicker's prices are plain bold white instead. */
+#vs mark.hi{background:none;padding:0;margin:0;color:var(--ink);font-weight:600}
 </style>
 </head>
 <body>
@@ -151,9 +161,14 @@
 
 <main id="main">
 
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="bm-square" viewBox="0 0 24 24"><path fill="var(--bm-on)" d="M4.01 0A4.01 4.01 0 000 4.01v15.98c0 2.21 1.8 4 4.01 4.01h15.98C22.2 24 24 22.2 24 19.99V4A4.01 4.01 0 0019.99 0H4zm1.62 4.36h12.74c.7 0 1.26.57 1.26 1.27v12.74c0 .7-.56 1.27-1.26 1.27H5.63c-.7 0-1.26-.57-1.26-1.27V5.63a1.27 1.27 0 011.26-1.27zm3.83 4.35a.73.73 0 00-.73.73v5.09c0 .4.32.72.72.72h5.1a.73.73 0 00.73-.72V9.44a.73.73 0 00-.73-.73h-5.1Z"/></symbol>
+  <symbol id="bm-xero" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11.2" fill="var(--bm-on)"/><path fill="var(--bm-xero)" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.585 14.655c-1.485 0-2.69-1.206-2.69-2.689 0-1.485 1.207-2.691 2.69-2.691 1.485 0 2.69 1.207 2.69 2.691s-1.207 2.689-2.69 2.689zM7.53 14.644c-.099 0-.192-.041-.267-.116l-2.043-2.04-2.052 2.047c-.069.068-.16.108-.258.108-.202 0-.368-.166-.368-.368 0-.099.04-.191.111-.263l2.04-2.05-2.038-2.047c-.075-.069-.113-.162-.113-.261 0-.203.166-.366.368-.366.098 0 .188.037.258.105l2.055 2.048 2.048-2.045c.069-.071.162-.108.26-.108.211 0 .375.165.375.366 0 .098-.029.188-.104.258l-2.056 2.055 2.055 2.051c.068.069.104.16.104.258 0 .202-.165.368-.365.368h-.01zm8.017-4.591c-.796.101-.882.476-.882 1.404v2.787c0 .202-.165.366-.366.366-.203 0-.367-.165-.368-.366v-4.53c0-.204.16-.366.362-.366.166 0 .316.125.346.289.27-.209.6-.317.93-.317h.105c.195 0 .359.165.359.368 0 .201-.164.352-.375.359 0 0-.09 0-.164.008l.053-.002zm-3.091 2.205H8.625c0 .019.003.037.006.057.02.105.045.211.083.31.194.531.765 1.275 1.829 1.29.33-.003.631-.086.9-.229.21-.12.391-.271.525-.428.045-.058.09-.112.12-.168.18-.229.405-.186.54-.083.164.135.18.391.045.57l-.016.016c-.21.27-.435.495-.689.66-.255.164-.525.284-.811.345-.33.09-.645.104-.975.06-1.095-.135-2.01-.93-2.28-2.01-.06-.21-.09-.42-.09-.645 0-.855.421-1.695 1.125-2.205.885-.615 2.085-.66 3-.075.63.405 1.035 1.021 1.185 1.771.075.419-.21.794-.734.81l.068-.046zm6.129-2.223c-1.064 0-1.931.865-1.931 1.931 0 1.064.866 1.931 1.931 1.931s1.931-.867 1.931-1.931c0-1.065-.866-1.933-1.931-1.933v.002zm0 2.595c-.367 0-.666-.297-.666-.666 0-.367.3-.665.666-.665.367 0 .667.299.667.665 0 .369-.3.667-.667.666zm-8.04-2.603c-.91 0-1.672.623-1.886 1.466v.03h3.776c-.203-.855-.973-1.494-1.891-1.494v-.002z"/></symbol>
+  <symbol id="bm-myob" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="var(--bm-myob)"/><path fill="var(--bm-on)" transform="translate(2.4 2.4) scale(.8)" d="M19.7695 7.0312c-.9023 0-1.0547.6094-1.0664.914v6.5977h.6328c.5157.0117.6328-.3164.6446-.5039v-.0234-.0234c.3984.4219.9492.6563 1.5703.6563 1.3476 0 2.4492-1.1719 2.4492-2.6953 0-1.547-1.1016-2.7188-2.4492-2.7188-.5977 0-1.125.2227-1.5117.6094V7.0313h-.2696zm.2696 4.9219c0-.8203.5859-1.4883 1.3125-1.4883.7382 0 1.3242.6445 1.3242 1.4883 0 .832-.586 1.4648-1.3242 1.4648-.7266 0-1.3125-.6562-1.3125-1.4648zm-6.961 0c0 1.5469 1.1602 2.707 2.5899 2.707 1.4414 0 2.6015-1.1601 2.6015-2.707 0-1.5586-1.1601-2.7422-2.6015-2.7422-1.4297 0-2.5899 1.1836-2.5899 2.7422zm1.3242 0c0-.8906.5743-1.5234 1.2657-1.5234.703 0 1.2773.6328 1.2773 1.5234 0 .8789-.5742 1.4883-1.2773 1.4883-.6914 0-1.2657-.6094-1.2657-1.4883zM3.961 9.949c-.3632-.457-.9375-.7382-1.6406-.7382C.9141 9.211 0 10.207 0 11.5312v3.0117h.4336c.293-.0234.8672-.164.8906-1.0312v-2.004c0-.5859.4102-.996.9961-.996.879 0 .961.7031.961.996v3.0352h.4335c.293-.0234.8672-.164.8907-1.0195v-2.0156c0-.586.4218-.9961.996-.9961.879 0 .9727.7031.9727.996v3.0352h.4336c.293-.0234.879-.164.8906-1.043v-1.9687c0-1.3594-.8437-2.3203-2.2968-2.3203-.668 0-1.2422.2813-1.6407.7383zm7.7461-.0233l-1.1133 3.0937-1.207-3.2109c-.1758-.5039-.6562-.4805-.6562-.4805H7.6992L9.75 14.379c0-.0117 0-.0117-.0117-.0117 0 0 .0117 0 .0117.0117s.0117.0234.0117.0234L9.75 14.379c.0703.1992.0469.3164-.0117.5156l-.0469.129c-.2344.5976-.5742.7617-1.289.7148v.0117l.4921 1.2187c.9258-.0234 1.6055-.328 2.0742-1.4765l2.461-6.164h-.9258c-.0469 0-.5742.0116-.7969.5976zm8.0625-2.8945c-.9023 0-1.0547.6093-1.0664.914v6.5977h.6328c.5157.0117.6328-.3164.6446-.504v-.0233-.0234c.3984.4218.9492.6562 1.5703.6562 1.3476 0 2.4492-1.1719 2.4492-2.6953 0-1.5469-1.1016-2.7188-2.4492-2.7188-.5977 0-1.125.2227-1.5117.6094V7.0313h-.2696zm.2696 4.9218c0-.8203.5859-1.4882 1.3125-1.4882.7382 0 1.3242.6445 1.3242 1.4882 0 .832-.586 1.4649-1.3242 1.4649-.7266 0-1.3125-.6563-1.3125-1.4649zm-6.961 0c0 1.547 1.1602 2.707 2.5899 2.707 1.4414 0 2.6015-1.16 2.6015-2.707 0-1.5586-1.1601-2.7421-2.6015-2.7421-1.4297 0-2.5899 1.1835-2.5899 2.7421zm1.3242 0c0-.8906.5743-1.5234 1.2657-1.5234.703 0 1.2773.6328 1.2773 1.5234 0 .879-.5742 1.4883-1.2773 1.4883-.6914 0-1.2657-.6094-1.2657-1.4883zM3.961 9.9492c-.3632-.457-.9375-.7382-1.6406-.7382C.9141 9.211 0 10.207 0 11.5313v3.0117h.4336c.293-.0234.8672-.164.8906-1.0313v-2.0039c0-.586.4102-.996.9961-.996.879 0 .961.703.961.996v3.0352h.4335c.293-.0234.8672-.164.8907-1.0195v-2.0157c0-.586.4218-.996.996-.996.879 0 .9727.703.9727.996v3.0352h.4336c.293-.0234.879-.164.8906-1.043v-1.9687c0-1.3594-.8437-2.3204-2.2968-2.3204-.668 0-1.2422.2813-1.6407.7383zm7.7461-.0234l-1.1133 3.0938-1.207-3.211c-.1758-.5039-.6562-.4804-.6562-.4804H7.6992L9.75 14.379c0-.0117 0-.0117-.0117-.0117 0 0 .0117 0 .0117.0117s.0117.0234.0117.0234L9.75 14.379c.0703.1992.0469.3164-.0117.5156l-.0469.1289c-.2344.5976-.5742.7617-1.289.7148v.0117l.4921 1.2188c.9258-.0234 1.6055-.3282 2.0742-1.4766l2.461-6.164h-.9258c-.0469 0-.5742.0117-.7969.5976z"/></symbol>
+</svg>
 <section class="hero sub acc-hero" aria-labelledby="h-hero">
   <div class="wrap hero-c">
-    <h1 id="h-hero">Your clients' invoices and sales into Xero or MYOB, from one screen.</h1>
+    <h1 id="h-hero">Your clients' invoices and <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-square"/></svg>Square</span> sales into <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-xero"/></svg>Xero</span> or <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-myob"/></svg>MYOB</span>, from one screen.</h1>
     <p class="strap">And earn 15% of what they pay PayKicker for a year.</p>
     <div class="acts">
       <!-- data-utm: js/accountants.js carries the visit's utm_* on to the app (from an email); without them the link is plain. -->
@@ -201,7 +216,7 @@
             <div class="win" data-full="/screens/sales-days.webp" data-full-w="1144" data-full-alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers."><img src="/screens/card-sales.webp" width="433" height="325" style="max-width:1120px;max-height:841px" alt="PayKicker Sales, October's day summaries, example data: 513 orders, $19,923 net sales after $25 refunds, $1,449 GST, $20,168 takings including $159 tips, and Thursday 8 October posted to MYOB as #1201: sales $1,873.00, GST $136.22, 43 orders, card $1,558.36, cash $337.14." loading="lazy" decoding="async"></div>
           </div>
           <div class="pc-foot">
-            <p>Square sales posted to Xero or MYOB every night, and each Square, Uber Eats and DoorDash payout with its fees.</p>
+            <p><span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-square"/></svg>Square</span> sales posted to <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-xero"/></svg>Xero</span> or <span class="bm"><svg class="bm-i" aria-hidden="true"><use href="#bm-myob"/></svg>MYOB</span> every night, and each Square, Uber Eats and DoorDash payout with its fees.</p>
             <a class="tl" href="/integrations#square-myob">Sales sync<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </article>
