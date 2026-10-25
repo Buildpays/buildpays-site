@@ -99,6 +99,16 @@
 .acc-ex{margin-top:clamp(1.75rem,3.4*var(--vw),2.75rem);max-width:52rem}
 .acc-prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;align-items:start;margin-top:clamp(1.75rem,3.4*var(--vw),2.75rem)}
 @media (max-width:820px){.acc-prices{grid-template-columns:minmax(0,1fr)}}
+/* TR, 26 Oct 2026: the hero has no screen under it, so the usual section gap read as a hole; the savings strip sits there,
+   and the section after it starts closer. */
+.acc-save{margin:clamp(2.5rem,4.5*var(--vw),3.5rem) 0 0}
+.acc-save+.gate{margin-top:clamp(3.5rem,6*var(--vw),5rem)}
+.acc-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;list-style:none;margin:0;padding:0}
+.acc-stats li{display:flex;flex-direction:column;gap:.5rem;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}
+.acc-stats b{font-weight:600;font-size:clamp(1.75rem,2.6*var(--vw),2.25rem);line-height:1.1;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.acc-stats span{color:var(--ink-2);line-height:1.5}
+@media (max-width:820px){.acc-stats{grid-template-columns:minmax(0,1fr)}.acc-stats li{padding:1.25rem}}
+#vs{max-width:none}
 </style>
 </head>
 <body>
@@ -151,6 +161,16 @@
     </div>
     <p class="fine-dim">Free to open. No card.</p>
     <p class="acc-how"><a class="tl" href="#how">How it works<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+  </div>
+</section>
+
+<section class="acc-save" aria-label="What your clients save and what you earn">
+  <div class="wrap">
+    <ul class="acc-stats">
+      <li><b>Up to 78% less</b><span>What your clients pay for invoices, against other apps' public prices. <a href="#vs">See the comparison</a></span></li>
+      <li><b>15% for a year</b><span>Of what each client pays PayKicker, for its first 12 bills, paid to your bank.</span></li>
+      <li><b>50% off</b><span>Each client's first 3 bills.</span></li>
+    </ul>
   </div>
 </section>
 
@@ -318,6 +338,20 @@
       </div>
     </div>
     <p class="price acc-deal">Your client gets <b>50% off its first 3 bills</b>.</p>
+
+    <div class="vs-wrap" id="vs">
+      <h3>PayKicker vs other apps</h3>
+      <table class="tbl vs">
+        <thead><tr><th scope="col"><span class="sr">What a client pays a month</span></th><th scope="col" class="pk"><img src="/paykicker-icon-reversed.svg" alt="" width="22" height="22"><span>PayKicker</span></th><th scope="col">Other apps</th><th scope="col">Your client pays</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Invoices, up to 20 a month</th><td class="pk" data-l="PayKicker"><mark class="hi">$9.99 inc GST</mark></td><td data-l="Other apps">from $42 + GST</td><td data-l="Your client pays"><b>78% less</b></td></tr>
+          <tr><th scope="row">Invoices, up to 100 a month, with approvals</th><td class="pk" data-l="PayKicker"><mark class="hi">$29.99 inc GST</mark></td><td data-l="Other apps">from $42 + GST (capture) plus $83 + tax (approvals)</td><td data-l="Your client pays"><b>78% less</b></td></tr>
+          <tr><th scope="row">Sales sync, up to 500 orders a month</th><td class="pk" data-l="PayKicker"><mark class="hi">$9.99 inc GST</mark>, any number of shops</td><td data-l="Other apps">US$18 (two stores), billed yearly, before tax</td><td data-l="Your client pays"><b>at least 44% less</b></td></tr>
+          <tr><th scope="row">Sales sync, unlimited orders</th><td class="pk" data-l="PayKicker"><mark class="hi">$29.99 inc GST</mark>, any number of shops</td><td data-l="Other apps">US$49, billed yearly, before tax</td><td data-l="Your client pays"><b>at least 38% less</b></td></tr>
+        </tbody>
+      </table>
+      <p class="vs-note">Other apps: the public monthly prices of a widely used receipt-capture app (Business plan) and a widely used approvals app (Standard plan, 100 documents), read 9 October 2026, and of a widely used Square sync app, read 12 October 2026. The invoice savings compare GST-inclusive prices. The sales sync savings count one US dollar as one Australian dollar and leave out the other app's tax, so the real saving is larger. PayKicker bills monthly; the sales sync app bills yearly.</p>
+    </div>
     <p class="gate-acts"><a class="tl" href="/pricing">Full prices<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
   </div>
 </section>
