@@ -925,9 +925,9 @@ for u, when in (("/guides/", max(AS_AT, LIST_GEN)), ("/guides/cfmeu-rdo-calendar
 for u in INVP.SITEMAP:   # the invoice pages: add once, keep lastmod at their checked date
     if f"<loc>https://paykicker.com.au{u}</loc>" not in s:
         s = s.replace("</urlset>", f"  <url>{NL}    <loc>https://paykicker.com.au{u}</loc>{NL}    <lastmod>{INVP.CHECKED_ISO}</lastmod>{NL}  </url>{NL}</urlset>")
-for u in SQP.SITEMAP:    # the Square guides and case study: the same, at their written date
+for u in SQP.SITEMAP:    # the Square guides, the case study and the Amaka page: the same, at their written date
     if f"<loc>https://paykicker.com.au{u}</loc>" not in s:
-        s = s.replace("</urlset>", f"  <url>{NL}    <loc>https://paykicker.com.au{u}</loc>{NL}    <lastmod>{SQP.CHECKED_ISO}</lastmod>{NL}  </url>{NL}</urlset>")
+        s = s.replace("</urlset>", f"  <url>{NL}    <loc>https://paykicker.com.au{u}</loc>{NL}    <lastmod>{SQP.LASTMOD.get(u, SQP.CHECKED_ISO)}</lastmod>{NL}  </url>{NL}</urlset>")
 io.open(sm, "w", encoding="utf-8", newline="").write(s)
 print("sitemap lastmod ->", AS_AT)
 print("done")
