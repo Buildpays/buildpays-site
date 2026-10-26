@@ -29,3 +29,30 @@ window.PK_ADS_ID = "AW-17839145831";   // e.g. "AW-0000000000"
 if (window.PK_ADS_ID) {
   gtag("config", window.PK_ADS_ID);
 }
+
+/* ---------------------------------------------------------------------------
+   "Start free click" (TR, 26 Oct 2026: the Square-sync Google Ads campaign). Sign-ups happen on
+   app.paykicker.com.au, where this site's tag does not run, so the click on a sign-up link IS the
+   conversion the ads bid toward. Inert until PK_SIGNUP_LABEL holds the label of the "Start free click"
+   conversion action (Google Ads -> Goals -> Conversions). GA4 also gets a sign_up_click event.
+--------------------------------------------------------------------------- */
+window.PK_SIGNUP_LABEL = "_xQfCMeRqaodEOeGr7pC";   // "Start free click" (Google Ads, created 26 Oct 2026)
+
+(function () {
+  "use strict";
+  function signupLink(el) {
+    for (var a = el; a && a !== document; a = a.parentNode) {
+      if (a.tagName === "A" && /^https:\/\/app\.paykicker\.com\.au\/(signup|partners)/.test(a.href || "")) return a;
+    }
+    return null;
+  }
+  document.addEventListener("click", function (e) {
+    var a = signupLink(e.target);
+    if (!a) return;
+    var where = (a.href.match(/for=([a-z]+)/) || [])[1] || (a.href.indexOf("/partners") > 0 ? "partners" : "signup");
+    try { gtag("event", "sign_up_click", { link_url: a.href, product: where, transport_type: "beacon" }); } catch (err) {}
+    if (window.PK_ADS_ID && window.PK_SIGNUP_LABEL) {
+      try { gtag("event", "conversion", { send_to: window.PK_ADS_ID + "/" + window.PK_SIGNUP_LABEL, transport_type: "beacon" }); } catch (err) {}
+    }
+  }, true);
+})();
