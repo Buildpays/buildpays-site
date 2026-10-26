@@ -374,12 +374,12 @@ def build(h):
     emit("case",
          "Case Study: a Melbourne Retailer With Two Shops on Square and MYOB | PayKicker",
          "Case study: a Melbourne retailer with two shops on Square and MYOB",
-         "A Melbourne retailer with two shops on Square and MYOB went from entering daily takings by hand to posting automatically every night: around 200 orders a day, each shop on its own job, every Square payout settled with its fees.",
-         "Two shops on Square, one MYOB file, and every day's takings entered from Square's reports by hand. Since mid-October 2026 each shop's day has posted into MYOB automatically every night.",
+         "A Melbourne retailer with two shops on Square and MYOB switched to PayKicker from another Square sync app after a week side by side, and has posted automatically every night since: around 200 orders a day, each shop on its own job, every Square payout settled with its fees.",
+         "Two shops on Square and one MYOB file, already on another Square sync app. After a week of PayKicker running beside it, each shop's day has posted into MYOB automatically every night since mid-October 2026.",
          case_tiles,
-         [("before", f'''      <h2>Before: daily takings by hand</h2>
-      <p>The business is a Melbourne retailer with two shops, both on Square, with its books in MYOB. Each day's takings were entered into MYOB from Square's reports by hand.</p>
-      <p>With two shops, that is two entries for every day traded, and then each Square payout, less Square's fees, to match against the bank. The {link("myob")} guide sets out that job step by step.</p>'''),
+         [("before", f'''      <h2>Before: another Square sync app</h2>
+      <p>The business is a Melbourne retailer with two shops, both on Square, with its books in MYOB. Its Square sales were already going into MYOB through another Square sync app, on a paid plan.</p>
+      <p>It moved to PayKicker the careful way: a week with PayKicker reading every day beside the old app and posting nothing, the days compared, then a first day chosen for PayKicker to post. PayKicker posts in the same shape the old app did and reuses the shop customers it had made in MYOB, so the bookkeeper's reconciliation did not change. The {link("myob")} guide sets out what each day needs.</p>'''),
           ("now", '''      <h2>Now: every night, automatically</h2>
       <p>The business connected Square and its MYOB file to PayKicker, with each shop set up on its own job. Since mid-October 2026 PayKicker has posted each shop's day into MYOB automatically every night.</p>
       <ul>
@@ -498,7 +498,7 @@ def amaka_page(h):
         <li><b>Compare the days.</b> Each day in PayKicker shows its sales, GST, card and cash, checked against Square&rsquo;s own totals. Set them beside the invoices Amaka posted, shop by shop.</li>
         <li><b>Turn Amaka&rsquo;s Square sync off, then choose PayKicker&rsquo;s first day.</b> Once Amaka has posted its last day, switch off its Square sync to that file. In PayKicker choose <em>From a date I choose</em>, the first day Amaka did not post, and switch on <em>Post each day by itself</em>. If Amaka put a day in after all, PayKicker sees it in the file and skips that day.</li>
       </ol>
-      <div class="callout"><p>A Melbourne retailer with two shops on Square and MYOB has posted each shop&rsquo;s day with PayKicker every night since mid-October 2026. <a href="{ALL["case"][0]}">Read the case study</a>.</p></div>''')
+      <div class="callout"><p>A Melbourne retailer with two shops on Square and MYOB switched from another Square sync app after a week side by side, and has posted each shop&rsquo;s day with PayKicker every night since mid-October 2026. <a href="{ALL["case"][0]}">Read the case study</a>.</p></div>''')
 
     side = vs_table("Feature", [
         ("Square sales into MYOB", YES, YES),
