@@ -36,7 +36,7 @@ if (window.PK_ADS_ID) {
    conversion the ads bid toward. Inert until PK_SIGNUP_LABEL holds the label of the "Start free click"
    conversion action (Google Ads -> Goals -> Conversions). GA4 also gets a sign_up_click event.
 --------------------------------------------------------------------------- */
-window.PK_SIGNUP_LABEL = "";   // e.g. "AbC-D_efGhIjKlMnOp"
+window.PK_SIGNUP_LABEL = "_xQfCMeRqaodEOeGr7pC";   // "Start free click" (Google Ads, created 26 Oct 2026)
 
 (function () {
   "use strict";
