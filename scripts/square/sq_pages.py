@@ -71,6 +71,10 @@ AMAKA_SRC = [
 
 SIGNUP_MYOB = "https://app.paykicker.com.au/signup?for=square&amp;via=myob"
 SIGNUP_ANY = "https://app.paykicker.com.au/signup?for=square"
+# TR, 27 Oct 2026: "give 50% off and setup free" for shops switching from Amaka (app pass 997: the sign-up records it, billing applies it)
+SIGNUP_SWITCH = "https://app.paykicker.com.au/signup?for=square&amp;offer=switch"
+SWITCH_OFFER_LINE = ("<b>Switching offer:</b> 50% off your first 3 paid months, and we&rsquo;ll set it up with you for free. "
+                     "It applies automatically when you start from this page.")
 
 PRICE = ("Free up to 60 orders a month across all your shops, then $9.99 a month up to 500 orders and $29.99 a month for "
          "unlimited orders, GST included, any number of shops, billed monthly.")
@@ -455,7 +459,8 @@ def amaka_page(h):
     lede = ("Free up to 60 orders a month, then $9.99 a month up to 500 or $29.99 unlimited, in Australian dollars with GST included, for any number of shops; "
             "and if Amaka posts a daily summary to MYOB for you, PayKicker can post the same shape: one tax-inclusive invoice per shop per "
             "day, to the shop&rsquo;s customer already in your file, on the shop&rsquo;s job.")
-    extra = (f'  <div class="cta-act"><a class="btn go big" href="{SIGNUP_ANY}" rel="noopener">Start free</a><a href="#price">Prices side by side</a></div>\n'
+    extra = (f'  <div class="callout"><p>{SWITCH_OFFER_LINE}</p></div>\n'
+             f'  <div class="cta-act"><a class="btn go big" href="{SIGNUP_SWITCH}" rel="noopener">Start free with 50% off</a><a href="#price">Prices side by side</a></div>\n'
              f'  <p class="note">Written {AMAKA_CHECKED}. Amaka&rsquo;s details come from its own public pages, read that day.</p>\n')
     toc = [("", "price", "Prices side by side"), ("", "same", "What stays the same for your bookkeeper"), ("", "switch", "How to switch in a week"),
            ("", "side", "Features side by side"), ("", "faq", "Questions")]
@@ -531,7 +536,8 @@ def amaka_page(h):
              "operations@paykicker.com.au if something here is out of date and we will fix it.")
     body += section("", "", "try", f'''      <h2>Run it beside Amaka for a week</h2>
       <p>Connect MYOB or Xero and Square, press Set it up for me on each shop and choose <em>Not yet</em>: PayKicker reads every day and posts nothing until you pick its first day. {PRICE}</p>
-      <div class="cta-act"><a class="btn go big" href="{SIGNUP_ANY}" rel="noopener">Start free</a><a href="/integrations#square-myob">What it posts and prices</a></div>
+      <p>{SWITCH_OFFER_LINE}</p>
+      <div class="cta-act"><a class="btn go big" href="{SIGNUP_SWITCH}" rel="noopener">Start free with 50% off</a><a href="/integrations#square-myob">What it posts and prices</a></div>
       <p>Questions about moving your file? Call <a href="tel:+61340616223">(03) 4061 6223</a> or email <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a>.</p>
       <p class="related">Related: {related("myob", "fees", "case", "sync", "delivery")}</p>
       <p class="indep">{indep}</p>''')
