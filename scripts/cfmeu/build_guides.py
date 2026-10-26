@@ -22,6 +22,8 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 PUB = os.path.join(ROOT, "public")
 sys.path.insert(0, os.path.join(ROOT, "scripts", "invoices"))
 import pages as INVP  # the PayKicker Invoices comparison pages and guides (9 Oct 2026); rendered with this shell below
+sys.path.insert(0, os.path.join(ROOT, "scripts", "square"))
+import sq_pages as SQP  # the Square sales sync guides and the anonymised case study (26 Oct 2026); same shell
 DATA = os.path.join(ROOT, "data", "cfmeu-figures.json")
 
 F = json.load(io.open(DATA, encoding="utf-8"))
@@ -798,6 +800,7 @@ page(CALC_PATH, CALC_TITLE, CALC_OG, CALC_DESC, article_ld(CALC_PATH, CALC_OG, C
 # ---------------------------------------------------------------- PayKicker Invoices pages
 
 INV_BUILT = INVP.build({"page": page, "section": section, "head_section": head_section, "faq_ld": faq_ld, "faq_html": faq_html, "NL": NL})
+SQ_BUILT = SQP.build({"page": page, "section": section, "head_section": head_section, "faq_ld": faq_ld, "faq_html": faq_html, "NL": NL})
 
 # ---------------------------------------------------------------- Index
 
@@ -820,7 +823,7 @@ IDX_LD = '''<script type="application/ld+json">
     { "@type": "Article", "headline": "''' + SA_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-site-allowance-fares-travel-2026" },
     { "@type": "Article", "headline": "''' + JOBS_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-eba-jobs-victoria" },
     { "@type": "WebPage", "name": "''' + CALC_OG + '''", "url": "https://paykicker.com.au/guides/cfmeu-eba-pay-calculator" },
-''' + ",\n".join('    { "@type": "Article", "headline": "' + t + '", "url": "https://paykicker.com.au' + u + '" }' for u, t in INV_BUILT if u.startswith("/guides/")) + '''
+''' + ",\n".join('    { "@type": "Article", "headline": "' + t + '", "url": "https://paykicker.com.au' + u + '" }' for u, t in INV_BUILT + SQ_BUILT if u.startswith("/guides/")) + '''
   ]
 }
 </script>'''
@@ -861,7 +864,10 @@ body = head_section("Guides", "CFMEU EBA guides for the subcontractor's office",
   <p class="note">More guides follow: overtime, weekends and inclement weather; public holidays, Cup Day and daily hire. Every figure on these pages carries its source and date, and a weekly job checks the union's published sheets and the Commission's lists; when a source changes, the page changes.</p>
   <h2 class="gsub">Supplier invoices in Xero and MYOB</h2>
   <p class="lede">For any business that pays supplier bills: approval before they reach the books, and invoices that mix GST and GST-free items.</p>
-''' + INVP.guide_cards())
+''' + INVP.guide_cards() + '''
+  <h2 class="gsub">Square sales in MYOB and Xero</h2>
+  <p class="lede">For cafés, restaurants and shops on Square: getting each day into MYOB or Xero, and where fees, tips, surcharges, gift cards and GST belong.</p>
+''' + SQP.guide_cards())
 
 body += section("B", "Demo", "demo", DEMO.format(related='<a href="/eba-payroll-software">EBA payroll software</a> &middot; <a href="/digital-dayworks-docket">Digital dayworks dockets</a>'))
 
@@ -919,6 +925,9 @@ for u, when in (("/guides/", max(AS_AT, LIST_GEN)), ("/guides/cfmeu-rdo-calendar
 for u in INVP.SITEMAP:   # the invoice pages: add once, keep lastmod at their checked date
     if f"<loc>https://paykicker.com.au{u}</loc>" not in s:
         s = s.replace("</urlset>", f"  <url>{NL}    <loc>https://paykicker.com.au{u}</loc>{NL}    <lastmod>{INVP.CHECKED_ISO}</lastmod>{NL}  </url>{NL}</urlset>")
+for u in SQP.SITEMAP:    # the Square guides and case study: the same, at their written date
+    if f"<loc>https://paykicker.com.au{u}</loc>" not in s:
+        s = s.replace("</urlset>", f"  <url>{NL}    <loc>https://paykicker.com.au{u}</loc>{NL}    <lastmod>{SQP.CHECKED_ISO}</lastmod>{NL}  </url>{NL}</urlset>")
 io.open(sm, "w", encoding="utf-8", newline="").write(s)
 print("sitemap lastmod ->", AS_AT)
 print("done")

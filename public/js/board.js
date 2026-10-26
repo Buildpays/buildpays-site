@@ -69,13 +69,21 @@
     });
     main.querySelectorAll('.trio > li, .gcard').forEach(function (c) { els.push(c); });
     var h = window.innerHeight;
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        io.unobserve(e.target);
-        e.target.classList.add('in');
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    // One observer per threshold. 6% of the element, except a sheet taller than five screens: 6% of it can be more than
+    // fits on screen (a long guide on a phone stayed invisible), so it arrives once 30% of a screen of it shows.
+    var ios = {};
+    function observer(t) {
+      if (ios[t]) return ios[t];
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          io.unobserve(e.target);
+          e.target.classList.add('in');
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: t });
+      ios[t] = io;
+      return io;
+    }
     els.forEach(function (el) {
       var r = el.getBoundingClientRect();
       if (r.top < h && r.bottom > 0) return;                    // on screen already: no fade
@@ -84,7 +92,7 @@
       var p = el.parentElement, i = p && /\b(trio|gcards)\b/.test(p.className) ? Array.prototype.indexOf.call(p.children, el) : 0;
       if (i > 0) el.style.transitionDelay = Math.min(i, 3) * 80 + 'ms';
       el.classList.add('rv');
-      io.observe(el);
+      observer(r.height > 5 * h ? Math.floor(h * 0.3 / r.height * 1000) / 1000 : 0.06).observe(el);
     });
   }
 
