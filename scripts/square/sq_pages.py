@@ -22,6 +22,25 @@ Where a rule could not be confirmed it is left out or handed to the reader's acc
 
 The case study: the figures are the owner's (TR, 26 Oct 2026), rounded, and the business is not named. Never add a figure,
 a place, a trade, a product or a quote to it.
+
+/compare/amaka-alternative (27 Oct 2026): switching a Square sync from Amaka. Australian Consumer Law: every fact about Amaka
+comes from its own public pages, read on AMAKA_CHECKED (AMAKA_SRC); where they say nothing the page says "Not stated", never a
+guess, and nothing on it says Amaka can't do something. The PayKicker side was checked against the app (C:\\buildpays
+origin/main a759d556, 27 Oct 2026):
+  paykicker-DECISIONS.md pass 804  PayKicker posts the shape Amaka posts in MYOB (an invoice per shop per day to the shop's
+                                   customer, every line on the shop's job; one payment into Undeposited Funds, then a journal)
+                                   "so the bookkeeper's reconciliation does not change"
+  pass 806 + autosetup.js          a customer already in the file with the shop's name is REUSED, never doubled; Set it up for
+                                   me finds the Square accounts by the names Amaka gives them and never makes an existing name
+  pass 798                         a payout: what Square kept as one spend money + the payout as a transfer (same accounts, the
+                                   same bank-rec line on Square clearing as Amaka's fees bill + transfer)
+  _shared/square/switchover.js     Before posting: the last day another app posted; at post time a day or payout the other app
+                                   already put in is skipped, even while it still runs; Xero does everything MYOB does;
+                                   lining a month up = this financial year only
+  _shared/square/postingStart.js + app/src/proto/sales.jsx   "Start posting to MYOB": Not yet / From today / From a date I
+                                   choose; "Post each day by itself" (auto_post)
+The case-study line on it says only what the case study says (two shops, every night since mid-October 2026): the case study
+has the business entering takings by hand before, so the Amaka page never says it switched from Amaka.
 """
 import json
 
@@ -37,7 +56,18 @@ ALL = {
     "gst": ("/guides/mixed-gst-invoices", "Invoices with GST and GST-free items"),
     "sync": ("/integrations#square-myob", "Square sales sync: what it posts"),
     "delivery": ("/delivery-payouts", "Uber Eats and DoorDash payouts"),
+    "amaka": ("/compare/amaka-alternative", "Switching from Amaka to PayKicker"),
 }
+
+# The Amaka page (27 Oct 2026): its own date, and Amaka's public pages it quotes, read on that date.
+AMAKA_CHECKED = "27 October 2026"
+AMAKA_ISO = "2026-10-27"
+AMAKA_SRC = [
+    ("Amaka pricing", "https://www.amaka.com/pricing"),
+    ("Amaka: Square + MYOB", "https://amaka.com/square-myob-integration/"),
+    ("Amaka: Square + Xero", "https://amaka.com/integrations/square/xero/"),
+    ("Amaka on the Xero App Store", "https://apps.xero.com/au/app/amaka"),
+]
 
 SIGNUP_MYOB = "https://app.paykicker.com.au/signup?for=square&amp;via=myob"
 SIGNUP_ANY = "https://app.paykicker.com.au/signup?for=square"
@@ -366,7 +396,163 @@ def build(h):
          cta("Your shops, posted the same way", "Connect MYOB and Square and press Set it up for me on each shop.", SIGNUP_MYOB,
              related("myob", "fees", "sync")))
 
+    amaka_page(h)
+    built.append((ALL["amaka"][0], ALL["amaka"][1]))
     return built
+
+
+# ---------------------------------------------------------------------- /compare/amaka-alternative (27 Oct 2026)
+YES = '<svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span class="sr">Yes</span>'
+NS = '<span class="ns">Not stated</span>'
+
+
+def vs_table(label, rows):
+    """A side-by-side table in the /integrations "PayKicker vs other apps" style (board.css .tbl.vs), the other column named."""
+    head = (f'<thead><tr><th scope="col"><span class="sr">{label}</span></th><th scope="col" class="pk"><img src="/paykicker-icon-reversed.svg" '
+            'alt="" width="22" height="22"><span>PayKicker</span></th><th scope="col">Amaka</th></tr></thead>')
+    body = "\n".join(f'          <tr><th scope="row">{r}</th><td class="pk" data-l="PayKicker">{a}</td><td data-l="Amaka">{b}</td></tr>' for r, a, b in rows)
+    return f'      <div class="tbl-wrap"><table class="tbl vs">\n        {head}\n        <tbody>\n{body}\n        </tbody>\n      </table></div>'
+
+
+def amaka_src():
+    return ('      <p class="src">Amaka&rsquo;s details from its own pages, read ' + AMAKA_CHECKED + ": "
+            + "; ".join(f'<a href="{u}" rel="noopener">{t}</a>' for t, u in AMAKA_SRC) + ".</p>")
+
+
+AMAKA_FAQ = [
+    ("Will my old days double up?",
+     "No. When you tell PayKicker under Before posting that another app has been posting your Square sales, it finds the last day Amaka "
+     "posted for each shop, and from then on a day or payout Amaka already put in the file is skipped, never posted again, even while Amaka "
+     "is still running. Nothing posts before the start date you choose, and PayKicker finds its own entries again before writing, so a "
+     "retry never doubles."),
+    ("Do I lose Amaka's history?",
+     "No. Everything Amaka posted stays in MYOB or Xero as it is. PayKicker posts from the day you choose. If you want a month before the "
+     "switch lined up with Square, PayKicker can compare it with Square shop by shop and day by day and, only when you confirm, post one "
+     "adjusting entry for it, for any month of this financial year."),
+    ("Can I keep MYOB or Xero as it is?",
+     "Yes. MYOB or Xero stays your books: the same file, accounts, customers and jobs. Set it up for me uses the Square accounts already in "
+     "your file and never makes an account whose name already exists. PayKicker only reads from Square and never moves money."),
+    ("Can I run PayKicker beside Amaka first?",
+     "Yes. Choose Not yet when PayKicker asks when to start posting: it reads every day from Square and posts nothing, so you can compare "
+     "each day with what Amaka posted before you pick PayKicker's first day."),
+    ("What about my other Amaka integrations?",
+     "PayKicker's sales sync covers Square, plus Uber Eats and DoorDash payouts from their weekly statements. Shopify is coming but not "
+     "open yet, and other sales systems are not covered. If Amaka also syncs something else for you, you can keep Amaka for that and move "
+     "only your Square sales; check with Amaka what that means for your plan."),
+    ("How much does PayKicker cost?",
+     "Free up to 60 orders a month across all your shops, $9.99 a month up to 500 orders and $29.99 a month for unlimited orders, in "
+     "Australian dollars with GST included, any number of shops, billed monthly. Uber Eats and DoorDash payouts are included. Amaka's plans, "
+     "read on " + AMAKA_CHECKED + ", are free up to 60 transactions a month, then US$18 or US$49 a month billed yearly, before tax."),
+]
+
+
+def amaka_page(h):
+    page, section, head_section, faq_ld, faq_html = h["page"], h["section"], h["head_section"], h["faq_ld"], h["faq_html"]
+    path, h1 = ALL["amaka"]
+    title = "Switching from Amaka to PayKicker: Square Sales into MYOB or Xero | PayKicker"
+    desc = ("Moving your Square sales sync from Amaka to PayKicker: prices side by side, what stays the same in MYOB or Xero for your "
+            "bookkeeper, and how to switch in a week without a day posted twice.")
+    lede = ("Free up to 60 orders a month, then $9.99 a month up to 500 or $29.99 unlimited, in Australian dollars with GST included, for any number of shops; "
+            "and if Amaka posts a daily summary to MYOB for you, PayKicker can post the same shape: one tax-inclusive invoice per shop per "
+            "day, to the shop&rsquo;s customer already in your file, on the shop&rsquo;s job.")
+    extra = (f'  <div class="cta-act"><a class="btn go big" href="{SIGNUP_ANY}" rel="noopener">Start free</a><a href="#price">Prices side by side</a></div>\n'
+             f'  <p class="note">Written {AMAKA_CHECKED}. Amaka&rsquo;s details come from its own public pages, read that day.</p>\n')
+    toc = [("", "price", "Prices side by side"), ("", "same", "What stays the same for your bookkeeper"), ("", "switch", "How to switch in a week"),
+           ("", "side", "Features side by side"), ("", "faq", "Questions")]
+    body = head_section("Compare", h1, lede, toc, extra)
+
+    price = vs_table("Price", [
+        ("Up to 60 orders a month", "Free, any number of shops", "Free: 60 transactions a month, 1 integration, 1 store"),
+        ("Up to 500 orders a month", '<mark class="hi">$9.99 a month</mark>, any number of shops', "Premium: US$18 a month, billed yearly; 2 integrations, 2 stores"),
+        ("Unlimited orders", '<mark class="hi">$29.99 a month</mark>, any number of shops', "Premium+: US$49 a month, billed yearly; unlimited integrations and stores"),
+        ("Currency and tax", "Australian dollars, GST included", "US dollars, excluding any applicable tax"),
+        ("Billing", "Monthly, cancel any time", "The prices above are billed yearly; its pricing page also has a monthly option"),
+        ("What counts", "Orders, across every connected shop", "Transactions such as sales; fees, refunds and reimbursements don&rsquo;t count"),
+        ("Square into Xero", "The same prices", "Its Square + Xero page says free for core features, with a 7-day trial for premium features"),
+    ])
+    body += section("", "", "price", f'''      <h2>Prices side by side</h2>
+      <p>Both start free at 60 a month. After that PayKicker charges by orders alone, across every shop you connect; Amaka&rsquo;s plans also set how many stores and integrations you can connect.</p>
+{price}
+{amaka_src()}
+      <p class="src">Exchange rates move, so we have not converted Amaka&rsquo;s US dollar prices. Uber Eats and DoorDash payouts are included in PayKicker&rsquo;s prices at no extra charge.</p>''')
+
+    body += section("", "", "same", '''      <h2>What stays the same for your bookkeeper</h2>
+      <p>If Amaka sends your Square days to MYOB as a daily summary, the file your bookkeeper reconciles keeps its shape.</p>
+      <ul>
+        <li><b>The same accounts.</b> Set it up for me looks in your MYOB file for the Square accounts already there, by their usual names (Square Sales, Square Discounts, Square Card Surcharges, Square Tips, Square Gift Cards, Square Balance, Square Cash Clearing, Square Undeposited Funds, Square Fees), and uses them. It never makes an account whose name already exists.</li>
+        <li><b>The same customers.</b> Each shop&rsquo;s day is an invoice to the shop&rsquo;s customer. A customer already in your file with the shop&rsquo;s name, such as one Amaka made, is reused, never doubled, and you can pick any other customer from the list.</li>
+        <li><b>The same jobs.</b> Every line goes on the shop&rsquo;s job, found by the shop&rsquo;s name or picked from the list, and Square&rsquo;s fees for that shop go on the same job.</li>
+        <li><b>The same kind of entry.</b> One tax-inclusive sales invoice per shop per day. When your file has a Square Undeposited Funds account, the day&rsquo;s takings go in as one payment there and a journal moves them on to Square Balance, cash clearing and the gift card account.</li>
+        <li><b>The same lines to reconcile.</b> Each Square payout reaches your bank as a transfer from Square Balance, the line your bank feed matches, and what Square kept comes out of Square Balance onto your fees account with its GST, as one spend money. If your bookkeeper is used to a different kind of entry for the fees, the accounts stay the same; only the entry type may change.</li>
+      </ul>
+      <p>In Xero, PayKicker posts one tax-inclusive invoice per shop per day on the shop&rsquo;s jobs tracking option, a payment into each account the money arrived in, and each payout settled the same way. Set it beside what Amaka posts in your file during the read-only week.</p>''')
+
+    body += section("", "", "switch", f'''      <h2>How to switch in a week</h2>
+      <p>A week beside Amaka with PayKicker posting nothing, then one day where PayKicker takes over.</p>
+      <ol>
+        <li><b>Start free and connect your file.</b> Sign up with MYOB or Xero and connect the same file Amaka posts to.</li>
+        <li><b>Connect Square.</b> Sign in to Square and press Allow. PayKicker only reads from Square. Leave Amaka running.</li>
+        <li><b>Answer Yes under Before posting.</b> PayKicker asks whether another app or a bookkeeper has been putting your Square sales into the file. Say yes, and it looks in the file for the last day Amaka posted for each shop.</li>
+        <li><b>Press Set it up for me on each shop.</b> It finds the Square accounts, the shop&rsquo;s customer and its job already in your file. Then pick the bank account Square pays into.</li>
+        <li><b>Choose Not yet for a week.</b> Under Start posting, pick <em>Not yet</em>: PayKicker reads every day and posts nothing, while Amaka keeps posting as before.</li>
+        <li><b>Compare the days.</b> Each day in PayKicker shows its sales, GST, card and cash, checked against Square&rsquo;s own totals. Set them beside the invoices Amaka posted, shop by shop.</li>
+        <li><b>Turn Amaka&rsquo;s Square sync off, then choose PayKicker&rsquo;s first day.</b> Once Amaka has posted its last day, switch off its Square sync to that file. In PayKicker choose <em>From a date I choose</em>, the first day Amaka did not post, and switch on <em>Post each day by itself</em>. If Amaka put a day in after all, PayKicker sees it in the file and skips that day.</li>
+      </ol>
+      <div class="callout"><p>A Melbourne retailer with two shops on Square and MYOB has posted each shop&rsquo;s day with PayKicker every night since mid-October 2026. <a href="{ALL["case"][0]}">Read the case study</a>.</p></div>''')
+
+    side = vs_table("Feature", [
+        ("Square sales into MYOB", YES, YES),
+        ("Square sales into Xero", YES, YES),
+        ("A daily summary invoice", "Yes, one tax-inclusive invoice per shop per day", "Yes, a summarised invoice, or one invoice per order"),
+        ("One invoice per order", "No: one invoice per shop per day", YES),
+        ("Sales split by Square category", YES, "Yes, by category or by product"),
+        ("Several shops in one MYOB or Xero file", "Yes, any number at every price", "Yes, stores by plan"),
+        ("Square&rsquo;s fees and card surcharges", "Fees on their own account at each payout; surcharges on their own income account", "Synced on each transaction, its Square + MYOB page says"),
+        ("Square payouts (settlements)", "Each payout settled: fees on their own account, the payout as a transfer to your bank", "Synced, its pages say"),
+        ("Tips and gift cards each on their own account", YES, NS),
+        ("A job per shop in MYOB, or a tracking option in Xero, with Square&rsquo;s fees on the same job", YES, 'Xero tracking categories shared, its Xero listing says; <span class="ns">MYOB jobs not stated</span>'),
+        ("Every day matched to Square&rsquo;s own totals to the cent before it posts", YES, NS),
+        ("Finds every entry again before writing, so a retry never doubles", YES, NS),
+        ("Month-end pack and GST summary", YES, NS),
+        ("Uber Eats and DoorDash payouts", "Included, from the weekly statement", NS),
+        ("Days before you start", "Amaka&rsquo;s stay as they are; any month of this financial year can be lined up with Square in one adjusting entry", "Back sync of 1, 90 or 365 days, by plan"),
+        ("Other systems", "Square today; Shopify coming", "Many, including Shopify, Vend and Yoco"),
+    ])
+    body += section("", "", "side", f'''      <h2>Features side by side</h2>
+{side}
+{amaka_src()}
+      <p class="src">Not stated means those pages don&rsquo;t say; it is not a claim that Amaka can&rsquo;t do it. PayKicker&rsquo;s side comes from the app itself.</p>''')
+
+    body += section("", "", "faq", "      <h2>Questions</h2>\n" + faq_html(AMAKA_FAQ))
+
+    indep = ("Amaka is a trademark of its owner; PayKicker is not affiliated with or endorsed by Amaka, Square, MYOB or Xero. Details about "
+             "Amaka come from its own public pages, read on " + AMAKA_CHECKED + "; prices and features change, so check theirs before you "
+             "decide. PayKicker&rsquo;s prices are in Australian dollars with GST included; Amaka&rsquo;s are in US dollars before tax. Tell us at "
+             "operations@paykicker.com.au if something here is out of date and we will fix it.")
+    body += section("", "", "try", f'''      <h2>Run it beside Amaka for a week</h2>
+      <p>Connect MYOB or Xero and Square, press Set it up for me on each shop and choose <em>Not yet</em>: PayKicker reads every day and posts nothing until you pick its first day. {PRICE}</p>
+      <div class="cta-act"><a class="btn go big" href="{SIGNUP_ANY}" rel="noopener">Start free</a><a href="/integrations#square-myob">What it posts and prices</a></div>
+      <p>Questions about moving your file? Call <a href="tel:+61340616223">(03) 4061 6223</a> or email <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a>.</p>
+      <p class="related">Related: {related("myob", "fees", "case", "sync", "delivery")}</p>
+      <p class="indep">{indep}</p>''')
+
+    art = {
+        "@context": "https://schema.org", "@type": "Article", "headline": h1, "description": desc,
+        "url": "https://paykicker.com.au" + path, "datePublished": AMAKA_ISO, "dateModified": AMAKA_ISO, "inLanguage": "en-AU",
+        "author": {"@id": "https://paykicker.com.au/#organization"}, "publisher": {"@id": "https://paykicker.com.au/#organization"},
+        "mainEntityOfPage": "https://paykicker.com.au" + path,
+        "about": {"@type": "SoftwareApplication", "name": "PayKicker Square sales sync", "url": "https://paykicker.com.au/integrations#square-myob",
+                  "applicationCategory": "BusinessApplication", "operatingSystem": "Web"},
+    }
+    crumbs = [("PayKicker", "/"), ("Integrations", "/integrations"), (h1, path)]
+    bc = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": "https://paykicker.com.au" + u} for i, (n, u) in enumerate(crumbs)]}
+    style = ("<style>\n  /* this page only: the hero carries the Start free button */\n"
+             "  .doc-hero .cta-act{margin-top:1.75rem}\n  .doc-hero .cta-act+.note{margin-top:1.25rem}\n</style>")
+    ld = "\n".join(['<script type="application/ld+json">\n' + json.dumps(art, indent=2, ensure_ascii=False) + "\n</script>",
+                    '<script type="application/ld+json">\n' + json.dumps(bc, indent=2, ensure_ascii=False) + "\n</script>",
+                    faq_ld(AMAKA_FAQ), style])
+    page(path, title, h1, desc, ld, body)
 
 
 CASE_H1 = "A Melbourne retailer with two shops, on Square and MYOB"
@@ -392,4 +578,5 @@ def guide_cards():
     return "  <div class=\"gcards\">\n" + "\n".join(out) + "\n  </div>"
 
 
-SITEMAP = [ALL[k][0] for k in ("myob", "fees", "case")]
+SITEMAP = [ALL[k][0] for k in ("myob", "fees", "case", "amaka")]
+LASTMOD = {ALL["amaka"][0]: AMAKA_ISO}   # a page written on another day than CHECKED
