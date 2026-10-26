@@ -24,7 +24,7 @@ gtag("config", "G-4DGX8VDBNH");
    Leave them empty and nothing happens: no extra network call, no console error.
    The CSP already allows googletagmanager.com, so no header change is needed.
 --------------------------------------------------------------------------- */
-window.PK_ADS_ID = "AW-17839145831";   // e.g. "AW-0000000000"
+window.PK_ADS_ID = "AW-18538204607";   // PayKicker's own Google Ads account 306-175-8733 (27 Oct 2026; was the Yo More account)   // e.g. "AW-0000000000"
 
 if (window.PK_ADS_ID) {
   gtag("config", window.PK_ADS_ID);
@@ -36,7 +36,7 @@ if (window.PK_ADS_ID) {
    conversion the ads bid toward. Inert until PK_SIGNUP_LABEL holds the label of the "Start free click"
    conversion action (Google Ads -> Goals -> Conversions). GA4 also gets a sign_up_click event.
 --------------------------------------------------------------------------- */
-window.PK_SIGNUP_LABEL = "_xQfCMeRqaodEOeGr7pC";   // "Start free click" (Google Ads, created 26 Oct 2026)
+window.PK_SIGNUP_LABEL = "6qQOCPWXrqodEL-b2odF";   // "Start free click" (Google Ads, created 26 Oct 2026)
 
 (function () {
   "use strict";
