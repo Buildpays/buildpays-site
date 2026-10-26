@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Square Fees, Tips, Surcharges and GST in MYOB and Xero | PayKicker</title>
+<meta name="description" content="Where each part of a Square day belongs in MYOB or Xero: sales, GST, GST-free sales, tips, card surcharges, gift cards, refunds, Square's fees and the payout, with an example day and the tax code for each.">
+<link rel="icon" type="image/svg+xml" href="/paykicker-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/paykicker-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b0f14">
+<link rel="canonical" href="https://paykicker.com.au/guides/square-fees-gst-myob-xero">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Square fees, tips, surcharges and GST in MYOB and Xero">
+<meta property="og:description" content="Where each part of a Square day belongs in MYOB or Xero: sales, GST, GST-free sales, tips, card surcharges, gift cards, refunds, Square's fees and the payout, with an example day and the tax code for each.">
+<meta property="og:url" content="https://paykicker.com.au/guides/square-fees-gst-myob-xero">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="PayKicker">
+<meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Square fees, tips, surcharges and GST in MYOB and Xero">
+<meta name="twitter:description" content="Where each part of a Square day belongs in MYOB or Xero: sales, GST, GST-free sales, tips, card surcharges, gift cards, refunds, Square's fees and the payout, with an example day and the tax code for each.">
+<meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=07a59c4c">
+<script src="/js/board.js?v=15"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
+<script src="/js/gtag.js"></script>
+<script src="/js/pixels.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Square fees, tips, surcharges and GST in MYOB and Xero",
+  "description": "Where each part of a Square day belongs in MYOB or Xero: sales, GST, GST-free sales, tips, card surcharges, gift cards, refunds, Square's fees and the payout, with an example day and the tax code for each.",
+  "url": "https://paykicker.com.au/guides/square-fees-gst-myob-xero",
+  "datePublished": "2026-10-26",
+  "dateModified": "2026-10-26",
+  "inLanguage": "en-AU",
+  "articleSection": "Guides",
+  "author": {
+    "@id": "https://paykicker.com.au/#organization"
+  },
+  "publisher": {
+    "@id": "https://paykicker.com.au/#organization"
+  },
+  "mainEntityOfPage": "https://paykicker.com.au/guides/square-fees-gst-myob-xero",
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "PayKicker Square sales sync",
+    "url": "https://paykicker.com.au/integrations#square-myob",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "PayKicker",
+      "item": "https://paykicker.com.au/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://paykicker.com.au/guides/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Square fees, tips, surcharges and GST in MYOB and Xero",
+      "item": "https://paykicker.com.au/guides/square-fees-gst-myob-xero"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is there GST on Square's fees?", "acceptedAnswer": { "@type": "Answer", "text": "Square gives you a monthly GST tax invoice for its processing fees in the Square Dashboard, on its Tax invoices page. If you are registered for GST, that invoice supports the GST credit on the fees; the ATO requires a tax invoice to claim a credit on a purchase over $82.50. Check the claim with your accountant." } },
+    { "@type": "Question", "name": "Do I charge GST on tips?", "acceptedAnswer": { "@type": "Answer", "text": "Not on a voluntary tip that is passed on to your staff: the ATO's view is that it is not part of the price of the sale, as long as you keep records showing it went to staff. A tip the business keeps is part of the price and carries GST. PayKicker posts tips with no GST to a tips liability account." } },
+    { "@type": "Question", "name": "Is a card surcharge subject to GST?", "acceptedAnswer": { "@type": "Answer", "text": "It follows the sale. The ATO treats a merchant's card surcharge as part of the price of what was sold, so a surcharge on a taxable sale carries GST and a surcharge on a GST-free sale does not." } },
+    { "@type": "Question", "name": "When is GST paid on a gift card?", "acceptedAnswer": { "@type": "Answer", "text": "When it is spent, not when it is sold. The ATO treats a gift card that can be spent on a range of goods as a face value voucher: selling it for its face value is not a taxable sale, and GST is accounted for when it is redeemed for taxable goods. Until then it is a liability." } },
+    { "@type": "Question", "name": "Which day does a refund belong to?", "acceptedAnswer": { "@type": "Answer", "text": "The day it was given. The ATO treats a refund for a returned sale as an adjustment, generally reported in the period you become aware of it, so last week's figures stay as they were and the refund reduces this period's GST by the tax on what was refunded." } },
+    { "@type": "Question", "name": "Why doesn't my Square payout match my sales?", "acceptedAnswer": { "@type": "Answer", "text": "Because the payout is the card takings less Square's fees, and less any Square Capital repayment or funds Square holds, paid after the sale. Cash takings and gift card redemptions never pass through it." } }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- shell:nav -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter"/><path d="M12 10v4.5M12 17v.5" stroke="currentColor" stroke-width="1.75"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M8.6 3.5 6.1 3.2a1.6 1.6 0 0 0-1.7 1.1c-.5 1.8-.3 3.9.7 6.1a17.6 17.6 0 0 0 8.5 8.5c2.2 1 4.3 1.2 6.1.7a1.6 1.6 0 0 0 1.1-1.7l-.3-2.5a1.6 1.6 0 0 0-1.2-1.4l-2.9-.7a1.6 1.6 0 0 0-1.5.4l-1.2 1.2a12.4 12.4 0 0 1-5.3-5.3l1.2-1.2a1.6 1.6 0 0 0 .4-1.5l-.7-2.9a1.6 1.6 0 0 0-1.4-1.2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V13M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="200" height="30"></a>
+    <a class="nav-call" href="tel:+61340616223" aria-label="Call (03) 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
+    <nav class="links" id="navlinks" aria-label="Main">
+      <a href="/construction">Construction</a>
+      <a href="/ap-automation">AP automation</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/partners">Partners</a>
+      <a href="/pricing">Pricing</a>
+      <a class="nav-tel" href="tel:+61340616223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>(03)&nbsp;4061&nbsp;6223</a>
+      <span class="nav-act">
+        <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
+        <a class="btn go" href="/#contact">Book a demo</a>
+      </span>
+    </nav>
+  </div>
+</header>
+<!-- /shell:nav -->
+
+<main id="main" class="guide">
+
+<section class="hero doc-hero">
+  <div class="wrap">
+      <h1>Square fees, tips, surcharges and GST in MYOB and Xero</h1>
+
+  <p class="lede">A Square day is more than its sales. Tips, card surcharges, gift cards, refunds and Square's fees each have their own place in the books and their own GST treatment, and the payout that reaches your bank is none of them on its own. Here is where each piece goes in MYOB and Xero, with an example day worked through.</p>
+  <p class="note">Written 26 October 2026.</p>
+
+  <nav class="toc" aria-label="On this page">
+    <p class="toc-h">On this page</p>
+    <ol>
+      <li><a href="#pieces">Where each piece belongs</a></li>
+      <li><a href="#rules">The rules behind it</a></li>
+      <li><a href="#example">An example day</a></li>
+      <li><a href="#books">MYOB and Xero</a></li>
+      <li><a href="#pk">How PayKicker posts it</a></li>
+      <li><a href="#faq">Questions</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+  </div>
+</section>
+
+<div class="wrap paper-wrap">
+<article class="paper text">
+
+<section id="pieces">
+      <h2>Where each piece belongs</h2>
+      <p>One line per piece of a Square day, the account it belongs on, its GST, and the code MYOB and Xero use for it. The rules behind each are set out below the table.</p>
+      <div class="tbl-wrap"><table class="tbl fold">
+        <thead><tr><th>What</th><th>Where it goes</th><th>GST</th><th>MYOB code</th><th>Xero tax rate</th></tr></thead>
+        <tbody>
+        <tr><td>Sales of taxable items</td><td data-l="Where it goes">Sales (income)</td><td data-l="GST">1/11 of the GST-inclusive price</td><td data-l="MYOB code">GST</td><td data-l="Xero tax rate">GST on Income</td></tr>
+        <tr><td>GST-free sales</td><td data-l="Where it goes">Sales (income)</td><td data-l="GST">None</td><td data-l="MYOB code">FRE</td><td data-l="Xero tax rate">GST Free Income</td></tr>
+        <tr><td>Card surcharges</td><td data-l="Where it goes">Card surcharges (income)</td><td data-l="GST">Follows the sale it is charged on</td><td data-l="MYOB code">GST on a taxable sale</td><td data-l="Xero tax rate">GST on Income on a taxable sale</td></tr>
+        <tr><td>Tips</td><td data-l="Where it goes">Tips owed to staff (liability)</td><td data-l="GST">None on a voluntary tip passed on to staff</td><td data-l="MYOB code">N-T</td><td data-l="Xero tax rate">BAS Excluded</td></tr>
+        <tr><td>Gift cards sold</td><td data-l="Where it goes">Gift cards (liability)</td><td data-l="GST">None when sold</td><td data-l="MYOB code">N-T</td><td data-l="Xero tax rate">BAS Excluded</td></tr>
+        <tr><td>Gift cards redeemed</td><td data-l="Where it goes">Off the gift card liability; what was bought is a sale</td><td data-l="GST">On the sale, when the card is spent</td><td data-l="MYOB code">N-T</td><td data-l="Xero tax rate">BAS Excluded</td></tr>
+        <tr><td>Refunds</td><td data-l="Where it goes">Off sales, on the day given</td><td data-l="GST">Reduces GST by the tax of what was refunded</td><td data-l="MYOB code">GST or FRE</td><td data-l="Xero tax rate">GST on Income or GST Free Income</td></tr>
+        <tr><td>Square's fees</td><td data-l="Where it goes">Fees (expense)</td><td data-l="GST">A GST credit, with Square's tax invoice</td><td data-l="MYOB code">GST</td><td data-l="Xero tax rate">GST on Expenses</td></tr>
+        <tr><td>Square Capital repayments, funds held</td><td data-l="Where it goes">A loan or holding account</td><td data-l="GST">None</td><td data-l="MYOB code">N-T</td><td data-l="Xero tax rate">BAS Excluded</td></tr>
+        <tr><td>The payout</td><td data-l="Where it goes">A transfer from Square clearing to your bank</td><td data-l="GST">None</td><td data-l="MYOB code">Transfer</td><td data-l="Xero tax rate">Transfer</td></tr>
+        </tbody>
+      </table></div>
+</section>
+
+<section id="rules">
+      <h2>The rules behind it</h2>
+      <h3>Tips</h3>
+      <p>The ATO's view is that a voluntary tip passed on to staff is not part of the price of the sale, so there is no GST on it, as long as you keep records showing the tips went to staff. A tip the business keeps, or a fixed amount charged as a service charge, is part of the price. Until tips are paid out they are money you owe your staff, which is why they sit in a liability account. How they reach your staff through payroll is a question for your accountant.</p>
+      <h3>Card surcharges</h3>
+      <p>The ATO treats a merchant's card surcharge as part of the price of what was sold. Its GST follows that sale: a surcharge on a taxable sale is taxable, a surcharge on a GST-free sale is GST-free. Keeping surcharges on their own income account shows what they bring in against what Square charges you.</p>
+      <h3>Gift cards</h3>
+      <p>A gift card that can be spent on a range of your goods is what the ATO calls a face value voucher. Selling one for its face value is not a taxable sale, so there is no GST when it is sold; GST is accounted for when the card is spent on taxable goods. Until then the card is a liability. If cards expire unused, ask your accountant: the ATO has a rule for that too.</p>
+      <h3>Refunds</h3>
+      <p>A refund for a returned sale is what the ATO calls an adjustment, generally reported in the period you become aware of it. So a refund belongs to the day it was given, not to the day of the original sale, and it reduces GST by the tax on what was refunded: none for a GST-free item.</p>
+      <h3>Square's fees</h3>
+      <p>Square charges its processing fees on the whole of each transaction, GST and tip included, takes them out before it transfers your money, and gives you a monthly GST tax invoice for them in the Square Dashboard under Account &amp; Settings &gt; Tax invoices. If you are registered for GST, the GST on the fees is a credit, and the ATO requires a tax invoice to claim a credit on a purchase over $82.50; Square's monthly invoice is that record. Check the claim with your accountant.</p>
+      <h3>The payout</h3>
+      <p>A payout is not income. It is money moving from the card balance Square holds for you to your bank, after Square has kept its fees and anything else it deducts, such as a Square Capital repayment. In the books it is a transfer out of a Square clearing account, and that account's balance is the card money Square has not paid out yet.</p>
+</section>
+
+<section id="example">
+      <h2>An example day</h2>
+      <p>Made-up figures for one shop's day, labelled Example throughout. Not a real business.</p>
+      <div class="tbl-wrap"><table class="tbl fold">
+        <thead><tr><th>Example: what happened in Square</th><th>Amount inc GST</th><th>GST in it</th></tr></thead>
+        <tbody>
+        <tr><td>Sales of taxable items</td><td data-l="Amount inc GST">$1,320.00</td><td data-l="GST in it">$120.00</td></tr>
+        <tr><td>GST-free sales</td><td data-l="Amount inc GST">$180.00</td><td data-l="GST in it">$0.00</td></tr>
+        <tr><td>Card surcharges</td><td data-l="Amount inc GST">$11.00</td><td data-l="GST in it">$1.00</td></tr>
+        <tr><td>Tips</td><td data-l="Amount inc GST">$40.00</td><td data-l="GST in it">$0.00</td></tr>
+        <tr><td>Gift cards sold</td><td data-l="Amount inc GST">$100.00</td><td data-l="GST in it">$0.00</td></tr>
+        <tr><td>Refund of a taxable sale</td><td data-l="Amount inc GST">&minus;$22.00</td><td data-l="GST in it">&minus;$2.00</td></tr>
+        <tr><td>Paid for with gift cards (the goods are in the sales above)</td><td data-l="Amount inc GST">$50.00</td><td data-l="GST in it">$0.00</td></tr>
+        </tbody>
+      </table></div>
+      <p>Paid: $1,350.00 by card (after the $22.00 refund went back to a card), $229.00 in cash and $50.00 with gift cards.</p>
+      <h3>The day's sales entry</h3>
+      <p>One tax-inclusive invoice for the shop's day, every line on the shop's job:</p>
+      <div class="tbl-wrap"><table class="tbl fold">
+        <thead><tr><th>Example: line on the day's invoice</th><th>Account</th><th>MYOB</th><th>Xero</th><th>Amount</th></tr></thead>
+        <tbody>
+        <tr><td>Sales (GST)</td><td data-l="Account">Square Sales</td><td data-l="MYOB">GST</td><td data-l="Xero">GST on Income</td><td data-l="Amount">$1,320.00</td></tr>
+        <tr><td>Sales (GST-free)</td><td data-l="Account">Square Sales</td><td data-l="MYOB">FRE</td><td data-l="Xero">GST Free Income</td><td data-l="Amount">$180.00</td></tr>
+        <tr><td>Card surcharges</td><td data-l="Account">Square Card Surcharges</td><td data-l="MYOB">GST</td><td data-l="Xero">GST on Income</td><td data-l="Amount">$11.00</td></tr>
+        <tr><td>Tips</td><td data-l="Account">Square Tips (liability)</td><td data-l="MYOB">N-T</td><td data-l="Xero">BAS Excluded</td><td data-l="Amount">$40.00</td></tr>
+        <tr><td>Gift cards sold</td><td data-l="Account">Square Gift Cards (liability)</td><td data-l="MYOB">N-T</td><td data-l="Xero">BAS Excluded</td><td data-l="Amount">$100.00</td></tr>
+        <tr><td>Refunds (GST)</td><td data-l="Account">Square Sales</td><td data-l="MYOB">GST</td><td data-l="Xero">GST on Income</td><td data-l="Amount">&minus;$22.00</td></tr>
+        <tr><td>Gift cards redeemed</td><td data-l="Account">Square Gift Cards (liability)</td><td data-l="MYOB">N-T</td><td data-l="Xero">BAS Excluded</td><td data-l="Amount">&minus;$50.00</td></tr>
+        <tr><td><b>Invoice total</b></td><td data-l="Account"></td><td data-l="MYOB"></td><td data-l="Xero"></td><td data-l="Amount"><b>$1,579.00</b></td></tr>
+        </tbody>
+      </table></div>
+      <p>Paid by two payments: $1,350.00 of card into Square Balance (the Square clearing account) and $229.00 of cash into your cash account. The $50.00 spent with gift cards is not a payment: it comes off the gift card liability, and what was bought is already in the sales. GST on the day: $120.00 + $1.00 &minus; $2.00 = $119.00.</p>
+      <h3>When Square pays out</h3>
+      <p>Square pays out the $1,350.00 of card takings less $22.00 of fees, $2.00 of which is GST:</p>
+      <div class="tbl-wrap"><table class="tbl fold">
+        <thead><tr><th>Example: the payout</th><th>From and to</th><th>MYOB</th><th>Xero</th><th>Amount</th></tr></thead>
+        <tbody>
+        <tr><td>Square fees (spend money)</td><td data-l="From and to">Square Fees, out of Square Balance</td><td data-l="MYOB">GST</td><td data-l="Xero">GST on Expenses</td><td data-l="Amount">$22.00</td></tr>
+        <tr><td>The payout (transfer)</td><td data-l="From and to">Square Balance to your bank</td><td data-l="MYOB">None (a transfer)</td><td data-l="Xero">None (a transfer)</td><td data-l="Amount">$1,328.00</td></tr>
+        </tbody>
+      </table></div>
+      <p>Square Balance takes $1,350.00 in and $22.00 and $1,328.00 out, so it is back to nothing, and the $1,328.00 matches the line on your bank statement. The $119.00 of GST on sales and the $2.00 credit on the fees are this shop's Square side only; your BAS also has every other sale and purchase.</p>
+</section>
+
+<section id="books">
+      <h2>MYOB and Xero: the same entries in each one's words</h2>
+      <h3>In MYOB</h3>
+      <p>The day is a tax-inclusive sales invoice to a customer for the shop, each line on the shop's job. Card and cash are customer payments into Square clearing (a Bank account) and your cash account. The payout is a spend money for what Square kept and a transfer money to your bank. MYOB's codes are GST, FRE (GST-free) and N-T (not reportable on the BAS).</p>
+      <h3>In Xero</h3>
+      <p>The day is a tax-inclusive sales invoice for the shop, each line on the shop's option in your jobs tracking category. Card and cash are payments into Square clearing (a BANK account) and your cash account. The payout is a spend money for what Square kept and a bank transfer to your bank. Xero's tax rates are GST on Income, GST Free Income, GST on Expenses, GST Free Expenses and BAS Excluded.</p>
+      <p>The detail of what each file needs, the permissions and the accounts, is on <a href="/integrations#square-myob">Square sales sync: what it posts</a>.</p>
+</section>
+
+<section id="pk">
+      <h2>How PayKicker posts each one</h2>
+      <p>PayKicker posts the shape above into MYOB or Xero every night, one shop at a time. Press Set it up for me and it finds or makes the accounts with these names: Square Sales, Square Discounts, Square Card Surcharges, Square Tips, Square Gift Cards, Square Balance, Square Cash Clearing and Square Fees, plus the ones only a payout needs, such as Square Loan Repayments and Square Held Funds. It never makes an account whose name already exists.</p>
+      <ul>
+        <li><b>Sales</b> on the GST code or the GST-free code, as Square recorded the tax on each item. A discount is already off each line; if your file keeps a discounts account, the sales post before discount and the discount as its own line.</li>
+        <li><b>Card surcharges</b> on their own income account, on the GST code, with the GST Square recorded on them. If much of what you surcharge is GST-free, ask your accountant how the surcharge should be split.</li>
+        <li><b>Tips</b> with no GST to the tips liability account.</li>
+        <li><b>Gift cards sold</b> to the gift card liability with no GST; <b>gift cards redeemed</b> come off it.</li>
+        <li><b>Refunds</b> on the day they were given, carrying the tax of the items refunded.</li>
+        <li><b>Cash rounding</b> on its own GST-free line, so cash days add up.</li>
+        <li><b>Each payout</b>: Square's fees on Square Fees with their GST; a Square Capital repayment or funds held on their own accounts with no GST; the payout as a transfer to your bank. The fees go on the shop's job.</li>
+      </ul>
+      <p>Before a day posts, PayKicker checks it against Square: the lines must add up to Square's own order totals, the GST must equal Square's GST, and the payments must equal what the orders asked for. Every day is matched to Square's own totals to the cent. A day that does not add up is held with the reason and never posted. At the month's end there is a GST summary of the Square side: the GST on sales and on Square's fees.</p>
+</section>
+
+<section id="faq">
+      <h2>Questions</h2>
+      <div class="faq-col">
+        <details><summary>Is there GST on Square's fees?</summary><p>Square gives you a monthly GST tax invoice for its processing fees in the Square Dashboard, on its Tax invoices page. If you are registered for GST, that invoice supports the GST credit on the fees; the ATO requires a tax invoice to claim a credit on a purchase over $82.50. Check the claim with your accountant.</p></details>
+        <details><summary>Do I charge GST on tips?</summary><p>Not on a voluntary tip that is passed on to your staff: the ATO's view is that it is not part of the price of the sale, as long as you keep records showing it went to staff. A tip the business keeps is part of the price and carries GST. PayKicker posts tips with no GST to a tips liability account.</p></details>
+        <details><summary>Is a card surcharge subject to GST?</summary><p>It follows the sale. The ATO treats a merchant's card surcharge as part of the price of what was sold, so a surcharge on a taxable sale carries GST and a surcharge on a GST-free sale does not.</p></details>
+        <details><summary>When is GST paid on a gift card?</summary><p>When it is spent, not when it is sold. The ATO treats a gift card that can be spent on a range of goods as a face value voucher: selling it for its face value is not a taxable sale, and GST is accounted for when it is redeemed for taxable goods. Until then it is a liability.</p></details>
+        <details><summary>Which day does a refund belong to?</summary><p>The day it was given. The ATO treats a refund for a returned sale as an adjustment, generally reported in the period you become aware of it, so last week's figures stay as they were and the refund reduces this period's GST by the tax on what was refunded.</p></details>
+        <details><summary>Why doesn't my Square payout match my sales?</summary><p>Because the payout is the card takings less Square's fees, and less any Square Capital repayment or funds Square holds, paid after the sale. Cash takings and gift card redemptions never pass through it.</p></details>
+      </div>
+</section>
+
+<section id="sources">
+      <h2>Sources</h2>
+      <p class="src">Read 26 October 2026. The general rules on this page come from these official pages; how PayKicker posts each piece comes from the app itself.</p>
+      <ul>
+        <li><a href="https://www.ato.gov.au/law/view/document?docid=GII%2FGSTIITH9%2FNAT%2FATO%2F00001" rel="noopener">ATO: GST issues register, restaurant tips</a>: voluntary tips passed on to staff are not consideration; tips kept by the business are</li>
+        <li><a href="https://www.ato.gov.au/law/view/document?docid=GST%2FGSTR20142%2FNAT%2FATO%2F00001" rel="noopener">ATO: GSTR 2014/2, GST treatment of credit card surcharges</a>: a merchant's card surcharge is part of the price of the sale and follows its GST treatment</li>
+        <li><a href="https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/in-detail/rules-for-specific-transactions/gst-and-vouchers" rel="noopener">ATO: GST and vouchers</a>: face value vouchers: no GST when sold for face value, GST when redeemed; unredeemed vouchers</li>
+        <li><a href="https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/completing-your-bas-for-gst/making-adjustments-on-your-activity-statements/when-to-make-adjustments" rel="noopener">ATO: When to make adjustments</a>: a refund for a returned sale is an adjustment event</li>
+        <li><a href="https://squareup.com/help/au/en/article/5068-learn-about-square-s-fees" rel="noopener">Square AU: Learn about Square's fees</a>: fees deducted before each transfer, from the total including tax and tip; monthly GST invoices under Account &amp; Settings &gt; Tax invoices</li>
+        <li><a href="https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/claiming-gst-credits/when-you-can-claim-a-gst-credit" rel="noopener">ATO: When you can claim a GST credit</a>: a tax invoice is needed to claim a GST credit on a purchase over $82.50</li>
+        <li><a href="https://www.myob.com/au/support/myob-business/accounting/financial-control/accounts-list/gst-codes" rel="noopener">MYOB: Tax codes</a>: MYOB's GST, FRE and N-T codes</li>
+        <li><a href="https://developer.xero.com/documentation/api/accounting/types" rel="noopener">Xero Developer: Australian tax types</a>: Xero's Australian tax rates: GST on Income, GST Free Income, GST on Expenses, GST Free Expenses, BAS Excluded</li>
+      </ul>
+</section>
+
+<section id="try">
+      <h2>Have every piece posted for you</h2>
+      <p>Connect MYOB or Xero and Square, and each shop's day posts in this shape every night. Free up to 60 orders a month across all your shops, then $9.99 a month up to 500 orders and $29.99 a month for unlimited orders, GST included, any number of shops, billed monthly. Uber Eats and DoorDash payouts are included at no extra charge.</p>
+      <div class="cta-act"><a class="btn go big" href="https://app.paykicker.com.au/signup?for=square" rel="noopener">Start free</a><a href="/integrations#square-myob">What it posts and prices</a></div>
+      <p class="related">Related: <a href="/guides/square-to-myob">How to get Square sales into MYOB</a> &middot; <a href="/guides/square-myob-retailer-case-study">Case study: a Melbourne retailer with two shops on Square and MYOB</a> &middot; <a href="/guides/mixed-gst-invoices">Invoices with GST and GST-free items</a> &middot; <a href="/integrations#square-myob">Square sales sync: what it posts</a></p>
+      <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Square, MYOB or Xero. Square is a trademark of Block, Inc., MYOB is a trademark of MYOB Technology Pty Ltd and Xero is a trademark of Xero Limited. This page is general information, not tax advice: check your own GST treatment with your accountant.</p>
+</section>
+
+</article>
+</div>
+
+</main>
+
+<!-- shell:footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="f-cols">
+      <div>
+        <p class="f-h" id="f-crews">For construction crews</p>
+        <ul aria-labelledby="f-crews"><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-any">For any business</p>
+        <ul aria-labelledby="f-any"><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/nz/">New Zealand</a></li><li><a href="/join">Join</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-acc">For accountants</p>
+        <ul aria-labelledby="f-acc"><li><a href="/partners">Become a partner</a></li><li><a href="/partner-terms">Partner terms</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-contact">Contact</p>
+        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">(03) 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
+      </div>
+    </div>
+    <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
+         as a PropertyValue identifier: keep the two in step. -->
+    <div class="legal">
+      <p class="legal-id"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="106" height="16"><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b></p>
+      <p>PayKicker is a software company and does not provide legal, tax, accounting or industrial relations advice. If you pay under an enterprise agreement, check your pay rules against your FWC-approved agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
+    </div>
+  </div>
+</footer>
+<script src="/js/country-bar.js" defer></script>
+<!-- /shell:footer -->
+</body>
+</html>
