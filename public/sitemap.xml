@@ -180,4 +180,10 @@
     <loc>https://paykicker.com.au/compare/amaka-alternative</loc>
     <lastmod>2026-10-27</lastmod>
   </url>
+  <url>
+    <loc>https://paykicker.com.au/compare/traild-alternative</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
