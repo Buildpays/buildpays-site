@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PayKicker for Xero: How the Connection Works | PayKicker</title>
+<meta name="description" content="How PayKicker connects to Xero, what it reads and writes, the permissions it asks for, how to disconnect from either side, and where to get help. Supplier invoices, Square and Shopify sales, into Xero coded.">
+<link rel="icon" type="image/svg+xml" href="/paykicker-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/paykicker-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b0f14">
+<link rel="canonical" href="https://paykicker.com.au/xero">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PayKicker for Xero: how the connection works">
+<meta property="og:description" content="What PayKicker reads from Xero, what it writes, the permissions it asks for, and how to disconnect from either side.">
+<meta property="og:url" content="https://paykicker.com.au/xero">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="PayKicker">
+<meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PayKicker for Xero: how the connection works">
+<meta name="twitter:description" content="What PayKicker reads from Xero, what it writes, the permissions, and how to disconnect from either side.">
+<meta name="twitter:image" content="https://paykicker.com.au/paykicker-og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=07a59c4c">
+<script src="/js/board.js?v=15"></script>
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
+<script src="/js/gtag.js"></script>
+<script src="/js/pixels.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Which Xero organisations can connect?", "acceptedAnswer": { "@type": "Answer", "text": "Any Xero organisation on a plan that includes bills (purchases). The person connecting needs a Xero role that can manage connected apps (an Adviser, or a Standard user allowed to)." } },
+    { "@type": "Question", "name": "Does PayKicker move money?", "acceptedAnswer": { "@type": "Answer", "text": "No. PayKicker never makes a payment. It posts approved bills, sales invoices and their payments as records; you pay suppliers from Xero or your bank as you do now." } },
+    { "@type": "Question", "name": "What happens to my data if I disconnect?", "acceptedAnswer": { "@type": "Answer", "text": "Everything already posted stays in Xero. PayKicker deletes its Xero tokens straight away and removes itself from your Connected apps. Your PayKicker records stay until you close the account." } },
+    { "@type": "Question", "name": "Does the Xero connection cost extra?", "acceptedAnswer": { "@type": "Answer", "text": "No. It is part of every PayKicker plan. Xero charges nothing for connecting an app." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "PayKicker", "item": "https://paykicker.com.au/" },
+    { "@type": "ListItem", "position": 2, "name": "Integrations", "item": "https://paykicker.com.au/integrations" },
+    { "@type": "ListItem", "position": 3, "name": "Xero", "item": "https://paykicker.com.au/xero" }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- shell:nav -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4l9 16H3z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter"/><path d="M12 10v4.5M12 17v.5" stroke="currentColor" stroke-width="1.75"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M8.6 3.5 6.1 3.2a1.6 1.6 0 0 0-1.7 1.1c-.5 1.8-.3 3.9.7 6.1a17.6 17.6 0 0 0 8.5 8.5c2.2 1 4.3 1.2 6.1.7a1.6 1.6 0 0 0 1.1-1.7l-.3-2.5a1.6 1.6 0 0 0-1.2-1.4l-2.9-.7a1.6 1.6 0 0 0-1.5.4l-1.2 1.2a12.4 12.4 0 0 1-5.3-5.3l1.2-1.2a1.6 1.6 0 0 0 .4-1.5l-.7-2.9a1.6 1.6 0 0 0-1.4-1.2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V13M18 12.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7L3.5 15a1.6 1.6 0 0 1 2.6-1.8L9 15.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="200" height="30"></a>
+    <a class="nav-call" href="tel:+61340616223" aria-label="Call (03) 4061 6223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlinks"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
+    <nav class="links" id="navlinks" aria-label="Main">
+      <a href="/construction">Construction</a>
+      <a href="/ap-automation">AP automation</a>
+      <a href="/integrations">Integrations</a>
+      <a href="/partners">Partners</a>
+      <a href="/pricing">Pricing</a>
+      <a class="nav-tel" href="tel:+61340616223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>(03)&nbsp;4061&nbsp;6223</a>
+      <span class="nav-act">
+        <a class="btn hair" href="https://app.paykicker.com.au/" rel="noopener">Log in</a>
+        <a class="btn go" href="/#contact">Book a demo</a>
+      </span>
+    </nav>
+  </div>
+</header>
+<!-- /shell:nav -->
+
+<main id="main">
+
+<section class="hero sub" aria-labelledby="h-hero">
+  <div class="wrap">
+    <div class="hero-split">
+      <div class="hero-copy">
+        <h1 id="h-hero">PayKicker for Xero.<br>How the connection works.</h1>
+        <p class="strap">One connection, made once by an owner or admin. PayKicker reads your suppliers, chart of accounts, tax rates and tracking categories from Xero, and posts approved supplier bills and daily sales back, coded. This page is the manual: connecting, what moves, permissions, disconnecting, help.</p>
+        <div class="acts">
+          <a class="btn go big" href="https://app.paykicker.com.au/signup?via=xero&amp;for=invoices" rel="noopener">Sign up with Xero</a>
+          <a class="btn hair big" href="#help">Get help</a>
+        </div>
+        <p class="fine-dim">Already a PayKicker customer? Connect from <b>Company → Accounting setup</b> inside the app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gate" id="connect" aria-labelledby="h-connect">
+  <div class="wrap">
+    <h2 id="h-connect" class="sec-h">Connecting.</h2>
+    <ol class="rows steps">
+      <li><h3 class="h3">Start from Xero or from PayKicker</h3><p>New to PayKicker: press <b>Sign up with Xero</b>. Xero asks you to sign in and to allow PayKicker; your name, email and business name come across, so there is nothing to retype. Already set up: open <b>Company → Accounting setup</b> and press <b>Connect Xero</b>.</p></li>
+      <li><h3 class="h3">Pick the organisation</h3><p>If your Xero login has several organisations, choose the one this PayKicker business posts to. One organisation per business; a second business in PayKicker connects its own.</p></li>
+      <li><h3 class="h3">PayKicker reads the file</h3><p>Suppliers, the chart of accounts, tax rates and the tracking category you use for jobs are read straight away and refreshed every night. The connection card shows the organisation's name and <b>● Connected</b>.</p></li>
+      <li><h3 class="h3">Work as usual</h3><p>Nothing changes in Xero until a bill is fully approved in PayKicker or a day's sales close. Then it lands in Xero, coded, with the document attached.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="gate" id="data" aria-labelledby="h-data">
+  <div class="wrap">
+    <h2 id="h-data" class="sec-h">What moves, and which way.</h2>
+    <ul class="rows">
+      <li><h3 class="h3">Read from Xero</h3><p>Contacts marked as suppliers (name, ABN, bank details on file), the chart of accounts with each account's tax rate, tax rates, tracking categories and their options (your jobs), purchase orders when purchase-order matching is switched on, and bills already in Xero, so a duplicate is caught before it is posted again. With the Cashflow add-on: bank balances, open sales invoices and open bills, read only.</p></li>
+      <li><h3 class="h3">Written to Xero</h3><p><b>Supplier invoices:</b> a fully approved bill becomes an <i>awaiting payment</i> bill (or a credit note) on the matched supplier, each line coded to the account, tax rate and tracking option you chose, the PDF attached. <b>Sales sync:</b> each shop's day from Square or Shopify becomes one sales invoice with its payments, posted to the clearing and cash accounts you mapped. Nothing is posted as <i>paid</i> that was not.</p></li>
+      <li><h3 class="h3">Never</h3><p>PayKicker never pays anyone, never changes a bill you keyed in Xero yourself, and never creates or edits suppliers. If a send fails, the bill waits in PayKicker with the reason, and you press <b>Send again</b> when it is fixed.</p></li>
+      <li><h3 class="h3">Permissions asked</h3><p>Who you are (name and email, at sign-up only), read contacts, read settings (accounts, tax rates, tracking), bills and credit notes, attachments, and the right to keep the connection alive between visits. The sales sync adds sales invoices, payments and bank transactions. PayKicker asks only for what the products you switched on need.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="gate" id="disconnect" aria-labelledby="h-disc">
+  <div class="wrap">
+    <h2 id="h-disc" class="sec-h">Disconnecting, from either side.</h2>
+    <ul class="rows">
+      <li><h3 class="h3">From PayKicker</h3><p><b>Company → Accounting setup → Disconnect.</b> PayKicker removes itself from your organisation's Connected apps in Xero and deletes the tokens it held. Approved bills not yet sent stay in PayKicker, marked <i>Not sent</i>, until you connect again.</p></li>
+      <li><h3 class="h3">From Xero</h3><p><b>Settings → Connected apps → PayKicker → Disconnect.</b> PayKicker notices within a day: the connection card changes to <i>needs renewing</i> and says it was disconnected from inside Xero. Nothing is sent until an owner or admin reconnects.</p></li>
+      <li><h3 class="h3">What stays</h3><p>Everything already posted stays in Xero as it is. Your PayKicker records stay until you close the account. Reconnecting the same organisation picks up where it left off.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="gate" id="security" aria-labelledby="h-sec">
+  <div class="wrap">
+    <h2 id="h-sec" class="sec-h">Keeping it safe.</h2>
+    <ul class="rows">
+      <li><h3 class="h3">Your Xero password is never seen</h3><p>Connecting happens on Xero's own sign-in page. PayKicker receives a token, encrypted at rest and renewed automatically, never your password.</p></li>
+      <li><h3 class="h3">Only owners and admins</h3><p>Connecting and disconnecting are owner and admin actions. Every connection, disconnection and send is written to the company's audit trail with who did it and when.</p></li>
+      <li><h3 class="h3">Checked before it posts</h3><p>Every bill is checked for duplicates (in PayKicker and in Xero), a changed bank account, a wrong ABN, GST that does not add up and an invoice date out of range before anyone can approve it.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band-cta" id="help" aria-labelledby="h-help">
+  <div class="wrap">
+    <div>
+      <h2 id="h-help">Need a hand with the connection?</h2>
+      <p>Email <a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a> or call <a href="tel:+61340616223">(03) 4061 6223</a>, Melbourne business hours. Say which organisation and what the card shows.</p>
+    </div>
+    <div class="acts">
+      <a class="btn go big" href="https://app.paykicker.com.au/signup?via=xero&amp;for=invoices" rel="noopener">Sign up with Xero</a>
+      <a class="btn hair big" href="/ap-automation">See what PayKicker Invoices does</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="h-faq">
+  <div class="wrap faq-in">
+    <h2 id="h-faq">Questions.</h2>
+    <div>
+      <div class="qs">
+        <details><summary>Which Xero organisations can connect?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Any Xero organisation on a plan that includes bills (purchases). The person connecting needs a Xero role that can manage connected apps (an Adviser, or a Standard user allowed to).</p></details>
+        <details><summary>Does PayKicker move money?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. PayKicker never makes a payment. It posts approved bills, sales invoices and their payments as records; you pay suppliers from Xero or your bank as you do now.</p></details>
+        <details><summary>What happens to my data if I disconnect?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Everything already posted stays in Xero. PayKicker deletes its Xero tokens straight away and removes itself from your Connected apps. Your PayKicker records stay until you close the account.</p></details>
+        <details><summary>Can I connect one organisation to two PayKicker businesses?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes, each business connects on its own. PayKicker sends one bill to one organisation at a time, so two businesses posting to the same file never clash.</p></details>
+        <details><summary>Does the Xero connection cost extra?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. It is part of every PayKicker plan. Xero charges nothing for connecting an app.</p></details>
+        <details><summary>I use MYOB, not Xero.<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>PayKicker connects to MYOB Business and AccountRight the same way. <a href="/integrations">See the integrations page</a>.</p></details>
+      </div>
+      <ul class="rows related">
+        <li><span class="r-name">Products</span><p><a href="/ap-automation">Supplier invoices</a> · <a href="/integrations#square-xero">Square sales into Xero</a> · <a href="/integrations#shopify">Shopify</a></p></li>
+        <li><span class="r-name">Pricing</span><p><a href="/pricing">Plans from $9.99 a month inc GST</a>, 14 days free, no card to start.</p></li>
+      </ul>
+      <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Xero or MYOB. Xero is a trademark of Xero Limited.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- shell:footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="f-cols">
+      <div>
+        <p class="f-h" id="f-crews">For construction crews</p>
+        <ul aria-labelledby="f-crews"><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-any">For any business</p>
+        <ul aria-labelledby="f-any"><li><a href="/ap-automation">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/compare/amaka-alternative">Switching from Amaka</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/nz/">New Zealand</a></li><li><a href="/join">Join</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-acc">For accountants</p>
+        <ul aria-labelledby="f-acc"><li><a href="/partners">Become a partner</a></li><li><a href="/partner-terms">Partner terms</a></li></ul>
+      </div>
+      <div>
+        <p class="f-h" id="f-contact">Contact</p>
+        <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">(03) 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
+      </div>
+    </div>
+    <!-- Entity identity. The ABN also appears in the Organization schema on the homepage
+         as a PropertyValue identifier: keep the two in step. -->
+    <div class="legal">
+      <p class="legal-id"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="106" height="16"><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b></p>
+      <p>PayKicker is a software company and does not provide legal, tax, accounting or industrial relations advice. If you pay under an enterprise agreement, check your pay rules against your FWC-approved agreement. Xero is a trademark of Xero Limited and MYOB is a trademark of MYOB Technology Pty Ltd. Square is a trademark of Block, Inc. Shopify is a trademark of Shopify Inc. No affiliation implied.</p>
+    </div>
+  </div>
+</footer>
+<script src="/js/country-bar.js" defer></script>
+<!-- /shell:footer -->
+
+</body>
+</html>
