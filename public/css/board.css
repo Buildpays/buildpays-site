@@ -527,7 +527,7 @@ html.lb-open{overflow:hidden}
   .f-contact .f-h{margin-bottom:.25rem}
   .f-cols>:nth-child(4) ul{display:flex;flex-direction:row;flex-wrap:wrap;columns:auto;gap:0 1rem}
   .f-cols>:nth-child(4) li{padding:0}
-  .f-cols>:nth-child(4) li:nth-child(-n+2){flex-basis:100%}
+  .f-cols>:nth-child(4) li:nth-child(-n+3){flex-basis:100%}
   .legal{margin-top:1rem;padding-top:.875rem;gap:.5rem}
   .legal p,.legal-id{font-size:.8125rem}
   .legal-id img{width:6.5rem}
