@@ -340,16 +340,22 @@ main>.hero:last-child{padding-bottom:var(--sec)}
   .shot .win-hint{margin:.625rem 1rem .625rem auto}
 }
 @media (prefers-reduced-motion:reduce){.win-hint{transition:none}}
-.lb{position:fixed;inset:0;cursor:zoom-out;z-index:60;overflow:auto;overscroll-behavior:contain;background:var(--lb-bg);-webkit-overflow-scrolling:touch}
+.lb{position:fixed;inset:0;cursor:zoom-out;z-index:60;overflow:auto;overscroll-behavior:contain;background:var(--lb-bg);-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom}
 .lb[hidden]{display:none!important}
 .lb-in{min-height:100%;display:flex;flex-direction:column;align-items:center;padding:4.5rem 2vw 2rem}
 .lb img{cursor:auto;display:block;width:var(--lw);max-width:96vw;height:auto;border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);background:var(--screen-edge)}
 .lb-cap{margin-top:.75rem;max-width:min(96vw,72ch);font-size:.875rem;line-height:1.5;color:var(--ink-2);text-align:center}
 .lb-close{position:fixed;top:.875rem;right:.875rem;z-index:61;display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 1rem;background:var(--card);color:var(--ink);border:1px solid var(--border-2);border-radius:var(--r-sm);font:500 .9375rem/1.3 var(--f);cursor:pointer;transition:border-color var(--t),color var(--t)}
+/* On a phone (TR, 8 Nov 2026: "it doesn't give the full screen properly on phone, can't even use two fingers to zoom out"):
+   the whole screen opens FITTED to the phone's width, so it is seen whole first; a tap on it goes to actual size (scroll both
+   ways), another tap fits it again (js initZoom); the browser's own pinch is left alone (touch-action above). */
 @media (max-width:640px){
-  .lb-in{align-items:flex-start;width:max-content;min-width:100%;padding:4.5rem 1rem 2rem}
-  .lb img{max-width:none}
-  .lb-cap{max-width:calc(100vw - 2rem);text-align:left}
+  .lb-in{padding:4.5rem 1rem 2rem}
+  .lb img{width:auto;max-width:100%;cursor:zoom-in}
+  .lb.lb-zoomed .lb-in{align-items:flex-start;width:max-content;min-width:100%}
+  .lb.lb-zoomed img{width:var(--lw);max-width:none;cursor:zoom-out}
+  .lb-cap{max-width:calc(100vw - 2rem)}
+  .lb.lb-zoomed .lb-cap{text-align:left}
 }
 html.lb-open{overflow:hidden}
 

@@ -118,6 +118,13 @@
       img = lb.querySelector('img'); cap = lb.querySelector('.lb-cap'); close = lb.querySelector('.lb-close');
       close.addEventListener('click', hide);
       lb.addEventListener('click', function (e) { if (e.target === lb || e.target === lb.firstChild.nextSibling || e.target === cap) hide(); });   // the backdrop, not the image
+      // On a phone the screen opens fitted to the width; a tap on it goes to actual size and back (css .lb-zoomed).
+      img.addEventListener('click', function () {
+        if (!window.matchMedia('(max-width:640px)').matches) return;
+        var z = lb.classList.toggle('lb-zoomed');
+        cap.textContent = z ? 'Example data. Tap the screen to fit it to the page.' : 'Example data. Tap the screen to zoom in, or pinch.';
+        if (!z) { lb.scrollTop = 0; lb.scrollLeft = 0; }
+      });
       lb.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { e.preventDefault(); hide(); }
         else if (e.key === 'Tab') { e.preventDefault(); close.focus(); }   // the one control in the dialog
@@ -133,7 +140,8 @@
       img.style.setProperty('--lw', w + 'px');
       img.src = full || src.currentSrc || src.src;
       img.alt = full ? (win.getAttribute('data-full-alt') || src.alt) : src.alt;
-      cap.textContent = 'Example data.';
+      lb.classList.remove('lb-zoomed');
+      cap.textContent = window.matchMedia('(max-width:640px)').matches ? 'Example data. Tap the screen to zoom in, or pinch.' : 'Example data.';
       lb.hidden = false;
       lb.scrollTop = 0; lb.scrollLeft = 0;
       root.classList.add('lb-open');
