@@ -196,6 +196,62 @@
   </div>
 </section>
 
+<section class="gate gate-plain" id="how" aria-labelledby="h-how">
+  <div class="wrap">
+    <div class="gate-head">
+      <h2 id="h-how">Three steps.<br>Then it runs by itself.</h2>
+    </div>
+    <ul class="strip strip-terms">
+      <li><span class="d-name">1 · Connect</span><span class="d-line">Sign in with Xero or MYOB. Your accounts, jobs and tax codes come across.</span></li>
+      <li><span class="d-name">2 · Send it in</span><span class="d-line">Email a bill to your PayKicker address, or connect Square. Nothing to type.</span></li>
+      <li><span class="d-name">3 · It posts</span><span class="d-line">Read, checked to the cent and coded. You approve what needs you; the rest lands in your file.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="see" id="see" aria-labelledby="h-see">
+  <div class="wrap">
+    <!-- See it work: three whole screens from the app harness (synthetic data), one at a time, each with one sentence.
+         Provenance: /screens/office-day.json, invoice-approval.json, sales-days.json. A click opens the screen full
+         size. board.js runs the slideshow; without script the three stand one under another. -->
+    <h2 class="see-h" id="h-see">See it work</h2>
+    <div class="sl" role="region" aria-roledescription="carousel" aria-label="PayKicker screens, example data" tabindex="0">
+      <div class="sl-view" id="see-view" aria-live="polite">
+        <figure class="sl-slide" role="group" aria-roledescription="slide" aria-label="1 of 3">
+          <div class="shot">
+            <p class="shot-bar"><i aria-hidden="true"><span></span></i>Office · the day<span class="sb-r">Example data</span></p>
+            <div class="win"><img src="/screens/office-day.webp" width="1271" height="1080" style="max-width:2542px;max-height:2160px" alt="PayKicker's home screen for the office, example data: Monday 12 October, 8 things need you, 37 crew, 13 sites, 36 timesheets to approve and 237 to export; Needs you (a casual conversion, pay items to name, timesheets to approve, dockets awaiting signature, leave requests, workers onboarding, tickets to verify and tickets expiring); today on site by crew; hours this week, upcoming leave, the week's roster and dockets this week." loading="lazy" decoding="async"></div>
+          </div>
+          <figcaption class="sl-cap">The office's day: what needs you, who is on which site, and the week's roster, in one screen.</figcaption>
+        </figure>
+        <figure class="sl-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+          <div class="shot">
+            <p class="shot-bar"><i aria-hidden="true"><span></span></i>Invoices · INV-20955 in review<span class="sb-r">Example data</span></p>
+            <div class="win"><img src="/screens/invoice-approval.webp" width="1180" height="1003" style="max-width:2360px;max-height:2006px" alt="PayKicker Invoices, the approver's view, example data: a Northside Timber &amp; Hardware tax invoice for $1,796.30 in review, with Approve your part, Hold and Reject; the supplier's PDF beside the checks (nothing unusual), the figures read from it and each of its four lines coded to an account, a job and GST." loading="lazy" decoding="async"></div>
+          </div>
+          <figcaption class="sl-cap">A supplier bill read, checked, coded line by line to account, job and GST, ready for the right person to approve.</figcaption>
+        </figure>
+        <figure class="sl-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+          <div class="shot">
+            <p class="shot-bar"><i aria-hidden="true"><span></span></i>Sales · Day summaries, October<span class="sb-r">Example data</span></p>
+            <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" style="max-width:2288px;max-height:1944px" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, one day needing attention, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." loading="lazy" decoding="async"></div>
+          </div>
+          <figcaption class="sl-cap">Every Square day matched to the cent and posted into MYOB or Xero as one sales invoice.</figcaption>
+        </figure>
+      </div>
+      <div class="sl-ctl">
+        <button class="sl-btn sl-prev" type="button" aria-controls="see-view" aria-label="Previous screen"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <div class="sl-dots">
+          <button class="sl-dot" type="button" aria-label="Screen 1 of 3: the office's day"></button>
+          <button class="sl-dot" type="button" aria-label="Screen 2 of 3: a supplier bill in review"></button>
+          <button class="sl-dot" type="button" aria-label="Screen 3 of 3: Square day summaries"></button>
+        </div>
+        <button class="sl-btn sl-next" type="button" aria-controls="see-view" aria-label="Next screen"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="why" aria-labelledby="h-why">
   <div class="wrap">
     <div class="why-head">
