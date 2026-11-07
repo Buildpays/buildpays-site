@@ -155,10 +155,12 @@
       box.className = 'win-box';
       win.parentNode.insertBefore(box, win);
       box.appendChild(win);
-      var hint = document.createElement('span');
+      var hint = document.createElement('button');   // a real button: on a phone it sits under the screen and looks tappable, so it is
+      hint.type = 'button';
       hint.className = 'win-hint';
-      hint.setAttribute('aria-hidden', 'true');
+      hint.tabIndex = -1;   // the window itself is the keyboard target; this is the same action for a thumb
       hint.textContent = win.getAttribute('data-full') ? 'View the whole screen' : 'View full size';
+      hint.addEventListener('click', function () { show(win); });
       box.appendChild(hint);
       win.addEventListener('click', function () { show(win); });
       win.addEventListener('keydown', function (e) {
