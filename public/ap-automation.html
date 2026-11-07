@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/css/board.css?v=50d08f2d">
+<link rel="stylesheet" href="/css/board.css?v=3c15998e">
 <script src="/js/board.js?v=16"></script>
 
 <!-- Google Analytics 4 -->
@@ -287,19 +287,19 @@
 <footer class="foot">
   <div class="wrap">
     <div class="f-cols">
-      <div>
-        <p class="f-h" id="f-crews">For construction crews</p>
+      <details class="f-col" open>
+        <summary class="f-h" id="f-crews">For construction crews<svg class="ic f-chev" aria-hidden="true"><use href="#i-arrow"/></svg></summary>
         <ul aria-labelledby="f-crews"><li><a href="/construction">The crew system</a></li><li><a href="/eba-payroll-software">EBA payroll software</a></li><li><a href="/digital-dayworks-docket">Dayworks dockets</a></li><li><a href="/guides/">Guides</a></li><li><a href="/construction#contact">Book a demo</a></li></ul>
-      </div>
-      <div>
-        <p class="f-h" id="f-any">For any business</p>
+      </details>
+      <details class="f-col" open>
+        <summary class="f-h" id="f-any">For any business<svg class="ic f-chev" aria-hidden="true"><use href="#i-arrow"/></svg></summary>
         <ul aria-labelledby="f-any"><li><a href="/ap-automation" aria-current="page">Supplier invoices</a></li><li><a href="/integrations">Integrations</a></li><li><a href="/integrations#square-myob">Square sales sync</a></li><li><a href="/integrations#bank">Bank coding (coming)</a></li><li><a href="/compare/dext-alternative">Compared with Dext</a></li><li><a href="/compare/amaka-alternative">Switching from Amaka</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/nz/">New Zealand</a></li><li><a href="/join">Join</a></li></ul>
-      </div>
-      <div>
-        <p class="f-h" id="f-acc">For accountants</p>
+      </details>
+      <details class="f-col" open>
+        <summary class="f-h" id="f-acc">For accountants<svg class="ic f-chev" aria-hidden="true"><use href="#i-arrow"/></svg></summary>
         <ul aria-labelledby="f-acc"><li><a href="/partners">Become a partner</a></li><li><a href="/partner-terms">Partner terms</a></li></ul>
-      </div>
-      <div>
+      </details>
+      <div class="f-contact">
         <p class="f-h" id="f-contact">Contact</p>
         <ul aria-labelledby="f-contact"><li><a href="tel:+61340616223">(03) 4061 6223</a></li><li><a href="mailto:operations@paykicker.com.au">operations@<wbr>paykicker.com.au</a></li><li><span>Melbourne, Victoria</span></li><li><a href="/status">System status</a></li><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="https://app.paykicker.com.au/" rel="noopener">Log in</a></li></ul>
       </div>
@@ -313,6 +313,7 @@
   </div>
 </footer>
 <script src="/js/country-bar.js" defer></script>
+<script src="/js/foot.js" defer></script>
 <!-- /shell:footer -->
 
 <script src="/js/invoices.js?v=2" defer></script>

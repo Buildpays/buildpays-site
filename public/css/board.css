@@ -489,14 +489,20 @@ html.lb-open{overflow:hidden}
 /* ---------------------------------------------------------------- footer */
 /* TR, 26 Oct 2026: "footer is taking too much space" … "no, make it as colums like bfore but not take that much space". The
    four columns stay; the two long lists (For any business, Contact) run in two short sub-columns, and the spacing is tighter —
-   the tallest column is five links. */
+   the tallest column is five links.
+   TR, 8 Nov 2026: "Footer on phone is taking up soo much space". On a phone (≤ 640px) the three link columns are <details>
+   that start closed (js/foot.js) — one line each, a tap opens one — and Contact runs as a short wrapped row. On a wider
+   screen the details stay open and the toggle is not a control. */
 .foot{border-top:1px solid var(--border);background:var(--surface);padding:2.25rem 0 1.25rem;font-size:.875rem;line-height:1.4}
 .f-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.75fr) minmax(0,.9fr) minmax(0,1.75fr);gap:1.5rem 2rem}
 .foot .f-h{margin:0 0 .5rem;font-weight:500;font-size:.8125rem;color:var(--ink-2)}
+.f-col summary{list-style:none;cursor:default;pointer-events:none;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.f-col summary::-webkit-details-marker{display:none}
+.f-chev{display:none;width:1rem;height:1rem;transform:rotate(90deg);transition:transform .15s}
 .foot ul{display:flex;flex-direction:column;gap:.3125rem}
-.f-cols>div:is(:nth-child(2),:nth-child(4)) ul{display:block;columns:2;column-gap:1.5rem}
-.f-cols>div:is(:nth-child(2),:nth-child(4)) li{break-inside:avoid;padding-bottom:.3125rem}
-.f-cols>div:nth-child(4) li:nth-child(-n+3){column-span:all}   /* phone, email and Melbourne run across both; the four links sit 2 × 2 */
+.f-cols>:is(:nth-child(2),:nth-child(4)) ul{display:block;columns:2;column-gap:1.5rem}
+.f-cols>:is(:nth-child(2),:nth-child(4)) li{break-inside:avoid;padding-bottom:.3125rem}
+.f-cols>:nth-child(4) li:nth-child(-n+3){column-span:all}   /* phone, email and Melbourne run across both; the four links sit 2 × 2 */
 .foot a{color:var(--ink)}
 .foot a:hover{text-decoration:none}
 .foot a[aria-current="page"]{font-weight:600}
@@ -506,8 +512,26 @@ html.lb-open{overflow:hidden}
 .legal-id img{width:7.5rem;height:auto}
 .legal p{color:var(--ink-2);font-size:.8125rem;line-height:1.5}
 .legal b{color:var(--ink);font-weight:500}
-@media (max-width:900px){.f-cols{grid-template-columns:1fr 1fr;gap:1.25rem 1.5rem}.f-cols>div:is(:nth-child(2),:nth-child(4)) ul{columns:1}.legal{grid-template-columns:1fr}}
-@media (max-width:640px){.f-cols{grid-auto-flow:row dense}.f-cols>div:is(:nth-child(2),:nth-child(4)){grid-column:1/-1}.f-cols>div:is(:nth-child(2),:nth-child(4)) ul{columns:2}.foot{font-size:.9375rem;padding-top:1.75rem}.foot ul{gap:.25rem}.foot ul a{display:inline-block;padding:.1875rem 0}.legal p,.legal-id{font-size:.875rem}}
+@media (max-width:900px){.f-cols{grid-template-columns:1fr 1fr;gap:1.25rem 1.5rem}.f-cols>:is(:nth-child(2),:nth-child(4)) ul{columns:1}.legal{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .foot{padding:.25rem 0 1rem;font-size:.9375rem}
+  .f-cols{display:block}
+  .f-col{border-bottom:1px solid var(--border)}
+  .f-col summary{pointer-events:auto;cursor:pointer;margin:0;padding:.875rem 0;font-size:.9375rem;color:var(--ink);font-weight:500}
+  .f-chev{display:block;color:var(--ink-2)}
+  .f-col[open] .f-chev{transform:rotate(-90deg)}
+  .f-col ul,.f-cols>:nth-child(2) ul{display:flex;flex-direction:column;columns:auto;gap:0;padding:0 0 .75rem}
+  .f-col li{padding:0}
+  .foot ul a{display:inline-block;padding:.25rem 0}
+  .f-contact{padding-top:1rem}
+  .f-contact .f-h{margin-bottom:.25rem}
+  .f-cols>:nth-child(4) ul{display:flex;flex-direction:row;flex-wrap:wrap;columns:auto;gap:0 1rem}
+  .f-cols>:nth-child(4) li{padding:0}
+  .f-cols>:nth-child(4) li:nth-child(-n+2){flex-basis:100%}
+  .legal{margin-top:1rem;padding-top:.875rem;gap:.5rem}
+  .legal p,.legal-id{font-size:.8125rem}
+  .legal-id img{width:6.5rem}
+}
 
 /* ---------------------------------------------------------------- lists and steps */
 /* Rows: a name and a line, hairlines between. */
