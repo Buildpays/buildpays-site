@@ -525,23 +525,24 @@ html.lb-open{overflow:hidden}
 .legal b{color:var(--ink);font-weight:500}
 @media (max-width:900px){.f-cols{grid-template-columns:1fr 1fr;gap:1.25rem 1.5rem}.f-cols>:is(:nth-child(2),:nth-child(4)) ul{columns:1}.legal{grid-template-columns:1fr}}
 @media (max-width:640px){
-  .foot{padding:.25rem 0 1rem;font-size:.9375rem}
+  .foot{padding:0 0 .875rem;font-size:.875rem}
   .f-cols{display:block}
   .f-col{border-bottom:1px solid var(--border)}
-  .f-col summary{pointer-events:auto;cursor:pointer;margin:0;padding:.875rem 0;font-size:.9375rem;color:var(--ink);font-weight:500}
+  .f-col summary{pointer-events:auto;cursor:pointer;margin:0;padding:.625rem 0;font-size:.875rem;color:var(--ink);font-weight:500}
   .f-chev{display:block;color:var(--ink-2)}
   .f-col[open] .f-chev{transform:rotate(-90deg)}
   .f-col ul,.f-cols>:nth-child(2) ul{display:flex;flex-direction:column;columns:auto;gap:0;padding:0 0 .75rem}
   .f-col li{padding:0}
-  .foot ul a{display:inline-block;padding:.25rem 0}
-  .f-contact{padding-top:1rem}
+  .foot ul a{display:inline-block;padding:.1875rem 0}
+  .f-contact{padding-top:.75rem}
   .f-contact .f-h{margin-bottom:.25rem}
   .f-cols>:nth-child(4) ul{display:flex;flex-direction:row;flex-wrap:wrap;columns:auto;gap:0 1rem}
   .f-cols>:nth-child(4) li{padding:0}
   .f-cols>:nth-child(4) li:nth-child(-n+3){flex-basis:100%}
-  .legal{margin-top:1rem;padding-top:.875rem;gap:.5rem}
-  .legal p,.legal-id{font-size:.8125rem}
-  .legal-id img{width:6.5rem}
+  .legal{margin-top:.75rem;padding-top:.75rem;gap:.375rem}
+  .legal-id{font-size:.75rem;gap:.25rem}
+  .foot .legal p{font-size:.75rem;line-height:1.4}   /* TR, 8 Nov 2026: "That paragraph … should not be that big" */
+  .legal-id img{width:6rem}
 }
 
 /* ---------------------------------------------------------------- lists and steps */
@@ -968,7 +969,7 @@ input[type=range]:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 /* ---------------------------------------------------------------- phones: no text under 14px */
 @media (max-width:640px){
   .shot-bar{padding:0 .875rem}.shot-bar i{display:none}
-  .pill,.tag,.shot-bar,.pc-bar,.foot .f-h,.tbl th,.tbl caption,.mon .days i,.legal p,.pick small,.vs td::before,.eyebrow{font-size:.875rem}
+  .pill,.tag,.shot-bar,.pc-bar,.foot .f-h,.tbl th,.tbl caption,.mon .days i,.pick small,.vs td::before,.eyebrow{font-size:.875rem}
 }
 
 /* ---------------------------------------------------------------- the band wins over the ground's text colours */
