@@ -92,7 +92,7 @@ a:hover{text-decoration:underline}
 .skip{position:absolute;left:.75rem;top:-3.75rem;z-index:50;background:var(--ink);color:var(--on-ink);padding:.625rem .875rem;border-radius:var(--r-sm);font-weight:600}
 .skip:focus{top:.75rem}
 .skip:hover{color:var(--on-ink);text-decoration:none}
-mark.hi{background:var(--hi);color:inherit;padding:.06em .3em;margin:0 -.1em;border-radius:.25rem;-webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:600}
+mark.hi{background:none;color:var(--orange);padding:0;font-weight:600}   /* TR, 8 Nov 2026: a wash on the navy "seems very odd and not highlighting" — the fact is in the brand orange instead */
 /* One switch per product that is not open yet: data-live="false" shows the "opening soon" wording, "true" the live. */
 [data-live="false"] .if-live,[data-live="true"] .if-soon{display:none!important}
 
