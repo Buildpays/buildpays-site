@@ -231,8 +231,11 @@ main>.hero:last-child{padding-bottom:var(--sec)}
 
 /* The three product cards. */
 .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;align-items:stretch;margin-top:clamp(2.5rem,3.4*var(--vw),3rem)}
-.trio>li{min-width:0}
-.pcard{display:flex;flex-direction:column;height:100%;background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s}
+/* TR, 8 Nov 2026: "These are not lined up properly" — the three cards share their rows (subgrid): head, screen, the line,
+   the price box and the buttons each sit at one height across the three, whatever the line count. */
+.trio{grid-template-rows:auto auto auto auto auto}
+.trio>li{min-width:0;display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0}
+.pcard{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0;height:100%;background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s}
 .pcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-hi);border-color:var(--border-2)}
 @media (prefers-reduced-motion:reduce){.pcard{transition:none}.pcard:hover{transform:none}}
 .pc-head{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:1rem 1.25rem}
@@ -244,7 +247,9 @@ main>.hero:last-child{padding-bottom:var(--sec)}
 .pc-screen{container-type:inline-size}
 .pcard .win{border:0;border-radius:0;box-shadow:none;display:grid;grid-template:minmax(0,1fr)/minmax(0,1fr);place-items:center;height:min(75cqw,840px)}
 .pcard .win img{width:100%;height:100%;object-fit:contain}
-.pc-foot{display:flex;flex-direction:column;gap:.75rem;flex:1;padding:1rem 1.25rem 1.25rem}
+.pc-foot{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:.75rem;padding:1rem 1.25rem 1.25rem}
+.pc-foot .price,.pc-foot .gate-acts{margin-top:0}
+.pc-foot .gate-acts{align-self:end}
 .pc-foot p{color:var(--ink-2);line-height:1.55}
 .pc-foot .tl{margin-top:auto;align-self:flex-start}
 .shelf-note{margin-top:.875rem;text-align:right;color:var(--ink-2);font-size:.875rem}
