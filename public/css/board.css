@@ -29,7 +29,7 @@
   --grey:#9aa6b2;  --grey-bg:rgba(154,166,178,.12);
   --red:#f2a191;   --red-bg:rgba(242,161,145,.12);
   --screen-edge:#f4f6fa;      /* the app's own page colour: the edge of every capture */
-  --hi:rgba(240,181,65,.18);  /* the wash under a money fact */
+  --hi:rgba(242,92,31,.16);   /* the wash under a money fact: the brand orange, faint (TR, 8 Nov 2026: the amber read as olive on the navy) */
   --ul:rgba(243,245,247,.36); /* the faint underline under a link in running text */
   --ring:rgba(255,255,255,.16);  /* the focus ring round an input */
   --ph:#87929e;               /* placeholder lettering */
