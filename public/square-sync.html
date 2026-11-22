@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Square Sales into MYOB or Xero, Automatically | PayKicker</title>
+<meta name="description" content="PayKicker posts each Square shop's day into MYOB or Xero every night: sales with their GST, the payments and each payout with Square's fees. Free up to 60 orders a month, no card to start.">
+<link rel="icon" type="image/svg+xml" href="/paykicker-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/paykicker-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/paykicker-icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/paykicker-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b0f14">
+<link rel="canonical" href="https://paykicker.com.au/square-sync">
+<!-- Google Ads landing page (campaign "Square sync - Search"). Kept out of search, the sitemap and the nav so it never
+     competes with /guides/square-to-myob or /integrations; the header is the logo and the phone only, on purpose.
+     The page has no shell markers: scripts/shell.py leaves it alone (its --check lists it as "legacy", which is expected).
+     Every Start free is a plain link to app.paykicker.com.au/signup, so js/gtag.js counts the click as "Start free click".
+     Facts checked against the app repo (origin/main, 23 Nov 2026): _shared/squareTiers.js (bands), _shared/switchOffer.js
+     (the switch offer), _shared/square/post.js + postingStart.js + failMail.js (what posts, when, retries), screens/Signup.jsx
+     ("No card to start"). -->
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Your Square sales in MYOB or Xero, automatically">
+<meta property="og:description" content="Each Square shop's day posted into MYOB or Xero every night. Free up to 60 orders a month, no card to start.">
+<meta property="og:url" content="https://paykicker.com.au/square-sync">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="PayKicker">
+<meta property="og:image" content="https://paykicker.com.au/paykicker-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PayKicker: everything your business does manually, now to MYOB/Xero automatically">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/board.css?v=1307c09c">
+<script src="/js/board.js?v=17"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4DGX8VDBNH"></script>
+<script src="/js/gtag.js"></script>
+<script src="/js/pixels.js"></script>
+<style>
+/* Page-only: the ad landing page's slim header and footer, the call line, the lists. Tokens from board.css. */
+.lp-nav .nav-in{gap:1rem}
+.lp-nav .brand{margin-right:auto}
+.lp-tel{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:0 .875rem;border:1px solid var(--border-2);border-radius:var(--r-sm);color:var(--ink);font-weight:500;font-size:.9375rem;white-space:nowrap;text-decoration:none;font-variant-numeric:tabular-nums;transition:border-color var(--t),color var(--t)}
+.lp-tel:hover,.lp-tel:focus-visible{border-color:var(--orange);color:var(--orange);text-decoration:none}
+.lp-tel .ic{width:1.05rem;height:1.05rem}
+.lp-acts{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;margin-top:1.75rem}
+.lp-call{display:inline-flex;align-items:center;min-height:2.75rem;color:var(--ink);font-weight:500;white-space:nowrap}
+.lp-free{margin-top:.875rem;color:var(--ink);font-weight:500;font-size:1rem}
+.lp-free span{color:var(--ink-2);font-weight:400}
+.lp-shot{margin-top:.75rem;color:var(--ink-2);font-size:.875rem}
+.lp-sec{margin:var(--sec) 0}
+.lp-sec h2{font-size:clamp(2rem,3.2*var(--vw),3rem);max-width:22ch}
+.lp-sec .lede{margin-top:1rem;color:var(--ink-2);max-width:60ch}
+.lp-lands{display:grid;gap:.875rem;margin-top:clamp(1.75rem,3*var(--vw),2.5rem);max-width:56rem}
+.lp-lands li{display:flex;gap:.75rem;align-items:flex-start;line-height:1.55;color:var(--ink-2)}
+.lp-lands li b{color:var(--ink);font-weight:600}
+.lp-lands .ic{flex:none;width:1.25rem;height:1.25rem;margin-top:.15em;color:var(--green)}
+.lp-price{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:1.5rem clamp(2rem,4.4*var(--vw),4rem);align-items:start}
+.lp-price .tbl{margin-top:0}
+.lp-price .tbl td.n{font-weight:600;color:var(--ink)}
+.lp-price .note-dim{margin-top:1rem}
+.lp-switch{margin-top:1.5rem;padding:1.125rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);color:var(--ink-2);font-size:.9375rem;line-height:1.55}
+.lp-switch b{color:var(--ink);font-weight:600}
+.band-cta .lp-acts{margin-top:0}
+.band-cta .lp-call{color:var(--on-navy)}
+.lp-foot{padding:1.5rem 0 1.25rem}
+.lp-foot .legal{margin-top:0;padding-top:0;border-top:0}
+.lp-links{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;margin-top:.75rem}
+.lp-links a{display:inline-flex;align-items:center;min-height:2.75rem}
+@media (max-width:900px){.lp-price{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){
+  .lp-tel{padding:0 .75rem;font-size:.875rem}
+  .lp-acts{width:100%}
+  .lp-acts .btn.go{width:100%}
+}
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M8.6 3.5 6.1 3.2a1.6 1.6 0 0 0-1.7 1.1c-.5 1.8-.3 3.9.7 6.1a17.6 17.6 0 0 0 8.5 8.5c2.2 1 4.3 1.2 6.1.7a1.6 1.6 0 0 0 1.1-1.7l-.3-2.5a1.6 1.6 0 0 0-1.2-1.4l-2.9-.7a1.6 1.6 0 0 0-1.5.4l-1.2 1.2a12.4 12.4 0 0 1-5.3-5.3l1.2-1.2a1.6 1.6 0 0 0 .4-1.5l-.7-2.9a1.6 1.6 0 0 0-1.4-1.2z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav lp-nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="PayKicker home"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="200" height="30"></a>
+    <a class="lp-tel" href="tel:+61340616223"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>(03)&nbsp;4061&nbsp;6223</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero sub" aria-labelledby="h-hero">
+  <div class="wrap">
+    <div class="hero-split">
+      <div class="hero-copy">
+        <h1 id="h-hero">Your Square sales in MYOB or Xero, automatically.</h1>
+        <p class="strap">Every night PayKicker posts each Square shop's day into MYOB or Xero: the sales with their GST, the payments, and each payout with Square's fees. Checked against Square's own totals to the cent.</p>
+        <div class="lp-acts">
+          <a class="btn go big" href="https://app.paykicker.com.au/signup?for=square&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=square-sync&amp;utm_content=lp" rel="noopener">Start free</a>
+          <a class="lp-call" href="tel:+61340616223">or call (03)&nbsp;4061&nbsp;6223</a>
+        </div>
+        <p class="lp-free">Free up to 60 orders a month. <span>No card to start.</span></p>
+        <p class="fine-dim">MYOB or Xero stays your books. PayKicker only reads from Square and never moves money.</p>
+      </div>
+
+      <div class="hero-shot">
+        <!-- The real Sales > Day Summaries screen, the whole capture, from the app harness (synthetic data).
+             Provenance: /screens/sales-days.json -->
+        <figure class="shot fit" style="--ar:1144/972">
+          <figcaption class="shot-bar"><i aria-hidden="true"><span></span></i>Sales · Day summaries, October<span class="sb-r">Example data</span></figcaption>
+          <div class="win"><img src="/screens/sales-days.webp" width="1144" height="972" alt="PayKicker Sales screen, Day Summaries, example data: Square and MYOB connected for one shop, October's orders, net sales, GST and takings, and each day with its sales, refunds, GST, card and cash, most posted to MYOB with their invoice numbers." decoding="async"></div>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lp-sec" id="how" aria-labelledby="h-how">
+  <div class="wrap">
+    <h2 id="h-how" class="sec-h">Set it up once. Then every day posts by itself.</h2>
+    <ol class="rows steps">
+      <li><h3 class="h3">Start free with MYOB or Xero</h3><p>Sign up and connect your MYOB or Xero file in the same step. It takes about two minutes.</p></li>
+      <li><h3 class="h3">Connect Square</h3><p>Sign in to Square and press Allow. Then press Set it up for me on each shop: PayKicker finds the Square accounts in your file, or makes the missing ones after asking.</p></li>
+      <li><h3 class="h3">Each night, the day goes in</h3><p>Choose when posting starts, from today or a date you pick, and switch the shop on. Each day's sales and payouts then post every night without you.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="lp-sec" id="lands" aria-labelledby="h-lands">
+  <div class="wrap">
+    <h2 id="h-lands">What lands in MYOB or Xero.</h2>
+    <ul class="lp-lands">
+      <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>One sales invoice per shop per day</b>, matched to Square's own totals to the cent before it posts. A day that doesn't add up is held with the reason, never posted.</span></li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>GST and GST-free sales kept apart</b>, with card surcharges, tips and gift cards on their own accounts, and refunds on the day they were given.</span></li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Card takings into a Square clearing account</b>, cash into your cash account.</span></li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Each Square payout settled</b>: Square's fees on your fees account with their GST, and the payout as a transfer to your bank.</span></li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span><b>Each shop on its own job</b> in MYOB, or its own tracking option in Xero. Nothing is ever posted twice.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="lp-sec" id="price" aria-labelledby="h-price">
+  <div class="wrap lp-price">
+    <div>
+      <h2 id="h-price">One price, by orders a month.</h2>
+      <p class="lede">Any number of shops on every plan. Orders are counted across all of them.</p>
+    </div>
+    <div>
+      <table class="tbl">
+        <thead><tr><th scope="col">Orders a month</th><th scope="col" class="n">A month, GST included</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Up to 60</th><td class="n">Free</td></tr>
+          <tr><th scope="row">Up to 500</th><td class="n">$9.99</td></tr>
+          <tr><th scope="row">Unlimited</th><td class="n">$29.99</td></tr>
+        </tbody>
+      </table>
+      <p class="note-dim">Billed monthly, stop any time. No card to start: PayKicker shows you the price and asks for a card before anything costs money.</p>
+      <p class="lp-switch"><b>Switching from another Square sync app?</b> Get 50% off your first 3 paid months, and we'll set it up with you for free. <a href="https://app.paykicker.com.au/signup?for=square&amp;offer=switch&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=square-sync&amp;utm_content=lp-switch" rel="noopener">Switch with 50% off</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="h-faq">
+  <div class="wrap faq-in">
+    <h2 id="h-faq">Questions.</h2>
+    <div>
+      <div class="qs">
+        <details><summary>Does it work with MYOB AccountRight, MYOB Business and Xero?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. PayKicker connects through MYOB's own sign-in, so it works with MYOB Business and with AccountRight files you open online. In Xero each shop's day goes in the same way, as a sales invoice on that shop's tracking option.</p></details>
+        <details><summary>I have more than one Square location. Is that extra?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. Every plan takes any number of shops, and the price follows your total orders across all of them. Each shop's day posts as its own invoice on its own job, with its own Square fees, so each shop has its own figures.</p></details>
+        <details><summary>What if a day doesn't go through?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>A day whose figures don't match Square's own totals is held with the reason and never posted. If MYOB or Xero doesn't answer, PayKicker tries that day again by itself on the nights that follow. Anything that didn't go through is emailed to your owners and admins after the night's run, and nothing is ever posted twice.</p></details>
+        <details><summary>Can I stop any time?<svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. It's billed monthly with no contract. Everything already posted stays in your MYOB or Xero file.</p></details>
+      </div>
+      <p class="indep">PayKicker is independent software and is not affiliated with or endorsed by Square, MYOB or Xero. Square is a trademark of Block, Inc., MYOB is a trademark of MYOB Technology Pty Ltd and Xero is a trademark of Xero Limited.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band-cta" aria-labelledby="h-go">
+  <div class="wrap">
+    <div>
+      <h2 id="h-go">Free up to 60 orders a month.</h2>
+      <p>Connect MYOB or Xero and Square, and tonight's sales go in by themselves. No card to start.</p>
+    </div>
+    <div class="acts lp-acts">
+      <a class="btn go big" href="https://app.paykicker.com.au/signup?for=square&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=square-sync&amp;utm_content=lp" rel="noopener">Start free</a>
+      <a class="lp-call" href="tel:+61340616223">or call (03)&nbsp;4061&nbsp;6223</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot lp-foot">
+  <div class="wrap">
+    <div class="legal">
+      <p class="legal-id"><img src="/paykicker-logo-reversed.svg" alt="PayKicker" width="106" height="16"><b>PAYKICKER PTY LTD · ABN 91 700 949 944</b></p>
+      <div>
+        <p>Melbourne, Victoria. Software, not tax or accounting advice: check your own GST treatment with your accountant.</p>
+        <p class="lp-links"><a href="tel:+61340616223">(03) 4061 6223</a><a href="mailto:operations@paykicker.com.au">operations@paykicker.com.au</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
